@@ -1,16 +1,16 @@
-# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Maintainer: Username <i@example.com>
 
-pkgname=attr
-pkgver=2.5.1
+pkgname=
+pkgver=
 pkgrel=1
-pkgdesc='Extended attribute support library for ACL support'
+pkgdesc=''
 arch=('x86_64')
-license=('LGPL')
-depends=(musl)
-makedepends=('gettext')
-options=('debug')
-source=("https://download.savannah.gnu.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('SKIP')
+license=('')
+depends=()
+makedepends=()
+options=()
+source=()
+sha256sums=()
 
 build() {
   cd $pkgname-$pkgver
