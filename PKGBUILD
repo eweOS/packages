@@ -1,28 +1,17 @@
-# Maintainer: Username <i@example.com>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=
-pkgver=
+pkgname=base
+pkgver=1
 pkgrel=1
-pkgdesc=''
-arch=('x86_64')
-license=('')
-depends=()
-makedepends=()
-options=()
-source=()
-sha256sums=()
+pkgdesc='Minimal package set to define a basic eweOS installation'
+arch=('any')
+license=('GPL')
+depends=(
+  'filesystem' 'musl' 'bash' 'llvm-libs'
+  'busybox' 'file'
+  'util-linux'
+  'gettext' 'pciutils' 'xz'
+  'pacman'
+)
+optdepends=('linux: bare metal support')
 
-build() {
-  cd $pkgname-$pkgver
-  ./configure \
-    --libdir=/usr/lib \
-    --libexecdir=/usr/lib \
-    --prefix=/usr \
-    --sysconfdir=/etc
-  make
-}
-
-package() {
-  cd $pkgname-$pkgver
-  make DESTDIR="${pkgdir}" install
-}
