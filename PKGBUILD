@@ -1,28 +1,36 @@
-# Maintainer: Username <i@example.com>
+# Maintainer: YukariChiba <i@0x7f.cc>
 
-pkgname=
-pkgver=
+pkgname=bash
+pkgver=5.1.8
 pkgrel=1
-pkgdesc=''
-arch=('x86_64')
-license=('')
-depends=()
-makedepends=()
-options=()
-source=()
-sha256sums=()
+pkgdesc='The GNU Bourne Again shell'
+arch=(x86_64)
+license=(GPL3)
+groups=(base)
+depends=(readline ncurses)
+provides=('sh')
+source=(
+    "http://ftp.gnu.org/gnu/bash/${pkgname}-${pkgver}.tar.gz"
+    bashrc
+)
+
+sha256sums=(
+    'SKIP'
+    'SKIP'
+)
 
 build() {
-  cd $pkgname-$pkgver
-  ./configure \
-    --libdir=/usr/lib \
-    --libexecdir=/usr/lib \
-    --prefix=/usr \
-    --sysconfdir=/etc
-  make
+    cd ${pkgname}-${pkgver}
+    ./configure --prefix=/usr \
+        --mandir=/usr/share/man \
+        --without-bash-malloc \
+        --with-installed-readline
+    make
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR="${pkgdir}" install
+    cd ${pkgname}-${pkgver}
+    make DESTDIR="$pkgdir" install
+    install -d "${pkgdir}/etc/"
+    install -m 0644 "${srcdir}/bashrc" "${pkgdir}/etc/"
 }
