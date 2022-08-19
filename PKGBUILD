@@ -1,28 +1,26 @@
-# Maintainer: Username <i@example.com>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=
-pkgver=
+pkgname=busybox
+pkgver=1.35.0
 pkgrel=1
-pkgdesc=''
-arch=('x86_64')
-license=('')
-depends=()
-makedepends=()
-options=()
-source=()
-sha256sums=()
+pkgdesc="Utilities for rescue and embedded systems"
+arch=("x86_64")
+url="https://www.busybox.net"
+license=('GPL')
+makedepends=("ncurses" "musl" "skalibs" "utmps")
+source=("$url/downloads/$pkgname-$pkgver.tar.bz2"
+        "config")
+sha256sums=('SKIP' 'SKIP')
 
 build() {
-  cd $pkgname-$pkgver
-  ./configure \
-    --libdir=/usr/lib \
-    --libexecdir=/usr/lib \
-    --prefix=/usr \
-    --sysconfdir=/etc
-  make
+    cd "$srcdir/$pkgname-$pkgver"
+    sed "/CONFIG_PREFIX/s@=.*@=\"${pkgdir}/usr/\"@" \
+        "${srcdir}/config" >.config
+    make HOSTCC=clang CC=clang
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR="${pkgdir}" install
+    cd "$srcdir/$pkgname-$pkgver"
+    make HOSTCC=clang CC=clang install
+    chmod u+s ${pkgdir}/usr/bin/busybox
 }
