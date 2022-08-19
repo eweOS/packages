@@ -1,0 +1,4 @@
+type = process
+command = fcgiwrap -f -c 4 -s unix:/var/run/fcgiwrap/socket
+restart = false
+depends-on = rcboot
