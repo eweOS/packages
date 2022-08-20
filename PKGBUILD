@@ -22,10 +22,7 @@ sha256sums=(
 
 build() {
     cd $pkgname-$pkgver
-    unset CFLAGS CXXFLAGS
-    ./configure --prefix=/usr \
-        --libdir=/lib \
-        --syslibdir=/lib
+    ./configure --prefix=/usr --syslibdir=/usr/lib
     make
 }
 
@@ -33,7 +30,7 @@ package() {
     cd $pkgname-$pkgver
 	make DESTDIR=${pkgdir} install
     install -d "${pkgdir}"/usr/bin
-    ln -sf /lib/libc.so "${pkgdir}"/usr/bin/ldd
+    ln -sf /usr/lib/libc.so "${pkgdir}"/usr/bin/ldd
 }
 
 
