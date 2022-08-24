@@ -1,7 +1,7 @@
 # Maintainer: YukariChiba <i@0x7f.cc>
 
 pkgname=bash
-pkgver=5.1.8
+pkgver=5.1.16
 pkgrel=1
 pkgdesc='The GNU Bourne Again shell'
 arch=(x86_64)
