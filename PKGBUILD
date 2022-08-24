@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=skalibs
-pkgver=2.10.0.3
+pkgver=2.12.0.1
 pkgrel=1
 pkgdesc='A library suite supporting skarnet.org software.'
 arch=(x86_64)
