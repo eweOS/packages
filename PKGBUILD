@@ -2,7 +2,7 @@
 
 pkgname=(linux linux-headers)
 _basename=linux
-pkgver=5.10.62
+pkgver=5.19.3
 pkgrel=1
 pkgdesc='System kernel'
 arch=(x86_64)
