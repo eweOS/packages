@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=musl
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='An implementation of the C/POSIX standard library.'
 arch=(x86_64)
