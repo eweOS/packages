@@ -8,8 +8,11 @@ arch=("x86_64")
 url="https://www.busybox.net"
 license=('GPL')
 makedepends=("ncurses" "musl" "skalibs" "utmps")
-source=("$url/downloads/$pkgname-$pkgver.tar.bz2"
-        "config")
+source=(
+	"$url/downloads/$pkgname-$pkgver.tar.bz2"
+        "config"
+	"sysctl.conf"
+)
 sha256sums=('SKIP' 'SKIP')
 
 build() {
@@ -22,5 +25,8 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     make HOSTCC=clang CC=clang install
-    chmod u+s ${pkgdir}/usr/bin/busybox
+    # disabled since fakeroot is not available
+    #chmod u+s ${pkgdir}/usr/bin/busybox
+    install -d etc
+    install -m 0644 "${srcdir}/sysctl.conf" etc/
 }
