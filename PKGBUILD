@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=utmps
-pkgver=0.1.0.2
+pkgver=0.1.2.0
 pkgrel=1
 pkgdesc='An implementation of the utmpx.h family of functions performing user accounting'
 arch=(x86_64)
