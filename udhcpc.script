@@ -1,0 +1,55 @@
+#!/bin/sh
+
+# This script depends on multiple variables declared in the environment by
+# udhcpc at runtime
+#
+# There are several variables such as BROADCAST, staticroutes and default
+# which may contiain multiple terms and should be left unquoted
+
+process_routes() {
+    while [ $# -ne 0 ] ; do
+        dest=$1
+        shift; shift
+        ip route add "$dest" dev "$interface"
+    done
+}
+
+case "$1" in
+    deconfig)
+        ip -4 addr flush dev "$interface"
+        ip link set dev "$interface" up
+        ;;
+    renew|bound)
+        BROADCAST='broadcast +'
+        [ -n "$broadcast" ] && BROADCAST="broadcast $broadcast"
+
+        ip addr add "${ip}/${mask}" $BROADCAST dev "$interface"
+
+        [ -n "$mtu" ] && ip link set dev "$interface" mtu "$mtu"
+        [ -n "$staticroutes" ] && process_routes $staticroutes
+
+        if [ -n "$router" ] ; then
+            while ip route delete default dev "$interface" 2>/dev/null ; do
+                :
+            done
+            metric=0
+            for i in $router ; do
+                [ "$mask" = '32' ] && ip route add "$i" dev "$interface"
+                metric=$((metric+1))
+                ip route add default via "$i" metric "$metric"
+            done
+        fi
+
+        if [ -n "$dns" ] ; then
+            tmpfile=$(mktemp)
+            if [ -n "$domain" ] ; then
+                printf 'domain %s\n' "$domain" >>"$tmpfile"
+            fi
+            for ns in $dns ; do
+                printf 'nameserver %s\n' "$ns" >>"$tmpfile"
+            done
+            install -m0644 "$tmpfile" /etc/resolv.conf
+            rm "$tmpfile"
+        fi
+        ;;
+esac
