@@ -31,6 +31,7 @@ package() {
 	make DESTDIR=${pkgdir} install
     install -d "${pkgdir}"/usr/bin
     ln -sf /usr/lib/libc.so "${pkgdir}"/usr/bin/ldd
+    rm "${pkgdir}"/usr/include/utmpx.h
 }
 
 
