@@ -33,4 +33,5 @@ package() {
     make DESTDIR="$pkgdir" install
     install -d "${pkgdir}/etc/"
     install -m 0644 "${srcdir}/bashrc" "${pkgdir}/etc/"
+    ln -s ${pkgdir}/bin/bash ${pkgdir}/bin/sh
 }
