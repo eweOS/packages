@@ -7,7 +7,7 @@ pkgdesc="Utilities for rescue and embedded systems"
 arch=("x86_64")
 url="https://www.busybox.net"
 license=('GPL')
-makedepends=("ncurses" "musl" "skalibs" "utmps")
+makedepends=("ncurses" "musl" "skalibs" "utmps" "linux")
 source=(
 	"$url/downloads/$pkgname-$pkgver.tar.bz2"
         "config"
@@ -32,6 +32,7 @@ package() {
     cd "$srcdir/$pkgname-$pkgver"
     make HOSTCC=clang CC=clang install
     chmod u+s ${pkgdir}/usr/bin/busybox
+    mv $pkgdir/usr/sbin/* $pkgdir/usr/bin
 
     # Config Files
     install -d etc
