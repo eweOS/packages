@@ -19,12 +19,12 @@ makedepends=(
 options=()
 
 _command_needed=('addpart' 'agetty' 'cfdisk' 'chcpu' 'chmem' 'choom' 'col' 'colcrt' 'colrm' 'column'
-		'ctrlaltdel' 'delpart' 'eject' 'fincore' 'findfs' 'findmnt' 'fsck.cramfs' 'fsck.minix' 'fstrim'
+		'ctrlaltdel' 'delpart' 'eject' 'fincore' 'findfs' 'findmnt' 'fsck.cramfs'
 		'hardlink' 'ipcmk' 'ipcrm' 'ipcs' 'irqtop' 'isosize' 'ldattach' 'look' 'lsblk' 'lscpu' 'lsipc'
 		'lsirq' 'lslocks' 'lslogins' 'lsmem' 'lsns' 'mcookie' 'mkfs' 'mkfs.bfs' 'mkfs.cramfs'
-		'mkfs.minix' 'namei' 'nologin' 'nsenter' 'partx' 'prlimit' 'raw' 'rename' 'resizepart' 'rfkill'
-		'script' 'scriptlive' 'scriptreplay' 'setterm' 'sfdisk' 'sulogin' 'taskset' 'uclampset' 'ul'
-		'uuidgen' 'uuidd' 'uuidparse' 'wdctl' 'whereis' 'wipefs' 'zramctl')
+		'mkfs.minix' 'namei' 'nologin' 'nsenter' 'partx' 'prlimit' 'raw' 'rename' 'resizepart'
+		'scriptlive' 'setterm' 'sfdisk' 'sulogin' 'uclampset' 'ul' 'uuidgen' 'uuidd' 'uuidparse' 
+		'wdctl' 'whereis' 'wipefs' 'zramctl')
 
 source=(
     "util-linux-${pkgver}.tar.gz::https://github.com/karelzak/util-linux/archive/refs/tags/v${pkgver}.tar.gz"
