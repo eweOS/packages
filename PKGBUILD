@@ -1,4 +1,5 @@
 # Maintainer: YukariChiba <i@0x7f.cc>
+# Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=bash
 pkgver=5.1.16
@@ -26,6 +27,11 @@ build() {
         --without-bash-malloc \
         --with-installed-readline
     make
+}
+
+check() {
+    cd ${pkgname}-${pkgver}
+    make check
 }
 
 package() {
