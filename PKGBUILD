@@ -34,6 +34,7 @@ package() {
     chmod u+s ${pkgdir}/usr/bin/busybox
     mv $pkgdir/usr/sbin/* $pkgdir/usr/bin
 
+    cd $pkgdir
     # Config Files
     install -d etc
     install -m 0644 "${srcdir}/sysctl.conf" etc/
