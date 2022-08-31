@@ -9,7 +9,7 @@ arch=(x86_64)
 url='http://www.kernel.org'
 license=(GPL2)
 depends=()
-makedepends=(bison flex perl python)
+makedepends=(bison flex perl python libelf linux-headers)
 options=()
 source=(
     "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
