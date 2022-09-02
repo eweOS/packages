@@ -4,6 +4,7 @@ pkgname=m4
 pkgver=1.4.19
 pkgrel=1
 arch=(x86_64)
+pkgdesc="The GNU macro processor"
 url='http://www.gnu.org/software/m4/'
 license=(GPL3)
 groups=(base-devel)
