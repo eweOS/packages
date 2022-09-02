@@ -3,6 +3,7 @@
 pkgname=patch
 pkgver=2.7.6
 pkgrel=1
+pkgdesc="A utility to apply patch files to original sources"
 arch=(x86_64)
 license=(GPL3)
 groups=(base-devel)
