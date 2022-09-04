@@ -33,6 +33,7 @@ package() {
     make HOSTCC=clang CC=clang install
     chmod u+s ${pkgdir}/usr/bin/busybox
     mv $pkgdir/usr/sbin/* $pkgdir/usr/bin
+    rm -r $pkgdir/usr/sbin
 
     cd $pkgdir
     # Config Files
