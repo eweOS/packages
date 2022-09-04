@@ -13,11 +13,11 @@ sha256sums=('SKIP')
 
 build() {
     cd $pkgname-$pkgver
-    make PREFIX=/usr CC=cc SHAREDIR=/usr/share/hwdata
+    make PREFIX=/usr CC=cc SHAREDIR=/usr/share/hwdata SBINDIR=/usr/bin
 }
 
 package() {
     cd $pkgname-$pkgver
-    make DESTDIR="${pkgdir}" PREFIX=/usr SHAREDIR=/usr/share/hwdata install
+    make DESTDIR="${pkgdir}" PREFIX=/usr SHAREDIR=/usr/share/hwdata SBINDIR=/usr/bin install
 }
 
