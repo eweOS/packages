@@ -1,0 +1,5 @@
+type = process
+command = /bin/udhcpc -f
+logfile = /var/log/dhcpcd.log
+restart = false
+depends-on = rcboot

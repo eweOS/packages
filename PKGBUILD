@@ -13,13 +13,12 @@ source=(
         "config"
 	"sysctl.conf"
 	"ntp.conf"
-	"ntpd.log.service"
 	"ntpd.service"
-	"syslogd.log.service"
 	"syslogd.service"
+        "udhcpc.service"
 	"udhcpc.script"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -44,15 +43,16 @@ package() {
     install -m 0755 "${srcdir}/udhcpc.script" \
         usr/share/udhcpc/default.script
 
-    # NTP Service
-    install -d etc/s6/services/available/ntpd/log
-    install -m 0754 "${srcdir}/ntpd.service" etc/s6/services/available/ntpd/run
-    install -m 0754 "${srcdir}/ntpd.log.service" etc/s6/services/available/ntpd/log/run
+    install -d etc/dinit.d
+    install -d etc/dinit.d/boot.d
 
+    # NTP Service
+    install -m 0754 "${srcdir}/ntpd.service" etc/dinit.d/ntpd
+    ln -s "../ntpd" etc/dinit.d/boot.d/ntpd
 
     # Syslogd Service
-    install -d etc/s6/services/available/syslogd/log
-    install -m 0754 "${srcdir}/syslogd.service" etc/s6/services/available/syslogd/run
-    install -m 0754 "${srcdir}/syslogd.log.service" etc/s6/services/available/syslogd/log/run
+    install -m 0754 "${srcdir}/syslogd.service" etc/dinit.d/syslogd
 
+    # DHCP Service
+    install -m 0754 "${srcdir}/udhcpc.service" etc/dinit.d/udhcpc
 }

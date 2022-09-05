@@ -1,3 +1,4 @@
-#!/bin/execlineb -P
-fdmove -c 2 1
-syslogd -n -O /proc/self/fd/1
+type = process
+smooth-recovery = true
+command = /usr/bin/syslogd -n
+depends-on = rcboot

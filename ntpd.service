@@ -1,3 +1,5 @@
-#!/bin/execlineb -P
-fdmove -c 2 1
-/sbin/ntpd -dn
+type = process
+command = /bin/ntpd -dn
+logfile = /var/log/ntpd.log
+restart = false
+depends-on = rcboot
