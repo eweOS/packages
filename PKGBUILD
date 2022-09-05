@@ -2,7 +2,7 @@
 
 pkgname=(llvm llvm-libs)
 _realpkgname=llvm-project
-pkgver=13.0.0
+pkgver=14.0.6
 pkgrel=1
 pkgdesc='A collection of modular and reusable compiler and toolchain technologies.'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
 )
 
 sha256sums=(
-    6075ad30f1ac0e15f07c1bf062c1e1268c241d674f11bd32cdf0e040c71f2bf3
+    'SKIP'
 )
 
 
@@ -43,28 +43,25 @@ build() {
     cmake -G Ninja -Wno-dev \
         -DCMAKE_BUILD_TYPE=Release \
         -DCLANG_BUILD_EXAMPLES=OFF \
+        -DLLVM_BUILD_EXAMPLES=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DLLVM_INSTALL_UTILS=ON \
         -DCLANG_DEFAULT_CXX_STDLIB='libc++' \
         -DCLANG_DEFAULT_RTLIB='compiler-rt' \
-        -DCLANG_ENABLE_BOOTSTRAP=ON \
-        -DCOMPILER_RT_BUILD_SANITIZERS=OFF \
-        -DCOMPILER_RT_BUILD_XRAY=OFF \
-        -DCOMPILER_RT_USE_LIBCXX=ON \
-        -DLIBCLANG_BUILD_STATIC=ON \
         -DLIBCXX_HAS_MUSL_LIBC=ON \
         -DLIBCXX_USE_COMPILER_RT=ON \
         -DLIBCXXABI_USE_COMPILER_RT=ON \
         -DLIBCXXABI_USE_LLVM_UNWINDER=ON \
-        -DLLVM_INSTALL_UTILS=ON \
-        -DLLVM_BUILD_EXAMPLES=OFF \
+        -DCOMPILER_RT_BUILD_SANITIZERS=OFF \
+        -DCOMPILER_RT_BUILD_XRAY=OFF \
         -DLLVM_DEFAULT_TARGET_TRIPLE="$CHOST" \
+        -DLLVM_HOST_TRIPLE="$CHOST" \
         -DLLVM_DISTRIBUTION_COMPONENTS='clang;clang-resource-headers;lld;LTO;compiler-rt;cxx;cxxabi;addr2line;ar;nm;objcopy;objdump;ranlib;readelf;size;strings;strip;unwind' \
-        -DLLVM_ENABLE_LIBCXX=ON \
-        -DLLVM_ENABLE_PIC=ON \
         -DLLVM_ENABLE_PROJECTS='lld;clang;compiler-rt;libcxx;libcxxabi;libunwind' \
+        -DLLVM_ENABLE_LIBCXX=ON \
         -DLLVM_ENABLE_RTTI=ON \
         -DLLVM_ENABLE_TERMINFO=OFF \
-        -DLLVM_HOST_TRIPLE="$CHOST" \
+        -DLLVM_ENABLE_FFI=ON \
         -DLLVM_INSTALL_BINUTILS_SYMLINKS=ON \
         -DLLVM_INSTALL_TOOLCHAIN_ONLY=ON \
         -DLLVM_TARGETS_TO_BUILD=Native \
