@@ -69,6 +69,7 @@ package() {
   install -d ${pkgdir}/etc/dinit.d
   install ${srcdir}/rcboot.sh ${pkgdir}/etc/dinit.d/rcboot.sh
   install -d ${pkgdir}/etc/dinit.d/boot.d
+  ln -s dinit ${pkgdir}/usr/bin/init
 
   for f in `ls ${srcdir}/*.service`; do
     servicename=`echo $f | cut -d "." -f 1`
