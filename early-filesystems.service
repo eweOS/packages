@@ -1,0 +1,4 @@
+type = scripted
+command = /etc/dinit.d/early-filesystems.sh start
+restart = false
+options = starts-rwfs

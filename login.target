@@ -1,0 +1,5 @@
+type = internal
+restart = false
+options = runs-on-console
+
+waits-for = syslogd

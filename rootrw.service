@@ -1,0 +1,7 @@
+type = scripted
+command = /bin/mount -n -o remount,rw /
+restart = false
+options = starts-rwfs
+logfile = /run/rootrw.log
+
+depends-on = early-filesystems
