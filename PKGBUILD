@@ -22,10 +22,18 @@ sha256sums=(
 
 build() {
     cd ${pkgname}-${pkgver}
+
+    _bashconfig=(-DDEFAULT_PATH_VALUE=\'\"/usr/local/sbin:/usr/local/bin:/usr/bin\"\'
+                 -DSTANDARD_UTILS_PATH=\'\"/usr/bin\"\'
+                 -DSYS_BASHRC=\'\"/etc/bashrc\"\'
+                 -DNON_INTERACTIVE_LOGIN_SHELLS)
+    export CFLAGS="${CFLAGS} ${_bashconfig[@]}"
+
     ./configure --prefix=/usr \
         --mandir=/usr/share/man \
         --without-bash-malloc \
-        --with-installed-readline
+        --with-installed-readline \
+        --with-curses
     make
 }
 
