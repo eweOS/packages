@@ -20,6 +20,13 @@ sha256sums=(
     'SKIP'
 )
 
+prepare() {
+    cd $pkgname-$pkgver
+    # utmp/wtmp path
+    sed -i 's/\/dev\/null\/utmp/\/run\/utmps\/utmp/g' include/paths.h
+    sed -i 's/\/dev\/null\/wtmp/\/var\/log\/wtmp/g' include/paths.h
+}
+
 build() {
     cd $pkgname-$pkgver
     ./configure --prefix=/usr --syslibdir=/usr/lib
@@ -32,6 +39,7 @@ package() {
     install -d "${pkgdir}"/usr/bin
     ln -sf /usr/lib/libc.so "${pkgdir}"/usr/bin/ldd
     rm "${pkgdir}"/usr/include/utmpx.h
+    rm "${pkgdir}"/usr/include/utmp.h
 }
 
 
