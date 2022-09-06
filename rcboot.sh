@@ -8,6 +8,10 @@ if [ "$1" != "stop" ]; then
 
   cat /etc/hostname > /proc/sys/kernel/hostname
 
+  for f in /etc/rcboot.d/*; do
+	  bash "$f" 
+  done
+
 else
 
   echo "The system is going to shutdown..."

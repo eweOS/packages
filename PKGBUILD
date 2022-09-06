@@ -25,6 +25,7 @@ source=(
 arch=(x86_64)
 license=(Apache)
 makedepends=(make utmps)
+options=(emptydirs)
 sha256sums=(
   'SKIP'
   'SKIP'
@@ -69,6 +70,7 @@ package() {
   install -d ${pkgdir}/etc/dinit.d
   install ${srcdir}/rcboot.sh ${pkgdir}/etc/dinit.d/rcboot.sh
   install -d ${pkgdir}/etc/dinit.d/boot.d
+  install -d ${pkgdir}/etc/rcboot.d
   ln -s dinit ${pkgdir}/usr/bin/init
 
   for f in `ls ${srcdir}/*.service`; do
