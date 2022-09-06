@@ -1,0 +1,14 @@
+diff --color -urN utmps-0.1.2.0/src/include/utmps/utmpx.h utmps-0.1.2.0-new/src/include/utmps/utmpx.h
+--- utmps-0.1.2.0/src/include/utmps/utmpx.h	2021-12-19 12:33:49.000000000 +0800
++++ utmps-0.1.2.0-new/src/include/utmps/utmpx.h	2022-09-06 17:15:51.947383009 +0800
+@@ -79,6 +79,10 @@
+ # define ut_time ut_tv.tv_sec
+ #endif
+ 
++/* Compatibility names for the strings of the canonical file names.  */
++# define _PATH_UTMPX UTMPX_FILE
++# define _PATH_WTMPX WTMPX_FILE
++
+ #ifdef __cplusplus
+ }
+ #endif

@@ -18,6 +18,7 @@ source=(
     wtmpd.service
     utmps.install
     utmps.init
+    compat-path.patch
 )
 
 sha256sums=(
@@ -26,9 +27,16 @@ sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
+    'SKIP'
 )
 
 install=utmps.install
+
+prepare() {
+    cd ${pkgname}-${pkgver}
+    # Add more path def to allow build of dinit
+    patch -p1 < ${srcdir}/compat-path.patch
+}
 
 build() {
     cd ${pkgname}-${pkgver}
