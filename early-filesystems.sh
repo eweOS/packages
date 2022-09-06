@@ -24,4 +24,6 @@ if [ "$1" = start ]; then
     mount -n -t proc -o hidepid=1 proc /proc
     mount -n -t proc -o remount,hidepid=1 proc /proc
 
+    # /dev/fd
+    ln -s /proc/self/fd /dev/fd
 fi
