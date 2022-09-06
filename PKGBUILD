@@ -19,9 +19,11 @@ source=(
     utmps.install
     utmps.init
     compat-path.patch
+    utmp.h
 )
 
 sha256sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -57,5 +59,6 @@ package() {
     install "${srcdir}/utmpd.service" "${pkgdir}/etc/dinit.d/utmpd"
     install "${srcdir}/wtmpd.service" "${pkgdir}/etc/dinit.d/wtmpd"
     install -m 0755 "${srcdir}/utmps.init" "${pkgdir}/etc/rcboot.d/utmps"
+    install "${srcdir}/utmp.h" "${pkgdir}/usr/include/utmp.h"
 }
 
