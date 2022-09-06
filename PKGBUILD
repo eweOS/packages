@@ -46,21 +46,22 @@ backup=(
 package() {
     cd ${pkgdir}
     install -d "boot" "dev" "etc/default" "home" "mnt"
-    ln -s proc/mounts "etc/mtab"
+    ln -s "../proc/mounts" "etc/mtab"
     install -d -m 0555 "proc" "sys"
     install -d -m 0750 "root"
     install -d -m 0755 "run"
     install -d -m 1777 "tmp"
     install -d "srv"
     install -d "usr/"{bin,include,local/bin,local/sbin,share/man,lib/modules}
-    install -d "var/"{cache,lock,lib,log,mail,spool}
-    ln -s run "var/run"
-    ln -s usr/lib "lib"
-    ln -s usr/lib "lib64"
-    ln -s usr/lib "usr/lib64"
-    ln -s usr/bin "bin"
-    ln -s usr/bin "usr/sbin"
-    ln -s usr/bin "sbin"
+    install -d "var/"{cache,lib,log,mail,spool}
+    ln -s "../run" var/run
+    ln -s "../run/lock" var/lock
+    ln -s "usr/lib" lib
+    ln -s "usr/lib" lib64
+    ln -s "usr/bin" bin
+    ln -s "usr/bin" sbin
+    ln -s "lib" usr/lib64
+    ln -s "bin" usr/sbin
     install -d -m 1777 "var/tmp"
     for user in {passwd,shadow,group,profile,shells,services,protocols,os-release};do
         install -m0644 $srcdir/$user    "etc/$user"
