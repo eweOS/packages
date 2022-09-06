@@ -8,7 +8,7 @@ arch=(x86_64)
 url='http://skarnet.org/software/utmps/'
 license=(ISC)
 groups=()
-depends=(dinit skalibs)
+depends=(dinit skalibs ucspi-unix)
 makedepends=(skalibs)
 options=()
 
