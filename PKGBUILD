@@ -8,14 +8,14 @@ arch=(x86_64)
 url='http://skarnet.org/software/utmps/'
 license=(ISC)
 groups=()
-depends=(s6)
+depends=(dinit)
 makedepends=(skalibs)
 options=()
 
 source=(
     "http://skarnet.org/software/utmps/utmps-${pkgver}.tar.gz"
-    utmpd-service
-    wtmpd-service
+    utmpd.service
+    wtmpd.service
     utmps.install
 )
 
@@ -26,13 +26,15 @@ sha256sums=(
     'SKIP'
 )
 
+install=utmps.install
+
 build() {
     cd ${pkgname}-${pkgver}
     ./configure \
         --prefix=/usr \
-        --bindir=/sbin \
+        --bindir=/usr/bin \
         --libdir=/usr/lib \
-        --with-sysdeps=/lib/skalibs/sysdeps \
+        --with-sysdeps=/usr/lib/skalibs/sysdeps \
         --enable-libc-includes
     make
 }
@@ -40,11 +42,8 @@ build() {
 package() {
     cd ${pkgname}-${pkgver}
     make DESTDIR=${pkgdir} install
-    install -d "${pkgdir}/etc/s6/init-services/utmpd"
-    install -m 0754 "${srcdir}/utmpd-service" "${pkgdir}/etc/s6/init-services/utmpd/run"
-    echo 3 >"${pkgdir}/etc/s6/init-services/utmpd/notification-fd"
-    install -d "${pkgdir}/etc/s6/init-services/wtmpd"
-    install -m 0754 "${srcdir}/wtmpd-service" "${pkgdir}/etc/s6/init-services/wtmpd/run"
-    echo 3 >"${pkgdir}/etc/s6/init-services/wtmpd/notification-fd"
+    install -d "${pkgdir}/etc/dinit.d"
+    install "${srcdir}/utmpd.service" "${pkgdir}/etc/dinit.d/utmpd"
+    install "${srcdir}/wtmpd.service" "${pkgdir}/etc/dinit.d/wtmpd"
 }
 

@@ -1,0 +1,7 @@
+type = process
+command = utmps-wtmpd
+working-dir = /run/utmps
+run-as = utmp
+socket-listen = /run/utmps/.wtmpd-socket
+depends-on = rcboot
+
