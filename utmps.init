@@ -1,0 +1,5 @@
+#!/bin/sh
+
+mkdir -p -m 0755 /run/utmps
+chown utmp:utmp /run/utmps
+

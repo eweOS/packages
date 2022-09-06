@@ -17,9 +17,11 @@ source=(
     utmpd.service
     wtmpd.service
     utmps.install
+    utmps.init
 )
 
 sha256sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -43,7 +45,9 @@ package() {
     cd ${pkgname}-${pkgver}
     make DESTDIR=${pkgdir} install
     install -d "${pkgdir}/etc/dinit.d"
+    install -d "${pkgdir}/etc/rcboot.d"
     install "${srcdir}/utmpd.service" "${pkgdir}/etc/dinit.d/utmpd"
     install "${srcdir}/wtmpd.service" "${pkgdir}/etc/dinit.d/wtmpd"
+    install -m 0755 "${srcdir}/utmps.init" "${pkgdir}/etc/rcboot.d/utmps"
 }
 
