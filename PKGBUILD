@@ -55,7 +55,8 @@ build() {
        CXXOPTS="-std=c++11 -fno-rtti" \
        SBINDIR="/usr/bin" \
        BUILD_SHUTDOWN=yes \
-       SANITIZEOPTS="-fsanitize=address,undefined"
+       SANITIZEOPTS="-fsanitize=address,undefined" \
+       USE_UTMPX=1
 }
 
 check() {
