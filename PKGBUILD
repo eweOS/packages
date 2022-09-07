@@ -17,8 +17,9 @@ source=(
 	"syslogd.service"
         "udhcpc.service"
 	"udhcpc.script"
+	"mdev.service"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -55,4 +56,7 @@ package() {
 
     # DHCP Service
     install -m 0754 "${srcdir}/udhcpc.service" etc/dinit.d/udhcpc
+
+    # mdev Service
+    install -m 0754 "${srcdir}/mdev.service" etc/dinit.d/mdev
 }
