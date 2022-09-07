@@ -1,0 +1,11 @@
+#!/bin/bash -ex
+# Highly opinionated wrapper for eweOS packaging
+
+exec meson setup \
+  --prefix        /usr \
+  --libexecdir    lib \
+  --sbindir       bin \
+  --buildtype     plain \
+  --auto-features enabled \
+  --wrap-mode     nodownload \
+  "$@"
