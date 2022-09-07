@@ -1,0 +1,80 @@
+From 1bb2b97b2947c52687df052042eeeadfefca4993 Mon Sep 17 00:00:00 2001
+From: Philip Hazel <Philip.Hazel@gmail.com>
+Date: Fri, 22 Apr 2022 09:31:05 +0100
+Subject: [PATCH] Update build workflow to add test in an Alpine container
+
+---
+ .github/workflows/build.yml | 39 +++++++++++++++++++++++++++++++++++--
+ ChangeLog                   |  8 ++++++++
+ src/pcre2grep.c             |  6 +++++-
+ testdata/grepoutputC        | 20 +++++++++----------
+ 4 files changed, 60 insertions(+), 13 deletions(-)
+
+ 
+diff --git a/src/pcre2grep.c b/src/pcre2grep.c
+index 2335d0dd..030e50d7 100644
+--- a/src/pcre2grep.c
++++ b/src/pcre2grep.c
+@@ -13,7 +13,7 @@ distribution because other apparatus is needed to compile pcre2grep for z/OS.
+ The header can be found in the special z/OS distribution, which is available
+ from www.zaconsultants.net or from www.cbttape.org.
+ 
+-           Copyright (c) 1997-2020 University of Cambridge
++           Copyright (c) 1997-2022 University of Cambridge
+ 
+ -----------------------------------------------------------------------------
+ Redistribution and use in source and binary forms, with or without
+@@ -2437,7 +2437,11 @@ if (pid == 0)
+   exit(1);
+   }
+ else if (pid > 0)
++  {
++  (void)fflush(stdout); 
+   (void)waitpid(pid, &result, 0);
++  (void)fflush(stdout); 
++  } 
+ #endif  /* End Windows/VMS/other handling */
+ 
+ free(args);
+diff --git a/testdata/grepoutputC b/testdata/grepoutputC
+index 87897f05..9255c0a6 100644
+--- a/testdata/grepoutputC
++++ b/testdata/grepoutputC
+@@ -1,26 +1,26 @@
+ Arg1: [T] [he ] [ ] Arg2: |T| () () (0)
+-Arg1: [T] [his] [s] Arg2: |T| () () (0)
+-Arg1: [T] [his] [s] Arg2: |T| () () (0)
+-Arg1: [T] [he ] [ ] Arg2: |T| () () (0)
+-Arg1: [T] [he ] [ ] Arg2: |T| () () (0)
+-Arg1: [T] [he ] [ ] Arg2: |T| () () (0)
+ The quick brown
++Arg1: [T] [his] [s] Arg2: |T| () () (0)
+ This time it jumps and jumps and jumps.
++Arg1: [T] [his] [s] Arg2: |T| () () (0)
+ This line contains \E and (regex) *meta* [characters].
++Arg1: [T] [he ] [ ] Arg2: |T| () () (0)
+ The word is cat in this line
++Arg1: [T] [he ] [ ] Arg2: |T| () () (0)
+ The caterpillar sat on the mat
++Arg1: [T] [he ] [ ] Arg2: |T| () () (0)
+ The snowcat is not an animal
+ Arg1: [qu] [qu]
+-Arg1: [ t] [ t]
+-Arg1: [ l] [ l]
+-Arg1: [wo] [wo]
+-Arg1: [ca] [ca]
+-Arg1: [sn] [sn]
+ The quick brown
++Arg1: [ t] [ t]
+ This time it jumps and jumps and jumps.
++Arg1: [ l] [ l]
+ This line contains \E and (regex) *meta* [characters].
++Arg1: [wo] [wo]
+ The word is cat in this line
++Arg1: [ca] [ca]
+ The caterpillar sat on the mat
++Arg1: [sn] [sn]
+ The snowcat is not an animal
+ 0:T
+ The quick brown
+
