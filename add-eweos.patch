@@ -1,0 +1,49 @@
+--- neofetch	2022-09-07 12:46:34.640858684 +0800
++++ neofetch	2022-09-07 12:50:15.522613778 +0800
+@@ -780,7 +780,7 @@
+ #       Chapeau, Chrom*, Cleanjaro, ClearOS, Clear_Linux, Clover,
+ #       Condres, Container_Linux, CRUX, Cucumber, Debian, Deepin,
+ #       DesaOS, Devuan, DracOS, DarkOs, DragonFly, Drauger, Elementary,
+-#       EndeavourOS, Endless, EuroLinux, Exherbo, Fedora, Feren, FreeBSD,
++#       EndeavourOS, Endless, EuroLinux, eweOS, Exherbo, Fedora, Feren, FreeBSD,
+ #       FreeMiNT, Frugalware, Funtoo, GalliumOS, Garuda, Gentoo, Pentoo,
+ #       gNewSense, GNOME, GNU, GoboLinux, Grombyang, Guix, Haiku, Huayra,
+ #       Hyperbola, janus, Kali, KaOS, KDE_neon, Kibojoe, Kogaion,
+@@ -4923,7 +4923,7 @@
+                                 Chrom, Cleanjaro, ClearOS, Clear_Linux, Clover, Condres,
+                                 Container_Linux, CRUX, Cucumber, Debian, Deepin, DesaOS, Devuan,
+                                 DracOS, DarkOs, DragonFly, Drauger, Elementary, EndeavourOS, Endless,
+-                                EuroLinux, Exherbo, Fedora, Feren, FreeBSD, FreeMiNT, Frugalware,
++                                EuroLinux, eweOS, Exherbo, Fedora, Feren, FreeBSD, FreeMiNT, Frugalware,
+                                 Funtoo, GalliumOS, Garuda, Gentoo, Pentoo, gNewSense, GNOME, GNU,
+                                 GoboLinux, Grombyang, Guix, Haiku, Huayra, Hyperbola, janus, Kali,
+                                 KaOS, KDE_neon, Kibojoe, Kogaion, Korora, KSLinux, Kubuntu, LEDE,
+@@ -6900,6 +6900,27 @@
+ EOF
+         ;;
+ 
++        "eweOS"*)
++            set_colors 7 11 9 8 1
++            read -rd '' ascii_data <<'EOF'
++${c2}           #####%%%                     
++${c2}        ##%%${c3}////${c2}%%%%%${c3}///                
++${c2}       #%%%%${c3}////((((////${c2}%               
++${c1}    *@@@@@@@${c3}/${c5},,,${c3}/////${c5},,,${c2}%${c1}@@@@@@@        
++${c1}  .@@@@@@@@@@@${c3}////////${c2}%%%${c1}@@@@@@@@@@@@   
++${c1} @@@${c4}...${c1}@@@@@@${c3}////${c2}%%${c3}////${c1}@@@@@@@@@@@@@@@@ 
++${c1} @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
++${c1} @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
++${c1}   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
++${c1}         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
++${c1}          @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
++${c1}           @@@@@@@@@@@@@@@@@@@@@@@@@@@  
++${c1}             @@@@@@@@@@@@@@@@@@@@@@@    
++${c1}              @@@@@@         @@@@@@     
++${c1}                @@@           @@@       
++EOF
++        ;;
++
+         "Exherbo"*)
+             set_colors 4 7 1
+             read -rd '' ascii_data <<'EOF'
+
