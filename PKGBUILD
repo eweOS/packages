@@ -56,14 +56,14 @@ build() {
         -DCOMPILER_RT_BUILD_XRAY=OFF \
         -DLLVM_DEFAULT_TARGET_TRIPLE="$CHOST" \
         -DLLVM_HOST_TRIPLE="$CHOST" \
-        -DLLVM_DISTRIBUTION_COMPONENTS='clang;clang-resource-headers;lld;LTO;compiler-rt;cxx;cxxabi;addr2line;ar;nm;objcopy;objdump;ranlib;readelf;size;strings;strip;unwind' \
         -DLLVM_ENABLE_PROJECTS='lld;clang;compiler-rt;libcxx;libcxxabi;libunwind' \
         -DLLVM_ENABLE_LIBCXX=ON \
         -DLLVM_ENABLE_RTTI=ON \
         -DLLVM_ENABLE_TERMINFO=OFF \
         -DLLVM_ENABLE_FFI=ON \
         -DLLVM_INSTALL_BINUTILS_SYMLINKS=ON \
-        -DLLVM_INSTALL_TOOLCHAIN_ONLY=ON \
+	-DLLVM_BUILD_LLVM_DYLIB=ON \
+	-DLLVM_INCLUDE_BENCHMARKS=OFF \
         -DLLVM_TARGETS_TO_BUILD=Native \
         ../llvm
     cmake --build .
@@ -78,12 +78,11 @@ package_llvm() {
     cd $_realpkgname-$pkgver.src
     cd build || return 1
     export DESTDIR="${pkgdir}/"
-    cmake --build . --target install-distribution
+    cmake --build . --target install
     ln -s libunwind.a "${pkgdir}/usr/lib/libgcc_s.a"
     ln -s lld "${pkgdir}/usr/bin/ld"
     ln -s clang "${pkgdir}/usr/bin/cc"
     ln -s clang++ "${pkgdir}/usr/bin/c++"
-    ln -s llvm-objcopy "${pkgdir}/usr/bin/llvm-strip"
     mv -f "$pkgdir"/usr/lib/libc++.so.* "$srcdir"
     mv -f "$pkgdir"/usr/lib/libc++abi.so.* "$srcdir"
     mv -f "$pkgdir"/usr/lib/libunwind.so.* "$srcdir"
