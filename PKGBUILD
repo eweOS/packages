@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=(llvm llvm-libs)
+pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang)
 _realpkgname=llvm-project
-pkgver=14.0.6
+pkgver=15.0.0
 pkgrel=1
 pkgdesc='A collection of modular and reusable compiler and toolchain technologies.'
 arch=('x86_64')
@@ -16,6 +16,10 @@ makedepends=(
     ninja
     utmps
     zlib
+    libffi
+    libedit
+    git
+    libxml2
 )
 options=()
 
@@ -27,6 +31,87 @@ sha256sums=(
     'SKIP'
 )
 
+FLIST_clang=(
+    "usr/bin/*clang*"
+    "usr/bin/c-index-test"
+    "usr/bin/cc"
+    "usr/bin/c++"
+    "usr/lib/cmake/clang"
+    "usr/share/clang"
+    "usr/include/clang-c"
+    "usr/include/clang"
+    "usr/lib/libclang*.so"
+    "usr/lib/libclang*.a"
+    "usr/bin/analyze-build"
+    "usr/bin/intercept-build"
+    "usr/bin/scan-*"
+    "usr/lib/clang"
+    "usr/lib/libear"
+    "usr/lib/libscanbuild"
+    "usr/libexec/analyze-*"
+    "usr/libexec/*analyzer"
+    "usr/libexec/intercept-*"
+    "usr/share/scan-*"
+    "usr/share/man/man1/scan-build.1"
+    "usr/lib/libclang.so.*"
+    "usr/lib/libclang-cpp.so.*"
+)
+
+FLIST_lldb=(
+    "usr/bin/*lldb*"
+    "usr/lib/liblldb*.so.*"
+    "usr/include/lldb"
+    "usr/lib/liblldb*.so"
+)
+
+FLIST_openmp=(
+    "usr/include/ompt-multiplex.h"
+    "usr/lib/cmake/openmp"
+    "usr/lib/libomptarget-*.bc"
+    "usr/lib/libomptarget*.so*"
+    "usr/lib/libarcher*.so"
+    "usr/lib/libomp*.so"
+    "usr/lib/libgomp.so"
+    "usr/lib/libiomp5.so"
+)
+
+FLIST_lld=(
+    "usr/bin/ld"
+    "usr/bin/lld*"
+    "usr/bin/wasm-ld"
+    "usr/bin/ld.lld*"
+    "usr/bin/ld64.lld*"
+    "usr/include/lld"
+    "usr/lib/cmake/lld"
+    "usr/lib/liblld*.a"
+)
+
+FLIST_llvm_lto=(
+    "usr/lib/libLTO.so*"
+)
+
+FLIST_llvm_libs=(
+    "usr/lib/libc++.so*"
+    "usr/lib/libc++abi.so*"
+    "usr/lib/libc++.a"
+    "usr/lib/libc++abi.a"
+    "usr/lib/libc++experimental.a"
+    "usr/lib/libunwind.so.*"
+    "usr/lib/libunwind.so"
+    "usr/lib/libunwind.a"
+    "usr/include/*cxxabi*"
+    "usr/include/c++"
+    "usr/include/*unwind*"
+)
+
+_fetchpkg() {
+    PKGBASE="$srcdir/pkgs/$1" && shift
+    mkdir -p $PKGBASE
+    for FILEPATH in $@; do
+        (cd "${srcdir}/PKGDIR" && find $FILEPATH | cpio -pdvmu $PKGBASE) || true
+        (cd "${srcdir}/PKGDIR" && find $FILEPATH -delete) || true
+    done
+}
 
 build() {
     cd $_realpkgname-$pkgver.src
@@ -40,61 +125,88 @@ build() {
         compiler-rt/lib/fuzzer/FuzzerInterceptors.cpp
     install -d build
     cd build || return 1
-    cmake -G Ninja -Wno-dev \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCLANG_BUILD_EXAMPLES=OFF \
-        -DLLVM_BUILD_EXAMPLES=OFF \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DLLVM_INSTALL_UTILS=ON \
-        -DCLANG_DEFAULT_CXX_STDLIB='libc++' \
-        -DCLANG_DEFAULT_RTLIB='compiler-rt' \
-        -DLIBCXX_HAS_MUSL_LIBC=ON \
-        -DLIBCXX_USE_COMPILER_RT=ON \
-        -DLIBCXXABI_USE_COMPILER_RT=ON \
-        -DLIBCXXABI_USE_LLVM_UNWINDER=ON \
-        -DCOMPILER_RT_BUILD_SANITIZERS=OFF \
-        -DCOMPILER_RT_BUILD_XRAY=OFF \
-        -DLLVM_DEFAULT_TARGET_TRIPLE="$CHOST" \
-        -DLLVM_HOST_TRIPLE="$CHOST" \
-        -DLLVM_ENABLE_PROJECTS='lld;clang;compiler-rt;libcxx;libcxxabi;libunwind' \
-        -DLLVM_ENABLE_LIBCXX=ON \
-        -DLLVM_ENABLE_RTTI=ON \
-        -DLLVM_ENABLE_TERMINFO=OFF \
-        -DLLVM_ENABLE_FFI=ON \
-        -DLLVM_INSTALL_BINUTILS_SYMLINKS=ON \
-	-DLLVM_BUILD_LLVM_DYLIB=ON \
-	-DLLVM_INCLUDE_BENCHMARKS=OFF \
-        -DLLVM_TARGETS_TO_BUILD=Native \
+
+    # https://os-wiki.ewe.moe/llvm
+    export CMARGS=(
+        -G Ninja
+        -DCMAKE_BUILD_TYPE=Release
+        -DCMAKE_INSTALL_PREFIX=/usr
+        -DLLVM_DEFAULT_TARGET_TRIPLE="$CHOST"
+        -DLLVM_HOST_TRIPLE="$CHOST"
+        -DCLANG_DEFAULT_CXX_STDLIB='libc++'
+        -DCLANG_DEFAULT_RTLIB='compiler-rt'
+        -DLLVM_INSTALL_UTILS=ON
+        -DLLVM_ENABLE_LIBCXX=ON
+        -DLLVM_ENABLE_FFI=ON
+        -DLLVM_INSTALL_BINUTILS_SYMLINKS=ON
+        -DLLVM_BUILD_LLVM_DYLIB=ON
+        -DLLVM_LINK_LLVM_DYLIB=ON
+        -DLLVM_INCLUDE_BENCHMARKS=OFF
+        -DLLVM_TARGETS_TO_BUILD=Native
+        -DLIBCXX_HAS_MUSL_LIBC=ON
+        -DLIBCXX_USE_COMPILER_RT=ON
+        -DLIBCXX_INCLUDE_TESTS=OFF
+        -DLIBCXX_INCLUDE_BENCHMARKS=OFF
+        -DLIBCXXABI_USE_LLVM_UNWINDER=ON
+        -DLIBCXX_USE_COMPILER_RT=ON
+        -DLIBCXXABI_USE_COMPILER_RT=ON
+        -DLIBUNWIND_USE_COMPILER_RT=ON
+        -DCOMPILER_RT_BUILD_SANITIZERS=OFF
+        -DCOMPILER_RT_BUILD_XRAY=OFF
+        -DLLVM_ENABLE_PER_TARGET_RUNTIME_DIR=OFF
+        -DLLVM_LIBGCC_EXPLICIT_OPT_IN=ON
+    )
+
+    cmake "${CMARGS[@]}" \
+        -DLLVM_ENABLE_PROJECTS="clang;compiler-rt;libunwind;lld;lldb;libcxxabi;libcxx;openmp" \
         ../llvm
     cmake --build .
+    export DESTDIR="${srcdir}/PKGDIR"
+    cmake --build . --target install
+
+    _fetchpkg clang "${FLIST_clang[@]}"
+    _fetchpkg lldb "${FLIST_lldb[@]}"
+    _fetchpkg openmp "${FLIST_openmp[@]}"
+    _fetchpkg lld "${FLIST_lld[@]}"
+    _fetchpkg llvm-lto "${FLIST_llvm_lto[@]}"
+    _fetchpkg llvm-libs "${FLIST_llvm_libs[@]}"
 }
 
-package_llvm() {
-    depends=(
-        musl
-        llvm-libs
-    )
-    groups=(base-devel)
-    cd $_realpkgname-$pkgver.src
-    cd build || return 1
-    export DESTDIR="${pkgdir}/"
-    cmake --build . --target install
-    ln -s libunwind.a "${pkgdir}/usr/lib/libgcc_s.a"
-    ln -s lld "${pkgdir}/usr/bin/ld"
+package_clang() {
+    mv "$srcdir/pkgs/clang/usr" "${pkgdir}/usr"
     ln -s clang "${pkgdir}/usr/bin/cc"
     ln -s clang++ "${pkgdir}/usr/bin/c++"
-    mv -f "$pkgdir"/usr/lib/libc++.so.* "$srcdir"
-    mv -f "$pkgdir"/usr/lib/libc++abi.so.* "$srcdir"
-    mv -f "$pkgdir"/usr/lib/libunwind.so.* "$srcdir"
+    rm ${pkgdir}/usr/lib/*.a || true
+}
+
+package_lldb() {
+    mv "$srcdir/pkgs/lldb/usr" "${pkgdir}/usr"
+    find ${pkgdir}/usr/lib -name *.a -delete || true
+}
+
+package_openmp() {
+    mv "$srcdir/pkgs/openmp/usr" "${pkgdir}/usr"
+    find ${pkgdir}/usr/lib -name *.a -delete || true
+}
+
+package_lld() {
+    mv "$srcdir/pkgs/lld/usr" "${pkgdir}/usr"
+    ln -s lld "${pkgdir}/usr/bin/ld"
+    find ${pkgdir}/usr/lib -name *.a -delete || true
+}
+
+package_llvm-lto() {
+    mv "$srcdir/pkgs/llvm-lto/usr" "${pkgdir}/usr"
+    find ${pkgdir}/usr/lib -name *.a -delete || true
 }
 
 package_llvm-libs() {
-    depends=(musl)
-    install -d "$pkgdir/usr/lib"
-    cp -P \
-        "$srcdir"/libc++.so.* \
-        "$srcdir"/libc++abi.so.* \
-        "$srcdir"/libunwind.so.* \
-        "$pkgdir/usr/lib/"
+    mv "$srcdir/pkgs/llvm-libs/usr" "${pkgdir}/usr"
+    find ${pkgdir}/usr/lib -name *.a -delete || true
+}
+
+package_llvm() {
+    mv "${srcdir}/PKGDIR/usr" "${pkgdir}/usr"
+    find ${pkgdir}/usr/lib -name *.a -delete || true
 }
 
