@@ -191,7 +191,6 @@ package_openmp() {
 
 package_lld() {
     mv "$srcdir/pkgs/lld/usr" "${pkgdir}/usr"
-    ln -s lld "${pkgdir}/usr/bin/ld"
     find ${pkgdir}/usr/lib -name *.a -delete || true
 }
 
