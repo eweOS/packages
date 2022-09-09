@@ -35,7 +35,8 @@ build() {
     ./configure \
         --prefix=/usr \
         --sysconfdir=/etc \
-        --with-system-ffi
+        --with-system-ffi \
+	--without-static-libpython
     make
 }
 
