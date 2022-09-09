@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=perl
-pkgver=5.32.1
+pkgver=5.36.0
 _baseversion="${pkgver%.*}"
 pkgrel=1
 pkgdesc="A highly capable, feature-rich programming language"
