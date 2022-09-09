@@ -3,6 +3,7 @@
 pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang)
 _realpkgname=llvm-project
 pkgver=15.0.0
+_binutilsver=2.39
 pkgrel=1
 pkgdesc='A collection of modular and reusable compiler and toolchain technologies.'
 arch=('x86_64')
@@ -25,9 +26,11 @@ options=()
 
 source=(
     "https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz"
+    "https://ftp.gnu.org/gnu/binutils/binutils-${_binutilsver}.tar.xz"
 )
 
 sha256sums=(
+    'SKIP'
     'SKIP'
 )
 
@@ -88,6 +91,7 @@ FLIST_lld=(
 
 FLIST_llvm_lto=(
     "usr/lib/libLTO.so*"
+    "usr/lib/LLVMgold.so*"
 )
 
 FLIST_llvm_libs=(
@@ -155,6 +159,7 @@ build() {
         -DCOMPILER_RT_BUILD_XRAY=OFF
         -DLLVM_ENABLE_PER_TARGET_RUNTIME_DIR=OFF
         -DLLVM_LIBGCC_EXPLICIT_OPT_IN=ON
+        -DLLVM_BINUTILS_INCDIR=$srcdir/binutils-${_binutilsver}/include
     )
 
     cmake "${CMARGS[@]}" \
