@@ -36,4 +36,6 @@ package() {
     SYSTEM_MIMALLOC=1 \
     DESTDIR="$pkgdir" \
     install
+  ln -s mold "${pkgdir}/usr/bin/ld"
 }
+
