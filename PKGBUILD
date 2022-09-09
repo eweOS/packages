@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sudo
-pkgver=1.9.7p2
+pkgver=1.9.11p3
 pkgrel=1
 pkgdesc='Tool for delegating authority to users and groups.'
 arch=(x86_64)
