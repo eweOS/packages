@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ncurses
-pkgver=6.2
+pkgver=6.3
 pkgrel=1
 arch=(x86_64)
 license=(GPL2)
