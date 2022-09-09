@@ -30,6 +30,7 @@ build() {
     --with-cxx-binding \
     --with-cxx-shared \
     --with-shared \
+    --without-normal \
     --with-versioned-syms \
     --with-xterm-kbs=del \
     --enable-sigwinch \
