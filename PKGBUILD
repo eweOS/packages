@@ -3,7 +3,7 @@
 pkgname=python
 _vermajor=3
 _verminor=10
-pkgver=${_vermajor}.${_verminor}.6
+pkgver=${_vermajor}.${_verminor}.7
 pkgrel=1
 pkgdesc='A clear and powerful object-oriented programming language,'
 arch=(x86_64)
