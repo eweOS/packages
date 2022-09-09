@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=(pciutils)
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="PCI bus configuration space access library and tools"
 arch=(x86_64)
