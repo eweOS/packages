@@ -7,7 +7,7 @@ pkgdesc='Multi-format archive and compression library'
 url='https://libarchive.org/'
 arch=('x86_64')
 license=('BSD')
-depends=('acl' 'openssl' 'xz' 'zlib')
+depends=('acl' 'openssl' 'xz' 'zlib' 'libxml2')
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('SKIP')
 
