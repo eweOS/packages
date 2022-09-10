@@ -1,9 +1,9 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=vim
-_vermajor=8
-_verminor=2
-_verpatch=3388
+_vermajor=9
+_verminor=0
+_verpatch=0432
 pkgver="${_vermajor}.${_verminor}.${_verpatch}"
 pkgrel=1
 pkgdesc='An IMproved version of the vi editor'
