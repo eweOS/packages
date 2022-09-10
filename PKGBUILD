@@ -5,12 +5,9 @@ _realpkgname=llvm-project
 pkgver=15.0.0
 _binutilsver=2.39
 pkgrel=1
-pkgdesc='A collection of modular and reusable compiler and toolchain technologies.'
 arch=('x86_64')
 url='htps://llvm.org'
-license=(Apache)
-groups=()
-depends=()
+license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=(
     llvm
     cmake
@@ -178,6 +175,9 @@ build() {
 }
 
 package_clang() {
+    pkgdesc="C language family frontend for LLVM."
+    depends=("llvm")
+
     mv "$srcdir/pkgs/clang/usr" "${pkgdir}/usr"
     ln -s clang "${pkgdir}/usr/bin/cc"
     ln -s clang++ "${pkgdir}/usr/bin/c++"
@@ -185,31 +185,48 @@ package_clang() {
 }
 
 package_lldb() {
+    pkgdesc="Next generation, high-performance debugger from LLVM project."
+    depends=('llvm-libs' 'clang')
+
     mv "$srcdir/pkgs/lldb/usr" "${pkgdir}/usr"
     find ${pkgdir}/usr/lib -name *.a -delete || true
 }
 
 package_openmp() {
+    pkgdesc="LLVM OpenMP Runtime Library."
+    depends=('llvm-libs' 'libelf' 'libffi')
+
     mv "$srcdir/pkgs/openmp/usr" "${pkgdir}/usr"
     find ${pkgdir}/usr/lib -name *.a -delete || true
 }
 
 package_lld() {
+    pkgdesc="a drop-in replacement for the GNU linkers by LLVM project."
+    provides=("ld")
+    depends=('zlib' 'llvm-libs' 'libedit' 'ncurses' 'libxml2' 'xz')
+
     mv "$srcdir/pkgs/lld/usr" "${pkgdir}/usr"
     find ${pkgdir}/usr/lib -name *.a -delete || true
 }
 
 package_llvm-lto() {
+    pkgdesc="lto library for LLVM."
+
     mv "$srcdir/pkgs/llvm-lto/usr" "${pkgdir}/usr"
     find ${pkgdir}/usr/lib -name *.a -delete || true
 }
 
 package_llvm-libs() {
+    pkgdesc="LLVM runtime libraries for c++ and more."
+
     mv "$srcdir/pkgs/llvm-libs/usr" "${pkgdir}/usr"
     find ${pkgdir}/usr/lib -name *.a -delete || true
 }
 
 package_llvm() {
+    pkgdesc="LLVM Compiler infrastructure and runtime library."
+    depends=('llvm-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2')
+
     mv "${srcdir}/PKGDIR/usr" "${pkgdir}/usr"
     find ${pkgdir}/usr/lib -name *.a -delete || true
 }
