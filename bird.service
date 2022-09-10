@@ -1,0 +1,5 @@
+type = process
+command = bird -d
+logfile = /var/log/bird.log
+restart = false
+depends-on = rcboot
