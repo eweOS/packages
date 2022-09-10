@@ -47,6 +47,8 @@ prepare() {
   cd "$pkgname-$_gitrev"
   # OBS can't run environ check normally
   patch -p1 < $srcdir/disable_environ_check.patch
+  # Disable LTO
+  sed -i 's/-flto//g' configs/mconfig.Linux.sh
 }
 
 build() {
