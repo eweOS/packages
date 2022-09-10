@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=automake
-pkgver=1.14.1
+pkgver=1.16.5
 pkgrel=1
 pkgdesc='A tool for automatically generating Makefile.in files.'
 arch=('any')
