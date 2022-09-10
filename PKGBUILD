@@ -11,8 +11,16 @@ depends=(musl)
 makedepends=(cmake ninja)
 provides=(libjson-c.so)
 _datetag=20220414
-source=("https://github.com/json-c/json-c/archive/refs/tags/json-c-${pkgver}-${_datetag}.tar.gz")
-sha256sums=('SKIP')
+source=(
+  "https://github.com/json-c/json-c/archive/refs/tags/json-c-${pkgver}-${_datetag}.tar.gz"
+  clang15.patch
+)
+sha256sums=('SKIP' 'SKIP')
+
+prepare() {
+  cd ${srcdir}/${pkgname}-${pkgname}-${pkgver}-${_datetag}
+  patch -p1 < ../clang15.patch
+}
 
 build() {
   cd ${srcdir}
