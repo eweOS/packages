@@ -9,5 +9,5 @@ license=('GPL')
 depends=(
   'slibtool' 'automake' 'autoconf' 'make'
   'bash' 'patch' 'file'
-  'perl' 'pkgconf' 'llvm'
+  'perl' 'pkgconf' 'llvm' 'clang' 'mold'
 )
