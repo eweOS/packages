@@ -8,9 +8,12 @@ if [ "$1" != "stop" ]; then
 
   cat /etc/hostname > /proc/sys/kernel/hostname
 
-  for f in /etc/rcboot.d/*; do
+  if [ -n "$(ls -A /etc/rcboot.d 2>/dev/null)" ]
+  then
+    for f in /etc/rcboot.d/*; do
 	  bash "$f" 
-  done
+    done
+  fi
 
 else
 

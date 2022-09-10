@@ -21,12 +21,14 @@ source=(
   tty2.service
   ttyS0.service
   login.target
+  hostname.rc
 )
 arch=(x86_64)
 license=(Apache)
 makedepends=(make utmps)
 options=(emptydirs)
 sha256sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -88,6 +90,10 @@ package() {
 
   for f in `ls ${srcdir}/*.sh`; do
     install $f ${pkgdir}/etc/dinit.d/${f##*/}
+  done
+
+  for f in `ls ${srcdir}/*.rc`; do
+    install $f ${pkgdir}/etc/rcboot.d/${f##*/}
   done
 
 }

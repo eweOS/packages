@@ -1,0 +1,3 @@
+#!/bin/sh
+
+cat /etc/hostname > /proc/sys/kernel/hostname
