@@ -9,8 +9,7 @@ url="https://www.archlinux.org/pacman/"
 license=('GPL')
 groups=('base-devel')
 depends=('bash' 'libarchive' 'curl' 'gettext' 'fakeroot')
-# no meson build yet, add depend: ninja, use python pip install as temp meson
-makedepends=('python' 'libarchive' 'openssl' 'ninja' 'acl' 'curl' 'xz')
+makedepends=('meson' 'libarchive' 'openssl' 'ninja' 'acl' 'curl' 'xz')
 checkdepends=('python')
 provides=('libalpm.so')
 backup=(etc/pacman.conf
@@ -27,8 +26,6 @@ sha256sums=(
 )
 
 build() {
-    pip install meson --user
-    export PATH=~/.local/bin:$PATH
     cd "$pkgname-$pkgver"
     sed -i -e 's/EUID == 0/EUID == -1/' scripts/makepkg.sh.in
     sed -i '/bsdtar -xf .*dbfile/s@-C@--no-fflags -C@' scripts/repo-add.sh.in
