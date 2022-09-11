@@ -17,7 +17,7 @@ backup=(etc/pacman.conf
         etc/makepkg.conf)
 source=(
 	https://sources.archlinux.org/other/pacman/$pkgname-$pkgver.tar.xz
-        pacman.conf
+        https://os-repo.ewe.moe/eweos/pacman.conf
         makepkg.conf
         )
 sha256sums=(
