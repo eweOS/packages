@@ -9,7 +9,7 @@ license=('GPL')
 depends=(
   'filesystem' 'musl' 'bash' 'llvm-libs'
   'busybox' 'file'
-  'util-linux'
+  'util-linux' 'ca-certs'
   'gettext' 'pciutils' 'xz'
   'pacman'
 )
