@@ -1,6 +1,6 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang)
+pkgname=(llvm llvm-lto lldb openmp lld clang)
 _realpkgname=llvm-project
 pkgver=15.0.0
 _binutilsver=2.39
@@ -91,20 +91,6 @@ FLIST_llvm_lto=(
     "usr/lib/LLVMgold.so*"
 )
 
-FLIST_llvm_libs=(
-    "usr/lib/libc++.so*"
-    "usr/lib/libc++abi.so*"
-    "usr/lib/libc++.a"
-    "usr/lib/libc++abi.a"
-    "usr/lib/libc++experimental.a"
-    "usr/lib/libunwind.so.*"
-    "usr/lib/libunwind.so"
-    "usr/lib/libunwind.a"
-    "usr/include/*cxxabi*"
-    "usr/include/c++"
-    "usr/include/*unwind*"
-)
-
 _fetchpkg() {
     PKGBASE="$srcdir/pkgs/$1" && shift
     mkdir -p $PKGBASE
@@ -160,7 +146,7 @@ build() {
     )
 
     cmake "${CMARGS[@]}" \
-        -DLLVM_ENABLE_PROJECTS="clang;compiler-rt;libunwind;lld;lldb;libcxxabi;libcxx;openmp" \
+        -DLLVM_ENABLE_PROJECTS="clang;compiler-rt;lld;lldb;openmp" \
         ../llvm
     cmake --build .
     export DESTDIR="${srcdir}/PKGDIR"
@@ -171,7 +157,6 @@ build() {
     _fetchpkg openmp "${FLIST_openmp[@]}"
     _fetchpkg lld "${FLIST_lld[@]}"
     _fetchpkg llvm-lto "${FLIST_llvm_lto[@]}"
-    _fetchpkg llvm-libs "${FLIST_llvm_libs[@]}"
 }
 
 package_clang() {
@@ -216,18 +201,9 @@ package_llvm-lto() {
     find ${pkgdir}/usr/lib -name *.a -delete || true
 }
 
-package_llvm-libs() {
-    pkgdesc="LLVM runtime libraries for c++ and more."
-
-    mv "$srcdir/pkgs/llvm-libs/usr" "${pkgdir}/usr"
-    find ${pkgdir}/usr/lib -name *.a -delete || true
-}
-
 package_llvm() {
     pkgdesc="LLVM Compiler infrastructure and runtime library."
     depends=('llvm-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2')
 
     mv "${srcdir}/PKGDIR/usr" "${pkgdir}/usr"
-    find ${pkgdir}/usr/lib -name *.a -delete || true
 }
-
