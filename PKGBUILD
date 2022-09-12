@@ -11,7 +11,7 @@ groups=(base-devel)
 depends=()
 makedepends=()
 provides=(ld-musl-$(arch).so.1 libc.so)
-options=()
+options=('staticlibs')
 
 source=(
     "http://www.etalabs.net/musl/releases/${pkgname[0]}-${pkgver}.tar.gz"
