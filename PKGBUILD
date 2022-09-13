@@ -8,6 +8,6 @@ arch=('any')
 license=('GPL')
 depends=(
   'slibtool' 'automake' 'autoconf' 'make'
-  'bash' 'patch' 'file'
+  'bash' 'patch' 'file' 'musl-static'
   'perl' 'pkgconf' 'llvm' 'clang' 'mold'
 )
