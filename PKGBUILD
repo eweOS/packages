@@ -43,6 +43,7 @@ backup=(
     etc/shells
     etc/services
     etc/protocols
+    etc/hosts
 )
 
 package() {
