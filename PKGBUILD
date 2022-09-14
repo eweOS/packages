@@ -13,22 +13,9 @@ url='https://thrysoee.dk/editline/'
 arch=('x86_64')
 license=('BSD')
 depends=('musl' 'ncurses')
-provides=('libedit.so' 'readline')
-conflicts=('readline')
-source=(
-  "${url}/${pkgname}-${_pkgver}.tar.gz"
-  history.h
-  libhistory.so
-  libreadline.so
-  readline.h
-)
-sha256sums=(
-  '6792a6a992050762edcca28ff3318cdb7de37dccf7bc30db59fcd7017eed13c5'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+provides=('libedit.so')
+source=(${url}/${pkgname}-${_pkgver}.tar.gz)
+sha256sums=('6792a6a992050762edcca28ff3318cdb7de37dccf7bc30db59fcd7017eed13c5')
 
 build() {
   cd ${pkgname}-${_pkgver}
@@ -41,16 +28,12 @@ package() {
   cd ${pkgname}-${_pkgver}
   make DESTDIR="${pkgdir}" install
 
-  install -d "${pkgdir}/usr/include/readline"
-  install "${srcdir}/history.h" "${pkgdir}/usr/include/readline/"
-  install "${srcdir}/readline.h" "${pkgdir}/usr/include/readline/"
-  install "${srcdir}/libhistory.so" "${pkgdir}/usr/lib/"
-  install "${srcdir}/libreadline.so" "${pkgdir}/usr/lib/"
-  ln -s "libedit.pc" "${pkgdir}/usr/lib/pkgconfig/readline.pc"
-
+  rm "${pkgdir}"/usr/share/man/man3/history.3 # conflicts with readline
   install -Dm 644 "${pkgdir}"/usr/share/man/man3/editline.3 "${pkgdir}"/usr/share/man/man3/el.3
 
   install -Dm 644 ChangeLog -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+
+# vim: ts=2 sw=2 et:
 
