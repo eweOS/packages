@@ -24,7 +24,7 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-    cmake . -DZLIB_COMPAT=ON
+    	cmake . -DZLIB_COMPAT=ON -DCMAKE_INSTALL_PREFIX=/usr
 	cmake --build . --config Release
 }
 
