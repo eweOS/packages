@@ -22,12 +22,14 @@ source=(
   ttyS0.service
   login.target
   hostname.rc
+  interfaces.rc
 )
 arch=(x86_64)
 license=(Apache)
 makedepends=(make utmps)
 options=(emptydirs)
 sha256sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'

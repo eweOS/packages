@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ip link set lo up
