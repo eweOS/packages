@@ -1,0 +1,21 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgname=wayland-protocols
+pkgver=1.26
+pkgrel=1
+pkgdesc='Specifications of extended Wayland protocols'
+arch=('x86_64')
+url='https://wayland.freedesktop.org/'
+license=('MIT')
+makedepends=('wayland' 'meson' 'ninja')
+source=("https://wayland.freedesktop.org/releases/$pkgname-$pkgver.tar.xz")
+sha256sums=('SKIP')
+
+build() {
+  meson build $pkgname-$pkgver --buildtype=release --prefix=/usr
+  ninja -C build
+}
+
+package() {
+  DESTDIR="$pkgdir" ninja -C build install
+}
