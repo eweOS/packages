@@ -1,0 +1,30 @@
+# Maintainer: Aleksana QwQ <me@aleksana.moe>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+
+pkgname=publicsuffix-list
+_gitcommit=4f29f15313eef1a540b3c8222ab891debf405a59
+pkgver=20220825.1289.4f29f15
+pkgrel=1
+pkgdesc='Cross-vendor public domain suffix database'
+url='https://github.com/publicsuffix/list'
+arch=('any')
+license=('custom:MPL2')
+makedepends=('git')
+source=(${pkgname}::"git+https://github.com/publicsuffix/list#commit=${_gitcommit}")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd ${pkgname}
+  printf "%s.%s.%s" "$(TZ=UTC git show -s --pretty=%cd --date=format-local:%Y%m%d HEAD)" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd ${pkgname}
+  install -Dm 644 public_suffix_list.dat tests/test_psl.txt -t "${pkgdir}/usr/share/publicsuffix"
+  ln -s public_suffix_list.dat "${pkgdir}/usr/share/publicsuffix/effective_tld_names.dat"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+
+# vim: ts=2 sw=2 et:
