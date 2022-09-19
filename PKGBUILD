@@ -12,6 +12,7 @@ arch=('x86_64')
 url="https://www.nethack.org/index.html"
 license=('custom')
 depends=('ncurses')
+makedepends=('bison')
 source=(
   "https://www.nethack.org/download/${pkgver}/${pkgname}-${pkgver//.}-src.tgz"
   "${pkgname}.tmpfiles"
