@@ -10,4 +10,5 @@ depends=(
   'slibtool' 'automake' 'autoconf' 'make'
   'bash' 'patch' 'file' 'musl-static'
   'perl' 'pkgconf' 'llvm' 'clang' 'mold'
+  'gettext' 'bison' 'flex'
 )
