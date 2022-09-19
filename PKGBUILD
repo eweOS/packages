@@ -13,9 +13,10 @@ options=(!emptydirs)
 source=(
   "https://bird.network.cz/download/$pkgname-$pkgver.tar.gz"
   bird.service
-  bird.init
+  bird.prerun
+  bird.prerun.service
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 build() {
   cd $pkgname-$pkgver
@@ -33,8 +34,9 @@ package () {
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
   install -d "$pkgdir/etc/dinit.d/"
-  install -d "$pkgdir/etc/rcboot.d/"
+  install -d "$pkgdir/etc/dinit.d/prerun.d"
   install "${srcdir}/bird.service" "$pkgdir/etc/dinit.d/bird"
-  install "${srcdir}/bird.init" "$pkgdir/etc/rcboot.d/bird"
+  install "${srcdir}/bird.prerun.service" "$pkgdir/etc/dinit.d/bird-prerun"
+  install "${srcdir}/bird.prerun" "$pkgdir/etc/dinit.d/prerun.d/bird"
 }
 

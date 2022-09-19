@@ -1,0 +1,4 @@
+type = scripted
+command = /etc/dinit.d/prerun.d/bird
+restart = false
+depends-on = target-login
