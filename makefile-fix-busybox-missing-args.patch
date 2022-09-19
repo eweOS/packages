@@ -1,0 +1,102 @@
+--- Makefile.orig
++++ Makefile
+@@ -1205,14 +1205,14 @@
+ 
+ style-json: json_blacklist $(JSON_FORMATTER_BIN)
+ ifndef CROSS
+-	find data gfx -name "*.json" -print0 | grep -v -z -F -f json_blacklist | \
+-	  xargs -0 -L 1 $(JSON_FORMATTER_BIN)
++	find data gfx -name "*.json" | grep -v -F -f json_blacklist | \
++	  xargs -n1 $(JSON_FORMATTER_BIN)
+ else
+ 	@echo Cannot run json formatter in cross compiles.
+ endif
+ 
+ style-all-json: $(JSON_FORMATTER_BIN)
+-	find data -name "*.json" -print0 | xargs -0 -L 1 $(JSON_FORMATTER_BIN)
++	find data -name "*.json" | xargs -n1 $(JSON_FORMATTER_BIN)
+ 
+ $(JSON_FORMATTER_BIN): $(JSON_FORMATTER_SOURCES)
+ 	$(CXX) $(CXXFLAGS) $(TOOL_CXXFLAGS) -Itools/format -Isrc \
+--- Makefile.orig
++++ Makefile
+@@ -1005,24 +1005,27 @@
+ 	mkdir -p $(DATA_PREFIX)
+ 	mkdir -p $(BIN_PREFIX)
+ 	install --mode=755 $(TARGET) $(BIN_PREFIX)
+-	cp -R --no-preserve=ownership data/core $(DATA_PREFIX)
+-	cp -R --no-preserve=ownership data/font $(DATA_PREFIX)
+-	cp -R --no-preserve=ownership data/json $(DATA_PREFIX)
+-	cp -R --no-preserve=ownership data/mods $(DATA_PREFIX)
+-	cp -R --no-preserve=ownership data/names $(DATA_PREFIX)
+-	cp -R --no-preserve=ownership data/raw $(DATA_PREFIX)
+-	cp -R --no-preserve=ownership data/motd $(DATA_PREFIX)
+-	cp -R --no-preserve=ownership data/credits $(DATA_PREFIX)
+-	cp -R --no-preserve=ownership data/title $(DATA_PREFIX)
+-	cp -R --no-preserve=ownership data/help $(DATA_PREFIX)
++	cp -R data/core $(DATA_PREFIX)
++	cp -R data/font $(DATA_PREFIX)
++	cp -R data/json $(DATA_PREFIX)
++	cp -R data/mods $(DATA_PREFIX)
++	cp -R data/names $(DATA_PREFIX)
++	cp -R data/raw $(DATA_PREFIX)
++	cp -R data/motd $(DATA_PREFIX)
++	cp -R data/credits $(DATA_PREFIX)
++	cp -R data/title $(DATA_PREFIX)
++	cp -R data/help $(DATA_PREFIX)
++	chown -R root $(DATA_PREFIX)
+ ifeq ($(TILES), 1)
+-	cp -R --no-preserve=ownership gfx $(DATA_PREFIX)
++	cp -R gfx $(DATA_PREFIX)
++	chown -R root $(DATA_PREFIX)
+ 	install -Dm755 -t $(SHARE_DIR)/applications/ data/xdg/org.cataclysmdda.CataclysmDDA.desktop
+ 	install -Dm644 -t $(SHARE_DIR)/metainfo/ data/xdg/org.cataclysmdda.CataclysmDDA.appdata.xml
+ 	install -Dm644 -t $(SHARE_DIR)/icons/hicolor/scalable/apps/ data/xdg/org.cataclysmdda.CataclysmDDA.svg
+ endif
+ ifeq ($(SOUND), 1)
+-	cp -R --no-preserve=ownership data/sound $(DATA_PREFIX)
++	cp -R data/sound $(DATA_PREFIX)
++	chown -R root $(DATA_PREFIX)
+ endif
+ 	install --mode=644 data/changelog.txt data/cataicon.ico data/fontdata.json \
+                    LICENSE.txt LICENSE-OFL-Terminus-Font.txt -t $(DATA_PREFIX)
+@@ -1041,24 +1044,27 @@
+ 	mkdir -p $(DATA_PREFIX)
+ 	mkdir -p $(BIN_PREFIX)
+ 	install --mode=755 $(TARGET) $(BIN_PREFIX)
+-	cp -R --no-preserve=ownership data/core $(DATA_PREFIX)
+-	cp -R --no-preserve=ownership data/font $(DATA_PREFIX)
+-	cp -R --no-preserve=ownership data/json $(DATA_PREFIX)
+-	cp -R --no-preserve=ownership data/mods $(DATA_PREFIX)
+-	cp -R --no-preserve=ownership data/names $(DATA_PREFIX)
+-	cp -R --no-preserve=ownership data/raw $(DATA_PREFIX)
+-	cp -R --no-preserve=ownership data/motd $(DATA_PREFIX)
+-	cp -R --no-preserve=ownership data/credits $(DATA_PREFIX)
+-	cp -R --no-preserve=ownership data/title $(DATA_PREFIX)
+-	cp -R --no-preserve=ownership data/help $(DATA_PREFIX)
++	cp -R data/core $(DATA_PREFIX)
++	cp -R data/font $(DATA_PREFIX)
++	cp -R data/json $(DATA_PREFIX)
++	cp -R data/mods $(DATA_PREFIX)
++	cp -R data/names $(DATA_PREFIX)
++	cp -R data/raw $(DATA_PREFIX)
++	cp -R data/motd $(DATA_PREFIX)
++	cp -R data/credits $(DATA_PREFIX)
++	cp -R data/title $(DATA_PREFIX)
++	cp -R data/help $(DATA_PREFIX)
++	chown -R root $(DATA_PREFIX)
+ ifeq ($(TILES), 1)
+-	cp -R --no-preserve=ownership gfx $(DATA_PREFIX)
++	cp -R gfx $(DATA_PREFIX)
++	chown -R root $(DATA_PREFIX)
+ 	install -Dm755 -t $(SHARE_DIR)/applications/ data/xdg/org.cataclysmdda.CataclysmDDA.desktop
+ 	install -Dm644 -t $(SHARE_DIR)/metainfo/ data/xdg/org.cataclysmdda.CataclysmDDA.appdata.xml
+ 	install -Dm644 -t $(SHARE_DIR)/icons/hicolor/scalable/apps/ data/xdg/org.cataclysmdda.CataclysmDDA.svg
+ endif
+ ifeq ($(SOUND), 1)
+-	cp -R --no-preserve=ownership data/sound $(DATA_PREFIX)
++	cp -R data/sound $(DATA_PREFIX)
++	chown -R root $(DATA_PREFIX)
+ endif
+ 	install --mode=644 data/changelog.txt data/cataicon.ico data/fontdata.json \
+                    LICENSE.txt LICENSE-OFL-Terminus-Font.txt -t $(DATA_PREFIX)
