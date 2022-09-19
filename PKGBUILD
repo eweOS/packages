@@ -2,7 +2,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 pkgname=dinit
 pkgver=0.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Service monitoring / "init" system'
 url='https://github.com/davmac314/dinit'
 _gitrev="d12abca7ec470de62a15efbaf3ef79befc1e6d13"
@@ -77,6 +77,7 @@ package() {
   install -d ${pkgdir}/etc/dinit.d
   install ${srcdir}/rcboot.sh ${pkgdir}/etc/dinit.d/rcboot.sh
   install -d ${pkgdir}/etc/dinit.d/boot.d
+  install -d ${pkgdir}/etc/dinit.d/prerun.d
   install -d ${pkgdir}/etc/rcboot.d
   ln -s dinit ${pkgdir}/usr/bin/init
 
