@@ -9,8 +9,9 @@ url="https://rephial.org/"
 license=('GPL')
 depends=(ncurses)
 makedepends=(cmake)
-source=("https://github.com/angband/angband/releases/download/${pkgver}/Angband-${pkgver}.tar.gz")
-md5sums=('SKIP')
+source=("https://github.com/angband/angband/releases/download/${pkgver}/Angband-${pkgver}.tar.gz"
+	angband.sh)
+md5sums=('SKIP' 'SKIP')
 
 build() {
   cd Angband-$pkgver
@@ -24,7 +25,6 @@ build() {
 package() {
   cd Angband-$pkgver/build
   make DESTDIR=$pkgdir install
-  install -d $pkgdir/usr/bin
 
   # Remove unwanted files (they are for GCU frontend)
   rm -r $pkgdir/usr/lib/angband/lib/{customize,fonts,sounds,icons,tiles,readme.txt}
@@ -32,5 +32,5 @@ package() {
   # Remove residual makefiles in path
   find $pkgdir -name "Makefile" -delete
 
-  ln -s /usr/lib/angband/Angband $pkgdir/usr/bin/Angband
+  install -Dm755 $srcdir/angband.sh $pkgdir/usr/bin/Angband
 }
