@@ -14,8 +14,7 @@ source=("https://downloads.sourceforge.net/$pkgname/lmon$pkgver.c"
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
-  patch $srcdir/../lmon$pkgver.c fix-fstab-header.patch \
-	|| patch $srcdir/lmon$pkgver.c fix-fstab-header.patch
+  patch --follow-symlinks $srcdir/lmon$pkgver.c fix-fstab-header.patch
 }
 
 build() {
