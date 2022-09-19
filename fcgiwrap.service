@@ -1,4 +1,7 @@
 type = process
-command = fcgiwrap -f -c 4 -s unix:/var/run/fcgiwrap/socket
+command = fcgiwrap -s unix:/var/run/fcgiwrap/socket
+stop-command = rm /var/run/fcgiwrap/socket
+run-as = www-data
+smooth-recovery = true
 restart = false
-depends-on = rcboot
+depends-on = target-login
