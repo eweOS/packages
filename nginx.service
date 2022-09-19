@@ -2,4 +2,4 @@ type = process
 command = /usr/bin/nginx -g "daemon off;"
 smooth-recovery = true
 logfile = /var/log/nginx.log
-depends-on = rcboot
+depends-on = target-login
