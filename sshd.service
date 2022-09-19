@@ -1,5 +1,5 @@
 type = process
 command = /usr/bin/dropbear -F -P /run/dropbear.pid -R
 logfile = /var/log/sshd.log
-restart = false
-depends-on = rcboot
+smooth-recovery = true
+depends-on = target-login
