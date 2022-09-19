@@ -2,7 +2,7 @@
 
 pkgname=cronie
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon that runs specified programs at scheduled times and related too"
 url="https://github.com/cronie-crond/cronie"
 license=('custom:BSD')

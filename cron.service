@@ -1,5 +1,4 @@
 type = process
 command = /usr/bin/crond -n
-logfile = /var/log/crond.log
-restart = false
-depends-on = rcboot
+smooth-recovery = true
+depends-on = target-login
