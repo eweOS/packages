@@ -5,3 +5,4 @@ run-as = www-data
 smooth-recovery = true
 restart = false
 depends-on = target-login
+depends-on = fcgiwrap-prerun

@@ -2,7 +2,7 @@
 
 pkgname=fcgiwrap
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple server for running CGI applications over FastCGI.'
 arch=('x86_64')
 license=('MIT')
@@ -11,8 +11,10 @@ depends=('fcgi')
 source=(
   "https://github.com/gnosek/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
   fcgiwrap.service
+  fcgiwrap.prerun.service
+  fcgiwrap.prerun
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   cd ${pkgbase}-${pkgver}
@@ -28,7 +30,8 @@ build() {
 package() {
   cd ${pkgbase}-${pkgver}
   make DESTDIR="${pkgdir}" install
-  install -d $pkgdir/var/run/fcgiwrap
-  install -d $pkgdir/etc/dinit.d/
+  install -d $pkgdir/etc/dinit.d/prerun.d
   install $srcdir/fcgiwrap.service $pkgdir/etc/dinit.d/fcgiwrap
+  install $srcdir/fcgiwrap.prerun $pkgdir/etc/dinit.d/prerun.d/fcgiwrap
+  install $srcdir/fcgiwrap.prerun.service $pkgdir/etc/dinit.d/fcgiwrap-prerun
 }
