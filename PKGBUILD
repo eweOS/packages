@@ -29,10 +29,11 @@ prepare() {
 
 build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
         -DCMAKE_BUILD_TYPE=None \
         -DUSE_HTTP_PARSER=system \
-	-DUSE_HTTPS=OpenSSL \
-	-DREGEX_BACKEND=pcre \
+        -DUSE_HTTPS=OpenSSL \
+        -DREGEX_BACKEND=pcre \
         -DUSE_SSH=ON \
         -DTHREADSAFE=ON \
         -Wno-dev \
