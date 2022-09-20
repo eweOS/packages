@@ -1,6 +1,5 @@
 type = internal
 
 depends-ms = tty1
-depends-ms = ttyS0
 
 waits-for.d = boot.d
