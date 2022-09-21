@@ -12,7 +12,7 @@ pkgdesc="GNU database library"
 arch=(x86_64)
 url="https://www.gnu.org/software/gdbm/gdbm.html"
 license=(GPL3)
-makedepends=(slibtool readline)
+depends=(readline)
 provides=(libgdbm_compat.so libgdbm.so)
 source=("https://ftp.gnu.org/gnu/gdbm/$pkgname-$pkgver.tar.gz")
 sha512sums=('SKIP')
@@ -34,8 +34,6 @@ check() {
 }
 
 package() {
-  depends+=(libreadline.so)
-
   make DESTDIR="$pkgdir" install -C $pkgname-$pkgver
   install -vDm 644 $pkgname-$pkgver/{NOTE-WARNING,AUTHORS,NEWS,README,ChangeLog} -t "$pkgdir/usr/share/doc/$pkgname"
 }
