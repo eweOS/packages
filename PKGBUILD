@@ -2,43 +2,35 @@
 
 pkgname=sudo
 pkgver=1.9.11p3
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for delegating authority to users and groups.'
 arch=(x86_64)
 url='http://www.sudo.ws/'
 license=(BSD)
-groups=()
-depends=(openssl zlib)
-makedepends=(
-    skalibs
-    utmps
-)
+depends=(zlib)
+makedepends=(utmps)
 options=(emptydirs)
+source=("http://www.sudo.ws/sudo/dist/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
-source=(
-    "http://www.sudo.ws/sudo/dist/sudo-${pkgver}.tar.gz"
-)
-
-sha256sums=(
-    'SKIP'
+_features=(
+  --enable-static=false
+  --with-sssd
+  --with-env-editor
+  --with-all-insults
 )
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    LIBS='-lutmps -lskarnet' \
-      ./configure \
+    ./configure \
       --prefix=/usr \
       --libexecdir=/usr/lib/sudo \
       --sbindir=/usr/bin \
       --libexecdir=/usr/lib \
       --with-rundir=/run/sudo \
       --with-vardir=/var/db/sudo \
-      --with-logfac=auth \
-      --enable-tmpfiles.d \
-      --with-sssd \
-      --with-env-editor \
       --with-passprompt="[sudo] password for %p: " \
-      --with-all-insults
+      ${_features[@]}
     make
 }
 
