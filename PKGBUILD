@@ -3,12 +3,12 @@
 pkgname=(linux519 linux519-headers)
 _basename=linux
 pkgver=5.19.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 arch=(x86_64)
 url='http://www.kernel.org'
 license=(GPL2)
-makedepends=(bison flex perl python libelf linux-headers rsync)
+makedepends=(bison flex perl python libelf linux-headers rsync lld)
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
   linux-config
