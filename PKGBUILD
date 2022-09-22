@@ -28,8 +28,8 @@ build() {
     -Dgles1=enabled \
     -Dgles2=enabled \
     -Dosmesa=true \
-    -Dvulkan-drivers=swrast,virtio-experimental \
-    -Dgallium-drivers=swrast,virgl,zink \
+    -Dvulkan-drivers=intel,swrast,virtio-experimental \
+    -Dgallium-drivers=i915,swrast,virgl,zink \
     -Dcpp_rtti=false \
     -Dmicrosoft-clc=disabled \
     -Ddefault_library=shared
