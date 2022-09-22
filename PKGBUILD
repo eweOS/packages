@@ -4,55 +4,56 @@ pkgname=(linux519 linux519-headers)
 _basename=linux
 pkgver=5.19.3
 pkgrel=1
-pkgdesc='System kernel'
+pkgdesc='Linux'
 arch=(x86_64)
 url='http://www.kernel.org'
 license=(GPL2)
-depends=()
-makedepends=(bison flex perl python libelf linux-headers)
-options=()
+makedepends=(bison flex perl python libelf linux-headers rsync)
 source=(
-    "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
-    linux-config
-    busybox-find-compat.patch
-    musl-swab.patch
+  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
+  linux-config
+  busybox-find-compat.patch
+  musl-swab.patch
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
 )
 
-sha256sums=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-)
+prepare() {
+  cd ${_basename}-${pkgver}
+  sed -i \
+    -e '/^CC/s@gcc@cc@g' \
+    -e '/^HOSTCC/s@gcc@cc@g' Makefile
+  patch -Np1 -i "${srcdir}/busybox-find-compat.patch"
+  patch -Np1 -i "${srcdir}/musl-swab.patch"
+}
 
 build() {
-    cd ${_basename}-${pkgver}
-    sed -i 's@/usr/bin/awk@/bin/awk@' scripts/ld-version.sh
-    sed -i \
-        -e "/rsync/s@rsync@find usr/include -not -type d -name '*.h' | cpio -dump --quiet \$\(INSTALL_HDR_PATH\); true@" \
-        -e '/^CC/s@gcc@cc@g' \
-        -e '/^HOSTCC/s@gcc@cc@g' Makefile
-    patch -Np1 -i "${srcdir}/busybox-find-compat.patch"
-    patch -Np1 -i "${srcdir}/musl-swab.patch"
-    make LLVM=1 LLVM_IAS=1 mrproper
-    cp "${srcdir}/linux-config" .config
-    make LLVM=1 LLVM_IAS=1
+  cd ${_basename}-${pkgver}
+  cp "${srcdir}/linux-config" .config
+  make LLVM=1 LLVM_IAS=1
 }
 
 package_linux519() {
-    cd ${_basename}-${pkgver}
-    local modulesdir="$pkgdir/usr/lib/modules/$pkgver"
-    make LLVM=1 LLVM_IAS=1 INSTALL_MOD_PATH="$pkgdir/usr" modules_install
-    install "arch/${CARCH}/boot/bzImage" "${modulesdir}/vmlinux"
+  pkgdesc="The $pkgdesc kernel and modules"
+  cd ${_basename}-${pkgver}
 
-    rm -f "$modulesdir/build" \
-          "$modulesdir/source"
+  local modulesdir="$pkgdir/usr/lib/modules/$pkgver"
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+    
+  make LLVM=1 LLVM_IAS=1 \
+    INSTALL_MOD_PATH="$pkgdir/usr" \
+    modules_install
+
+  rm -f "$modulesdir/build" 
+  rm -f "$modulesdir/source"
 }
 
 package_linux519-headers() {
-    groups=(base-devel)
+    pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
     cd ${_basename}-${pkgver}
-    make LLVM=1 LLVM_IAS=1 INSTALL_HDR_PATH=dest HOSTCFLAGS="-D_GNU_SOURCE" headers_install
-    set -o pipefail
-    find usr -not -type d -name "*.h" | cpio -dump "${pkgdir}"
+    make LLVM=1 LLVM_IAS=1 INSTALL_HDR_PATH=$pkgdir/usr headers_install
 }
