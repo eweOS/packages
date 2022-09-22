@@ -1,0 +1,3 @@
+#!/bin/bash
+
+mkdir -m og-w /var/run/dbus
