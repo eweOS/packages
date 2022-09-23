@@ -8,9 +8,19 @@ pkgdesc="A highly capable, feature-rich programming language"
 arch=(x86_64)
 license=('GPL' 'PerlArtistic')
 depends=('musl')
-source=(https://www.cpan.org/src/5.0/perl-${pkgver}.tar.xz)
+source=(
+  "https://www.cpan.org/src/5.0/perl-${pkgver}.tar.xz"
+  "https://github.com/pmqs/Compress-Raw-Zlib/archive/refs/tags/v2.202.tar.gz"
+)
 options=('makeflags' '!purge' 'emptydirs')
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'SKIP')
+
+prepare() {
+  # Replace zlib module to use zlib-ng
+  cd $srcdir/$pkgname-$pkgver/cpan
+  rm -rf ./Compress-Raw-Zlib
+  cp -r "$srcdir/Compress-Raw-Zlib-2.202" ./Compress-Raw-Zlib
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
