@@ -1,22 +1,27 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
-pkgbase=e2fsprogs
-pkgname='e2fsprogs'
+pkgname=e2fsprogs
 pkgver=1.46.5
 pkgrel=1
 pkgdesc='Ext2/3/4 filesystem utilities'
 arch=('x86_64')
 license=('GPL' 'LGPL' 'MIT')
 url='http://e2fsprogs.sourceforge.net'
-options=('debug')
 depends=('util-linux-libs')
 makedepends=('util-linux')
-source=("https://www.kernel.org/pub/linux/kernel/people/tytso/${pkgbase}/v${pkgver}/${pkgbase}-${pkgver}.tar.xz")
+optdepends=('lvm2: for e2scrub'
+            'util-linux: for e2scrub'
+            'smtp-forwarder: for e2scrub_fail script')
+provides=('libcom_err.so'
+	  'libe2p.so'
+  	  'libext2fs.so'
+  	  'libss.so')
+source=("https://www.kernel.org/pub/linux/kernel/people/tytso/${pkgname}/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   ac_cv_c_compiler_gnu=no \
   ac_cv_lib_dl_dlopen=no \
@@ -24,6 +29,8 @@ build() {
   ./configure \
       --prefix=/usr \
       --with-root-prefix='' \
+      --enable-elf-shlibs \
+      --enable-symlink-install \
       --libdir=/usr/lib \
       --sbindir=/usr/bin \
       --disable-uuidd \
@@ -36,8 +43,13 @@ build() {
   make -C po update-gmo
 }
 
+check() {
+  cd "${pkgname}-${pkgver}"
+  #make check
+}
+
 package() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install install-libs
 
