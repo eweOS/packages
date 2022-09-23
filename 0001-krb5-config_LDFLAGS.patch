@@ -1,0 +1,35 @@
+From 0bfd22feb6493f34fdc894daaf680c3a2f2e7784 Mon Sep 17 00:00:00 2001
+From: Greg Hudson <ghudson@mit.edu>
+Date: Tue, 3 May 2022 01:56:05 -0400
+Subject: [PATCH] Omit LDFLAGS from krb5-config --libs output
+
+Linker options supplied at configure time (such as -Wl,--as-needed)
+can be harmful when applied to downstream users of the libraries, and
+in most cases should not be necessary.
+
+ticket: 9057 (new)
+---
+ src/build-tools/krb5-config.in | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/build-tools/krb5-config.in b/src/build-tools/krb5-config.in
+index dead0dddce7..8e6eb866018 100755
+--- a/src/build-tools/krb5-config.in
++++ b/src/build-tools/krb5-config.in
+@@ -33,7 +33,6 @@ includedir=@includedir@
+ libdir=@libdir@
+ CC_LINK='@CC_LINK@'
+ KDB5_DB_LIB=@KDB5_DB_LIB@
+-LDFLAGS='@LDFLAGS@'
+ RPATH_FLAG='@RPATH_FLAG@'
+ PROG_RPATH_FLAGS='@PROG_RPATH_FLAGS@'
+ PTHREAD_CFLAGS='@PTHREAD_CFLAGS@'
+@@ -220,7 +219,7 @@ if test -n "$do_libs"; then
+ 	    -e 's#\$(PROG_RPATH)#'$libdir'#' \
+ 	    -e 's#\$(PROG_LIBPATH)#'$libdirarg'#' \
+ 	    -e 's#\$(RPATH_FLAG)#'"$RPATH_FLAG"'#' \
+-	    -e 's#\$(LDFLAGS)#'"$LDFLAGS"'#' \
++	    -e 's#\$(LDFLAGS)##' \
+ 	    -e 's#\$(PTHREAD_CFLAGS)#'"$PTHREAD_CFLAGS"'#' \
+ 	    -e 's#\$(CFLAGS)##'`
+ 
