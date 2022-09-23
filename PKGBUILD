@@ -13,7 +13,7 @@ pkgdesc="GRand Unified Bootloader, version 2"
 arch=('x86_64')
 url='https://www.gnu.org/software/grub/grub.html'
 license=('GPLv3')
-depends=('musl')
+depends=('musl' 'efibootmgr')
 makedepends=('lld' 'bison' 'flex' 'python' 'freetype2' 'ttf-dejavu' 'ttf-unifont' 'binutils-objcopy')
 source=(
   "https://ftp.gnu.org/gnu/${pkgbase}/${pkgbase}-${pkgver}.tar.xz"
