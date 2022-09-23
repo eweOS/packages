@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 build() {
 	cd $_pkgname-$git_commit
-	cmake .
+	cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr
 	cmake --build .
 }
 
@@ -26,6 +26,7 @@ check() {
 
 package() {
 	cd $_pkgname-$git_commit
-	cmake --install . --prefix=$pkgdir/usr
+	make DESTDIR=$pkgdir install
+	rm -r $pkgdir/usr/data
 	install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
