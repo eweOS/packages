@@ -1,4 +1,5 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
+# Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgbase=musl
 pkgname=(musl musl-static)
@@ -54,8 +55,11 @@ package_musl() {
         $srcdir/getconf \
         $srcdir/iconv \
         $pkgdir/usr/bin
-    rm "${pkgdir}"/usr/include/utmpx.h
-    rm "${pkgdir}"/usr/include/utmp.h
+    # provide by utmps
+    rm "${pkgdir}"/usr/include/utmp{,x}.h
+
+    # provide by libxcrypt
+    rm "${pkgdir}"/usr/include/crypt.h
 
     mkdir -p $srcdir/static
     mv $pkgdir/usr/lib/*.a $srcdir/static
