@@ -1,13 +1,10 @@
-pkgname=cyrus-sasl
+pkgname=(cyrus-sasl libsasl cyrus-sasl-gssapi cyrus-sasl-ldap)
 pkgver=2.1.28
 pkgrel=1
-pkgdesc="Cyrus Simple Authentication Service Layer service and library"
 arch=(x86_64)
 url="https://www.cyrusimap.org/sasl/"
 license=(custom)
-depends=(gdbm musl openssl)
-makedepends=(sqlite krb5)
-provides=(libsasl2.so)
+makedepends=(gdbm glibc krb5 libldap openssl sqlite)
 source=(https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-$pkgver/cyrus-sasl-$pkgver.tar.gz)
 sha512sums=('SKIP')
 
@@ -42,6 +39,8 @@ build() {
       --enable-plain \
       --enable-sql \
       --enable-shared \
+      --enable-ldapdb \
+      --with-ldap \
       --infodir=/usr/share/info \
       --mandir=/usr/share/man \
       --sbin=/usr/bin \
@@ -64,7 +63,51 @@ check() {
   make -k check -C $pkgname-$pkgver
 }
 
-package() {
-  cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+package_cyrus-sasl() {
+  depends=(gdbm libgdbm.so glibc krb5 libkrb5.so libldap libsasl=$pkgver openssl pam libpam.so)
+  pkgdesc="Cyrus saslauthd SASL authentication daemon"
+  backup=(etc/conf.d/saslauthd)
+
+  make DESTDIR="$pkgdir" install -C $pkgbase-$pkgver/saslauthd
+  make DESTDIR="$pkgdir" install-data-local -C $pkgbase-$pkgver/saslauthd
+  install -vDm 644 $pkgbase-$pkgver/COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+  # why conf.d in systemd system? figure out later
+  # tmpfiles missing
+}
+
+package_cyrus-sasl-gssapi() {
+  pkgdesc="GSSAPI authentication mechanism for Cyrus SASL"
+  depends=(glibc krb5 libgssapi_krb5.so libsasl=$pkgver)
+  replaces=('cyrus-sasl-plugins')
+
+  install -vdm 755 "$pkgdir/usr/lib/sasl2"
+  cp -av $pkgbase-$pkgver/plugins/.libs/libgs{,sapiv}2.so* "$pkgdir/usr/lib/sasl2/"
+  install -vDm 644 $pkgbase-$pkgver/COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
+
+package_cyrus-sasl-ldap() {
+  pkgdesc="ldapdb auxprop module for Cyrus SASL"
+  depends=(glibc libldap libsasl=$pkgver)
+
+  install -vdm 755 "$pkgdir/usr/lib/sasl2"
+  cp -av $pkgbase-$pkgver/plugins/.libs/libldapdb.so* "$pkgdir/usr/lib/sasl2/"
+  install -vDm 644 $pkgbase-$pkgver/COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
+
+# cyrus-sasl-sql only supports sqlite now, skipping
+
+package_libsasl() {
+  pkgdesc="Cyrus Simple Authentication Service Layer (SASL) library"
+  depends=(gdbm libgdbm.so glibc openssl)
+  provides=(libsasl2.so)
+
+  local _target
+  make DESTDIR="$pkgdir" install-pkgconfigDATA -C $pkgbase-$pkgver
+  for _target in include lib sasldb plugins utils; do
+    make DESTDIR="$pkgdir" install -C $pkgbase-$pkgver/$_target
+  done
+  install -vDm 644 $pkgbase-$pkgver/COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
+  # remove files provided by extra/cyrus-sasl
+  rm -fv "$pkgdir"/usr/lib/sasl2/lib{gs2,gssapiv2,ldapdb,sql}.so*
 }
