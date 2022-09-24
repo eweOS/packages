@@ -8,7 +8,7 @@ pkgrel=1
 arch=('x86_64')
 url="https://www.openldap.org/"
 license=('custom')
-makedepends=('cyrus-sasl' 'e2fsprogs' 'util-linux-libs' 'chrpath' 'unixodbc' 'libsodium' 'libltdl' 'mandoc-soelim')
+makedepends=('cyrus-sasl' 'e2fsprogs' 'util-linux-libs' 'chrpath' 'unixodbc' 'libsodium' 'libltdl' 'mandoc-soelim' 'libxcrypt')
 options=('!makeflags' 'emptydirs')
 source=(
   https://www.openldap.org/software/download/OpenLDAP/openldap-release/${pkgbase}-${pkgver}.tgz
@@ -93,7 +93,7 @@ check() {
 
 package_libldap() {
   pkgdesc="Lightweight Directory Access Protocol (LDAP) client libraries"
-  depends=('e2fsprogs') # add libsasl later!
+  depends=('e2fsprogs' 'libxcrypt') # add libsasl later!
   backup=('etc/openldap/ldap.conf')
 
   exit 0 # remove later
