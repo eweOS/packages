@@ -11,8 +11,6 @@ arch=('x86_64')
 url='https://mdocml.bsd.lv/'
 license=('ISC')
 depends=('zlib')
-provides=('man')
-conflicts=('man')
 source=("${url}/snapshots/${pkgname}-${pkgver}.tar.gz"
         'configure.local')
 sha256sums=('SKIP' 'SKIP')
@@ -37,6 +35,9 @@ build() {
 }
 
 package_mandoc() {
+    provides=('man')
+    conflicts=('man')
+
     cd "${srcdir}"/${pkgname}-${pkgver}
 
     DESTDIR="${pkgdir}" make install
