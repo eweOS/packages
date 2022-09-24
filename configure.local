@@ -1,0 +1,10 @@
+# eweOS $MANPATH.
+MANPATH_DEFAULT=/usr/local/share/man:/usr/share/man
+
+# eweOS paths.
+PREFIX=/usr
+SBINDIR=$PREFIX/bin
+MANDIR=$PREFIX/share/man
+
+# catman(8) is disabled by default.
+BUILD_CATMAN=1
