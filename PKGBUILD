@@ -96,8 +96,6 @@ package_libldap() {
   depends=('e2fsprogs' 'libxcrypt') # add libsasl later!
   backup=('etc/openldap/ldap.conf')
 
-  exit 0 # remove later
-
   cd ${pkgbase}-${pkgver}
   for dir in include libraries doc/man/man3 ; do
     pushd ${dir}
@@ -121,6 +119,9 @@ package_openldap() {
   pkgdesc="Lightweight Directory Access Protocol (LDAP) client and server"
   depends=("libldap>=${pkgver}" 'libltdl' 'unixodbc' 'perl' 'libsodium')
   backup=('etc/openldap/slapd.conf' 'etc/openldap/slapd.ldif')
+
+  exit 0
+
   cd ${pkgbase}-${pkgver}
   for dir in clients servers doc/man/man{1,5,8}; do
     pushd ${dir}
