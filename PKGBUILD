@@ -9,8 +9,16 @@ license=('GPL2')
 url="http://linux-pam.org"
 depends=('musl' 'libxcrypt' 'utmps')
 makedepends=('flex')
-source=(https://github.com/linux-pam/linux-pam/releases/download/v$pkgver/Linux-PAM-$pkgver.tar.xz)
-sha256sums=('SKIP')
+source=(
+  https://github.com/linux-pam/linux-pam/releases/download/v$pkgver/Linux-PAM-$pkgver.tar.xz
+  other.pam
+  system-auth.pam
+  system-local-login.pam
+  system-login.pam
+  system-remote-login.pam
+  system-services.pam
+)
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 options=('!emptydirs')
 
 build() {
@@ -26,4 +34,9 @@ package() {
   cd Linux-PAM-$pkgver
   make DESTDIR="$pkgdir" SCONFIGDIR=/etc/security install
   chmod +s "$pkgdir"/usr/bin/unix_chkpwd
+
+  for f in `ls ${srcdir}/*.pam`; do
+    targetname=`echo $f | cut -d "." -f 1`
+    install -D $f ${pkgdir}/etc/pam.d/${targetname##*/}
+  done
 }
