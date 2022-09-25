@@ -7,7 +7,8 @@ pkgdesc="Utilities for rescue and embedded systems"
 arch=("x86_64")
 url="https://www.busybox.net"
 license=('GPL')
-makedepends=("ncurses" "musl" "skalibs" "utmps" "linux")
+depends=("utmps")
+makedepends=("ncurses" "musl" "skalibs" "linux")
 source=(
 	"$url/downloads/$pkgname-$pkgver.tar.bz2"
         "config"
