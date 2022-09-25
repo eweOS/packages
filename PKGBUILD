@@ -12,13 +12,10 @@ makedepends=('flex')
 source=(
   https://github.com/linux-pam/linux-pam/releases/download/v$pkgver/Linux-PAM-$pkgver.tar.xz
   other.pam
-  system-auth.pam
-  system-local-login.pam
-  system-login.pam
-  system-remote-login.pam
-  system-services.pam
+  auth.pam
+  login.pam
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 options=('!emptydirs')
 
 build() {

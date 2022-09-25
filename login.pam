@@ -2,17 +2,17 @@
 
 auth       required   pam_shells.so
 auth       requisite  pam_nologin.so
-auth       include    system-auth
+auth       include    auth
 
 account    required   pam_access.so
 account    required   pam_nologin.so
-account    include    system-auth
+account    include    auth
 
-password   include    system-auth
+password   include    auth
 
 session    optional   pam_loginuid.so
 session    optional   pam_keyinit.so       force revoke
-session    include    system-auth
+session    include    auth
 session    optional   pam_motd.so
 session    optional   pam_mail.so          dir=/var/spool/mail standard quiet
 session    required   pam_env.so           user_readenv=1
