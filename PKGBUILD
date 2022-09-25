@@ -49,6 +49,7 @@ package_kmod() {
 
 package_libkmod() {
   pkgdesc="$pkgdesc library"
+  provides=('libkmod.so')
   license=('LGPL2')
 
   install -d $pkgdir/usr
