@@ -21,10 +21,17 @@ source=(
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
-build() {
+prepare() {
     cd "$srcdir/$pkgname-$pkgver"
     sed "/CONFIG_PREFIX/s@=.*@=\"${pkgdir}/usr/\"@" \
         "${srcdir}/config" >.config
+    sed -i -e 's@<none>@-lutmps@' \
+        -e '/^l_list=/s@$LDLIBS@-lutmps@' \
+        scripts/trylink
+}
+
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
     make HOSTCC=clang CC=clang
 }
 
