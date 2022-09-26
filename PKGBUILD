@@ -1,3 +1,5 @@
+# Maintainer: Aleksana QwQ <me@aleksana.moe>
+
 pkgname=libmicrohttpd
 pkgver=0.9.75
 pkgrel=1
