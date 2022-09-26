@@ -1,4 +1,5 @@
-# Maintainer: Daniel Isenmann <daniel [at] archlinux.org>
+# Maintainer: Aleksana QwQ <me@aleksana.moe>
+# Contributor: Daniel Isenmann <daniel [at] archlinux.org>
 # Contributor: dorphell <dorphell@gmx.net>
 
 pkgname=gc
