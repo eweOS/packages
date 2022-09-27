@@ -1,4 +1,5 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Aleksana QwQ <me@aleksana.moe>
+# Contributor: Felix Yan <felixonmars@gmail.com>
 
 pkgname=perl-io-html
 pkgver=1.004
