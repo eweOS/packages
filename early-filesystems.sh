@@ -10,10 +10,10 @@ if [ "$1" = start ]; then
     mount -n -t sysfs sysfs /sys
     
     # Ideally devtmpfs will be mounted by kernel, we can mount here anyway:
-    mount -n -t devtmpfs tmpfs /dev
-    mkdir -p /dev/pts /dev/shm
-    mount -n -t tmpfs -o nodev,nosuid tmpfs /dev/shm
-    mount -n -t devpts -o gid=5 devpts /dev/pts
+    mount -n -t devtmpfs tmpfs /dev || true
+    mkdir -p /dev/pts /dev/shm || true
+    mount -n -t tmpfs -o nodev,nosuid tmpfs /dev/shm || true
+    mount -n -t devpts -o gid=5 devpts /dev/pts || true
 
     # /run, and various directories within it
     mount -n -t tmpfs -o mode=775 tmpfs /run
