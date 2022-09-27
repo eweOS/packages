@@ -7,6 +7,7 @@ pkgdesc="A cross-platform file change monitor with multiple backends"
 arch=("x86_64")
 url="https://emcrisostomo.github.io/fswatch/"
 license=('GPL')
+depends=('llvm-libs')
 source=("https://github.com/emcrisostomo/fswatch/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('SKIP')
 
