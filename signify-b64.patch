@@ -1,0 +1,12 @@
+--- signify.c.bak
++++ signify.c
+@@ -49,6 +49,9 @@
+ #define COMMENTMAXLEN 1024
+ #define VERIFYWITH "verify with "
+ 
++extern int b64_ntop(unsigned char const *src, size_t srclength, char *target, size_t targsize);
++extern int b64_pton(char const *src, unsigned char *target, size_t targsize);
++
+ struct enckey {
+ 	uint8_t pkalg[2];
+ 	uint8_t kdfalg[2];
