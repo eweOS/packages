@@ -2,6 +2,7 @@
 
 pkgname=2048-cpp
 _pkgname=2048.cpp
+pkgdesc="Fully featured terminal version of the game 2048 written in C++"
 pkgver=374
 pkgrel=1
 license=('MIT')
