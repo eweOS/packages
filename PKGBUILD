@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A highly capable, feature-rich programming language"
 arch=(x86_64)
 license=('GPL' 'PerlArtistic')
-depends=('musl')
+depends=('musl' 'libxcrypt')
 source=(
   "https://www.cpan.org/src/5.0/perl-${pkgver}.tar.xz"
   "https://github.com/pmqs/Compress-Raw-Zlib/archive/refs/tags/v2.202.tar.gz"
