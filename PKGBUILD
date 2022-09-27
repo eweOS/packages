@@ -1,4 +1,5 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Aleksana QwQ <me@aleksana.moe>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: xRemaLx <anton.komolov@gmail.com>
 
 pkgname=perl-module-build-tiny
