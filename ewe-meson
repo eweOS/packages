@@ -5,6 +5,7 @@ exec meson setup \
   --prefix        /usr \
   --libexecdir    lib \
   --sbindir       bin \
+  --includedir    include \
   --buildtype     plain \
   --auto-features enabled \
   --wrap-mode     nodownload \
