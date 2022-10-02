@@ -1,4 +1,5 @@
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Maintainer: Aleksana QwQ <me@aleksana.moe>
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=libgpg-error
