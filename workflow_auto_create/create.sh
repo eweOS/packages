@@ -22,7 +22,7 @@ fi
 
 osc checkout $OBS_LOC
 
-sed -i "s:main:$BRANCH_NAME:g" \
+sed -i "s:_main:$BRANCH_NAME:g" \
 	"${OBS_LOC}"/_service
 
 osc commit $OBS_LOC -m "Create package"

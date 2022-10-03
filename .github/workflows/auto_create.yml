@@ -1,0 +1,24 @@
+name: Auto Create Packages on OBS
+
+on:
+  repository_dispatch:
+    types: [creation]
+
+env:
+  OSC_PASS: ${{ secrets.OSC_PASS }}
+
+jobs:
+  create_pkg:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: '_main'
+      - name: Install OSC
+        run: |
+          sudo apt install -y osc
+          sudo pip install m2crypto
+      - name: Start creating package
+        env:
+          PKG: ${{ github.event.client_payload.pkg }}
+        run: chmod +x ./workflow_auto_create/create.sh && ./workflow_auto_create/create.sh $PKG
