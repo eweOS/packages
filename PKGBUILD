@@ -1,16 +1,16 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=(linux519 linux519-headers)
+pkgname=(linux600 linux600-headers)
 _basename=linux
-pkgver=5.19.3
-pkgrel=2
+pkgver=6.0
+pkgrel=1
 pkgdesc='Linux'
 arch=(x86_64)
 url='http://www.kernel.org'
 license=(GPL2)
 makedepends=(bison flex perl python libelf linux-headers rsync lld)
 source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
   linux-config
   busybox-find-compat.patch
   musl-swab.patch
@@ -37,7 +37,7 @@ build() {
   make LLVM=1 LLVM_IAS=1
 }
 
-package_linux519() {
+package_linux600() {
   pkgdesc="The $pkgdesc kernel and modules"
   cd ${_basename}-${pkgver}
 
@@ -52,7 +52,7 @@ package_linux519() {
   rm -f "$modulesdir/source"
 }
 
-package_linux519-headers() {
+package_linux600-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
     cd ${_basename}-${pkgver}
     make LLVM=1 LLVM_IAS=1 INSTALL_HDR_PATH=$pkgdir/usr headers_install
