@@ -4,7 +4,7 @@ pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang)
 _realpkgname=llvm-project
 pkgver=15.0.0
 _binutilsver=2.39
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -140,7 +140,7 @@ build() {
         -DLLVM_BUILD_LLVM_DYLIB=ON
         -DLLVM_LINK_LLVM_DYLIB=ON
         -DLLVM_INCLUDE_BENCHMARKS=OFF
-        -DLLVM_TARGETS_TO_BUILD=Native
+        -DLLVM_TARGETS_TO_BUILD="X86;AArch64;RISCV"
         -DLIBCXX_HAS_MUSL_LIBC=ON
         -DLIBCXX_USE_COMPILER_RT=ON
         -DLIBCXX_INCLUDE_TESTS=OFF
