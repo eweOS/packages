@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=(linux600 linux600-headers)
+pkgname=(linux608 linux608-headers)
 _basename=linux
-pkgver=6.0
+pkgver=6.0.8
 pkgrel=1
 pkgdesc='Linux'
 arch=(x86_64)
@@ -37,7 +37,7 @@ build() {
   make LLVM=1 LLVM_IAS=1
 }
 
-package_linux600() {
+package_linux608() {
   pkgdesc="The $pkgdesc kernel and modules"
   cd ${_basename}-${pkgver}
 
@@ -52,7 +52,7 @@ package_linux600() {
   rm -f "$modulesdir/source"
 }
 
-package_linux600-headers() {
+package_linux608-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
     cd ${_basename}-${pkgver}
     make LLVM=1 LLVM_IAS=1 INSTALL_HDR_PATH=$pkgdir/usr headers_install
