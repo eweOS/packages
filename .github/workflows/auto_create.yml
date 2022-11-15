@@ -16,6 +16,7 @@ jobs:
           ref: '_main'
       - name: Install OSC
         run: |
+          sudo apt update
           sudo apt install -y osc
           sudo pip install m2crypto
       - name: Start creating package
