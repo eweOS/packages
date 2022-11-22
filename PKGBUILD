@@ -2,7 +2,7 @@
 
 pkgname=busybox
 pkgver=1.35.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Utilities for rescue and embedded systems"
 arch=("x86_64")
 url="https://www.busybox.net"
@@ -33,12 +33,12 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    make HOSTCC=clang CC=clang
+    make HOSTCC=clang CC=clang LDLIBS='-lutmps'
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    make HOSTCC=clang CC=clang install
+    make HOSTCC=clang CC=clang LDLIBS='-lutmps' install
     chmod u+s ${pkgdir}/usr/bin/busybox
     mv $pkgdir/usr/sbin/* $pkgdir/usr/bin
     rm -r $pkgdir/usr/sbin
