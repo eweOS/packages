@@ -1,7 +1,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=gcompat
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="The GNU C Library compatibility layer for musl"
 url="https://git.adelielinux.org/adelie/gcompat"
@@ -14,9 +14,9 @@ sha512sums=('SKIP')
 provides=('glibc')
 
 _make_args=('WITH_LIBUCONTEXT=1'
-	        'WITH_OBSTACK=musl-obstack'
-    	    'LINKER_PATH=/usr/lib/ld-musl-x86_64.so.1'
-    	    'LOADER_NAME=ld-linux-x86-64.so.2')
+            'WITH_OBSTACK=musl-obstack'
+            'LINKER_PATH=/usr/lib/ld-musl-x86_64.so.1'
+            'LOADER_NAME=ld-linux-x86-64.so.2')
 
 build() {
 	cd $pkgname-$pkgver
