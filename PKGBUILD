@@ -1,6 +1,6 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=(linux609 linux609-headers)
+pkgname=(linux linux-headers)
 _basename=linux
 pkgver=6.0.9
 pkgrel=1
@@ -37,22 +37,22 @@ build() {
   make LLVM=1 LLVM_IAS=1
 }
 
-package_linux609() {
-  pkgdesc="The $pkgdesc kernel and modules"
-  cd ${_basename}-${pkgver}
+package_linux() {
+    pkgdesc="The $pkgdesc kernel and modules"
+    cd ${_basename}-${pkgver}
 
-  local modulesdir="$pkgdir/usr/lib/modules/$pkgver"
-  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+    local modulesdir="$pkgdir/usr/lib/modules/$pkgver"
+    install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
     
-  make LLVM=1 LLVM_IAS=1 \
-    INSTALL_MOD_PATH="$pkgdir/usr" \
-    modules_install
+    make LLVM=1 LLVM_IAS=1 \
+      INSTALL_MOD_PATH="$pkgdir/usr" \
+      modules_install
 
-  rm -f "$modulesdir/build" 
-  rm -f "$modulesdir/source"
+    rm -f "$modulesdir/build" 
+    rm -f "$modulesdir/source"
 }
 
-package_linux609-headers() {
+package_linux-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
     cd ${_basename}-${pkgver}
     make LLVM=1 LLVM_IAS=1 INSTALL_HDR_PATH=$pkgdir/usr headers_install
