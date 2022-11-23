@@ -3,19 +3,24 @@
 pkgname=efivar
 pkgdesc="Tools and libraries to work with EFI variables"
 pkgver=38
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/rhboot/efivar"
 license=(LGPL2.1)
 depends=(musl)
 makedepends=(linux-headers git lld)
 _commit=bc65d63ebf8fe6ac8a099ff15ca200986dba1565
-source=("git+${url}.git#commit=${_commit}")
-sha256sums=('SKIP')
+source=(
+	"git+${url}.git#commit=${_commit}"
+	"$url/commit/3778ed47d539a716301ba2e67ba62f796e2df310.patch"
+)
+sha256sums=('SKIP' 'SKIP')
 
 prepare() {
   # currently we do not have mandoc
   sed -i 's:docs::g' $pkgname/Makefile
+  # Revamp efi_well_known_* variable handling, patch for clang+lld 15
+  cd $pkgname && patch -p1 < ../3778ed47d539a716301ba2e67ba62f796e2df310.patch
 }
 
 build() {
