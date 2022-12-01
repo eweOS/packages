@@ -3,7 +3,7 @@
 pkgbase=curl
 # Temporary add ca certs
 pkgname=(curl ca-certs)
-pkgver=7.79.0
+pkgver=7.86.0
 pkgrel=1
 pkgdesc='An URL retrieval utility and library'
 arch=('x86_64')
