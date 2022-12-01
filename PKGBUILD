@@ -2,7 +2,7 @@
 
 pkgname=(linux linux-headers)
 _basename=linux
-pkgver=6.0.9
+pkgver=6.0.10
 pkgrel=1
 pkgdesc='Linux'
 arch=(x86_64)
