@@ -2,7 +2,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=bash
-pkgver=5.1.16
+pkgver=5.2.9
 pkgrel=1
 pkgdesc='The GNU Bourne Again shell'
 arch=(x86_64)
