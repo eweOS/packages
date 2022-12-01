@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sudo
-pkgver=1.9.11p3
-pkgrel=2
+pkgver=1.9.12
+pkgrel=1
 pkgdesc='Tool for delegating authority to users and groups.'
 arch=(x86_64)
 url='http://www.sudo.ws/'
