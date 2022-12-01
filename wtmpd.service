@@ -1,5 +1,5 @@
 type = process
-command = unixserver /run/utmps/.wtmpd-socket utmps-wtmpd
+command = tty2socket /run/utmps/.wtmpd-socket utmps-wtmpd
 working-dir = /run/utmps
 run-as = utmp
 socket-listen = /run/utmps/.wtmpd-socket
