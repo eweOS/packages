@@ -1,14 +1,14 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=rust
-pkgver=1.64.0
+pkgver=1.65.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=('x86_64')
 url='https://www.rust-lang.org/'
 license=(MIT Apache)
 source=(
-    https://static.rust-lang.org/dist/rustc-1.64.0-src.tar.gz
+    https://static.rust-lang.org/dist/rustc-1.65.0-src.tar.gz
     https://sh.rustup.rs/rustup-init.sh
     config.toml
 )
