@@ -2,7 +2,7 @@
 
 pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang)
 _realpkgname=llvm-project
-pkgver=15.0.0
+pkgver=15.0.6
 _binutilsver=2.39
 pkgrel=2
 arch=('x86_64')
