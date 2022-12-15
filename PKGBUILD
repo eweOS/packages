@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=socat
-pkgver=1.7.4.3
+pkgver=1.7.4.4
 pkgrel=1
 pkgdesc='Multipurpose relay'
 url='http://www.dest-unreach.org/socat/'
