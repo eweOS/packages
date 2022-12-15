@@ -21,7 +21,7 @@ makedepends=(
 )
 source=(
     "https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz"
-    "https://ftp.gnu.org/gnu/binutils/binutils-${_binutilsver}.tar.xz"
+    "https://mirrors.tuna.tsinghua.edu.cn/gnu/binutils/binutils-${_binutilsver}.tar.xz"
 )
 sha256sums=(
     'SKIP'
