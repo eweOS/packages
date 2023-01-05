@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=readline
-pkgver=8.1
+pkgver=8.2
 pkgrel=1
 pkgdesc='GNU readline library'
 arch=('x86_64')
