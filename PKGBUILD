@@ -11,7 +11,7 @@ depends=(
 )
 makedepends=(meson ninja wayland-protocols pcre2)
 source=(
-	"git+https://github.com/swaywm/sway.git#tag=v1.8-rc3"
+	"git+https://github.com/swaywm/sway.git#tag=1.8"
 )
 sha256sums=('SKIP')
 
