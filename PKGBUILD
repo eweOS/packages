@@ -2,7 +2,7 @@
 
 pkgname=(linux linux-headers)
 _basename=linux
-pkgver=6.0.10
+pkgver=6.1.3
 pkgrel=1
 pkgdesc='Linux'
 arch=(x86_64)
@@ -13,10 +13,8 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
   linux-config
   busybox-find-compat.patch
-  musl-swab.patch
 )
 sha256sums=(
-  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -28,7 +26,6 @@ prepare() {
     -e '/^CC/s@gcc@cc@g' \
     -e '/^HOSTCC/s@gcc@cc@g' Makefile
   patch -Np1 -i "${srcdir}/busybox-find-compat.patch"
-  patch -Np1 -i "${srcdir}/musl-swab.patch"
 }
 
 build() {
