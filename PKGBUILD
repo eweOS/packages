@@ -8,6 +8,7 @@ arch=(x86_64)
 url='https://swaywm.org/'
 license=(MIT)
 depends=(
+	json-c
 )
 makedepends=(meson ninja wayland-protocols pcre2)
 source=(
