@@ -7,10 +7,9 @@ pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
 url='https://swaywm.org/'
 license=(MIT)
-depends=(
-	json-c
-)
-makedepends=(meson ninja wayland-protocols pcre2)
+depends=('cairo' 'json-c' 'libinput' 'seatd' 'libxkbcommon' 'mesa' 'pango' 'pcre' 'pixman' 'wayland' 'wlroots')
+makedepends=(linux-headers meson wayland-protocols)
+backup=('etc/sway/config')
 source=(
 	"git+https://github.com/swaywm/sway.git#tag=1.8"
 )
@@ -18,7 +17,13 @@ sha256sums=('SKIP')
 
 build() {
   mkdir -p build
-  ewe-meson build "$pkgname" -D werror=false -D b_ndebug=true
+  ewe-meson build "$pkgname" \
+    -D werror=false \
+    -D b_ndebug=true \
+    -Dxwayland=disabled \
+    -Dgdk-pixbuf=disabled \
+    -Dman-pages=disabled \
+    -Dtray=disabled
   ninja -C build
 }
 
