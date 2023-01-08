@@ -1,20 +1,21 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sqlite
-_srcver=3340100
-pkgver=3.34.1
+_srcver=3400100
+pkgver=3.40.1
 pkgrel=1
 pkgdesc="A C library that implements an SQL database engine"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('custom:Public Domain')
 url="https://www.sqlite.org/"
 makedepends=('readline' 'zlib')
 depends=('readline' 'zlib')
 options=('!emptydirs' 'debug')
-source=("https://sqlite.org/2021/sqlite-autoconf-${_srcver}.tar.gz")
+source=("https://sqlite.org/2022/sqlite-autoconf-${_srcver}.tar.gz")
 sha256sums=('SKIP')
 
-build() {
+build()
+{
   export CFLAGS+=" -DSQLITE_ENABLE_COLUMN_METADATA=1 \
 	-DSQLITE_ENABLE_UNLOCK_NOTIFY \
     -DSQLITE_SECURE_DELETE=1 \
@@ -24,12 +25,13 @@ build() {
   # build sqlite
   cd sqlite-autoconf-$_srcver
   ./configure --prefix=/usr \
-	--disable-static
+    --disable-static
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
-package() {
+package()
+{
   cd sqlite-autoconf-$_srcver
   make DESTDIR="${pkgdir}" install
 }
