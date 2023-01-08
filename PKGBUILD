@@ -31,7 +31,7 @@ package_curl() {
 
 package_ca-certs() {
     cd "${srcdir}/curl-${pkgver}"
-    ./lib/mk-ca-bundle.pl
+    ./scripts/mk-ca-bundle.pl
     install -d "${pkgdir}/etc/ssl/certs"
     install -m0644 ca-bundle.crt "${pkgdir}/etc/ssl/certs/ca-certificates.crt"
     ln -s certs/ca-certificates.crt "${pkgdir}/etc/ssl/cert.pem"
