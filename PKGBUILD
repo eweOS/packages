@@ -16,10 +16,8 @@ source=(
   https://sources.archlinux.org/other/pacman/pacman-$pkgver.tar.xz
   https://os-repo.ewe.moe/eweos/pacman.conf
   makepkg.conf
-  fix_bash_dotfiles.patch
 )
 sha256sums=(
-  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -33,12 +31,6 @@ _fetchpkg()
     (cd "${srcdir}/PKGDIR" && find $FILEPATH | cpio -pdvmu $PKGBASE) || true
     (cd "${srcdir}/PKGDIR" && find $FILEPATH -delete) || true
   done
-}
-
-prepare()
-{
-  cd pacman-$pkgver
-  patch -p1 < ../fix_bash_dotfiles.patch
 }
 
 FLIST_LIBALPM=(
@@ -82,6 +74,16 @@ FLIST_REPO_TOOLS=(
 
 build()
 {
+  case $CARCH in
+    x86_64)
+      makepkg_cflags="-Os -pipe -fno-plt -fstack-clash-protection -fcf-protection -fexceptions"
+      ;;
+    aarch64)
+      makepkg_cflags="-Os -pipe -fno-plt -fexceptions"
+      ;;
+  esac
+  sed -i ./makepkg.conf \
+    -e "s|BUILD_GEN_CFLAGS|${makepkg_cflags}|g"
   cd "pacman-$pkgver"
   sed -i -e 's/EUID == 0/EUID == -1/' scripts/makepkg.sh.in
   sed -i '/bsdtar -xf .*dbfile/s@-C@--no-fflags -C@' scripts/repo-add.sh.in
