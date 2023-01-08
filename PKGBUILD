@@ -4,26 +4,28 @@ pkgname=patch
 pkgver=2.7.6
 pkgrel=1
 pkgdesc="A utility to apply patch files to original sources"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 license=(GPL3)
 groups=(base-devel)
 depends=(musl attr)
 
 source=(
-    "http://ftp.gnu.org/gnu/patch/patch-${pkgver}.tar.xz"
+  "http://ftp.gnu.org/gnu/patch/patch-${pkgver}.tar.xz"
 )
 
 sha256sums=(
-    'SKIP'
+  'SKIP'
 )
 
-build() {
+build()
+{
   cd $pkgname-$pkgver
   ./configure --prefix=/usr
   make
 }
 
-package() {
+package()
+{
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
