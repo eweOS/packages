@@ -3,10 +3,10 @@
 
 pkgbase=libxcrypt
 pkgname=(libxcrypt libxcrypt-compat)
-pkgver=4.4.28
-pkgrel=2
+pkgver=4.4.33
+pkgrel=1
 pkgdesc='Modern library for one-way hashing of passwords'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/besser82/libxcrypt/'
 license=('GPL')
 depends=('musl' 'libucontext')
@@ -14,7 +14,8 @@ provides=('libcrypt.so')
 source=("${url}/releases/download/v${pkgver}/${pkgbase}-${pkgver}.tar.xz")
 sha512sums=("SKIP")
 
-build() {
+build()
+{
   mkdir build-libxcrypt build-libxcrypt-compat
 
   cd "${srcdir}/build-libxcrypt/"
@@ -26,7 +27,7 @@ build() {
     --disable-failure-tokens \
     LIBS='-lucontext'
   make
-  
+
   cd "${srcdir}/build-libxcrypt-compat/"
   "${srcdir}/${pkgbase}-${pkgver}"/configure \
     --prefix=/usr \
@@ -37,26 +38,28 @@ build() {
   make
 }
 
-check() {
+check()
+{
   cd build-libxcrypt/
 
-  make check 
+  make check
 }
 
-package_libxcrypt() {
+package_libxcrypt()
+{
   cd build-libxcrypt/
 
   make DESTDIR="${pkgdir}" install
 }
 
-package_libxcrypt-compat() {
+package_libxcrypt-compat()
+{
   pkgdesc='Modern library for one-way hashing of passwords - legacy API functions'
   depends=('libxcrypt')
-  
+
   cd build-libxcrypt-compat/
 
   make DESTDIR="${pkgdir}" install
 
   rm -rf "${pkgdir}"/usr/{include,lib/{lib*.so,pkgconfig},share}
 }
-
