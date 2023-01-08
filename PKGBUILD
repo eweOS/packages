@@ -3,7 +3,7 @@
 pkgname=m4
 pkgver=1.4.19
 pkgrel=1
-arch=(x86_64)
+arch=(x86_64 aarch64)
 pkgdesc="The GNU macro processor"
 url='http://www.gnu.org/software/m4/'
 license=(GPL3)
@@ -11,21 +11,22 @@ groups=(base-devel)
 depends=(musl bash)
 
 source=(
-    "http://ftp.gnu.org/gnu/m4/m4-${pkgver}.tar.xz"
+  "http://ftp.gnu.org/gnu/m4/m4-${pkgver}.tar.xz"
 )
 
 sha256sums=(
-    'SKIP'
+  'SKIP'
 )
 
-build() {
-    cd "$pkgname-$pkgver"
-    ./configure --prefix=/usr
-    make
+build()
+{
+  cd "$pkgname-$pkgver"
+  ./configure --prefix=/usr
+  make
 }
 
-package() {
-    cd "$pkgname-$pkgver"
-    make prefix="$pkgdir"/usr install
+package()
+{
+  cd "$pkgname-$pkgver"
+  make prefix="$pkgdir"/usr install
 }
-
