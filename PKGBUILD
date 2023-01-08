@@ -4,32 +4,32 @@ pkgname=readline
 pkgver=8.2
 pkgrel=1
 pkgdesc='GNU readline library'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('GPL')
-groups=()
 depends=('musl' 'ncurses')
 options=('!emptydirs' 'debug')
 
 PURGE_TARGETS+=(usr/share/info/* usr/share/readline/*)
 
 source=(
-    "http://ftp.gnu.org/gnu/readline/readline-${pkgver}.tar.gz"
-    inputrc
+  "http://ftp.gnu.org/gnu/readline/readline-${pkgver}.tar.gz"
+  inputrc
 )
 
 sha256sums=(
-    'SKIP'
-    'SKIP'
+  'SKIP'
+  'SKIP'
 )
 
-
-build() {
-    cd $pkgname-$pkgver
-    ./configure --prefix=/usr
-    make SHLIB_LIBS=-lncurses
+build()
+{
+  cd $pkgname-$pkgver
+  ./configure --prefix=/usr
+  make SHLIB_LIBS=-lncurses
 }
 
-package() {
+package()
+{
   make -C $pkgname-$pkgver DESTDIR="$pkgdir" install
   install -Dm644 inputrc "$pkgdir"/etc/inputrc
 }
