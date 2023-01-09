@@ -1,26 +1,24 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ncurses
-pkgver=6.3
+pkgver=6.4
 pkgrel=1
-arch=(x86_64)
+arch=(x86_64 aarch64)
 license=(GPL2)
 pkgdesc="System V Release 4.0 curses emulation library"
 url="https://invisible-island.net/ncurses/ncurses.html"
-groups=()
-depends=()
-makedepends=()
 
 source=(
-    "http://ftp.gnu.org/gnu/ncurses/ncurses-${pkgver}.tar.gz"
-    https://invisible-mirror.net/archives/ncurses/current/termcap.src.gz
+  "http://ftp.gnu.org/gnu/ncurses/ncurses-${pkgver}.tar.gz"
+  https://invisible-mirror.net/archives/ncurses/current/termcap.src.gz
 )
 sha256sums=(
-    'SKIP'
-    'SKIP'
+  'SKIP'
+  'SKIP'
 )
 
-build() {
+build()
+{
   cd $pkgname-$pkgver
   ./configure --prefix=/usr \
     --enable-widec \
@@ -39,7 +37,8 @@ build() {
   make
 }
 
-package() {
+package()
+{
   make DESTDIR="$pkgdir" install -C $pkgname-$pkgver
 
   for lib in ncurses ncurses++ form panel menu; do
