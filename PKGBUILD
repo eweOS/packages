@@ -2,29 +2,29 @@
 
 pkgname=libffi
 pkgver=3.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A portable Foregin Function Interface library.'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url='http://sourceware.org/libffi/'
 license=(BSD)
 source=(
-    "ftp://sourceware.org/pub/libffi/libffi-${pkgver}.tar.gz"
+  "ftp://sourceware.org/pub/libffi/libffi-${pkgver}.tar.gz"
 )
 sha256sums=(
-    'SKIP'
+  'SKIP'
 )
 
-
-build() {
-    cd ${pkgname}-${pkgver}
-    ./configure \
-      --prefix=/usr \
-      --enable-shared
-    make
+build()
+{
+  cd ${pkgname}-${pkgver}
+  ./configure \
+    --prefix=/usr \
+    --enable-shared
+  make
 }
 
-package() {
-    cd $pkgname-$pkgver
-    make DESTDIR="${pkgdir}" install
+package()
+{
+  cd $pkgname-$pkgver
+  make DESTDIR="${pkgdir}" install
 }
-
