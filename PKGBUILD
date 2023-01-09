@@ -7,24 +7,18 @@
 # Contributor: John Proctor <jproctor@prium.net>
 
 pkgname=pcre2
-pkgver=10.40
+pkgver=10.42
 pkgrel=1
 pkgdesc='A library that implements Perl 5-style regular expressions. 2nd version'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://www.pcre.org/'
 license=('BSD')
 depends=('readline' 'zlib' 'bash')
-source=("https://github.com/PhilipHazel/pcre2/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.bz2"
-	"grep_test.patch")
-sha512sums=('SKIP' 'SKIP')
+source=("https://github.com/PhilipHazel/pcre2/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.bz2")
+sha512sums=('SKIP')
 
-prepare() {
-  cd $pkgname-$pkgver
-  # no longer needed for 10.41!
-  patch -f -p1 <$srcdir/grep_test.patch
-}
-
-build() {
+build()
+{
   cd $pkgname-$pkgver
   ./configure \
     CFLAGS="$CFLAGS -O3" \
@@ -37,15 +31,16 @@ build() {
   make
 }
 
-check() {
+check()
+{
   cd $pkgname-$pkgver
   make -j1 check
 }
 
-package() {
+package()
+{
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 
   install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
