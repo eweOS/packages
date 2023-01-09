@@ -1,36 +1,35 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pkgconf
-pkgver=1.8.0
+pkgver=1.9.3
 pkgrel=1
-pkgdesc='An API-driven pkg-config replacement'
-arch=(x86_64)
+pkgdesc='Package compiler and linker metadata toolkit'
+arch=(x86_64 aarch64)
 url='https://github.com/pkgconf/pkgconf'
 license=(BSD)
 groups=(base-devel)
-depends=(musl)
-makedepends=()
-
 source=(
-    "https://distfiles.dereferenced.org/pkgconf/pkgconf-${pkgver}.tar.xz"
+  "$url/archive/refs/tags/$pkgname-$pkgver.tar.gz"
 )
-
+makedepends=(meson automake autoconf libtool)
 sha256sums=(
-    'SKIP'
+  'SKIP'
 )
 
-
-build() {
-    cd ${pkgname}-${pkgver}
-    ./configure \
-      --prefix=/usr \
-      --with-system-libdir=/usr/lib \
-      --with-system-includedir=/usr/include
-    make
+build()
+{
+  cd $pkgname-$pkgname-$pkgver
+  autoreconf -fi
+  ./configure \
+    --prefix=/usr \
+    --with-system-libdir=/usr/lib \
+    --with-system-includedir=/usr/include
+  make
 }
 
-package() {
-    cd ${pkgname}-${pkgver}
-    make DESTDIR="$pkgdir" install
-    ln -s pkgconf "${pkgdir}/usr/bin/pkg-config"
+package()
+{
+  cd $pkgname-$pkgname-${pkgver}
+  make DESTDIR="$pkgdir" install
+  ln -s pkgconf "${pkgdir}/usr/bin/pkg-config"
 }
