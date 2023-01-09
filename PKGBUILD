@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=meson
-pkgver=0.63.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='High productivity build system'
 url='https://mesonbuild.com/'
@@ -9,15 +9,17 @@ arch=('any')
 license=('Apache')
 depends=('python' 'ninja')
 source=(https://github.com/mesonbuild/meson/releases/download/${pkgver}/meson-${pkgver}.tar.gz
-        ewe-meson)
+  ewe-meson)
 sha512sums=('SKIP' 'SKIP')
 
-build() {
+build()
+{
   cd ${pkgname}-${pkgver}
   python setup.py build
 }
 
-package() {
+package()
+{
   cd ${pkgname}-${pkgver}
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
