@@ -3,23 +3,24 @@
 pkgbase=mesa
 pkgname=('mesa')
 pkgdesc="An open-source implementation of the OpenGL specification"
-pkgver=22.2.0
-_pkgver=$pkgver-rc3
+pkgver=22.3.2
 pkgrel=1
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 makedepends=('meson' 'libdrm' 'wayland' 'wayland-protocols')
 url="https://www.mesa3d.org/"
 license=('custom')
-source=(https://mesa.freedesktop.org/archive/mesa-${_pkgver}.tar.xz)
+source=(https://mesa.freedesktop.org/archive/$pkgbase-$pkgver.tar.xz)
 sha512sums=('SKIP')
 
-prepare() {
+prepare()
+{
   # workaround since python-mako is not available
   pip install mako
 }
 
-build() {
-  ewe-meson mesa-$_pkgver build \
+build()
+{
+  ewe-meson $pkgbase-$pkgver build \
     -D platforms=wayland \
     -Dglvnd=false \
     -Dllvm=enabled \
@@ -28,17 +29,18 @@ build() {
     -Dgles1=enabled \
     -Dgles2=enabled \
     -Dosmesa=true \
-    -Dvulkan-drivers=intel,swrast,virtio-experimental \
-    -Dgallium-drivers=i915,swrast,virgl,zink \
+    -Dvulkan-drivers=swrast,virtio-experimental \
+    -Dgallium-drivers=nouveau,virgl,svga,swrast,i915,iris,crocus,zink \
     -Dcpp_rtti=false \
     -Dmicrosoft-clc=disabled \
     -Ddefault_library=shared
-    
+
   meson configure build
   meson compile -C build
 
 }
 
-package() {
+package()
+{
   DESTDIR="${pkgdir}" meson install -C build
 }
