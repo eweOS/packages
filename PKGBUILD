@@ -1,10 +1,10 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=file
-pkgver=5.42
+pkgver=5.44
 pkgrel=1
 pkgdesc='File type identification utility'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('custom')
 groups=('base-devel')
 depends=('musl' 'zlib' 'xz')
@@ -12,7 +12,8 @@ options=('!emptydirs')
 source=("https://astron.com/pub/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('SKIP')
 
-prepare() {
+prepare()
+{
   cd $pkgname-$pkgver
   # apply patch from the source array (should be a pacman feature)
   local src
@@ -25,7 +26,8 @@ prepare() {
   done
 }
 
-build() {
+build()
+{
   cd $pkgname-$pkgver
   CFLAGS+=" -pthread"
   ./configure \
@@ -34,12 +36,14 @@ build() {
   make
 }
 
-check() {
+check()
+{
   cd $pkgname-$pkgver
   make check
 }
 
-package() {
+package()
+{
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
