@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A substitution of systemd-tmpfiles"
 url="https://github.com/eweOS/pawprint"
 license=(MIT)
-arch=(x86_64)
+arch=(x86_64 aarch64)
 makedepends=(git)
 source=(
   "$pkgname::git+$url.git#branch=main"
@@ -14,12 +14,14 @@ source=(
 )
 sha256sums=('SKIP' 'SKIP')
 
-build() {
+build()
+{
   cd $pkgname
   cc -o $pkgname $pkgname.c -DARCH=$arch
 }
 
-package() {
+package()
+{
   cd $pkgname
   install -D $pkgname $pkgdir/usr/bin/$pkgname
   install -d $pkgdir/etc/tmpfiles.d
