@@ -6,20 +6,22 @@ pkgname=axel
 pkgver=2.17.11
 pkgrel=1
 pkgdesc="Light command line download accelerator"
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url="https://github.com/axel-download-accelerator/axel"
 license=('GPL')
 depends=('musl' 'openssl')
 source=(https://github.com/axel-download-accelerator/axel/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz)
 sha256sums=('SKIP')
 
-build() {
+build()
+{
   cd "$srcdir/$pkgname-$pkgver"
   ./configure --prefix=/usr
   make
 }
 
-package() {
+package()
+{
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
