@@ -6,33 +6,35 @@ pkgname=strace
 pkgver=5.19
 pkgrel=1
 pkgdesc='A diagnostic, debugging and instructional userspace tracer'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url='https://strace.io/'
 license=(BSD)
 depends=(perl)
 source=(https://github.com/strace/strace/releases/download/v$pkgver/strace-$pkgver.tar.xz)
 sha1sums=('SKIP')
 
-build() {
+build()
+{
   cd $pkgname-$pkgver
   ./configure --prefix=/usr \
-	      --without-libunwind \
-	      --disable-gcc-Werror \
-	      --disable-mpers \
-	      CPPFLAGS="-I/usr/include"
+    --without-libunwind \
+    --disable-gcc-Werror \
+    --disable-mpers \
+    CPPFLAGS="-I/usr/include"
 
   make
 }
 
-check() {
+check()
+{
   # tests do not work in chroot environment. TODO: fixit.
   # make -C $pkgname-$pkgver check
   true
 }
 
-package() {
+package()
+{
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
