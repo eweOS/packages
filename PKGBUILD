@@ -4,7 +4,7 @@ pkgname=bird
 pkgver=2.0.10
 pkgrel=1
 pkgdesc='RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url='https://bird.network.cz/'
 license=('GPL2')
 depends=('musl' 'readline' 'ncurses' 'libssh2')
@@ -18,7 +18,8 @@ source=(
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
-build() {
+build()
+{
   cd $pkgname-$pkgver
   ./configure \
     --prefix=/usr \
@@ -30,7 +31,8 @@ build() {
   make
 }
 
-package () {
+package()
+{
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
   install -d "$pkgdir/etc/dinit.d/"
@@ -39,4 +41,3 @@ package () {
   install "${srcdir}/bird.prerun.service" "$pkgdir/etc/dinit.d/bird-prerun"
   install "${srcdir}/bird.prerun" "$pkgdir/etc/dinit.d/prerun.d/bird"
 }
-
