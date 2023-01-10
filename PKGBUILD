@@ -12,7 +12,7 @@ pkgver=1.12.1
 pkgrel=1
 pkgdesc='C++ testing utility based on the xUnit framework'
 url='https://github.com/google/googletest'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 license=('BSD')
 depends=('llvm-libs' 'sh')
 makedepends=('python' 'cmake' 'llvm-libs' 'sh')
@@ -22,19 +22,22 @@ _srcname=googletest-release-${pkgver}
 source=(${_srcname}.tar.gz::https://github.com/google/googletest/archive/release-${pkgver}.tar.gz)
 sha512sums=('SKIP')
 
-build() {
- cmake -H${_srcname} -Bbuild \
+build()
+{
+  cmake -H${_srcname} -Bbuild \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=ON \
     -Dgtest_build_tests=ON
   cmake --build build
 }
 
-check() {
+check()
+{
   ctest --test-dir build -E "googletest-port-test"
 }
 
-package() {
+package()
+{
   DESTDIR="${pkgdir}" cmake --build build --target install
 
   # Shouldn't be present
@@ -59,4 +62,3 @@ package() {
   python -m compileall -d /usr/share/gmock "${pkgdir}/usr/share/gmock"
   python -O -m compileall -d /usr/share/gmock "${pkgdir}/usr/share/gmock"
 }
-
