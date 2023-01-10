@@ -2,12 +2,12 @@
 
 pkgname=file
 pkgver=5.44
-pkgrel=1
+pkgrel=2
 pkgdesc='File type identification utility'
 arch=('x86_64' 'aarch64')
 license=('custom')
 groups=('base-devel')
-depends=('musl' 'zlib' 'xz')
+depends=('musl' 'zlib' 'xz' 'libbz2')
 options=('!emptydirs')
 source=("https://astron.com/pub/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('SKIP')
