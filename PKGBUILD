@@ -6,7 +6,7 @@ pkgname=nano
 pkgver=6.4
 pkgrel=1
 pkgdesc="Pico editor clone with enhancements"
-arch=('x86_64')
+arch=(x86_64 aarch64)
 license=('GPL')
 url="https://www.nano-editor.org"
 depends=('ncurses' 'file' 'sh')
@@ -14,7 +14,8 @@ backup=('etc/nanorc')
 source=("https://www.nano-editor.org/dist/v6/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('SKIP')
 
-build() {
+build()
+{
   cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
@@ -24,9 +25,9 @@ build() {
   make
 }
 
-package() {
+package()
+{
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
   install -Dm644 "${srcdir}"/${pkgname}-${pkgver}/doc/sample.nanorc "${pkgdir}"/etc/nanorc
 }
-
