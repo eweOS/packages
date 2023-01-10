@@ -6,13 +6,14 @@ pkgver=1.0.9
 pkgrel=1
 pkgdesc='Generic-purpose lossless compression algorithm'
 url='https://github.com/google/brotli'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 license=('MIT')
 makedepends=('musl' 'llvm-libs' 'cmake')
 source=("https://github.com/google/brotli/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
-build() {
+build()
+{
   cd ${pkgname}-${pkgver}
   cmake -B build \
     -DCMAKE_BUILD_TYPE=Release \
@@ -22,8 +23,8 @@ build() {
   make -C build VERBOSE=1
 }
 
-package() {
+package()
+{
   cd ${pkgname}-${pkgver}
   make -C build DESTDIR="$pkgdir" install
 }
-
