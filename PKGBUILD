@@ -4,7 +4,7 @@ pkgname=pam
 pkgver=1.5.2
 pkgrel=1
 pkgdesc="PAM (Pluggable Authentication Modules) library"
-arch=('x86_64')
+arch=(x86_64 aarch64)
 license=('GPL2')
 url="http://linux-pam.org"
 depends=('musl' 'libxcrypt' 'utmps')
@@ -18,7 +18,8 @@ source=(
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 options=('!emptydirs')
 
-build() {
+build()
+{
   cd Linux-PAM-$pkgver
   ./configure \
     --libdir=/usr/lib \
@@ -27,13 +28,14 @@ build() {
   make
 }
 
-package() {
+package()
+{
   cd Linux-PAM-$pkgver
   make DESTDIR="$pkgdir" SCONFIGDIR=/etc/security install
   chmod +s "$pkgdir"/usr/bin/unix_chkpwd
 
-  for f in `ls ${srcdir}/*.pam`; do
-    targetname=`echo $f | cut -d "." -f 1`
+  for f in $(ls ${srcdir}/*.pam); do
+    targetname=$(echo $f | cut -d "." -f 1)
     install -D $f ${pkgdir}/etc/pam.d/${targetname##*/}
   done
 }
