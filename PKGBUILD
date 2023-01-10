@@ -2,8 +2,8 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=minizip
-pkgver=1.2.12
-pkgrel=2
+pkgver=1.2.13
+pkgrel=1
 arch=(x86_64 aarch64)
 license=('custom')
 pkgdesc="Mini zip and unzip based on zlib"
