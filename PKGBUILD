@@ -6,14 +6,15 @@ pkgname=(kmod libkmod)
 pkgver=30
 pkgrel=1
 pkgdesc="Linux kernel module management"
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url='https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
 depends=('musl' 'zlib' 'openssl' 'xz' 'zstd' 'llvm-libs')
 #checkdepends=('linux-headers' 'libelf')
 source=("https://www.kernel.org/pub/linux/utils/kernel/$pkgname/$pkgname-$pkgver.tar.xz")
 sha256sums=('SKIP')
 
-build() {
+build()
+{
   cd "$pkgbase-$pkgver"
 
   ./configure \
@@ -36,7 +37,8 @@ build() {
 #  make -C "$pkgname-$pkgver" check KDIR="$kdir" KVER="$kver"
 #}
 
-package_kmod() {
+package_kmod()
+{
   depends=("libkmod=${pkgver}")
   pkgdesc="$pkgdesc tool"
   license=('GPL2')
@@ -47,7 +49,8 @@ package_kmod() {
   install -Dm644 $pkgbase-$pkgver/COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
 }
 
-package_libkmod() {
+package_libkmod()
+{
   pkgdesc="$pkgdesc library"
   provides=('libkmod.so')
   license=('LGPL2')
@@ -56,4 +59,3 @@ package_libkmod() {
   mv libkmod/* $pkgdir/usr
   install -Dm644 $pkgbase-$pkgver/COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
 }
-
