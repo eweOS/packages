@@ -6,7 +6,7 @@ pkgrel=3
 pkgdesc="Daemon that runs specified programs at scheduled times and related too"
 url="https://github.com/cronie-crond/cronie"
 license=('custom:BSD')
-arch=('x86_64')
+arch=(x86_64 aarch64)
 depends=('bash')
 source=(
   "$url/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
@@ -14,7 +14,8 @@ source=(
 )
 sha256sums=('SKIP' 'SKIP')
 
-build() {
+build()
+{
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure \
     --prefix=/usr \
@@ -24,7 +25,8 @@ build() {
   make
 }
 
-package() {
+package()
+{
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
