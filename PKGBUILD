@@ -2,12 +2,12 @@
 
 pkgname=utmps
 pkgver=0.1.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc='An implementation of the utmpx.h family of functions performing user accounting'
 arch=(x86_64 aarch64)
 url='http://skarnet.org/software/utmps/'
 license=(ISC)
-depends=(dinit skalibs tty2socket)
+depends=(dinit skalibs tty2socket busybox)
 makedepends=(skalibs)
 
 source=(
