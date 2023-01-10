@@ -1,15 +1,13 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libpciaccess
-pkgver=0.16
+pkgver=0.17
 pkgrel=1
 pkgdesc="X11 PCI access library"
 arch=(x86_64 aarch64)
 license=('custom')
 url="https://xorg.freedesktop.org/"
-depends=('musl')
-makedepends=()
-source=(${url}/releases/individual/lib/${pkgname}-${pkgver}.tar.bz2)
+source=(${url}/releases/individual/lib/${pkgname}-${pkgver}.tar.xz)
 sha512sums=('SKIP')
 
 build()
