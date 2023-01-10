@@ -7,29 +7,33 @@ pkgname=bottom
 pkgver=0.6.8
 pkgrel=1
 pkgdesc="A graphical process/system monitor"
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url="https://github.com/ClementTsang/bottom"
 license=('MIT')
 makedepends=('rust')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha512sums=('SKIP')
 
-prepare() {
+prepare()
+{
   cd "$pkgname-$pkgver"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
-build() {
+build()
+{
   cd "$pkgname-$pkgver"
   cargo build --frozen --release --all-features
 }
 
-check() {
+check()
+{
   cd "$pkgname-$pkgver"
   CARGO_HUSKY_DONT_INSTALL_HOOKS=true cargo test --frozen --all-features
 }
 
-package() {
+package()
+{
   cd "$pkgname-$pkgver"
 
   # binary
