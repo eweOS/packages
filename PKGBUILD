@@ -9,7 +9,7 @@ epoch=2
 pkgver=1.19.1
 pkgrel=1
 pkgdesc='Core compiler tools for the Go programming language'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url='https://golang.org/'
 license=(BSD)
 makedepends=(go git)
@@ -17,15 +17,17 @@ replaces=(go-pie)
 provides=(go-pie)
 options=(!strip staticlibs)
 source=("https://go.dev/dl/go${pkgver}.src.tar.gz"
-	0001-runtime-cgo-add-fno-stack-protector-to-CFLAGS.patch)
+  0001-runtime-cgo-add-fno-stack-protector-to-CFLAGS.patch)
 sha256sums=('SKIP' 'SKIP')
 
-prepare() {
+prepare()
+{
   cd $pkgname
   patch -p1 < $srcdir/0001-runtime-cgo-add-fno-stack-protector-to-CFLAGS.patch
 }
 
-build() {
+build()
+{
   export GOARCH=amd64
   export GOAMD64=v1 # make sure we're building for the right x86-64 version
   export GOROOT_FINAL=/usr/lib/go
@@ -36,7 +38,8 @@ build() {
   ./make.bash -v
 }
 
-check() {
+check()
+{
   export GO_TEST_TIMEOUT_SCALE=3
 
   cd $pkgname/src
@@ -44,7 +47,8 @@ check() {
   ./run.bash --no-rebuild -run '!(^cgo_test$|syscall)'
 }
 
-package_go() {
+package_go()
+{
   cd $pkgname
 
   install -d "$pkgdir/usr/bin" "$pkgdir/usr/lib/go" \
@@ -62,17 +66,17 @@ package_go() {
   install -Dm644 VERSION "$pkgdir/usr/lib/go/VERSION"
 
   rm -rf "$pkgdir/usr/lib/go/pkg/bootstrap" \
-	  "$pkgdir/usr/lib/go/pkg/tool/*/api"
+    "$pkgdir/usr/lib/go/pkg/tool/*/api"
 
   # TODO: Figure out if really needed
   rm -rf "$pkgdir"/usr/lib/go/pkg/obj/go-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-package_go-doc(){
+package_go-doc()
+{
   options=(docs)
   install -d $pkgdir/usr/{lib,share/doc}/go
   cp -r $srcdir/go/doc/* "$pkgdir/usr/share/doc/go"
   ln -sf /usr/share/doc/go "$pkgdir/usr/lib/go/doc"
 }
-
