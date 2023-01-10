@@ -10,7 +10,7 @@ pkgname=(grub-common grub-bios grub-efi grub-theme-starfield)
 pkgver=2.06
 pkgrel=1
 pkgdesc="GRand Unified Bootloader, version 2"
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url='https://www.gnu.org/software/grub/grub.html'
 license=('GPLv3')
 depends=('musl' 'efibootmgr')
@@ -21,7 +21,8 @@ source=(
 )
 sha512sums=('SKIP' 'SKIP')
 
-prepare() {
+prepare()
+{
   cd ${pkgbase}-${pkgver} && sed -ie "839,898d" configure.ac
 }
 
@@ -37,38 +38,40 @@ _build_args=(
 )
 
 FLIST_grub_theme_starfield=(
-    "usr/share/grub/themes/starfield/*"
+  "usr/share/grub/themes/starfield/*"
 )
 
 FLIST_grub_common=(
-    "usr/bin/*"
-    "usr/share/bash-completion/*"
-    "usr/share/grub/*"
-    "usr/share/info/*"
-    "etc/grub.d"
+  "usr/bin/*"
+  "usr/share/bash-completion/*"
+  "usr/share/grub/*"
+  "usr/share/info/*"
+  "etc/grub.d"
 )
 
 FLIST_grub_efi=(
-    "usr/lib/grub/x86_64-efi/*"
+  "usr/lib/grub/x86_64-efi/*"
 )
 
 FLIST_grub_bios=(
-    "usr/lib/grub/i386-pc/*"
+  "usr/lib/grub/i386-pc/*"
 )
 
-_fetchpkg() {
-    PKGBASE="$srcdir/pkgs/$1" && shift
-    mkdir -p $PKGBASE
-    for FILEPATH in $@; do
-        (cd "${srcdir}/PKGDIR" && find $FILEPATH | cpio -pdvmu $PKGBASE) || true
-        (cd "${srcdir}/PKGDIR" && find $FILEPATH -delete) || true
-    done
+_fetchpkg()
+{
+  PKGBASE="$srcdir/pkgs/$1" && shift
+  mkdir -p $PKGBASE
+  for FILEPATH in $@; do
+    (cd "${srcdir}/PKGDIR" && find $FILEPATH | cpio -pdvmu $PKGBASE) || true
+    (cd "${srcdir}/PKGDIR" && find $FILEPATH -delete) || true
+  done
 }
 
-build() {
+build()
+{
   mkdir -p $srcdir/binutils-bin && cp /usr/bin/binutils-objcopy $srcdir/binutils-bin/objcopy
   cp -r ${pkgbase}-${pkgver} ${pkgbase}-${pkgver}-efi
-  
+
   cd $srcdir/${pkgbase}-${pkgver}-efi
   autoreconf -fiv
   export PATH="$srcdir/binutils-bin:$PATH"
@@ -84,13 +87,13 @@ build() {
     DESTDIR=$srcdir/PKGDIR \
     bashcompletiondir="/usr/share/bash-completion/completions" \
     install
-  
+
   _fetchpkg grub-theme-starfield "${FLIST_grub_theme_starfield[@]}"
   _fetchpkg grub-efi "${FLIST_grub_efi[@]}"
   _fetchpkg grub-common "${FLIST_grub_common[@]}"
-  
+
   rm -r $srcdir/PKGDIR
-  
+
   cd $srcdir/${pkgbase}-${pkgver}
   autoreconf -fiv
   export PATH="$srcdir/binutils-bin:$PATH"
@@ -106,28 +109,32 @@ build() {
     DESTDIR=$srcdir/PKGDIR \
     bashcompletiondir="/usr/share/bash-completion/completions" \
     install
-  
+
   _fetchpkg grub-bios "${FLIST_grub_bios[@]}"
 }
 
-package_grub-common() {
+package_grub-common()
+{
   mv "$srcdir/pkgs/grub-common/etc" "${pkgdir}"
   mv "$srcdir/pkgs/grub-common/usr" "${pkgdir}"
   install -d "${pkgdir}/etc/default"
   install "${srcdir}/grub.default" "${pkgdir}/etc/default/grub"
 }
 
-package_grub-efi() {
+package_grub-efi()
+{
   depends=('grub-common')
   mv "$srcdir/pkgs/grub-efi/usr" "${pkgdir}"
 }
 
-package_grub-bios() {
+package_grub-bios()
+{
   depends=('grub-common')
   mv "$srcdir/pkgs/grub-bios/usr" "${pkgdir}"
 }
 
-package_grub-theme-starfield() {
+package_grub-theme-starfield()
+{
   depends=('grub-common')
   mv "$srcdir/pkgs/grub-theme-starfield/usr" "${pkgdir}"
 }
