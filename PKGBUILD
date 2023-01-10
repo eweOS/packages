@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A JSON implementation in C"
 url="https://github.com/json-c/json-c/wiki"
 license=(MIT)
-arch=(x86_64)
+arch=(x86_64 aarch64)
 depends=(musl)
 makedepends=(cmake ninja)
 provides=(libjson-c.so)
@@ -17,12 +17,14 @@ source=(
 )
 sha256sums=('SKIP' 'SKIP')
 
-prepare() {
+prepare()
+{
   cd ${srcdir}/${pkgname}-${pkgname}-${pkgver}-${_datetag}
   patch -p1 < ../clang15.patch
 }
 
-build() {
+build()
+{
   cd ${srcdir}
   cmake -S ${pkgname}-${pkgname}-${pkgver}-${_datetag} -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
@@ -34,7 +36,7 @@ build() {
   cmake --build build
 }
 
-package() {
+package()
+{
   DESTDIR="$pkgdir" cmake --install build
 }
-
