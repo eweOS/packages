@@ -4,7 +4,7 @@ pkgname=nginx
 pkgver=1.23.2
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url='https://nginx.org'
 license=(custom)
 depends=(pcre2 zlib openssl libxcrypt)
@@ -41,7 +41,8 @@ _activated_modules=(
   --with-stream_ssl_preread_module
 )
 
-build() {
+build()
+{
   cd $pkgbase-$pkgver
   ./configure \
     --prefix=/etc/nginx \
@@ -54,15 +55,15 @@ build() {
     --group=www-data \
     --http-log-path=/var/log/nginx/access.log \
     ${_activated_modules[@]}
-    
+
   make
 }
 
-package() {
+package()
+{
   cd $pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
   install -d $pkgdir/etc/dinit.d
   install -m 0754 "${srcdir}/nginx.service" $pkgdir/etc/dinit.d/nginx
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
