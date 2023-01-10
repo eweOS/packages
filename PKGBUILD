@@ -5,7 +5,7 @@ pkgbase=openldap
 pkgname=('libldap' 'openldap')
 pkgver=2.6.3
 pkgrel=1
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url="https://www.openldap.org/"
 license=('custom')
 makedepends=('cyrus-sasl' 'e2fsprogs' 'util-linux-libs' 'chrpath' 'unixodbc' 'libsodium' 'libltdl' 'mandoc-soelim' 'libxcrypt' 'libldap')
@@ -27,11 +27,12 @@ _extra_modules=(
   'passwd/sha2'
 )
 
-prepare() {
+prepare()
+{
   cd ${pkgbase}-${pkgver}
-  
+
   patch -p1 < $srcdir/Add-UNIX_LINK_LIBS-Makefile.patch
-  patch -p1 <$srcdir/remove_la_references.patch
+  patch -p1 < $srcdir/remove_la_references.patch
   # change perms from 0644 to 0755
   sed -i 's|-m 644 $(LIBRARY)|-m 755 $(LIBRARY)|' libraries/{liblber,libldap}/Makefile.in
 
@@ -48,7 +49,8 @@ prepare() {
   sed -i "s/ol_cv_c_posix_regex=no/ol_cv_c_posix_regex=yes/g" configure
 }
 
-build() {
+build()
+{
   cd ${pkgbase}-${pkgver}
   ./configure \
     --prefix=/usr \
@@ -86,18 +88,20 @@ build() {
   done
 }
 
-check() {
+check()
+{
   cd ${pkgbase}-${pkgver}
   #make test
 }
 
-package_libldap() {
+package_libldap()
+{
   pkgdesc="Lightweight Directory Access Protocol (LDAP) client libraries"
   depends=('e2fsprogs' 'libxcrypt') # add libsasl later!
   backup=('etc/openldap/ldap.conf')
 
   cd ${pkgbase}-${pkgver}
-  for dir in include libraries doc/man/man3 ; do
+  for dir in include libraries doc/man/man3; do
     pushd ${dir}
     make DESTDIR="${pkgdir}" install
     popd
@@ -115,7 +119,8 @@ package_libldap() {
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_openldap() {
+package_openldap()
+{
   pkgdesc="Lightweight Directory Access Protocol (LDAP) client and server"
   depends=("libldap>=${pkgver}" 'libltdl' 'unixodbc' 'perl' 'libsodium')
   backup=('etc/openldap/slapd.conf' 'etc/openldap/slapd.ldif')
