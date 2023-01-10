@@ -9,14 +9,15 @@ pkgver=0.35
 pkgrel=1
 pkgdesc='Simple terminal UI for git commands'
 url='https://github.com/jesseduffield/lazygit'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 license=('MIT')
 depends=('git' 'musl')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
-build() {
+build()
+{
   cd ${pkgname}-${pkgver}
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -35,7 +36,8 @@ build() {
     "
 }
 
-package() {
+package()
+{
   cd ${pkgname}-${pkgver}
   install -Dm 755 lazygit -t "${pkgdir}/usr/bin"
   install -Dm 644 README*.md -t "${pkgdir}/usr/share/doc/${pkgname}"
