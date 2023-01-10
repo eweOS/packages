@@ -9,7 +9,7 @@ pkgver=2.8.0
 pkgrel=1
 pkgdesc='Portable Hardware Locality is a portable abstraction of hierarchical architectures'
 url='https://www.open-mpi.org/projects/hwloc/'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 license=('BSD')
 depends=('glibc' 'libxml2' 'libudev')
 makedepends=('cairo' 'ncurses')
@@ -17,7 +17,8 @@ optdepends=('cairo' 'ncurses')
 source=(https://www.open-mpi.org/software/hwloc/v${pkgver%.*}/downloads/${pkgname}-${pkgver}.tar.bz2)
 sha512sums=('SKIP')
 
-build() {
+build()
+{
   cd hwloc-${pkgver}
   ./configure \
     --prefix=/usr \
@@ -26,13 +27,15 @@ build() {
   make
 }
 
-check() {
+check()
+{
   cd hwloc-${pkgver}
   # Don't check in ports, clang throws error compiling freebsd sources
   make check | sed -e '/Making check in ports/q'
 }
 
-package() {
+package()
+{
   cd hwloc-${pkgver}
   make DESTDIR="${pkgdir}" install
   install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
