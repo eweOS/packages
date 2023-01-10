@@ -6,7 +6,7 @@ pkgname=libverto
 pkgver=0.3.2
 pkgrel=4
 pkgdesc="Main event loop abstraction library"
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url="https://github.com/latchset/libverto"
 license=(MIT)
 depends=('libevent')
@@ -16,7 +16,8 @@ replaces=("libverto-libevent<0.3.2-4")
 source=("https://github.com/latchset/libverto/releases/download/$pkgver/libverto-$pkgver.tar.gz")
 sha256sums=('SKIP')
 
-build() {
+build()
+{
   cd "$pkgname-$pkgver"
   ./configure --prefix=/usr \
     --disable-static \
@@ -26,15 +27,16 @@ build() {
   make
 }
 
-check() {
+check()
+{
   cd "$pkgname-$pkgver"
   make check
 }
 
-package_libverto() {
+package_libverto()
+{
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 
   install -Dm0644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
 }
-
