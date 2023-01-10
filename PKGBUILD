@@ -6,13 +6,14 @@ pkgname=gmp
 pkgver=6.2.1
 pkgrel=2
 pkgdesc='A free library for arbitrary precision arithmetic'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url='https://gmplib.org/'
 license=(LGPL3 GPL)
 source=(https://gmplib.org/download/gmp/gmp-$pkgver.tar.lz)
 md5sums=('SKIP')
 
-build() {
+build()
+{
   cd $pkgname-$pkgver
 
   ./configure --build=${CHOST} \
@@ -22,13 +23,14 @@ build() {
   make
 }
 
-check() {
+check()
+{
   cd $pkgname-$pkgver
   make check
 }
 
-package() {
+package()
+{
   cd $pkgname-$pkgver
   make DESTDIR="${pkgdir}" install
 }
-
