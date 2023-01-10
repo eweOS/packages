@@ -4,7 +4,7 @@ pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang)
 _realpkgname=llvm-project
 pkgver=15.0.6
 _binutilsver=2.39
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -18,6 +18,7 @@ makedepends=(
   libedit
   git
   libxml2
+  lld
 )
 source=(
   "https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz"
@@ -138,6 +139,7 @@ build()
     -DLLVM_INSTALL_UTILS=ON
     -DLLVM_ENABLE_LIBCXX=ON
     -DLLVM_ENABLE_FFI=ON
+    -DLLVM_ENABLE_LLD=ON
     -DLLVM_INSTALL_BINUTILS_SYMLINKS=ON
     -DLLVM_BUILD_LLVM_DYLIB=ON
     -DLLVM_LINK_LLVM_DYLIB=ON
