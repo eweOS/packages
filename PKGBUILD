@@ -4,7 +4,7 @@ pkgname=fcgiwrap
 pkgver=1.1.0
 pkgrel=3
 pkgdesc='A simple server for running CGI applications over FastCGI.'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 license=('MIT')
 url='https://www.nginx.com/resources/wiki/start/topics/examples/fcgiwrap/'
 depends=('fcgi')
@@ -16,18 +16,21 @@ source=(
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
-prepare() {
+prepare()
+{
   cd ${pkgbase}-${pkgver}
   autoreconf -i
 }
 
-build() {
+build()
+{
   cd ${pkgbase}-${pkgver}
   ./configure --prefix=/usr --mandir=/share/man --sbindir=/bin
   make
 }
 
-package() {
+package()
+{
   cd ${pkgbase}-${pkgver}
   make DESTDIR="${pkgdir}" install
   install -d $pkgdir/etc/dinit.d/prerun.d
