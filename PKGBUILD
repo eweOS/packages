@@ -11,29 +11,32 @@ pkgver=1.0
 pkgrel=1
 pkgdesc='Library for manipulating Unicode strings and C strings'
 url='https://www.gnu.org/software/libunistring/'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 license=(GPL)
 depends=(musl)
 provides=('libunistring.so')
 source=(https://ftp.gnu.org/gnu/$pkgname/${pkgname}-${pkgver}.tar.xz)
 sha512sums=('SKIP')
 
-prepare() {
+prepare()
+{
   cd $pkgname-$pkgver
   sed -i '/pragma weak pthread_create/d' tests/glthread/thread.h
 }
 
-build() {
+build()
+{
   cd $pkgname-$pkgver
   ./configure --prefix=/usr
   make
 }
 
-check() {
+check()
+{
   make -C $pkgname-$pkgver check
 }
 
-package() {
+package()
+{
   make -C $pkgname-$pkgver DESTDIR="$pkgdir" install
 }
-
