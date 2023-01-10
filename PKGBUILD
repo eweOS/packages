@@ -9,7 +9,7 @@ pkgname=gflags
 pkgver=2.2.2
 pkgrel=4
 pkgdesc='C++ Library for commandline flag processing'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url='https://github.com/schuhschuh/gflags'
 license=('BSD')
 depends=('llvm-libs')
@@ -18,7 +18,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/schuhschuh/gflags/archi
 sha512sums=('SKIP')
 options=('!lto' 'staticlibs')
 
-build() {
+build()
+{
   cd "gflags-${pkgver}"
   cmake . \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -30,14 +31,15 @@ build() {
   make
 }
 
-check() {
+check()
+{
   cd "gflags-${pkgver}"
   make test
 }
 
-package() {
+package()
+{
   cd "gflags-${pkgver}"
   make DESTDIR="${pkgdir}" install
   install -D -m644 COPYING.txt "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING.txt
 }
-
