@@ -4,11 +4,11 @@ pkgname=weston
 pkgver=10.0.2
 pkgrel=1
 pkgdesc='Reference implementation of a Wayland compositor'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url='https://wayland.freedesktop.org/'
 license=('MIT')
 depends=('musl' 'wayland' 'libxkbcommon' 'libinput' 'pixman'
-         'libdrm' 'cairo' 'libpng' 'mesa' 'dbus')
+  'libdrm' 'cairo' 'libpng' 'mesa' 'dbus')
 makedepends=('wayland-protocols' 'meson' 'ninja')
 source=("https://gitlab.freedesktop.org/wayland/${pkgname}/-/releases/$pkgver/downloads/${pkgname}-$pkgver.tar.xz")
 sha256sums=('SKIP')
@@ -29,14 +29,16 @@ _features=(
   -Ddemo-clients=false
 )
 
-build() {
+build()
+{
   ewe-meson $pkgname-$pkgver build \
     --libexec=lib/weston \
     ${_features[@]}
   ninja -C build
 }
 
-package() {
+package()
+{
   DESTDIR="$pkgdir" meson install -C build
   install -Dm644 $pkgname-$pkgver/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
