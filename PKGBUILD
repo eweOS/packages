@@ -7,19 +7,21 @@ pkgver=0.5.11.5
 pkgrel=1
 pkgdesc='POSIX compliant shell that aims to be as small as possible'
 url='http://gondor.apana.org.au/~herbert/dash/'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 license=('BSD')
 depends=('musl' 'libedit')
 install=dash.install
 source=(https://git.kernel.org/pub/scm/utils/dash/dash.git/snapshot/${pkgname}-${pkgver}.tar.gz)
 sha512sums=('SKIP')
 
-prepare() {
+prepare()
+{
   cd ${pkgname}-${pkgver}
   autoreconf -fiv
 }
 
-build() {
+build()
+{
   cd ${pkgname}-${pkgver}
   ./configure \
     --prefix=/usr \
@@ -30,12 +32,14 @@ build() {
   make V=1
 }
 
-check() {
+check()
+{
   cd ${pkgname}-${pkgver}
   ./src/dash -c "echo ok"
 }
 
-package() {
+package()
+{
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
   install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
