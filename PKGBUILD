@@ -5,7 +5,7 @@ pkgname=minisign
 pkgver=0.10
 pkgrel=1
 pkgdesc="A dead simple tool to sign files and verify digital signatures."
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url="https://github.com/jedisct1/minisign"
 license=('custom:ISC')
 depends=('libsodium')
@@ -13,11 +13,13 @@ makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jedisct1/minisign/archive/$pkgver.tar.gz")
 sha512sums=('SKIP')
 
-prepare() {
+prepare()
+{
   mkdir -p build
 }
 
-build() {
+build()
+{
   cd build
 
   cmake ../minisign-$pkgver \
@@ -26,7 +28,8 @@ build() {
   make
 }
 
-package() {
+package()
+{
   make -C build DESTDIR="$pkgdir" install
 
   install -Dm644 minisign-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
