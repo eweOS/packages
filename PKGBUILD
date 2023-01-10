@@ -1,15 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgbase=mesa
-pkgname=('mesa')
+pkgname='mesa'
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=22.3.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
+depends=('libglvnd' 'libelf')
 makedepends=('meson' 'libdrm' 'wayland' 'wayland-protocols')
 url="https://www.mesa3d.org/"
 license=('custom')
-source=(https://mesa.freedesktop.org/archive/$pkgbase-$pkgver.tar.xz)
+source=(https://mesa.freedesktop.org/archive/$pkgname-$pkgver.tar.xz)
 sha512sums=('SKIP')
 
 prepare()
@@ -20,9 +20,10 @@ prepare()
 
 build()
 {
-  ewe-meson $pkgbase-$pkgver build \
+  ewe-meson $pkgname-$pkgver build \
+    --libdir=lib \
     -D platforms=wayland \
-    -Dglvnd=false \
+    -Dglvnd=true \
     -Dllvm=enabled \
     -Dshared-glapi=enabled \
     -Dglx=disabled \
