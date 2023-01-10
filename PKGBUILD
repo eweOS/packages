@@ -9,7 +9,7 @@ pkgname=gdbm
 pkgver=1.23
 pkgrel=1
 pkgdesc="GNU database library"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://www.gnu.org/software/gdbm/gdbm.html"
 license=(GPL3)
 depends=(readline)
@@ -17,23 +17,27 @@ provides=(libgdbm_compat.so libgdbm.so)
 source=("https://ftp.gnu.org/gnu/gdbm/$pkgname-$pkgver.tar.gz")
 sha512sums=('SKIP')
 
-prepare() {
+prepare()
+{
   cd $pkgname-$pkgver
   autoreconf -fiv
 }
 
-build() {
+build()
+{
   cd $pkgname-$pkgver
   ./configure --prefix=/usr \
-              --enable-libgdbm-compat
+    --enable-libgdbm-compat
   make
 }
 
-check() {
+check()
+{
   make check -C $pkgname-$pkgver
 }
 
-package() {
+package()
+{
   make DESTDIR="$pkgdir" install -C $pkgname-$pkgver
   install -vDm 644 $pkgname-$pkgver/{NOTE-WARNING,AUTHORS,NEWS,README,ChangeLog} -t "$pkgdir/usr/share/doc/$pkgname"
 }
