@@ -5,7 +5,7 @@ pkgname=libnftnl
 pkgver=1.2.3
 pkgrel=1
 pkgdesc='Netfilter library providing interface to the nf_tables subsystem'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url='https://netfilter.org/projects/libnftnl/'
 license=('GPL2')
 depends=('libmnl')
@@ -13,7 +13,8 @@ checkdepends=('jansson')
 source=("https://netfilter.org/projects/libnftnl/files/libnftnl-$pkgver.tar.bz2")
 sha256sums=('SKIP')
 
-prepare() {
+prepare()
+{
   cd $pkgname-$pkgver
   # apply patch from the source array (should be a pacman feature)
   local src
@@ -26,18 +27,21 @@ prepare() {
   done
 }
 
-build() {
+build()
+{
   cd $pkgname-$pkgver
   ./configure --prefix=/usr
   make
 }
 
-check() {
+check()
+{
   cd $pkgname-$pkgver/tests
   make check
 }
 
-package() {
+package()
+{
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
