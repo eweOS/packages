@@ -6,7 +6,7 @@ pkgname=keyutils
 pkgver=1.6.1
 pkgrel=1
 pkgdesc='Linux Key Management Utilities'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url='https://www.kernel.org/'
 license=('GPL2' 'LGPL2.1')
 depends=('musl')
@@ -15,21 +15,22 @@ backup=('etc/request-key.conf')
 source=("https://people.redhat.com/~dhowells/keyutils/keyutils-${pkgver}.tar.bz2")
 sha256sums=('SKIP')
 
-build() {
+build()
+{
   cd ${pkgname}-${pkgver}
   make CFLAGS="${CFLAGS}" \
-       LDFLAGS="${LDFLAGS}" \
-       SBINDIR='/usr/bin' \
-       BINDIR='/usr/bin'
+    LDFLAGS="${LDFLAGS}" \
+    SBINDIR='/usr/bin' \
+    BINDIR='/usr/bin'
 }
 
-package() {
+package()
+{
   cd ${pkgname}-${pkgver}
   make NO_ARLIB=1 \
-       DESTDIR="${pkgdir}" \
-       SBINDIR='/usr/bin' \
-       BINDIR='/usr/bin' \
-       LIBDIR='/usr/lib' \
-       USRLIBDIR='/usr/lib' install
+    DESTDIR="${pkgdir}" \
+    SBINDIR='/usr/bin' \
+    BINDIR='/usr/bin' \
+    LIBDIR='/usr/lib' \
+    USRLIBDIR='/usr/lib' install
 }
-
