@@ -6,30 +6,34 @@ pkgname=libgpg-error
 pkgver=1.45
 pkgrel=2
 pkgdesc="Support library for libgcrypt"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://www.gnupg.org"
 license=('LGPL')
 depends=('musl' 'sh')
 source=(https://www.gnupg.org/ftp/gcrypt/libgpg-error/${pkgname}-${pkgver}.tar.bz2)
 sha1sums=('SKIP')
 
-prepare() {
+prepare()
+{
   cd ${pkgname}-${pkgver}
   autoreconf -vfi
 }
 
-build() {
+build()
+{
   cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr
   make
 }
 
-check() {
+check()
+{
   cd ${pkgname}-${pkgver}
   make check
 }
 
-package() {
+package()
+{
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}/" install
 }
