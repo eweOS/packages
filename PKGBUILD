@@ -4,7 +4,7 @@ pkgname=dropbear
 pkgver=2022.82
 pkgrel=1
 pkgdesc='Lightweight SSH server'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url='https://github.com/mkj/dropbear'
 license=(MIT)
 options=(emptydirs)
@@ -16,7 +16,8 @@ source=(
 )
 sha256sums=('SKIP' 'SKIP')
 
-build() {
+build()
+{
   cd ${_srcdir}
   ./configure \
     --bindir=/usr/bin \
@@ -30,7 +31,8 @@ build() {
     PROGRAMS='dbclient dropbear dropbearconvert dropbearkey scp'
 }
 
-package() {
+package()
+{
   install -d "$pkgdir/etc/$pkgname"
   make -C ${_srcdir} install DESTDIR="$pkgdir" \
     PROGRAMS='dbclient dropbear dropbearconvert dropbearkey scp'
