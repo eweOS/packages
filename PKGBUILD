@@ -5,7 +5,7 @@ pkgver=1.14.0
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 license=(GPL custom)
 depends=(expat)
 makedepends=(python autoconf-archive)
@@ -17,12 +17,14 @@ source=(
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
-prepare() {
+prepare()
+{
   cd dbus-${pkgname}-${pkgver}
   NOCONFIGURE=1 ./autogen.sh
 }
 
-build() {
+build()
+{
   cd dbus-${pkgname}-${pkgver}
   ./configure \
     --prefix=/usr \
@@ -41,7 +43,8 @@ build() {
   make
 }
 
-package() {
+package()
+{
   DESTDIR="$pkgdir" make -C dbus-${pkgname}-${pkgver} install
 
   rm -r "$pkgdir"/{etc,var}
@@ -52,5 +55,3 @@ package() {
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 dbus-${pkgname}-${pkgver}/COPYING
 }
-
-
