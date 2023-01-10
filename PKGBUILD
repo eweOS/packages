@@ -6,21 +6,22 @@ pkgrel=1
 pkgdesc='Multipurpose relay'
 url='http://www.dest-unreach.org/socat/'
 license=('GPL2')
-arch=('x86_64')
+arch=(x86_64 aarch64)
 depends=('musl' 'readline' 'openssl')
 source=("$url/download/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
-build() {
+build()
+{
   cd "${pkgname}-${pkgver}"
   ./configure \
     --prefix=/usr \
     --mandir=/usr/share/man \
-  make
+    make
 }
 
-package() {
+package()
+{
   cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
-
