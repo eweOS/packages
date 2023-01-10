@@ -4,7 +4,7 @@ pkgname=htop
 pkgver=3.2.1
 pkgrel=1
 pkgdesc='Interactive process viewer'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url='https://htop.dev/'
 license=('GPL')
 depends=('ncurses')
@@ -13,20 +13,23 @@ options=('!emptydirs')
 source=("https://github.com/htop-dev/htop/releases/download/${pkgver}/htop-${pkgver}.tar.xz")
 sha256sums=('SKIP')
 
-prepare() {
+prepare()
+{
   cd "${pkgname}-${pkgver}"
   autoreconf -fi
 }
 
-build() {
+build()
+{
   cd "${pkgname}-${pkgver}"
   ./configure \
-      --prefix=/usr \
-      --sysconfdir=/etc
+    --prefix=/usr \
+    --sysconfdir=/etc
   make
 }
 
-package() {
+package()
+{
   cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
