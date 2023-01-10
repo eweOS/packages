@@ -5,7 +5,7 @@
 pkgname=re2c
 pkgver=3.0
 pkgrel=1
-arch=(x86_64)
+arch=(x86_64 aarch64)
 depends=(llvm-libs)
 makedepends=(cmake)
 checkdepends=(python)
@@ -15,20 +15,22 @@ license=('public domain')
 source=(re2c-$pkgver.tar.gz::https://github.com/skvadrik/re2c/archive/$pkgver.tar.gz)
 sha1sums=('SKIP')
 
-build() {
+build()
+{
   cd $pkgname-$pkgver
   cmake -B build -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
 }
 
-check() {
+check()
+{
   cd $pkgname-$pkgver
   cmake --build build --target check
 }
 
-package() {
+package()
+{
   cd $pkgname-$pkgver
   DESTDIR="$pkgdir" cmake --install build
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
