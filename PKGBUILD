@@ -8,7 +8,7 @@ _realname=Locale-gettext
 pkgver=1.07
 pkgrel=12
 pkgdesc="Permits access from Perl to the gettext() family of functions"
-arch=('x86_64')
+arch=(x86_64 aarch64)
 license=('GPL' 'PerlArtistic')
 url="https://search.cpan.org/dist/${_realname}/"
 depends=('gettext' 'perl' 'libxcrypt')
@@ -16,7 +16,8 @@ options=(!emptydirs)
 source=("https://search.cpan.org/CPAN/authors/id/P/PV/PVANDRY/${_realname}-${pkgver}.tar.gz")
 sha512sums=('SKIP')
 
-build() {
+build()
+{
   cd "${srcdir}/${_realname}-${pkgver}"
 
   # install module in vendor directories.
@@ -24,13 +25,15 @@ build() {
   make
 }
 
-check() {
+check()
+{
   cd "${srcdir}/${_realname}-${pkgver}"
 
   make test
 }
 
-package() {
+package()
+{
   cd "${srcdir}/${_realname}-${pkgver}"
   make install DESTDIR="${pkgdir}"
 
