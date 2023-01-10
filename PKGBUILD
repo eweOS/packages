@@ -10,28 +10,30 @@ pkgver=1.10.0
 pkgrel=1
 pkgdesc="A library implementing the SSH2 protocol as defined by Internet Drafts"
 url="https://www.libssh2.org/"
-arch=('x86_64')
+arch=(x86_64 aarch64)
 license=('BSD')
 depends=('openssl' 'zlib')
 provides=('libssh2.so')
 source=("https://www.libssh2.org/download/$pkgname-$pkgver.tar.gz")
 sha256sums=('SKIP')
 
-build() {
+build()
+{
   cd "$pkgname-$pkgver"
 
   ./configure --prefix=/usr
   make
 }
 
-check() {
+check()
+{
   make -C "$pkgname-$pkgver" check
 }
 
-package() {
+package()
+{
   cd "$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
