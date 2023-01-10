@@ -4,7 +4,7 @@ pkgname=sudo
 pkgver=1.9.12
 pkgrel=1
 pkgdesc='Tool for delegating authority to users and groups.'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url='http://www.sudo.ws/'
 license=(BSD)
 depends=(zlib)
@@ -20,21 +20,23 @@ _features=(
   --with-all-insults
 )
 
-build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    ./configure \
-      --prefix=/usr \
-      --libexecdir=/usr/lib/sudo \
-      --sbindir=/usr/bin \
-      --libexecdir=/usr/lib \
-      --with-rundir=/run/sudo \
-      --with-vardir=/var/db/sudo \
-      --with-passprompt="[sudo] password for %p: " \
-      ${_features[@]}
-    make
+build()
+{
+  cd "$srcdir/$pkgname-$pkgver"
+  ./configure \
+    --prefix=/usr \
+    --libexecdir=/usr/lib/sudo \
+    --sbindir=/usr/bin \
+    --libexecdir=/usr/lib \
+    --with-rundir=/run/sudo \
+    --with-vardir=/var/db/sudo \
+    --with-passprompt="[sudo] password for %p: " \
+    ${_features[@]}
+  make
 }
 
-package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" install
+package()
+{
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
 }
