@@ -7,21 +7,23 @@ url='https://github.com/ibara/oksh/'
 pkgdesc='Ported version of ksh from OpenBSD'
 license=('BSD')
 depends=('musl' 'ncurses')
-arch=('x86_64')
+arch=(x86_64 aarch64)
 source=(https://github.com/ibara/oksh/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz)
 sha256sums=('SKIP')
 backup=(etc/ksh.kshrc)
 install=oksh.install
 
-build() {
-       cd "${pkgname}-${pkgver}"
+build()
+{
+  cd "${pkgname}-${pkgver}"
 
-       ./configure --prefix=/usr
-       make
+  ./configure --prefix=/usr
+  make
 }
 
-package() {
-       cd "${pkgname}-${pkgver}"
+package()
+{
+  cd "${pkgname}-${pkgver}"
 
-       make DESTDIR="${pkgdir}/" install
+  make DESTDIR="${pkgdir}/" install
 }
