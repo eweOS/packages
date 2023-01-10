@@ -8,13 +8,14 @@ pkgver=1.41
 pkgrel=1
 pkgdesc="Implementation of the Stringprep, Punycode and IDNA specifications"
 url="https://www.gnu.org/software/libidn/"
-arch=('x86_64')
+arch=(x86_64 aarch64)
 license=('GPL3' 'LGPL')
 depends=('musl')
 source=("https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
-build() {
+build()
+{
   cd "${pkgname}-${pkgver}"
 
   ./configure \
@@ -22,13 +23,15 @@ build() {
   make
 }
 
-check() {
+check()
+{
   cd "${pkgname}-${pkgver}"
 
   make check
 }
 
-package() {
+package()
+{
   cd "${pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
