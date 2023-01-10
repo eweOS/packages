@@ -4,20 +4,21 @@ pkgname=rust
 pkgver=1.65.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url='https://www.rust-lang.org/'
 license=(MIT Apache)
 source=(
-    https://static.rust-lang.org/dist/rustc-1.65.0-src.tar.gz
-    https://sh.rustup.rs/rustup-init.sh
-    config.toml
+  https://static.rust-lang.org/dist/rustc-1.65.0-src.tar.gz
+  https://sh.rustup.rs/rustup-init.sh
+  config.toml
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 depends=(musl llvm-libs musl-static curl libssh2)
 makedepends=(rust llvm libffi perl python cmake ninja)
 
-prepare() {
+prepare()
+{
   chmod +x rustup-init.sh
   ./rustup-init.sh --profile minimal -y
   source "$HOME/.cargo/env"
@@ -25,17 +26,19 @@ prepare() {
   cp config.toml ${pkgname}c-${pkgver}-src/
 }
 
-build() {
+build()
+{
   source "$HOME/.cargo/env"
-  
+
   cd ${pkgname}c-${pkgver}-src
 
   export RUST_BACKTRACE=1
-  
+
   DESTDIR="$srcdir/install" python ./x.py install -j "$(nproc)"
 }
 
-package() {
+package()
+{
   provides=(cargo rustfmt)
   cp -r $srcdir/install/* "$pkgdir"
 
