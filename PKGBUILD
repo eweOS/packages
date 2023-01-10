@@ -6,31 +6,34 @@ pkgname=cmatrix
 pkgver=2.0
 pkgrel=2
 pkgdesc="A curses-based scrolling 'Matrix'-like screen"
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url="https://www.asty.org/cmatrix/"
 license=('GPL3')
 depends=('ncurses')
 makedepends=('cmake')
 optdepends=('kbd: cmatrix-tty custom font'
-            'xterm: cmatrix-tty custom font')
+  'xterm: cmatrix-tty custom font')
 source=("cmatrix-$pkgver.tgz::https://github.com/abishekvashok/cmatrix/archive/v$pkgver.tar.gz")
 sha512sums=('SKIP')
 
 # cmatrix-tty is ignored, see archlinux
 
-prepare() {
+prepare()
+{
   mkdir build
 }
 
-build() {
+build()
+{
   cd build
   cmake ../$pkgname-$pkgver \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX=/usr \
-  make
+    make
 }
 
-package() {
+package()
+{
   # only the binary has a target to install
   make -C build DESTDIR="$pkgdir" install
 
@@ -47,5 +50,5 @@ package() {
     install -Dm644 $i "$pkgdir/usr/share/doc/$pkgname/$i"
   done
 
-  install -Dm644 cmatrix.1     "$pkgdir/usr/share/man/man1/cmatrix.1"
+  install -Dm644 cmatrix.1 "$pkgdir/usr/share/man/man1/cmatrix.1"
 }
