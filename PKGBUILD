@@ -7,56 +7,61 @@ pkgname=(mandoc mandoc-apropos mandoc-soelim)
 pkgver=1.14.6
 pkgrel=1
 pkgdesc='A suite of tools compiling mdoc from the OpenBSD project'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url='https://mdocml.bsd.lv/'
 license=('ISC')
 depends=('zlib')
 source=("${url}/snapshots/${pkgname}-${pkgver}.tar.gz"
-        'configure.local')
+  'configure.local')
 sha256sums=('SKIP' 'SKIP')
 
-prepare() {
-    cd "${srcdir}"/${pkgname}-${pkgver}
+prepare()
+{
+  cd "${srcdir}"/${pkgname}-${pkgver}
 
-    cp ../configure.local .
+  cp ../configure.local .
 }
 
-build() {
-    cd "${srcdir}"/${pkgname}-${pkgver}
+build()
+{
+  cd "${srcdir}"/${pkgname}-${pkgver}
 
-    # apply CFLAGS and LDFLAGS from makepkg.conf
-    {
-        echo "CFLAGS=${CFLAGS@Q}"
-        echo "LDFLAGS=${LDFLAGS@Q}"
-    } >> configure.local
+  # apply CFLAGS and LDFLAGS from makepkg.conf
+  {
+    echo "CFLAGS=${CFLAGS@Q}"
+    echo "LDFLAGS=${LDFLAGS@Q}"
+  } >> configure.local
 
-    ./configure
-    make
+  ./configure
+  make
 }
 
-package_mandoc() {
-    provides=('man')
-    conflicts=('man')
+package_mandoc()
+{
+  provides=('man')
+  conflicts=('man')
 
-    cd "${srcdir}"/${pkgname}-${pkgver}
+  cd "${srcdir}"/${pkgname}-${pkgver}
 
-    DESTDIR="${pkgdir}" make install
-    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-    install -d $srcdir/others
-    mv $pkgdir/usr/bin/{apropos,whatis,makewhatis,soelim} $srcdir/others
+  DESTDIR="${pkgdir}" make install
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -d $srcdir/others
+  mv $pkgdir/usr/bin/{apropos,whatis,makewhatis,soelim} $srcdir/others
 }
 
-package_mandoc-apropos() {
-    pkgdesc="mandoc makewhatis/whatis and apropos tools and index"
-    depends=('mandoc')
-    cd $srcdir/others
-    install -d $pkgdir/usr/bin
-    install -Dm755 {apropos,whatis,makewhatis} $pkgdir/usr/bin
+package_mandoc-apropos()
+{
+  pkgdesc="mandoc makewhatis/whatis and apropos tools and index"
+  depends=('mandoc')
+  cd $srcdir/others
+  install -d $pkgdir/usr/bin
+  install -Dm755 {apropos,whatis,makewhatis} $pkgdir/usr/bin
 }
 
-package_mandoc-soelim() {
-    pkgdesc="mandoc so elimination tool"
-    provides=('soelim')
-    cd $srcdir/others
-    install -Dm755 soelim $pkgdir/usr/bin/soelim
+package_mandoc-soelim()
+{
+  pkgdesc="mandoc so elimination tool"
+  provides=('soelim')
+  cd $srcdir/others
+  install -Dm755 soelim $pkgdir/usr/bin/soelim
 }
