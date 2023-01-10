@@ -6,20 +6,22 @@ pkgver=2.7.0
 _sover=2.5.0
 pkgrel=2
 pkgdesc='C library for processing UTF-8 encoded Unicode strings'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url='https://github.com/JuliaStrings/utf8proc'
 license=(custom)
 makedepends=(cmake git ninja)
 source=("git+$url#tag=v$pkgver"
-        libutf8proc.pc.in)
+  libutf8proc.pc.in)
 sha256sums=('SKIP'
-        'SKIP')
+  'SKIP')
 
-prepare() {
+prepare()
+{
   sed "s#@VERSION@#$pkgver#" libutf8proc.pc.in > libutf8proc.pc
 }
 
-build() {
+build()
+{
   cmake -B build \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_LIBDIR=lib \
@@ -30,7 +32,8 @@ build() {
   ninja -C build
 }
 
-package() {
+package()
+{
   # The install command does not work for libutf8proc
   #DESTDIR="$pkgdir" ninja -C $pkgname-$pkgver/build install
 
@@ -44,4 +47,3 @@ package() {
   ln -s libutf8proc.so.$_sover "$pkgdir/usr/lib/libutf8proc.so"
   #ldconfig -n "$pkgdir/usr/lib"
 }
-
