@@ -2,14 +2,14 @@
 
 pkgname=efibootmgr
 pkgver=18
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux user-space application to modify the EFI Boot Manager"
 arch=(x86_64 aarch64)
 url="https://github.com/rhboot/efibootmgr"
 license=(GPL2)
 depends=(musl popt)
 makedepends=(efivar)
-source=("https://github.com/rhboot/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=('SKIP')
 
 build()
