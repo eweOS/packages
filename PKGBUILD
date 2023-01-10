@@ -5,7 +5,7 @@ pkgname=tcl
 pkgver=8.6.12
 pkgrel=3
 pkgdesc="Powerful, easy-to-learn dynamic programming language"
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url="http://tcl.sourceforge.net/"
 license=('custom')
 depends=('zlib')
@@ -13,24 +13,28 @@ options=('staticlibs' '!lto')
 source=(https://downloads.sourceforge.net/sourceforge/tcl/tcl${pkgver}-src.tar.gz)
 sha256sums=('SKIP')
 
-prepare() {
+prepare()
+{
   cd tcl${pkgver}
   # we build the tcl sqlite interface in sqlite-tcl package
   rm -rf pkgs/sqlite3*
 }
 
-build() {
+build()
+{
   cd tcl${pkgver}/unix
   ./configure --prefix=/usr --mandir=/usr/share/man --enable-threads --enable-64bit
   make
 }
 
-check() {
+check()
+{
   cd tcl${pkgver}/unix
   make test TESTFLAGS="-skip 'unixInit-3* zlib-8.16 zlib-8.8 zlib-7.8 coroutine* thread*'"
 }
 
-package() {
+package()
+{
   cd tcl${pkgver}/unix
   make INSTALL_ROOT="${pkgdir}" install install-private-headers
   ln -sf tclsh${pkgver%.*} "${pkgdir}/usr/bin/tclsh"
@@ -42,20 +46,20 @@ package() {
   # remove buildroot traces
   _tclver=8.6
   sed -e "s#${srcdir}/tcl${pkgver}/unix#/usr/lib#" \
-      -e "s#${srcdir}/tcl${pkgver}#/usr/include#" \
-      -e "s#'{/usr/lib} '#'/usr/lib/tcl$_tclver'#" \
-      -i "${pkgdir}/usr/lib/tclConfig.sh"
+    -e "s#${srcdir}/tcl${pkgver}#/usr/include#" \
+    -e "s#'{/usr/lib} '#'/usr/lib/tcl$_tclver'#" \
+    -i "${pkgdir}/usr/lib/tclConfig.sh"
 
   tdbcver=tdbc1.1.3
   sed -e "s#${srcdir}/tcl${pkgver}/unix/pkgs/$tdbcver#/usr/lib/$tdbcver#" \
-      -e "s#${srcdir}/tcl${pkgver}/pkgs/$tdbcver/generic#/usr/include#" \
-      -e "s#${srcdir}/tcl${pkgver}/pkgs/$tdbcver/library#/usr/lib/tcl${pkgver%.*}#" \
-      -e "s#${srcdir}/tcl${pkgver}/pkgs/$tdbcver#/usr/include#" \
-      -i "${pkgdir}/usr/lib/$tdbcver/tdbcConfig.sh"
+    -e "s#${srcdir}/tcl${pkgver}/pkgs/$tdbcver/generic#/usr/include#" \
+    -e "s#${srcdir}/tcl${pkgver}/pkgs/$tdbcver/library#/usr/lib/tcl${pkgver%.*}#" \
+    -e "s#${srcdir}/tcl${pkgver}/pkgs/$tdbcver#/usr/include#" \
+    -i "${pkgdir}/usr/lib/$tdbcver/tdbcConfig.sh"
 
   itclver=itcl4.2.2
   sed -e "s#${srcdir}/tcl${pkgver}/unix/pkgs/$itclver#/usr/lib/$itclver#" \
-      -e "s#${srcdir}/tcl${pkgver}/pkgs/$itclver/generic#/usr/include#" \
-      -e "s#${srcdir}/tcl${pkgver}/pkgs/$itclver#/usr/include#" \
-      -i "${pkgdir}/usr/lib/$itclver/itclConfig.sh"
+    -e "s#${srcdir}/tcl${pkgver}/pkgs/$itclver/generic#/usr/include#" \
+    -e "s#${srcdir}/tcl${pkgver}/pkgs/$itclver#/usr/include#" \
+    -i "${pkgdir}/usr/lib/$itclver/itclConfig.sh"
 }
