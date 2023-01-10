@@ -5,14 +5,15 @@ pkgver=1.17.6
 pkgrel=1
 pkgdesc="2D graphics library with support for multiple output devices"
 url="https://cairographics.org/"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 license=(LGPL MPL)
 source=("https://gitlab.freedesktop.org/cairo/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 depends=(libpng fontconfig pixman)
 makedepends=(meson)
 sha256sums=('SKIP')
 
-build() {
+build()
+{
   ewe-meson ${pkgname}-${pkgver} build \
     -D spectre=disabled \
     -D tee=enabled \
@@ -25,6 +26,7 @@ build() {
   meson compile -C build
 }
 
-package() {
+package()
+{
   meson install -C build --destdir "$pkgdir"
 }
