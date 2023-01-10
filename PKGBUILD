@@ -9,7 +9,7 @@ pkgver=1.5.2
 pkgrel=7
 pkgdesc='Zstandard - Fast real-time compression algorithm'
 url='https://facebook.github.io/zstd/'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 license=(BSD GPL2)
 depends=(zlib xz lz4)
 makedepends=(cmake ninja)
@@ -17,14 +17,16 @@ provides=(libzstd.so)
 source=(https://github.com/facebook/zstd/releases/download/v${pkgver}/zstd-${pkgver}.tar.gz)
 sha256sums=('SKIP')
 
-prepare() {
+prepare()
+{
   cd ${pkgname}-${pkgver}
   # avoid error on tests without static libs, we use LD_LIBRARY_PATH
   sed '/build static library to build tests/d' -i build/cmake/CMakeLists.txt
   sed 's/libzstd_static/libzstd_shared/g' -i build/cmake/tests/CMakeLists.txt
 }
 
-build() {
+build()
+{
   cd ${pkgname}-${pkgver}
   export CFLAGS+=' -ffat-lto-objects'
   export CXXFLAGS+=' -ffat-lto-objects'
@@ -40,14 +42,16 @@ build() {
   cmake --build build
 }
 
-check() {
+check()
+{
   cd ${pkgname}-${pkgver}
   export LD_LIBRARY_PATH="$(pwd)/build/lib"
   # only run fullbench for faster packaging
   ctest -VV -R fullbench --test-dir build
 }
 
-package() {
+package()
+{
   cd ${pkgname}-${pkgver}
   DESTDIR="${pkgdir}" cmake --install build
   ln -sf /usr/bin/zstd "${pkgdir}/usr/bin/zstdmt"
