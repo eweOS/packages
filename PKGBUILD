@@ -6,30 +6,33 @@ pkgname=typespeed
 pkgver=0.6.5
 pkgrel=9
 pkgdesc="Test your typing speed, and get your fingers' CPS."
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url="http://typespeed.sourceforge.net"
 license=('GPL')
 depends=('ncurses')
 source=(https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
 sha256sums=('SKIP')
 
-prepare() {
+prepare()
+{
   cd $pkgname-$pkgver
   # fix error unknown type name clock_t
   sed -i "1i #include <time.h>" src/typespeed.h
 }
 
-build() {
+build()
+{
   cd $pkgname-$pkgver
 
   CFLAGS+=" -fcommon" \
-  ./configure --prefix=/usr \
-  	      --localstatedir=/var \
-  	      --sysconfdir=/etc
+    ./configure --prefix=/usr \
+    --localstatedir=/var \
+    --sysconfdir=/etc
   make CC=cc
 }
 
-package() {
+package()
+{
   cd $srcdir/$pkgname-$pkgver
 
   make CC=cc DESTDIR="$pkgdir" install
