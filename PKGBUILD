@@ -4,7 +4,7 @@ pkgname=benchmark
 pkgver=1.7.0
 pkgrel=1
 pkgdesc="A microbenchmark support library"
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url="https://github.com/google/benchmark"
 license=('Apache')
 depends=('llvm-libs')
@@ -12,7 +12,8 @@ makedepends=('cmake' 'python')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('SKIP')
 
-build() {
+build()
+{
   cd $pkgname-$pkgver
 
   # build type Release won't ignore unused variables
@@ -26,14 +27,15 @@ build() {
   cmake --build .
 }
 
-check() {
+check()
+{
   cd $pkgname-$pkgver
   # clang version unsupported for assembly test, see warning
   ctest -E ".*_assembly_.*"
 }
 
-package() {
+package()
+{
   cd $pkgname-$pkgver
   cmake --install . --prefix $pkgdir/usr
 }
-
