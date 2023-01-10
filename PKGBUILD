@@ -7,26 +7,29 @@ pkgname=libsodium
 pkgver=1.0.18
 pkgrel=2
 pkgdesc="Portable & Packageable NaCl-based crypto library"
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url="https://github.com/jedisct1/libsodium"
 license=('custom:ISC')
 depends=('musl')
 source=("https://download.libsodium.org/libsodium/releases/libsodium-$pkgver.tar.gz")
 sha512sums=('SKIP')
 
-build() {
+build()
+{
   cd "$pkgname-$pkgver"
 
   ./configure --prefix=/usr
   make
 }
 
-check() {
+check()
+{
   cd "$pkgname-$pkgver"
   make check
 }
 
-package() {
+package()
+{
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 
