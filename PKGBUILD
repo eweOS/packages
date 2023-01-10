@@ -5,7 +5,7 @@ _pkgname=libtool
 pkgver=2.4.6
 pkgrel=5
 pkgdesc='A small library aiming at hiding the various difficulties of dlopening libraries'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url='https://www.gnu.org/software/libtool/manual/html_node/Using-libltdl.html'
 license=(GPL)
 depends=(musl)
@@ -13,19 +13,22 @@ provides=("libltdl.so")
 source=(https://ftpmirror.gnu.org/libtool/libtool-${pkgver}.tar.gz)
 sha256sums=('SKIP')
 
-build() {
+build()
+{
   cd ${_pkgname}-${pkgver}
   ./configure --prefix=/usr lt_cv_sys_lib_dlsearch_path_spec="/usr/lib /usr/lib32"
   make
 }
 
-check() {
+check()
+{
   cd ${_pkgname}-${pkgver}
   # only test linking and loading.
   make check TESTSUITEFLAGS="27-39"
 }
 
-package() {
+package()
+{
   cd ${_pkgname}-${pkgver}
   make DESTDIR="$srcdir/install" install
   install -d $pkgdir/usr
