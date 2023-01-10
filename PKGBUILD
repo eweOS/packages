@@ -4,14 +4,15 @@ pkgname=libpng
 pkgver=1.6.37
 pkgrel=1
 pkgdesc="A collection of routines used to create PNG format graphics files"
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url="http://www.libpng.org/pub/png/libpng.html"
 license=('custom')
 depends=('zlib' 'sh')
 source=("https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.xz")
 sha256sums=('SKIP')
 
-build() {
+build()
+{
   cd $pkgname-$pkgver
   ./configure \
     --prefix=/usr \
@@ -19,7 +20,8 @@ build() {
   make
 }
 
-package() {
+package()
+{
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
   install -D -m0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
