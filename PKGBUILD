@@ -6,7 +6,7 @@ epoch=1
 pkgver=1.9.4
 pkgrel=1
 pkgdesc='Extremely fast compression algorithm'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url='https://lz4.github.io/lz4/'
 license=('GPL2')
 makedepends=('git')
@@ -14,7 +14,8 @@ depends=('musl')
 source=("git+https://github.com/lz4/lz4.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
-prepare() {
+prepare()
+{
   cd $pkgname
   # apply patch from the source array (should be a pacman feature)
   local src
@@ -27,7 +28,8 @@ prepare() {
   done
 }
 
-build() {
+build()
+{
   # do not use the main makefile, it calls sub make with -e
   # exported CLFAGS by makepkg break the version. see FS#50071
   cd $pkgname
@@ -35,7 +37,8 @@ build() {
   make -C programs PREFIX=/usr lz4 lz4c
 }
 
-check() {
+check()
+{
   rm -f passwd.lz4
   $pkgname/programs/lz4 /etc/passwd passwd.lz4
   $pkgname/programs/lz4 -d passwd.lz4 passwd
@@ -43,7 +46,8 @@ check() {
   rm passwd
 }
 
-package() {
+package()
+{
   cd $pkgname
   make install PREFIX=/usr DESTDIR="$pkgdir"
 }
