@@ -8,7 +8,7 @@ pkgname=pcre
 pkgver=8.45
 pkgrel=2
 pkgdesc='A library that implements Perl 5-style regular expressions'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url='https://www.pcre.org/'
 license=('BSD')
 depends=('llvm-libs' 'readline' 'zlib' 'libbz2')
@@ -17,7 +17,8 @@ provides=(libpcreposix.so libpcrecpp.so libpcre32.so libpcre16.so libpcre.so)
 source=(https://sourceforge.net/projects/pcre/files/pcre/$pkgver/pcre-$pkgver.tar.bz2)
 sha512sums=('SKIP')
 
-prepare() {
+prepare()
+{
   cd $pkgname-$pkgver
   # apply patch from the source array (should be a pacman feature)
   local filename
@@ -30,7 +31,8 @@ prepare() {
   :
 }
 
-build() {
+build()
+{
   cd $pkgname-$pkgver
   ./configure \
     --prefix=/usr \
@@ -44,12 +46,14 @@ build() {
   make
 }
 
-check() {
+check()
+{
   cd $pkgname-$pkgver
   make -j1 check
 }
 
-package() {
+package()
+{
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 
@@ -57,4 +61,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
