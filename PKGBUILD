@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pixman
-pkgver=0.40.0
+pkgver=0.42.2
 pkgrel=1
 pkgdesc="The pixel-manipulation library for X and cairo"
 arch=(x86_64 aarch64)
@@ -13,17 +13,27 @@ provides=('libpixman-1.so')
 source=(https://xorg.freedesktop.org/releases/individual/lib/${pkgname}-${pkgver}.tar.xz)
 sha512sums=('SKIP')
 
+_arglist=(
+    -Dloongson-mmi=disabled
+    -Dvmx=disabled
+    -Darm-simd=disabled
+    -Da64-neon=disabled
+    -Dneon=disabled
+    -Diwmmxt=disabled
+    -Dopenmp=disabled
+    -Dmips-dspr2=disabled
+    -Dgtk=disabled    
+)
+
 build()
 {
+  if [[ "${CARCH}" == "aarch64" ]]; then
+    _arglist+=("-Dmmx=disabled")
+    _arglist+=("-Dsse2=disabled")
+    _arglist+=("-Dssse3=disabled")
+  fi
   ewe-meson $pkgbase-$pkgver build \
-    -D loongson-mmi=disabled \
-    -D vmx=disabled \
-    -D arm-simd=disabled \
-    -D neon=disabled \
-    -D iwmmxt=disabled \
-    -D openmp=disabled \
-    -D mips-dspr2=disabled \
-    -D gtk=disabled
+    "${_arglist[@]}"
   ninja -C build
 }
 
