@@ -4,7 +4,7 @@ pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang)
 _realpkgname=llvm-project
 pkgver=15.0.6
 _binutilsver=2.39
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'aarch64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -156,6 +156,7 @@ build()
     -DLIBUNWIND_INSTALL_HEADERS=ON
     -DCOMPILER_RT_BUILD_SANITIZERS=OFF
     -DCOMPILER_RT_BUILD_XRAY=OFF
+    -DCOMPILER_RT_BUILD_LIBFUZZER=OFF
     -DLLVM_ENABLE_PER_TARGET_RUNTIME_DIR=OFF
     -DLLVM_LIBGCC_EXPLICIT_OPT_IN=ON
     -DLLVM_BINUTILS_INCDIR=$srcdir/binutils-${_binutilsver}/include
