@@ -8,7 +8,7 @@
 pkgbase=grub
 pkgname=(grub-common grub-bios grub-efi grub-theme-starfield)
 pkgver=2.06
-pkgrel=2
+pkgrel=3
 pkgdesc="GRand Unified Bootloader, version 2"
 arch=(x86_64 aarch64)
 url='https://www.gnu.org/software/grub/grub.html'
@@ -23,7 +23,9 @@ sha512sums=('SKIP' 'SKIP')
 
 prepare()
 {
-  cd ${pkgbase}-${pkgver} && sed -ie "839,898d" configure.ac
+  cd ${pkgbase}-${pkgver}
+  sed -ie "839,898d" configure.ac
+  sed -i "s/@OBJCOPY@/binutils-objcopy/g" Makefile.in
 }
 
 _build_args=(
@@ -69,12 +71,10 @@ _fetchpkg()
 
 build()
 {
-  mkdir -p $srcdir/binutils-bin && cp /usr/bin/binutils-objcopy $srcdir/binutils-bin/objcopy
   cp -r ${pkgbase}-${pkgver} ${pkgbase}-${pkgver}-efi
 
   cd $srcdir/${pkgbase}-${pkgver}-efi
   autoreconf -fiv
-  export PATH="$srcdir/binutils-bin:$PATH"
   export CFLAGS='--ld-path=/usr/bin/ld.lld -no-pie'
   ./configure \
     --target="${CARCH}" \
