@@ -8,7 +8,7 @@
 pkgbase=grub
 pkgname=(grub-common grub-bios grub-efi grub-theme-starfield)
 pkgver=2.06
-pkgrel=1
+pkgrel=2
 pkgdesc="GRand Unified Bootloader, version 2"
 arch=(x86_64 aarch64)
 url='https://www.gnu.org/software/grub/grub.html'
@@ -77,7 +77,7 @@ build()
   export PATH="$srcdir/binutils-bin:$PATH"
   export CFLAGS='--ld-path=/usr/bin/ld.lld -no-pie'
   ./configure \
-    --target="x86_64" \
+    --target="${CARCH}" \
     --with-platform="efi" \
     ${_build_args[@]}
   make
@@ -92,25 +92,27 @@ build()
   _fetchpkg grub-efi "${FLIST_grub_efi[@]}"
   _fetchpkg grub-common "${FLIST_grub_common[@]}"
 
-  rm -r $srcdir/PKGDIR
+  if [[ "${CARCH}" == "x86_64" ]]; then
+    rm -r $srcdir/PKGDIR
 
-  cd $srcdir/${pkgbase}-${pkgver}
-  autoreconf -fiv
-  export PATH="$srcdir/binutils-bin:$PATH"
-  export CFLAGS='--ld-path=/usr/bin/ld.lld -no-pie'
-  ./configure \
-    --target="i386" \
-    --with-platform="pc" \
-    ${_build_args[@]}
-  make
-  truncate -cs 512 grub-core/diskboot.img
-  truncate -cs 512 grub-core/boot.img
-  make \
-    DESTDIR=$srcdir/PKGDIR \
-    bashcompletiondir="/usr/share/bash-completion/completions" \
-    install
+    cd $srcdir/${pkgbase}-${pkgver}
+    autoreconf -fiv
+    export PATH="$srcdir/binutils-bin:$PATH"
+    export CFLAGS='--ld-path=/usr/bin/ld.lld -no-pie'
+    ./configure \
+      --target="i386" \
+      --with-platform="pc" \
+      ${_build_args[@]}
+    make
+    truncate -cs 512 grub-core/diskboot.img
+    truncate -cs 512 grub-core/boot.img
+    make \
+      DESTDIR=$srcdir/PKGDIR \
+      bashcompletiondir="/usr/share/bash-completion/completions" \
+      install
 
-  _fetchpkg grub-bios "${FLIST_grub_bios[@]}"
+    _fetchpkg grub-bios "${FLIST_grub_bios[@]}"
+  fi
 }
 
 package_grub-common()
@@ -130,7 +132,9 @@ package_grub-efi()
 package_grub-bios()
 {
   depends=('grub-common')
-  mv "$srcdir/pkgs/grub-bios/usr" "${pkgdir}"
+  if [ -d "$srcdir/pkgs/grub-bios/usr" ]; then
+    mv "$srcdir/pkgs/grub-bios/usr" "${pkgdir}"
+  fi
 }
 
 package_grub-theme-starfield()
