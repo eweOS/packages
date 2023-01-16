@@ -76,10 +76,10 @@ build()
 {
   case $CARCH in
     x86_64)
-      makepkg_cflags="-Os -pipe -fno-plt -fstack-clash-protection -fcf-protection -fexceptions"
+      makepkg_cflags="-Os -pipe -fno-plt -fstack-clash-protection -fcf-protection"
       ;;
     aarch64)
-      makepkg_cflags="-Os -pipe -fno-plt -fexceptions"
+      makepkg_cflags="-Os -pipe -fno-plt"
       ;;
   esac
   sed -i ./makepkg.conf \
