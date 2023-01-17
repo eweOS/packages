@@ -4,7 +4,7 @@
 pkgbase=pacman-utils
 pkgname=(libalpm pacman makepkg repo-tools)
 pkgver=6.0.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://www.archlinux.org/pacman/"
 license=('GPL')
@@ -16,8 +16,12 @@ source=(
   https://sources.archlinux.org/other/pacman/pacman-$pkgver.tar.xz
   https://os-repo.ewe.moe/eweos/pacman.conf
   makepkg.conf
+  function_patch.sh
+  function_pick.sh
 )
 sha256sums=(
+  'SKIP'
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -127,6 +131,8 @@ package_makepkg()
 
   mv $srcdir/pkgs/makepkg/* "${pkgdir}"
   install -Dm644 "$srcdir/makepkg.conf" "$pkgdir/etc/makepkg.conf"
+  install -Dm644 "$srcdir/function_patch.sh" "$pkgdir/usr/share/makepkg/function_patch.sh"
+  install -Dm644 "$srcdir/function_pick.sh" "$pkgdir/usr/share/makepkg/function_pick.sh"
 }
 
 package_repo-tools()
