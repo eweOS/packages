@@ -2,7 +2,7 @@
 
 pkgname=(linux linux-headers)
 _basename=linux
-pkgver=6.1.4
+pkgver=6.1.8
 pkgrel=1
 arch=(x86_64 aarch64)
 url='http://www.kernel.org'
