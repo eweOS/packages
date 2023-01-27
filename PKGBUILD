@@ -18,7 +18,7 @@ source=(
   rootrw.service
   tty1.service
   tty2.service
-  ttyS0.service
+  ttyInit.service
   login.target
   hostname.rc
   interfaces.rc
@@ -57,6 +57,15 @@ prepare()
 
 build()
 {
+  case $CARCH in
+    x86_64)
+      export inittty=ttyS0
+      ;;
+    aarch64)
+      export inittty=ttyAMA0
+      ;;
+  esac
+  sed -i "s:ttyInit:${inittty}:g" ttyInit.service
   cd "$pkgname-$pkgver"
   make all \
     CXXOPTS="-std=c++11 -fno-rtti" \
