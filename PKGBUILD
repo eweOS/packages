@@ -4,7 +4,7 @@
 pkgname=vim
 _vermajor=9
 _verminor=0
-_verpatch=0432
+_verpatch=1259
 pkgver="${_vermajor}.${_verminor}.${_verpatch}"
 pkgrel=1
 pkgdesc='An IMproved version of the vi editor'
