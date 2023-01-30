@@ -2,5 +2,4 @@ type = process
 command = tty2socket /run/utmps/.utmpd-socket utmps-utmpd
 working-dir = /run/utmps
 run-as = utmp
-socket-listen = /run/utmps/.utmpd-socket
-depends-on = rcboot
+depends-on = pawprint

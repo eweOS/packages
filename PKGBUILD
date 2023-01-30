@@ -7,7 +7,7 @@ pkgdesc='An implementation of the utmpx.h family of functions performing user ac
 arch=(x86_64 aarch64)
 url='http://skarnet.org/software/utmps/'
 license=(ISC)
-depends=(dinit skalibs tty2socket busybox)
+depends=(skalibs)
 makedepends=(skalibs)
 
 source=(
@@ -15,7 +15,7 @@ source=(
   utmpd.service
   wtmpd.service
   utmps.install
-  utmps.init
+  utmps.tmpfiles
   compat-path.patch
   utmp.h
 )
@@ -54,12 +54,14 @@ build()
 
 package()
 {
+  depends+=(tty2socket busybox dinit catnest)
   cd ${pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
   install -d "${pkgdir}/etc/dinit.d"
   install -d "${pkgdir}/etc/rcboot.d"
+  install -d "${pkgdir}/etc/tmpfiles.d"
   install "${srcdir}/utmpd.service" "${pkgdir}/etc/dinit.d/utmpd"
   install "${srcdir}/wtmpd.service" "${pkgdir}/etc/dinit.d/wtmpd"
-  install -m 0755 "${srcdir}/utmps.init" "${pkgdir}/etc/rcboot.d/utmps"
+  install -m 0755 "${srcdir}/utmps.tmpfiles" "${pkgdir}/etc/tmpfiles.d/utmps.conf"
   install "${srcdir}/utmp.h" "${pkgdir}/usr/include/utmp.h"
 }
