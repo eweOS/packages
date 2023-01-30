@@ -2,12 +2,12 @@
 
 pkgname=libgcrypt
 pkgver=1.10.1
-pkgrel=0
+pkgrel=1
 pkgdesc='A general purpose cryptographic library originally based on code from GnuPG.'
 arch=(x86_64 aarch64)
-url='https://gnupg.org/software/libgcrypt'
+url="https://gnupg.org/software/$pkgname"
 license=(LGPLv2 GPLv2)
-source=('https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.10.1.tar.bz2')
+source=("https://gnupg.org/ftp/gcrypt/$pkgname/$pkgname-$pkgver.tar.bz2")
 sha256sums=('SKIP')
 
 depends=('musl' 'libgpg-error')
@@ -20,7 +20,7 @@ build() {
 
 package() {
 	cd libgcrypt-${pkgver}
-	make install
+	make DESTDIR="$pkgdir" install
 }
 
 check() {
