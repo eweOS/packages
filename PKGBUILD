@@ -2,7 +2,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 pkgname=dinit
 pkgver=0.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Service monitoring / "init" system'
 url='https://github.com/davmac314/dinit'
 source=(
@@ -84,6 +84,7 @@ check()
 
 package()
 {
+  depends+=(utmps pawprint busybox)
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" SBINDIR=/usr/bin install
   install -d ${pkgdir}/etc/dinit.d
@@ -110,5 +111,7 @@ package()
   for f in $(ls ${srcdir}/*.rc); do
     install $f ${pkgdir}/etc/rcboot.d/${f##*/}
   done
+
+  ln -s ../rcboot ${pkgdir}/etc/dinit.d/boot.d/rcboot
 
 }

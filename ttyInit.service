@@ -1,8 +1,7 @@
 type = process
 command = /sbin/getty ttyInit 38400
 restart = true
-depends-on = target-login
 termsignal = HUP
 smooth-recovery = true
-inittab-id = 1
-inittab-line = tty1
+inittab-id = 0
+inittab-line = tty0

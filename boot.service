@@ -1,5 +1,5 @@
 type = internal
 
-depends-ms = tty1
+depends-ms = target-login
 
 waits-for.d = boot.d

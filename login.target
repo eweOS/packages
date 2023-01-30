@@ -3,3 +3,8 @@ restart = false
 options = runs-on-console
 
 waits-for = syslogd
+waits-for = catnest
+waits-for = pawprint
+waits-for = utmpd
+waits-for = wtmpd
+waits-for = modules
