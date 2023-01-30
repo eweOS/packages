@@ -10,6 +10,8 @@ license=(LGPLv2 GPLv2)
 source=('https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.10.1.tar.bz2')
 sha256sums=('SKIP')
 
+depends=('musl' 'libgpg-error')
+
 build() {
 	cd libgcrypt-${pkgver}
 	./configure --prefix=/usr
