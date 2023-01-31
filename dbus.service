@@ -1,5 +1,5 @@
 type = process
 command = /usr/bin/dbus-daemon --system --nofork --nopidfile
-depends-on = dbus-prerun
 logfile = /var/log/dbus-daemon.log
 smooth-recovery = yes
+depends-on = target-login

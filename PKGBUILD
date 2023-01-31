@@ -2,7 +2,7 @@
 
 pkgname=dbus
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(x86_64 aarch64)
@@ -12,10 +12,9 @@ makedepends=(python autoconf-archive)
 source=(
   "https://gitlab.freedesktop.org/dbus/${pkgname}/-/archive/${pkgname}-${pkgver}/dbus-${pkgname}-${pkgver}.tar.gz"
   dbus.service
-  dbus.pre
-  dbus.pre.service
+  dbus.tmpfiles
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 prepare()
 {
@@ -50,8 +49,7 @@ package()
   rm -r "$pkgdir"/{etc,var}
 
   install -D "${srcdir}/dbus.service" "$pkgdir/etc/dinit.d/dbus"
-  install -D "${srcdir}/dbus.pre" "$pkgdir/etc/dinit.d/prerun.d/dbus"
-  install -D "${srcdir}/dbus.pre.service" "$pkgdir/etc/dinit.d/dbus-prerun"
+  install -D "${srcdir}/dbus.tmpfiles" "$pkgdir/etc/tmpfiles.d/dbus.conf"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 dbus-${pkgname}-${pkgver}/COPYING
 }
