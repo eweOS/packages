@@ -1,4 +1,4 @@
 type = process
 smooth-recovery = true
 command = /usr/bin/syslogd -n
-depends-on = rcboot
+depends-on = rootrw
