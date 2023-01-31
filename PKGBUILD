@@ -9,8 +9,11 @@ license=('GPL2')
 depends=('libxml2' 'glib')
 makedepends=('gettext' 'meson')
 url="https://www.freedesktop.org/wiki/Specifications/$pkgname-spec/"
-source=("https://gitlab.freedesktop.org/xdg/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('SKIP')
+source=(
+  "https://gitlab.freedesktop.org/xdg/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
+  update-shared-mime-database.hook
+)
+sha256sums=('SKIP' 'SKIP')
 options=(!makeflags)
 
 build() {
@@ -25,4 +28,6 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
+  
+  install -Dm644 $srcdir/update-shared-mime-database.hook $pkgdir/usr/share/libalpm/hooks/update-shared-mime-database.hook
 }
