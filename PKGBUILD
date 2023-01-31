@@ -2,7 +2,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 pkgname=dinit
 pkgver=0.16.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Service monitoring / "init" system'
 url='https://github.com/davmac314/dinit'
 source=(

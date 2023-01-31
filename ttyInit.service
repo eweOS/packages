@@ -5,3 +5,4 @@ termsignal = HUP
 smooth-recovery = true
 inittab-id = 0
 inittab-line = tty0
+depends-on = target-login
