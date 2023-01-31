@@ -2,18 +2,18 @@
 
 pkgname=nginx
 pkgver=1.23.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server'
 arch=(x86_64 aarch64)
 url='https://nginx.org'
 license=(custom)
 depends=(pcre2 zlib openssl libxcrypt)
-makedepends=()
 source=(
   $url/download/nginx-$pkgver.tar.gz
   nginx.service
+  nginx.sysusers
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 _activated_modules=(
   --with-threads
@@ -61,9 +61,12 @@ build()
 
 package()
 {
+  depends+=(dinit catnest)
   cd $pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
   install -d $pkgdir/etc/dinit.d
   install -m 0754 "${srcdir}/nginx.service" $pkgdir/etc/dinit.d/nginx
+  install -d $pkgdir/usr/lib/sysusers.d
+  install -m 0644 "${srcdir}/nginx.sysusers" $pkgdir/usr/lib/sysusers.d/nginx.conf
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
