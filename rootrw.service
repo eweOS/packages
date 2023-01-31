@@ -4,3 +4,4 @@ restart = false
 options = starts-rwfs
 logfile = /run/rootrw.log
 depends-on = early-filesystems
+waits-for = mdev
