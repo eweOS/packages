@@ -2,7 +2,7 @@
 
 pkgname=busybox
 pkgver=1.36.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Utilities for rescue and embedded systems"
 arch=("x86_64" "aarch64")
 url="https://www.busybox.net"
@@ -19,8 +19,20 @@ source=(
   "udhcpc.service"
   "udhcpc.script"
   "mdev.service"
+  "mdev.conf"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
 
 prepare()
 {
@@ -51,6 +63,7 @@ package()
   install -d etc
   install -m 0644 "${srcdir}/sysctl.conf" etc/
   install -m 0644 "${srcdir}/ntp.conf" etc/
+  install -m 0644 "${srcdir}/mdev.conf" etc/
   install -d usr/share/udhcpc
   install -m 0755 "${srcdir}/udhcpc.script" \
     usr/share/udhcpc/default.script
