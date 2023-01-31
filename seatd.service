@@ -1,5 +1,5 @@
 type               = process
-command            = seatd -n 3
+command            = seatd -n 3 -g seat
 smooth-recovery    = true
 logfile            = /var/log/seatd.log
 ready-notification = pipefd:3
