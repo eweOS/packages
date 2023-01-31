@@ -1,4 +1,4 @@
 type               = scripted
-command            = pawprint --remove --create
+command            = pawprint --remove --create --boot
 smooth-recovery    = true
-depends-on	   = rcboot
+depends-on	   = rootrw
