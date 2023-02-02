@@ -2,7 +2,7 @@
 
 pkgname=busybox
 pkgver=1.36.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Utilities for rescue and embedded systems"
 arch=("x86_64" "aarch64")
 url="https://www.busybox.net"
@@ -20,8 +20,10 @@ source=(
   "udhcpc.script"
   "mdev.service"
   "mdev.conf"
+  "remove_empty_dir.patch"
 )
 sha256sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -42,6 +44,8 @@ prepare()
   sed -i -e 's@<none>@-lutmps@' \
     -e '/^l_list=/s@$LDLIBS@-lutmps@' \
     scripts/trylink
+  # Fix eweOS/bugs/#2
+  patch -p1 < ../remove_empty_dir.patch
 }
 
 build()

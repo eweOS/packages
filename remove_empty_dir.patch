@@ -1,0 +1,21 @@
+diff --git a/libbb/remove_file.c b/libbb/remove_file.c
+index 1505e62..7bee9f0 100644
+--- a/libbb/remove_file.c
++++ b/libbb/remove_file.c
+@@ -45,8 +45,15 @@ int FAST_FUNC remove_file(const char *path, int flags)
+ 				return 0;
+ 		}
+ 
++		/*
++		 *	Handle empty directoires even if without read permission
++		 */
++		if (!rmdir(path))
++			return 0;
++
+ 		dp = opendir(path);
+-		if (dp == NULL) {
++		if (!dp) {
++			bb_perror_msg("can't remove '%s'",path);
+ 			return -1;
+ 		}
+ 
