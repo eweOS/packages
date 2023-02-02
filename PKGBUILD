@@ -2,7 +2,7 @@
 
 pkgname=greetd
 pkgver=0.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Generic greeter daemon"
 arch=(x86_64 aarch64)
 url="https://git.sr.ht/~kennylevinsen/greetd"
@@ -23,6 +23,8 @@ build() {
 }
 
 package() {
+  # To provide XDG_RUNTIME_DIR
+  depends+=(pam_rundir)
   install -Dm755 "$srcdir/greetd-$pkgver/target/release/greetd" \
     "$pkgdir/usr/bin/greetd"
   install -Dm755 "$srcdir/greetd-$pkgver/target/release/agreety" \
