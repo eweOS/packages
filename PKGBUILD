@@ -2,8 +2,8 @@
 
 pkgname=python
 _vermajor=3
-_verminor=10
-pkgver=${_vermajor}.${_verminor}.7
+_verminor=11
+pkgver=${_vermajor}.${_verminor}.1
 pkgrel=1
 pkgdesc='A clear and powerful object-oriented programming language,'
 arch=(x86_64 aarch64)
@@ -25,6 +25,13 @@ source=(
 sha256sums=(
   'SKIP'
 )
+
+prepare()
+{
+  cd Python-${pkgver}
+  # Ignore "x86_64-linux-gnu" output for "cc --print-multiarch"
+  sed -i 's@--print-multiarch@@g' ./configure
+}
 
 build()
 {
