@@ -1,8 +1,8 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libksba
-pkgver=1.6.1
-pkgrel=1
+pkgver=1.6.3
+pkgrel=0
 pkgdesc='Library for working with X.509 certificates, CMS data and related objects'
 url='https://www.gnupg.org/related_software/libksba/'
 license=('GPL')
