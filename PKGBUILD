@@ -3,8 +3,8 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=libgpg-error
-pkgver=1.45
-pkgrel=2
+pkgver=1.46
+pkgrel=0
 pkgdesc="Support library for libgcrypt"
 arch=(x86_64 aarch64)
 url="https://www.gnupg.org"
