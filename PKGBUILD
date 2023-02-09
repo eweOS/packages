@@ -7,7 +7,7 @@ pkgdesc='Combines the functionality of traceroute and ping into one tool'
 url='https://www.bitwizard.nl/mtr/'
 arch=(x86_64 aarch64)
 license=('GPL2')
-makedepends=('ncurses' 'libcap')
+depends=('ncurses' 'libcap')
 source=(
   https://github.com/traviscross/mtr/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz
   mtr.install
