@@ -2,7 +2,7 @@
 
 pkgname=mtr
 pkgver=0.95
-pkgrel=1
+pkgrel=2
 pkgdesc='Combines the functionality of traceroute and ping into one tool'
 url='https://www.bitwizard.nl/mtr/'
 arch=(x86_64 aarch64)
