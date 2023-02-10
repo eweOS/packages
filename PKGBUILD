@@ -3,7 +3,7 @@
 pkgname=libogg
 pkgdesc='Ogg bitstream library'
 pkgver=1.3.5
-pkgrel=0
+pkgrel=1
 url='https://xiph.org/ogg/'
 license=('BSD')
 depends=('musl')
@@ -20,5 +20,5 @@ build() {
 package() {
 	cd libogg-${pkgver}
 	make install DESTDIR=${pkgdir}/
-	install -Dm 644 COPYING ${pkgdir}/usr/share/license/libogg/LICENSE
+	install -Dm 644 COPYING ${pkgdir}/usr/share/licenses/libogg/LICENSE
 }
