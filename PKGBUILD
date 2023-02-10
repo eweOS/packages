@@ -1,0 +1,24 @@
+# Maintainer: Ziyao <ziyao@disroot.org>
+
+pkgname=libvorbis
+pkgdesc='Ogg Vorbis codec'
+pkgver=1.3.7
+pkgrel=0
+url='https://xiph.org/vorbis/'
+license=('BSD')
+depends=('musl' 'libogg')
+source=("https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-${pkgver}.tar.gz")
+sha256sums=('SKIP')
+arch=(x86_64 aarch64)
+provides=('libvorbis.so' 'libvorbisenc.so' 'libvorbisfile.so')
+
+build() {
+	cd libvorbis-${pkgver}
+	./configure --prefix=/usr
+	make
+}
+package() {
+	cd libvorbis-${pkgver}
+	make install DESTDIR=${pkgdir}/
+	install -Dm 644 COPYING ${pkgdir}/usr/share/licenses/libvorbis/LICENSE
+}
