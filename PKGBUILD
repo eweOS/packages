@@ -2,7 +2,7 @@
 
 pkgname=libxkbcommon
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Keymap handling library for toolkits and window systems'
 url='https://xkbcommon.org/'
 arch=(x86_64 aarch64)
@@ -22,8 +22,7 @@ build()
 {
   ewe-meson libxkbcommon-xkbcommon-${pkgver} build \
     -Denable-x11=false \
-    -Denable-docs=false \
-    -Denable-xkbregistry=false
+    -Denable-docs=false
   meson compile -C build
 }
 
