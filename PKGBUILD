@@ -4,7 +4,7 @@ pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang)
 _realpkgname=llvm-project
 pkgver=15.0.6
 _binutilsver=2.39
-pkgrel=4
+pkgrel=5
 arch=('x86_64' 'aarch64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -230,6 +230,11 @@ package_llvm-libs()
 
   mv "$srcdir/pkgs/llvm-libs/usr" "${pkgdir}/usr"
   find ${pkgdir}/usr/lib -name *.a -delete || true
+
+  # libgcc_s replacement
+  ln -s libunwind.so.1.0 $pkgdir/usr/lib/libgcc_s.so.1.0
+  ln -s libgcc_s.so.1.0 $pkgdir/usr/lib/libgcc_s.so.1
+  ln -s libgcc_s.so.1.0 $pkgdir/usr/lib/libgcc_s.so
 }
 
 package_llvm()
