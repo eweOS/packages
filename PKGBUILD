@@ -2,8 +2,8 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=e2fsprogs
-pkgver=1.46.5
-pkgrel=2
+pkgver=1.47.0
+pkgrel=1
 pkgdesc='Ext2/3/4 filesystem utilities'
 arch=('x86_64' 'aarch64')
 license=('GPL' 'LGPL' 'MIT')
