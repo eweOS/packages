@@ -4,7 +4,7 @@ pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang)
 _realpkgname=llvm-project
 pkgver=15.0.6
 _binutilsver=2.39
-pkgrel=5
+pkgrel=6
 arch=('x86_64' 'aarch64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -185,7 +185,6 @@ package_clang()
   mv "$srcdir/pkgs/clang/usr" "${pkgdir}/usr"
   ln -s clang "${pkgdir}/usr/bin/cc"
   ln -s clang++ "${pkgdir}/usr/bin/c++"
-  rm ${pkgdir}/usr/lib/*.a || true
 }
 
 package_lldb()
@@ -194,7 +193,6 @@ package_lldb()
   depends=('llvm-libs' 'clang')
 
   mv "$srcdir/pkgs/lldb/usr" "${pkgdir}/usr"
-  find ${pkgdir}/usr/lib -name *.a -delete || true
 }
 
 package_openmp()
@@ -203,7 +201,6 @@ package_openmp()
   depends=('llvm-libs' 'libelf' 'libffi')
 
   mv "$srcdir/pkgs/openmp/usr" "${pkgdir}/usr"
-  find ${pkgdir}/usr/lib -name *.a -delete || true
 }
 
 package_lld()
@@ -213,7 +210,6 @@ package_lld()
   depends=('zlib' 'llvm-libs' 'libedit' 'ncurses' 'libxml2' 'xz')
 
   mv "$srcdir/pkgs/lld/usr" "${pkgdir}/usr"
-  find ${pkgdir}/usr/lib -name *.a -delete || true
 }
 
 package_llvm-lto()
@@ -221,7 +217,6 @@ package_llvm-lto()
   pkgdesc="lto library for LLVM."
 
   mv "$srcdir/pkgs/llvm-lto/usr" "${pkgdir}/usr"
-  find ${pkgdir}/usr/lib -name *.a -delete || true
 }
 
 package_llvm-libs()
@@ -229,7 +224,6 @@ package_llvm-libs()
   pkgdesc="LLVM runtime libraries for c++ and more."
 
   mv "$srcdir/pkgs/llvm-libs/usr" "${pkgdir}/usr"
-  find ${pkgdir}/usr/lib -name *.a -delete || true
 
   # libgcc_s replacement
   ln -s libunwind.so.1.0 $pkgdir/usr/lib/libgcc_s.so.1.0
