@@ -2,12 +2,12 @@
 
 pkgname=pipewire
 pkgver=0.3.58
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64 aarch64)
 license=(MIT)
-depends=('dbus' 'libudev')
+depends=('dbus' 'libudev' 'libsndfile' 'libusb')
 makedepends=('meson')
 source=("https://gitlab.freedesktop.org/pipewire/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('SKIP')
@@ -41,12 +41,10 @@ build() {
     -D videotestsrc=disabled
     -D volume=disabled
     -D sdl2=disabled
-    -D sndfile=disabled
     -D libpulse=disabled
     -D roc=disabled
     -D avahi=disabled
     -D echo-cancel-webrtc=disabled
-    -D libusb=disabled
     -D session-managers=[]
     -D raop=disabled
     -D lv2=disabled
@@ -56,6 +54,8 @@ build() {
     -D legacy-rtkit=false
     -D avb=disabled
     -D flatpak=disabled
+    -D libusb=enabled
+    -D sndfile=enabled
   )
 
   ewe-meson $pkgname-$pkgver build \
