@@ -2,7 +2,7 @@
 
 pkgname=utmps
 pkgver=0.1.2.0
-pkgrel=7
+pkgrel=8
 pkgdesc='An implementation of the utmpx.h family of functions performing user accounting'
 arch=(x86_64 aarch64)
 url='http://skarnet.org/software/utmps/'
@@ -13,7 +13,6 @@ source=(
   "http://skarnet.org/software/utmps/utmps-${pkgver}.tar.gz"
   utmpd.service
   wtmpd.service
-  utmps.install
   utmps.tmpfiles
   compat-path.patch
   utmp.h
@@ -26,10 +25,7 @@ sha256sums=(
   'SKIP'
   'SKIP'
   'SKIP'
-  'SKIP'
 )
-
-install=utmps.install
 
 prepare()
 {
@@ -62,4 +58,7 @@ package()
   install "${srcdir}/wtmpd.service" "${pkgdir}/etc/dinit.d/wtmpd"
   install -m 0755 "${srcdir}/utmps.tmpfiles" "${pkgdir}/etc/tmpfiles.d/utmps.conf"
   install "${srcdir}/utmp.h" "${pkgdir}/usr/include/utmp.h"
+
+  ln -s ../utmpd /etc/dinit.d/boot.d/utmpd
+  ln -s ../wtmpd /etc/dinit.d/boot.d/wtmpd
 }
