@@ -65,7 +65,7 @@ package()
   ln -s "lib" usr/lib64
   ln -s "bin" usr/sbin
   install -d -m 1777 "var/tmp"
-  for user in {passwd,shadow,group,profile,shells,services,protocols,os-release,hosts}; do
+  for user in {passwd,shadow,group,profile,shells,services,protocols,os-release,hosts,motd}; do
     install -m0644 $srcdir/$user "etc/$user"
   done
 }
