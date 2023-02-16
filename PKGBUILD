@@ -2,13 +2,12 @@
 
 pkgname=utmps
 pkgver=0.1.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc='An implementation of the utmpx.h family of functions performing user accounting'
 arch=(x86_64 aarch64)
 url='http://skarnet.org/software/utmps/'
 license=(ISC)
-depends=(skalibs)
-makedepends=(skalibs)
+depends=(skalibs tty2socket busybox catnest)
 
 source=(
   "http://skarnet.org/software/utmps/utmps-${pkgver}.tar.gz"
@@ -54,7 +53,6 @@ build()
 
 package()
 {
-  depends+=(tty2socket busybox dinit catnest)
   cd ${pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
   install -d "${pkgdir}/etc/dinit.d"
