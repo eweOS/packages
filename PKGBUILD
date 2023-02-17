@@ -51,7 +51,7 @@ package()
 {
   cd ${pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
-  install -d "${pkgdir}/etc/dinit.d"
+  install -d "${pkgdir}/etc/dinit.d/boot.d"
   install -d "${pkgdir}/etc/rcboot.d"
   install -d "${pkgdir}/etc/tmpfiles.d"
   install "${srcdir}/utmpd.service" "${pkgdir}/etc/dinit.d/utmpd"
