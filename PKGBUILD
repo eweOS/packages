@@ -1,9 +1,9 @@
 # Maintainer: Ziyao <ziyao@disroot.org>
 
-pkgname=gpg
+pkgname=gnupg
 pkgdesc='GNU Privacy Guard'
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 url='https://gnupg.org'
 license=('GPL2')
 depends=('musl' 'libassuan' 'libgpg-error' 'npth' 'libksba' 'pinentry'
@@ -11,6 +11,7 @@ depends=('musl' 'libassuan' 'libgpg-error' 'npth' 'libksba' 'pinentry'
 source=("https://gnupg.org/ftp/gcrypt/gnupg/gnupg-${pkgver}.tar.bz2")
 sha256sums=('SKIP')
 arch=(x86_64 aarch64)
+provides=(gpg)
 
 build()
 {
