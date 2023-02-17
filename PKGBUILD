@@ -59,6 +59,6 @@ package()
   install -m 0755 "${srcdir}/utmps.tmpfiles" "${pkgdir}/etc/tmpfiles.d/utmps.conf"
   install "${srcdir}/utmp.h" "${pkgdir}/usr/include/utmp.h"
 
-  ln -s ../utmpd /etc/dinit.d/boot.d/utmpd
-  ln -s ../wtmpd /etc/dinit.d/boot.d/wtmpd
+  ln -s ../utmpd "${pkgdir}/etc/dinit.d/boot.d/utmpd"
+  ln -s ../wtmpd "${pkgdir}/etc/dinit.d/boot.d/wtmpd"
 }
