@@ -2,12 +2,13 @@
 
 pkgname=dropbear
 pkgver=2022.82
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight SSH server'
 arch=(x86_64 aarch64)
 url='https://github.com/mkj/dropbear'
 license=(MIT)
 options=(emptydirs)
+depends=(libcrypt.so)
 makedepends=(utmps)
 _srcdir=${pkgname}-DROPBEAR_${pkgver}
 source=(
