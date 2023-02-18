@@ -1,3 +1,4 @@
 root=/dev/sda
 root_type=ext4
+hooks=mdev
 compress='gzip -9'
