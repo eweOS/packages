@@ -11,7 +11,7 @@ for kernel in "${kernels[@]}"; do
     # if pkgbase does not belong to any package then skip this kernel
     continue
   fi
-  pkgbase=$(pacman -Qqo "${kernel}" 2>&1)
+  pkgbase=$(pacman -Qqo "${kernel}" 2>/dev/null)
   tinyramfs -f -k ${kernel##/usr/lib/modules/} /boot/initramfs-${pkgbase}.img &
   install -Dm644 "${kernel}/vmlinuz" "/boot/vmlinuz-${pkgbase}"
 done
