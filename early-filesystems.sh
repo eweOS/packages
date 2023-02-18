@@ -7,7 +7,7 @@ if [ "$1" = start ]; then
     PATH=/usr/bin:/usr/sbin:/bin:/sbin
 
     # Must have sysfs mounted for udevtrigger to function.
-    mount -n -t sysfs sysfs /sys
+    mount -n -t sysfs sysfs /sys || true
     
     # Ideally devtmpfs will be mounted by kernel, we can mount here anyway:
     mount -n -t devtmpfs tmpfs /dev || true
@@ -16,14 +16,11 @@ if [ "$1" = start ]; then
     mount -n -t devpts -o gid=5 devpts /dev/pts || true
 
     # /run, and various directories within it
-    mount -n -t tmpfs -o mode=775 tmpfs /run
+    mount -n -t tmpfs -o mode=775 tmpfs /run || true
     mkdir /run/lock /run/udev
     
     # "hidepid=1" doesn't appear to take effect on first mount of /proc,
     # so we mount it and then remount:
     mount -n -t proc -o hidepid=1 proc /proc
     mount -n -t proc -o remount,hidepid=1 proc /proc
-
-    # /dev/fd
-    ln -s /proc/self/fd /dev/fd
 fi
