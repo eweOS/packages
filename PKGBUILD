@@ -3,7 +3,7 @@
 pkgname=(linux linux-headers)
 _basename=linux
 pkgver=6.1.8
-pkgrel=4
+pkgrel=5
 arch=(x86_64 aarch64)
 url='http://www.kernel.org'
 license=(GPL2)
@@ -59,6 +59,9 @@ package_linux()
 
   rm -f "$modulesdir/build"
   rm -f "$modulesdir/source"
+
+  # Used by tinyramfs to name the kernel
+  echo "$_basename" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 }
 
 package_linux-headers()
