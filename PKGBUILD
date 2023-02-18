@@ -2,7 +2,7 @@
 
 pkgname=catnest
 pkgver=0.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A substitution of systemd-sysusers"
 url="https://github.com/eweOS/catnest"
 license=(MIT)
@@ -14,16 +14,18 @@ source=(
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
-build() {
+build()
+{
   cd $pkgname-$pkgver
   cc -o $pkgname $pkgname.c -DARCH=$arch
 }
 
-package() {
+package()
+{
   cd $pkgname-$pkgver
   install -D $pkgname $pkgdir/usr/bin/$pkgname
   install -D ../$pkgname.service $pkgdir/etc/dinit.d/$pkgname
   install -D ../basic.conf $pkgdir/usr/lib/sysusers.d/00-basic.conf
   install -D $pkgname.1 $pkgdir/usr/share/man/man1/$pkgname.1
-  install -D LICENSE $pkgdir/usr/share/licenses/$pkgname
+  install -D LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
