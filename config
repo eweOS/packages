@@ -1,0 +1,3 @@
+root=/dev/vda2
+root_type=ext4
+compress='gzip -9'
