@@ -2,7 +2,7 @@
 
 pkgname=libsdl2
 pkgver=2.26.3
-pkgrel=0
+pkgrel=1
 pkgdesc="Simple DirectMedia Layer"
 url="https://libsdl.org"
 arch=(x86_64 aarch64)
@@ -10,6 +10,7 @@ license=('zlib')
 depends=('musl' 'wayland' 'libudev' 'dbus' 'libsamplerate')
 source=("https://github.com/libsdl-org/SDL/releases/download/release-${pkgver}/SDL2-${pkgver}.tar.gz")
 sha256sums=('SKIP')
+provides=('libSDL2.so')
 
 build() {
 	cd SDL2-${pkgver}
