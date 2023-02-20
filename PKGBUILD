@@ -3,7 +3,7 @@
 pkgname=(libx264 x264)
 pkgver=eaa68fad
 _fullhash=eaa68fad9e5d201d42fde51665f2d137ae96baf0
-pkgrel=0
+pkgrel=1
 pkgdesc_libx264="x264 video coding library"
 pkgdesc_x264="video encoder for the H.264/MPEG-4 AVC standard"
 url="https://www.videolan.org/developers/x264.html"
@@ -18,7 +18,7 @@ provides_libx264=('libx264.so')
 build() {
 	cd x264-${_fullhash}
 	export CC=clang
-	./configure --prefix=/usr --enable-shared --enable-lto
+	./configure --prefix=/usr --enable-shared
 	make
 	make install DESTDIR=fake
 }
