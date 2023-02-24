@@ -4,14 +4,13 @@
 pkgbase=musl
 pkgname=(musl musl-static)
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='An implementation of the C/POSIX standard library.'
 arch=(x86_64 aarch64)
 url='https://musl.libc.org'
 license=(LGPL BSD)
 groups=(base-devel)
-depends=()
-makedepends=()
+makedepends=(lld)
 provides=(ld-musl-$(arch).so.1 libc.so)
 
 source=(
@@ -38,6 +37,8 @@ prepare()
 build()
 {
   cd $pkgbase-$pkgver
+  # Linking with mold would cause segfault with mimalloc
+  CFLAGS="$CFLAGS -fuse-ld=lld"
   ./configure --prefix=/usr --syslibdir=/usr/lib
   make
   cd $srcdir
