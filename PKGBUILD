@@ -2,14 +2,15 @@
 
 pkgname=(linux linux-headers)
 _basename=linux
-pkgver=6.2
-pkgrel=1
+_pkgver=6.2
+pkgver=6.2.0
+pkgrel=2
 arch=(x86_64 aarch64)
 url='http://www.kernel.org'
 license=(GPL2)
 makedepends=(bison flex perl python libelf linux-headers rsync lld)
 source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz"
   linux-config.arm64
   linux-config.x86_64
   busybox-find-compat.patch
@@ -23,7 +24,7 @@ sha256sums=(
 
 prepare()
 {
-  cd ${_basename}-${pkgver}
+  cd ${_basename}-${_pkgver}
   sed -i \
     -e '/^CC/s@gcc@cc@g' \
     -e '/^HOSTCC/s@gcc@cc@g' Makefile
@@ -32,7 +33,7 @@ prepare()
 
 build()
 {
-  cd ${_basename}-${pkgver}
+  cd ${_basename}-${_pkgver}
   case $CARCH in
     x86_64)
       export build_arch=x86_64
@@ -48,7 +49,7 @@ build()
 package_linux()
 {
   pkgdesc="The $pkgdesc kernel and modules"
-  cd ${_basename}-${pkgver}
+  cd ${_basename}-${_pkgver}
 
   local modulesdir="$pkgdir/usr/lib/modules/$pkgver"
   install -Dm644 "$(make -s image_name ARCH=${build_arch})" "$modulesdir/vmlinuz"
@@ -67,6 +68,6 @@ package_linux()
 package_linux-headers()
 {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-  cd ${_basename}-${pkgver}
+  cd ${_basename}-${_pkgver}
   make LLVM=1 LLVM_IAS=1 ARCH=${build_arch} INSTALL_HDR_PATH=$pkgdir/usr headers_install
 }
