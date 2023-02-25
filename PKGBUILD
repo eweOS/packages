@@ -2,7 +2,7 @@
 
 pkgname=tinyramfs
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Tiny initramfs generator written in POSIX shell"
 arch=('any')
 url="https://github.com/illiliti/tinyramfs"
@@ -21,7 +21,7 @@ prepare()
 {
   cd $pkgname-$pkgver
   # https://github.com/illiliti/tinyramfs/pull/17
-  patch < ../add-live.patch
+  patch -p1 < ../add-live.patch
 }
 
 check()

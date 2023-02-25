@@ -4,17 +4,17 @@ Date: Sat, 10 Oct 2020 21:55:33 +0200
 Subject: [PATCH 1/6] live hooks
 
 ---
- hooks/live/live      | 17 +++++++++++++++++
- hooks/live/live.init | 30 ++++++++++++++++++++++++++++++
+ hook/live/live      | 17 +++++++++++++++++
+ hook/live/live.init | 30 ++++++++++++++++++++++++++++++
  2 files changed, 47 insertions(+)
  create mode 100644 hooks/live/live
  create mode 100644 hooks/live/live.init
 
-diff --git a/hooks/live/live b/hooks/live/live
+diff --git a/hook/live/live b/hook/live/live
 new file mode 100644
 index 0000000..c7fbd5a
 --- /dev/null
-+++ b/hooks/live/live
++++ b/hook/live/live
 @@ -0,0 +1,17 @@
 +#!/bin/sh
 +#
@@ -33,11 +33,11 @@ index 0000000..c7fbd5a
 +for _bin in blockdev cp losetup umount; do
 +    copy_binary "$_bin"
 +done
-diff --git a/hooks/live/live.init b/hooks/live/live.init
+diff --git a/hook/live/live.init b/hook/live/live.init
 new file mode 100644
 index 0000000..9ad91ec
 --- /dev/null
-+++ b/hooks/live/live.init
++++ b/hook/live/live.init
 @@ -0,0 +1,30 @@
 +#!/bin/sh
 +#
@@ -76,13 +76,13 @@ Date: Sat, 10 Oct 2020 22:01:15 +0200
 Subject: [PATCH 2/6] Update live hook
 
 ---
- hooks/live/live | 7 +------
+ hook/live/live | 7 +------
  1 file changed, 1 insertion(+), 6 deletions(-)
 
-diff --git a/hooks/live/live b/hooks/live/live
+diff --git a/hook/live/live b/hook/live/live
 index c7fbd5a..9f79fdc 100644
---- a/hooks/live/live
-+++ b/hooks/live/live
+--- a/hook/live/live
++++ b/hook/live/live
 @@ -3,12 +3,7 @@
  # false positive
  # shellcheck disable=2154
@@ -104,13 +104,13 @@ Date: Sat, 10 Oct 2020 22:54:18 +0200
 Subject: [PATCH 3/6] remove shellcheck comment
 
 ---
- hooks/live/live | 3 ---
+ hook/live/live | 3 ---
  1 file changed, 3 deletions(-)
 
-diff --git a/hooks/live/live b/hooks/live/live
+diff --git a/hook/live/live b/hook/live/live
 index 9f79fdc..5833164 100644
---- a/hooks/live/live
-+++ b/hooks/live/live
+--- a/hook/live/live
++++ b/hook/live/live
 @@ -1,7 +1,4 @@
  #!/bin/sh
 -#
@@ -126,13 +126,13 @@ Date: Sat, 10 Oct 2020 23:21:27 +0200
 Subject: [PATCH 4/6] fix mistake
 
 ---
- hooks/live/live.init | 2 +-
+ hook/live/live.init | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hooks/live/live.init b/hooks/live/live.init
+diff --git a/hook/live/live.init b/hook/live/live.init
 index 9ad91ec..003a6d1 100644
---- a/hooks/live/live.init
-+++ b/hooks/live/live.init
+--- a/hook/live/live.init
++++ b/hook/live/live.init
 @@ -21,7 +21,7 @@ sfsimg="$medium/$live_img_file"
      mount -t tmpfs -o "${live_ram_opts:?}" ram /run/initramfs/ram || panic
      cp "$sfsimg" /run/initramfs/ram || panic
@@ -149,24 +149,24 @@ Date: Thu, 19 Nov 2020 16:14:49 +0100
 Subject: [PATCH 6/6] Improvements
 
 ---
- hooks/live/live      | 2 +-
- hooks/live/live.init | 4 ++--
+ hook/live/live      | 2 +-
+ hook/live/live.init | 4 ++--
  2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hooks/live/live b/hooks/live/live
+diff --git a/hook/live/live b/hook/live/live
 index 5833164..1a830b1 100644
---- a/hooks/live/live
-+++ b/hooks/live/live
+--- a/hook/live/live
++++ b/hook/live/live
 @@ -1,4 +1,4 @@
 -#!/bin/sh
 +# vim: set ft=sh:
  
  for _mod in cdrom loop overlay squashfs; do
      copy_module "$_mod"
-diff --git a/hooks/live/live.init b/hooks/live/live.init
+diff --git a/hook/live/live.init b/hook/live/live.init
 index 003a6d1..b2e5316 100644
---- a/hooks/live/live.init
-+++ b/hooks/live/live.init
+--- a/hook/live/live.init
++++ b/hook/live/live.init
 @@ -1,4 +1,4 @@
 -#!/bin/sh
 +# vim: set ft=sh:
