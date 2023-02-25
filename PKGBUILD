@@ -2,8 +2,8 @@
 
 pkgname=(linux linux-headers)
 _basename=linux
-pkgver=6.1.8
-pkgrel=5
+pkgver=6.2
+pkgrel=1
 arch=(x86_64 aarch64)
 url='http://www.kernel.org'
 license=(GPL2)
