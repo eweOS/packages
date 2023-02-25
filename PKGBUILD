@@ -10,9 +10,10 @@ license=(MIT Apache)
 source=(
   https://static.rust-lang.org/dist/rustc-1.65.0-src.tar.gz
   https://sh.rustup.rs/rustup-init.sh
-  config.toml
+  config.toml.x86_64
+  config.toml.aarch64
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 depends=(musl llvm-libs musl-static curl libssh2)
 makedepends=(rust llvm libffi perl python cmake ninja)
