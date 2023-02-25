@@ -27,11 +27,11 @@ index 0000000..c7fbd5a
 +squash="/usr/lib/modules/$kernel/kernel/fs/squashfs/squashfs.ko"
 +
 +for _mod in "$cdrom" "$loop" "$overlay" "$squash"; do
-+    copy_module "$_mod"
++    copy_kmod "$_mod"
 +done
 +
 +for _bin in blockdev cp losetup umount; do
-+    copy_binary "$_bin"
++    copy_exec "$_bin"
 +done
 diff --git a/hook/live/live.init b/hook/live/live.init
 new file mode 100644
@@ -94,7 +94,7 @@ index c7fbd5a..9f79fdc 100644
 -
 -for _mod in "$cdrom" "$loop" "$overlay" "$squash"; do
 +for _mod in cdrom loop overlay squashfs; do
-     copy_module "$_mod"
+     copy_kmod "$_mod"
  done
  
 
@@ -118,7 +118,7 @@ index 9f79fdc..5833164 100644
 -# shellcheck disable=2154
  
  for _mod in cdrom loop overlay squashfs; do
-     copy_module "$_mod"
+     copy_kmod "$_mod"
 
 From 20c85f8f9296d36989383f8d1e1ea53bfc1f99e7 Mon Sep 17 00:00:00 2001
 From: Eudald Gubert i Roldan <hola@eudald.gr>
@@ -162,7 +162,7 @@ index 5833164..1a830b1 100644
 +# vim: set ft=sh:
  
  for _mod in cdrom loop overlay squashfs; do
-     copy_module "$_mod"
+     copy_kmod "$_mod"
 diff --git a/hook/live/live.init b/hook/live/live.init
 index 003a6d1..b2e5316 100644
 --- a/hook/live/live.init
