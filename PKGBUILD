@@ -4,7 +4,7 @@ pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang)
 _realpkgname=llvm-project
 pkgver=15.0.6
 _binutilsver=2.39
-pkgrel=7
+pkgrel=8
 arch=('x86_64' 'aarch64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -154,7 +154,6 @@ build()
     -DLIBCXXABI_USE_COMPILER_RT=ON
     -DLIBUNWIND_USE_COMPILER_RT=ON
     -DLIBUNWIND_INSTALL_HEADERS=ON
-    -DCOMPILER_RT_BUILD_SANITIZERS=ON
     -DCOMPILER_RT_BUILD_GWP_ASAN=OFF
     -DCOMPILER_RT_BUILD_XRAY=OFF
     -DCOMPILER_RT_BUILD_LIBFUZZER=OFF
@@ -162,6 +161,15 @@ build()
     -DLLVM_LIBGCC_EXPLICIT_OPT_IN=ON
     -DLLVM_BINUTILS_INCDIR=$srcdir/binutils-${_binutilsver}/include
   )
+
+  case $CARCH in
+    x86_64)
+      CMARGS+=("-DCOMPILER_RT_BUILD_SANITIZERS=ON")
+      ;;
+    aarch64)
+      CMARGS+=("-DCOMPILER_RT_BUILD_SANITIZERS=OFF")
+      ;;
+  esac
 
   cmake "${CMARGS[@]}" \
     -DLLVM_ENABLE_PROJECTS="clang;compiler-rt;libunwind;lld;lldb;libcxxabi;libcxx;openmp" \
