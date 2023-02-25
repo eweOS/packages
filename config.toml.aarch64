@@ -5,8 +5,8 @@ link-shared = true
 static-libstdcpp = false
 use-libcxx = true
 [build]
-build = "x86_64-unknown-linux-musl"
-target = ["x86_64-unknown-linux-musl"]
+build = "aarch64-unknown-linux-musl"
+target = ["aarch64-unknown-linux-musl"]
 cargo = "/usr/bin/cargo"
 rustc = "/usr/bin/rustc"
 rustfmt = "/usr/bin/rustfmt"
@@ -22,7 +22,7 @@ prefix = "/usr"
 [rust]
 debuginfo-level-std = 2
 channel = "stable"
-description = "eweOS rust 1.65.0"
+description = "eweOS rust %RUSTVER%"
 rpath = false
 backtrace-on-ice = true
 remap-debuginfo = true
@@ -36,7 +36,7 @@ llvm-libunwind = "system"
 codegen-units-std = 1
 # musl target produces warnings
 deny-warnings = false
-[target.x86_64-unknown-linux-musl]
+[target.aarch64-unknown-linux-musl]
 crt-static = false
 llvm-config = "/usr/bin/llvm-config"
 [dist]

@@ -2,7 +2,7 @@
 
 pkgname=rust
 pkgver=1.65.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=(x86_64 aarch64)
 url='https://www.rust-lang.org/'
@@ -22,15 +22,17 @@ prepare()
   chmod +x rustup-init.sh
   ./rustup-init.sh --profile minimal -y
   source "$HOME/.cargo/env"
-
-  cp config.toml ${pkgname}c-${pkgver}-src/
 }
 
 build()
 {
+  cp config.toml.${CARCH} ${pkgname}c-${pkgver}-src/config.toml
+
   source "$HOME/.cargo/env"
 
   cd ${pkgname}c-${pkgver}-src
+
+  sed -i "s@%RUSTVER%@$pkgver@g" config.toml
 
   export RUST_BACKTRACE=1
 
