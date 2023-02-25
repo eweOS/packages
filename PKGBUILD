@@ -4,7 +4,7 @@
 pkgbase=pacman-utils
 pkgname=(libalpm pacman makepkg repo-tools)
 pkgver=6.0.2
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'aarch64')
 url="https://www.archlinux.org/pacman/"
 license=('GPL')
@@ -83,7 +83,7 @@ build()
       makepkg_cflags="-Os -pipe -fno-plt -fstack-clash-protection -fcf-protection"
       ;;
     aarch64)
-      makepkg_cflags="-Os -pipe -fno-plt"
+      makepkg_cflags="-march=armv8-a -Os -pipe -fno-plt"
       ;;
   esac
   sed -i ./makepkg.conf \
@@ -120,7 +120,6 @@ package_pacman()
 
   mv $srcdir/pkgs/pacman/* "${pkgdir}"
   install -Dm644 "$srcdir/pacman.conf" "$pkgdir/etc/pacman.conf"
-  #install -m644 "$srcdir/makepkg.conf" "$pkgdir/etc"
 }
 
 package_makepkg()
