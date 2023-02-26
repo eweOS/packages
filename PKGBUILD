@@ -10,14 +10,17 @@ arch=(x86_64 aarch64)
 url="http://typespeed.sourceforge.net"
 license=('GPL')
 depends=('ncurses')
-source=(https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('SKIP')
+source=(https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz
+	"config.sub::http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD"
+	"config.guess::http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD")
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 prepare()
 {
   cd $pkgname-$pkgver
   # fix error unknown type name clock_t
   sed -i "1i #include <time.h>" src/typespeed.h
+  cp $srcdir/{config.sub,config.guess} .
 }
 
 build()
