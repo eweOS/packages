@@ -8,7 +8,7 @@ arch=(x86_64 aarch64)
 url='https://www.rust-lang.org/'
 license=(MIT Apache)
 source=(
-  https://static.rust-lang.org/dist/rustc-1.65.0-src.tar.gz
+  https://static.rust-lang.org/dist/rustc-$pkgver-src.tar.gz
   https://sh.rustup.rs/rustup-init.sh
   config.toml.x86_64
   config.toml.aarch64
