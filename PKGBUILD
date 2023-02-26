@@ -4,7 +4,7 @@
 
 pkgname=typespeed
 pkgver=0.6.5
-pkgrel=9
+pkgrel=10
 pkgdesc="Test your typing speed, and get your fingers' CPS."
 arch=(x86_64 aarch64)
 url="http://typespeed.sourceforge.net"
