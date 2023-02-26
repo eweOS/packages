@@ -2,7 +2,7 @@
 
 pkgname=pam
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="PAM (Pluggable Authentication Modules) library"
 arch=(x86_64 aarch64)
 license=('GPL2')
@@ -17,6 +17,7 @@ source=(
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 options=('!emptydirs')
+provides=('libpam.so' 'libpamc.so' 'libpam_misc.so')
 
 build()
 {
