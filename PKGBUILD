@@ -8,19 +8,21 @@ url='http://0pointer.de/lennart/projects/libdaemon/'
 license=('LGPL2')
 arch=(x86_64 aarch64)
 source=("https://dev.alpinelinux.org/archive/libdaemon/libdaemon-${pkgver}.tar.gz"
-  fix-includes-unistd.patch)
-sha512sums=('SKIP' 'SKIP')
+  fix-includes-unistd.patch
+  "config.sub::http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD"
+  "config.guess::http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD")
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare()
 {
   cd "${pkgname}-${pkgver}"
   patch -p1 < $srcdir/fix-includes-unistd.patch
+  cp $srcdir/config.sub $srcdir/config.guess .
 }
 
 build()
 {
   cd "${pkgname}-${pkgver}"
-  ./bootstrap.sh
   ./configure \
     --prefix=/usr \
     --localstatedir=/var \
