@@ -2,9 +2,9 @@
 
 pkgname=(linux linux-headers)
 _basename=linux
-_pkgver=6.2
-pkgver=6.2.0
-pkgrel=4
+_pkgver=6.2.7
+pkgver=6.2.7
+pkgrel=1
 arch=(x86_64 aarch64)
 url='http://www.kernel.org'
 license=(GPL2)
