@@ -2,7 +2,7 @@
 
 pkgname=busybox
 pkgver=1.36.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Utilities for rescue and embedded systems"
 arch=("x86_64" "aarch64")
 url="https://www.busybox.net"
@@ -52,6 +52,12 @@ build()
 {
   cd "$srcdir/$pkgname-$pkgver"
   make HOSTCC=clang CC=clang LDLIBS='-lutmps'
+}
+
+check()
+{
+  cd "$srcdir/$pkgname-$pkgver"
+  make HOSTCC=clang CC=clang LDLIBS='-lutmps' check
 }
 
 package()
