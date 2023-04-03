@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('acl' 'openssl' 'perl' 'popt'
   'zlib')
 source=(https://github.com/WayneD/rsync/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('4f2a350baa93dc666078b84bc300767a77789ca12f0dec3cb4b3024971f8ef47')
 
 build()
 {
