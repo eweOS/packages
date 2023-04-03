@@ -12,7 +12,8 @@ source=(
   "$pkgname::git+$url.git#branch=main"
   "$pkgname.service"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP'
+            '6fb6b01c1acaf14e6fd30d1a91c0c40d12f447352d83eaa2bf9e5a0d077c0a0e')
 
 build()
 {
