@@ -10,7 +10,7 @@ arch=(x86_64 aarch64)
 license=(BSD)
 makedepends=(cmake ninja nasm)
 source=(https://sourceforge.net/projects/$pkgbase/files/$pkgver/$pkgbase-$pkgver.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('d3ed26a1131a13686dfca4935e520eb7c90ae76fbc45d98bb50a8dc86230342b')
 
 build() {
   cmake -S $pkgbase-$pkgver -B build -G Ninja \
