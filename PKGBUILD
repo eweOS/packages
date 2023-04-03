@@ -9,7 +9,7 @@ url="https://github.com/majestrate/wterm"
 license=('MIT')
 depends=('wayland' 'libxkbcommon' 'fontconfig' 'pixman' 'libdrm')
 source=("https://github.com/majestrate/wterm/archive/refs/heads/master.tar.gz")
-md5sums=("SKIP")
+md5sums=('4744e9eed08b4144ba847a3ab52230c2')
 
 prepare()
 {
