@@ -9,7 +9,7 @@ arch=(x86_64 aarch64)
 license=(MIT)
 makedepends=(glib freetype2 cairo python meson icu gobject-introspection)
 source=("https://github.com/harfbuzz/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('1d1010a1751d076d5291e433c138502a794d679a7498d1268ee21e2d4a140eb4')
 
 build() {
   # Harfbuzz wants no exceptions
