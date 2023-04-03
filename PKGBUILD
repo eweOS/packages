@@ -10,7 +10,7 @@ makedepends=('meson' 'libdrm' 'wayland' 'wayland-protocols')
 url="https://www.mesa3d.org/"
 license=('custom')
 source=(https://mesa.freedesktop.org/archive/$pkgname-$pkgver.tar.xz)
-sha512sums=('SKIP')
+sha512sums=('6af340153244d3e95d0e155a45d6db134335654d62590797ae0ef6ba44c2ccfe91ebf95f70ff82c67cee108ac35536767b1f6848d6d1129f52eb9e8414ee321d')
 
 prepare()
 {
