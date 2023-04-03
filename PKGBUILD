@@ -13,7 +13,8 @@ depends=('llvm-libs' 'ncurses' 'gettext')
 makedepends=('astyle')
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/CleverRaven/Cataclysm-DDA/archive/$_pkgver.tar.gz"
   makefile-fix-busybox-missing-args.patch)
-md5sums=('SKIP' 'SKIP')
+md5sums=('4c6d8c5b55973f6a78f59db04b435a32'
+         '34d7496903e83e959803aa00a55c666e')
 
 _makeflags=('CXX=c++'
   'PREFIX=/usr'
