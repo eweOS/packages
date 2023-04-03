@@ -11,7 +11,8 @@ depends=('libpciaccess')
 checkdepends=('cairo')
 makedepends=('meson')
 source=(https://dri.freedesktop.org/$pkgname/$pkgname-$pkgver.tar.xz COPYING)
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('3049cf843a47d12e5eeefbc3be3496d782fa09f42346bf0b7defe3d1e598d026'
+            '9631d4f694952e3e6ae5a05534c2e93e994e47d3413677a3a00e45c8cef6db93')
 
 build()
 {
