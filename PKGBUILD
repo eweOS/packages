@@ -12,7 +12,7 @@ makedepends=('readline' 'zlib')
 depends=('readline' 'zlib')
 options=('!emptydirs' 'debug')
 source=("https://sqlite.org/2022/sqlite-autoconf-${_srcver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('2c5dea207fa508d765af1ef620b637dcb06572afa6f01f0815bd5bbf864b33d9')
 
 build()
 {
