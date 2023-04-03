@@ -10,7 +10,7 @@ arch=('x86_64' 'aarch64')
 license=('custom')
 depends=('zlib' 'xz' 'libjpeg')
 source=(https://download.osgeo.org/$pkgname/${pkgbase}-${pkgver}.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('c7a1d9296649233979fa3eacffef3fa024d73d05d589cb622727b5b08c423464')
 
 build() {
   cd $pkgbase-$pkgver
