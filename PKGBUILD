@@ -8,7 +8,7 @@ url="https://unifoundry.com/unifont.html"
 arch=('any')
 license=('GPL')
 source=("https://ftpmirror.gnu.org/gnu/unifont/unifont-$pkgver/unifont-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('7d11a924bf3c63ea7fdf2da2b96d6d4986435bedfd1e6816c8ac2e6db47634d5')
 
 package() {
 	install -d "$pkgdir/usr/share/fonts/unifont/"
