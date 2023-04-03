@@ -10,7 +10,7 @@ url="https://github.com/rpm-software-management/popt"
 license=('custom')
 depends=('musl')
 source=(https://ftp.osuosl.org/pub/rpm/popt/releases/popt-1.x/popt-${pkgver}.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('c25a4838fc8e4c1c8aacb8bd620edb3084a3d63bf8987fdad3ca2758c63240f9')
 
 build()
 {
