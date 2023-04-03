@@ -13,7 +13,8 @@ license=('ISC')
 depends=('zlib')
 source=("${url}/snapshots/${pkgname}-${pkgver}.tar.gz"
   'configure.local')
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('8bf0d570f01e70a6e124884088870cbed7537f36328d512909eb10cd53179d9c'
+            '5a60cfa91585e517f5152433f32a66ad519ea8e08c95baff66729631f03f8049')
 
 prepare()
 {
