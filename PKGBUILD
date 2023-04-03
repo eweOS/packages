@@ -13,7 +13,7 @@ url="https://search.cpan.org/dist/ExtUtils-Config/"
 options=(!emptydirs)
 makedepends=('perl')
 source=("https://search.cpan.org/CPAN/authors/id/L/LE/LEONT/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('7775e2212b4605e60559c7e63604b8f2b4c56f4846e64f9f4454f3f5d0a7a21f618143e6c61eafabf5d9ee9bca8f722c04aedeaf9c51f59924de68c272b86db2')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
