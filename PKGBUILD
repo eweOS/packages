@@ -11,7 +11,7 @@ license=('PerlArtistic' 'GPL')
 depends=('perl')
 options=('!emptydirs')
 source=(https://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Encode-Locale-$pkgver.tar.gz)
-sha1sums=('SKIP')
+sha1sums=('1e1632e869cb76e3fdbda0a83a192190ed178d60')
 
 build() {
   cd Encode-Locale-$pkgver
