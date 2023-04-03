@@ -10,7 +10,7 @@ license=(GPL)
 depends=(glib)
 makedepends=(gobject-introspection meson)
 source=("https://gitlab.gnome.org/GNOME/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('bf4d1cd6c343ce13b9258e6703a0411a3b659887b65877e85a2aa488ae18b865')
 
 build()
 {
