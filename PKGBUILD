@@ -11,7 +11,7 @@ groups=('base-devel')
 depends=('perl' 'bash')
 makedepends=('autoconf')
 source=(ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz)
-md5sums=('SKIP')
+md5sums=('4017e96f89fca45ca946f1c5db6be714')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
