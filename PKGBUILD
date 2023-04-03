@@ -9,7 +9,7 @@ url='https://github.com/onqtam/doctest'
 license=('MIT')
 makedepends=('cmake')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('19b2df757f2f3703a5e63cee553d85596875f06d91a3333acd80a969ef210856')
 
 prepare()
 {
