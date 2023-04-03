@@ -11,7 +11,7 @@ depends=('musl' 'wayland' 'libxkbcommon' 'libinput' 'pixman'
   'libdrm' 'cairo' 'libpng' 'mesa' 'dbus')
 makedepends=('wayland-protocols' 'meson' 'ninja')
 source=("https://gitlab.freedesktop.org/wayland/${pkgname}/-/releases/$pkgver/downloads/${pkgname}-$pkgver.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('89646ca0d9f8d413c2767e5c3828eaa3fa149c2a105b3729a6894fa7cf1549e7')
 
 _features=(
   -Dimage-jpeg=false
