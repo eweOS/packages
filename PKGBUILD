@@ -10,7 +10,7 @@ license=('Apache')
 depends=('llvm-libs')
 makedepends=('cmake' 'python')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('3aff99169fa8bdee356eaa1f691e835a6e57b1efeadb8a0f9f228531158246ac')
 
 build()
 {
