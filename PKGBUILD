@@ -14,7 +14,10 @@ source=(
   fcgiwrap.prerun.service
   fcgiwrap.prerun
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('4c7de0db2634c38297d5fcef61ab4a3e21856dd7247d49c33d9b19542bd1c61f'
+            '68837760666aa20bace0119aaa802f865f711c868c4ebead8bfc1f979b5954e4'
+            'd286b7a467fe8dcc8b947be66be99ef6ab4d9dddb4ecc27310b4e6071bb1e5de'
+            '9b91fec580deac69f957d1c13d12ee8ebbc745df4a2e8e0f045d96901ca0f502')
 
 prepare()
 {
