@@ -10,7 +10,7 @@ license=(LGPL)
 depends=(glib libpng shared-mime-info libtiff libjpeg)
 makedepends=(gobject-introspection meson)
 source=("https://gitlab.gnome.org/GNOME/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('87a086c51d9705698b22bd598a795efaccf61e4db3a96f439dcb3cd90506dab8')
 
 build() {
   # man requires rst2man
