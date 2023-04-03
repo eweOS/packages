@@ -16,10 +16,8 @@ source=(
   inputrc
 )
 
-sha256sums=(
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('3feb7171f16a84ee82ca18a36d7b9be109a52c04f492a053331d7d1095007c35'
+            '36e9611f935ee108d161587b0615f9c390192ef4bbff6dc59b58671261029901')
 
 build()
 {
