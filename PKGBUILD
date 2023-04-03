@@ -9,7 +9,7 @@ arch=(x86_64 aarch64)
 license=(LGPL GPL)
 makedepends=(cairo meson glib)
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('5356640b5941368fe8abfa7810fd8b5e07160038a177dcf4b683efb840932b5b')
   
 build() {
   ewe-meson $pkgname-$pkgver build \
