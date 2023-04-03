@@ -26,9 +26,7 @@ source=(
   "util-linux-${pkgver}.tar.gz::https://github.com/karelzak/util-linux/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-sha256sums=(
-  'SKIP'
-)
+sha256sums=('75add98ee04e8ca742e860dd06936379737465149904152175a64708de399125')
 
 build()
 {
