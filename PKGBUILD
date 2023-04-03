@@ -10,7 +10,7 @@ arch=(x86_64 aarch64)
 license=('MIT')
 makedepends=('musl' 'llvm-libs' 'cmake')
 source=("https://github.com/google/brotli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('f9e8d81d0405ba66d181529af42a3354f838c939095ff99930da6aa9cdf6fe46')
 
 build()
 {
