@@ -10,7 +10,7 @@ license=(custom)
 depends=(expat freetype2 gperf)
 makedepends=(meson)
 source=("https://gitlab.freedesktop.org/fontconfig/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('48f5ea2e5038f038adcb8b2bc9e6dd30987ccc962665092657b95f9f6d21a49a')
 
 build()
 {
