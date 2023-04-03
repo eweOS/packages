@@ -6,7 +6,7 @@ url="https://www.cyrusimap.org/sasl/"
 license=(custom)
 makedepends=(gdbm glibc krb5 libldap openssl sqlite)
 source=(https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-$pkgver/cyrus-sasl-$pkgver.tar.gz)
-sha512sums=('SKIP')
+sha512sums=('db15af9079758a9f385457a79390c8a7cd7ea666573dace8bf4fb01bb4b49037538d67285727d6a70ad799d2e2318f265c9372e2427de9371d626a1959dd6f78')
 
 prepare()
 {
