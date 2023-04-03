@@ -10,7 +10,7 @@ license=(MIT)
 depends=('dbus' 'libudev' 'libsndfile' 'libusb')
 makedepends=('meson')
 source=("https://gitlab.freedesktop.org/pipewire/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('5cb73bf27b8b80e37804d7829c5ad8fa5510835f449bbb7e4773f188584771ad')
 
 build() {
   local features=(
