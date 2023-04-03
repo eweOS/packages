@@ -8,7 +8,7 @@ arch=(x86_64 aarch64)
 license=('custom')
 url="https://xorg.freedesktop.org/"
 source=(${url}/releases/individual/lib/${pkgname}-${pkgver}.tar.xz)
-sha512sums=('SKIP')
+sha512sums=('8484605c66ef18c8d8a3e029a6d33e26fcaa450c1263790d89ac8b0a160ffb2dfceaa6140ac9ad7d8087283ecbec8ac801f757e44890d547c3cbecd2c922ca47')
 
 build()
 {
