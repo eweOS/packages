@@ -13,7 +13,9 @@ depends=('ncurses')
 source=(https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz
 	"config.sub::http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD"
 	"config.guess::http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('5c860385ceed8a60f13217cc0192c4c2b4705c3e80f9866f7d72ff306eb72961'
+            'b45ba96fa578cfca60ed16e27e689f10812c3f946535e779229afe7a840763e6'
+            'bb14470dba3adf469b6e683307b783172b571abca13e7f5a77a4c94ea07b3811')
 
 prepare()
 {
