@@ -20,7 +20,7 @@ optdepends=('python: gmock generator')
 provides=('gmock' 'gtest')
 _srcname=googletest-release-${pkgver}
 source=(${_srcname}.tar.gz::https://github.com/google/googletest/archive/release-${pkgver}.tar.gz)
-sha512sums=('SKIP')
+sha512sums=('a9104dc6c53747e36e7dd7bb93dfce51a558bd31b487a9ef08def095518e1296da140e0db263e0644d9055dbd903c0cb69380cb2322941dbfb04780ef247df9c')
 
 build()
 {
