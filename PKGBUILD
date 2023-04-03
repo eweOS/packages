@@ -13,7 +13,7 @@ license=(LGPL2.1)
 depends=(musl libudev)
 provides=(libusb-1.0.so)
 source=(https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2)
-sha512sums=('SKIP')
+sha512sums=('fcdb85c98f21639668693c2fd522814d440972d65883984c4ae53d0555bdbdb7e8c7a32199cd4b01113556a1eb5be7841b750cc73c9f6bda79bfe1af80914e71')
 
 prepare()
 {
