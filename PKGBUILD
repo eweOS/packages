@@ -9,7 +9,7 @@ arch=(x86_64 aarch64)
 license=('BSD')
 depends=('musl' 'libsndfile')
 source=("https://github.com/libsndfile/libsamplerate/releases/download/${pkgver}/libsamplerate-${pkgver}.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('3258da280511d24b49d6b08615bbe824d0cacc9842b0e4caf11c52cf2b043893')
 provides=('libsamplerate.so')
 
 build() {
