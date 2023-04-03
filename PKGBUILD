@@ -10,7 +10,7 @@ license=(MIT)
 depends=(glib)
 makedepends=(gobject-introspection meson glib)
 source=("https://github.com/ebassi/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('922dc109d2dc5dc56617a29bd716c79dd84db31721a8493a13a5f79109a4a4ed')
 
 build() {
   ewe-meson $pkgname-$pkgver build \
