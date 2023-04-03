@@ -14,9 +14,7 @@ source=(
   "http://ftp.gnu.org/gnu/m4/m4-${pkgver}.tar.xz"
 )
 
-sha256sums=(
-  'SKIP'
-)
+sha256sums=('63aede5c6d33b6d9b13511cd0be2cac046f2e70fd0a07aa9573a04a82783af96')
 
 build()
 {
