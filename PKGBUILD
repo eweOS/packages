@@ -7,7 +7,7 @@ pkgdesc='Library and command line tools for XZ and LZMA compressed files'
 arch=('x86_64' 'aarch64')
 license=('GPL' 'LGPL' 'custom')
 source=("https://tukaani.org/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('7471ef5991f690268a8f2be019acec2e0564b7b233ca40035f339fe9a07f830b')
 
 build()
 {
