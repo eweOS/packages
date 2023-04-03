@@ -11,7 +11,7 @@ license=(MIT)
 depends=(musl)
 makedepends=(cmake)
 source=($pkgname-$pkgver.tar.gz::"https://github.com/mity/md4c/archive/release-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('4a457df853425b6bb6e3457aa1d1a13bccec587a04c38c622b1013a0da41439f')
 
 build()
 {
