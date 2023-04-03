@@ -12,9 +12,7 @@ source=(
   "$url/archive/refs/tags/$pkgname-$pkgver.tar.gz"
 )
 makedepends=(meson automake autoconf libtool)
-sha256sums=(
-  'SKIP'
-)
+sha256sums=('e8b637c0dd8ae1decbcc95b24b64795cba81a8e3064fddb4424cacef411e59f9')
 
 build()
 {
