@@ -15,7 +15,10 @@ source=(
   dbus.tmpfiles
   dbus.sysusers
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('9725b6d7ad8c6f273dfc657d3b36e1897037e83c49ce1e9c5f7ca247a4c4fb95'
+            '9a76352953f900ea655df3a98c066ed17220cf234762b1d558617ceb5be9112b'
+            '7d8d45af88ad4b4e512b4d6d42bcbe982a539418f6368b56fc4bf25950484f9b'
+            'fd03ccef383b40c60fa538481c276ea113709a161cc340c6db00adf99d9e7993')
 
 prepare()
 {
