@@ -9,7 +9,7 @@ url="http://www.complang.org/ragel/"
 license=('GPL')
 depends=('llvm-libs')
 source=(https://www.colm.net/files/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('SKIP')
+md5sums=('748cae8b50cffe9efcaa5acebc6abf0d')
 
 build()
 {
