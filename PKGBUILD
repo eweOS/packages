@@ -12,7 +12,7 @@ makedepends=(cmake)
 provides=(zlib)
 conflicts=(zlib)
 source=($pkgname-$pkgver::"https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('8258b75a72303b661a238047cb348203d88d9dddf85d480ed885f375916fcab6')
 
 prepare()
 {
