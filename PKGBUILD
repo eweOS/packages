@@ -12,7 +12,7 @@ license=('GPL')
 makedepends=('musl' 'make')
 provides=('libudev-zero' 'libeudev' 'libudev')
 source=("https://github.com/illiliti/libudev-zero/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('SKIP')
+md5sums=('0b7d431cbd93eb91d061c8e20b308183')
 
 build() {
 	cd ${_pkgname}-${pkgver}
