@@ -12,7 +12,7 @@ depends=('musl' 'sh')
 makedepends=(meson)
 _commit=2d8393924b9f3e014000c7420c7da7c3ddb74e2c
 source=(https://gitlab.com/bzip2/${pkgbase}/-/archive/${_commit}/bzip2-${_commit}.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('19f03adba109479ed2dcd381890ae9b10a592adaa36d86218531800e1ad68c98')
 
 prepare()
 {
