@@ -12,7 +12,7 @@ license=('MIT')
 depends=('unibilium' 'libunibilium.so')
 provides=('libtermkey.so')
 source=("http://www.leonerd.org.uk/code/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('6945bd3c4aaa83da83d80a045c5563da4edd7d0374c62c0d35aec09eb3014600')
 
 build()
 {
