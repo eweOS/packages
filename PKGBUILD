@@ -15,7 +15,7 @@ license=('BSD')
 depends=('openssl' 'zlib')
 provides=('libssh2.so')
 source=("https://www.libssh2.org/download/$pkgname-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('2d64e90f3ded394b91d3a2e774ca203a4179f69aebee03003e5a6fa621e41d51')
 
 build()
 {
