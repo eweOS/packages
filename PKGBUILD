@@ -10,7 +10,7 @@ url='https://github.com/ninja-build/ninja'
 license=(Apache)
 depends=(python llvm-libs)
 source=("$url/archive/v${pkgver}.tar.gz")
-sha256sums=("SKIP")
+sha256sums=('31747ae633213f1eda3842686f83c2aa1412e0f5691d1c14dbbcc67fe7400cea')
 
 build()
 {
