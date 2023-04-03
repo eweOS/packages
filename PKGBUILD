@@ -9,7 +9,7 @@ url=https://codeberg.org/dnkl/tllist
 license=(MIT)
 makedepends=(meson)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('0e7b7094a02550dd80b7243bcffc3671550b0f1d8ba625e4dff52517827d5d23')
 
 build()
 {
