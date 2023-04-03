@@ -15,7 +15,7 @@ checkdepends=('perl-test-needs')
 provides=('perl-uri-escape=3.30')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-$pkgver.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('9c379e9f2a099ae8cccf80d38b565906f7a4517c896433f0dfd535340f1fa17ce0f558fb9091ad0ed56320aefca3403cc9c22af29a329eff8f01dc14f2b0ccc1')
 
 build() {
   cd URI-$pkgver
