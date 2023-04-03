@@ -8,7 +8,7 @@ arch=(x86_64 aarch64)
 url="https://github.com/xhebox/libuargp"
 license=(LGPL)
 source=(https://github.com/xhebox/libuargp/archive/refs/heads/master.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('84f3472a4931dfbd713a699b60896aac4e318a9032d39036a7ce78860e056fe2')
 
 build()
 {
