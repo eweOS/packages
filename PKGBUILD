@@ -8,7 +8,7 @@ url='https://xiph.org/vorbis/'
 license=('BSD')
 depends=('musl' 'libogg')
 source=("https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('0e982409a9c3fc82ee06e08205b1355e5c6aa4c36bca58146ef399621b0ce5ab')
 arch=(x86_64 aarch64)
 provides=('libvorbis.so' 'libvorbisenc.so' 'libvorbisfile.so')
 
