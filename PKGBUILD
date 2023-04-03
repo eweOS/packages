@@ -10,7 +10,7 @@ license=('custom')
 groups=('base-devel')
 depends=('musl' 'm4' 'bash')
 source=("https://github.com/westes/flex/releases/download/v$pkgver/flex-$pkgver.tar.gz")
-md5sums=('SKIP')
+md5sums=('2882e3179748cc9f9c23ec593d6adc8d')
 
 build()
 {
