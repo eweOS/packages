@@ -13,7 +13,8 @@ source=(
   "https://gitlab.freedesktop.org/xdg/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
   update-shared-mime-database.hook
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('bcf5d552318136cf7b3ae259975f414fbcdc9ebce000c87cf1f0901ff14e619f'
+            'f08efbcbac9d2bd18a805b8dcf3ed06d7763b97eca5935aa64d65593774b6501')
 options=(!makeflags)
 
 build() {
