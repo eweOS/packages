@@ -6,7 +6,7 @@ pkgrel=2
 url='https://www.xiph.org/flac/'
 depends=('musl')
 source=("https://ftp.osuosl.org/pub/xiph/releases/flac/flac-${pkgver}.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('e322d58a1f48d23d9dd38f432672865f6f79e73a6f9cc5a5f57fcaa83eb5a8e4')
 arch=(x86_64 aarch64)
 
 prepare()
