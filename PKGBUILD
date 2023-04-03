@@ -11,7 +11,7 @@ depends=('musl')
 makedepends=('meson')
 provides=('libevdev.so')
 source=(https://freedesktop.org/software/$pkgname/$pkgname-$pkgver.tar.xz)
-sha256sums=('SKIP')
+sha256sums=('9edf2006cc86a5055279647c38ec923d11a821ee4dc2c3033e8d20e8ee237cd9')
 
 build()
 {
