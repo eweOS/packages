@@ -12,7 +12,8 @@ source=(
   https://w1.fi/releases/${pkgname}-${pkgver}.tar.gz
   config
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('20df7ae5154b3830355f8ab4269123a87affdea59fe74fe9292a91d0d7e17b2f'
+            'c22c3998f9bb0cae019435dcb0e85dcb5ddd2922a70eff17b797aacd48a4f011')
 
 prepare()
 {
