@@ -19,12 +19,10 @@ source=(
   getent.c
   iconv.c
 )
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('7d5b0b6062521e4627e099e4c9dc8248d32a30285e959b7eecaa780cf8cfd4a4'
+            'd87d0cbb3690ae2c5d8cc218349fd8278b93855dd625deaf7ae50e320aad247c'
+            '002c1a216f6bed0f816ab1cfebde94a0b127193ef410c36b2190599983e015b8'
+            'f79a2930a2e5bb0624321589edf8b889d1e9b603e01e6b7ae214616605b3fdd7')
 
 prepare()
 {
