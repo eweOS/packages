@@ -11,7 +11,7 @@ depends=('musl')
 makedepends=('meson' 'libpng')
 provides=('libpixman-1.so')
 source=(https://xorg.freedesktop.org/releases/individual/lib/${pkgname}-${pkgver}.tar.xz)
-sha512sums=('SKIP')
+sha512sums=('3476e2676e66756b1af61b1e532cd80c985c191fb7956eb01702b419726cce99e79163b7f287f74f66414680e7396d13c3fee525cd663f12b6ac4877070ff4e8')
 
 _arglist=(
     -Dloongson-mmi=disabled
