@@ -10,7 +10,7 @@ groups=('base-devel')
 depends=('musl' 'zlib' 'xz' 'libbz2')
 options=('!emptydirs')
 source=("https://astron.com/pub/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('3751c7fba8dbc831cb8d7cc8aff21035459b8ce5155ef8b0880a27d028475f3b')
 
 prepare()
 {
