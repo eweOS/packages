@@ -13,7 +13,8 @@ url="https://www.gnu.org/software/libtasn1/"
 depends=('musl')
 source=("https://ftp.gnu.org/gnu/libtasn1/${pkgname}-${pkgver}.tar.gz"
   fix-version-test-failure.patch)
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('1613f0ac1cf484d6ec0ce3b8c06d56263cc7242f1c23b30d82d23de345a63f7a'
+            'f55a237f8d0ea4b13e520cf3dd3f58011e915b3b558b44b3161da022ac0f5f46')
 
 prepare()
 {
