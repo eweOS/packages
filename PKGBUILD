@@ -9,7 +9,7 @@ url='http://nsnake.alexdantas.net/'
 license=('GPL3')
 depends=('ncurses' 'llvm-libs')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/alexdantas/nSnake/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('7240dafe35e17b01134591d7ae8f09f5a375cded8b01e43ba97ca3610a09ea61')
 
 build()
 {
