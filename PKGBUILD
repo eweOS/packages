@@ -15,7 +15,7 @@ license=('BSD')
 depends=('llvm-libs')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/schuhschuh/gflags/archive/v${pkgver}.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('98c4703aab24e81fe551f7831ab797fb73d0f7dfc516addb34b9ff6d0914e5fd398207889b1ae555bac039537b1d4677067dae403b64903577078d99c1bdb447')
 options=('!lto' 'staticlibs')
 
 build()
