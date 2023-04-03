@@ -13,7 +13,7 @@ makedepends=('perl-module-build-tiny')
 checkdepends=('perl-test-needs')
 options=('!emptydirs')
 source=(https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Daemon-${pkgver}.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('f0767e7f3cbb80b21313c761f07ad8ed253bce9fa2d0ba806b3fb72d309b2e1d')
 
 build() {
   cd "${srcdir}/HTTP-Daemon-${pkgver}"
