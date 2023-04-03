@@ -16,7 +16,7 @@ license=('GPL')
 depends=('openssl' 'libxml2' 'sqlite' 'c-ares' 'ca-certs' 'libssh2')
 checkdepends=('cppunit')
 source=("https://github.com/aria2/aria2/releases/download/release-$pkgver/aria2-$pkgver.tar.xz")
-sha512sums=('SKIP')
+sha512sums=('8203dbb75274455a78c50dd4f894e631de6931ac889f26896dceed78ec38c98cdbcf07e164744f308f2bfffeae1016beec1bfdbe8cad7f3280d11376aa0c2542')
 
 prepare()
 {
