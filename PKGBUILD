@@ -9,7 +9,7 @@ url="https://www.gnu.org/software/gperf/"
 license=('GPL3')
 depends=('llvm-libs')
 source=("https://ftp.gnu.org/pub/gnu/gperf/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('588546b945bba4b70b6a3a616e80b4ab466e3f33024a352fc2198112cdbb3ae2')
 
 build()
 {
