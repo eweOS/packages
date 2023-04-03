@@ -9,7 +9,7 @@ url='https://github.com/thom311/libnl/'
 license=('GPL')
 depends=('musl' 'flex' 'bison')
 source=("https://github.com/thom311/libnl/releases/download/libnl${pkgver//./_}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('9fe43ccbeeea72c653bdcf8c93332583135cda46a79507bfd0a483bb57f65939')
 
 build()
 {
