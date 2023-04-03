@@ -12,7 +12,7 @@ url="https://www.nano-editor.org"
 depends=('ncurses' 'file' 'sh')
 backup=('etc/nanorc')
 source=("https://www.nano-editor.org/dist/v6/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('4199ae8ca78a7796de56de1a41b821dc47912c0307e9816b56cc317df34661c0')
 
 build()
 {
