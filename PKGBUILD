@@ -19,7 +19,8 @@ source=(
   $pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz
   $pkgname-1.5.0-remove_http-parse_incompatible_tests.patch
 )
-sha512sums=('SKIP' 'SKIP')
+sha512sums=('7a32b27cd32bd03ce7be6c127317f82a4ac6f16615c3234699676781f4858d057edb0410b2fe36fd2e634b00748a8b0be17f23809e09a7602ba48185134300f7'
+            'f9bb9ad7eb0f43003f5f72c81575ef5751b893fdf257d888b56818ee2c136b496b7cf72627a53dbd01319e33d0dd373e9d6df887360f7bec367419ef0c7ab711')
 
 prepare()
 {
