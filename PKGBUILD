@@ -11,7 +11,7 @@ license=(custom)
 depends=(llvm-libs spirv-tools)
 makedepends=(cmake llvm spirv-headers openmp llvm-lto)
 source=("https://github.com/KhronosGroup/${_srcname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=(SKIP)
+sha256sums=('b1bebd77f72988758c00852e78c2ddc545815a612169a0cb377d021e2f846d88')
 
 build()
 {
