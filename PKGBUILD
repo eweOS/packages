@@ -11,7 +11,7 @@ depends=(zlib)
 makedepends=(utmps)
 options=(emptydirs)
 source=("http://www.sudo.ws/sudo/dist/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('de15733888170c56834daafd34bf983db10fb21039742fcfc396bd32168d6362')
 
 _features=(
   --enable-static=false
