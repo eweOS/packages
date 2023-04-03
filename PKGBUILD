@@ -12,7 +12,7 @@ url="https://github.com/jedisct1/libsodium"
 license=('custom:ISC')
 depends=('musl')
 source=("https://download.libsodium.org/libsodium/releases/libsodium-$pkgver.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('17e8638e46d8f6f7d024fe5559eccf2b8baf23e143fadd472a7d29d228b186d86686a5e6920385fe2020729119a5f12f989c3a782afbd05a8db4819bb18666ef')
 
 build()
 {
