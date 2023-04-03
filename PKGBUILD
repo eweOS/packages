@@ -13,7 +13,7 @@ url="https://github.com/graeme-hill/crossguid"
 license=('MIT')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/graeme-hill/crossguid/archive/v$pkgver.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('49a707f830b32ba136bd52e72dda191a7d29acee9795df54f225bb269853cc123390c01875dd1da7cbaebd5bb7001988d6f9758dcffa9171b5f2961f576682ca')
 
 build()
 {
