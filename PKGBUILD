@@ -8,7 +8,7 @@ arch=(x86_64 aarch64)
 license=('GPL2')
 url='https://packages.debian.org/sid/sockstat'
 source=("http://deb.debian.org/debian/pool/main/s/sockstat/sockstat_${pkgver}.orig.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('ac85ceca3b54074f5d3f4b26b63bd79d7f002087c283a6737508396c1b0fb185')
 
 build()
 {
