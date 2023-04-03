@@ -15,7 +15,7 @@ license=('BSD')
 depends=('musl' 'ncurses')
 provides=('libedit.so')
 source=(${url}/${pkgname}-${_pkgver}.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('f0925a5adf4b1bf116ee19766b7daa766917aec198747943b1c4edf67a4be2bb')
 
 build()
 {
