@@ -9,7 +9,7 @@ license=(MIT)
 depends=(cairo pango libjpeg libinput wlroots wf-config)
 makedepends=(meson ninja wayland-protocols glm cmake libglvnd doctest)
 source=("https://github.com/WayfireWM/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('f2e3184e72fe7999488fbba10bd38c29350b447489f02961aab5fa8438698b5c')
 
 build()
 {
