@@ -10,7 +10,7 @@ license=('GPL')
 depends=('musl')
 source=(https://files.libburnia-project.org/releases/${pkgname}-${pkgver}.tar.gz)
 options=('!emptydirs')
-sha256sums=('SKIP')
+sha256sums=('525059d10759c5cb8148eebc863bb510e311c663603da7bd2d21c46b7cf63b54')
 
 build()
 {
