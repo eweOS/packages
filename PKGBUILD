@@ -34,7 +34,7 @@ makedepends=(
   gobject-introspection
 )
 source=("https://gitlab.gnome.org/GNOME/gtk/-/archive/${pkgver}/gtk-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('8c5c6f56da1a6700662853279ef68602fd24733677cd1bcf346b88318c88a991')
 
 build()
 {
