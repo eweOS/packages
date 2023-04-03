@@ -1,7 +1,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=benchmark
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="A microbenchmark support library"
 arch=(x86_64 aarch64)
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('llvm-libs')
 makedepends=('cmake' 'python')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('3aff99169fa8bdee356eaa1f691e835a6e57b1efeadb8a0f9f228531158246ac')
+sha256sums=('6430e4092653380d9dc4ccb45a1e2dc9259d581f4866dc0759713126056bc1d7')
 
 build()
 {
