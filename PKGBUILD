@@ -12,7 +12,7 @@ depends=('musl' 'libffi' 'expat' 'libxml2')
 makedepends=('meson')
 options=('debug')
 source=("https://gitlab.freedesktop.org/wayland/wayland/-/releases/1.21.0/downloads/wayland-$pkgver.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('6dc64d7fc16837a693a51cfdb2e568db538bfdc9f457d4656285bb9594ef11ac')
 
 build()
 {
