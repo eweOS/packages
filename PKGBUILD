@@ -20,7 +20,7 @@ optdepends=(
 makedepends=(python lua)
 options=(emptydirs)
 source=("https://github.com/vim/vim/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('6b9f5f6e3d2922a2306e9a1bfea0f02226fb4a592efec978938a34b376c9acbb')
 
 build()
 {
