@@ -6,7 +6,8 @@ arch=(x86_64 aarch64)
 url="https://github.com/aristocratos/$pkgname"
 license=(Apache)
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz" "fix-llvm15-build.patch")
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('668dc4782432564c35ad0d32748f972248cc5c5448c9009faeb3445282920e02'
+            '771289ee3254fd414682c10bb15ff2fc082d44d51a91e6238c5fea1a30925a2b')
 
 prepare() {
 	cd $pkgname-$pkgver
