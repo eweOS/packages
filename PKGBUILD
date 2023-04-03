@@ -13,7 +13,7 @@ pkgdesc='A tool for generating C-based recognizers from regular expressions'
 url='https://re2c.org'
 license=('public domain')
 source=(re2c-$pkgver.tar.gz::https://github.com/skvadrik/re2c/archive/$pkgver.tar.gz)
-sha1sums=('SKIP')
+sha1sums=('ce178a2f31ca4ba266be0ba6f1aa346ef764b799')
 
 build()
 {
