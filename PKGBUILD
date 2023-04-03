@@ -6,7 +6,7 @@ pkgver=3.17_alpha20220809
 pkgrel=1
 arch=('any')
 source=(APKBUILD::"https://git.alpinelinux.org/aports/plain/main/alpine-base/APKBUILD")
-sha256sums=('SKIP')
+sha256sums=('466c1da2c0c470ce295f0f262c1b0cdb75157cf446d30c98af86e6942dc2305f')
 
 pkgver() {
 	sed -n -e '/^pkgver/ s/.*\= *//p' APKBUILD | xargs
