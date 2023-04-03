@@ -9,7 +9,7 @@ license=('LGPL')
 depends=('musl')
 makedepends=('automake' 'autoconf' 'libtool')
 source=("${pkgname}-${pkgver}"::"https://github.com/void-linux/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('949f73b9406b06bd8712c721b4ec89afcb37d4eaef5666cccf3712242d3a57fc0acf3ca994934e0f57c1e92f40521a9370132a21eb6d1957415a83c76bf20feb')
 
 prepare()
 {
