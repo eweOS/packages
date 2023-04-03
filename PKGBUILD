@@ -11,7 +11,7 @@ depends=(musl)
 makedepends=(meson)
 provides=(libfribidi.so)
 source=("https://github.com/fribidi/fribidi/releases/download/v1.0.12/fribidi-${pkgver}.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('0cd233f97fc8c67bb3ac27ce8440def5d3ffacf516765b91c2cc654498293495')
 
 build()
 {
