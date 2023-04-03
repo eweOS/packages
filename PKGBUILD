@@ -9,7 +9,7 @@ license=(GPL)
 groups=(base)
 makedepends=(zlib)
 source=("https://www.kernel.org/pub/software/utils/pciutils/pciutils-${pkgver}.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('cdea7ae97239dee23249a09c68a19a287a3f109fbeb2c232ebb616cb38599012')
 
 build()
 {
