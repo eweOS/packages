@@ -12,9 +12,7 @@ source=(
   "http://skarnet.org/software/skalibs/skalibs-${pkgver}.tar.gz"
 )
 
-sha256sums=(
-  'SKIP'
-)
+sha256sums=('3e228f72f18d88c17f6c4e0a66881d6d3779427b7e7e889f3142b6f26da30285')
 
 build()
 {
