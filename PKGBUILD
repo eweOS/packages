@@ -15,7 +15,9 @@ source=(
   bird.service
   bird.tmpfiles
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('3ec462a237d06d1f4455d6ec00a42f0b1686061fc988e5c89a841d01dd753b53'
+            '34c2bb0f9f89315914cfaf94e23c91ca7e72db42cd4f3d1a456f5541a3da5868'
+            '93ccf34aa61e513f27b5287437b68a4f176dfdca9b05a05de6a15aa0dcdd6205')
 
 build()
 {
