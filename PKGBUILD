@@ -12,7 +12,7 @@ license=('GPL2')
 source=(
   "${url}/files/v${_major_minor}/${pkgname}-${pkgver}.tar.gz"
 )
-sha256sums=('SKIP')
+sha256sums=('1c511d09516af493694ed9baf13c55947a36389674d657a2d5e0ccedc6b291d8')
 
 build()
 {
