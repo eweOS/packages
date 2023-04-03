@@ -11,7 +11,7 @@ depends=('curl' 'expat' 'perl' 'perl-error'
   'openssl' 'pcre2' 'zlib')
 makedepends=('python')
 source=("https://www.kernel.org/pub/software/scm/git/git-${pkgver}.tar.xz")
-sha256sums=(SKIP)
+sha256sums=('ba199b13fb5a99ca3dec917b0bd736bc0eb5a9df87737d435eddfdf10d69265b')
 
 _make_paths=(
   prefix='/usr'
