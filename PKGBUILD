@@ -14,7 +14,7 @@ provides=('libverto.so' 'libverto-libevent.so' 'libverto-module-base')
 conflicts=("krb5<1.19.3-2" "libverto-libevent<0.3.2-4")
 replaces=("libverto-libevent<0.3.2-4")
 source=("https://github.com/latchset/libverto/releases/download/$pkgver/libverto-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('8d1756fd704f147549f606cd987050fb94b0b1ff621ea6aa4d6bf0b74450468a')
 
 build()
 {
