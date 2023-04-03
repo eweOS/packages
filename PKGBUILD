@@ -13,7 +13,9 @@ source=(
   nginx.service
   nginx.sysusers
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('a80cc272d3d72aaee70aa8b517b4862a635c0256790434dbfc4d618a999b0b46'
+            '5c46b43935c68d16a179521cbbf61625c2276f54641c8e130adb4d5e396ee20c'
+            'f1634ba56d49c9e4ddd3f98cbcff594178b39efa068ad43894c4347a04272518')
 
 _activated_modules=(
   --with-threads
