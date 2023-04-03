@@ -12,7 +12,8 @@ source=(
   https://github.com/traviscross/mtr/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz
   mtr.install
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('12490fb660ba5fb34df8c06a0f62b4f9cbd11a584fc3f6eceda0a99124e8596f'
+            '881705988d847a51d80464ba8575420da19a97c8272e7d59349c40e623f25e65')
 
 install=mtr.install
 
