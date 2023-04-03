@@ -7,7 +7,7 @@ url=https://github.com/vcrhonek/hwdata
 license=('GPL2')
 arch=('any')
 source=("$url/archive/refs/tags/v0.366.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('bdc91561ec210877e6d1e3ec3abf0305389d7bcc3bf616bcecb2bdf74e3a7696')
 
 build() {
   cd $pkgname-$pkgver
