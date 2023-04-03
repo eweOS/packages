@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('musl')
 makedepends=('nasm')
 source=("https://code.videolan.org/videolan/x264/-/archive/${_fullhash}/x264-${_fullhash}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('580f07f08af23768074e5346bdf32c77b68b4d4e614f4998ea869b02fc29714d')
 provides_libx264=('libx264.so')
 
 build() {
