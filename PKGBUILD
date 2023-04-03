@@ -10,7 +10,7 @@ license=('custom')
 depends=('llvm-libs')
 makedepends=('cmake' 'python' 'ninja' 'spirv-headers')
 source=("https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('909fc7e68049dca611ca2d57828883a86f503b0353ff78bc594eddc65eb882b9')
 
 build()
 {
