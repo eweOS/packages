@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('attr')
 options=('debug')
 source=("https://download.savannah.gnu.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('760c61c68901b37fdd5eefeeaf4c0c7a26bdfdd8ac747a1edff1ce0e243c11af')
 
 build()
 {
