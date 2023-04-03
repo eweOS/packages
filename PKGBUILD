@@ -11,7 +11,7 @@ url='https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
 depends=('musl' 'zlib' 'openssl' 'xz' 'zstd' 'llvm-libs')
 #checkdepends=('linux-headers' 'libelf')
 source=("https://www.kernel.org/pub/linux/utils/kernel/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('f897dd72698dc6ac1ef03255cd0a5734ad932318e4adbaebc7338ef2f5202f9f')
 
 build()
 {
