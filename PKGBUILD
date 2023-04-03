@@ -16,7 +16,7 @@ license=(GPL)
 depends=(musl)
 provides=('libunistring.so')
 source=(https://ftp.gnu.org/gnu/$pkgname/${pkgname}-${pkgver}.tar.xz)
-sha512sums=('SKIP')
+sha512sums=('70d5ad82722844dbeacdfcb4d7593358e4a00a9222a98537add4b7f0bf4a2bb503dfb3cd627e52e2a5ca1d3da9e5daf38a6bd521197f92002e11e715fb1662d1')
 
 prepare()
 {
