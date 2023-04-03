@@ -14,9 +14,7 @@ source=(
   "http://ftp.gnu.org/gnu/make/make-${pkgver}.tar.gz"
 )
 
-sha256sums=(
-  'SKIP'
-)
+sha256sums=('581f4d4e872da74b3941c874215898a7d35802f03732bdccee1d4a7979105d18')
 
 build()
 {
