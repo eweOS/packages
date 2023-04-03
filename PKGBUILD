@@ -9,7 +9,7 @@ url="https://emcrisostomo.github.io/fswatch/"
 license=('GPL')
 depends=('llvm-libs')
 source=("https://github.com/emcrisostomo/fswatch/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('c38e341c567f5f16bfa64b72fc48bba5e93873d8572522e670e6f320bbc2122f')
 
 build()
 {
