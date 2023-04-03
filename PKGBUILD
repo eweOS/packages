@@ -13,7 +13,7 @@ url="http://www.unixodbc.org/"
 backup=('etc/odbc.ini' 'etc/odbcinst.ini')
 depends=('readline')
 source=(ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-$pkgver.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('d9e55c8e7118347e3c66c87338856dad1516b490fb7c756c1562a2c267c73b5c')
 
 build()
 {
