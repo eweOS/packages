@@ -13,7 +13,7 @@ license=(LGPL2.1)
 depends=(musl)
 provides=(libaio.so)
 source=(https://pagure.io/libaio/archive/$pkgname-$pkgver/$pkgname-$pkgname-$pkgver.tar.gz)
-sha512sums=('SKIP')
+sha512sums=('8058c927de0b5f7079fc232d2be23272537694bf271488af1dc0330b58afc307931792ab138512c5e00aa3ea921935a6d862f575fb0cc2bf323de63d8df208cd')
 
 prepare()
 {
