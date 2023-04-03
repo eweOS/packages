@@ -10,7 +10,7 @@ license=('custom')
 depends=('musl' 'libmd')
 options=('staticlibs')
 source=("https://libbsd.freedesktop.org/releases/$pkgname-$pkgver.tar.xz")
-sha512sums=('SKIP')
+sha512sums=('9dbbfb84340fc69f59667241701d81d176439ce168f123344805898a269f7bd0e98abf8c7fc12d9bf539d1effb19424d93b647cc9120f693327e736d339e6075')
 
 prepare()
 {
