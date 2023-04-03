@@ -9,7 +9,7 @@ url='http://www.littlecms.com/'
 license=('MIT')
 depends=('libtiff')
 source=("https://github.com/mm2/Little-CMS/releases/download/lcms${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('28474ea6f6591c4d4cee972123587001a4e6e353412a41b3e9e82219818d5740')
 
 build() {
   cd "${pkgname}-${pkgver}"
