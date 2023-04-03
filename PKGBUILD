@@ -12,7 +12,7 @@ replaces=(doas)
 makedepends=(pam)
 source=("https://github.com/Duncaen/OpenDoas/releases/download/v$pkgver/opendoas-$pkgver.tar.xz")
 backup=(etc/pam.d/doas)
-sha512sums=('SKIP')
+sha512sums=('5f349763dcc56b60f3707af3b3b7557e4721427a093dff725235c54b741670e0606272063527d00442eb7510dfd96482f7c6f38f15ece148bea41c9aa514865c')
 
 prepare()
 {
