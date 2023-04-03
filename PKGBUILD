@@ -12,7 +12,7 @@ license=('GPL')
 depends=('musl' 'libucontext')
 provides=('libcrypt.so')
 source=("${url}/releases/download/v${pkgver}/${pkgbase}-${pkgver}.tar.xz")
-sha512sums=("SKIP")
+sha512sums=('b46d226a83d35b578381aa340e34cd77aea25a304aec3d00ba3d3acb6462e96824ff82ea930aaf2b87039dfffef4dab4b1774736d6b8a107cfb61e6cdb307b99')
 
 build()
 {
