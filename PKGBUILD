@@ -15,7 +15,7 @@ url='http://astyle.sourceforge.net/'
 license=('LGPL')
 depends=('llvm-libs')
 source=("https://downloads.sourceforge.net/sourceforge/astyle/${pkgname}_${pkgver}_linux.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('cbcc4cf996294534bb56f025d6f199ebfde81aa4c271ccbd5ee1c1a3192745d7')
 
 build()
 {
