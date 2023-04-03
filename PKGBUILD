@@ -15,10 +15,8 @@ source=(
   bashrc
 )
 
-sha256sums=(
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('5bac17218d3911834520dad13cd1f85ab944e1c09ae1aba55906be1f8192f558'
+            'b3c0c7600098df7ab736cc5ea7ecd671a6cc83b7a01ea23dec94ac073fe86b6b')
 
 build()
 {
