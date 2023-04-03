@@ -14,7 +14,7 @@ makedepends=(cmake ninja python zlib)
 optdepends=('python: event_rpcgen.py')
 provides=(libevent{,_core,_extra,_openssl,_pthreads}-2.1.so)
 source=("https://github.com/libevent/libevent/releases/download/release-$pkgver-stable/libevent-$pkgver-stable.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb')
 
 build()
 {
