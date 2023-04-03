@@ -10,7 +10,7 @@ license=(GPL2)
 depends=(musl popt)
 makedepends=(efivar)
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('04e40a705cb82440fd823043b598ef9fd1acc2ceda3e8d043a93e49d43ea9481b7386cad0f46de9862beff19b8a5480d79e7d6522ae584aff6655472f967764d')
 
 build()
 {
