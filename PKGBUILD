@@ -12,7 +12,7 @@ depends=('musl')
 license=('MIT')
 options=('staticlibs')
 source=("https://github.com/akheron/jansson/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('5798d010e41cf8d76b66236cfb2f2543c8d082181d16bc3085ab49538d4b9929')
 
 build()
 {
