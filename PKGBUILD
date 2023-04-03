@@ -16,7 +16,7 @@ depends=('musl')
 makedepends=('cmake')
 provides=('libcares.so')
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgname//-/}-${pkgver//./_}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('1276ec0799916019f8c0af6b55a139701bd15e0ca4a00811d07963893978bc96c107b980f0fd49f81aa70bc8b3b8cd671195ba357c390772d4c2c5643c50c5a5')
 
 build()
 {
