@@ -14,7 +14,8 @@ source=(
   https://github.com/dylanaraps/neofetch/archive/${_commit}.tar.gz
   add-eweos.patch
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('27cb3cd2796d7190c9c4540d3fc2654567365006d77e336a8949666b2408bcca'
+            'cd12eed56baf88bd6951e262571f75e771a15cc77320507e05b0e591f98a7dfb')
 
 prepare() {
   cd "${pkgname}-${_commit}"
