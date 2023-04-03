@@ -14,7 +14,7 @@ url="https://github.com/google/re2"
 license=('BSD')
 depends=('llvm-libs')
 source=(re2-$pkgver.tar.gz::https://github.com/google/re2/archive/$_re2ver.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('f89c61410a072e5cbcf8c27e3a778da7d6fd2f2b5b1445cd4f4508bee946ab0f')
 
 build()
 {
