@@ -11,7 +11,7 @@ url="https://www.hboehm.info/gc/"
 license=('GPL')
 depends=('llvm-libs')
 source=(https://github.com/ivmai/bdwgc/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('SKIP')
+sha512sums=('4a7b26789ce22ab72bfaadf3029362c5fe26737df1e856e43db7d9b24ee8acf625e35d596bb3f698f91d6a5ddfb6c45a952a1dbd18d47359569696a544c9c248')
 
 build()
 {
