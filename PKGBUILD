@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('libmnl')
 checkdepends=('jansson')
 source=("https://netfilter.org/projects/libnftnl/files/libnftnl-$pkgver.tar.bz2")
-sha256sums=('SKIP')
+sha256sums=('c0fe233be4cdfd703e7d5977ef8eb63fcbf1d0052b6044e1b23d47ca3562477f')
 
 build()
 {
