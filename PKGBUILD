@@ -13,7 +13,10 @@ source=(
   greetd.service
   greetd.sysusers
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('47a73709df60f04b63fc50cfc409e47a451a9620777638f527b9d9333256035f'
+            '499ae517100eae6ff80b0b14791854cd628a4c4e91214620a831d853270e6e97'
+            '0147b0e8908c53b36a81e465cddef8bcfacd63c3dfbbfa2c889986b031ea560a'
+            '703be69c0bfe1bba1815090113513a495f87198bfb46b02918634f56f5232fea')
 depends=(pam)
 makedepends=(rust)
 
