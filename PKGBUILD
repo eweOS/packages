@@ -9,7 +9,7 @@ url="https://dejavu-fonts.github.io/"
 license=('custom')
 makedepends=()
 source=(https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_2_37/dejavu-fonts-ttf-${pkgver}.tar.bz2)
-sha256sums=('SKIP')
+sha256sums=('fa9ca4d13871dd122f61258a80d01751d603b4d3ee14095d65453b4e846e17d7')
 
 package() {
     cd dejavu-fonts-ttf-${pkgver}
