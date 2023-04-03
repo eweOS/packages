@@ -13,7 +13,7 @@ makedepends=('pkgconf')
 url="https://ieee1394.wiki.kernel.org/index.php/Main_Page"
 source=(https://www.kernel.org/pub/linux/libs/ieee1394/${pkgname}-${pkgver}.tar.xz)
 validpgpkeys=('955C0098E5C46EF9A152481479F36FB2545D79D0')
-sha256sums=('SKIP')
+sha256sums=('03ccc69761d22c7deb1127fc301010dd13e70e44bb7134b8ff0d07590259a55e')
 
 build()
 {
