@@ -17,7 +17,8 @@ source=(
   "https://www.nethack.org/download/${pkgver}/${pkgname}-${pkgver//./}-src.tgz"
   "${pkgname}.tmpfiles"
 )
-sha512sums=('SKIP' 'SKIP')
+sha512sums=('579fde93a37a1b5df637d5bac2601194beeb455c175fbe3ef89342122c8567bb8221ce60d8a6168e6b45c67ade7d7b09c86bf202c8cbe2d6294d276be3e53055'
+            '277503212c0b2f9344ef6493ecbff6d0aab6ecf148885db23bbb55d9eebdcd0f48f4abd2e42aa7aed8fd8d426e48f011912e2d3c1d7a85f407846f8a7be84ee9')
 
 _builddir="NetHack-NetHack-3.6.6_Released"
 
