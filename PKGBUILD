@@ -14,7 +14,7 @@ optdepends=('tk: xorriso-tcltk frontend'
   'sudo: use with xorriso-dd-target')
 provides=('xorriso' 'xorriso-tcltk')
 source=(https://files.libburnia-project.org/releases/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('2d89846d43880f17fa591c53b3bea42ffb803628e4e630c680fc2c9184f79132')
 
 build()
 {
