@@ -12,7 +12,7 @@ license=('LGPL')
 depends=('sh' 'llvm-libs')
 options=('!emptydirs')
 source=(https://dev-www.libreoffice.org/src/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('89c5c6665337f56fd2db36bc3805a5619709d51fb136e51937072f63fcc717a7')
 
 build()
 {
