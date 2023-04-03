@@ -11,7 +11,8 @@ license=('GPL')
 depends=('ncurses')
 source=("https://downloads.sourceforge.net/$pkgname/lmon$pkgver.c"
   fix-fstab-header.patch)
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('c0012cc2d925dee940c37ceae297abac64ba5a5c30e575e7418b04028613f5f2'
+            'a3bf2a06991750aa0b65ff63e3e7494768490b67a61125837251872bb5a6c5ba')
 
 prepare()
 {
