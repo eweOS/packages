@@ -9,7 +9,7 @@ url='https://www.wireguard.com/'
 license=('GPL')
 depends=('bash')
 source=("https://git.zx2c4.com/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('97ff31489217bb265b7ae850d3d0f335ab07d2652ba1feec88b734bc96bd05ac')
 
 prepare()
 {
