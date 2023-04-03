@@ -14,7 +14,7 @@ makedepends=('git') # also add imlib2 when available
 #optdepends=('imlib2: for graphics support')
 depends=('openssl' 'gc' 'ncurses')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/tats/w3m/archive/v$_pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('6d76fcccb7c94658f2753f0777f69283d5cb447004a0d0d3087c1d873edc0af3')
 
 build()
 {
