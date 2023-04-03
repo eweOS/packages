@@ -9,7 +9,7 @@ url="https://bitmath.org/code/mtdev/"
 license=('custom:MIT')
 source=("$url$pkgname-$pkgver.tar.bz2")
 makedepends=(autoconf)
-sha256sums=('SKIP')
+sha256sums=('15d7b28da8ac71d8bc8c9287c2045fd174267bc740bec10cfda332dc1204e0e0')
 
 build()
 {
