@@ -13,7 +13,10 @@ source=(
   config.toml.x86_64
   config.toml.aarch64
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('46483d3e5de85a3bd46f8e7a3ae1837496391067dbe713a25d3cf051b3d9ff6e'
+            '41262c98ae4effc2a752340608542d9fe411da73aca5fbe947fe45f61b7bd5cf'
+            '6ae6ca31ab75bd9474a0f9edf2431630603cb4db475edc6e15a41793861d9615'
+            'b03d82b27697e7c6851ead47e8eca74458ad3a34f3ba8663d6216fdecf4025c0')
 
 depends=(musl llvm-libs musl-static curl libssh2)
 makedepends=(rust llvm libffi perl python cmake ninja)
