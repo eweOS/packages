@@ -9,7 +9,7 @@ url="https://github.com/eyJhb/sl"
 license=('custom')
 depends=('ncurses')
 source=("https://github.com/eyJhb/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('4a57737a60c90a1eec2210ce7c28db937b46a5c35006bd1b5ff43d20ef617a004c49c2b2897ebc0fb8c57b6687fe933b2c9834f5800fdc0bf9912e07542a3b30')
 
 prepare()
 {
