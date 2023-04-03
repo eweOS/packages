@@ -8,7 +8,7 @@ url='https://opus-codec.org/'
 license=('BSD')
 depends=('musl')
 source=("https://archive.mozilla.org/pub/opus/opus-1.3.1.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('65b58e1e25b2a114157014736a3d9dfeaad8d41be1c8179866f144a2fb44ff9d')
 arch=(x86_64 aarch64)
 provides=("libopus.so")
 
