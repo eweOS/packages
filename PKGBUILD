@@ -8,7 +8,7 @@ license=(GPL3)
 provides=('shellcheck')
 conflicts=('shellcheck')
 source=("https://github.com/koalaman/shellcheck/releases/download/v${pkgver}/shellcheck-v${pkgver}.linux.x86_64.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('70423609f27b504d6c0c47e340f33652aea975e45f312324f2dbf91c95a3b188')
 
 package()
 {
