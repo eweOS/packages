@@ -29,7 +29,7 @@ optdepends=(
     'w3m: for previews of images and html pages')
 #checkdepends=('python-pytest') # python packages isn't ready
 source=(https://ranger.github.io/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('SKIP')
+sha512sums=('5cd7bea714a6542d0a5445f5f0cf929b2df4377df3ef710f3786c6c46dd58b017a8060cde3969076637bfaac03c13297d3020fd82f4574dc49546ca223c0e8d3')
 
 check() {
   cd ${pkgname}-${pkgver}
