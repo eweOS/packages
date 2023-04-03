@@ -12,7 +12,7 @@ license=('BSD')
 depends=('musl' 'libedit')
 install=dash.install
 source=(https://git.kernel.org/pub/scm/utils/dash/dash.git/snapshot/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('SKIP')
+sha512sums=('324e7971bb9ab93246e811600f59a059462abc4fefc48c7d53782b518d560f740ace95f41b5d8c215279c6084c1881ff8bbdaabee69fdae66c971d3e9bdce2d4')
 
 prepare()
 {
