@@ -19,13 +19,11 @@ source=(
   function_patch.sh
   function_pick.sh
 )
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('7d8e3e8c5121aec0965df71f59bedf46052c6cf14f96365c4411ec3de0a4c1a5'
+            '14fe0360c81abf4dd79eae4f33934f2c0d52a81e73526d6ca48cd88b1e9ffbb9'
+            'b7d0860e6763d3947bcd9c725aead7f821ef902a5246926de2c9079eb303a585'
+            'f629c6979ee692ce0c1aea33ffaa2a238b08a912bb9e012872365ff603d0a977'
+            '7d2ad28bef8f9f77f33929d2050244a6f29941de6ad0793b6820caee3dbd84e3')
 
 _fetchpkg()
 {
