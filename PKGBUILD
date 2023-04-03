@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 license=('BSD')
 depends=('acl' 'openssl' 'xz' 'zlib' 'libxml2' 'libbz2')
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('9e2c1b80d5fbe59b61308fdfab6c79b5021d7ff4ff2489fb12daf0a96a83551d')
 
 build()
 {
