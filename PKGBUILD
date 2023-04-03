@@ -13,7 +13,7 @@ license=('LGPL')
 depends=('musl')
 provides=('libexif.so')
 source=(${url}/archive/${pkgname}-${pkgver//./_}-release.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('d3fb7c47829ec4d2def39aa38f4c35a0891763448a05dbf216a329a12bf198f9')
 
 prepare()
 {
