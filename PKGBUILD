@@ -9,7 +9,7 @@ license=('LGPL')
 depends=('musl' 'libflac' 'libogg' 'libvorbis' 'libopus')
 makedepends=('python')
 source=("https://github.com/libsndfile/libsndfile/releases/download/${pkgver}/libsndfile-${pkgver}.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('0e30e7072f83dc84863e2e55f299175c7e04a5902ae79cfb99d4249ee8f6d60a')
 arch=(x86_64 aarch64)
 provides=("libsndfile.so")
 
