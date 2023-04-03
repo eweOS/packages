@@ -11,7 +11,7 @@ depends=('krb5')
 makedepends=('bsd-compat-headers')
 backup=('etc/netconfig')
 source=(https://downloads.sourceforge.net/sourceforge/libtirpc/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('SKIP')
+sha256sums=('6474e98851d9f6f33871957ddee9714fdcd9d8a5ee9abb5a98d63ea2e60e12f3')
 
 build()
 {
