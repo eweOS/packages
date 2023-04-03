@@ -11,7 +11,8 @@ depends=(ncurses)
 makedepends=(cmake)
 source=("https://github.com/angband/angband/releases/download/${pkgver}/Angband-${pkgver}.tar.gz"
   angband.sh)
-md5sums=('SKIP' 'SKIP')
+md5sums=('ce3a6777a4c62e2fc3ad9c3d4f96468c'
+         'a4ac0ee51a6d2516aaf2c11519e03f46')
 
 build()
 {
