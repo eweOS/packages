@@ -12,7 +12,8 @@ source=(
   "https://gitlab.gnome.org/GNOME/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2"
   "https://gcc.gnu.org/onlinedocs/libstdc++/latest-doxygen/libstdc++.tag"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('5f91117e73cb772daef355971ec7eac5befb913c943c80282b268b22e8bbf40a'
+            'dfb6521cb807fc827c34bcd47dbcf2f7564b2fc1b6014ebb13bed349ddf55af0')
 
 prepare()
 {
