@@ -10,7 +10,7 @@ arch=(x86_64 aarch64)
 url='https://gmplib.org/'
 license=(LGPL3 GPL)
 source=(https://gmplib.org/download/gmp/gmp-$pkgver.tar.lz)
-md5sums=('SKIP')
+md5sums=('03a31d8cbaf29d136252f8f38875ed82')
 
 build()
 {
