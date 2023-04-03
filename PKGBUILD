@@ -19,7 +19,8 @@ source=(
   "https://ftp.gnu.org/gnu/${pkgbase}/${pkgbase}-${pkgver}.tar.xz"
   grub.default
 )
-sha512sums=('SKIP' 'SKIP')
+sha512sums=('4f11c648f3078567e53fc0c74d5026fdc6da4be27d188975e79d9a4df817ade0fe5ad2ddd694238a07edc45adfa02943d83c57767dd51548102b375e529e8efe'
+            '70fa700c28a302a4be2b51389f5fd24f821f9381f083594266ff3d9e585621ae0fa3a3816864c2aabcce6bff8eca4c0bd700510bcf610ea377224772ce0207a9')
 
 prepare()
 {
