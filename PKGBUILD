@@ -22,18 +22,16 @@ source=(
   hosts
   motd
 )
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('a3244412651ec84fb406df192ff176ca11c13d8544b24b4637bd848e1ff5a87b'
+            '988d0ec048e44038f81a357f73eb75b0335a4039b89c5bd1d63f88caf5e81d36'
+            '6ec12265d02d88c2b448430533ee3708cd5dbea420fefa40e0a5653627279894'
+            '4cc26708349348ad3520dae0e1046ef3d1b6eb823c9e1361aa24062d785595d8'
+            'b4d36eb75767bebb41c5fa7a35599952e1883b3d3f6332496e1561eeb4067018'
+            '297b784a25fc59641589c6ef05dc26680e2805e9cab37a4ea3699aa072a25c2e'
+            '6979dc53ed05ebdacc18700025ccf0232e0985f52aa56d31a5515935e03b04eb'
+            'a9589ae7a6d52dd8866e7504023bbe13c233fa3fef9593ceb49d3fdd20675975'
+            'c0fca42f35a4c2034fb2105cdd428f65ecd5d5454fc8e58f5620adbfc0ec9509'
+            '95b9288fbefc8af3f6412b1369ca2ee2df6daf038e0c035476c0f6bed27307b5')
 
 backup=(
   etc/passwd
