@@ -14,7 +14,7 @@ license=('MIT')
 depends=('git' 'musl')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('fe5b2278d7b5b22058d139ec8961a09197d8fd26d7432d263a583fa9c1599d6d')
 
 build()
 {
