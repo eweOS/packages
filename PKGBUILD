@@ -9,7 +9,7 @@ url='https://www.zlib.net/pigz'
 license=('custom')
 depends=('zlib' 'musl')
 source=(https://www.zlib.net/$pkgname/$pkgname-$pkgver.tar.gz)
-sha512sums=('SKIP')
+sha512sums=('9f9f61de4a0307fc057dc4e31a98bd8d706d9e709ecde0be02a871534fddf6a1fe1321158aa72708603aaaece43f83d2423b127f7689b6219b23aea4f989e8f5')
 
 build()
 {
