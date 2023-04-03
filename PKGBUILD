@@ -15,12 +15,10 @@ source=(
   linux-config.x86_64
   busybox-find-compat.patch
 )
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('4303105201fb0c0b17155fff87df0a022a32a41eb1ce94a264ae648c64bd0d8d'
+            'd4ce96309090fc6820f1e71afec0620b22b5ce6335274e84b7fec4770c2e28ca'
+            'cdbbb14dcf4483ffbc25823bab69de8ee71fd3f553f0ee32df0d9a9d48737605'
+            'ea1c89fc102d90370c6dc3cb53abebcfdfee91cf6aac60a22bb2b919446ff733')
 
 prepare()
 {
