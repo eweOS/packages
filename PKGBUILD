@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('ncurses' 'cairo' 'gettext')
 makedepends=('autoconf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jubalh/nudoku/archive/$pkgver.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('dde16d1dccc1cae8d156f57fccf8b112f3fee7d23b912b5cd7ecc092ecbf04a8e85f469e53fa02e6bd2d0b9498e4a65a219e1aad8091f82638dceab32f320670')
 
 prepare() {
 	cd "$pkgname-$pkgver"
