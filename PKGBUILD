@@ -9,7 +9,7 @@ arch=(x86_64 aarch64)
 license=('zlib')
 depends=('musl' 'wayland' 'libudev' 'dbus' 'libsamplerate')
 source=("https://github.com/libsdl-org/SDL/releases/download/release-${pkgver}/SDL2-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('c661205a553b7d252425f4b751ff13209e5e020b876bbfa1598494af61790057')
 provides=('libSDL2.so')
 
 build() {
