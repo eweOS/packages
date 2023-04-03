@@ -11,7 +11,7 @@ license=('custom:ISC')
 depends=('libsodium')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jedisct1/minisign/archive/$pkgver.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('6a38500ed896c17b100bca47443f9806debe6e44d3ce09189f5f8913a41d4913434397175d1caa770fb0cc0918078dfc71c01b82b9bf919fdfba00434f4ce100')
 
 prepare()
 {
