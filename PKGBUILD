@@ -10,7 +10,7 @@ license=(LGPL)
 depends=(cairo glib fribidi harfbuzz)
 makedepends=(meson gobject-introspection)
 source=("https://download.gnome.org/sources/$pkgname/1.50/$pkgname-$pkgver.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('caef96d27bbe792a6be92727c73468d832b13da57c8071ef79b9df69ee058fe3')
 
 build() {
   ewe-meson $pkgname-$pkgver build \
