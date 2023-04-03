@@ -13,7 +13,7 @@ depends=('perl')
 checkdepends=('perl-test-warnings')
 options=('!emptydirs')
 source=(https://search.cpan.org/CPAN/authors/id/L/LE/LEONT/${_dist}-${pkgver}.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('e2f6a4029a6a242d50054044f1fb86770b9b5cc4daeb1a967f91ffb42716a8c5')
 
 build() {
     cd "${srcdir}/${_dist}-${pkgver}"
