@@ -12,7 +12,8 @@ source=(
   "$url/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
   cron.service
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('2cd0f0dd1680e6b9c39bf1e3a5e7ad6df76aa940de1ee90a453633aa59984e62'
+            'e33cecd52ffc6ac6efe01ec6cdc86d1c847784ddf43d55109cf93c9ff933855b')
 
 build()
 {
