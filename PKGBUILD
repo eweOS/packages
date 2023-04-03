@@ -24,10 +24,8 @@ source=(
   "https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz"
   "https://mirrors.tuna.tsinghua.edu.cn/gnu/binutils/binutils-${_binutilsver}.tar.xz"
 )
-sha256sums=(
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('9d53ad04dc60cb7b30e810faf64c5ab8157dadef46c8766f67f286238256ff92'
+            '645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00')
 
 FLIST_clang=(
   "usr/bin/*clang*"
