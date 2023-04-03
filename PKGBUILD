@@ -11,7 +11,7 @@ license=(custom:X11)
 depends=('libudev' 'libevdev' 'mtdev')
 makedepends=('meson' 'wayland-protocols')
 source=("$url/libinput/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('ebbe5a966cf2a12f59666adbfb505cafca58635b96239bbcdf04a09dc4cd0d7b')
 
 build()
 {
