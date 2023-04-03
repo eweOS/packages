@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=doctest
-pkgver=2.4.9
+pkgver=2.4.11
 pkgrel=1
 pkgdesc='The feature-rich C++11/14/17/20 single-header testing framework'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/onqtam/doctest'
 license=('MIT')
 makedepends=('cmake')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('19b2df757f2f3703a5e63cee553d85596875f06d91a3333acd80a969ef210856')
+sha256sums=('632ed2c05a7f53fa961381497bf8069093f0d6628c5f26286161fbd32a560186')
 
 prepare()
 {
