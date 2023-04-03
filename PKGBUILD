@@ -18,7 +18,8 @@ provides=(go-pie)
 options=(!strip staticlibs)
 source=("https://go.dev/dl/go${pkgver}.src.tar.gz"
   0001-runtime-cgo-add-fno-stack-protector-to-CFLAGS.patch)
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('27871baa490f3401414ad793fba49086f6c855b1c584385ed7771e1204c7e179'
+            '31016b81774aa4d240bc9eb981b9c860c3cc2bb3fd60c3794c2648eadc31d23f')
 
 prepare()
 {
