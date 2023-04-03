@@ -8,7 +8,7 @@ arch=(x86_64 aarch64)
 url="https://gnupg.org/software/$pkgname"
 license=(LGPLv2 GPLv2)
 source=("https://gnupg.org/ftp/gcrypt/$pkgname/$pkgname-$pkgver.tar.bz2")
-sha256sums=('SKIP')
+sha256sums=('ef14ae546b0084cd84259f61a55e07a38c3b53afc0f546bffcef2f01baffe9de')
 
 depends=('musl' 'libgpg-error')
 
