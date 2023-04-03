@@ -10,7 +10,7 @@ license=(GPL3)
 groups=(base-devel)
 depends=(ncurses perl sh musl)
 source=("https://ftp.gnu.org/pub/gnu/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('8eb753ed28bca21f8f56c1a180362aed789229bd62fff58bf8368e9beb59fec4')
 
 build()
 {
