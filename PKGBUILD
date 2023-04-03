@@ -11,7 +11,7 @@ url="https://sass-lang.com"
 license=("MIT")
 depends=("libsass" "musl")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sass/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=("608dc9002b45a91d11ed59e352469ecc05e4f58fc1259fc9a9f5b8f0f8348a03")
+sha256sums=('608dc9002b45a91d11ed59e352469ecc05e4f58fc1259fc9a9f5b8f0f8348a03')
 
 build()
 {
