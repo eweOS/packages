@@ -11,7 +11,7 @@ license=('PerlArtistic' 'GPL')
 depends=('perl-timedate')
 options=('!emptydirs')
 source=(https://search.cpan.org/CPAN/authors/id/O/OA/OALDERS/HTTP-Date-$pkgver.tar.gz)
-sha1sums=('SKIP')
+sha1sums=('91ee37a40fd75bc303aad2454b43c0a3908c9f38')
 
 build() {
   cd HTTP-Date-$pkgver
