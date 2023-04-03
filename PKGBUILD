@@ -11,7 +11,7 @@ license=('GPL')
 url="https://github.com/cracklib/cracklib"
 depends=('musl' 'zlib')
 source=(https://github.com/cracklib/cracklib/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('268733f8c5f045a08bf1be2950225efeb3d971e31eb543c002269d1a3d98652d')
 
 build()
 {
