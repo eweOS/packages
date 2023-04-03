@@ -9,7 +9,7 @@ license=('BSD')
 depends=('musl' 'ncurses')
 arch=(x86_64 aarch64)
 source=(https://github.com/ibara/oksh/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('9dc0b0578d9d64d10c834f9757ca11f526b562bc5454da64b2cb270122f52064')
 backup=(etc/ksh.kshrc)
 install=oksh.install
 
