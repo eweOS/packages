@@ -12,7 +12,7 @@ checkdepends=('perl-test-fatal')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 source=(https://search.cpan.org/CPAN/authors/id/O/OA/OALDERS/LWP-MediaTypes-${pkgver}.tar.gz)
-sha1sums=('SKIP')
+sha1sums=('b869d8b8b009d06a3bc3433c8a7fc522036df412')
 
 build() {
   cd "${srcdir}/LWP-MediaTypes-${pkgver}"
