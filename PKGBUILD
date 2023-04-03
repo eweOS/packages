@@ -15,7 +15,8 @@ source=(
   "https://github.com/json-c/json-c/archive/refs/tags/json-c-${pkgver}-${_datetag}.tar.gz"
   clang15.patch
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('3ecaeedffd99a60b1262819f9e60d7d983844073abc74e495cb822b251904185'
+            '3d3db85cf9f2d035e64f616b81c493a34a2622e0d986ab43bf3140b2819abec5')
 
 prepare()
 {
