@@ -8,7 +8,7 @@ arch=(x86_64 aarch64)
 url="https://github.com/eweOS/tty2socket"
 license=(MIT)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('a4177243d66449d77ac2f0a5a2a7e64a223f45c25e7bfb0aebb44bf69c7da690')
 
 build()
 {
