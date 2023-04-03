@@ -10,7 +10,8 @@ pkgdesc='A very advanced and programmable command interpreter (shell) for UNIX'
 depends=('pcre' 'libcap' 'gdbm')
 source=("https://www.zsh.org/pub/zsh-${pkgver}.tar.xz"
   zsh-59-clang-15-configure.patch)
-sha512sums=('SKIP' 'SKIP')
+sha512sums=('d9138b7f379ad942a5f46819d2dd52d31f3a1129f2a0d1b53d4c5cd43c318b60396da6d37c57c477b8e958fb750209aca0ae93f8c9dd42ac958de006a0ff067e'
+            '130b9b829200b7ad49b87dc1d3a549ca3a36aba57f01f9d4ef60ba66d8f392f57f4d6a3d35ca323857b27d343c9e6218ffeca233fc436b74c91cf88c915146d8')
 
 prepare()
 {
