@@ -34,7 +34,7 @@ makedepends=(
 )
 checkdepends=(weston)
 source=("https://gitlab.gnome.org/GNOME/gtk/-/archive/${pkgver}/gtk-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('db1779168d6bf3bb6c0564da82f6263206846d8ffea56adb421eec9b6a625305')
 
 build()
 {
