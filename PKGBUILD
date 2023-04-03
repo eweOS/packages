@@ -11,7 +11,7 @@ url="https://www.gnupg.org"
 license=('LGPL')
 depends=('musl' 'sh')
 source=(https://www.gnupg.org/ftp/gcrypt/libgpg-error/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('SKIP')
+sha1sums=('a6e5efdd72e848aab4064e5ef4c6835ba344bcf1')
 
 prepare()
 {
