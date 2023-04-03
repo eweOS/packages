@@ -14,7 +14,7 @@ depends=('perl')
 makedepends=()
 url='https://search.mcpan.org/dist/Test-Warnings'
 source=("https://search.mcpan.org/CPAN/authors/id/E/ET/ETHER/Test-Warnings-$pkgver.tar.gz")
-md5sums=('SKIP')
+md5sums=('f608f7011b0bb8f27d3a27e646a52f60')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
