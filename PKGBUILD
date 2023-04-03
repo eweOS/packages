@@ -22,9 +22,7 @@ makedepends=(
 source=(
   "https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
 )
-sha256sums=(
-  'SKIP'
-)
+sha256sums=('85879192f2cffd56cb16c092905949ebf3e5e394b7f764723529637901dfb58f')
 
 prepare()
 {
