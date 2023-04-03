@@ -12,9 +12,7 @@ source=(
   "http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-$pkgver.tar.xz"
 )
 
-sha256sums=(
-  'SKIP'
-)
+sha256sums=('9bba0214ccf7f1079c5d59210045227bcf619519840ebfa80cd3849cff5a5bf2')
 
 build()
 {
