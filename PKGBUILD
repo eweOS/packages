@@ -12,7 +12,7 @@ arch=(x86_64 aarch64)
 license=('GPL3' 'LGPL')
 depends=('musl')
 source=("https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('884d706364b81abdd17bee9686d8ff2ae7431c5a14651047c68adf8b31fd8945')
 
 build()
 {
