@@ -10,7 +10,7 @@ arch=(x86_64 aarch64)
 url="https://sass-lang.com/libsass"
 license=("MIT")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sass/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=("SKIP")
+sha256sums=('89d8f2c46ae2b1b826b58ce7dde966a176bac41975b82e84ad46b01a55080582')
 
 build()
 {
