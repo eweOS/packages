@@ -10,7 +10,7 @@ license=(BSD)
 depends=(musl libnl)
 makedepends=(flex bison)
 source=("https://www.tcpdump.org/release/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('ed285f4accaf05344f90975757b3dbfe772ba41d1c401c2648b7fa45b711bdd4')
 
 build()
 {
