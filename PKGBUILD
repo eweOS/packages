@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('cmake' 'ninja' 'python' 'spirv-llvm-translator')
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/libclc-$pkgver.src.tar.xz)
-sha256sums=('SKIP')
+sha256sums=('c9b183160ec093b4bd4a24517ab97b30110418b8d904a849c415dc647b345f95')
 
 prepare() {
   cd $pkgname-$pkgver.src
