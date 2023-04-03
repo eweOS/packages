@@ -11,7 +11,7 @@ depends=('musl')
 checkdepends=('curl')
 provides=('libmicrohttpd.so')
 source=("https://ftp.gnu.org/gnu/libmicrohttpd/$pkgname-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('9278907a6f571b391aab9644fd646a5108ed97311ec66f6359cebbedb0a4e3bb')
 
 build()
 {
