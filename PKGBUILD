@@ -7,7 +7,7 @@ url="https://dev.lovelyhq.com/libburnia"
 license=('GPL')
 depends=('acl' 'zlib' 'musl')
 source=(https://files.libburnia-project.org/releases/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('aaa0ed80a7501979316f505b0b017f29cba0ea5463b751143bad2c360215a88e')
 
 build()
 {
