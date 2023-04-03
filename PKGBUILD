@@ -10,7 +10,7 @@ license=(LGPL MPL)
 source=("https://gitlab.freedesktop.org/cairo/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 depends=(libpng fontconfig pixman glib)
 makedepends=(meson)
-sha256sums=('SKIP')
+sha256sums=('a2227afc15e616657341c42af9830c937c3a6bfa63661074eabef13600e8936f')
 
 build() {
   ewe-meson ${pkgname}-${pkgver} build \
