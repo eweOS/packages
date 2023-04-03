@@ -15,7 +15,7 @@ depends=('glibc' 'libxml2' 'libudev')
 makedepends=('cairo' 'ncurses')
 optdepends=('cairo' 'ncurses')
 source=(https://www.open-mpi.org/software/hwloc/v${pkgver%.*}/downloads/${pkgname}-${pkgver}.tar.bz2)
-sha512sums=('SKIP')
+sha512sums=('025c8ebc2945bdf696cc66fe2cfea0195694713a6098603fb4eaeac409d2f6c3386a7c2b4d7f3758d828f6b621e7f06ffb5745224cb1df2f8ff4f19b2a8a4a7b')
 
 build()
 {
