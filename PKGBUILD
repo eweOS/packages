@@ -11,7 +11,7 @@ url="https://github.com/nodejs/http-parser"
 license=('MIT')
 depends=('musl')
 source=($pkgname-$pkgver.tar.gz::"${url}/archive/v$pkgver.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('b45df7b94d1c51079d44687d0a7f901f44faae51df4e84c7e3fe38f130c2d809d0e7c2a146c57b3723e60732aededc246bf44eadb10a95b710963d641f9fe7cd')
 
 prepare()
 {
