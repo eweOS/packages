@@ -11,7 +11,7 @@ depends=('libdrm' 'libinput' 'seatd' 'libudev-zero' 'libxkbcommon' 'mesa' 'pixma
 makedepends=('flex' 'linux-headers' 'meson' 'wayland-protocols' 'hwdata')
 provides=('libwlroots.so')
 source=("$pkgname-$pkgver.tar.gz::$url/-/releases/$pkgver/downloads/wlroots-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('130a1a86f6f8c4fa162ba4db82aaa70850273c5d01313b242baa0144e3d6d253')
 
 build() {
     ewe-meson "$pkgname-$pkgver" build \
