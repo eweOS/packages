@@ -3,13 +3,13 @@
 pkgname=bsd-compat-headers
 pkgver=0.7.2
 _pkgtag=v3.14.10
-pkgrel=2
+pkgrel=3
 pkgdesc="BSD compatibility headers (cdefs, queue, tree)"
 arch=(any)
 url="https://pkgs.alpinelinux.org/package/edge/main/x86_64/bsd-compat-headers"
 license=("BSD")
 provides=(sys-cdefs.h sys-queue.h sys-tree.h)
-source=(sys-cdefs.f::'https://git.alpinelinux.org/aports/plain/main/libc-dev/sys-cdefs.h?h=v3.14.10'
+source=(sys-cdefs.h::'https://git.alpinelinux.org/aports/plain/main/libc-dev/sys-cdefs.h?h=v3.14.10'
   sys-queue.h::'https://git.alpinelinux.org/aports/plain/main/libc-dev/sys-queue.h?h=v3.14.10'
   sys-tree.h::'https://git.alpinelinux.org/aports/plain/main/libc-dev/sys-tree.h?h=v3.14.10')
 sha512sums=('8c3fddd73b696a38e633953715c79c47703739be27ee085fc6c960a57b6746ca05bf6406f7e6126cc1a13204254fd5830afb566624e1f298f4d6b58216013c28'
