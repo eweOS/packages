@@ -9,7 +9,7 @@ url="https://github.com/mcpcpc/kirc"
 license=('MIT')
 depends=('musl')
 source=("https://github.com/mcpcpc/kirc/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('19bb058a9845eb5b2febe6e8d658dcd06c194b58669f37837dbdf37627c7d7dd')
 
 build()
 {
