@@ -12,7 +12,7 @@ depends=('zlib' 'readline' 'ncurses' 'xz')
 makedepends=('python')
 url="http://www.xmlsoft.org/"
 source=(https://download.gnome.org/sources/${pkgname}/${_pkgver_major}/${pkgname}-${pkgver}.tar.xz)
-md5sums=('SKIP')
+md5sums=('f9edac7fac232b3657a003fd9a5bbe42')
 
 build()
 {
