@@ -14,7 +14,7 @@ makedepends=('cmake')
 optdepends=('kbd: cmatrix-tty custom font'
   'xterm: cmatrix-tty custom font')
 source=("cmatrix-$pkgver.tgz::https://github.com/abishekvashok/cmatrix/archive/v$pkgver.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('1aeecd8e8abb6f87fc54f88a8c25478f69d42d450af782e73c0fca7f051669a415c0505ca61c904f960b46bbddf98cfb3dd1f9b18917b0b39e95d8c899889530')
 
 # cmatrix-tty is ignored, see archlinux
 
