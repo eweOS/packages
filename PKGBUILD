@@ -13,7 +13,7 @@ depends=('musl')
 provides=('libkeyutils.so')
 backup=('etc/request-key.conf')
 source=("https://people.redhat.com/~dhowells/keyutils/keyutils-${pkgver}.tar.bz2")
-sha256sums=('SKIP')
+sha256sums=('c8b15722ae51d95b9ad76cc6d49a4c2cc19b0c60f72f61fb9bf43eea7cbd64ce')
 
 build()
 {
