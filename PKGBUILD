@@ -13,7 +13,8 @@ source=(
   "https://github.com/pmqs/Compress-Raw-Zlib/archive/refs/tags/v2.202.tar.gz"
 )
 options=('makeflags' '!purge' 'emptydirs')
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('0f386dccbee8e26286404b2cca144e1005be65477979beb9b1ba272d4819bcf0'
+            'c2302000b6baaf4e7a3dd3d575bef2e6cb9f292031967f687b41d520c19b9641')
 
 prepare()
 {
