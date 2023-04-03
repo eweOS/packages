@@ -11,7 +11,7 @@ license=(LGPL)
 makedepends=(meson mm-common)
 options=(!emptydirs)
 source=("https://github.com/libsigcplusplus/libsigcplusplus/releases/download/$pkgver/$pkgbase-$pkgver.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('1c466d2e64b34f9b118976eb21b138c37ed124d0f61497df2a90ce6c3d9fa3b5')
 
 build()
 {
