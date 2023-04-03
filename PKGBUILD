@@ -12,7 +12,7 @@ makedepends=('perl')
 checkdepends=('perl-http-daemon')
 backup=('etc/wgetrc')
 source=("https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.lz")
-sha512sums=('SKIP')
+sha512sums=('489b9beba237df4555ee3b22bf3ae1f654d448e29f5772a52690f7b7cd7e63679e295bdadb6d55d28d2e4f9ccf9a85a04a6b189e1b5333e9133613685d6cfc66')
 
 build()
 {
