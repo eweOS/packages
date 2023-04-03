@@ -16,7 +16,7 @@ optdepends=(
     "fish: for fish completion support"
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("SKIP")
+sha256sums=('ef2f8cac36ac8270b5f08169865d3998f8cb68ebf5e252623e5be36ad0c92cfe')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
