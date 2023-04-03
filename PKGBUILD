@@ -11,7 +11,7 @@ depends=('ncurses')
 makedepends=(autoconf)
 options=('!emptydirs')
 source=("https://github.com/htop-dev/htop/releases/download/${pkgver}/htop-${pkgver}.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('5a17121cf1c69d2f2e557c0b29d45a2c353ab983f644742e1c2e4ece15aa6cbb')
 
 prepare()
 {
