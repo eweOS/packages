@@ -16,7 +16,7 @@ makedepends=(
 )
 depends=(libxml2 xkeyboard-config)
 source=("https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('3b86670dd91441708dedc32bc7f684a034232fd4a9bb209f53276c9783e9d40e')
 
 build()
 {
