@@ -9,7 +9,7 @@ license=('LGPL')
 depends=(musl)
 makedepends=('gettext')
 source=("https://download.savannah.gnu.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('db448a626f9313a1a970d636767316a8da32aede70518b8050fa0de7947adc32')
 
 build()
 {
