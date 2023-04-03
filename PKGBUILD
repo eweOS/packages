@@ -12,7 +12,7 @@ depends=(wayland cairo gdk-pixbuf)
 source=(
     "${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
 )
-sha256sums=('SKIP')
+sha256sums=('c0205b34f1fad94553b6cb2c2b983cc33186018026058cad0b841a00bc3087e3')
 
 build() {
     mkdir -p build
