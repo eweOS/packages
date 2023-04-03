@@ -11,7 +11,7 @@ url="http://mama.indstate.edu/users/ice/tree/"
 license=('GPL')
 depends=('musl')
 source=("https://gitlab.com/OldManProgrammer/unix-tree/-/archive/${pkgver}/unix-tree-${pkgver}.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('0420f71c3c989837b06ec055139e0cc9e5fe35c7fed5583e5c81df139e30bb9d86a15c368586e3d0714bda60e357ff0d1d4a22694bbbc4427def78fe31f330e6')
 
 prepare()
 {
