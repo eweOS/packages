@@ -11,7 +11,7 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl' 'perl-file-slurper')
 source=("https://search.cpan.org/CPAN/authors/id/M/MG/MGV/IO-Compress-Brotli-$pkgver.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('7cc198ecef15c912d8b62e6851935c433159e7f3680f2034949c032d23827f5a5720dd02b77b89b60d43b0a2a7df059c9e76c8f4e44993c28630624f0e17a377')
 
 build()
 {
