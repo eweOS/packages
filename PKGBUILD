@@ -11,7 +11,7 @@ url='https://strace.io/'
 license=(BSD)
 depends=(perl)
 source=(https://github.com/strace/strace/releases/download/v$pkgver/strace-$pkgver.tar.xz)
-sha1sums=('SKIP')
+sha1sums=('dc34c0d7c3ab0d0adb227f751c016da2c415eb2e')
 
 build()
 {
