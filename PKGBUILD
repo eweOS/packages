@@ -13,9 +13,7 @@ makedepends=(perl zlib)
 source=(
   "https://www.openssl.org/source/openssl-${pkgver}.tar.gz"
 )
-sha256sums=(
-  'SKIP'
-)
+sha256sums=('c5ac01e760ee6ff0dab61d6b2bbd30146724d063eb322180c6f18a6f74e4b6aa')
 
 build()
 {
