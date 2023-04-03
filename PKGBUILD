@@ -12,7 +12,7 @@ license=('Apache')
 depends=('musl')
 makedepends=('cmake')
 source=("https://cmocka.org/files/1.1/cmocka-${pkgver}.tar.xz")
-sha512sums=('SKIP')
+sha512sums=('cad7f04757183d004f6eaad39036fc0e24c5e0e987f80e85bc43bc66dba22389cb02b08e25531cc28a541d0a24a86b29be134a2d6fc339128e87d66952f502bd')
 
 prepare()
 {
