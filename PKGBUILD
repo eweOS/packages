@@ -11,7 +11,7 @@ url="https://github.com/axel-download-accelerator/axel"
 license=('GPL')
 depends=('musl' 'openssl')
 source=(https://github.com/axel-download-accelerator/axel/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz)
-sha256sums=('SKIP')
+sha256sums=('580b2c18692482fd7f1e2b2819159484311ffc50f6d18924dceb80fd41d4ccf9')
 
 build()
 {
