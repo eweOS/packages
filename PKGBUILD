@@ -10,7 +10,7 @@ url="https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config"
 makedepends=('python' 'meson')
 _dirname=xkeyboard-config-$pkgname-$pkgver
 source=("$url/-/archive/$pkgname-$pkgver/xkeyboard-config-$pkgname-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('d047af43c9da3843fdb40139d5f23ac75041bed16c28e24a31447b27a269cf66')
 
 build() {
   ewe-meson $_dirname build \
