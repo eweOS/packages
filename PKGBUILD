@@ -18,7 +18,7 @@ provides=('libcom_err.so'
   'libext2fs.so'
   'libss.so')
 source=("https://www.kernel.org/pub/linux/kernel/people/tytso/${pkgname}/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('144af53f2bbd921cef6f8bea88bb9faddca865da3fbc657cc9b4d2001097d5db')
 
 build()
 {
