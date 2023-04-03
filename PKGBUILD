@@ -15,7 +15,7 @@ depends=(zlib xz lz4)
 makedepends=(cmake ninja)
 provides=(libzstd.so)
 source=(https://github.com/facebook/zstd/releases/download/v${pkgver}/zstd-${pkgver}.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('7c42d56fac126929a6a85dbc73ff1db2411d04f104fae9bdea51305663a83fd0')
 
 prepare()
 {
