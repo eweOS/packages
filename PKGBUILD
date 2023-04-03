@@ -15,7 +15,8 @@ source=(
   https://github.com/mkj/${pkgname}/archive/refs/tags/DROPBEAR_${pkgver}.tar.gz
   sshd.service
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('d22901a79dedca820d73208cc25c9f74c7da7e606984e2cba839181e55a628bc'
+            '901e31c3f6dc4118e065a9d48f38bfaeb800c7a9456ee2e334e9abc798a63853')
 
 build()
 {
