@@ -9,7 +9,7 @@ url='https://bellard.org/tinyemu'
 license=('MIT')
 depends=('musl' 'openssl' 'curl')
 source=("https://bellard.org/tinyemu/tinyemu-${version}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('be8351f2121819b3172fcedce5cb1826fa12c87da1b7ed98f269d3e802a05555')
 arch=(x86_64 aarch64)
 
 build() {
