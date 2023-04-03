@@ -22,19 +22,17 @@ source=(
   "mdev.conf"
   "remove_empty_dir.patch"
 )
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('542750c8af7cb2630e201780b4f99f3dcceeb06f505b479ec68241c1e6af61a5'
+            '45a8cc96f544a7d26a4ebc86d9246c122f9bd4b7183c3263807b62d9be23470a'
+            '204a0fc1dabe7cc02a8a18bdec4637d7ddb6547042c9ee1e5f9b71cd22de2f85'
+            '644321e67516c8e6869dd1f09b9dfc06d6758dec91df0bdea3cb614419a1e0d3'
+            'b14b091b3a280b4e441e7ce4ba3f4869306c6a39bf477057b6002874c82f5741'
+            '11ed1f511e0d8a5531650d0895ce73fa06dbbc3872dee2e8b1e88e2cecb085d4'
+            'b040983cf5a5bc7a7053573cd78f583e95a90aee1a1acacdb8ee0516fea1ce9f'
+            '69e028725a63763e21684fb0ce941f6a34a4b72bb328a0cab43b4d39d6d767dc'
+            'a89991ff9aff1876cac2a8b66959fe56195ecb7996344beddea0b051abebd65a'
+            '1a914dea6a818ecd279d28093209be535b381d9433264013f26e8e0af0880efb'
+            '622d0a1743a127bab1fc15e5057034db52c7fa475298b8d085cfc7c046ae5537')
 
 prepare()
 {
