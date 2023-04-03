@@ -10,9 +10,7 @@ license=(BSD)
 source=(
   "ftp://sourceware.org/pub/libffi/libffi-${pkgver}.tar.gz"
 )
-sha256sums=(
-  'SKIP'
-)
+sha256sums=('4416dd92b6ae8fcb5b10421e711c4d3cb31203d77521a77d85d0102311e6c3b8')
 
 build()
 {
