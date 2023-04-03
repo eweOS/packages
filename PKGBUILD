@@ -12,7 +12,7 @@ license=('GPL2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lipnitsk/libcue/archive/v$pkgver.tar.gz")
 depends=('musl')
 makedepends=('cmake' 'bison' 'flex')
-sha512sums=('SKIP')
+sha512sums=('32e476cb09ed2cb2d64aaba1342fb91e77e448391b493a3a794a8d2a6723a0e6097a90b11c6ad82998cb7f270f4f18c2578d7b8575f6929c2a35502e09ebc964')
 
 build()
 {
