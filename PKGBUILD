@@ -9,7 +9,7 @@ url="http://www.libpng.org/pub/png/libpng.html"
 license=('custom')
 depends=('zlib' 'sh')
 source=("https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('505e70834d35383537b6491e7ae8641f1a4bed1876dbfe361201fc80868d88ca')
 
 build()
 {
