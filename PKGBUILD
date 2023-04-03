@@ -9,7 +9,7 @@ arch=(x86_64 aarch64)
 license=(MIT)
 makedepends=(meson mesa)
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('a7ced37f4102b745ac86d6a70a9da399cc139ff168ba6b8002b4d8d43c900c15')
 
 build() {
   ewe-meson $pkgname-$pkgver build \
