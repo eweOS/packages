@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('musl' 'mimalloc' 'openssl' 'zlib' 'cmake')
 makedepends=('python' 'lld')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('faf381ba268e714bec7f872de0dd6ea9187ae20b4e12c434a67ac92854701280')
 
 build()
 {
