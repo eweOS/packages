@@ -13,7 +13,7 @@ makedepends=(cmake git ninja)
 source=("git+$url#tag=v$pkgver"
   libutf8proc.pc.in)
 sha256sums=('SKIP'
-  'SKIP')
+            '1d221111ba69df56fb94cd8384af82cb3a267e966baee8c1e32c92aa6c81d257')
 
 prepare()
 {
