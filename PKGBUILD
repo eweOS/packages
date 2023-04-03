@@ -12,7 +12,7 @@ depends=('llvm-libs')
 makedepends=('cmake')
 git_commit='30597b11aa4b3b68862173b46cf57e0eda20204d'
 source=("https://github.com/plibither8/2048.cpp/archive/${git_commit}.zip")
-sha512sums=('SKIP')
+sha512sums=('a08a498ad5b6f0695f02e234537e513e36d46e95c3ff21fc53f130f21333b508ed9416fc48119e6d304784ef6fab7352ee38a6f2c2ac9075ec2295bb610c1c49')
 
 build()
 {
