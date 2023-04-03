@@ -14,7 +14,8 @@ source=(
   "git+${url}.git#commit=${_commit}"
   "$url/commit/3778ed47d539a716301ba2e67ba62f796e2df310.patch"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'bc5bdc48ecb5df461fb0eb1b69be642ccedcb53f286da532e2794d23e9f4f6e1')
 
 prepare()
 {
