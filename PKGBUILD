@@ -16,7 +16,11 @@ source=(
   openldap.sysusers
   Add-UNIX_LINK_LIBS-Makefile.patch
   remove_la_references.patch)
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('d2a2a1d71df3d77396b1c16ad7502e674df446e06072b0e5a4e941c3d06c0d46'
+            '0be46138e53ff2fa6d4b4c06bfbdd2100426e0bd2ed29bf3419ade6b5974e9a0'
+            'bb6a9af3b5cce594b2e737b641d2edfa327fde63c85a26c824fd2246e0839de5'
+            'ce8e66ac525c4261c998c1041f8cb126933eb767fcc8b7e61c6e7707e7d17420'
+            '3fe777e3f38a602e5b5ca3cb5b68b4fb6c6346c7bdaf7f9c08a9b70a61c0d211')
 options=(!lto)
 
 # extra modules found in contrib/slapd-modules
