@@ -12,7 +12,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 options=('!emptydirs')
 source=(https://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/JSON-$pkgver.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('6780a51f438c0932eec0534fc9cd2b1ad0d64817eda4add8ede5ec77d6d2c991')
 
 build() {
   cd  "$srcdir"/JSON-$pkgver
