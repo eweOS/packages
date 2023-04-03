@@ -15,7 +15,7 @@ depends=('llvm-libs' 'readline' 'zlib' 'libbz2')
 options=(staticlibs)
 provides=(libpcreposix.so libpcrecpp.so libpcre32.so libpcre16.so libpcre.so)
 source=(https://sourceforge.net/projects/pcre/files/pcre/$pkgver/pcre-$pkgver.tar.bz2)
-sha512sums=('SKIP')
+sha512sums=('91bff52eed4a2dfc3f3bfdc9c672b88e7e2ffcf3c4b121540af8a4ae8c1ce05178430aa6b8000658b9bb7b4252239357250890e20ceb84b79cdfcde05154061a')
 
 prepare()
 {
