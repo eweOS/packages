@@ -29,7 +29,8 @@ backup=(
 options=('!emptydirs')
 source=(https://web.mit.edu/kerberos/dist/krb5/${_pkgvermajor}/${pkgname}-${pkgver}.tar.gz
   0001-krb5-config_LDFLAGS.patch::https://github.com/krb5/krb5/commit/0bfd22feb6493f34fdc894daaf680c3a2f2e7784.patch)
-sha512sums=('SKIP' 'SKIP')
+sha512sums=('9aed84a971a4d74188468870260087ec7c3a614cceb5fe32ad7da1cb8db3d66e00df801c9f900f0131ac56eb828674b8be93df474c2d13b892b70c7977388604'
+            '5debf9dd2d0da84ff6a9e18887fc1bbd0530cc131ac2292ea725f89da8cc84c4b864ebbd1c92eff11d63b98643bff910da3dda40ddc9e1c43f4ce7bd2b6f54dd')
 
 prepare()
 {
