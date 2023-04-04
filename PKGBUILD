@@ -1,15 +1,16 @@
 # Maintaniner: AtomAlpaca <atal@anche.no>
-pkgname=lua
+pkgname=lua54
 pkgver=5.4.4
 pkgdesc='Powerful lightweight programming language designed for extending applications'
-pkgrel=1
+pkgrel=0
 url='https://www.lua.org'
 arch=(x86_64 aarch64)
-depends=('readline')
-license=('MIT')
+depends=(readline)
+license=(MIT)
 source=(https://www.lua.org/ftp/lua-$pkgver.tar.gz
   liblua.so.patch
   lua.pc)
+provides=(lua)
 
 prepare()
 {
