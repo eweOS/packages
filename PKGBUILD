@@ -2,7 +2,7 @@
 
 pkgname=lua51
 pkgver=5.1.5
-pkgrel=0
+pkgrel=1
 pkgdesc='Powerful lightweight programming language designed for extending applications'
 url='https://www.lua.org'
 arch=(x86_64 aarch64)
@@ -11,7 +11,8 @@ depends=(readline)
 makedepends=(patch)
 source=(https://www.lua.org/ftp/lua-$pkgver.tar.gz
 	Makefile.patch
-	src-Makefile.patch)
+	src-Makefile.patch
+	module-path.patch)
 _V=5.1
 _R=5.1.5
 
@@ -19,6 +20,7 @@ prepare() {
 cd lua-$pkgver
 	patch -p1 Makefile < ../Makefile.patch
 	patch -p1 src/Makefile < ../src-Makefile.patch
+	patch -p1 src/luaconf.h < ../module-path.patch
 
 	pc=../lua.pc
 	grep '^V=' Makefile > $pc
@@ -59,4 +61,5 @@ package() {
 
 sha256sums=('2640fc56a795f29d28ef15e13c34a47e223960b0240e8cb0a82d9b0738695333'
 	    '218435db9980772bb9710bdaf1e8e73a24deb022aa16a74ba69a3a069f1a818d'
-	    '39fb1879e88a1b24cf762df80f1010d71adab8c57d4bd6c4374abe4a24bc1044')
+	    '397d3e00401c380f5f5b9093284db2648f1c9f25bbee04758f5f2a1e15a99f7c'
+	    'ed24adcde57f197d883563ccae213e5f34505d90e4c83946826c57877d6659c8')

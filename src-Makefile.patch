@@ -1,5 +1,7 @@
---- src/Makefile
-+++ src/Makefile
+diff --git a/lua-5.1.5/src/Makefile b/src/lua-5.1.5/src/Makefile
+index e0d4c9f..5c311d9 100644
+--- a/lua-5.1.5/src/Makefile
++++ b/src/lua-5.1.5/src/Makefile
 @@ -8,7 +8,7 @@
  PLAT= none
  
@@ -9,7 +11,7 @@
  AR= ar rcu
  RANLIB= ranlib
  RM= rm -f
-@@ -23,6 +23,7 @@
+@@ -23,6 +23,7 @@ MYLIBS=
  PLATS= aix ansi bsd freebsd generic linux macosx mingw posix solaris
  
  LUA_A=	liblua.a
@@ -17,7 +19,7 @@
  CORE_O=	lapi.o lcode.o ldebug.o ldo.o ldump.o lfunc.o lgc.o llex.o lmem.o \
  	lobject.o lopcodes.o lparser.o lstate.o lstring.o ltable.o ltm.o  \
  	lundump.o lvm.o lzio.o
-@@ -36,7 +37,7 @@
+@@ -36,7 +37,7 @@ LUAC_T=	luac
  LUAC_O=	luac.o print.o
  
  ALL_O= $(CORE_O) $(LIB_O) $(LUA_O) $(LUAC_O)
@@ -26,15 +28,16 @@
  ALL_A= $(LUA_A)
  
  default: $(PLAT)
-@@ -51,8 +52,11 @@
+@@ -51,8 +52,11 @@ $(LUA_A): $(CORE_O) $(LIB_O)
  	$(AR) $@ $(CORE_O) $(LIB_O)	# DLL needs all object files
  	$(RANLIB) $@
  
+-$(LUA_T): $(LUA_O) $(LUA_A)
+-	$(CC) -o $@ $(MYLDFLAGS) $(LUA_O) $(LUA_A) $(LIBS)
 +$(LUA_SO): $(CORE_O) $(LIB_O)
 +	$(CC) -o $@ $? -shared
 +
- $(LUA_T): $(LUA_O) $(LUA_A)
--	$(CC) -o $@ $(MYLDFLAGS) $(LUA_O) $(LUA_A) $(LIBS)
++$(LUA_T): $(LUA_O) $(LUA_SO)
 +	$(CC) -o $@ $(MYLDFLAGS) $(LUA_O) $(LUA_SO) $(LIBS)
  
  $(LUAC_T): $(LUAC_O) $(LUA_A)
