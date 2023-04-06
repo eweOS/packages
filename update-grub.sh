@@ -17,5 +17,3 @@ for kernel in "${kernels[@]}"; do
 done
 
 wait
-
-grub-mkconfig -o /boot/grub/grub.cfg
