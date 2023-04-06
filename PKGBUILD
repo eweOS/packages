@@ -8,7 +8,7 @@
 pkgbase=grub
 pkgname=(grub-common grub-bios grub-efi grub-theme-starfield)
 pkgver=2.06
-pkgrel=3
+pkgrel=4
 pkgdesc="GRand Unified Bootloader, version 2"
 arch=(x86_64 aarch64)
 url='https://www.gnu.org/software/grub/grub.html'
@@ -18,9 +18,13 @@ makedepends=('lld' 'bison' 'flex' 'python' 'freetype2' 'ttf-dejavu' 'ttf-unifont
 source=(
   "https://ftp.gnu.org/gnu/${pkgbase}/${pkgbase}-${pkgver}.tar.xz"
   grub.default
+  grub.hook
+  update-grub.sh
 )
 sha512sums=('4f11c648f3078567e53fc0c74d5026fdc6da4be27d188975e79d9a4df817ade0fe5ad2ddd694238a07edc45adfa02943d83c57767dd51548102b375e529e8efe'
-            '70fa700c28a302a4be2b51389f5fd24f821f9381f083594266ff3d9e585621ae0fa3a3816864c2aabcce6bff8eca4c0bd700510bcf610ea377224772ce0207a9')
+  '70fa700c28a302a4be2b51389f5fd24f821f9381f083594266ff3d9e585621ae0fa3a3816864c2aabcce6bff8eca4c0bd700510bcf610ea377224772ce0207a9'
+  '3113afd5420def6b968c9386ef45b744b85dd89a91ffde09e2ba1b7027491d7f6c3c1b90dfa7f740377a7d3b61ce89013f211ae880b93933eda9ef96caee3991'
+  '44c6641e78b57fdfbb00574866c846db3cc4f7e69c48dfe2a06c2c0208be3c7697c7fb9fc3905eb1f0439590b7035c0f6d516c286889fc45f0fc3e84b28b0885')
 
 prepare()
 {
@@ -122,6 +126,8 @@ package_grub-common()
   mv "$srcdir/pkgs/grub-common/usr" "${pkgdir}"
   install -d "${pkgdir}/etc/default"
   install "${srcdir}/grub.default" "${pkgdir}/etc/default/grub"
+  install -Dm 644 $srcdir/$pkgname.hook "$pkgdir/usr/share/libalpm/hooks/99-$pkgname.hook"
+  install -Dm 755 $srcdir/update-grub.sh "$pkgdir/usr/share/libalpm/scripts/update-grub"
 }
 
 package_grub-efi()
