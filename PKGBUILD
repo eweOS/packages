@@ -2,7 +2,7 @@
 
 pkgbase=libjpeg-turbo
 pkgname=libjpeg
-pkgver=2.1.4
+pkgver=2.1.5.1
 pkgrel=2
 pkgdesc="JPEG image codec with accelerated baseline compression and decompression"
 url="https://libjpeg-turbo.org/"
@@ -10,7 +10,7 @@ arch=(x86_64 aarch64)
 license=(BSD)
 makedepends=(cmake ninja nasm)
 source=(https://sourceforge.net/projects/$pkgbase/files/$pkgver/$pkgbase-$pkgver.tar.gz)
-sha256sums=('d3ed26a1131a13686dfca4935e520eb7c90ae76fbc45d98bb50a8dc86230342b')
+sha256sums=('2fdc3feb6e9deb17adec9bafa3321419aa19f8f4e5dea7bf8486844ca22207bf')
 
 build() {
   cmake -S $pkgbase-$pkgver -B build -G Ninja \
