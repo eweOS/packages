@@ -7,8 +7,8 @@
 
 pkgname=astyle
 pkgver=3.2.1
-_pkgver=3.2.1
-pkgrel=1
+_pkgver=${pkgver%.*}.0
+pkgrel=2
 pkgdesc='A free, fast and small automatic formatter for C, C++, C#, and Java source code.'
 arch=(x86_64 aarch64)
 url='http://astyle.sourceforge.net/'
@@ -17,15 +17,21 @@ depends=('llvm-libs')
 source=("https://downloads.sourceforge.net/sourceforge/astyle/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('191576fbd1f4abe55a25769c176da78294ec590f96f27037a4746bda0f84fe60')
 
+prepare()
+{
+  cd "$srcdir/$pkgname-$pkgver/build/gcc"
+  sed -i 's@--symbolic --force@-s -f@g' Makefile
+}
+
 build()
 {
-  cd "$srcdir/$pkgname/build/gcc"
+  cd "$srcdir/$pkgname-$pkgver/build/gcc"
   make CXX=c++ release shared
 }
 
 package()
 {
-  cd "$srcdir/$pkgname/build/gcc"
+  cd "$srcdir/$pkgname-$pkgver/build/gcc"
 
   install -Dm0755 bin/astyle "$pkgdir/usr/bin/astyle"
   install -Dm0755 "bin/libastyle.so.${_pkgver}" "$pkgdir/usr/lib/libastyle.so.${_pkgver}"
