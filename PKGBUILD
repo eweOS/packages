@@ -6,7 +6,7 @@
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
 pkgname=c-ares
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="A C library for asynchronous DNS requests"
 arch=(x86_64 aarch64)
@@ -16,7 +16,7 @@ depends=('musl')
 makedepends=('cmake')
 provides=('libcares.so')
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgname//-/}-${pkgver//./_}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('2fa74e334e9276560998547deec8ede841d5ff1dc98ae724a527438efa3c353f57fbd5dfe8866b419c16dbc0cd657e38cd7aa200b3bf0ab682c5fffff19da34f')
+sha512sums=('a7f5988bef393afec08a225be92f6eee54a3e67170fb26cbe00dcc5c5a457b27037bbcfeccc39fb855ed72f100196958d6cbbe251bf1ccfbdd353be18f098359')
 
 build()
 {
