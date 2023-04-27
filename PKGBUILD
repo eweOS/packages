@@ -9,7 +9,7 @@
 # Contributor: jebaum <jebaum at ucla dot edu>
 
 pkgname=fzf
-pkgver=0.33.0
+pkgver=0.39.0
 pkgrel=1
 pkgdesc='Command-line fuzzy finder'
 arch=(x86_64 aarch64)
