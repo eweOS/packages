@@ -1,14 +1,14 @@
 # Maintainer: Ziyao <ziyao@disroot.org>
 
 pkgname=libgcrypt
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc='A general purpose cryptographic library originally based on code from GnuPG.'
 arch=(x86_64 aarch64)
 url="https://gnupg.org/software/$pkgname"
 license=(LGPLv2 GPLv2)
 source=("https://gnupg.org/ftp/gcrypt/$pkgname/$pkgname-$pkgver.tar.bz2")
-sha256sums=('ef14ae546b0084cd84259f61a55e07a38c3b53afc0f546bffcef2f01baffe9de')
+sha256sums=('3b9c02a004b68c256add99701de00b383accccf37177e0d6c58289664cce0c03')
 
 depends=('musl' 'libgpg-error')
 
