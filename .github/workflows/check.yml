@@ -1,14 +1,9 @@
 name: Build Check
 
 on: 
-  push: 
-    branches:    
-      - '*'
-      - '*/*'
-      - '**'
-      - '!_main'
-  pull_request:
   workflow_dispatch:
+  repository_dispatch:
+    types: [change]
 
 jobs:
   pkgbuild:
