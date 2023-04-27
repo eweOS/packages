@@ -1,7 +1,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libbsd
-pkgver=0.11.6
+pkgver=0.11.7
 pkgrel=2
 pkgdesc='commonly-used BSD functions not implemented by all libcs'
 arch=(x86_64 aarch64)
@@ -10,7 +10,7 @@ license=('custom')
 depends=('musl' 'libmd')
 options=('staticlibs')
 source=("https://libbsd.freedesktop.org/releases/$pkgname-$pkgver.tar.xz")
-sha512sums=('9dbbfb84340fc69f59667241701d81d176439ce168f123344805898a269f7bd0e98abf8c7fc12d9bf539d1effb19424d93b647cc9120f693327e736d339e6075')
+sha512sums=('51fda4724f41dd8a4628afd58c21236a7588d9045e337e06eeabf83805a9aaaa53705441ca901ad11f1c65f18e881523bdc97721a7d3d6a5cced27f2450d09a2')
 
 prepare()
 {
