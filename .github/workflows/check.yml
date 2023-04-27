@@ -8,6 +8,7 @@ on:
       - '**'
       - '!_main'
   pull_request:
+  workflow_dispatch:
 
 jobs:
   pkgbuild:
