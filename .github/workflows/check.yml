@@ -15,7 +15,7 @@ jobs:
           ref: ${{ github.event.client_payload.pkg }}
       - name: Do makepkg
         id: makepkg
-        uses: eweOS/pkgchecker-action@v0.1.0
+        uses: eweOS/pkgchecker-action@master
       - name: Print Package Files
         run: |
           echo "Successfully created the following package archive"
