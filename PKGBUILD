@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=busybox
-pkgver=1.36.0
+pkgver=1.36.1
 pkgrel=7
 pkgdesc="Utilities for rescue and embedded systems"
 arch=("x86_64" "aarch64")
@@ -22,7 +22,7 @@ source=(
   "mdev.conf"
   "remove_empty_dir.patch"
 )
-sha256sums=('542750c8af7cb2630e201780b4f99f3dcceeb06f505b479ec68241c1e6af61a5'
+sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
             '45a8cc96f544a7d26a4ebc86d9246c122f9bd4b7183c3263807b62d9be23470a'
             '204a0fc1dabe7cc02a8a18bdec4637d7ddb6547042c9ee1e5f9b71cd22de2f85'
             '644321e67516c8e6869dd1f09b9dfc06d6758dec91df0bdea3cb614419a1e0d3'
