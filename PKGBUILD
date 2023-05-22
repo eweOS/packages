@@ -2,7 +2,7 @@
 
 pkgname=lua51
 pkgver=5.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful lightweight programming language designed for extending applications'
 url='https://www.lua.org'
 arch=(x86_64 aarch64)
@@ -22,7 +22,7 @@ cd lua-$pkgver
 	patch -p1 src/Makefile < ../src-Makefile.patch
 	patch -p1 src/luaconf.h < ../module-path.patch
 
-	pc=../lua.pc
+	pc=../lua$_V.pc
 	grep '^V=' Makefile > $pc
 	grep '^R=' Makefile >> $pc
 	grep '^INSTALL_.*=' Makefile | sed 's/INSTALL_TOP/prefix/' >> $pc
@@ -50,6 +50,9 @@ package() {
 	make install INSTALL_TOP=$pkgdir/usr
 	install -Dm 644 doc/*.{css,html,png,gif} $pkgdir/usr/share/$pkgname/doc
 	install -Dm 644 COPYRIGHT $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	install -Dm 644 ../lua$_V.pc $pkgdir/usr/lib/pkgconfig/lua$_V.pc
+	ln -s $pkgdir/usr/lib/pkgconfig/lua$_V.pc	\
+		$pkgdir/usr/lib/pkgconfig/lua$_V-c++.pc
 
 	mv $pkgdir/usr/bin/lua $pkgdir/usr/bin/lua$_V
 	mv $pkgdir/usr/bin/luac $pkgdir/usr/bin/luac$_V
