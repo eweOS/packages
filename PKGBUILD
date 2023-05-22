@@ -2,7 +2,7 @@
 
 pkgname=lua54
 pkgver=5.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful lightweight programming language designed for extending applications'
 url='https://www.lua.org'
 arch=(x86_64 aarch64)
@@ -76,6 +76,7 @@ package() {
 	mv $pkgdir/usr/share/man/man1/luac.1 $pkgdir/usr/share/man/man1/luac$_V.1
 	ln -s $pkgdir/usr/lib/lua$_V/liblua-$_V.so $pkgdir/usr/lib/lua$_V/liblua.so
 	ln -s $pkgdir/usr/lib/lua$_V/liblua.so $pkgdir/usr/lib/liblua-$_V.so
+	ln -s $pkgdir/usr/lib/pkgconfig/lua$_V.pc $pkgdir/usr/lib/pkgconfig/lua$_V-c++.pc
 }
 
 sha256sums=('7d5ea1b9cb6aa0b59ca3dde1c6adcb57ef83a1ba8e5432c0ecd06bf439b3ad88'
