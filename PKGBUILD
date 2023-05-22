@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=make
-pkgver=4.4
+pkgver=4.4.1
 pkgrel=1
 arch=(x86_64 aarch64)
 pkgdesc="GNU make utility to maintain groups of programs"
@@ -14,7 +14,7 @@ source=(
   "http://ftp.gnu.org/gnu/make/make-${pkgver}.tar.gz"
 )
 
-sha256sums=('581f4d4e872da74b3941c874215898a7d35802f03732bdccee1d4a7979105d18')
+sha256sums=('dd16fb1d67bfab79a72f5e8390735c49e3e8e70b4945a15ab1f81ddb78658fb3')
 
 build()
 {
