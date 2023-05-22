@@ -2,7 +2,7 @@
 
 pkgname=nginx
 pkgver=1.24.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server'
 arch=(x86_64 aarch64)
 url='https://nginx.org'
@@ -48,6 +48,7 @@ build()
 {
   cd $pkgbase-$pkgver
   ./configure \
+    --with-cc-opt="-D_LARGEFILE64_SOURCE" \
     --prefix=/etc/nginx \
     --sbin-path=/usr/bin/nginx \
     --conf-path=/etc/nginx/nginx.conf \
