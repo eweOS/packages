@@ -1,7 +1,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=mg
-pkgver=20220614
+pkgver=20230501
 pkgrel=2
 pkgdesc="Microscopic EMACS style editor"
 arch=(x86_64 aarch64)
@@ -10,7 +10,7 @@ depends=('ncurses' 'libbsd' 'musl')
 makedepends=('bsd-compat-headers')
 license=('Public-Domain')
 source=("mg-$pkgver.tgz::https://github.com/hboetes/mg/archive/$pkgver.tar.gz")
-sha512sums=('bed455cda856e54fae28592ac0a520841d5d542880a7405dadf702d7407ac33ae7fb7b63880805a7e166e0e0a87c76b9fca1700c444f1b999a5af66732c69b65')
+sha512sums=('db7b9815a01dc9fb1ff92741748d24d558c329135e591c24450d0a3bc10e38a992ef346dd744854864538f330a018415df539d06543570a3566dbabc6c88a8fd')
 
 _makeflags=(
   'prefix=/usr'
