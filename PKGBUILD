@@ -2,7 +2,7 @@
 
 pkgname=lua51
 pkgver=5.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Powerful lightweight programming language designed for extending applications'
 url='https://www.lua.org'
 arch=(x86_64 aarch64)
@@ -51,15 +51,14 @@ package() {
 	install -Dm 644 doc/*.{css,html,png,gif} $pkgdir/usr/share/$pkgname/doc
 	install -Dm 644 COPYRIGHT $pkgdir/usr/share/licenses/$pkgname/LICENSE
 	install -Dm 644 ../lua$_V.pc $pkgdir/usr/lib/pkgconfig/lua$_V.pc
-	ln -s $pkgdir/usr/lib/pkgconfig/lua$_V.pc	\
-		$pkgdir/usr/lib/pkgconfig/lua$_V-c++.pc
+	ln -s lua$_V.pc	$pkgdir/usr/lib/pkgconfig/lua$_V-c++.pc
 
 	mv $pkgdir/usr/bin/lua $pkgdir/usr/bin/lua$_V
 	mv $pkgdir/usr/bin/luac $pkgdir/usr/bin/luac$_V
 	mv $pkgdir/usr/share/man/man1/lua.1 $pkgdir/usr/share/man/man1/lua$_V.1
 	mv $pkgdir/usr/share/man/man1/luac.1 $pkgdir/usr/share/man/man1/luac$_V.1
-	ln -s $pkgdir/usr/lib/lua$_V/liblua-$_V.so $pkgdir/usr/lib/lua$_V/liblua.so
-	ln -s $pkgdir/usr/lib/lua$_V/liblua.so $pkgdir/usr/lib/liblua-$_V.so
+	ln -s liblua-$_V.so $pkgdir/usr/lib/lua$_V/liblua.so
+	ln -s lua$_V/liblua.so $pkgdir/usr/lib/liblua-$_V.so
 }
 
 sha256sums=('2640fc56a795f29d28ef15e13c34a47e223960b0240e8cb0a82d9b0738695333'
