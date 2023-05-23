@@ -2,7 +2,7 @@
 
 pkgname=lua54
 pkgver=5.4.6
-pkgrel=3
+pkgrel=4
 pkgdesc='Powerful lightweight programming language designed for extending applications'
 url='https://www.lua.org'
 arch=(x86_64 aarch64)
@@ -59,7 +59,8 @@ build () {
 `
 	echo $defPath
 	make linux-readline CFLAGS+="-DLUA_PATH_DEFAULT='\"$defPath\"'"	\
-		CFLAGS+="-DLUA_CPATH_DEFAULT='\"$defCPath\"'"
+		CFLAGS+="-DLUA_CPATH_DEFAULT='\"$defCPath\"'"		\
+		CFLAGS+="-DLUA_USE_POSIX"
 }
 
 package() {
