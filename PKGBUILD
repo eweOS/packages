@@ -2,7 +2,7 @@
 
 pkgname=dbus
 pkgver=1.15.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(x86_64 aarch64)
@@ -51,6 +51,7 @@ package()
   DESTDIR="$pkgdir" make -C dbus-${pkgname}-${pkgver} install
 
   rm -r "$pkgdir"/{etc,var}
+  rm -r "$pkgdir"/usr/lib/systemd
 
   install -D "${srcdir}/dbus.service" "$pkgdir/etc/dinit.d/dbus"
   install -D "${srcdir}/dbus.tmpfiles" "$pkgdir/etc/tmpfiles.d/dbus.conf"
