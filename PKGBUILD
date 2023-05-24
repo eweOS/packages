@@ -3,7 +3,7 @@
 pkgname=efivar
 pkgdesc="Tools and libraries to work with EFI variables"
 pkgver=38
-pkgrel=2
+pkgrel=3
 arch=(x86_64 aarch64)
 url="https://github.com/rhboot/efivar"
 license=(LGPL2.1)
@@ -15,7 +15,7 @@ source=(
   "$url/commit/3778ed47d539a716301ba2e67ba62f796e2df310.patch"
 )
 sha256sums=('SKIP'
-            'bc5bdc48ecb5df461fb0eb1b69be642ccedcb53f286da532e2794d23e9f4f6e1')
+  'bc5bdc48ecb5df461fb0eb1b69be642ccedcb53f286da532e2794d23e9f4f6e1')
 
 prepare()
 {
@@ -27,8 +27,8 @@ prepare()
 
 build()
 {
-  # mold is not supported
-  export LD=ld.lld CFLAGS='--ld-path=/usr/bin/ld.lld'
+  # mold is not supported, add D_LARGEFILE64_SOURCE to fix for musl 1.2.4
+  export LD=ld.lld CFLAGS='--ld-path=/usr/bin/ld.lld -D_LARGEFILE64_SOURCE'
   # disable -Werror by default by setting ERRORS to empty string
   make ERRORS='' all -C "${pkgname}"
 }
