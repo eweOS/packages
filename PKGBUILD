@@ -8,7 +8,7 @@
 pkgbase=grub
 pkgname=(grub-common grub-bios grub-efi grub-theme-starfield)
 pkgver=2.06
-pkgrel=4
+pkgrel=5
 pkgdesc="GRand Unified Bootloader, version 2"
 arch=(x86_64 aarch64)
 url='https://www.gnu.org/software/grub/grub.html'
@@ -126,7 +126,7 @@ package_grub-common()
   mv "$srcdir/pkgs/grub-common/usr" "${pkgdir}"
   install -d "${pkgdir}/etc/default"
   install "${srcdir}/grub.default" "${pkgdir}/etc/default/grub"
-  install -Dm 644 $srcdir/$pkgname.hook "$pkgdir/usr/share/libalpm/hooks/99-$pkgname.hook"
+  install -Dm 644 $srcdir/grub.hook "$pkgdir/usr/share/libalpm/hooks/99-$pkgname.hook"
   install -Dm 755 $srcdir/update-grub.sh "$pkgdir/usr/share/libalpm/scripts/update-grub"
 }
 
