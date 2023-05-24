@@ -14,7 +14,7 @@ source ./package/PKGBUILD
 
 for archi in "${arch[@]}"
 do
-   ./tools/dispatch_build.sh $PKGNAME $archi
+   ./tools/tools/dispatch_build.sh $PKGNAME $archi
 done
 
 
