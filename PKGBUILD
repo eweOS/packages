@@ -4,7 +4,7 @@ pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang)
 _realpkgname=llvm-project
 pkgver=15.0.6
 _binutilsver=2.39
-pkgrel=8
+pkgrel=9
 arch=('x86_64' 'aarch64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -25,7 +25,7 @@ source=(
   "https://mirrors.tuna.tsinghua.edu.cn/gnu/binutils/binutils-${_binutilsver}.tar.xz"
 )
 sha256sums=('9d53ad04dc60cb7b30e810faf64c5ab8157dadef46c8766f67f286238256ff92'
-            '645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00')
+  '645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00')
 
 FLIST_clang=(
   "usr/bin/*clang*"
@@ -130,6 +130,7 @@ build()
     -G Ninja
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_CXX_FLAGS='-D_LARGEFILE64_SOURCE'
     -DLLVM_DEFAULT_TARGET_TRIPLE="$CHOST"
     -DLLVM_HOST_TRIPLE="$CHOST"
     -DCLANG_DEFAULT_CXX_STDLIB='libc++'
