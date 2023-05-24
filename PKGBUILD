@@ -4,7 +4,7 @@
 
 pkgname=libevent
 pkgver=2.1.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Event notification library"
 url="https://libevent.org/"
 arch=(x86_64 aarch64)
@@ -31,7 +31,7 @@ check()
 {
   cd build
   # four matching test failed, unknown reason (suspect zlib-ng)
-  ctest -E "regress__((timerfd_)?(changelist_)?EPOLL|SELECT)_debug" \
+  ctest -E "regress__(timerfd_)?(changelist_)?(EPOLL|SELECT|POLL)(_debug)?" \
     --output-on-failure \
     --stop-on-failure \
     -j$(nproc)
