@@ -2,7 +2,7 @@
 
 pkgname=acl
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Access control list utilities, libraries and headers'
 arch=('x86_64' 'aarch64')
 url='https://savannah.nongnu.org/projects/acl'
@@ -15,7 +15,8 @@ sha256sums=('760c61c68901b37fdd5eefeeaf4c0c7a26bdfdd8ac747a1edff1ce0e243c11af')
 build()
 {
   cd $pkgname-$pkgver
-  ./configure \
+  # Add D_LARGEFILE64_SOURCE to avoid imcomplete type for musl 1.2.4
+  CFLAGS="$CFLAGS -D_LARGEFILE64_SOURCE" ./configure \
     --libdir=/usr/lib \
     --libexecdir=/usr/lib \
     --prefix=/usr
