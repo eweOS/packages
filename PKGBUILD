@@ -2,7 +2,7 @@
 
 pkgname=libbsd
 pkgver=0.11.7
-pkgrel=2
+pkgrel=3
 pkgdesc='commonly-used BSD functions not implemented by all libcs'
 arch=(x86_64 aarch64)
 url="https://libbsd.freedesktop.org"
@@ -23,7 +23,8 @@ prepare()
 build()
 {
   cd "$pkgname-$pkgver"
-
+  # Fix for musl 1.2.4
+  CFLAGS="$CFLAGS -D_LARGEFILE64_SOURCE"
   ./configure --prefix=/usr
   make
 }
