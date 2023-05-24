@@ -1,0 +1,26 @@
+name: Auto Dispatch Build on New Build System
+
+on:
+  repository_dispatch:
+    types: [push]
+
+env:
+  MQ_URL: ${{ secrets.MQ_URL }}
+
+jobs:
+  dispatch_pkg:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Main Repo
+        with:
+          ref: _main
+          path: 'tools'
+      - name: Checkout Package Repo
+        uses: actions/checkout@v3
+        with:
+          path: 'package'
+          ref: ${{ github.event.client_payload.pkg }}
+      - name: Dispatch Package
+        env:
+          PKG: ${{ github.event.client_payload.pkg }}
+        run: chmod +x ./tools/workflow_auto_dispatch/dispatch.sh && ./tools/workflow_auto_dispatch/dispatch.sh $PKG
