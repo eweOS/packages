@@ -6,37 +6,37 @@
 # Contributor: tardo <tardo@nagi-fanboi.net>
 
 pkgname=astyle
-pkgver=3.2.1
-_pkgver=${pkgver%.*}.0
-pkgrel=2
+pkgver=3.3
+_sover=3.2.0
+pkgrel=1
 pkgdesc='A free, fast and small automatic formatter for C, C++, C#, and Java source code.'
 arch=(x86_64 aarch64)
 url='http://astyle.sourceforge.net/'
 license=('LGPL')
 depends=('llvm-libs')
 source=("https://downloads.sourceforge.net/sourceforge/astyle/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('191576fbd1f4abe55a25769c176da78294ec590f96f27037a4746bda0f84fe60')
+sha256sums=('3a5a4e3a74bcdeaeca08f0bf9626058277cd4ee08330898c7d9c327293221f9a')
 
 prepare()
 {
-  cd "$srcdir/$pkgname-$pkgver/build/gcc"
+  cd "$srcdir/$pkgname-$pkgver/build/clang"
   sed -i 's@--symbolic --force@-s -f@g' Makefile
 }
 
 build()
 {
-  cd "$srcdir/$pkgname-$pkgver/build/gcc"
+  cd "$srcdir/$pkgname-$pkgver/build/clang"
   make CXX=c++ release shared
 }
 
 package()
 {
-  cd "$srcdir/$pkgname-$pkgver/build/gcc"
+  cd "$srcdir/$pkgname-$pkgver/build/clang"
 
   install -Dm0755 bin/astyle "$pkgdir/usr/bin/astyle"
-  install -Dm0755 "bin/libastyle.so.${_pkgver}" "$pkgdir/usr/lib/libastyle.so.${_pkgver}"
-  ln -s libastyle.so.${_pkgver} "$pkgdir"/usr/lib/libastyle.so.${_pkgver%%\.*}
-  ln -s libastyle.so.${_pkgver} "$pkgdir"/usr/lib/libastyle.so
+  install -Dm0755 "bin/libastyle.so.${_sover}" "$pkgdir/usr/lib/libastyle.so.${_sover}"
+  ln -s libastyle.so.${_sover} "$pkgdir"/usr/lib/libastyle.so.${_sover%%\.*}
+  ln -s libastyle.so.${_sover} "$pkgdir"/usr/lib/libastyle.so
 
   # install header
   install -Dm0644 ../../src/astyle.h -t "$pkgdir"/usr/include
