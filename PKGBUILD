@@ -5,7 +5,7 @@ pkgname=(fakeroot fakeroot-tcp)
 pkgver=1.31
 pkgrel=1
 pkgdesc='Tool for simulating superuser privileges'
-arch=('x86_64' 'aarch64')
+arch=(x86_64 aarch64 riscv64)
 license=('GPL')
 url='https://tracker.debian.org/pkg/fakeroot'
 groups=('base-devel')
@@ -13,7 +13,7 @@ depends=('musl' 'filesystem' 'util-linux')
 makedepends=('libcap')
 source=("https://deb.debian.org/debian/pool/main/f/$pkgname/${pkgname}_${pkgver}.orig.tar.gz" musl.patch)
 sha256sums=('63886d41e11c56c7170b9d9331cca086421b350d257338ef14daad98f77e202f'
-            'baab2d372a484bfd13ce001879c909b44eba65df894696c8dd8b734f1ab36f43')
+  'baab2d372a484bfd13ce001879c909b44eba65df894696c8dd8b734f1ab36f43')
 
 build()
 {
