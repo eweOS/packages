@@ -3,7 +3,7 @@
 pkgname=ncurses
 pkgver=6.4
 pkgrel=1
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 license=(GPL2)
 pkgdesc="System V Release 4.0 curses emulation library"
 url="https://invisible-island.net/ncurses/ncurses.html"
@@ -13,7 +13,7 @@ source=(
   https://invisible-mirror.net/archives/ncurses/current/termcap.src.gz
 )
 sha256sums=('6931283d9ac87c5073f30b6290c4c75f21632bb4fc3603ac8100812bed248159'
-            '11007fdad0867408cd14b93ec4ec4eb4f39370bbf0520957c9826db4fa6d66fd')
+  '11007fdad0867408cd14b93ec4ec4eb4f39370bbf0520957c9826db4fa6d66fd')
 
 build()
 {
