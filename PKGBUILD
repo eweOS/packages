@@ -4,7 +4,7 @@ pkgname=skalibs
 pkgver=2.12.0.1
 pkgrel=1
 pkgdesc='A library suite supporting skarnet.org software.'
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 url=http://skarnet.org/software/skalibs/
 license=(ISC)
 
