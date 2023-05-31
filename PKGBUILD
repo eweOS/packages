@@ -4,8 +4,8 @@ pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang)
 _realpkgname=llvm-project
 pkgver=15.0.6
 _binutilsver=2.39
-pkgrel=9
-arch=('x86_64' 'aarch64')
+pkgrel=10
+arch=('x86_64' 'aarch64' 'riscv64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=(
@@ -166,6 +166,9 @@ build()
       CMARGS+=("-DCOMPILER_RT_BUILD_SANITIZERS=ON")
       ;;
     aarch64)
+      CMARGS+=("-DCOMPILER_RT_BUILD_SANITIZERS=OFF")
+      ;;
+    riscv64)
       CMARGS+=("-DCOMPILER_RT_BUILD_SANITIZERS=OFF")
       ;;
   esac
