@@ -5,7 +5,7 @@ pkgver=5.36.0
 _baseversion="${pkgver%.*}"
 pkgrel=1
 pkgdesc="A highly capable, feature-rich programming language"
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 license=('GPL' 'PerlArtistic')
 depends=('musl' 'libxcrypt')
 source=(
@@ -14,7 +14,7 @@ source=(
 )
 options=('makeflags' '!purge' 'emptydirs')
 sha256sums=('0f386dccbee8e26286404b2cca144e1005be65477979beb9b1ba272d4819bcf0'
-            'c2302000b6baaf4e7a3dd3d575bef2e6cb9f292031967f687b41d520c19b9641')
+  'c2302000b6baaf4e7a3dd3d575bef2e6cb9f292031967f687b41d520c19b9641')
 
 prepare()
 {
