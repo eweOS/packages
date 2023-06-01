@@ -4,7 +4,7 @@ pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang)
 _realpkgname=llvm-project
 pkgver=15.0.6
 _binutilsver=2.39
-pkgrel=10
+pkgrel=11
 arch=('x86_64' 'aarch64' 'riscv64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -23,9 +23,11 @@ makedepends=(
 source=(
   "https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz"
   "https://mirrors.tuna.tsinghua.edu.cn/gnu/binutils/binutils-${_binutilsver}.tar.xz"
+  rv64-disable-lldb-server.patch
 )
 sha256sums=('9d53ad04dc60cb7b30e810faf64c5ab8157dadef46c8766f67f286238256ff92'
-  '645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00')
+  '645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00'
+  '19ad5d5208e7271e0517de15b8ec652a0445298aa34cb7057d5da254966aa781')
 
 FLIST_clang=(
   "usr/bin/*clang*"
@@ -109,6 +111,12 @@ _fetchpkg()
     (cd "${srcdir}/PKGDIR" && find $FILEPATH | cpio -pdvmu $PKGBASE) || true
     (cd "${srcdir}/PKGDIR" && find $FILEPATH -delete) || true
   done
+}
+
+prepare()
+{
+  cd $_realpkgname-$pkgver.src
+  patch -p1 < $srcdir/rv64-disable-lldb-server.patch
 }
 
 build()
