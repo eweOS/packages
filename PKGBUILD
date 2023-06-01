@@ -2,13 +2,13 @@
 
 pkgname=pipewire
 pkgver=0.3.58
-pkgrel=2
+pkgrel=3
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64 aarch64)
 license=(MIT)
 depends=('dbus' 'libudev' 'libsndfile' 'libusb')
-makedepends=('meson')
+makedepends=('meson' 'alsa-lib')
 source=("https://gitlab.freedesktop.org/pipewire/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('5cb73bf27b8b80e37804d7829c5ad8fa5510835f449bbb7e4773f188584771ad')
 
@@ -26,7 +26,6 @@ build() {
     -D pipewire-jack=disabled
     -D pipewire-v4l2=disabled
     -D spa-plugins=enabled
-    -D alsa=disabled
     -D pw-cat=disabled
     -D audiomixer=disabled
     -D audioconvert=disabled
