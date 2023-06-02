@@ -2,10 +2,10 @@
 
 pkgname=pipewire
 pkgver=0.3.58
-pkgrel=3
+pkgrel=4
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 license=(MIT)
 depends=('dbus' 'libudev' 'libsndfile' 'libusb')
 makedepends=('meson' 'alsa-lib')
@@ -55,6 +55,7 @@ build() {
     -D flatpak=disabled
     -D libusb=enabled
     -D sndfile=enabled
+    -D udevrulesdir=/usr/lib/udev/rules.d
   )
 
   ewe-meson $pkgname-$pkgver build \
