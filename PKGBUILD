@@ -4,8 +4,8 @@ pkgname=(linux linux-headers)
 _basename=linux
 _pkgver=6.2.7
 pkgver=6.2.7
-pkgrel=1
-arch=(x86_64 aarch64)
+pkgrel=2
+arch=(x86_64 aarch64 riscv64)
 url='http://www.kernel.org'
 license=(GPL2)
 makedepends=(bison flex perl python libelf linux-headers rsync lld)
@@ -13,12 +13,14 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz"
   linux-config.arm64
   linux-config.x86_64
+  linux-config.riscv
   busybox-find-compat.patch
 )
 sha256sums=('4303105201fb0c0b17155fff87df0a022a32a41eb1ce94a264ae648c64bd0d8d'
-            'd4ce96309090fc6820f1e71afec0620b22b5ce6335274e84b7fec4770c2e28ca'
-            'cdbbb14dcf4483ffbc25823bab69de8ee71fd3f553f0ee32df0d9a9d48737605'
-            'ea1c89fc102d90370c6dc3cb53abebcfdfee91cf6aac60a22bb2b919446ff733')
+  'd4ce96309090fc6820f1e71afec0620b22b5ce6335274e84b7fec4770c2e28ca'
+  'cdbbb14dcf4483ffbc25823bab69de8ee71fd3f553f0ee32df0d9a9d48737605'
+  '3d743f6420440088c139fb4576f41e76e718d436f7308843228e080ca430c0c9'
+  'ea1c89fc102d90370c6dc3cb53abebcfdfee91cf6aac60a22bb2b919446ff733')
 
 prepare()
 {
@@ -38,6 +40,9 @@ build()
       ;;
     aarch64)
       export build_arch=arm64
+      ;;
+    riscv64)
+      export build_arch=riscv
       ;;
   esac
   cp "${srcdir}/linux-config.${build_arch}" .config
