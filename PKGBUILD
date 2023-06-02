@@ -3,12 +3,12 @@
 pkgbase=elogind
 pkgname=('elogind' 'libelogind')
 pkgver=246.10
-pkgrel=3
+pkgrel=4
 pkgdesc="The systemd project's logind, extracted to a standalone package"
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/elogind/elogind"
 license=('GPL')
-makedepends=('libtool' 'gperf' 'git' 'libcap' 'meson' 'pam' 'libudev')
+makedepends=('libtool' 'gperf' 'git' 'libcap' 'meson' 'pam' 'libudev' 'dbus')
 source=("git+https://github.com/elogind/elogind#tag=v${pkgver}" "elogind.service")
 sha256sums=('SKIP'
   '9636d9ad1d0b8d202402239a7544ed2a761b7d32ca8f424dd3d7188c1d57288d')
