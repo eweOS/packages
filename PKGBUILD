@@ -2,9 +2,9 @@
 
 pkgname=openssl
 pkgver=1.1.1s
-pkgrel=1
+pkgrel=2
 pkgdesc='A toolkit for the TLS and SSL protocols'
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 url='https://www.openssl.org'
 license=(BSD)
 depends=(musl)
@@ -17,9 +17,20 @@ sha256sums=('c5ac01e760ee6ff0dab61d6b2bbd30146724d063eb322180c6f18a6f74e4b6aa')
 
 build()
 {
+  case $CARCH in
+    x86_64)
+      export build_arch=linux-x86_64
+      ;;
+    aarch64)
+      export build_arch=linux-arm64
+      ;;
+    riscv64)
+      export build_arch=linux64-riscv64
+      ;;
+  esac
   cd "$srcdir/$pkgname-$pkgver"
   ./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
-    shared linux-${CARCH} \
+    shared ${build_arch} \
     "-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
   make HOSTCC=clang CC=clang depend
   make HOSTCC=clang CC=clang
