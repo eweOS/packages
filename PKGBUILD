@@ -2,7 +2,7 @@
 
 pkgname=busybox
 pkgver=1.36.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Utilities for rescue and embedded systems"
 arch=("x86_64" "aarch64")
 url="https://www.busybox.net"
