@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=freetype2
-pkgver=2.13.0
+pkgver=2.13.1
 pkgrel=1
 pkgdesc="Font rasterization library"
 url="https://www.freetype.org/"
@@ -10,7 +10,7 @@ license=(GPL)
 depends=(zlib sh libbz2 libpng brotli)
 makedepends=(meson)
 source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-$pkgver.tar.xz)
-sha256sums=('5ee23abd047636c24b2d43c6625dcafc66661d1aca64dec9e0d05df29592624c')
+sha256sums=('ea67e3b019b1104d1667aa274f5dc307d8cbd606b399bc32df308a77f1a564bf')
 
 build()
 {
