@@ -2,7 +2,7 @@
 
 pkgname=libudev
 _pkgname=libudev-zero
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 so_ver=1.6.3
 pkgdesc="Daemonless replacement for libudev "
@@ -12,7 +12,7 @@ license=('GPL')
 makedepends=('musl' 'make')
 provides=('libudev-zero' 'libeudev' 'libudev')
 source=("https://github.com/illiliti/libudev-zero/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('0b7d431cbd93eb91d061c8e20b308183')
+md5sums=('5a96ce28acbfa2e5004a7451613115c0')
 
 build() {
 	cd ${_pkgname}-${pkgver}
