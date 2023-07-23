@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libevdev
-pkgver=1.13.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc="Wrapper library for evdev devices"
 arch=(x86_64 aarch64)
@@ -11,7 +11,7 @@ depends=('musl')
 makedepends=('meson')
 provides=('libevdev.so')
 source=(https://freedesktop.org/software/$pkgname/$pkgname-$pkgver.tar.xz)
-sha256sums=('9edf2006cc86a5055279647c38ec923d11a821ee4dc2c3033e8d20e8ee237cd9')
+sha256sums=('06a77bf2ac5c993305882bc1641017f5bec1592d6d1b64787bad492ab34f2f36')
 
 build()
 {
