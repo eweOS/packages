@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gobject-introspection
-pkgver=1.75.4
+pkgver=1.76.1
 pkgrel=1
 pkgdesc="Introspection system for GObject-based libraries"
 url="https://gitlab.gnome.org/GNOME/$pkgname"
@@ -9,7 +9,7 @@ arch=(x86_64 aarch64)
 license=(LGPL GPL)
 makedepends=(cairo meson glib)
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('5356640b5941368fe8abfa7810fd8b5e07160038a177dcf4b683efb840932b5b')
+sha256sums=('e744cb85c63ecb0f2c88f84f87db66f393fdb201233198ae9d5e6d68afe5de5c')
   
 build() {
   ewe-meson $pkgname-$pkgver build \
