@@ -2,15 +2,15 @@
 
 pkgname='mesa'
 pkgdesc="An open-source implementation of the OpenGL specification"
-pkgver=22.3.4
+pkgver=23.1.4
 pkgrel=1
 arch=('x86_64' 'aarch64')
-depends=('libglvnd' 'libelf')
+depends=('libglvnd' 'libelf' 'zstd')
 makedepends=('meson' 'libdrm' 'wayland' 'wayland-protocols')
 url="https://www.mesa3d.org/"
 license=('custom')
 source=(https://mesa.freedesktop.org/archive/$pkgname-$pkgver.tar.xz)
-sha512sums=('6af340153244d3e95d0e155a45d6db134335654d62590797ae0ef6ba44c2ccfe91ebf95f70ff82c67cee108ac35536767b1f6848d6d1129f52eb9e8414ee321d')
+sha512sums=('4063c7848f507b5e25cfc862394268147254b90c9f3eb19035cce338b0a9cb611b7380c1c73f0e4feeddde68124225df7dee7b9db5f019603dfde2b88ff46a21')
 
 prepare()
 {
@@ -38,6 +38,13 @@ build()
     -Dgallium-drivers=${GALLIUM_DRI} \
     -Dcpp_rtti=false \
     -Dmicrosoft-clc=disabled \
+    -Dxlib-lease=disabled \
+    -Dgallium-vdpau=disabled \
+    -Dgallium-va=disabled \
+    -Dandroid-libbacktrace=disabled \
+    -Dvalgrind=disabled \
+    -Dlibunwind=disabled \
+    -Dlmsensors=disabled \
     -Ddefault_library=shared
 
   meson configure build
