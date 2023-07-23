@@ -5,17 +5,17 @@
 # Contributor: Hervé YVIQUEL <elldekaa@gmail.com>
 
 pkgname=hwloc
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
-pkgdesc='Portable Hardware Locality is a portable abstraction of hierarchical architectures'
+pkgdesc="a portable abstraction of hierarchical architectures"
 url='https://www.open-mpi.org/projects/hwloc/'
 arch=(x86_64 aarch64)
 license=('BSD')
-depends=('glibc' 'libxml2' 'libudev')
+depends=('libxml2' 'libudev')
 makedepends=('cairo' 'ncurses')
 optdepends=('cairo' 'ncurses')
 source=(https://www.open-mpi.org/software/hwloc/v${pkgver%.*}/downloads/${pkgname}-${pkgver}.tar.bz2)
-sha512sums=('9c05b7b7c4e3cb5474efb6eb1a4bf3e5ad0f8d0480d043a11e695e4a1f5f6748abb96c7055c0f3b2bc36950dda247fbdd7dc02ec7c9debbfe2631e6ebb89d957')
+sha512sums=('ed38bd608eac81d3182243f0b63c6da070be918fdd8c876ca35fd63cccb4e25684b28bb045d033c53cd7b53451795d28e05e0bd876a5a0231de06c76ace11fef')
 
 build()
 {
