@@ -1,7 +1,8 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libburn
-pkgver=1.5.4 # .pl01
+# pl01
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="Library for reading, mastering and writing optical discs"
 arch=(x86_64 aarch64)
@@ -10,7 +11,7 @@ license=('GPL')
 depends=('musl')
 source=(https://files.libburnia-project.org/releases/${pkgname}-${pkgver}.tar.gz)
 options=('!emptydirs')
-sha256sums=('525059d10759c5cb8148eebc863bb510e311c663603da7bd2d21c46b7cf63b54')
+sha256sums=('7295491b4be5eeac5e7a3fb2067e236e2955ffdc6bbd45f546466edee321644b')
 
 build()
 {
