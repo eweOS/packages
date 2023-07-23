@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pipewire
-pkgver=0.3.58
-pkgrel=4
+pkgver=0.3.75
+pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64 aarch64 riscv64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=('dbus' 'libudev' 'libsndfile' 'libusb')
 makedepends=('meson' 'alsa-lib')
 source=("https://gitlab.freedesktop.org/pipewire/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('5cb73bf27b8b80e37804d7829c5ad8fa5510835f449bbb7e4773f188584771ad')
+sha256sums=('182fb03e8b5f4949a4564397c58cdfc20562afa8618db6f4fec7c860d17bd528')
 
 build() {
   local features=(
@@ -22,13 +22,11 @@ build() {
     -D gstreamer-device-provider=disabled
     -D systemd=disabled
     -D systemd-user-service=disabled
-    -D pipewire-alsa=disabled
     -D pipewire-jack=disabled
     -D pipewire-v4l2=disabled
     -D spa-plugins=enabled
     -D pw-cat=disabled
     -D audiomixer=disabled
-    -D audioconvert=disabled
     -D bluez5=disabled
     -D control=disabled
     -D audiotestsrc=disabled
@@ -55,6 +53,9 @@ build() {
     -D flatpak=disabled
     -D libusb=enabled
     -D sndfile=enabled
+    -D libmysofa=disabled
+    -D gsettings=disabled
+    -D libffado=disabled
     -D udevrulesdir=/usr/lib/udev/rules.d
   )
 
