@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=glib
-pkgver=2.76.2
+pkgver=2.77.0
 _pkgver_major=${pkgver%.*}
 pkgrel=1
 pkgdesc="Low-level core library that forms the basis for projects such as GTK+ and GNOME"
@@ -11,7 +11,7 @@ arch=(x86_64 aarch64)
 depends=(pcre2 libffi util-linux-libs zlib)
 makedepends=(gettext python libelf util-linux meson dbus)
 source=("https://download.gnome.org/sources/$pkgname/${_pkgver_major}/$pkgname-$pkgver.tar.xz")
-sha256sums=('24f3847857b1d8674cdb0389a36edec0f13c666cd3ce727ecd340eb9da8aca9e')
+sha256sums=('1897fd8ad4ebb523c32fabe7508c3b0b039c089661ae1e7917df0956a320ac4d')
 
 build()
 {
