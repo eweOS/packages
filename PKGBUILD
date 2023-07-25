@@ -8,7 +8,7 @@ arch=(x86_64 aarch64 riscv64)
 url="https://www.alsa-project.org"
 license=(LGPL2.1)
 source=("$url/files/pub/lib/$pkgname-$pkgver.tar.bz2")
-sha256sums=('SKIP')
+sha256sums=('dc9c643fdc4ccfd0572cc685858dd41e08afb583f30460b317e4188275f615b2')
 
 prepare()
 {
