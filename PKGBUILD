@@ -1,8 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgbase=wayland
 pkgname=wayland
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='A computer display server protocol'
 arch=(x86_64 aarch64)
@@ -11,13 +10,13 @@ license=('MIT')
 depends=('musl' 'libffi' 'expat' 'libxml2')
 makedepends=('meson')
 options=('debug')
-source=("https://gitlab.freedesktop.org/wayland/wayland/-/releases/1.21.0/downloads/wayland-$pkgver.tar.xz")
-sha256sums=('6dc64d7fc16837a693a51cfdb2e568db538bfdc9f457d4656285bb9594ef11ac')
+source=("https://gitlab.freedesktop.org/wayland/$pkgname/-/releases/$pkgver/downloads/$pkgname-$pkgver.tar.xz")
+sha256sums=('1540af1ea698a471c2d8e9d288332c7e0fd360c8f1d12936ebb7e7cbc2425842')
 
 build()
 {
   # Do not build doc since doxygen and graphviz not available
-  ewe-meson $pkgbase-$pkgver build -Ddocumentation=false
+  ewe-meson $pkgname-$pkgver build -Ddocumentation=false
   meson compile -C build
 }
 
@@ -26,5 +25,5 @@ package()
   provides=(libwayland-{client,cursor,egl,server}.so)
 
   meson install -C build --destdir "$pkgdir"
-  install -Dm 644 $pkgbase-$pkgver/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm 644 $pkgname-$pkgver/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
