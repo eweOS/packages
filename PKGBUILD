@@ -2,7 +2,7 @@
 
 pkgname=fmt
 pkgver=10.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source formatting library for C++'
 arch=(x86_64 aarch64)
 url=https://fmt.dev
@@ -13,8 +13,16 @@ makedepends=(
 )
 source=(
   https://github.com/fmtlib/fmt/archive/refs/tags/$pkgver.tar.gz
+  fix-hex-float-test.patch::https://github.com/fmtlib/fmt/commit/eaa6307691a9edb9e2f2eacf70500fc6989b416c.patch
 )
-sha256sums=('ede1b6b42188163a3f2e0f25ad5c0637eca564bd8df74d02e31a311dd6b37ad8')
+sha256sums=('ede1b6b42188163a3f2e0f25ad5c0637eca564bd8df74d02e31a311dd6b37ad8'
+            '1166ae6e66dfdd5d7fc48a0e1e8a5864c21d5cfab9c130ba901b1967e09e3e63')
+
+prepare() {
+  cd fmt-$pkgver
+  # fix check
+  patch -p1 < ../fix-hex-float-test.patch
+}
 
 build() {
   cmake -S fmt-$pkgver -B build -G Ninja \
