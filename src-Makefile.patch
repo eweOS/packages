@@ -1,5 +1,5 @@
---- Makefile.orig
-+++ Makefile.new
+--- lua-5.4.6/src/Makefile
++++ src/lua-5.4.6/src/Makefile
 @@ -7,7 +7,7 @@
  PLAT= guess
  
@@ -10,7 +10,7 @@
  LIBS= -lm $(SYSLIBS) $(MYLIBS)
  
 @@ -33,6 +33,7 @@
- PLATS= guess aix bsd c89 freebsd generic linux linux-readline macosx mingw posix solaris
+ PLATS= guess aix bsd c89 freebsd generic ios linux linux-readline macosx mingw posix solaris
  
  LUA_A=	liblua.a
 +LUA_SO= liblua-$V.so
@@ -33,8 +33,9 @@
 +$(LUA_SO): $(BASE_O)
 +	$(CC) -o $@ $(BASE_O) -shared
  
- $(LUA_T): $(LUA_O) $(LUA_A)
+-$(LUA_T): $(LUA_O) $(LUA_A)
 -	$(CC) -o $@ $(LDFLAGS) $(LUA_O) $(LUA_A) $(LIBS)
++$(LUA_T): $(LUA_O) $(LUA_SO)
 +	$(CC) -o $@ $(LDFLAGS) $(LUA_O) $(LUA_SO) $(LIBS)
  
  $(LUAC_T): $(LUAC_O) $(LUA_A)
