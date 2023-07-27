@@ -8,6 +8,7 @@ url='https://luarocks.org'
 arch=(x86_64)
 license=(MIT)
 depends=(musl base-devel)
+makedepends=(lua51 lua54)
 source=("https://luarocks.org/releases/luarocks-$pkgver.tar.gz")
 luarocks54_provides=(luarocks)
 
