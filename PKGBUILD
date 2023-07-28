@@ -5,7 +5,7 @@ pkgver=1.17.8
 pkgrel=2
 pkgdesc="2D graphics library with support for multiple output devices"
 url="https://cairographics.org/"
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 license=(LGPL MPL)
 source=(
   "https://gitlab.freedesktop.org/cairo/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
