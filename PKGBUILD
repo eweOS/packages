@@ -10,7 +10,7 @@ depends=('musl' 'libassuan' 'libgpg-error' 'npth' 'libksba' 'pinentry'
   'libgcrypt')
 source=("https://gnupg.org/ftp/gcrypt/gnupg/gnupg-${pkgver}.tar.bz2")
 sha256sums=('a271ae6d732f6f4d80c258ad9ee88dd9c94c8fdc33c3e45328c4d7c126bd219d')
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 provides=(gpg)
 
 build()
