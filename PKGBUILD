@@ -5,7 +5,7 @@ _major_minor=3.27
 pkgver="${_major_minor}.0"
 pkgrel=1
 pkgdesc='The CMake toolsuite for building, testing and packaging software.'
-arch=('x86_64' 'aarch64')
+arch=(x86_64 aarch64 riscv64)
 url='https://cmake.org'
 license=('GPL2')
 
