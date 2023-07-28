@@ -23,7 +23,7 @@ source=(
   hostname.rc
   interfaces.rc
 )
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 license=(Apache)
 makedepends=(make utmps)
 options=(emptydirs)
