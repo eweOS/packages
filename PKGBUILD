@@ -5,7 +5,7 @@
 pkgname=re2c
 pkgver=3.0
 pkgrel=1
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 depends=(llvm-libs)
 makedepends=(cmake)
 checkdepends=(python)
