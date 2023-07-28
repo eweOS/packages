@@ -29,7 +29,7 @@ build () {
 package() {
 	cd libwebp-$pkgver
 	make install DESTDIR=$pkgdir
-	install -Dm 644 LICENSE $pkgdir/usr/share/licenses/libwebp/COPYING
+	install -Dm 644 COPYING $pkgdir/usr/share/licenses/libwebp/COPYING
 }
 
 sha256sums=('1c45f135a20c629c31cebcba62e2b399bae5d6e79851aa82ec6686acedcf6f65')
