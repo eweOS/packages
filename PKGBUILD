@@ -6,7 +6,7 @@ pkgrel=6
 pkgdesc='Lightweight C library that eases the writing of UNIX daemons'
 url='http://0pointer.de/lennart/projects/libdaemon/'
 license=('LGPL2')
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 source=("https://dev.alpinelinux.org/archive/libdaemon/libdaemon-${pkgver}.tar.gz"
   fix-includes-unistd.patch
   "config.sub::http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD"
