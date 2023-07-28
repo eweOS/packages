@@ -4,7 +4,7 @@
 pkgname=minizip
 pkgver=1.2.13
 pkgrel=1
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 license=('custom')
 pkgdesc="Mini zip and unzip based on zlib"
 url="https://www.zlib.net/"
