@@ -6,7 +6,7 @@ pkgrel=6
 pkgdesc="A substitution of systemd-sysusers"
 url="https://github.com/eweOS/catnest"
 license=(MIT)
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 source=(
   "$url/archive/refs/tags/v$pkgver.tar.gz"
   "$pkgname.service"
