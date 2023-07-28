@@ -7,7 +7,7 @@ url='https://www.xiph.org/flac/'
 depends=('musl')
 source=("https://ftp.osuosl.org/pub/xiph/releases/flac/flac-${pkgver}.tar.xz")
 sha256sums=('6c58e69cd22348f441b861092b825e591d0b822e106de6eb0ee4d05d27205b70')
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 
 prepare()
 {
