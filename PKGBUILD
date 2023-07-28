@@ -5,7 +5,7 @@ pkgver=3.24.38
 pkgrel=1
 pkgdesc="Multi-platform toolkit for creating graphical user interfaces"
 url="https://www.gtk.org/"
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 license=(LGPL)
 depends=(
   cairo
