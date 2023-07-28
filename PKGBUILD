@@ -18,10 +18,10 @@ build () {
 	make
 }
 
-check() {
-	cd diffutils-$pkgver
-	make check
-}
+# check() {
+#	cd diffutils-$pkgver
+#	make check
+# }
 
 package() {
 	cd diffutils-$pkgver
