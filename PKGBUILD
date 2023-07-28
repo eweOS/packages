@@ -1,7 +1,7 @@
 pkgname=(cyrus-sasl libsasl cyrus-sasl-gssapi cyrus-sasl-ldap)
 pkgver=2.1.28
 pkgrel=1
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 url="https://www.cyrusimap.org/sasl/"
 license=(custom)
 makedepends=(gdbm glibc krb5 libldap openssl sqlite)
