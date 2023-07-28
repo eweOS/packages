@@ -3,7 +3,7 @@
 pkgname=zsh
 pkgver=5.9
 pkgrel=1
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 url='https://www.zsh.org/'
 license=('custom')
 pkgdesc='A very advanced and programmable command interpreter (shell) for UNIX'
