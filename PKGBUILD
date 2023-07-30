@@ -2,7 +2,7 @@
 
 pkgname=rust
 pkgver=1.71.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=(x86_64 aarch64 riscv64)
 url='https://www.rust-lang.org/'
@@ -14,8 +14,8 @@ source=(
   do-not-use-lfs64.patch
 )
 sha256sums=('a667e4abdc5588ebfea35c381e319d840ffbf8d2dbfb79771730573642034c96'
-            '6ae6ca31ab75bd9474a0f9edf2431630603cb4db475edc6e15a41793861d9615'
-            'b03d82b27697e7c6851ead47e8eca74458ad3a34f3ba8663d6216fdecf4025c0'
+            '970d3ee0c309450eaab3fd62d8a323f725111352213656382c7d3f7b039b8c01'
+            '501211c5a26b2838646a1dfe5a95c0ccbaf013398c75a9977c65e736c0386f86'
             'b19e0ce87427426a30b579ebc0a02ada54d9bd3fd920392d82d97149da8ef65a')
 
 depends=(musl llvm-libs musl-static curl libssh2)
