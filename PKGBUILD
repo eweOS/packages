@@ -27,7 +27,8 @@ build()
   cmake -H${_srcname} -Bbuild \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=ON \
-    -Dgtest_build_tests=ON
+    -Dgtest_build_tests=ON \
+    -DCMAKE_INSTALL_LIBDIR=lib
   cmake --build build
 }
 
