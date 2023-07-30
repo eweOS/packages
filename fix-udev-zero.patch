@@ -1,0 +1,35 @@
+--- pipewire-0.3.75/spa/plugins/alsa/alsa-udev.c	
++++ pipewire-0.3.75-new/spa/plugins/alsa/alsa-udev.c	
+@@ -132,9 +132,6 @@
+ 	if ((str = udev_device_get_property_value(dev, "SOUND_CLASS")) && spa_streq(str, "modem"))
+ 		return SPA_ID_INVALID;
+ 
+-	if (udev_device_get_property_value(dev, "SOUND_INITIALIZED") == NULL)
+-		return SPA_ID_INVALID;
+-
+ 	if ((str = udev_device_get_property_value(dev, "DEVPATH")) == NULL)
+ 		return SPA_ID_INVALID;
+ 
+@@ -788,7 +785,7 @@
+ 
+ 	for (devices = udev_enumerate_get_list_entry(enumerate); devices;
+ 			devices = udev_list_entry_get_next(devices)) {
+-		struct udev_device *dev;
++		struct udev_device *dev, *pdev;
+ 
+ 		dev = udev_device_new_from_syspath(this->udev, udev_list_entry_get_name(devices));
+ 		if (dev == NULL)
+@@ -796,6 +793,13 @@
+ 
+ 		process_device(this, ACTION_ADD, dev);
+ 
++                pdev = udev_device_get_parent(dev);
++                if (pdev) {
++                    process_device(this, ACTION_ADD, pdev);
++                }
++
++                /* no need to call udev_device_unref(pdev) here.
++                   udev_device_unref() will free parent device implicitly */
+ 		udev_device_unref(dev);
+ 	}
+ 	udev_enumerate_unref(enumerate);
