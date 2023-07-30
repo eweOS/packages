@@ -2,7 +2,7 @@
 
 pkgname=greetd
 pkgver=0.9.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Generic greeter daemon"
 arch=(x86_64 aarch64 riscv64)
 url="https://git.sr.ht/~kennylevinsen/greetd"
@@ -14,7 +14,7 @@ source=(
   greetd.sysusers
 )
 sha256sums=('a0cec141dea7fd7838b60a52237692d0fd5a0169cf748b8f8379d8409a3768eb'
-            '499ae517100eae6ff80b0b14791854cd628a4c4e91214620a831d853270e6e97'
+            '69e8a68fa696c0ccf492159faa34661abc5d339a3cab6a6823126ea7ddfa9b16'
             '0147b0e8908c53b36a81e465cddef8bcfacd63c3dfbbfa2c889986b031ea560a'
             '703be69c0bfe1bba1815090113513a495f87198bfb46b02918634f56f5232fea')
 depends=(pam)
@@ -26,8 +26,8 @@ build() {
 }
 
 package() {
-  # To provide XDG_RUNTIME_DIR
-  depends+=(pam_rundir)
+  # To provide initial XDG env
+  depends+=(elogind)
   install -Dm755 "$srcdir/greetd-$pkgver/target/release/greetd" \
     "$pkgdir/usr/bin/greetd"
   install -Dm755 "$srcdir/greetd-$pkgver/target/release/agreety" \

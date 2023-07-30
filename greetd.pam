@@ -1,6 +1,6 @@
 #%PAM-1.0
 
-session    optional     pam_rundir.so
+session    optional     pam_elogind.so
 
 auth       include      login
 account    include      login
