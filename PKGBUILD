@@ -1,16 +1,23 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=nettle
-pkgver=3.9
+pkgver=3.9.1
 pkgrel=1
 pkgdesc="A low-level cryptographic library"
 arch=(x86_64 aarch64 riscv64)
 url="https://www.lysator.liu.se/~nisse/nettle"
 license=('GPL2')
-depends=('gmp' 'musl')
+depends=('gmp')
 provides=('libnettle.so' 'libhogweed.so')
 source=("https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('0ee7adf5a7201610bb7fe0acbb7c9b3be83be44904dd35ebbcd965cd896bfeaa')
+sha256sums=('ccfeff981b0ca71bbd6fbcb054f407c60ffb644389a5be80d6716d5b550c6ce3')
+
+prepare()
+{
+  cd $pkgname-$pkgver
+  # disable static so there is no libnettle.a
+  sed -i 's/ symbols-test//g' testsuite/Makefile.in
+}
 
 build()
 {
