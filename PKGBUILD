@@ -17,7 +17,7 @@ sha256sums=('358cf9ce77e0a5d7e37df18fc5a304eafd069d7e24423d7ca0ad011c96729a90')
 build() {
   ewe-meson $pkgbase-$pkgver build \
     -D maintainer-mode=true \
-    -Db uild-documentation=false
+    -D build-documentation=false
   meson compile -C build
 }
 
