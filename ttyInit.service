@@ -1,5 +1,5 @@
 type = process
-command = /sbin/getty ttyInit 38400
+command = /sbin/getty ttyInit 115200
 restart = true
 termsignal = HUP
 smooth-recovery = true
