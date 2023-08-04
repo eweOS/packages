@@ -10,7 +10,7 @@
 
 pkgname=fzf
 pkgver=0.42.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line fuzzy finder'
 arch=(x86_64 aarch64 riscv64)
 url='https://github.com/junegunn/fzf'
@@ -66,7 +66,7 @@ package()
   ## Binaries
   install -dm755 "$pkgdir"/usr/bin
   install -m755 bin/fzf-tmux "$pkgdir"/usr/bin/
-  install -Dm755 target/fzf-linux_amd64 "$pkgdir"/usr/bin/fzf
+  install -Dm755 target/fzf-linux_* "$pkgdir"/usr/bin/fzf
 
   ## Completion and keybindings
   install -dm755 "$pkgdir"/usr/share/fzf
