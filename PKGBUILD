@@ -7,7 +7,7 @@
 pkgname=(go go-doc)
 epoch=2
 pkgver=1.20.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(x86_64 aarch64 riscv64)
 url='https://golang.org/'
@@ -48,7 +48,8 @@ check()
 
   cd $pkgname/src
   # syscall no privilege, cgo test failed, see https://github.com/golang/go/issues/39857
-  ./run.bash --no-rebuild -run '!(^cgo_test$|syscall|runtime)'
+  # +plugins: https://github.com/golang/go/issues/46560
+  ./run.bash --no-rebuild -run '!(^cgo_test$|syscall|runtime|plugin)'
 }
 
 package_go()
