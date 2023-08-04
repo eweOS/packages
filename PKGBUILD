@@ -7,7 +7,7 @@
 pkgname=(go go-doc)
 epoch=2
 pkgver=1.20.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(x86_64 aarch64 riscv64)
 url='https://golang.org/'
@@ -21,7 +21,18 @@ sha256sums=('62ee5bc6fb55b8bae8f705e0cb8df86d6453626b4ecf93279e2867092e0b7f70')
 
 build()
 {
-  export GOARCH=amd64
+  case $CARCH in
+    x86_64)
+      export GOARCH=amd64
+      export GOAMD64=v1 # make sure we're building for the right x86-64 version
+      ;;
+    aarch64)
+      export GOARCH=arm64
+      ;;
+    riscv64)
+      export GOARCH=riscv64
+      ;;
+  esac
   export GOAMD64=v1 # make sure we're building for the right x86-64 version
   export GOROOT_FINAL=/usr/lib/go
   export GOROOT_BOOTSTRAP=/usr/lib/go
@@ -45,7 +56,7 @@ package_go()
   cd $pkgname
 
   install -d "$pkgdir/usr/bin" "$pkgdir/usr/lib/go" \
-    "$pkgdir/usr/lib/go/pkg/linux_amd64_"{dynlink,race}
+    "$pkgdir/usr/lib/go/pkg/linux_*_"{dynlink,race}
 
   cp -a bin pkg src lib misc api test "$pkgdir/usr/lib/go"
   # We can't strip all binaries and libraries,
