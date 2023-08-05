@@ -2,9 +2,9 @@
 
 pkgname=(linux linux-headers)
 _basename=linux
-_pkgver=6.2.7
-pkgver=6.2.7
-pkgrel=2
+_pkgver=6.4.8
+pkgver=6.4.8
+pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 url='http://www.kernel.org'
 license=(GPL2)
@@ -16,7 +16,7 @@ source=(
   linux-config.riscv
   busybox-find-compat.patch
 )
-sha256sums=('4303105201fb0c0b17155fff87df0a022a32a41eb1ce94a264ae648c64bd0d8d'
+sha256sums=('c59f34e19e84db30206b9373041abf893f9d8a08765d163586570a5238c458b6'
   'd4ce96309090fc6820f1e71afec0620b22b5ce6335274e84b7fec4770c2e28ca'
   'cdbbb14dcf4483ffbc25823bab69de8ee71fd3f553f0ee32df0d9a9d48737605'
   '3d743f6420440088c139fb4576f41e76e718d436f7308843228e080ca430c0c9'
