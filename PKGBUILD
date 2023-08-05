@@ -4,7 +4,7 @@ pkgname=(linux linux-headers)
 _basename=linux
 _pkgver=6.4.8
 pkgver=6.4.8
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64)
 url='http://www.kernel.org'
 license=(GPL2)
@@ -19,7 +19,7 @@ source=(
 sha256sums=('c59f34e19e84db30206b9373041abf893f9d8a08765d163586570a5238c458b6'
   'd4ce96309090fc6820f1e71afec0620b22b5ce6335274e84b7fec4770c2e28ca'
   'cdbbb14dcf4483ffbc25823bab69de8ee71fd3f553f0ee32df0d9a9d48737605'
-  '3d743f6420440088c139fb4576f41e76e718d436f7308843228e080ca430c0c9'
+  '2fa81f682d699d63cf09b05e48718a99acf1dd5b623c934856a1f3fa05a53547'
   'ea1c89fc102d90370c6dc3cb53abebcfdfee91cf6aac60a22bb2b919446ff733')
 
 prepare()
