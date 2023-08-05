@@ -3,9 +3,9 @@
 pkgname='mesa'
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=23.1.4
-pkgrel=3
+pkgrel=4
 arch=(x86_64 aarch64 riscv64)
-depends=('libglvnd' 'libelf' 'zstd')
+depends=('libelf' 'zstd')
 makedepends=('meson' 'libdrm' 'wayland' 'wayland-protocols')
 url="https://www.mesa3d.org/"
 license=('custom')
@@ -21,13 +21,13 @@ prepare()
 build()
 {
   case "${CARCH}" in
-    x86_64)  GALLIUM_DRI="nouveau,virgl,svga,swrast,i915,iris,crocus,zink" ;;
-    aarch64) GALLIUM_DRI="nouveau,virgl,svga,swrast,kmsro,panfrost,zink" ;;
+    x86_64)  GALLIUM_DRI="r300,nouveau,virgl,svga,swrast,i915,iris,crocus,zink" ;;
+    aarch64) GALLIUM_DRI="r300,nouveau,virgl,svga,swrast,kmsro,panfrost,zink" ;;
+    riscv64) GALLIUM_DRI="r300,nouveau,virgl,svga,swrast,zink" ;;
   esac
   ewe-meson $pkgname-$pkgver build \
     --libdir=lib \
     -D platforms=wayland \
-    -Dglvnd=true \
     -Dllvm=enabled \
     -Dshared-glapi=enabled \
     -Dglx=disabled \
