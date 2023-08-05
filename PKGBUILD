@@ -19,7 +19,7 @@ depends=(
   gdk-pixbuf
   libtiff
   libjpeg
-  libegl
+  mesa
   libxkbcommon
   graphene
   libepoxy
