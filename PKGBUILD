@@ -3,10 +3,10 @@
 pkgname='mesa'
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=23.1.4
-pkgrel=4
+pkgrel=5
 arch=(x86_64 aarch64 riscv64)
-depends=('libelf' 'zstd')
-makedepends=('meson' 'libdrm' 'wayland' 'wayland-protocols')
+depends=('libelf' 'zstd' 'libdrm')
+makedepends=('meson' 'wayland' 'wayland-protocols')
 url="https://www.mesa3d.org/"
 license=('custom')
 source=(https://mesa.freedesktop.org/archive/$pkgname-$pkgver.tar.xz)
