@@ -2,7 +2,7 @@
 
 pkgname=openssl
 pkgver=1.1.1u
-pkgrel=1
+pkgrel=2
 pkgdesc='A toolkit for the TLS and SSL protocols'
 arch=(x86_64 aarch64 riscv64)
 url='https://www.openssl.org'
@@ -22,7 +22,7 @@ build()
       export build_arch=linux-x86_64
       ;;
     aarch64)
-      export build_arch=linux-arm64
+      export build_arch=linux-aarch64
       ;;
     riscv64)
       export build_arch=linux64-riscv64
