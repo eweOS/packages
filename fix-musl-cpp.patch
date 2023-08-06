@@ -1,0 +1,28 @@
+--- a/src/signalfd.h
++++ b/src/signalfd.h
+@@ -45,13 +45,24 @@
+   uint8_t __pad[48];
+ };
+ 
++#ifdef   __cplusplus
++# define __BEGIN_DECLS  extern "C" {
++# define __END_DECLS }
++#else
++# define __BEGIN_DECLS
++# define __END_DECLS
++#endif
+ 
++#ifndef __THROW
++#define __THROW
++#endif
++
+ __BEGIN_DECLS
+ 
+ /* Request notification for delivery of signals in MASK to be
+    performed using descriptor FD.*/
+ extern int signalfd (int __fd, const sigset_t *__mask, int __flags)
+-  __THROW __nonnull ((2));
++  __THROW __attribute__((nonnull(2)));
+ 
+ __END_DECLS
+ 
