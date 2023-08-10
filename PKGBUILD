@@ -3,7 +3,7 @@
 pkgname='mesa'
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=23.1.4
-pkgrel=5
+pkgrel=6
 arch=(x86_64 aarch64 riscv64)
 depends=('libelf' 'zstd' 'libdrm')
 makedepends=('meson' 'wayland' 'wayland-protocols')
@@ -21,9 +21,9 @@ prepare()
 build()
 {
   case "${CARCH}" in
-    x86_64)  GALLIUM_DRI="r300,nouveau,virgl,svga,swrast,i915,iris,crocus,zink" ;;
-    aarch64) GALLIUM_DRI="r300,nouveau,virgl,svga,swrast,kmsro,panfrost,zink" ;;
-    riscv64) GALLIUM_DRI="r300,nouveau,virgl,svga,swrast,zink" ;;
+    x86_64)  GALLIUM_DRI="r300,r600,radeonsi,nouveau,virgl,svga,swrast,i915,iris,crocus,zink" ;;
+    aarch64) GALLIUM_DRI="r300,r600,radeonsi,nouveau,virgl,svga,swrast,kmsro,panfrost,zink" ;;
+    riscv64) GALLIUM_DRI="r300,r600,radeonsi,nouveau,virgl,svga,swrast,zink" ;;
   esac
   ewe-meson $pkgname-$pkgver build \
     --libdir=lib \
