@@ -4,7 +4,7 @@ pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang)
 _realpkgname=llvm-project
 pkgver=15.0.6
 _binutilsver=2.39
-pkgrel=13
+pkgrel=14
 arch=('x86_64' 'aarch64' 'riscv64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -256,4 +256,5 @@ package_llvm()
   depends=('llvm-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2')
 
   mv "${srcdir}/PKGDIR/usr" "${pkgdir}/usr"
+  ln -s llvm-as "${pkgdir}/usr/bin/as"
 }
