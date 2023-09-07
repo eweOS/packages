@@ -2,7 +2,7 @@
 
 pkgname=gtk3
 pkgver=3.24.38
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-platform toolkit for creating graphical user interfaces"
 url="https://www.gtk.org/"
 arch=(x86_64 aarch64 riscv64)
@@ -19,7 +19,6 @@ depends=(
   gdk-pixbuf
   libtiff
   libjpeg
-  mesa
   libxkbcommon
   graphene
   libepoxy
