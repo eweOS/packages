@@ -3,9 +3,9 @@
 pkgname='mesa'
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=23.1.4
-pkgrel=6
+pkgrel=7
 arch=(x86_64 aarch64 riscv64)
-depends=('libelf' 'zstd' 'libdrm')
+depends=('libglvnd' 'libelf' 'zstd' 'libdrm')
 makedepends=('meson' 'wayland' 'wayland-protocols')
 url="https://www.mesa3d.org/"
 license=('custom')
@@ -28,6 +28,7 @@ build()
   ewe-meson $pkgname-$pkgver build \
     --libdir=lib \
     -D platforms=wayland \
+    -Dglvnd=true \
     -Dllvm=enabled \
     -Dshared-glapi=enabled \
     -Dglx=disabled \
