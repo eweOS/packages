@@ -2,10 +2,10 @@
 
 pkgname=(luarocks51 luarocks54)
 pkgver=3.9.2
-pkgrel=0
+pkgrel=1
 pkgdesc='The package manager for Lua modules.'
 url='https://luarocks.org'
-arch=(x86_64 riscv64)
+arch=(x86_64 aarch64 riscv64)
 license=(MIT)
 depends=(musl base-devel)
 makedepends=(lua51 lua54)
