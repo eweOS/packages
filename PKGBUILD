@@ -2,12 +2,12 @@
 
 pkgname=wget
 pkgver=1.21.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Network utility to retrieve files from the Web'
 url='https://www.gnu.org/software/wget/wget.html'
 arch=(x86_64 aarch64 riscv64)
 license=('GPL3')
-depends=('libidn2' 'openssl')
+depends=('libidn2' 'openssl' 'pcre2')
 makedepends=('perl')
 checkdepends=('perl-http-daemon')
 backup=('etc/wgetrc')
@@ -40,5 +40,4 @@ package()
 {
   cd $pkgname-$pkgver
   make DESTDIR=$pkgdir install
-
 }
