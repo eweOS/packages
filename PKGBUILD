@@ -2,8 +2,8 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=tcl
-pkgver=8.6.12
-pkgrel=3
+pkgver=8.6.13
+pkgrel=0
 pkgdesc="Powerful, easy-to-learn dynamic programming language"
 arch=(x86_64 aarch64 riscv64)
 url="http://tcl.sourceforge.net/"
@@ -11,7 +11,7 @@ license=('custom')
 depends=('zlib')
 options=('staticlibs' '!lto')
 source=(https://downloads.sourceforge.net/sourceforge/tcl/tcl${pkgver}-src.tar.gz)
-sha256sums=('26c995dd0f167e48b11961d891ee555f680c175f7173ff8cb829f4ebcde4c1a6')
+sha256sums=('43a1fae7412f61ff11de2cfd05d28cfc3a73762f354a417c62370a54e2caf066')
 
 prepare()
 {
@@ -42,6 +42,7 @@ package()
   install -Dm644 ../license.terms "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 tcl.m4 -t "$pkgdir"/usr/share/aclocal
   chmod 644 "$pkgdir/usr/lib/libtclstub8.6.a"
+  mv ${pkgdir}/usr/share/man/man3/Thread.3 ${pkgdir}/usr/share/man/man3/Tcl-Thread.3
 
   # remove buildroot traces
   _tclver=8.6
@@ -50,14 +51,14 @@ package()
     -e "s#'{/usr/lib} '#'/usr/lib/tcl$_tclver'#" \
     -i "${pkgdir}/usr/lib/tclConfig.sh"
 
-  tdbcver=tdbc1.1.3
+  tdbcver=tdbc1.1.5
   sed -e "s#${srcdir}/tcl${pkgver}/unix/pkgs/$tdbcver#/usr/lib/$tdbcver#" \
     -e "s#${srcdir}/tcl${pkgver}/pkgs/$tdbcver/generic#/usr/include#" \
     -e "s#${srcdir}/tcl${pkgver}/pkgs/$tdbcver/library#/usr/lib/tcl${pkgver%.*}#" \
     -e "s#${srcdir}/tcl${pkgver}/pkgs/$tdbcver#/usr/include#" \
     -i "${pkgdir}/usr/lib/$tdbcver/tdbcConfig.sh"
 
-  itclver=itcl4.2.2
+  itclver=itcl4.2.3
   sed -e "s#${srcdir}/tcl${pkgver}/unix/pkgs/$itclver#/usr/lib/$itclver#" \
     -e "s#${srcdir}/tcl${pkgver}/pkgs/$itclver/generic#/usr/include#" \
     -e "s#${srcdir}/tcl${pkgver}/pkgs/$itclver#/usr/include#" \
