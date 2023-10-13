@@ -2,15 +2,16 @@
 
 pkgname=brotli
 _gitcommit=e61745a6b7add50d380cfd7d3883dd6c62fc2c71
-pkgver=1.0.9
-pkgrel=1
+pkgver=1.1.0
+pkgrel=0
 pkgdesc='Generic-purpose lossless compression algorithm'
 url='https://github.com/google/brotli'
 arch=(x86_64 aarch64 riscv64)
 license=('MIT')
 makedepends=('musl' 'llvm-libs' 'cmake')
 source=("https://github.com/google/brotli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f9e8d81d0405ba66d181529af42a3354f838c939095ff99930da6aa9cdf6fe46')
+sha256sums=('e720a6ca29428b803f4ad165371771f5398faba397edf6778837a18599ea13ff')
+
 
 build()
 {
