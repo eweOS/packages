@@ -6,5 +6,4 @@ This repo stores build files (mainly PKGBUILD) of each package in different orph
 git clone -b <package> --single-branch https://github.com/eweOS/packages.git
 ```
 
-
 For any issues or contributions, join [@eweos4dev](https://t.me/eweos4dev) or [eweOS matrix](https://matrix.to/#/#os:ewe.moe).
