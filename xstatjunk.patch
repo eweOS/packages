@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 9613183..e4a9bbc 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -385,7 +385,7 @@ for SEARCH in %stat f%stat l%stat f%statat %stat64 f%stat64 l%stat64 f%statat64
+   FUNC=`echo $SEARCH|sed -e 's/.*%//'`
+   PRE=`echo $SEARCH|sed -e 's/%.*//'`
+   FOUND=
+-  for WRAPPED in __${PRE}x${FUNC} _${PRE}x${FUNC} __${PRE}${FUNC}13 ${PRE}${FUNC} __${PRE}${FUNC}; do
++  for WRAPPED in ${PRE}${FUNC}; do
+     AC_CHECK_FUNCS($WRAPPED,FOUND=$WRAPPED)
+ dnl
+ dnl to unconditionally define only the _* functions, comment out the 2 lines above,

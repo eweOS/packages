@@ -3,7 +3,7 @@
 pkgbase=fakeroot
 pkgname=(fakeroot fakeroot-tcp)
 pkgver=1.32.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for simulating superuser privileges'
 arch=(x86_64 aarch64 riscv64)
 license=('GPL')
@@ -11,14 +11,17 @@ url='https://tracker.debian.org/pkg/fakeroot'
 groups=('base-devel')
 depends=('musl' 'filesystem' 'util-linux')
 makedepends=('libcap')
-source=("https://deb.debian.org/debian/pool/main/f/$pkgname/${pkgname}_${pkgver}.orig.tar.gz" musl.patch)
+source=("https://deb.debian.org/debian/pool/main/f/$pkgname/${pkgname}_${pkgver}.orig.tar.gz" musl.patch xstatjunk.patch)
 sha256sums=('c072b0f65bafc4cc5b6112f7c61185f5170ce4cb0c410d1681c1af4a183e94e6'
-            'baab2d372a484bfd13ce001879c909b44eba65df894696c8dd8b734f1ab36f43')
+            'baab2d372a484bfd13ce001879c909b44eba65df894696c8dd8b734f1ab36f43'
+            '8680c89fe37a75b756585a505a077b26af8a089d05466cbf86522adc81d84e1b')
 
 build()
 {
   cd $srcdir/$pkgbase-$pkgver
   patch -p1 < ${srcdir}/musl.patch
+  patch -p1 < ${srcdir}/xstatjunk.patch
+  autoreconf -fiv
   cp -r $srcdir/$pkgbase-$pkgver $srcdir/$pkgbase-$pkgver-tcp
 
   cd $srcdir/$pkgbase-$pkgver
