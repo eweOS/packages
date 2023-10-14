@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=nodejs
-pkgver=20.5.0
+pkgver=20.8.1
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript'
 arch=('x86_64' 'aarch64' 'riscv64')
