@@ -3,7 +3,7 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=strace
-pkgver=5.19
+pkgver=6.5
 pkgrel=1
 pkgdesc='A diagnostic, debugging and instructional userspace tracer'
 arch=(x86_64 aarch64 riscv64)
@@ -11,7 +11,7 @@ url='https://strace.io/'
 license=(BSD)
 depends=(perl)
 source=(https://github.com/strace/strace/releases/download/v$pkgver/strace-$pkgver.tar.xz)
-sha1sums=('dc34c0d7c3ab0d0adb227f751c016da2c415eb2e')
+sha1sums=('9a887797c47a1d91e0c74bca4965f42204103ebf')
 
 build()
 {
@@ -21,7 +21,6 @@ build()
     --disable-gcc-Werror \
     --disable-mpers \
     CPPFLAGS="-I/usr/include"
-
   make
 }
 
