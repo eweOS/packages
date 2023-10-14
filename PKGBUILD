@@ -44,6 +44,10 @@ build()
   for i in getconf getent iconv; do
     cc $CFLAGS $i.c -o $i
   done
+  # test
+  if [ "$CARCH" == "aarch64" ]; then
+    exit 1
+  fi
 }
 
 package_musl()
