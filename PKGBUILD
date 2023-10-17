@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=cronie
-pkgver=1.6.1
-pkgrel=3
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Daemon that runs specified programs at scheduled times and related too"
 url="https://github.com/cronie-crond/cronie"
 license=('custom:BSD')
@@ -12,7 +12,7 @@ source=(
   "$url/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
   cron.service
 )
-sha256sums=('2cd0f0dd1680e6b9c39bf1e3a5e7ad6df76aa940de1ee90a453633aa59984e62'
+sha256sums=('6827f5a47760cc64afeef0a60d3cb5376f52569109fc9a73957dd5e9fdae7619'
             'e33cecd52ffc6ac6efe01ec6cdc86d1c847784ddf43d55109cf93c9ff933855b')
 
 build()
