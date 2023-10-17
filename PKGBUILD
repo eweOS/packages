@@ -2,13 +2,13 @@
 
 pkgname=busybox
 pkgver=1.36.1
-pkgrel=9
+pkgrel=10
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64)
 url="https://www.busybox.net"
 license=('GPL')
 depends=("utmps")
-makedepends=("ncurses" "musl" "skalibs" "linux")
+makedepends=("ncurses" "musl" "skalibs" "linux-headers")
 source=(
   "$url/downloads/$pkgname-$pkgver.tar.bz2"
   "config"
@@ -21,6 +21,7 @@ source=(
   "mdev.service"
   "mdev.conf"
   "remove_empty_dir.patch"
+  "busybox-suidwrapper.c"
 )
 sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
 	    '8ced29f80074b9869ef39e9f7b696146680cf3092308df05014f14e8bb5d1202'
@@ -32,7 +33,9 @@ sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
             '69e028725a63763e21684fb0ce941f6a34a4b72bb328a0cab43b4d39d6d767dc'
             'a89991ff9aff1876cac2a8b66959fe56195ecb7996344beddea0b051abebd65a'
             '1a914dea6a818ecd279d28093209be535b381d9433264013f26e8e0af0880efb'
-            '622d0a1743a127bab1fc15e5057034db52c7fa475298b8d085cfc7c046ae5537')
+            '622d0a1743a127bab1fc15e5057034db52c7fa475298b8d085cfc7c046ae5537'
+            'add7a75bc369aa2c4c167e5fe6ec3fcca2960b310a4df8e9769c9fd765b9eea2'
+    )
 
 prepare()
 {
@@ -50,6 +53,7 @@ build()
 {
   cd "$srcdir/$pkgname-$pkgver"
   make HOSTCC=clang CC=clang LDLIBS='-lutmps'
+  cc -o $srcdir/busybox-suidwrapper $srcdir/busybox-suidwrapper.c
 }
 
 check()
@@ -63,9 +67,14 @@ package()
 {
   cd "$srcdir/$pkgname-$pkgver"
   make HOSTCC=clang CC=clang LDLIBS='-lutmps' install
-  chmod u+s ${pkgdir}/usr/bin/busybox
   mv $pkgdir/usr/sbin/* $pkgdir/usr/bin
   rm -r $pkgdir/usr/sbin
+
+  install -m 0755 $srcdir/busybox-suidwrapper $pkgdir/usr/bin/busybox-suidwrapper
+  for SUIDCMD in $($pkgdir/usr/bin/busybox-suidwrapper -l); do
+    ln -sf busybox-suidwrapper $pkgdir/usr/bin/$SUIDCMD
+  done
+  chmod u+s $pkgdir/usr/bin/busybox-suidwrapper
 
   cd $pkgdir
   # Config Files
