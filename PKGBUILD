@@ -1,15 +1,15 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libksba
-pkgver=1.6.3
-pkgrel=0
+pkgver=1.6.4
+pkgrel=1
 pkgdesc='Library for working with X.509 certificates, CMS data and related objects'
 url='https://www.gnupg.org/related_software/libksba/'
 license=('GPL')
 arch=(x86_64 aarch64 riscv64)
 depends=('bash' 'libgpg-error' 'musl')
 source=("https://www.gnupg.org/ftp/gcrypt/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('3f72c68db30971ebbf14367527719423f0a4d5f8103fc9f4a1c01a9fa440de5c')
+sha256sums=('bbb43f032b9164d86c781ffe42213a83bf4f2fee91455edfa4654521b8b03b6b')
 
 build()
 {
