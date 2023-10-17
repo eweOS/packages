@@ -2,15 +2,15 @@
 
 pkgname='mesa'
 pkgdesc="An open-source implementation of the OpenGL specification"
-pkgver=23.1.4
-pkgrel=7
+pkgver=23.2.1
+pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm')
 makedepends=('meson' 'wayland' 'wayland-protocols')
 url="https://www.mesa3d.org/"
 license=('custom')
 source=(https://mesa.freedesktop.org/archive/$pkgname-$pkgver.tar.xz)
-sha512sums=('4063c7848f507b5e25cfc862394268147254b90c9f3eb19035cce338b0a9cb611b7380c1c73f0e4feeddde68124225df7dee7b9db5f019603dfde2b88ff46a21')
+sha512sums=('927af0885a4815d330de384232deadf3dce7e2e2024738f138a344cbc4adce22888a9e335317f1d75965a5e691c9638949105f18c9b6ef43839fb594c6b474b5')
 
 prepare()
 {
@@ -21,9 +21,18 @@ prepare()
 build()
 {
   case "${CARCH}" in
-    x86_64)  GALLIUM_DRI="r300,r600,radeonsi,nouveau,virgl,svga,swrast,i915,iris,crocus,zink" ;;
-    aarch64) GALLIUM_DRI="r300,r600,radeonsi,nouveau,virgl,svga,swrast,kmsro,panfrost,zink" ;;
-    riscv64) GALLIUM_DRI="r300,r600,radeonsi,nouveau,virgl,svga,swrast,zink" ;;
+    x86_64)
+	    GALLIUM_DRI="r300,r600,radeonsi,nouveau,virgl,svga,swrast,i915,iris,crocus,zink"
+	    VULKAN_DRI="swrast,virtio"
+	    ;;
+    aarch64)
+	    GALLIUM_DRI="r300,r600,radeonsi,nouveau,virgl,svga,swrast,kmsro,panfrost,zink"
+	    VULKAN_DRI="swrast,virtio"
+	    ;;
+    riscv64)
+	    GALLIUM_DRI="r300,r600,radeonsi,nouveau,virgl,svga,swrast,zink"
+	    VULKAN_DRI="swrast,virtio"
+	    ;;
   esac
   ewe-meson $pkgname-$pkgver build \
     --libdir=lib \
@@ -35,7 +44,7 @@ build()
     -Dgles1=enabled \
     -Dgles2=enabled \
     -Dosmesa=true \
-    -Dvulkan-drivers=swrast,virtio-experimental \
+    -Dvulkan-drivers=${VULKAN_DRI} \
     -Dgallium-drivers=${GALLIUM_DRI} \
     -Dcpp_rtti=false \
     -Dmicrosoft-clc=disabled \
@@ -50,7 +59,6 @@ build()
 
   meson configure build
   meson compile -C build
-
 }
 
 package()
