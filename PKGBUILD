@@ -1,15 +1,15 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=libsrt
-pkgver=1.5.2
-pkgrel=0
+pkgver=1.5.3
+pkgrel=1
 pkgdesc='Secure Reliable Transport (SRT)'
 url='https://www.srtalliance.org/'
 arch=(x86_64 aarch64 riscv64)
 license=(MPL2)
 depends=(openssl)
 makedepends=(cmake)
-source=("https://github.com/Haivision/srt/archive/refs/tags/v$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Haivision/srt/archive/refs/tags/v$pkgver.tar.gz")
 
 build () {
 	cd srt-$pkgver
@@ -24,4 +24,4 @@ package() {
 	install -Dm 644 LICENSE $pkgdir/usr/share/licenses/libsrt/LICENSE
 }
 
-sha256sums=('463970a3f575446b3f55abb6f323d5476c963c77b3c975cd902e9c87cdd9a92c')
+sha256sums=('befaeb16f628c46387b898df02bc6fba84868e86a6f6d8294755375b9932d777')
