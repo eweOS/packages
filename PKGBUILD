@@ -3,8 +3,8 @@
 
 pkgname=libutf8proc
 pkgver=2.8.0
-_sover=2.6.0
-pkgrel=1
+_sover=2
+pkgrel=2
 pkgdesc='C library for processing UTF-8 encoded Unicode strings'
 arch=(x86_64 aarch64 riscv64)
 url='https://github.com/JuliaStrings/utf8proc'
