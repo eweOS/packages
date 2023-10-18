@@ -3,11 +3,11 @@
 pkgname=(wasi-libc++ wasi-libc++abi wasi-compiler-rt)
 _realpkgname=llvm-project
 pkgver=15.0.6
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://llvm.org/'
 license=('custom:Apache 2.0 with LLVM Exception')
-makedepends=('cmake' 'ninja' 'python' 'wasi-libc' 'openmp')
+makedepends=('cmake' 'ninja' 'python' 'wasi-libc' 'openmp' 'llvm-lto')
 source=(
   https://github.com/llvm/${_realpkgname}/releases/download/llvmorg-${pkgver}/${_realpkgname}-${pkgver}.src.tar.xz
   wasi-toolchain.cmake::https://raw.githubusercontent.com/WebAssembly/wasi-sdk/main/wasi-sdk.cmake
@@ -30,21 +30,21 @@ build() {
   export CXXFLAGS="$(echo $CXXFLAGS | sed "s/-mtune=generic//;
   s/-fstack-clash-protection//; s/-fcf-protection//; s/-fexceptions//")"
 
-  export COMMON_ARGS=(
+  export WASI_COMMON_ARGS=(
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_C_COMPILER_WORKS=ON
     -DCMAKE_CXX_COMPILER_WORKS=ON
     -DCMAKE_AR=/usr/bin/ar
     -DCMAKE_MODULE_PATH="${srcdir}"/cmake
     -DCMAKE_TOOLCHAIN_FILE="${srcdir}"/wasi-toolchain.cmake
-    -DCMAKE_STAGING_PREFIX=/usr/share/wasi-sysroot
-    -DCMAKE_SYSROOT=/usr/share/wasi-sysroot
     -DWASI_SDK_PREFIX=/usr
     -DUNIX=ON
   )
-  
-  export RUNTIME_ARGS=(
+
+  export WASI_RUNTIME_ARGS=(
     -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi"
+    -DCMAKE_STAGING_PREFIX=/usr/share/wasi-sysroot
+    -DCMAKE_SYSROOT=/usr/share/wasi-sysroot
     -DLIBCXX_ABI_VERSION=2
     -DLIBCXX_CXX_ABI=libcxxabi
     -DLIBCXX_ENABLE_THREADS=OFF
@@ -63,24 +63,25 @@ build() {
     -DLIBCXXABI_HAS_EXTERNAL_THREAD_API=OFF
   )
 
-  export CRT_ARGS=(
+  export WASI_CRT_ARGS=(
     -DCOMPILER_RT_BAREMETAL_BUILD=ON
     -DCOMPILER_RT_INCLUDE_TESTS=OFF
     -DCOMPILER_RT_HAS_FPIC_FLAG=OFF
     -DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON
     -DCOMPILER_RT_OS_DIR=wasi
+    -DCMAKE_INSTALL_PREFIX=/usr/lib/clang/$pkgver/
   )
 
   cmake -B build-runtime -G Ninja \
-    "${COMMON_ARGS[@]}" \
-    "${RUNTIME_ARGS[@]}" \
+    "${WASI_COMMON_ARGS[@]}" \
+    "${WASI_RUNTIME_ARGS[@]}" \
     $_basedir/runtimes
 
   ninja -C build-runtime
   
   cmake -B build-crt -G Ninja \
-    "${COMMON_ARGS[@]}" \
-    "${CRT_ARGS[@]}" \
+    "${WASI_COMMON_ARGS[@]}" \
+    "${WASI_CRT_ARGS[@]}" \
     $_basedir/compiler-rt/lib/builtins
 
   ninja -C build-crt
