@@ -4,7 +4,7 @@ pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang wasi-libc++ wasi-libc++ab
 _realpkgname=llvm-project
 pkgver=16.0.6
 _binutilsver=2.41
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64' 'riscv64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -182,14 +182,14 @@ build()
     -DCMAKE_AR=/usr/bin/ar
     -DCMAKE_MODULE_PATH="${srcdir}"/cmake
     -DCMAKE_TOOLCHAIN_FILE="${srcdir}"/wasi-toolchain.cmake
-    -DCMAKE_STAGING_PREFIX=/usr/share/wasi-sysroot
-    -DCMAKE_SYSROOT=/usr/share/wasi-sysroot
     -DWASI_SDK_PREFIX=/usr
     -DUNIX=ON
   )
 
   export WASI_RUNTIME_ARGS=(
     -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi"
+    -DCMAKE_STAGING_PREFIX=/usr/share/wasi-sysroot
+    -DCMAKE_SYSROOT=/usr/share/wasi-sysroot
     -DLIBCXX_ABI_VERSION=2
     -DLIBCXX_CXX_ABI=libcxxabi
     -DLIBCXX_ENABLE_THREADS=OFF
@@ -214,6 +214,7 @@ build()
     -DCOMPILER_RT_HAS_FPIC_FLAG=OFF
     -DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON
     -DCOMPILER_RT_OS_DIR=wasi
+    -DCMAKE_INSTALL_PREFIX=/usr/lib/clang/$pkgver/
   )
 
   case $CARCH in
