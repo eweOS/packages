@@ -1,35 +1,36 @@
---- pipewire-0.3.75/spa/plugins/alsa/alsa-udev.c	
-+++ pipewire-0.3.75-new/spa/plugins/alsa/alsa-udev.c	
-@@ -132,9 +132,6 @@
- 	if ((str = udev_device_get_property_value(dev, "SOUND_CLASS")) && spa_streq(str, "modem"))
+--- pipewire/spa/plugins/alsa/alsa-udev.c
++++ pipewire/spa/plugins/alsa/alsa-udev.c
+@@ -162,9 +162,6 @@
+ 	if ((str = udev_device_get_property_value(udev_device, "SOUND_CLASS")) && spa_streq(str, "modem"))
  		return SPA_ID_INVALID;
  
--	if (udev_device_get_property_value(dev, "SOUND_INITIALIZED") == NULL)
+-	if (udev_device_get_property_value(udev_device, "SOUND_INITIALIZED") == NULL)
 -		return SPA_ID_INVALID;
 -
- 	if ((str = udev_device_get_property_value(dev, "DEVPATH")) == NULL)
+ 	if ((str = udev_device_get_property_value(udev_device, "DEVPATH")) == NULL)
  		return SPA_ID_INVALID;
  
-@@ -788,7 +785,7 @@
+@@ -958,7 +955,7 @@
  
- 	for (devices = udev_enumerate_get_list_entry(enumerate); devices;
- 			devices = udev_list_entry_get_next(devices)) {
--		struct udev_device *dev;
-+		struct udev_device *dev, *pdev;
+ 	for (udev_devices = udev_enumerate_get_list_entry(enumerate); udev_devices;
+ 			udev_devices = udev_list_entry_get_next(udev_devices)) {
+-		struct udev_device *udev_device;
++		struct udev_device *udev_device, *pdev_device;
  
- 		dev = udev_device_new_from_syspath(this->udev, udev_list_entry_get_name(devices));
- 		if (dev == NULL)
-@@ -796,6 +793,13 @@
+ 		udev_device = udev_device_new_from_syspath(this->udev,
+ 		                                           udev_list_entry_get_name(udev_devices));
+@@ -967,6 +964,14 @@
  
- 		process_device(this, ACTION_ADD, dev);
+ 		process_card(this, ACTION_ADD, udev_device);
  
-+                pdev = udev_device_get_parent(dev);
-+                if (pdev) {
-+                    process_device(this, ACTION_ADD, pdev);
++                pdev_device = udev_device_get_parent(udev_device);
++                if (pdev_device) {
++                    process_card(this, ACTION_ADD, pdev_device);
 +                }
 +
 +                /* no need to call udev_device_unref(pdev) here.
 +                   udev_device_unref() will free parent device implicitly */
- 		udev_device_unref(dev);
++
+ 		udev_device_unref(udev_device);
  	}
  	udev_enumerate_unref(enumerate);

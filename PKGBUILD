@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pipewire
-pkgver=0.3.75
-pkgrel=3
+pkgver=0.3.82
+pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64 aarch64 riscv64)
@@ -13,8 +13,8 @@ source=(
   "https://gitlab.freedesktop.org/pipewire/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
   fix-udev-zero.patch
 )
-sha256sums=('182fb03e8b5f4949a4564397c58cdfc20562afa8618db6f4fec7c860d17bd528'
-            'ba1eb2fd3076d475a695b0dd257291266ce6c2d0342a830ec264e52472cf5665')
+sha256sums=('180283e33ebb4fbcfefa25f1f1c23df1c0f084ea890c9394fa0a7ba7d13d789a'
+            'd23a7ae266619ca46d1d4cc135e6e6d31f0dfd798704d7a7a961a5304e614990')
 
 prepare()
 {
@@ -27,7 +27,6 @@ build()
 {
   local features=(
     -D man=disabled
-    -D examples=disabled
     -D docs=disabled
     -D tests=disabled
     -D gstreamer=disabled
@@ -36,21 +35,16 @@ build()
     -D systemd-user-service=disabled
     -D pipewire-jack=disabled
     -D pipewire-v4l2=disabled
-    -D spa-plugins=enabled
     -D pw-cat=disabled
-    -D audiomixer=enabled
     -D bluez5=disabled
-    -D control=enabled
     -D audiotestsrc=disabled
     -D jack=disabled
-    -D support=enabled
     -D v4l2=disabled
     -D libcamera=disabled
     -D videoconvert=disabled
     -D videotestsrc=disabled
     -D volume=disabled
     -D sdl2=disabled
-    -D libpulse=enabled
     -D roc=disabled
     -D avahi=disabled
     -D echo-cancel-webrtc=disabled
@@ -63,11 +57,10 @@ build()
     -D legacy-rtkit=false
     -D avb=disabled
     -D flatpak=disabled
-    -D libusb=enabled
-    -D sndfile=enabled
     -D libmysofa=disabled
     -D gsettings=disabled
     -D libffado=disabled
+    -D selinux=disabled
     -D udevrulesdir=/usr/lib/udev/rules.d
   )
 
@@ -79,4 +72,21 @@ build()
 package()
 {
   meson install -C build --destdir "$pkgdir"
+
+  # ALSA configuration
+  mkdir -p "$pkgdir/etc/alsa/conf.d"
+  ln -s /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf \
+    "$pkgdir/etc/alsa/conf.d/99-pipewire-default.conf"
+
+  install -Dm644 /dev/null \
+    "$pkgdir/usr/share/pipewire/media-session.d/with-alsa"
+
+  # pulse replacement
+
+  mkdir -p "$pkgdir/etc/pipewire/pipewire-pulse.conf.d"
+
+  install -Dm644 /dev/null \
+    "$pkgdir/usr/share/pipewire/media-session.d/with-pulseaudio"
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $pkgname-$pkgver/COPYING
 }
