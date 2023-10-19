@@ -1,19 +1,18 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
+# Contributor: Eric Long <i@hack3r.moe>
 
-pkgbase=pacman-utils
+pkgbase=pacman
 pkgname=(libalpm pacman makepkg repo-tools)
 pkgver=6.0.2
-pkgrel=6
+pkgrel=7
 arch=(x86_64 aarch64 riscv64)
-url="https://www.archlinux.org/pacman/"
-license=('GPL')
-makedepends=('meson' 'libarchive' 'openssl' 'ninja' 'acl' 'curl' 'xz')
-checkdepends=('python')
-backup=(etc/pacman.conf
-  etc/makepkg.conf)
+url=https://www.archlinux.org/pacman/
+license=(GPL)
+makedepends=(meson libarchive openssl ninja acl curl xz)  # TODO: asciidoc doxygen
+checkdepends=(python)
 source=(
-  https://sources.archlinux.org/other/pacman/pacman-$pkgver.tar.xz
+  https://sources.archlinux.org/other/$pkgbase/$pkgbase-$pkgver.tar.xz
   pacman.conf
   makepkg.conf
   function_patch.sh
@@ -21,20 +20,19 @@ source=(
   script_warndirs.sh
 )
 sha256sums=('7d8e3e8c5121aec0965df71f59bedf46052c6cf14f96365c4411ec3de0a4c1a5'
-  '45735476a908373bcf8392cf3b4fb88bd4b4914d10b76f35542e7a679ad01229'
-  'b7d0860e6763d3947bcd9c725aead7f821ef902a5246926de2c9079eb303a585'
-  'f629c6979ee692ce0c1aea33ffaa2a238b08a912bb9e012872365ff603d0a977'
-  '7d2ad28bef8f9f77f33929d2050244a6f29941de6ad0793b6820caee3dbd84e3'
-  '775595e15aafd6199eca688b0c59ddf04162c5eccb4f6f9afa4d1925d6114d86'
-)
+            '45735476a908373bcf8392cf3b4fb88bd4b4914d10b76f35542e7a679ad01229'
+            '66e0fb85053d77365997837050762089dd0248fe2fadeb4236479b6268daa202'
+            'f629c6979ee692ce0c1aea33ffaa2a238b08a912bb9e012872365ff603d0a977'
+            '7d2ad28bef8f9f77f33929d2050244a6f29941de6ad0793b6820caee3dbd84e3'
+            '775595e15aafd6199eca688b0c59ddf04162c5eccb4f6f9afa4d1925d6114d86')
 
 _fetchpkg()
 {
-  PKGBASE="$srcdir/pkgs/$1" && shift
-  mkdir -p $PKGBASE
-  for FILEPATH in $@; do
-    (cd "${srcdir}/PKGDIR" && find $FILEPATH | cpio -pdvmu $PKGBASE) || true
-    (cd "${srcdir}/PKGDIR" && find $FILEPATH -delete) || true
+  local _pkgdir="$srcdir/pkgs/$1" && shift
+  mkdir -p "$_pkgdir"
+  for _file in $@; do
+    (cd "$srcdir/PKGDIR" && find $_file | cpio -pdvmu "$_pkgdir") || true
+    (cd "$srcdir/PKGDIR" && find $_file -delete) || true
   done
 }
 
@@ -79,26 +77,27 @@ FLIST_REPO_TOOLS=(
 
 build()
 {
+  # TODO: riscv64
   case $CARCH in
-    x86_64)
-      makepkg_cflags="-Os -pipe -fno-plt -fstack-clash-protection -fcf-protection"
-      ;;
-    aarch64)
-      makepkg_cflags="-march=armv8-a -Os -pipe -fno-plt"
-      ;;
+    x86_64) makepkg_cflags="-Os -pipe -fno-plt -fstack-clash-protection -fcf-protection" ;;
+    aarch64) makepkg_cflags="-march=armv8-a -Os -pipe -fno-plt" ;;
+    riscv64) makepkg_cflags="" ;;
   esac
   sed -i ./makepkg.conf \
-    -e "s|BUILD_GEN_CFLAGS|${makepkg_cflags}|g"
-  cd "pacman-$pkgver"
-  sed -i -e 's/EUID == 0/EUID == -1/' scripts/makepkg.sh.in
-  sed -i '/bsdtar -xf .*dbfile/s@-C@--no-fflags -C@' scripts/repo-add.sh.in
-  mkdir build
-  cd build || return
-  meson --prefix=/usr ..
-  ninja --verbose
+    -e "s|@@BUILD_GEN_CFLAGS@@|$makepkg_cflags|g"
 
-  cd ..
-  DESTDIR="${srcdir}/PKGDIR" meson install -C build
+  cd "$pkgbase-$pkgver"
+  sed -i -e 's/EUID == 0/EUID == -1/' scripts/makepkg.sh.in
+  sed -i '/bsdtar -xf .*dbfile/s|-C|--no-fflags -C|' scripts/repo-add.sh.in
+
+  meson --prefix=/usr \
+        --buildtype=plain \
+        -Dscriptlet-shell=/usr/bin/bash \
+        -Dldconfig=/usr/bin/ldconfig \
+        build  # TODO: -Ddoc=enabled -Ddoxygen=enabled
+  meson compile -C build
+
+  DESTDIR="$srcdir/PKGDIR" meson install -C build
   _fetchpkg libalpm ${FLIST_LIBALPM[@]}
   _fetchpkg pacman ${FLIST_PACMAN[@]}
   _fetchpkg makepkg ${FLIST_MAKEPKG[@]}
@@ -107,29 +106,32 @@ build()
 
 package_libalpm()
 {
-  pkgdesc="ALPM (i.e. Arch Linux Package Management) library"
-  depends=('libarchive' 'curl' 'gettext' 'libxml2')
-  provides=('libalpm.so')
+  pkgdesc="Arch Linux package management library"
+  depends=(libarchive curl gettext libxml2)
+  provides=(libalpm.so)
 
-  mv $srcdir/pkgs/libalpm/* "${pkgdir}"
+  mv "$srcdir"/pkgs/libalpm/* "$pkgdir"
 }
 
 package_pacman()
 {
   pkgdesc="A library-based package manager with dependency support"
-  depends=('bash' "libalpm=${pkgver}")
+  depends=(bash "libalpm=$pkgver")
+  backup=(etc/pacman.conf)
 
-  mv $srcdir/pkgs/pacman/* "${pkgdir}"
+  mv "$srcdir"/pkgs/pacman/* "$pkgdir"
   install -Dm644 "$srcdir/pacman.conf" "$pkgdir/etc/pacman.conf"
 }
 
 package_makepkg()
 {
   pkgdesc="A script to automate the building of pacman packages"
-  depends=("pacman=${pkgver}" 'fakeroot')
-  groups=('base-devel')
+  arch=(any)
+  depends=("pacman=$pkgver" fakeroot)
+  groups=(base-devel)
+  backup=(etc/makepkg.conf)
 
-  mv $srcdir/pkgs/makepkg/* "${pkgdir}"
+  mv "$srcdir"/pkgs/makepkg/* "$pkgdir"
   install -Dm644 "$srcdir/makepkg.conf" "$pkgdir/etc/makepkg.conf"
   install -Dm644 "$srcdir/function_patch.sh" "$pkgdir/usr/share/makepkg/function_patch.sh"
   install -Dm644 "$srcdir/function_pick.sh" "$pkgdir/usr/share/makepkg/function_pick.sh"
@@ -138,8 +140,9 @@ package_makepkg()
 
 package_repo-tools()
 {
-  pkgdesc="Pacman package database maintenance utility"
-  depends=("pacman")
+  pkgdesc="Package database maintenance utilities for pacman"
+  arch=(any)
+  depends=(pacman)
 
-  mv $srcdir/pkgs/repo-tools/* "${pkgdir}"
+  mv "$srcdir"/pkgs/repo-tools/* "$pkgdir"
 }
