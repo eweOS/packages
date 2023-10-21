@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=spirv-tools
-pkgver=2022.2
+pkgver=2023.2
 pkgrel=1
 pkgdesc="API and commands for processing SPIR-V modules"
 arch=(x86_64 aarch64 riscv64)
@@ -10,12 +10,11 @@ license=('custom')
 depends=('llvm-libs')
 makedepends=('cmake' 'python' 'ninja' 'spirv-headers')
 source=("https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('909fc7e68049dca611ca2d57828883a86f503b0353ff78bc594eddc65eb882b9')
+sha256sums=('7416cc8a98a10c32bacc36a39930b0c5b2a484963df5d68f388ed7ffee1faad3')
 
 build()
 {
   cd SPIRV-Tools-${pkgver}
-
   cmake \
     -Bbuild \
     -GNinja \
@@ -32,8 +31,6 @@ build()
 package()
 {
   cd SPIRV-Tools-${pkgver}
-
   DESTDIR="${pkgdir}" ninja -C build install
-
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
