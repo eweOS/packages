@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=rust
-pkgver=1.71.0
-pkgrel=2
+pkgver=1.73.0
+pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=(x86_64 aarch64 riscv64)
 url='https://www.rust-lang.org/'
@@ -11,23 +11,13 @@ source=(
   https://static.rust-lang.org/dist/rustc-$pkgver-src.tar.gz
   config.toml.x86_64
   config.toml.aarch64
-  do-not-use-lfs64.patch
 )
-sha256sums=('a667e4abdc5588ebfea35c381e319d840ffbf8d2dbfb79771730573642034c96'
+sha256sums=('96d62e6d1f2d21df7ac8acb3b9882411f9e7c7036173f7f2ede9e1f1f6b1bb3a'
             '970d3ee0c309450eaab3fd62d8a323f725111352213656382c7d3f7b039b8c01'
-            '501211c5a26b2838646a1dfe5a95c0ccbaf013398c75a9977c65e736c0386f86'
-            'b19e0ce87427426a30b579ebc0a02ada54d9bd3fd920392d82d97149da8ef65a')
+            '501211c5a26b2838646a1dfe5a95c0ccbaf013398c75a9977c65e736c0386f86')
 
 depends=(musl llvm-libs musl-static curl libssh2)
 makedepends=(rust llvm libffi perl python cmake ninja)
-
-prepare()
-{
-  cd ${pkgname}c-$pkgver-src
-
-  # https://github.com/rust-lang/rust/pull/106246
-  patch -p1 < ../do-not-use-lfs64.patch
-}
 
 build()
 {
