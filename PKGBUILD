@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pipewire
-pkgver=0.3.82
+pkgver=0.3.83
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -13,7 +13,7 @@ source=(
   "https://gitlab.freedesktop.org/pipewire/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
   fix-udev-zero.patch
 )
-sha256sums=('180283e33ebb4fbcfefa25f1f1c23df1c0f084ea890c9394fa0a7ba7d13d789a'
+sha256sums=('b681bbf590cd02deec41802444ba5b05fe4df3e497eaa80260d1c5f7bb830bda'
             'd23a7ae266619ca46d1d4cc135e6e6d31f0dfd798704d7a7a961a5304e614990')
 
 prepare()
