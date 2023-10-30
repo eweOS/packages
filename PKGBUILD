@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sudo
-pkgver=1.9.12
+pkgver=1.9.14
 pkgrel=1
 pkgdesc='Tool for delegating authority to users and groups.'
 arch=(x86_64 aarch64 riscv64)
@@ -11,7 +11,7 @@ depends=(zlib)
 makedepends=(utmps)
 options=(emptydirs)
 source=("http://www.sudo.ws/sudo/dist/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('de15733888170c56834daafd34bf983db10fb21039742fcfc396bd32168d6362')
+sha256sums=('7bb70e4529ab2ada47ded970cdf2fe7be3084912861ddbac239eebdc92935a29')
 
 _features=(
   --enable-static=false
