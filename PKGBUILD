@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libglvnd
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="The GL Vendor-Neutral Dispatch library"
 arch=(x86_64 aarch64 riscv64)
@@ -11,7 +11,7 @@ makedepends=('python' 'meson')
 depends=('mesa')
 provides=('libgl' 'libegl' 'libgles')
 source=("$url/-/archive/v$pkgver/libglvnd-v$pkgver.tar.gz")
-sha512sums=('8b8be80d94da7d9ffe58dccbcd5bd8079e86326a3a1a880ff1f7bf6f2d74eb5143cd3783fc2d8119fed597b3376e33f34ed889cc2259073dfd1d6c985a739df6')
+sha512sums=('7b6eb8e075b48f1d915b892044adc3260547d74ed61d1e2fa6c5f0f8c3527754abea314181e088626d4fd58bb221085e5288c4758d828e171c7dcb0e4991745c')
 
 build()
 {
