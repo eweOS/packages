@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=mailcap
-pkgver=2.1.53
+pkgver=2.1.54
 pkgrel=1
 pkgdesc="Helper application and MIME type associations for file types"
 url="https://pagure.io/mailcap"
@@ -18,7 +18,7 @@ backup=(
   etc/mime.types
   etc/nginx/mime.types
 )
-_commit=4a12cc7caeb4a74626e8e6aedf38e7223b28e982  # tags/r2-1-53
+_commit=9699055a1b4dfb90f7594ee2e8dda705fa56d3b8  # tags/r2-1-54
 source=("git+https://pagure.io/mailcap#commit=$_commit")
 sha256sums=('SKIP')
 
