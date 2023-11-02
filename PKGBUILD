@@ -2,7 +2,7 @@
 
 pkgname=libglvnd
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The GL Vendor-Neutral Dispatch library"
 arch=(x86_64 aarch64 riscv64)
 url="https://gitlab.freedesktop.org/glvnd/libglvnd"
@@ -15,10 +15,20 @@ sha512sums=('7b6eb8e075b48f1d915b892044adc3260547d74ed61d1e2fa6c5f0f8c3527754abe
 
 build()
 {
+  export MESONFLAGS=(
+    "x11=disabled"
+    "glx=disabled"
+    "gles1=false"
+  )
+
+  case $CARCH in
+    riscv64)
+      MESONFLAGS+=("asm=disabled")
+      ;;
+  esac
+
   ewe-meson $pkgname-v$pkgver build \
-    -D x11=disabled \
-    -D glx=disabled \
-    -D gles1=false
+    "${MESONFLAGS[@]/#/-D}"
   meson compile -C build
 }
 
