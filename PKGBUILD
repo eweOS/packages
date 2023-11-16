@@ -7,8 +7,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=aria2
-pkgver=1.36.0
-pkgrel=2
+pkgver=1.37.0
+pkgrel=1
 pkgdesc='Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink'
 arch=(x86_64 aarch64 riscv64)
 url='https://aria2.github.io/'
@@ -17,16 +17,8 @@ depends=('openssl' 'libxml2' 'sqlite' 'c-ares' 'ca-certs' 'libssh2')
 checkdepends=('cppunit')
 source=(
 	"https://github.com/aria2/aria2/releases/download/release-$pkgver/aria2-$pkgver.tar.xz"
-	"remove-deprecated-functions.patch::https://github.com/aria2/aria2/commit/8956c58d126a4e57e114f69ba6a5961724b7a817.patch"
 )
-sha512sums=('8203dbb75274455a78c50dd4f894e631de6931ac889f26896dceed78ec38c98cdbcf07e164744f308f2bfffeae1016beec1bfdbe8cad7f3280d11376aa0c2542'
-            'e1f89f4e1a09373641120b86d2eb432e6876dfbacb5fc891b1f00c22598e3dd2a03621a81d6a27eec74c4867078fb40cf52623bc75abacb1d11e74a4bbed598f')
-
-prepare()
-{
-  cd $pkgname-$pkgver
-  patch -p1 < ../remove-deprecated-functions.patch
-}
+sha512sums=('df3b8b4de8fa8d78f203ea00c059e43585e18a229009f202e42e6a9e59db67d09df0dbba8a016e99ed73c82f59e4f8b26f86c2288afdbb96a6807cbe2c56e6b3')
 
 build()
 {
@@ -43,7 +35,7 @@ check()
 {
   cd $pkgname-$pkgver
   # check failed in this version, also on Arch
-  #make check
+  # make check
 }
 
 package()
