@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gtk4
-pkgver=4.8.3
+pkgver=4.13.3
 pkgrel=1
 pkgdesc="Multi-platform toolkit for creating graphical user interfaces"
 url="https://www.gtk.org/"
@@ -33,7 +33,7 @@ makedepends=(
 )
 checkdepends=(weston)
 source=("https://gitlab.gnome.org/GNOME/gtk/-/archive/${pkgver}/gtk-${pkgver}.tar.gz")
-sha256sums=('db1779168d6bf3bb6c0564da82f6263206846d8ffea56adb421eec9b6a625305')
+sha256sums=('2da2f0771ca5b027225eca8414f1e5ae20ed0d17540d4109ce48921f725ad294')
 
 build()
 {
@@ -48,6 +48,7 @@ build()
     -D demos=false
     -D build-examples=false
     -D build-tests=false
+    -D build-testsuite=false
   )
   LD=binutils-gold ewe-meson gtk-$pkgver build "${meson_options[@]}"
   meson compile -C build
