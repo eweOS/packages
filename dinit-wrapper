@@ -1,0 +1,3 @@
+#!/bin/env sh
+
+exec dinit -d /usr/lib/dinit/system -d /etc/dinit.d
