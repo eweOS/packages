@@ -1,3 +1,5 @@
 type = process
 command = greetd
-depends-on = rcboot
+depends-on = rc.target
+depends-on = elogind
+before = login.target

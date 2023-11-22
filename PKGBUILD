@@ -2,7 +2,7 @@
 
 pkgname=greetd
 pkgver=0.9.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Generic greeter daemon"
 arch=(x86_64 aarch64 riscv64)
 url="https://git.sr.ht/~kennylevinsen/greetd"
@@ -15,7 +15,7 @@ source=(
 )
 sha256sums=('a0cec141dea7fd7838b60a52237692d0fd5a0169cf748b8f8379d8409a3768eb'
             '69e8a68fa696c0ccf492159faa34661abc5d339a3cab6a6823126ea7ddfa9b16'
-            '0147b0e8908c53b36a81e465cddef8bcfacd63c3dfbbfa2c889986b031ea560a'
+            '94b3987149a09e952eebc17164bb529184deba6cbdbe1e420d8d5615657d646d'
             '703be69c0bfe1bba1815090113513a495f87198bfb46b02918634f56f5232fea')
 depends=(pam)
 makedepends=(rust)
@@ -35,10 +35,9 @@ package() {
 
   install -Dm644 "$srcdir/greetd.pam" \
     "$pkgdir/etc/pam.d/greetd"
-  install -Dm644 "$srcdir/greetd.service" \
-    "$pkgdir/etc/dinit.d/greetd"
-  install -Dm644 "$srcdir/greetd.sysusers" \
-    "$pkgdir/usr/lib/sysusers.d/greetd.conf"
+
+  _dinit_install_services_ $srcdir/greetd.service
+  _install_sysusers_ $srcdir/greetd.sysusers
 
   install -Dm644 "$srcdir/greetd-$pkgver/config.toml" \
     "$pkgdir/etc/greetd/config.toml"
