@@ -1,4 +1,4 @@
 type = scripted
 command = catnest
 restart = false
-depends-on = rootrw
+depends-on = early-fs.target
