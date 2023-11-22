@@ -2,4 +2,5 @@ type = process
 command = /bin/udhcpc -f
 logfile = /var/log/dhcpcd.log
 restart = false
-depends-on = rcboot
+depends-on = rc.target
+before = network.target

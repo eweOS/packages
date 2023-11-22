@@ -2,4 +2,5 @@ type = process
 command = /sbin/mdev -d -f -s -S
 logfile = /run/mdev.log
 restart = false
-depends-on = early-filesystems
+depends-on = early-pre.target
+depends-on = early-modules

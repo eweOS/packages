@@ -2,7 +2,7 @@
 
 pkgname=busybox
 pkgver=1.36.1
-pkgrel=10
+pkgrel=11
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64)
 url="https://www.busybox.net"
@@ -20,22 +20,23 @@ source=(
   "udhcpc.script"
   "mdev.service"
   "mdev.conf"
+  "getty.service"
   "remove_empty_dir.patch"
   "busybox-suidwrapper.c"
 )
 sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
-	    '8ced29f80074b9869ef39e9f7b696146680cf3092308df05014f14e8bb5d1202'
+            '8ced29f80074b9869ef39e9f7b696146680cf3092308df05014f14e8bb5d1202'
             '204a0fc1dabe7cc02a8a18bdec4637d7ddb6547042c9ee1e5f9b71cd22de2f85'
             '644321e67516c8e6869dd1f09b9dfc06d6758dec91df0bdea3cb614419a1e0d3'
-            'b14b091b3a280b4e441e7ce4ba3f4869306c6a39bf477057b6002874c82f5741'
-            '11ed1f511e0d8a5531650d0895ce73fa06dbbc3872dee2e8b1e88e2cecb085d4'
-            'b040983cf5a5bc7a7053573cd78f583e95a90aee1a1acacdb8ee0516fea1ce9f'
+            '9c69f0ef1da1d48d1aa36c0925366f240b3a42f2ccd43bea54b5ee95ef9316d2'
+            '196466ec42eec6ee769575aae6e89e4f434b064fe4533c33eefff181f0a02bc3'
+            'a54856a9825e3aeb161a19c0665fa6f98695a4cf15ca66d864a8dbed0f6268fe'
             '69e028725a63763e21684fb0ce941f6a34a4b72bb328a0cab43b4d39d6d767dc'
-            'a89991ff9aff1876cac2a8b66959fe56195ecb7996344beddea0b051abebd65a'
+            'd090013b1537d43c3925bf69cb6bcd8ca304b91774ceb1b944ae6edd8714ad1f'
             '1a914dea6a818ecd279d28093209be535b381d9433264013f26e8e0af0880efb'
+            '71a1983dfb80a34e3c11faab1aa490dd2edb2e057fa1db18cbce96a67a3398c3'
             '622d0a1743a127bab1fc15e5057034db52c7fa475298b8d085cfc7c046ae5537'
-            'add7a75bc369aa2c4c167e5fe6ec3fcca2960b310a4df8e9769c9fd765b9eea2'
-    )
+            'add7a75bc369aa2c4c167e5fe6ec3fcca2960b310a4df8e9769c9fd765b9eea2')
 
 prepare()
 {
@@ -86,19 +87,16 @@ package()
   install -m 0755 "${srcdir}/udhcpc.script" \
     usr/share/udhcpc/default.script
 
-  install -d etc/dinit.d
-  install -d etc/dinit.d/boot.d
+  _dinit_install_services_ $srcdir/ntpd.service
+  _dinit_install_services_ $srcdir/syslogd.service
+  _dinit_install_services_ $srcdir/udhcpc.service
+  _dinit_install_services_ $srcdir/mdev.service
+  for TTYNUM in 2 3 4 5 6
+  do
+    cat ${srcdir}/getty.service | sed "s/@TTYNUM@/$TTYNUM/g" > $srcdir/getty-tty$TTYNUM
+    _dinit_install_services_ $srcdir/getty-tty$TTYNUM
+  done
 
-  # NTP Service
-  install -m 0754 "${srcdir}/ntpd.service" etc/dinit.d/ntpd
-  ln -s "../ntpd" etc/dinit.d/boot.d/ntpd
-
-  # Syslogd Service
-  install -m 0754 "${srcdir}/syslogd.service" etc/dinit.d/syslogd
-
-  # DHCP Service
-  install -m 0754 "${srcdir}/udhcpc.service" etc/dinit.d/udhcpc
-
-  # mdev Service
-  install -m 0754 "${srcdir}/mdev.service" etc/dinit.d/mdev
+  # Enable tty2 and ntpd
+  _dinit_enable_services_ getty-tty2 ntpd
 }
