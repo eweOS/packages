@@ -2,7 +2,7 @@
 
 pkgname=pawprint
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A substitution of systemd-tmpfiles"
 url="https://github.com/eweOS/pawprint"
 license=(MIT)
@@ -13,7 +13,7 @@ source=(
   "$pkgname.service"
 )
 sha256sums=('SKIP'
-            '6fb6b01c1acaf14e6fd30d1a91c0c40d12f447352d83eaa2bf9e5a0d077c0a0e')
+            'f93ee18de7c6f6426427a7ce7aa8632d85802fbc5a1178860f7ba26a262506eb')
 
 build()
 {
@@ -26,5 +26,5 @@ package()
   cd $pkgname
   install -D $pkgname $pkgdir/usr/bin/$pkgname
   install -d $pkgdir/etc/tmpfiles.d
-  install -D ../$pkgname.service $pkgdir/etc/dinit.d/$pkgname
+  _dinit_install_services_ $srcdir/$pkgname.service
 }

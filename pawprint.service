@@ -1,4 +1,4 @@
 type               = scripted
 command            = pawprint --remove --create --boot
 smooth-recovery    = true
-depends-on	   = rootrw
+depends-on	   = early-fs.target
