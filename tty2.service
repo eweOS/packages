@@ -1,7 +1,0 @@
-type = process
-command = /sbin/getty tty2 38400
-restart = true
-termsignal = HUP
-smooth-recovery = true
-inittab-id = 2
-inittab-line = tty2
