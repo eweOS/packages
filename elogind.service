@@ -2,3 +2,4 @@ type = process
 command = /usr/lib/elogind
 smooth-recovery = yes
 depends-on = dbus
+before = login.target

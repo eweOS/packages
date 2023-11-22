@@ -3,7 +3,7 @@
 pkgbase=elogind
 pkgname=('elogind' 'libelogind')
 pkgver=246.10
-pkgrel=5
+pkgrel=6
 pkgdesc="The systemd project's logind, extracted to a standalone package"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/elogind/elogind"
@@ -11,7 +11,7 @@ license=('GPL')
 makedepends=('libtool' 'gperf' 'git' 'libcap' 'meson' 'pam' 'libudev' 'dbus')
 source=("git+https://github.com/elogind/elogind#tag=v${pkgver}" "elogind.service")
 sha256sums=('SKIP'
-  '9636d9ad1d0b8d202402239a7544ed2a761b7d32ca8f424dd3d7188c1d57288d')
+  '1f0fc01a70cba42d6ad226fbf0c512f322623ca02c4fa8bf20efb26fc247467a')
 
 prepare()
 {
@@ -39,7 +39,8 @@ package_elogind()
   depends=('libelogind' 'pam' 'acl' 'libudev' 'dbus')
 
   DESTDIR="${pkgdir}" meson install -C build
-  install -D $srcdir/elogind.service $pkgdir/etc/dinit.d/elogind
+
+  _dinit_install_services_ $srcdir/elogind.service
 
   cd "$pkgdir"
   _pick_ libelogind usr/lib/pkgconfig
