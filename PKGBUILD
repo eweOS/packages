@@ -2,7 +2,7 @@
 
 pkgname=seatd
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal seat management daemon, and a universal seat management library"
 arch=(x86_64 aarch64 riscv64)
 url="https://sr.ht/~kennylevinsen/seatd/"
@@ -14,7 +14,7 @@ source=(
   seatd.sysusers
 )
 sha256sums=('a562a44ee33ccb20954a1c1ec9a90ecb2db7a07ad6b18d0ac904328efbcf65a0'
-            '1233ba7fea415e9c35932441c24b6a26b2b30ba0e593808e704c05eded8ea54d'
+            '822088c07de1354b067838501721a1da6fe01887984e15e842ad36687984334e'
             'e833292adf5da25b5258a5209c258f0e4c12e1d6fe81cf228fd0cfb575080d78')
 
 build()
@@ -34,7 +34,7 @@ check()
 package()
 {
   DESTDIR="$pkgdir/" meson install -C build
-  install -D $srcdir/seatd.service $pkgdir/etc/dinit.d/seatd
-  install -D $srcdir/seatd.sysusers $pkgdir/usr/lib/sysusers.d/seatd.conf
-  install -D "$pkgname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  _dinit_install_services_ $srcdir/seatd.service
+  _install_sysusers_ $srcdir/seatd.sysusers
+  _install_license_ $srcdir/$pkgname-$pkgver/LICENSE
 }
