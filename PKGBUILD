@@ -5,7 +5,7 @@
 # Contributor: Roman Cheplyaka <roma@ro-che.info>
 
 pkgname=libedit
-_pkgver=20221030-3.1
+_pkgver=20230828-3.1
 pkgver=${_pkgver/-/_}
 pkgrel=1
 pkgdesc="Command line editor library providing generic line editing, history, and tokenization functions"
@@ -15,7 +15,7 @@ license=('BSD')
 depends=('musl' 'ncurses')
 provides=('libedit.so')
 source=(${url}/${pkgname}-${_pkgver}.tar.gz)
-sha256sums=('f0925a5adf4b1bf116ee19766b7daa766917aec198747943b1c4edf67a4be2bb')
+sha256sums=('4ee8182b6e569290e7d1f44f0f78dac8716b35f656b76528f699c69c98814dad')
 
 build()
 {
