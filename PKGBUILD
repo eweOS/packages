@@ -1,21 +1,19 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
-# Contributor: Allan McRae <allan@archlinux.org>
-# Contributor: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=gmp
-pkgver=6.2.1
-pkgrel=2
+pkgver=6.3.0
+pkgrel=1
 pkgdesc='A free library for arbitrary precision arithmetic'
 arch=(x86_64 aarch64 riscv64)
 url='https://gmplib.org/'
 license=(LGPL3 GPL)
 source=(https://gmplib.org/download/gmp/gmp-$pkgver.tar.lz)
-md5sums=('03a31d8cbaf29d136252f8f38875ed82')
+md5sums=('db3f4050677df3ff2bd23422c0d3caa1')
 
 build()
 {
   cd $pkgname-$pkgver
-
   ./configure --build=${CHOST} \
     --prefix=/usr \
     --enable-cxx \
