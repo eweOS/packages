@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libdrm
-pkgver=2.4.117
+pkgver=2.4.118
 pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services"
 url="https://dri.freedesktop.org/"
@@ -11,7 +11,7 @@ depends=('libpciaccess')
 checkdepends=('cairo')
 makedepends=('meson')
 source=(https://dri.freedesktop.org/$pkgname/$pkgname-$pkgver.tar.xz COPYING)
-sha256sums=('a2888d69e3eb1c8a77adc08a75a60fbae01f0d208d26f034d1a12e362361242b'
+sha256sums=('a777bd85f2b5fc9c57f886c82058300578317cafdbc77d0a769d7e9a9567ab88'
             '9631d4f694952e3e6ae5a05534c2e93e994e47d3413677a3a00e45c8cef6db93')
 
 build()
@@ -27,11 +27,11 @@ build()
   meson compile -C build
 }
 
-# Avoid __register_frame_info error
-#check()
-#{
-#  meson test -C build --print-errorlogs
-#}
+check()
+{
+  # error in __register_frame_info
+  meson test -C build --print-errorlogs || :
+}
 
 package()
 {
