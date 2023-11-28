@@ -1,21 +1,21 @@
-# Maintainer: YukariChiba <i@0x7f.cc>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
 pkgname=hwdata
-pkgver=0.375
-_pkgver=$pkgver
+pkgver=0.376
 pkgrel=1
 pkgdesc="hardware identification and configuration databases."
 url=https://github.com/vcrhonek/hwdata
 license=('GPL2')
 arch=('any')
-source=("$url/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('69ffbfe4801c12c2d66d51f98044beec35afa406b1baa619c57b25a9b62b43a0')
+source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('48d85dbf05650b2c382ffaadeb601cac1650f5a34ee5c452df8021af988ea090')
 
 build() {
-  cd $pkgname-$_pkgver
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr --disable-blacklist
 }
 
 package() {
-  cd $pkgname-$_pkgver
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
