@@ -2,8 +2,8 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=perl-http-date
-pkgver=6.05
-pkgrel=5
+pkgver=6.06
+pkgrel=1
 pkgdesc="Date conversion routines"
 arch=('any')
 url="https://search.cpan.org/dist/HTTP-Date"
@@ -11,7 +11,7 @@ license=('PerlArtistic' 'GPL')
 depends=('perl-timedate')
 options=('!emptydirs')
 source=(https://search.cpan.org/CPAN/authors/id/O/OA/OALDERS/HTTP-Date-$pkgver.tar.gz)
-sha1sums=('91ee37a40fd75bc303aad2454b43c0a3908c9f38')
+sha1sums=('c0650f3282b0f49c5127e746039dda153636ce92')
 
 build() {
   cd HTTP-Date-$pkgver
