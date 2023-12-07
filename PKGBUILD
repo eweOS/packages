@@ -3,7 +3,7 @@
 
 pkgname=perl-file-slurper
 _dist=File-Slurper
-pkgver=0.013
+pkgver=0.014
 pkgrel=1
 pkgdesc="A simple, sane and efficient module to slurp a file"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('perl')
 checkdepends=('perl-test-warnings')
 options=('!emptydirs')
 source=(https://search.cpan.org/CPAN/authors/id/L/LE/LEONT/${_dist}-${pkgver}.tar.gz)
-sha256sums=('e2f6a4029a6a242d50054044f1fb86770b9b5cc4daeb1a967f91ffb42716a8c5')
+sha256sums=('d5a36487339888c3cd758e648160ee1d70eb4153cacbaff57846dbcefb344b0c')
 
 build() {
     cd "${srcdir}/${_dist}-${pkgver}"
