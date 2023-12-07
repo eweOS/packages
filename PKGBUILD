@@ -4,8 +4,8 @@
 
 pkgname=perl-module-build-tiny
 _pkgname=Module-Build-Tiny
-pkgver=0.039
-pkgrel=9
+pkgver=0.047
+pkgrel=1
 pkgdesc="A tiny replacement for Module::Build"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -13,7 +13,7 @@ options=('!emptydirs')
 depends=('perl' 'perl-extutils-config' 'perl-extutils-helpers' 'perl-extutils-installpaths')
 url="https://search.cpan.org/dist/Module-Build-Tiny"
 source=("https://search.cpan.org/CPAN/authors/id/L/LE/LEONT/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('26ca6fe4c1792b26bb2b4711035847f4215ea7c37234fbe24fc07432682fd9d3b6016dbdb2ecb455a7b13f6bea13994826c7f84f21075f0a6e575fa74672903a')
+sha512sums=('505e8a1a1d7e4f73a820352b476c938769bee1b069eaee0df7a95ea5651f109dfb106faf82bf423ca96b15d0148fd890342ad214b4fa6481d15b8f494fe48a30')
 
 build()
 {
