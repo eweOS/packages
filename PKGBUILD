@@ -2,7 +2,7 @@
 
 pkgname=fcft
 pkgver=3.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple library for font loading and glyph rasterization'
 arch=(x86_64 aarch64 riscv64)
 url=https://codeberg.org/dnkl/${pkgname}
@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=(meson tllist)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('95797f945faf407cb658efe6e5dcf0cc3ab08ef01e159383f9cf7cf5ee257506')
+sha256sums=('904f40d749d198d97c46c5a459cd3c53fe92f008cf1e3e61949f6cf3036a78b7')
 
 build() {
   ewe-meson $pkgname build \
