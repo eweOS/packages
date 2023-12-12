@@ -2,9 +2,9 @@
 
 pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang wasi-libc++ wasi-libc++abi wasi-compiler-rt)
 _realpkgname=llvm-project
-pkgver=16.0.6
+pkgver=17.0.6
 _binutilsver=2.41
-pkgrel=3
+pkgrel=1
 arch=('x86_64' 'aarch64' 'riscv64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -21,6 +21,8 @@ makedepends=(
   lld
   wasi-libc
   openmp
+  spirv-llvm-translator
+  python
 )
 source=(
   "https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz"
@@ -28,7 +30,7 @@ source=(
   wasi-toolchain.cmake::https://raw.githubusercontent.com/WebAssembly/wasi-sdk/main/wasi-sdk.cmake
   rv64-disable-lldb-server.patch
 )
-sha256sums=('ce5e71081d17ce9e86d7cbcfa28c4b04b9300f8fb7e78422b1feb6bc52c3028e'
+sha256sums=('58a8818c60e6627064f312dbf46c02d9949956558340938b71cf731ad8bc0813'
             'ae9a5789e23459e59606e6714723f2d3ffc31c03174191ef0d015bdf06007450'
             '7ded3468de11201bc58c761ca065bc6f42ed9381a7b13721364befff9876b30a'
             '19ad5d5208e7271e0517de15b8ec652a0445298aa34cb7057d5da254966aa781')
@@ -108,16 +110,6 @@ FLIST_llvm_libs=(
   "usr/include/c++"
   "usr/include/*unwind*"
 )
-
-_fetchpkg()
-{
-  PKGBASE="$srcdir/pkgs/$1" && shift
-  mkdir -p $PKGBASE
-  for FILEPATH in $@; do
-    (cd "${srcdir}/PKGDIR" && find $FILEPATH | cpio -pdvmu $PKGBASE) || true
-    (cd "${srcdir}/PKGDIR" && find $FILEPATH -delete) || true
-  done
-}
 
 prepare()
 {
@@ -261,12 +253,13 @@ build()
 
   ninja -C build-wasi-crt
 
-  _fetchpkg clang "${FLIST_clang[@]}"
-  _fetchpkg lldb "${FLIST_lldb[@]}"
-  _fetchpkg openmp "${FLIST_openmp[@]}"
-  _fetchpkg lld "${FLIST_lld[@]}"
-  _fetchpkg llvm-lto "${FLIST_llvm_lto[@]}"
-  _fetchpkg llvm-libs "${FLIST_llvm_libs[@]}"
+  cd $srcdir/PKGDIR
+  _pick_ clang "${FLIST_clang[@]}"
+  _pick_ lldb "${FLIST_lldb[@]}"
+  _pick_ openmp "${FLIST_openmp[@]}"
+  _pick_ lld "${FLIST_lld[@]}"
+  _pick_ llvm-lto "${FLIST_llvm_lto[@]}"
+  _pick_ llvm-libs "${FLIST_llvm_libs[@]}"
 }
 
 package_clang()
@@ -277,6 +270,8 @@ package_clang()
   mv "$srcdir/pkgs/clang/usr" "${pkgdir}/usr"
   ln -s clang "${pkgdir}/usr/bin/cc"
   ln -s clang++ "${pkgdir}/usr/bin/c++"
+
+  _install_license_ $_basedir/clang/LICENSE.TXT
 }
 
 package_lldb()
@@ -285,6 +280,8 @@ package_lldb()
   depends=('llvm-libs' 'clang')
 
   mv "$srcdir/pkgs/lldb/usr" "${pkgdir}/usr"
+
+  _install_license_ $_basedir/lldb/LICENSE.TXT
 }
 
 package_openmp()
@@ -293,6 +290,9 @@ package_openmp()
   depends=('llvm-libs' 'libelf' 'libffi')
 
   mv "$srcdir/pkgs/openmp/usr" "${pkgdir}/usr"
+
+  _install_license_ $_basedir/openmp/CREDITS.txt CREDITS
+  _install_license_ $_basedir/openmp/LICENSE.TXT LICENSE
 }
 
 package_lld()
@@ -302,6 +302,8 @@ package_lld()
   depends=('zlib' 'llvm-libs' 'libedit' 'ncurses' 'libxml2' 'xz')
 
   mv "$srcdir/pkgs/lld/usr" "${pkgdir}/usr"
+
+  _install_license_ $_basedir/lld/LICENSE.TXT
 }
 
 package_llvm-lto()
@@ -309,6 +311,9 @@ package_llvm-lto()
   pkgdesc="lto library for LLVM."
 
   mv "$srcdir/pkgs/llvm-lto/usr" "${pkgdir}/usr"
+
+  _install_license_ $_basedir/llvm/LICENSE.TXT LICENSE
+  _install_license_ $_basedir/llvm/CREDITS.TXT CREDITS
 }
 
 package_llvm-libs()
@@ -321,6 +326,12 @@ package_llvm-libs()
   ln -s libunwind.so.1.0 $pkgdir/usr/lib/libgcc_s.so.1.0
   ln -s libgcc_s.so.1.0 $pkgdir/usr/lib/libgcc_s.so.1
   ln -s libgcc_s.so.1.0 $pkgdir/usr/lib/libgcc_s.so
+
+  for comp_name in llvm libcxx libcxxabi compiler-rt; do
+    _install_license_ $_basedir/$comp_name/CREDITS.TXT CREDITS-$comp_name
+    _install_license_ $_basedir/$comp_name/LICENSE.TXT LICENSE-$comp_name
+  done
+  _install_license_ $_basedir/libunwind/LICENSE.TXT LICENSE-libunwind
 }
 
 package_llvm()
@@ -329,6 +340,9 @@ package_llvm()
   depends=('llvm-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2')
 
   mv "${srcdir}/PKGDIR/usr" "${pkgdir}/usr"
+
+  _install_license_ $_basedir/llvm/CREDITS.TXT CREDITS
+  _install_license_ $_basedir/llvm/LICENSE.TXT LICENSE
 }
 
 package_wasi-compiler-rt() {
@@ -336,8 +350,8 @@ package_wasi-compiler-rt() {
 
   DESTDIR="${pkgdir}" ninja -C build-wasi-crt install
 
-  install -Dm0644 $_basedir/compiler-rt/CREDITS.TXT "${pkgdir}"/usr/share/licenses/${pkgname}/CREDITS
-  install -Dm0644 $_basedir/compiler-rt/LICENSE.TXT "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  _install_license_ $_basedir/compiler-rt/CREDITS.TXT CREDITS
+  _install_license_ $_basedir/compiler-rt/LICENSE.TXT LICENSE
 }
 
 # Do not remove the space before the () or commitpkg will
@@ -347,8 +361,8 @@ package_wasi-libc++ () {
 
   DESTDIR="${pkgdir}" ninja -C build-wasi-cxx install-cxx
 
-  install -Dm0644 $_basedir/libcxx/CREDITS.TXT "${pkgdir}"/usr/share/licenses/${pkgname}/CREDITS
-  install -Dm0644 $_basedir/libcxx/LICENSE.TXT "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  _install_license_ $_basedir/libcxx/CREDITS.TXT CREDITS
+  _install_license_ $_basedir/libcxx/LICENSE.TXT LICENSE
 }
 
 package_wasi-libc++abi() {
@@ -356,6 +370,6 @@ package_wasi-libc++abi() {
 
   DESTDIR="${pkgdir}" ninja -C build-wasi-cxx install-cxxabi
 
-  install -Dm0644 $_basedir/libcxxabi/CREDITS.TXT "${pkgdir}"/usr/share/licenses/${pkgname}/CREDITS
-  install -Dm0644 $_basedir/libcxxabi/LICENSE.TXT "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  _install_license_ $_basedir/libcxxabi/CREDITS.TXT CREDITS
+  _install_license_ $_basedir/libcxxabi/LICENSE.TXT LICENSE
 }
