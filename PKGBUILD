@@ -2,14 +2,14 @@
 
 pkgname=wasi-libc
 pkgver=0+328+1dfe5c30
-_gittag=wasi-sdk-20
+_commit=d4dae89648d654cdcad6b0aa8b265bf957f07531
 pkgrel=1
 pkgdesc='WASI libc implementation for WebAssembly'
 arch=('any')
 url='https://github.com/WebAssembly/wasi-libc'
 license=('Apache' 'MIT')
 makedepends=('git' 'llvm' 'clang')
-source=("git+https://github.com/WebAssembly/wasi-libc.git#tag=${_gittag}")
+source=("git+https://github.com/WebAssembly/wasi-libc.git#commit=${_commit}")
 sha256sums=('SKIP')
 options=('staticlibs')
 
