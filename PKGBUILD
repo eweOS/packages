@@ -4,7 +4,7 @@ pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang wasi-libc++ wasi-libc++ab
 _realpkgname=llvm-project
 pkgver=17.0.6
 _binutilsver=2.41
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64' 'riscv64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -234,10 +234,15 @@ build()
   ninja -C build install
   ninja -C build install-runtimes
 
-  export CFLAGS="$(echo $CFLAGS | sed "s/-mtune=generic//;
-  s/-fstack-clash-protection//; s/-fcf-protection//; s/-fexceptions//")"
-  export CXXFLAGS="$(echo $CXXFLAGS | sed "s/-mtune=generic//;
-  s/-fstack-clash-protection//; s/-fcf-protection//; s/-fexceptions//")"
+  export CFLAGS="$(echo $CFLAGS | sed "s/-mtune=generic//; s/-march=\S*//")"
+  export CXXFLAGS="$(echo $CXXFLAGS | sed "s/-mtune=generic//; s/-march=\S*//")"
+
+  case $CARCH in
+    x86_64)
+      export CFLAGS="$(echo $CFLAGS | sed "s/-fstack-clash-protection//; s/-fcf-protection//; s/-fexceptions//")"
+      export CXXFLAGS="$(echo $CXXFLAGS | sed "s/-fstack-clash-protection//; s/-fcf-protection//; s/-fexceptions//")"
+      ;;
+  esac
 
   cmake -B build-wasi-cxx -G Ninja \
     "${WASI_COMMON_ARGS[@]}" \
