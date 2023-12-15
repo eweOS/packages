@@ -4,7 +4,7 @@
 pkgbase=musl
 pkgname=(musl musl-static)
 pkgver=1.2.4
-pkgrel=3
+pkgrel=4
 pkgdesc='An implementation of the C/POSIX standard library.'
 arch=(x86_64 aarch64 riscv64)
 url='https://musl.libc.org'
@@ -12,7 +12,8 @@ license=(LGPL BSD)
 groups=(base-devel)
 makedepends=(lld)
 provides=(ld-musl-$(arch).so.1 libc.so)
-
+# disable lto: https://github.com/InBetweenNames/gentooLTO/issues/244
+options=(!lto)
 source=(
   "http://www.etalabs.net/musl/releases/${pkgbase}-${pkgver}.tar.gz"
   getconf.c
@@ -20,9 +21,9 @@ source=(
   iconv.c
 )
 sha256sums=('7a35eae33d5372a7c0da1188de798726f68825513b7ae3ebe97aaaa52114f039'
-  'd87d0cbb3690ae2c5d8cc218349fd8278b93855dd625deaf7ae50e320aad247c'
-  '002c1a216f6bed0f816ab1cfebde94a0b127193ef410c36b2190599983e015b8'
-  'f79a2930a2e5bb0624321589edf8b889d1e9b603e01e6b7ae214616605b3fdd7')
+            'd87d0cbb3690ae2c5d8cc218349fd8278b93855dd625deaf7ae50e320aad247c'
+            '002c1a216f6bed0f816ab1cfebde94a0b127193ef410c36b2190599983e015b8'
+            'f79a2930a2e5bb0624321589edf8b889d1e9b603e01e6b7ae214616605b3fdd7')
 
 prepare()
 {
