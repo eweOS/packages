@@ -2,25 +2,21 @@
 
 pkgname=(linux linux-headers)
 _basename=linux
-_pkgver=6.4.8
-pkgver=6.4.8
-pkgrel=2
+_pkgver=6.6.7
+pkgver=6.6.7
+pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 url='http://www.kernel.org'
 license=(GPL2)
 makedepends=(bison flex perl python libelf linux-headers rsync lld)
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz"
-  linux-config.arm64
-  linux-config.x86_64
-  linux-config.riscv
+  "kernel-config::git+https://github.com/eweOS/kernel-config.git"
   busybox-find-compat.patch
 )
-sha256sums=('c59f34e19e84db30206b9373041abf893f9d8a08765d163586570a5238c458b6'
-  'd4ce96309090fc6820f1e71afec0620b22b5ce6335274e84b7fec4770c2e28ca'
-  'cdbbb14dcf4483ffbc25823bab69de8ee71fd3f553f0ee32df0d9a9d48737605'
-  '2fa81f682d699d63cf09b05e48718a99acf1dd5b623c934856a1f3fa05a53547'
-  'ea1c89fc102d90370c6dc3cb53abebcfdfee91cf6aac60a22bb2b919446ff733')
+sha256sums=('0ce68ec6019019140043263520955ecd04839e55a1baab2fa9155b42bb6fd841'
+            'SKIP'
+            'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
 
 prepare()
 {
@@ -33,7 +29,13 @@ prepare()
 
 build()
 {
-  cd ${_basename}-${_pkgver}
+  touch $srcdir/kernelconfig
+  cd kernel-config
+  for conf in *.config $CARCH/*.config; do
+	 cat $conf >> $srcdir/kernelconfig
+  done
+
+  cd $srcdir/${_basename}-${_pkgver}
   case $CARCH in
     x86_64)
       export build_arch=x86_64
@@ -45,7 +47,8 @@ build()
       export build_arch=riscv
       ;;
   esac
-  cp "${srcdir}/linux-config.${build_arch}" .config
+  make LLVM=1 LLVM_IAS=1 ARCH=${build_arch} defconfig
+  scripts/kconfig/merge_config.sh -m .config $srcdir/kernelconfig
   make LLVM=1 LLVM_IAS=1 ARCH=${build_arch}
 }
 
