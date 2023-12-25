@@ -14,9 +14,11 @@ mkdir -p /boot/EFI/BOOT
 
 # from https://wiki.debian.org/EFIStub
 
-align="$(objdump -p /usr/share/efistub/efi.stub | awk '{ if ($1 == "SectionAlignment"){print $2} }')"
-align=$((16#$align))
-osrel_offs="$(objdump -h "/usr/share/efistub/efi.stub" | awk 'NF==7 {size=strtonum("0x"$3); offset=strtonum("0x"$4)} END {print size + offset}')"
+align=512
+#align="$(objdump -p /usr/share/efistub/efi.stub | awk '{ if ($1 == "SectionAlignment"){print $2} }')"
+#align=$((16#$align))
+#osrel_offs="$(objdump -h "/usr/share/efistub/efi.stub" | awk 'NF==7 {size=strtonum("0x"$3); offset=strtonum("0x"$4)} END {print size + offset}')"
+osrel_offs=2048
 osrel_offs=$((osrel_offs + "$align" - osrel_offs % "$align"))
 cmdline_offs=$((osrel_offs + $(stat -Lc%s "/etc/os-release")))
 cmdline_offs=$((cmdline_offs + "$align" - cmdline_offs % "$align"))
