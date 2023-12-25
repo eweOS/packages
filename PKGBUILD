@@ -2,7 +2,7 @@
 
 pkgname=efistub-tools
 pkgver=0.1.0
-pkgrel=11
+pkgrel=12
 _debpkgver=253
 _debpkgrev=4
 pkgdesc='Script to generate Unified Kernel Image'
@@ -44,7 +44,9 @@ build()
 {
   # TODO: Compile EFI stub instead of binary file
   cp debian-efi/usr/lib/systemd/boot/efi/linux*.efi.stub efi.stub
-  objcopy --update-section .sbat=sbat.csv efi.stub
+  if [ "$CARCH" == "x86_64" ]; then
+    objcopy --update-section .sbat=sbat.csv efi.stub
+  fi
 }
 
 package()
