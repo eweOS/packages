@@ -12,11 +12,27 @@ tinyramfs -f -k $VER $IMG_FILE
 VMLINUZ=$(ls /usr/lib/modules/*/vmlinuz)
 mkdir -p /boot/EFI/BOOT
 
+# from https://wiki.debian.org/EFIStub
+
+align="$(objdump -p /usr/share/efistub/efi.stub | awk '{ if ($1 == "SectionAlignment"){print $2} }')"
+align=$((16#$align))
+osrel_offs="$(objdump -h "/usr/share/efistub/efi.stub" | awk 'NF==7 {size=strtonum("0x"$3); offset=strtonum("0x"$4)} END {print size + offset}')"
+osrel_offs=$((osrel_offs + "$align" - osrel_offs % "$align"))
+cmdline_offs=$((osrel_offs + $(stat -Lc%s "/etc/os-release")))
+cmdline_offs=$((cmdline_offs + "$align" - cmdline_offs % "$align"))
+splash_offs=$((cmdline_offs + $(stat -Lc%s "/etc/kernel/cmdline")))
+splash_offs=$((splash_offs + "$align" - splash_offs % "$align"))
+initrd_offs=$((splash_offs + $(stat -Lc%s "/usr/share/efistub/splash.bmp")))
+initrd_offs=$((initrd_offs + "$align" - initrd_offs % "$align"))
+linux_offs=$((initrd_offs + $(stat -Lc%s "$IMG_FILE")))
+linux_offs=$((linux_offs + "$align" - linux_offs % "$align"))
+
 binutils-objcopy \
-  --add-section .osrel=/etc/os-release --change-section-vma .osrel=0x20000 \
-  --add-section .cmdline=/etc/kernel/cmdline --change-section-vma .cmdline=0x30000 \
-  --add-section .linux=${VMLINUZ} --change-section-vma .linux=0x2000000 \
-  --add-section .initrd=$IMG_FILE --change-section-vma .initrd=0x3000000 \
-  /usr/share/efistub/efi.stub /boot/EFI/BOOT/BOOTX64.EFI
+    --add-section .osrel="/etc/os-release" --change-section-vma .osrel=$(printf 0x%x $osrel_offs) \
+    --add-section .cmdline="/etc/kernel/cmdline" --change-section-vma .cmdline=$(printf 0x%x $cmdline_offs) \
+    --add-section .splash="/usr/share/efistub/splash.bmp" --change-section-vma .splash=$(printf 0x%x $splash_offs) \
+    --add-section .initrd="$IMG_FILE" --change-section-vma .initrd=$(printf 0x%x $initrd_offs) \
+    --add-section .linux="$VMLINUZ" --change-section-vma .linux=$(printf 0x%x $linux_offs) \
+    "/usr/share/efistub/efi.stub" "/boot/EFI/BOOT/BOOTX64.efi"
 
 rm $IMG_FILE
