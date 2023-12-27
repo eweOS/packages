@@ -35,6 +35,6 @@ binutils-objcopy \
     --add-section .splash="/usr/share/efistub/splash.bmp" --change-section-vma .splash=$(printf 0x%x $splash_offs) \
     --add-section .initrd="$IMG_FILE" --change-section-vma .initrd=$(printf 0x%x $initrd_offs) \
     --add-section .linux="$VMLINUZ" --change-section-vma .linux=$(printf 0x%x $linux_offs) \
-    "/usr/share/efistub/efi.stub" "/boot/EFI/BOOT/BOOTX64.efi"
+    "/usr/share/efistub/efi.stub" "/boot/EFI/BOOT/BOOTARCH.efi"
 
 rm $IMG_FILE

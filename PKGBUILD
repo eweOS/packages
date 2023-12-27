@@ -2,7 +2,7 @@
 
 pkgname=efistub-tools
 pkgver=0.1.0
-pkgrel=12
+pkgrel=13
 _debpkgver=253
 _debpkgrev=4
 pkgdesc='Script to generate Unified Kernel Image'
@@ -11,7 +11,7 @@ provides=('efistub')
 depends=('binutils-objcopy' 'linux' 'tinyramfs')
 builddepends=('curl')
 source=("genefistub" "cmdline" "$pkgname.hook" "sbat.csv" 'splash.bmp')
-sha256sums=('dd67228ee1fc8263425fbf9f670cdc2ae176c2ed91073e59fd88265df816c28d'
+sha256sums=('ebc7b777c9169ad2e6511691f0a5e5f3e0e2bc2f89b7abcdfcfe5bc3538bf89a'
             '10940c019b1cf1015191ae987568464280d4bcd86194e5a98389a3e9ab12f635'
             'ff73ffd1deae8f16b5d07f766f01d63ad3d4708a6e8947df89fea9a95652872f'
             'e61b837f709fd23e6a78100b2f759befe5ef1c7f2e542ae30f61172249865a82'
@@ -24,19 +24,22 @@ prepare()
   case $CARCH in
     x86_64)
       debarch=amd64
+      bootarch=BOOTX64
       ;;
     aarch64)
       debarch=arm64
+      bootarch=BOOTAA64
       ;;
     riscv64)
       debarch=riscv64
       _DEBBASE="http://snapshot.debian.org/archive/debian-ports/20230701T032658Z/pool-riscv64/main/s/systemd"
+      bootarch=BOOTRISCV64
       ;;
   esac
   curl -L ${_DEBBASE}/systemd-boot-efi_${_debpkgver}-${_debpkgrev}_$debarch.deb -o efi.deb
   ar x efi.deb
   bsdtar -xJf data.tar.xz -C debian-efi
-
+  sed -i "s/BOOTARCH/$bootarch/" genefistub
   sed -i "s/@pkgname@/$pkgname/; s/@pkgver@/$pkgver/" sbat.csv
 }
 
