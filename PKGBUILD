@@ -2,7 +2,7 @@
 
 pkgname=pipewire
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64 aarch64 riscv64)
@@ -14,7 +14,7 @@ source=(
   fix-udev-zero.patch
 )
 sha256sums=('f91ef1d1161b37aae6e21b9671917d97097e2664c83d919ba3a0793d6fbc543d'
-            'd23a7ae266619ca46d1d4cc135e6e6d31f0dfd798704d7a7a961a5304e614990')
+            '5e41f524ac1112cc093858412d948637d31d42da989a1a4ad562aef83f6dda37')
 
 prepare()
 {
