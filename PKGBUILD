@@ -2,9 +2,9 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=cataclysm-dda
-pkgver=0.F.3
-_pkgver=0.F-3
-pkgrel=2
+pkgver=0.G
+_pkgver=0.G
+pkgrel=1
 pkgdesc="A post-apocalyptic roguelike. (TUI version)"
 url="https://cataclysmdda.org/"
 arch=(x86_64 aarch64 riscv64)
@@ -13,8 +13,8 @@ depends=('llvm-libs' 'ncurses' 'gettext')
 makedepends=('astyle')
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/CleverRaven/Cataclysm-DDA/archive/$_pkgver.tar.gz"
   makefile-fix-busybox-missing-args.patch)
-md5sums=('4c6d8c5b55973f6a78f59db04b435a32'
-         '34d7496903e83e959803aa00a55c666e')
+md5sums=('1493ae395235bc43d67aeaf959439ce0'
+         '8ea84849d7831bcbfa50bf0380e5e9ae')
 
 _makeflags=('CXX=c++'
   'PREFIX=/usr'
@@ -33,7 +33,7 @@ prepare()
   sed -i 's/-Werror//' Makefile
   sed -i 's/ncursesw5-config/ncursesw6-config/' Makefile
   sed -i 's/shell git/shell false/' Makefile
-  patch Makefile $srcdir/makefile-fix-busybox-missing-args.patch
+  patch -p1 < $srcdir/makefile-fix-busybox-missing-args.patch
 }
 
 build()
