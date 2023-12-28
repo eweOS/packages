@@ -1,17 +1,17 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=cairomm
-pkgver=1.14.4
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="C++ bindings for Cairo"
 url="https://www.cairographics.org/cairomm/"
 arch=(x86_64 aarch64 riscv64)
 license=(LGPL MPL)
-depends=(cairo libsigc++2)
+depends=(cairo libsigc++3)
 makedepends=(meson mm-common)
 options=(!emptydirs)
 source=("https://gitlab.freedesktop.org/cairo/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('58e9e50c02a7d42c99c5091b85e20c993d66f42a42ed4b21673c8d82e4bd5868')
+sha256sums=('a0444ba4223905b1f8280aaff0f6c548971b95e9e1ab58fe9759bb131e710ecb')
 
 build() {
   ewe-meson $pkgname-$pkgver build \
