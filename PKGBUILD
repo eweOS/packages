@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pangomm
-pkgver=2.46.3
+pkgver=2.50.1
 pkgrel=1
 pkgdesc="C++ bindings for Pango"
 url="https://www.gtkmm.org/"
@@ -11,7 +11,7 @@ depends=(pango glibmm cairomm)
 makedepends=(meson mm-common perl-xml-parser)
 options=(!emptydirs)
 source=("https://gitlab.gnome.org/GNOME/pangomm/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('228b3c3e1d6b3fb8a720d46a047a7738b4abbf874586577bb752ba34baf72ed4')
+sha256sums=('8b4914abb0dad999b364c68ed4c4947903065bc7fa49b084f11357248b5f895e')
 
 build() {
   ewe-meson $pkgname-$pkgver build \
