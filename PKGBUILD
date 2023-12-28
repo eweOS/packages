@@ -6,8 +6,8 @@
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
 pkgname=c-ares
-pkgver=1.20.1
-pkgrel=0
+pkgver=1.24.0
+pkgrel=1
 pkgdesc="A C library for asynchronous DNS requests"
 arch=(x86_64 aarch64 riscv64)
 url="https://c-ares.haxx.se/"
@@ -16,8 +16,7 @@ depends=('musl')
 makedepends=('cmake')
 provides=('libcares.so')
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgname//-/}-${pkgver//./_}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('83400fb276ebcf16dfe6f43d56ca87839d132b5a0544420eda9fa148eb85468b3f215593fcefc2a7a3a8ed8b0d4ef093ed99616a4e466b01f6913934240539e4')
-
+sha512sums=('3701853e263de94daf19734185ad913848c19b825e0738926b418a54b0628ee1ac95a49ebfaa2ddf3eed74a7ef209e1a0a8f573df3e507ef1f11fcc53fc5eb68')
 
 build()
 {
@@ -29,6 +28,12 @@ build()
     -B build \
     -S .
   make VERBOSE=1 -C build
+}
+
+check() {
+  cd $pkgname-$pkgver
+  # no test found
+  ctest --test-dir build --output-on-failure
 }
 
 package()
