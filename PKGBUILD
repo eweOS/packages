@@ -1,13 +1,10 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
-# Contributor: Morten Linderud <foxboron@archlinux.org>
-# Contributor: Daniel Martí <mvdan@mvdan.cc>
-# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=(go go-doc)
 epoch=2
-pkgver=1.20.6
-pkgrel=4
+pkgver=1.21.5
+pkgrel=1
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(x86_64 aarch64 riscv64)
 url='https://golang.org/'
@@ -17,12 +14,12 @@ replaces=(go-pie)
 provides=(go-pie)
 options=(!strip staticlibs)
 source=("https://go.dev/dl/go${pkgver}.src.tar.gz")
-sha256sums=('62ee5bc6fb55b8bae8f705e0cb8df86d6453626b4ecf93279e2867092e0b7f70')
+sha256sums=('285cbbdf4b6e6e62ed58f370f3f6d8c30825d6e56c5853c66d3c23bcdb09db19')
 
 prepare()
 {
   # do not try to use gold in arm64, we use mold
-  sed -i '1550,1572d' $pkgname/src/cmd/link/internal/ld/lib.go
+  sed -i '1609,1628d' $pkgname/src/cmd/link/internal/ld/lib.go
 }
 
 build()
