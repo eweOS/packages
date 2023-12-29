@@ -4,7 +4,7 @@
 pkgname=(go go-doc)
 epoch=2
 pkgver=1.21.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(x86_64 aarch64 riscv64)
 url='https://golang.org/'
@@ -78,6 +78,10 @@ package_go()
 
   # TODO: Figure out if really needed
   rm -rf "$pkgdir"/usr/lib/go/pkg/obj/go-build
+
+  # https://github.com/golang/go/issues/57179
+  install -Dm644 go.env "$pkgdir/usr/lib/go/go.env"
+
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
