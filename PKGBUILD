@@ -2,7 +2,7 @@
 
 pkgbase=libsigc++
 pkgname=libsigc++3
-pkgver=3.4.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Callback Framework for C++"
 url="https://libsigcplusplus.github.io/libsigcplusplus/"
@@ -11,7 +11,7 @@ license=(LGPL)
 makedepends=(meson mm-common)
 options=(!emptydirs)
 source=("https://github.com/libsigcplusplus/libsigcplusplus/releases/download/$pkgver/$pkgbase-$pkgver.tar.xz")
-sha256sums=('02e2630ffb5ce93cd52c38423521dfe7063328863a6e96d41d765a6116b8707e')
+sha256sums=('c3d23b37dfd6e39f2e09f091b77b1541fbfa17c4f0b6bf5c89baef7229080e17')
 
 build()
 {
