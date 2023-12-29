@@ -4,11 +4,11 @@ pkgname=libxml2
 _pkgver_major=2.12
 _pkgver_minor=2
 pkgver=${_pkgver_major}.${_pkgver_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc="XML parsing library, version 2"
 arch=(x86_64 aarch64 riscv64)
 license=('MIT')
-depends=('zlib' 'readline' 'ncurses' 'xz')
+depends=('zlib' 'ncurses' 'xz' 'icu')
 makedepends=('python')
 url="http://www.xmlsoft.org/"
 source=(https://download.gnome.org/sources/${pkgname}/${_pkgver_major}/${pkgname}-${pkgver}.tar.xz)
@@ -22,6 +22,7 @@ build()
     --prefix=/usr \
     --with-threads \
     --with-history \
+    --with-icu \
     --with-python=/usr/bin/python
   make
 }
