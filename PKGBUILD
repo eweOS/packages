@@ -2,13 +2,14 @@
 
 pkgname=busybox
 pkgver=1.36.1
-pkgrel=11
+pkgrel=12
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64)
 url="https://www.busybox.net"
 license=('GPL')
 depends=("utmps")
 makedepends=("ncurses" "musl" "skalibs" "linux-headers")
+options=(!lto)
 source=(
   "$url/downloads/$pkgname-$pkgver.tar.bz2"
   "config"
@@ -25,7 +26,7 @@ source=(
   "busybox-suidwrapper.c"
 )
 sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
-            '8ced29f80074b9869ef39e9f7b696146680cf3092308df05014f14e8bb5d1202'
+            '10627a6b50f20978fb826d60a279ca120951a999d7ebfdbf8a3fd47c2f67be11'
             '204a0fc1dabe7cc02a8a18bdec4637d7ddb6547042c9ee1e5f9b71cd22de2f85'
             '644321e67516c8e6869dd1f09b9dfc06d6758dec91df0bdea3cb614419a1e0d3'
             '9c69f0ef1da1d48d1aa36c0925366f240b3a42f2ccd43bea54b5ee95ef9316d2'
