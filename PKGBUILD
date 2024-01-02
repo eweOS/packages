@@ -2,10 +2,10 @@
 
 pkgname=diffutils
 pkgver=3.10
-pkgrel=0
+pkgrel=1
 pkgdesc='A package of several programs related to finding differences between files.'
 url='https://www.gnu.org/software/diffutils/'
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 license=(GPL3)
 depends=(musl)
 source=("https://ftp.gnu.org/gnu/diffutils/diffutils-$pkgver.tar.xz")
