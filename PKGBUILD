@@ -3,7 +3,7 @@
 
 pkgname=filesystem
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='The base directory structure and a few core files for the system.'
 arch=(any)
 url='https://os.ewe.moe'
@@ -23,7 +23,7 @@ source=(
   motd
 )
 sha256sums=('4fecb0831d4cc037813cf758bf8957f7d979c6415a139efca4c8554e159242d1'
-            '988d0ec048e44038f81a357f73eb75b0335a4039b89c5bd1d63f88caf5e81d36'
+            'ab1e9388edd7947b307b9812f5648f738d797117d99a91deb7e4fb2096c1926f'
             '6ec12265d02d88c2b448430533ee3708cd5dbea420fefa40e0a5653627279894'
             '4cc26708349348ad3520dae0e1046ef3d1b6eb823c9e1361aa24062d785595d8'
             'b4d36eb75767bebb41c5fa7a35599952e1883b3d3f6332496e1561eeb4067018'
