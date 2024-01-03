@@ -1,5 +1,5 @@
 type = process
-command = /usr/lib/elogind
+command = /usr/bin/elogind
 smooth-recovery = yes
 depends-on = dbus
 before = login.target
