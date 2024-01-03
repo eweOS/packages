@@ -3,7 +3,7 @@
 pkgbase=elogind
 pkgname=('elogind' 'libelogind')
 pkgver=252.9
-pkgrel=1
+pkgrel=2
 pkgdesc="The systemd project's logind, extracted to a standalone package"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/elogind/elogind"
@@ -45,6 +45,7 @@ build()
     -D acl=true \
     -D pam=true \
     -D rootlibexecdir=/usr/bin \
+    -D polkit=false \
     -D cgroup-controller='elogind'
   ninja -C build
 }
@@ -63,6 +64,8 @@ package_elogind()
   _pick_ libelogind usr/lib/pkgconfig
   _pick_ libelogind usr/include
   _pick_ libelogind usr/lib/libelogind*.so*
+
+  mv usr/lib/elogind/* usr/lib && rm -r usr/lib/elogind
 
   rm -rf "$pkgdir"/usr/share/doc
 }
