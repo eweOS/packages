@@ -4,7 +4,8 @@
 pkgbase=dinit
 pkgname=(dinit dinit-services)
 pkgver=0.16.1
-pkgrel=6
+pkgrel=7
+_service_ver=0.1.1
 pkgdesc='Service monitoring / "init" system'
 url='https://github.com/davmac314/dinit'
 source=(
@@ -12,7 +13,7 @@ source=(
   disable_environ_check.patch
   rc.local
   dinit-wrapper
-  $pkgbase-services::git+https://github.com/eweOS/dinit-services.git
+  "$pkgbase-services::git+https://github.com/eweOS/dinit-services.git#tag=${_service_ver}"
 )
 arch=(x86_64 aarch64 riscv64)
 license=(Apache)
