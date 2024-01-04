@@ -8,13 +8,13 @@ arch=(x86_64 aarch64 riscv64)
 url="https://github.com/Xynonners/dinit-userservd"
 license=('BSD')
 depends=('dinit' 'elogind')
-source=("$pkgname::git+$url#tag=v$pkgver")
+source=("$pkgname::git+$url#tag=v$pkgver" 0_service-dir.patch)
 makedepends=('meson')
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'f1d230a9643dee805128af71f7c1cd263c0e16bf355ded36c8878a393b293c9b')
 
 prepare() {
-  cd $pkgname
-  cp dinit-userservd dinit-userservd.service
+  _patch_ $pkgname
 }
 
 build() {
@@ -25,5 +25,5 @@ build() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-  _dinit_install_services_ $pkgname/dinit-userservd.service
+  _dinit_install_services_ $pkgname/dinit-userservd
 }

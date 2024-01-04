@@ -1,0 +1,12 @@
+--- a/dinit-userservd.cc
++++ b/dinit-userservd.cc
+@@ -289,8 +289,7 @@
+ /* global service directory paths */
+ static constexpr char const *servpaths[] = {
+     "/etc/dinit.d/user",
+-    "/usr/local/lib/dinit.d/user",
+-    "/usr/lib/dinit.d/user",
++    "/usr/lib/dinit/user",
+ };
+ 
+ /* start the dinit instance for a session */
