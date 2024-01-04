@@ -3,7 +3,7 @@
 pkgname=libseat
 pkgbase=seatd
 pkgver=0.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A minimal seat management daemon, and a universal seat management library"
 arch=(x86_64 aarch64 riscv64)
 url="https://sr.ht/~kennylevinsen/seatd/"
@@ -13,8 +13,15 @@ makedepends=('meson' 'ninja' 'scdoc')
 provides=('seatd')
 source=(
   "$pkgbase-$pkgver.tar.gz::https://git.sr.ht/~kennylevinsen/$pkgbase/archive/$pkgver.tar.gz"
+  0_logind-no-takedevice.patch
 )
-sha256sums=('a562a44ee33ccb20954a1c1ec9a90ecb2db7a07ad6b18d0ac904328efbcf65a0')
+sha256sums=('a562a44ee33ccb20954a1c1ec9a90ecb2db7a07ad6b18d0ac904328efbcf65a0'
+            'c7077bb9ac7eaba0e9b51989804d634d34cef7eecf25914a8a2b83eeedad8b59')
+
+prepare()
+{
+  _patch_ $pkgbase-$pkgver
+}
 
 build()
 {
