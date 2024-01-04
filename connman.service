@@ -1,0 +1,6 @@
+type = process
+command = connmand -n
+smooth-recovery = yes
+depends-on = rc.target
+waits-for = wpa_supplicant
+before = network.target
