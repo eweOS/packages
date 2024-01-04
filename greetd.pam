@@ -1,6 +1,7 @@
 #%PAM-1.0
 
 session    optional     pam_elogind.so
+session    optional     pam_dinit_userservd.so
 
 auth       include      login
 account    include      login
