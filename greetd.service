@@ -2,4 +2,5 @@ type = process
 command = greetd
 depends-on = rc.target
 depends-on = elogind
+waits-for = dinit-userservd
 before = login.target
