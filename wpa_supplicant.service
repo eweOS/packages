@@ -1,0 +1,6 @@
+type = process
+command = wpa_supplicant -u
+restart = false
+depends-on = rc.target
+depends-on = dbus
+before = network.target
