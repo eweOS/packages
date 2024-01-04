@@ -1,0 +1,59 @@
+--- a/libseat/backend/logind.c
++++ b/libseat/backend/logind.c
+@@ -119,54 +119,14 @@
+ static int open_device(struct libseat *base, const char *path, int *fd) {
+ 	struct backend_logind *session = backend_logind_from_libseat_backend(base);
+ 
+-	int ret;
+-	int tmpfd = -1;
+-	sd_bus_message *msg = NULL;
+-	sd_bus_error error = SD_BUS_ERROR_NULL;
+-
+-	struct stat st;
+-	if (stat(path, &st) < 0) {
+-		log_errorf("Could not stat path '%s'", path);
+-		return -1;
+-	}
+-
+-	ret = sd_bus_call_method(session->bus, "org.freedesktop.login1", session->path,
+-				 "org.freedesktop.login1.Session", "TakeDevice", &error, &msg, "uu",
+-				 major(st.st_rdev), minor(st.st_rdev));
+-	if (ret < 0) {
+-		log_errorf("Could not take device: %s", error.message);
+-		tmpfd = -1;
+-		goto out;
+-	}
+-
+-	int paused = 0;
+-	ret = sd_bus_message_read(msg, "hb", &tmpfd, &paused);
+-	if (ret < 0) {
+-		log_errorf("Could not parse D-Bus response: %s", strerror(-ret));
+-		tmpfd = -1;
+-		goto out;
+-	}
+-
+-	// The original fd seems to be closed when the message is freed
+-	// so we just clone it.
+-	tmpfd = fcntl(tmpfd, F_DUPFD_CLOEXEC, 0);
++	int tmpfd = open(path, O_RDWR | O_NOCTTY | O_NOFOLLOW | O_CLOEXEC | O_NONBLOCK);
+ 	if (tmpfd < 0) {
+-		log_errorf("Could not duplicate fd: %s", strerror(errno));
+-		tmpfd = -1;
+-		goto out;
+-	}
+-
+-	if (dev_is_drm(st.st_rdev)) {
+-		session->has_drm++;
+-		log_debugf("DRM device opened, current total: %d", session->has_drm);
++		log_errorf("Failed to open device: %s", strerror(errno));
++		return -1;
+ 	}
+ 
+ 	*fd = tmpfd;
+-
+-out:
+-	sd_bus_error_free(&error);
+-	sd_bus_message_unref(msg);
+	check_pending_events(session);
+ 	return tmpfd;
+ 
