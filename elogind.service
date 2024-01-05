@@ -3,3 +3,4 @@ command = /usr/bin/elogind
 smooth-recovery = yes
 depends-on = dbus
 before = login.target
+ready-notification = pipevar:LOGIND_READY_FD

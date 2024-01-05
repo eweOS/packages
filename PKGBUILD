@@ -3,7 +3,7 @@
 pkgbase=elogind
 pkgname=('elogind' 'libelogind')
 pkgver=252.9
-pkgrel=2
+pkgrel=3
 pkgdesc="The systemd project's logind, extracted to a standalone package"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/elogind/elogind"
@@ -19,16 +19,18 @@ source=(
   4_elogind-252.9-musl-gshadow.patch
   5_elogind-252.9-musl-strerror_r.patch
   6_elogind-252.9-musl-more-strerror_r.patch
+  7_dbus-activation.patch
 )
 sha256sums=('SKIP'
-            '409473737dd6d7a83628daa5046ebdf07ebe2e9dff587ea29edbb53c4dc039a4'
+            '8575a535080292b800190e489adeb96c0c2ccf581d136e0fd22d05751a894e89'
             'eabfdfa590843f67ab339ed30c0bcfe44223fb21dff63171ebe65461ca244830'
             'f7e8601e3e87a77b6ff55387d661615c7bdd19888862af27bd6ee17ee3733f3b'
             '839224c25fe748b6e771a9bd13cddc32786d31d53011528dbf9ea72695e19499'
             '66cdad6151cde8db8784bc2a67708803ecd5d031e89c2f221cf9c311765e11ff'
             '601cb539e583d4496e2d3794bea52f64acab672a146c68359b1c2a1b9f9534ed'
             '6a6a973f5da62edae45ae01445bdff6a841e79349162562a2f6ab6ceb29b8719'
-            '0056b048f2030f711cfe4a84e16f5d9c56d8b33510736175aca4cfe82acfc681')
+            '0056b048f2030f711cfe4a84e16f5d9c56d8b33510736175aca4cfe82acfc681'
+            'e8a54a97d3ca73870f6a94fa6483997204aa8d0c50b0ffe468e0ef7ccfb2190a')
 
 prepare()
 {
