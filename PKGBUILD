@@ -2,7 +2,7 @@
 
 pkgname=wpa_supplicant
 pkgver=2.10
-pkgrel=2
+pkgrel=3
 pkgdesc='A utility providing key negotiation for WPA wireless networks'
 url='https://w1.fi/wpa_supplicant/'
 arch=(x86_64 aarch64 riscv64)
@@ -49,4 +49,6 @@ package()
   rm "$pkgdir"/usr/share/man/man8/wpa_{priv,gui}.8
 
   _dinit_install_services_ $srcdir/wpa_supplicant.service
+  install -d $pkgdir/usr/lib/dinit/system/connman.d
+  ln -s ../wpa_supplicant $pkgdir/usr/lib/dinit/system/connman.d/wpa_supplicant
 }
