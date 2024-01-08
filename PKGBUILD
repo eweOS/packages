@@ -2,7 +2,7 @@
 
 pkgname=dinit-userservd
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="user dinit instance spawner + manager daemon."
 arch=(x86_64 aarch64 riscv64)
 url="https://github.com/Xynonners/dinit-userservd"
@@ -26,4 +26,6 @@ build() {
 package() {
   meson install -C build --destdir "$pkgdir"
   _dinit_install_services_ $pkgname/dinit-userservd
+  install -d $pkgdir/usr/lib/dinit/system/greetd.d
+  ln -s ../dinit-userservd $pkgdir/usr/lib/dinit/system/greetd.d/dinit-userservd
 }
