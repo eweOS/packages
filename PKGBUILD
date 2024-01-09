@@ -3,8 +3,8 @@
 
 pkgbase=dinit
 pkgname=(dinit dinit-services)
-pkgver=0.16.1
-pkgrel=8
+pkgver=0.17.1
+pkgrel=1
 _service_ver=0.1.1
 pkgdesc='Service monitoring / "init" system'
 url='https://github.com/davmac314/dinit'
@@ -19,7 +19,7 @@ arch=(x86_64 aarch64 riscv64)
 license=(Apache)
 makedepends=(make utmps)
 options=(emptydirs)
-sha256sums=('fecab916da569e7fda1ad7651eb2cc639885ac203f4729d55612108b69cd5140'
+sha256sums=('25f36f9a311de3e28278637041c9f962d95843f7265c89436c172286748f88e5'
             'feb964fb18dcd691eff4cea2fb6c80cfc8ab883c8c595004bae97905debd63b0'
             '6d6e651bce957f8be540aaa84e5b5185610244fa0bc5b5945ad281be6cc9f2d0'
             '8cf8da69bac027700eac5a10a2094413992268ebd6886b1acb3904df987cc5e7'
@@ -28,8 +28,6 @@ sha256sums=('fecab916da569e7fda1ad7651eb2cc639885ac203f4729d55612108b69cd5140'
 prepare()
 {
   cd "$pkgname-$pkgver"
-  # OBS can't run environ check normally
-  patch -p1 < $srcdir/disable_environ_check.patch
   # Disable LTO
   sed -i 's/-flto//g' configs/mconfig.Linux.sh
 }
