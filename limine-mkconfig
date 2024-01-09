@@ -1,0 +1,63 @@
+#!/bin/env sh
+
+source /etc/os-release
+
+_limine_first=1
+
+cat <<EOF
+DEFAULT_ENTRY=1
+TIMEOUT=5
+EOF
+
+for kernel in /usr/lib/modules/*/ ; do
+  if ! pacman -Qqo "${kernel}" > /dev/null 2>&1; then
+    # if pkgbase does not belong to any package then skip this kernel
+    continue
+  fi
+  pkgbase=$(pacman -Qqo "${kernel}" 2>/dev/null)
+  tinyramfs -f -k ${kernel##/usr/lib/modules/} /boot/initramfs-${pkgbase}.img
+  install -Dm644 "${kernel}/vmlinuz" "/boot/vmlinuz-${pkgbase}"
+  kernelver=`basename $kernel`
+  if [ "$_limine_first" == "1" ]; then
+      cat <<EOF
+:${PRETTY_NAME} ${BUILD_ID} LiveCD (${kernelver})
+    COMMENT=${PRETTY_NAME} LiveCD
+    PROTOCOL=linux
+    KERNEL_PATH=boot:///vmlinuz-${pkgbase}
+    KERNEL_CMDLINE=console=tty1 console=ttyS0,115200 2 quiet splash
+    MODULE_PATH=boot:///initramfs-${pkgbase}.img
+:${PRETTY_NAME} ${BUILD_ID} LiveCD (Advanced Boot Options)
+    COMMENT=Advanced Boot Options for ${PRETTY_NAME}
+    ::${PRETTY_NAME} ${BUILD_ID} (kernel ${kernelver})
+        COMMENT=${PRETTY_NAME} ${BUILD_ID} LiveCD (kernel ${kernelver})
+        PROTOCOL=linux
+        KERNEL_PATH=boot:///vmlinuz-${pkgbase}
+        KERNEL_CMDLINE=console=tty1 console=ttyS0,115200 2 quiet splash
+        MODULE_PATH=boot:///initramfs-${pkgbase}.img
+
+    ::${PRETTY_NAME} ${BUILD_ID} (kernel ${kernelver}, recovery)
+        COMMENT=${PRETTY_NAME} ${BUILD_ID} LiveCD (kernel ${kernelver}, single user mode)
+        PROTOCOL=linux
+        KERNEL_PATH=boot:///vmlinuz-${pkgbase}
+        KERNEL_CMDLINE=console=tty1 console=ttyS0,115200 2 -- single
+        MODULE_PATH=boot:///initramfs-${pkgbase}.img
+EOF
+      _limine_first=0
+    else
+      cat <<EOF
+    ::${PRETTY_NAME} ${BUILD_ID} (kernel ${kernelver})
+        COMMENT=${PRETTY_NAME} ${BUILD_ID} LiveCD (kernel ${kernelver})
+        PROTOCOL=linux
+        KERNEL_PATH=boot:///vmlinuz-${pkgbase}
+        KERNEL_CMDLINE=console=tty1 console=ttyS0,115200 2 quiet splash
+        MODULE_PATH=boot:///initramfs-${pkgbase}.img
+
+    ::${PRETTY_NAME} ${BUILD_ID} (kernel ${kernelver}, recovery)
+        COMMENT=${PRETTY_NAME} ${BUILD_ID} LiveCD (kernel ${kernelver}, single user mode)
+        PROTOCOL=linux
+        KERNEL_PATH=boot:///vmlinuz-${pkgbase}
+        KERNEL_CMDLINE=console=tty1 console=ttyS0,115200 2 -- single
+        MODULE_PATH=boot:///initramfs-${pkgbase}.img
+EOF
+  fi
+done
