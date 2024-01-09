@@ -4,7 +4,7 @@
 pkgbase=dinit
 pkgname=(dinit dinit-services)
 pkgver=0.16.1
-pkgrel=7
+pkgrel=8
 _service_ver=0.1.1
 pkgdesc='Service monitoring / "init" system'
 url='https://github.com/davmac314/dinit'
@@ -22,7 +22,7 @@ options=(emptydirs)
 sha256sums=('fecab916da569e7fda1ad7651eb2cc639885ac203f4729d55612108b69cd5140'
             'feb964fb18dcd691eff4cea2fb6c80cfc8ab883c8c595004bae97905debd63b0'
             '6d6e651bce957f8be540aaa84e5b5185610244fa0bc5b5945ad281be6cc9f2d0'
-            'ef5efb347fb128491cfeeca0fc5d7908ab1db3cc9775c09d9513e0a50a4aa361'
+            '8cf8da69bac027700eac5a10a2094413992268ebd6886b1acb3904df987cc5e7'
             'SKIP')
 
 prepare()
