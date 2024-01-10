@@ -1,0 +1,59 @@
+--- a/src/main.c
++++ b/src/main.c
+@@ -2158,7 +2158,9 @@
+ 
+ #include <termios.h>
+ #include <unistd.h>
++#if defined(__GLIBC__)
+ #include <execinfo.h>
++#endif
+ 
+ #define BACKTRACE_SIZE 1024
+ #define MAPS_SIZE 8192
+@@ -2205,6 +2207,7 @@
+         close (fd);
+ }
+ 
++#if defined(__GLIBC__)
+ static void
+ write_backtrace (int output_fd)
+ {
+@@ -2221,6 +2224,7 @@
+                               number_of_addresses - BACKTRACE_FRAMES_TO_SKIP,
+                               output_fd);
+ }
++#endif
+ 
+ static void
+ on_crash (int signum)
+@@ -2250,7 +2254,9 @@
+                 tcsetattr (fd, TCSAFLUSH, &term_attributes);
+ 
+                 write_maps (fd);
++		#if defined(__GLIBC__)
+                 write_backtrace (fd);
++                #endif
+         }
+ 
+         if (debug_buffer != NULL) {
+--- a/meson.build
++++ b/meson.build
+@@ -26,6 +26,8 @@
+ 
+ ldl_dep = dependency('dl')
+ 
++lrpmatch_dep = dependency('musl-rpmatch')
++
+ libpng_dep = dependency('libpng', version: '>= 1.2.16')
+ 
+ libudev_dep = dependency('libudev', required: get_option('udev'))
+--- a/src/libply/meson.build
++++ b/src/libply/meson.build
+@@ -19,6 +19,7 @@
+ libply_deps = [
+   ldl_dep,
+   lm_dep,
++  lrpmatch_dep,
+ ]
+ 
+ libply = library('ply',
