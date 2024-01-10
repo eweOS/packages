@@ -1,0 +1,54 @@
+From 2407808edfea1e0d466a13cd5acba59ac9758902 Mon Sep 17 00:00:00 2001
+From: Yukari Chiba <i@0x7f.cc>
+Date: Wed, 10 Jan 2024 16:25:00 +0800
+Subject: [PATCH] add plymouth support
+
+---
+ hook/plymouth/plymouth           | 12 ++++++++++++
+ hook/plymouth/plymouth.init      |  6 ++++++
+ hook/plymouth/plymouth.init.late |  4 ++++
+ 3 files changed, 22 insertions(+)
+ create mode 100644 hook/plymouth/plymouth
+ create mode 100644 hook/plymouth/plymouth.init
+ create mode 100644 hook/plymouth/plymouth.init.late
+
+diff --git a/hook/plymouth/plymouth b/hook/plymouth/plymouth
+new file mode 100644
+index 0000000..a16b0b3
+--- /dev/null
++++ b/hook/plymouth/plymouth
+@@ -0,0 +1,12 @@
++
++if [ -z $plymouth_nocopymodule ] && [ -z $monolith ] && [ -z $hostonly ]; then
++  cd "${moddir}/${kernel}/kernel" && \
++    find drivers/gpu/drm -type f 2> /dev/null |
++      while read -r _mod; do
++        copy_file "$_mod" "/lib/modules/${kernel}/kernel/${_mod}" 0644
++      done
++fi
++
++if [[ -x /usr/lib/plymouth/plymouth-populate-initrd ]]; then
++  /usr/lib/plymouth/plymouth-populate-initrd -t ${tmpdir}
++fi
+diff --git a/hook/plymouth/plymouth.init b/hook/plymouth/plymouth.init
+new file mode 100644
+index 0000000..33a65be
+--- /dev/null
++++ b/hook/plymouth/plymouth.init
+@@ -0,0 +1,6 @@
++
++if [ -f "/usr/sbin/plymouthd" ] && [ -f /usr/bin/plymouth ]; then
++        mkdir -p /run/plymouth
++        /usr/sbin/plymouthd --pid-file /run/plymouth/pid --mode=boot --ignore-serial-consoles
++        /usr/bin/plymouth show-splash
++fi
+diff --git a/hook/plymouth/plymouth.init.late b/hook/plymouth/plymouth.init.late
+new file mode 100644
+index 0000000..75b0646
+--- /dev/null
++++ b/hook/plymouth/plymouth.init.late
+@@ -0,0 +1,4 @@
++
++if [ -f "/usr/sbin/plymouthd" ] && [ -f /usr/bin/plymouth ]; then
++        /usr/bin/plymouth quit
++fi
