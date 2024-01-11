@@ -1,0 +1,12 @@
+diff --git a/btop_tools.cpp b/btop_tools.cpp
+index 8a85ed4..f83f069 100644
+--- a/src/btop_tools.cpp
++++ b/src/btop_tools.cpp
+@@ -25,6 +25,7 @@ tab-size = 4
+ #include <iomanip>
+ #include <utility>
+ #include <ranges>
++#include <codecvt>
+ 
+ #include <fcntl.h>
+ #include <sys/ioctl.h>

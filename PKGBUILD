@@ -1,24 +1,25 @@
+# Maintainer: Yao Zi <ziyao@disroot.org>
+
 pkgname=btop
-pkgver=1.2.13
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc='A monitor of system resources, bpytop ported to C++'
 arch=(x86_64 aarch64 riscv64)
 url="https://github.com/aristocratos/$pkgname"
 license=(Apache)
-source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz" "fix-llvm15-build.patch")
-sha256sums=('668dc4782432564c35ad0d32748f972248cc5c5448c9009faeb3445282920e02'
-  '771289ee3254fd414682c10bb15ff2fc082d44d51a91e6238c5fea1a30925a2b')
+source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz" "fix-build.patch")
+sha256sums=('375e078ce2091969f0cd14030620bd1a94987451cf7a73859127a786006a32cf'
+	    '37925823055ecbf1cfd44eedcee525c53b35c53624fd7546eda9ffb878d5a26a')
 
 prepare()
 {
   cd $pkgname-$pkgver
-  patch -p1 < $srcdir/fix-llvm15-build.patch
+  patch -p1 < $srcdir/fix-build.patch
 }
 
 build()
 {
-  # Add D_LARGEFILE64_SOURCE to cflags to avoid incomplete type for musl 1.2.4
-  make -C $pkgname-$pkgver CXXFLAGS+="-fexperimental-library -D_LARGEFILE64_SOURCE" OPTFLAGS= all
+  make -C $pkgname-$pkgver OPTFLAGS= all
 }
 
 package()
