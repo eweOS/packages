@@ -49,6 +49,6 @@ index 0000000..75b0646
 +++ b/hook/plymouth/plymouth.init.late
 @@ -0,0 +1,4 @@
 +
-+if [ -f "/usr/sbin/plymouthd" ] && [ -f /usr/bin/plymouth ]; then
++if [ -f "/usr/sbin/plymouthd" ] && [ -f /usr/bin/plymouth ] && [ ! -z $plymouth_earlyquit ]; then
 +        /usr/bin/plymouth quit
 +fi

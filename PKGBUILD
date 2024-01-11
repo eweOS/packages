@@ -2,7 +2,7 @@
 
 pkgname=tinyramfs
 pkgver=0.1.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Tiny initramfs generator written in POSIX shell"
 arch=('any')
 url="https://github.com/illiliti/tinyramfs"
@@ -20,7 +20,7 @@ sha512sums=('4f8eeb445cd277d1a535424b5f33c71670e46dfc1edd0cece08913db31f2f5f021d
             'd0f0afe7b8f2f32ff6b6a49d11ef58dc4976b609748781799d0209cea9ef43c423267007252c16168eeb8f295a99caa287519348348597885891d47da8f2a946'
             'b9ec43f8299492dad57e84b482d050b7120522c86fb8cda30cb4ffcaf46bfb739618422c5f2fb852d9e11030e38e181b6bd56673e3dbeb1432d40be37d998f1d'
             '971d0a230de4274ad028f31f58d363f7e85e81f09218f9459df44324e8e1f781445e77a90b037e44dbb644b201ac9a169b039b02f9cc0ab63cd64726a21a5a22'
-            '4a0a9c44625b9dbabd969ab93dc794f37b7ba222eb0a5b3213010dd3ad96cdad6aefd73dea9ea7d7f2446be4f0cafde17731d3f027f8173ead33e52c0825a518')
+            'df47f70b3b4f7db2d2359c23bdd9cf8aa5278e23432285b1b9df24c15031df0be1dfdd967397af9104ca3a276ea0a2d2ae1f1cf8e6990b3d06ad315c2fab4fd5')
 
 prepare()
 {
