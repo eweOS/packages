@@ -9,12 +9,19 @@ url=https://github.com/WayfireWM/wf-config
 license=(MIT)
 depends=(libevdev libxml2)
 makedepends=(meson ninja pkgconf wayland-protocols glm doctest cmake)
-source=("$url/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('16988f63fd054b446d4feac024aafd4cc962193d6d6dfde90e6d6169c23443af')
+_commit="af1bddc9d7191b9902edcb4c74572eac65577806"
+source=("git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver()
+{
+  cd $pkgname
+  printf "$pkgver.r%s.%s" "$(git rev-list --count v$pkgver..HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build()
 {
-  ewe-meson "${pkgname}-${pkgver}" build
+  ewe-meson "${pkgname}" build
   ninja -C build
 }
 
@@ -26,6 +33,6 @@ check()
 package()
 {
   DESTDIR="${pkgdir}" ninja -C build install
-  install -Dm644 "${pkgname}-${pkgver}/LICENSE" \
+  install -Dm644 "${pkgname}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
