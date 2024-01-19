@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libnghttp2
-pkgver=1.57.0
+pkgver=1.58.0
 pkgrel=1
 pkgdesc='Framing layer of HTTP/2 is implemented as a reusable C library'
 arch=('x86_64' 'aarch64' 'riscv64')
