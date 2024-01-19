@@ -1,15 +1,14 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=attr
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc='Extended attribute support library for ACL support'
 arch=(x86_64 aarch64 riscv64)
 license=('LGPL')
-depends=(musl)
 makedepends=('gettext')
 source=("https://download.savannah.gnu.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('db448a626f9313a1a970d636767316a8da32aede70518b8050fa0de7947adc32')
+sha256sums=('f2e97b0ab7ce293681ab701915766190d607a1dba7fae8a718138150b700a70b')
 
 build()
 {
