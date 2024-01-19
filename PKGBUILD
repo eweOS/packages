@@ -10,8 +10,16 @@ license=(MIT)
 depends=('cairo' 'json-c' 'libinput' 'seatd' 'libxkbcommon' 'mesa' 'pango' 'pcre' 'pixman' 'wayland' 'wlroots' 'gdk-pixbuf' 'elogind')
 makedepends=(linux-headers meson wayland-protocols scdoc)
 backup=('etc/sway/config')
-source=("git+https://github.com/swaywm/sway.git#tag=$pkgver")
+_commit="bff991dfdc63ca3785a810ff4d913ddfd71677a1"
+source=("git+https://github.com/swaywm/sway.git#commit=$_commit")
 sha256sums=('SKIP')
+
+pkgver()
+{
+  cd $pkgname
+  printf "$pkgver.r%s.%s" "$(git rev-list --count $pkgver..HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 
 prepare() {
   # Set the version information to 'eweOS' instead of 'makepkg'
@@ -30,7 +38,4 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
-  for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
-    install -Dm755 "$pkgname/contrib/$util" -t "$pkgdir/usr/share/$pkgname/scripts"
-  done
 }
