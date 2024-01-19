@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libinput
-pkgver=1.22.0
+pkgver=1.25.0
 pkgrel=1
 pkgdesc="Input device management and event handling library"
 url="https://gitlab.freedesktop.org/libinput"
@@ -11,7 +11,7 @@ license=(custom:X11)
 depends=('libudev' 'libevdev' 'mtdev')
 makedepends=('meson' 'wayland-protocols')
 source=("$url/libinput/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('ebbe5a966cf2a12f59666adbfb505cafca58635b96239bbcdf04a09dc4cd0d7b')
+sha256sums=('f7e8425f185cadba5761d0a1dae6be041750d351163ffa04adc5b9a79a13c0ec')
 
 build()
 {
@@ -27,6 +27,8 @@ build()
 
 check()
 {
+  # FIXME: no pytest in repo
+  pip install pytest
   meson test -C build --print-errorlogs
 }
 
