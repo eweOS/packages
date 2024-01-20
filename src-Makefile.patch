@@ -31,7 +31,7 @@
  	$(AR) $@ $(BASE_O)
  	$(RANLIB) $@
 +$(LUA_SO): $(BASE_O)
-+	$(CC) -o $@ $(BASE_O) -shared
++	$(CC) -o $@ $(LDFLAGS) $(BASE_O) -shared
  
 -$(LUA_T): $(LUA_O) $(LUA_A)
 -	$(CC) -o $@ $(LDFLAGS) $(LUA_O) $(LUA_A) $(LIBS)

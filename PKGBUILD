@@ -2,7 +2,7 @@
 
 pkgname=lua54
 pkgver=5.4.6
-pkgrel=6
+pkgrel=7
 pkgdesc='Powerful lightweight programming language designed for extending applications'
 url='https://www.lua.org'
 arch=(x86_64 aarch64 riscv64)
@@ -65,7 +65,8 @@ build()
   echo $defPath
   make linux-readline CFLAGS+="-DLUA_PATH_DEFAULT='\"$defPath\"'" \
     CFLAGS+="-DLUA_CPATH_DEFAULT='\"$defCPath\"'" \
-    CFLAGS+="-DLUA_USE_POSIX -DLUA_USE_DLOPEN"
+    CFLAGS+="-DLUA_USE_POSIX -DLUA_USE_DLOPEN" \
+    MYLDFLAGS+="$LDFLAGS"
 }
 
 package()
@@ -87,5 +88,5 @@ package()
 }
 
 sha256sums=('7d5ea1b9cb6aa0b59ca3dde1c6adcb57ef83a1ba8e5432c0ecd06bf439b3ad88'
-  '521841c5803146ef4cc9b728b86926455bb2dc325aa262ccde8471ac8387df17'
-  '958b4715455b081b8280ec5e008df4529082374762b672cf01f941be4d9033c9')
+            '521841c5803146ef4cc9b728b86926455bb2dc325aa262ccde8471ac8387df17'
+            'ac9205c6952a6ad3c4d08480c1859d61aa287318b4aad91e1784d528590841bf')
