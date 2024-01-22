@@ -2,7 +2,7 @@
 
 pkgname=busybox
 pkgver=1.36.1
-pkgrel=13
+pkgrel=14
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64)
 url="https://www.busybox.net"
@@ -24,6 +24,10 @@ source=(
   "getty.service"
   "remove_empty_dir.patch"
   "busybox-suidwrapper.c"
+  "mdev-helper-settle-nics"
+  "mdev-helper-sound-control"
+  "mdev-helper-storage-device"
+  "mdev-helper-dev-bus-usb"
 )
 sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
             'e7b000e40c61635484b4591b67af648df08e4906799ab4156fa7377b411accc3'
@@ -34,10 +38,14 @@ sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
             'a54856a9825e3aeb161a19c0665fa6f98695a4cf15ca66d864a8dbed0f6268fe'
             '69e028725a63763e21684fb0ce941f6a34a4b72bb328a0cab43b4d39d6d767dc'
             'd090013b1537d43c3925bf69cb6bcd8ca304b91774ceb1b944ae6edd8714ad1f'
-            '1a914dea6a818ecd279d28093209be535b381d9433264013f26e8e0af0880efb'
+            'b71d64c21669027c9f9bd87818ed5ad5a3b93199b859b87b2e517b2c6148140e'
             '71a1983dfb80a34e3c11faab1aa490dd2edb2e057fa1db18cbce96a67a3398c3'
             '622d0a1743a127bab1fc15e5057034db52c7fa475298b8d085cfc7c046ae5537'
-            'add7a75bc369aa2c4c167e5fe6ec3fcca2960b310a4df8e9769c9fd765b9eea2')
+            'add7a75bc369aa2c4c167e5fe6ec3fcca2960b310a4df8e9769c9fd765b9eea2'
+            'd6dc8bd5e9123e9352acfbb8754afe8e44a0a1e0a4539d309f7193a1d5ddc0fe'
+            'f157359b7992e9d08da728b2c48c10f338e149e44856f3cb9665164c35f6e232'
+            'f641a4d722dfaeb70e43ee87d8b1ce6ecadc0aec4ee21bdc28bbe4564dd743f4'
+            '32c89049dfcb5de3b2591b1039b25aa8ad83f0af9b6782ef460ed4dde7a8493d')
 
 prepare()
 {
@@ -87,6 +95,10 @@ package()
   install -d usr/share/udhcpc
   install -m 0755 "${srcdir}/udhcpc.script" \
     usr/share/udhcpc/default.script
+
+  for helper in dev-bus-usb settle-nics sound-control storage-device; do
+    install -Dm 0755 "$srcdir/mdev-helper-$helper" $pkgdir/usr/bin/mdev-helper-$helper
+  done
 
   _dinit_install_services_ $srcdir/ntpd.service
   _dinit_install_services_ $srcdir/syslogd.service
