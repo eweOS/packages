@@ -2,7 +2,7 @@
 
 pkgname=pam
 pkgver=1.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="PAM (Pluggable Authentication Modules) library"
 arch=(x86_64 aarch64 riscv64)
 license=('GPL2')
@@ -42,4 +42,6 @@ package()
     targetname=$(echo $f | cut -d "." -f 1)
     install -D $f ${pkgdir}/etc/pam.d/${targetname##*/}
   done
+  # remove systemd dir
+  rm -r $pkgdir/usr/lib/systemd
 }
