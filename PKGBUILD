@@ -3,7 +3,7 @@
 pkgname=at-spi2-core
 pkgver=2.49.1
 _gittag='AT_SPI2_CORE_2_49_1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Protocol definitions and daemon for D-Bus at-spi"
 url="https://gitlab.gnome.org/GNOME/at-spi2-core"
 arch=(x86_64 aarch64 riscv64)
@@ -28,4 +28,6 @@ build() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
+  # remove systemd dir
+  rm -r $pkgdir/usr/lib/systemd
 }
