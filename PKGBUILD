@@ -2,7 +2,7 @@
 
 pkgname=dbus
 pkgver=1.15.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(x86_64 aarch64 riscv64)
@@ -61,6 +61,7 @@ package()
 
   _dinit_install_services_ $srcdir/dbus.service
   _dinit_install_user_services_ $srcdir/dbus.user.service
+  _dinit_enable_user_services_ dbus
   _dinit_install_helpers_ $srcdir/dbus-system-session
   _dinit_install_user_helpers_ $srcdir/dbus-user-session
   _install_sysusers_ $srcdir/dbus.sysusers
