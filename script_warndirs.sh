@@ -20,7 +20,10 @@ warndirs() {
     errordirs lib
     errordirs lib64
     errordirs usr/lib64
+    errordirs usr/sbin
     errordirs bin
     errordirs sbin
     errordirs var/run
+    errordirs var/lock
+    errordirs usr/lib/systemd
 }
