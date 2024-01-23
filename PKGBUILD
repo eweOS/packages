@@ -3,7 +3,7 @@
 
 pkgname=filesystem
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='The base directory structure and a few core files for the system.'
 arch=(any)
 url='https://os.ewe.moe'
@@ -21,6 +21,7 @@ source=(
   os-release
   hosts
   motd
+  fstab
 )
 sha256sums=('4fecb0831d4cc037813cf758bf8957f7d979c6415a139efca4c8554e159242d1'
             'ab1e9388edd7947b307b9812f5648f738d797117d99a91deb7e4fb2096c1926f'
@@ -31,7 +32,7 @@ sha256sums=('4fecb0831d4cc037813cf758bf8957f7d979c6415a139efca4c8554e159242d1'
             '6979dc53ed05ebdacc18700025ccf0232e0985f52aa56d31a5515935e03b04eb'
             'a9589ae7a6d52dd8866e7504023bbe13c233fa3fef9593ceb49d3fdd20675975'
             'c0fca42f35a4c2034fb2105cdd428f65ecd5d5454fc8e58f5620adbfc0ec9509'
-            '95b9288fbefc8af3f6412b1369ca2ee2df6daf038e0c035476c0f6bed27307b5')
+            '95b9288fbefc8af3f6412b1369ca2ee2df6daf038e0c035476c0f6bed27307b5' 'SKIP')
 
 backup=(
   etc/passwd
@@ -47,25 +48,38 @@ backup=(
 package()
 {
   cd ${pkgdir}
-  install -d "boot" "dev" "etc/default" "home" "mnt"
-  ln -s "../proc/mounts" "etc/mtab"
-  install -d -m 0555 "proc" "sys"
-  install -d -m 0750 "root"
-  install -d -m 0755 "run"
-  install -d -m 1777 "tmp"
-  install -d "srv"
+
+  # directories
+    # base dir
+  install -d -m 755 "boot" "dev" "etc/default" "home" "mnt" "srv" "usr" "run"
+  install -d -m 750 "root"
+  install -d -m 555 "proc" "sys"
+  install -d -m 1777 "tmp" "var/tmp"
+    # usr dir
   install -d "usr/"{bin,include,local/bin,local/sbin,share/man,lib/modules}
-  install -d "var/"{cache,lib,log,mail,spool}
+    # var dir
+  install -d "var/"{cache,lib,log,spool}
+
+  # symlinks
+    # var
+  ln -s spool/mail var/mail
   ln -s "../run" var/run
   ln -s "../run/lock" var/lock
+    # bin/lib
   ln -s "usr/lib" lib
-  ln -s "usr/lib" lib64
   ln -s "usr/bin" bin
   ln -s "usr/bin" sbin
-  ln -s "lib" usr/lib64
   ln -s "bin" usr/sbin
-  install -d -m 1777 "var/tmp"
-  for user in {passwd,shadow,group,profile,shells,services,protocols,os-release,hosts,motd}; do
+    # mtab
+  ln -s "../proc/mounts" "etc/mtab"
+
+  [[ $CARCH = 'x86_64' ]] && {
+    ln -s usr/lib lib64
+    ln -s lib usr/lib64
+  }
+
+  # files in /etc
+  for user in {passwd,shadow,group,profile,shells,services,protocols,os-release,hosts,motd,fstab}; do
     install -m0644 $srcdir/$user "etc/$user"
   done
 }
