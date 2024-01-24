@@ -3,7 +3,7 @@
 
 pkgname=filesystem
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc='The base directory structure and a few core files for the system.'
 arch=(any)
 url='https://os.ewe.moe'
@@ -43,6 +43,7 @@ backup=(
   etc/services
   etc/protocols
   etc/hosts
+  etc/fstab
 )
 
 package()
