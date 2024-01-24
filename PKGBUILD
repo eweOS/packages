@@ -4,7 +4,7 @@ pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang wasi-libc++ wasi-libc++ab
 _realpkgname=llvm-project
 pkgver=17.0.6
 _binutilsver=2.41
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64' 'riscv64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -79,6 +79,7 @@ FLIST_openmp=(
   "usr/lib/libomp*.so"
   "usr/lib/libgomp.so"
   "usr/lib/libiomp5.so"
+  "usr/bin/llvm-omp-*"
 )
 
 FLIST_lld=(
