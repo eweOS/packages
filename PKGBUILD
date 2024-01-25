@@ -3,11 +3,12 @@
 pkgname='mesa'
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=23.2.1
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm')
 makedepends=('meson' 'wayland' 'wayland-protocols')
 url="https://www.mesa3d.org/"
+options=(!lto)
 license=('custom')
 source=(https://mesa.freedesktop.org/archive/$pkgname-$pkgver.tar.xz)
 sha512sums=('927af0885a4815d330de384232deadf3dce7e2e2024738f138a344cbc4adce22888a9e335317f1d75965a5e691c9638949105f18c9b6ef43839fb594c6b474b5')
