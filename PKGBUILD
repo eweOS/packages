@@ -3,7 +3,7 @@
 pkgname=perl
 pkgver=5.36.0
 _baseversion="${pkgver%.*}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A highly capable, feature-rich programming language"
 arch=(x86_64 aarch64 riscv64)
 license=('GPL' 'PerlArtistic')
@@ -12,7 +12,7 @@ source=(
   "https://www.cpan.org/src/5.0/perl-${pkgver}.tar.xz"
   "https://github.com/pmqs/Compress-Raw-Zlib/archive/refs/tags/v2.202.tar.gz"
 )
-options=('makeflags' '!purge' 'emptydirs')
+options=('makeflags' '!purge' 'emptydirs' '!lto')
 sha256sums=('0f386dccbee8e26286404b2cca144e1005be65477979beb9b1ba272d4819bcf0'
   'c2302000b6baaf4e7a3dd3d575bef2e6cb9f292031967f687b41d520c19b9641')
 
@@ -29,7 +29,7 @@ build()
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   export BUILD_ZLIB=False
-  CFLAGS="$CFLAGS" ./configure.gnu \
+  ./configure.gnu \
     -des -Dprefix=/usr \
     -Dcc="cc -D_GNU_SOURCE" \
     -Dvendorprefix=/usr \
