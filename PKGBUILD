@@ -1,16 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=acl
-pkgver=2.3.1
-pkgrel=2
+pkgver=2.3.2
+pkgrel=1
 pkgdesc='Access control list utilities, libraries and headers'
 arch=(x86_64 aarch64 riscv64)
 url='https://savannah.nongnu.org/projects/acl'
 license=('LGPL')
 depends=('attr')
-options=('debug')
 source=("https://download.savannah.gnu.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('760c61c68901b37fdd5eefeeaf4c0c7a26bdfdd8ac747a1edff1ce0e243c11af')
+sha256sums=('5f2bdbad629707aa7d85c623f994aa8a1d2dec55a73de5205bac0bf6058a2f7c')
 
 build()
 {
