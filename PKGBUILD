@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=md4c
-pkgver=0.4.8
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='C Markdown parser'
 arch=(x86_64 aarch64 riscv64)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(musl)
 makedepends=(cmake)
 source=($pkgname-$pkgver.tar.gz::"https://github.com/mity/md4c/archive/release-$pkgver.tar.gz")
-sha256sums=('4a457df853425b6bb6e3457aa1d1a13bccec587a04c38c622b1013a0da41439f')
+sha256sums=('55d0111d48fb11883aaee91465e642b8b640775a4d6993c2d0e7a8092758ef21')
 
 build()
 {
