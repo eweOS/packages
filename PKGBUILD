@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc='The GNU Bourne Again shell'
 arch=(x86_64 aarch64 riscv64)
 license=(GPL3)
+url="https://www.gnu.org/software/bash/"
 groups=(base)
 depends=(readline ncurses)
 provides=('sh')
