@@ -2,7 +2,7 @@
 
 pkgname=libaom
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Alliance for Open Media (AOM) AV1 codec SDK.'
 url='https://aomedia.googlesource.com/aom/'
 arch=(x86_64 aarch64 riscv64)
@@ -24,12 +24,16 @@ prepare()
 
 build()
 {
+  if [ $(uname -m) != x86_64 ]; then
+	  asmdef="-DCMAKE_ASM_COMPILER=llvm-as"
+  fi
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_SHARED_LIBS=True \
     -DCMAKE_BUILD_TYPE=Release \
     -DCONFIG_TUNE_VMAF=0 \
+    $asmdef \
     libaom-$pkgver
   make
 }
