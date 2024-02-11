@@ -2,7 +2,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=bash
-pkgver=5.1.16
+pkgver=5.2.21
 pkgrel=1
 pkgdesc='The GNU Bourne Again shell'
 arch=(x86_64 aarch64 riscv64)
@@ -15,8 +15,8 @@ source=(
   bashrc
 )
 
-sha256sums=('5bac17218d3911834520dad13cd1f85ab944e1c09ae1aba55906be1f8192f558'
-  'b3c0c7600098df7ab736cc5ea7ecd671a6cc83b7a01ea23dec94ac073fe86b6b')
+sha256sums=('c8e31bdc59b69aaffc5b36509905ba3e5cbb12747091d27b4b977f078560d5b8'
+            'b3c0c7600098df7ab736cc5ea7ecd671a6cc83b7a01ea23dec94ac073fe86b6b')
 
 build()
 {
