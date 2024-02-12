@@ -3,8 +3,8 @@
 # Contributor: Art Gramlich <art@gramlich-net.com>
 
 pkgname=icu
-pkgver=73.2
-pkgrel=2
+pkgver=74.2
+pkgrel=1
 pkgdesc="International Components for Unicode library"
 arch=(x86_64 aarch64 riscv64)
 url="https://icu.unicode.org"
@@ -14,20 +14,8 @@ makedepends=('python')
 provides=(libicu{data,i18n,io,test,tu,uc}.so)
 source=(
   https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/${pkgname}4c-${pkgver//./_}-src.tgz
-  https://patch-diff.githubusercontent.com/raw/unicode-org/icu/pull/2610.patch
 )
-sha512sums=(
-  '76dd782db6205833f289d7eb68b60860dddfa3f614f0ba03fe7ec13117077f82109f0dc1becabcdf4c8a9c628b94478ab0a46134bdb06f4302be55f74027ce62'
-  '4567dde0deac77a7bba7ecd23ee37f7e196ff4daff2b2d6e86f81dfa6994727a87e7c817dcae6bb24515a73a77948132cc2fbf92887d72b00bdd4cd4e143e14a'
-)
-
-prepare()
-{
-  cd icu
-  # fix TestHebrewCalendarInTemporalLeapYear
-  # https://github.com/unicode-org/icu/pull/2610
-  patch -p2 < $srcdir/2610.patch
-}
+sha512sums=('e6c7876c0f3d756f3a6969cad9a8909e535eeaac352f3a721338b9cbd56864bf7414469d29ec843462997815d2ca9d0dab06d38c37cdd4d8feb28ad04d8781b0')
 
 build()
 {
