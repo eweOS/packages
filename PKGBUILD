@@ -5,7 +5,7 @@
 pkgbase=pacman
 pkgname=(libalpm pacman makepkg repo-tools)
 pkgver=6.0.2
-pkgrel=13
+pkgrel=14
 arch=(x86_64 aarch64 riscv64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
@@ -24,7 +24,7 @@ source=(
 )
 sha256sums=('7d8e3e8c5121aec0965df71f59bedf46052c6cf14f96365c4411ec3de0a4c1a5'
             '45735476a908373bcf8392cf3b4fb88bd4b4914d10b76f35542e7a679ad01229'
-            '66e0fb85053d77365997837050762089dd0248fe2fadeb4236479b6268daa202'
+            '8db0a7b2427fd266cd501eac3de88e25d54f7a6ea520468823443b67ee3730b9'
             '6338de233368bfa76ee17353785709e282ace072eae6996c1289f0fb5b84ffc4'
             'd99d4fe5e414cb4748f4e9b20637d9fd69ec8c392e3f862edbc69b6564a52876'
             '7d2ad28bef8f9f77f33929d2050244a6f29941de6ad0793b6820caee3dbd84e3'
@@ -91,6 +91,11 @@ build()
   esac
   sed -i ./makepkg.conf \
     -e "s|@@BUILD_GEN_CFLAGS@@|$makepkg_cflags|g"
+
+  if [ "$CARCH" == "riscv64" ]; then
+    # disable lto since for riscv gold is not ready
+    sed -i 's/lto/!lto/' ./makepkg.conf
+  fi
 
   cd "$pkgbase-$pkgver"
   sed -i -e 's/EUID == 0/EUID == -1/' scripts/makepkg.sh.in
