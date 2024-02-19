@@ -3,7 +3,7 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=strace
-pkgver=6.6
+pkgver=6.7
 pkgrel=1
 pkgdesc='A diagnostic, debugging and instructional userspace tracer'
 arch=(x86_64 aarch64 riscv64)
@@ -11,7 +11,7 @@ url='https://strace.io/'
 license=(BSD)
 depends=(perl)
 source=(https://github.com/strace/strace/releases/download/v$pkgver/strace-$pkgver.tar.xz)
-sha1sums=('612926f575ffe188c2028abb187b1747ae5f84cb')
+sha1sums=('79197572177df591d180a1484045901fcdc02f2c')
 
 build()
 {
