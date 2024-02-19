@@ -3,7 +3,7 @@
 pkgbase=rust
 pkgname=(rust rust-nightly)
 pkgver=1.74.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=(x86_64 aarch64 riscv64)
 url='https://www.rust-lang.org/'
@@ -11,24 +11,37 @@ license=(MIT Apache)
 options=(!lto)
 source=(
   https://static.rust-lang.org/dist/rustc-$pkgver-src.tar.gz
-  config.toml.x86_64
-  config.toml.aarch64
-  config.toml.riscv64
+  config.toml.tpl
+  musl-static.patch
 )
-sha256sums=('882b584bc321c5dcfe77cdaa69f277906b936255ef7808fcd5c7492925cf1049'
-            '970d3ee0c309450eaab3fd62d8a323f725111352213656382c7d3f7b039b8c01'
-            '501211c5a26b2838646a1dfe5a95c0ccbaf013398c75a9977c65e736c0386f86'
-            '099da1435aba9a13fa29300cdc056b25af198264f1defcfacbbe362b7cd9a013')
+sha256sums=(
+  '882b584bc321c5dcfe77cdaa69f277906b936255ef7808fcd5c7492925cf1049'
+  '1f4a6ec736919d0548573239c655d7d49400f9becfc867ef48947748416545c8'
+  '47adf7785bdc56c579c91fbb672b56e99fa5c8d42f3ad930f10ee714cedbe23e'
+)
 
 depends=(musl llvm-libs musl-static curl libssh2)
 makedepends=(rust llvm libffi perl python cmake ninja)
 
+prepare()
+{
+  _patch_ ${pkgbase}c-$pkgver-src
+}
+
 build()
 {
-  sed -i "s@%RUSTVER%@$pkgver@g" config.toml.${CARCH}
+  sed -i "s@%RUSTVER%@$pkgver@g" config.toml.tpl
+  case $CARCH in
+    riscv64)
+      sed -i "s@%RUSTTARGET%@riscv64gc-unknown-linux-musl@g" config.toml.tpl
+      ;;
+    *)
+      sed -i "s@%RUSTTARGET%@${CARCH}-unknown-linux-musl@g" config.toml.tpl
+      ;;
+  esac
   cp -r ${pkgbase}c-$pkgver-src ${pkgbase}c-$pkgver-src-nightly
-  cp config.toml.${CARCH} ${pkgbase}c-$pkgver-src/config.toml
-  cp config.toml.${CARCH} ${pkgbase}c-$pkgver-src-nightly/config.toml
+  cp config.toml.tpl ${pkgbase}c-$pkgver-src/config.toml
+  cp config.toml.tpl ${pkgbase}c-$pkgver-src-nightly/config.toml
   sed -i 's/stable/nightly/g' ${pkgbase}c-$pkgver-src-nightly/config.toml
 
   export RUST_BACKTRACE=1
