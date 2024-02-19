@@ -4,7 +4,7 @@ pkgname=python
 _vermajor=3
 _verminor=11
 pkgver=${_vermajor}.${_verminor}.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A clear and powerful object-oriented programming language,'
 arch=(x86_64 aarch64 riscv64)
 url='http://www.python.org'
@@ -39,7 +39,8 @@ build()
     --sysconfdir=/etc \
     --with-system-ffi \
     --enable-shared \
-    --without-static-libpython
+    --without-static-libpython \
+    ax_cv_c_float_words_bigendian=no
   make
 }
 
