@@ -5,8 +5,8 @@ link-shared = true
 static-libstdcpp = false
 use-libcxx = true
 [build]
-build = "riscv64-unknown-linux-musl"
-target = ["riscv64-unknown-linux-musl"]
+build = "%RUSTTARGET%"
+target = ["%RUSTTARGET%"]
 cargo = "/usr/bin/cargo"
 rustc = "/usr/bin/rustc"
 rustfmt = "/usr/bin/rustfmt"
@@ -36,7 +36,7 @@ llvm-libunwind = "system"
 codegen-units-std = 1
 # musl target produces warnings
 deny-warnings = false
-[target.riscv64-unknown-linux-musl]
+[target.%RUSTTARGET%]
 crt-static = false
 llvm-config = "/usr/bin/llvm-config"
 [dist]
