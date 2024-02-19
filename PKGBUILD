@@ -3,14 +3,14 @@
 # Contributor: Isaac Dupree <antispam@idupree.com>
 
 pkgname=libsass
-pkgver=3.6.5
-pkgrel=2
+pkgver=3.6.6
+pkgrel=1
 pkgdesc="C implementation of Sass CSS preprocessor (library)."
 arch=(x86_64 aarch64 riscv64)
 url="https://sass-lang.com/libsass"
 license=("MIT")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sass/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('89d8f2c46ae2b1b826b58ce7dde966a176bac41975b82e84ad46b01a55080582')
+sha256sums=('11f0bb3709a4f20285507419d7618f3877a425c0131ea8df40fe6196129df15d')
 
 build()
 {
