@@ -1,7 +1,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=nasm
-pkgver=2.15.05
+pkgver=2.16.01
 pkgrel=1
 pkgdesc='80x86 assembler designed for portability and modularity'
 url='https://www.nasm.us'
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('glibc')
 checkdepends=('perl')
 source=(https://www.nasm.us/pub/nasm/releasebuilds/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha512sums=('512f90a2584f1c5811429274b97c64a2cedf37b9fdeffb1bcd0ea64afd9ecc19a2d7877ca8f1e05393aa324153fc9f39ea51dacbf8d25a7d5a2d7728c925dba7')
+sha512sums=('51fccb5639ce019d9c423c0f279750ffbd74c64cd41dd3b185d1aa1a1aaed79c5d3cd8d4bebbc13ee249a375ed27457ea2abde1a4dbb24d354598fffd1254833')
 
 build()
 {
