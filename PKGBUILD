@@ -2,12 +2,13 @@
 
 pkgname=libvpx
 pkgver=1.13.1
-pkgrel=0
+pkgrel=1
 pkgdesc='Library for the vp8/vp9 codecs'
 url='https://www.webmproject.org/'
 arch=(x86_64 aarch64 riscv64)
 license=(BSD)
 depends=(musl)
+options=(!lto)
 makedepends=(perl nasm)
 source=("https://github.com/webmproject/libvpx/archive/v$pkgver/libvpx-v$pkgver.tar.gz")
 provides=('libvpx.so')
