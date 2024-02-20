@@ -2,7 +2,7 @@
 
 pkgname=nss
 pkgver=3.98
-pkgrel=1
+pkgrel=2
 pkgdesc="Network Security Services"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 arch=(x86_64 aarch64 riscv64)
@@ -39,7 +39,6 @@ build() {
     --opt
     --system-nspr
     --system-sqlite
-    --target x64
   )
   cd $pkgname
   ./build.sh "${buildsh_options[@]}"
