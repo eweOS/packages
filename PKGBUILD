@@ -2,17 +2,21 @@
 
 pkgname=cage
 pkgver=0.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A kiosk compositor for Wayland"
 arch=(x86_64 aarch64 riscv64)
 url="https://www.hjdskes.nl/projects/cage/"
 license=(MIT)
 depends=(wayland wlroots)
-makedepends=(libxkbcommon meson pixman wayland-protocols)
-#source=("git+https://github.com/Hjdskes/${pkgname}.git#tag=v${pkgver}")
-# use a patched version for wlroots 0.17
-source=("git+https://github.com/kennylevinsen/cage.git#commit=f116ef89856934b9e61981ffd9f805870b49eca8")
+makedepends=(libxkbcommon meson pixman wayland-protocols git)
+_commit=b6f8f925854cd90592b6f8abb4c8393ec51c9571
+source=("git+https://github.com/cage-kiosk/cage.git#commit=$_commit")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   ewe-meson -Dxwayland=disabled -Dman-pages=disabled build "$pkgname"
