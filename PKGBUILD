@@ -2,7 +2,7 @@
 
 pkgname=gtk3
 pkgver=3.24.38
-pkgrel=3
+pkgrel=4
 pkgdesc="Multi-platform toolkit for creating graphical user interfaces"
 url="https://www.gtk.org/"
 arch=(x86_64 aarch64 riscv64)
@@ -55,5 +55,9 @@ build()
 
 package()
 {
+  depends+=(gtk-update-icon-cache)
   meson install -C build --destdir "$pkgdir"
+
+  # Built by GTK 4, shared with GTK 3
+  rm $pkgdir/usr/bin/gtk-update-icon-cache
 }
