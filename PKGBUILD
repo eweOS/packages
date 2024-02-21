@@ -3,7 +3,7 @@
 pkgbase=gtk4
 pkgname=(gtk4 gtk-update-icon-cache)
 pkgver=4.13.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-platform toolkit for creating graphical user interfaces"
 url="https://www.gtk.org/"
 arch=(x86_64 aarch64 riscv64)
@@ -32,6 +32,8 @@ makedepends=(
   wayland-protocols
   gobject-introspection
   vulkan-headers
+  vulkan-icd-loader
+  glslang
 )
 checkdepends=(weston)
 source=(
@@ -66,6 +68,7 @@ build()
 
 package_gtk4()
 {
+  depends+=(gtk-update-icon-cache)
   meson install -C build --destdir "$pkgdir"
   
   cd $pkgdir
