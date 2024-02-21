@@ -3,7 +3,7 @@
 pkgbase=gtk4
 pkgname=(gtk4 gtk-update-icon-cache)
 pkgver=4.13.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-platform toolkit for creating graphical user interfaces"
 url="https://www.gtk.org/"
 arch=(x86_64 aarch64 riscv64)
@@ -79,7 +79,7 @@ package_gtk4()
 package_gtk-update-icon-cache()
 {
   pkgdesc="GTK icon cache updater"
-  depends=(gdk-pixbuf hicolor-icon-theme)
+  depends=(gdk-pixbuf hicolor-icon-theme librsvg)
 
   mv $srcdir/pkgs/guic/* "$pkgdir"
   
