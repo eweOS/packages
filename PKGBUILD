@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pipewire
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64 aarch64 riscv64)
@@ -12,9 +12,13 @@ makedepends=('meson' 'alsa-lib')
 source=(
   "https://gitlab.freedesktop.org/pipewire/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
   fix-udev-zero.patch
+  pipewire.user.service
+  pipewire-pulse.user.service
 )
-sha256sums=('f91ef1d1161b37aae6e21b9671917d97097e2664c83d919ba3a0793d6fbc543d'
-            '5e41f524ac1112cc093858412d948637d31d42da989a1a4ad562aef83f6dda37')
+sha256sums=('bddb29b9310c344ca069df410f6f02b7f3d8c518811c0505c7fe62d8428fd767'
+            '5e41f524ac1112cc093858412d948637d31d42da989a1a4ad562aef83f6dda37'
+            '4d808f22ea2adc5137d98702b21aeecbe00e15fed4ab9768da7d68a0acbe8560'
+            'bca9d53e4c5cf0eb1ecb7124365abf5ea740889887690423fef1d7b377b3660b')
 
 prepare()
 {
@@ -87,6 +91,8 @@ package()
 
   install -Dm644 /dev/null \
     "$pkgdir/usr/share/pipewire/media-session.d/with-pulseaudio"
+
+  _dinit_install_user_services_ $srcdir/pipewire.user.service $srcdir/pipewire-pulse.user.service
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $pkgname-$pkgver/COPYING
 }
