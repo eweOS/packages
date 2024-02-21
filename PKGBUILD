@@ -2,7 +2,7 @@
 
 pkgname=gtk-layer-shell
 pkgdesc="A library to create panels and other desktop components for Wayland using the Layer Shell protocol"
-pkgver=0.8.0
+pkgver=0.8.2
 pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 license=(GPL3 LGPL3 MIT)
@@ -17,7 +17,7 @@ makedepends=(
   "ninja"
 )
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
-sha256sums=('e95a03766302fe330ec3c6ff3e8018642849003ccaf160fb6fd0c039c81fa54c')
+sha256sums=('254dd246303127c5d5236ea640f01a82e35d2d652a48d139dd669c832a0f0dce')
 
 build()
 {
