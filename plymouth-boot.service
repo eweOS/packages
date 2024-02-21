@@ -1,4 +1,5 @@
 type       = scripted
 command    = plymouth quit
+stop-command = /usr/lib/dinit/exec/shutdown/plymouth-shutdown
 depends-on = rc.target
 before     = login.target
