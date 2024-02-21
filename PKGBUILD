@@ -2,7 +2,7 @@
 
 pkgname=plymouth
 pkgver=24.004.60
-pkgrel=3
+pkgrel=4
 pkgdesc='Graphical boot splash screen'
 arch=(x86_64 aarch64 riscv64)
 url='https://www.freedesktop.org/wiki/Software/Plymouth/'
@@ -10,10 +10,16 @@ license=('GPL2')
 depends=('cairo' 'fontconfig' 'freetype2' 'libdrm' 'libevdev' 'libpng' 'libxkbcommon' 'pango' 'musl-rpmatch')
 makedepends=('meson')
 backup=('etc/plymouth/plymouthd.conf')
-source=("https://www.freedesktop.org/software/$pkgname/releases/$pkgname-$pkgver.tar.xz" 0_musl.patch plymouth-boot.service)
+source=(
+  "https://www.freedesktop.org/software/$pkgname/releases/$pkgname-$pkgver.tar.xz"
+  0_musl.patch
+  plymouth-boot.service
+  plymouth-shutdown.sh
+)
 sha256sums=('f3f7841358c98f5e7b06a9eedbdd5e6882fd9f38bbd14a767fb083e3b55b1c34'
             'fc984b17fbb89d2bb2692a05257544a3b0add6db073c94fa4471a4f8982b5df2'
-            'f78770fc645f16e83d0feea16518f6dbd85c23b0926f6453ed27fb9cc4e35719')
+            'f78770fc645f16e83d0feea16518f6dbd85c23b0926f6453ed27fb9cc4e35719'
+            'dd782b9745dbd66e437be47371b20dc292446f27e85b3e5d42a14887762ad617')
 
 prepare() {
   _patch_ $pkgname-$pkgver
@@ -37,5 +43,6 @@ package() {
   rm $pkgdir/usr/lib/plymouth/plymouth-generate-initrd
   _dinit_install_services_ plymouth-boot.service
   _dinit_enable_services_ plymouth-boot
+  install -Dm 0755 plymouth-shutdown.sh $pkgdir/usr/lib/dinit/exec/shutdown/plymouth-shutdown
 }
 
