@@ -1,7 +1,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=oed
-pkgver=7.1
+pkgver=7.4
 pkgrel=1
 pkgdesc="Portable version of the OpenBSD ed text editor"
 arch=(x86_64 aarch64 riscv64)
@@ -9,7 +9,7 @@ url="https://github.com/ibara/oed"
 license=('BSD' 'ISC')
 depends=('musl')
 source=("https://github.com/ibara/oed/archive/refs/tags/oed-${pkgver}.tar.gz")
-sha512sums=('40425091166ce950ebd7144c0c876d76f496d50c8abfcd1d7663b7933869cb92ea30e0ffec91de83b14d65d71c61b39d5d2818adb619bb88707831e303c5850b')
+sha512sums=('1abb5bacf7a0b7485b27e94bf713af3afb536d7ff8d10eb6d786b0f004deb8c8e9932e4fc72d4e8076787e55bf6aab64d661437ed5e39c3bfc7f6a91dadfe6d6')
 
 build()
 {
