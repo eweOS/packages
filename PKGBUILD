@@ -2,7 +2,7 @@
 
 pkgname=pipewire
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64 aarch64 riscv64)
@@ -14,16 +14,19 @@ source=(
   fix-udev-zero.patch
   pipewire.user.service
   pipewire-pulse.user.service
+  pipewire.conf.in
 )
 sha256sums=('bddb29b9310c344ca069df410f6f02b7f3d8c518811c0505c7fe62d8428fd767'
             '5e41f524ac1112cc093858412d948637d31d42da989a1a4ad562aef83f6dda37'
             '4d808f22ea2adc5137d98702b21aeecbe00e15fed4ab9768da7d68a0acbe8560'
-            'bca9d53e4c5cf0eb1ecb7124365abf5ea740889887690423fef1d7b377b3660b')
+            'bca9d53e4c5cf0eb1ecb7124365abf5ea740889887690423fef1d7b377b3660b'
+            'a1d7812aabba038ff1d90a0af2139f0c420419c5f66ee401b9bc45d0445edfdd')
 
 prepare()
 {
   # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/2398
   _patch_ $pkgname-$pkgver
+  cp pipewire.conf.in $pkgname-$pkgver/src/daemon/pipewire.conf.in
 }
 
 build()
