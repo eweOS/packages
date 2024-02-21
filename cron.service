@@ -1,4 +1,4 @@
 type = process
 command = /usr/bin/crond -n
 smooth-recovery = true
-depends-on = target-login
+depends-on = login.target

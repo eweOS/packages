@@ -2,7 +2,7 @@
 
 pkgname=cronie
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon that runs specified programs at scheduled times and related too"
 url="https://github.com/cronie-crond/cronie"
 license=('custom:BSD')
@@ -13,7 +13,7 @@ source=(
   cron.service
 )
 sha256sums=('78033100c24413f0c40f93e6138774d6a4f55bc31050567b90db45a2f9f1b954'
-            'e33cecd52ffc6ac6efe01ec6cdc86d1c847784ddf43d55109cf93c9ff933855b')
+            '2573646115c9dc1cb2c22f9480f6f12d98ac611f6a5353a03cf0c6bf345fbe0b')
 
 build()
 {
