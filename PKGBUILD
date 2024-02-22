@@ -2,23 +2,21 @@
 
 pkgname=(linux linux-headers)
 _basename=linux
-_pkgver=6.6.7
-pkgver=6.6.7
-pkgrel=2
+_pkgver=6.7.5
+pkgver=6.7.5
+pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 url='http://www.kernel.org'
 license=(GPL2)
-makedepends=(bison flex perl python libelf linux-headers rsync lld)
+makedepends=(bison flex perl python libelf linux-headers rsync lld git)
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz"
   "kernel-config::git+https://github.com/eweOS/kernel-config.git"
   busybox-find-compat.patch
-  0_max98388-correct-includes.patch
 )
-sha256sums=('0ce68ec6019019140043263520955ecd04839e55a1baab2fa9155b42bb6fd841'
+sha256sums=('29f6464061b8179cbb77fc5591e06a2199324e018c9ed730ca3e6dfb145539ff'
             'SKIP'
-            'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd'
-            '61312a177624ba6f94da170c1ada48f2bd65d59172ab99bbe90f625855931f3b')
+            'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
 
 prepare()
 {
@@ -27,7 +25,6 @@ prepare()
     -e '/^CC/s@gcc@cc@g' \
     -e '/^HOSTCC/s@gcc@cc@g' Makefile
   patch -Np1 -i "${srcdir}/busybox-find-compat.patch"
-  patch -p1 < $srcdir/0_max98388-correct-includes.patch
 }
 
 build()
