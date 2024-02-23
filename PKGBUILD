@@ -2,7 +2,7 @@
 
 pkgname=docbook-xsl
 pkgver=1.79.2
-pkgrel=1
+pkgrel=2
 pkgdesc='XML stylesheets for Docbook-xml transformations'
 url='https://docbook.org/'
 arch=(any)
