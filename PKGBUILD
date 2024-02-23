@@ -1,25 +1,30 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=libxml2
+pkgbase=libxml2
+pkgname=(
+  libxml2
+  libxml2-docs
+)
 _pkgver_major=2.12
 _pkgver_minor=2
 pkgver=${_pkgver_major}.${_pkgver_minor}
-pkgrel=2
+pkgrel=3
 pkgdesc="XML parsing library, version 2"
 arch=(x86_64 aarch64 riscv64)
 license=('MIT')
 depends=('zlib' 'ncurses' 'xz' 'icu')
 makedepends=('python')
 url="http://www.xmlsoft.org/"
-source=(https://download.gnome.org/sources/${pkgname}/${_pkgver_major}/${pkgname}-${pkgver}.tar.xz)
+source=(https://download.gnome.org/sources/${pkgbase}/${_pkgver_major}/${pkgbase}-${pkgver}.tar.xz)
 md5sums=('ea61cf9b3f3afd61fde0e05a54fc5ddd')
 
 build()
 {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgbase}-${pkgver}
   autoreconf
   ./configure \
     --prefix=/usr \
+    --sysconfdir=/etc \
     --with-threads \
     --with-history \
     --with-icu \
@@ -27,8 +32,18 @@ build()
   make
 }
 
-package()
+package_libxml2()
 {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgbase}-${pkgver}
   make DESTDIR="${pkgdir}" install
+
+  mkdir -p ../doc/usr/share
+  mv "$pkgdir"/usr/share/{doc,gtk-doc} -t ../doc/usr/share
+}
+
+package_libxml2-docs() {
+  pkgdesc+=" (documentation)"
+  depends=()
+
+  mv doc/* "$pkgdir"
 }
