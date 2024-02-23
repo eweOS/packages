@@ -6,7 +6,7 @@
 # Contributor: ice-man <icemanf@gmail.com>
 
 pkgname=libssh2
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="A library implementing the SSH2 protocol as defined by Internet Drafts"
 url="https://www.libssh2.org/"
@@ -15,13 +15,14 @@ license=('BSD')
 depends=('openssl' 'zlib')
 provides=('libssh2.so')
 source=("https://www.libssh2.org/download/$pkgname-$pkgver.tar.gz")
-sha256sums=('2d64e90f3ded394b91d3a2e774ca203a4179f69aebee03003e5a6fa621e41d51')
+sha256sums=('3736161e41e2693324deb38c26cfdc3efe6209d634ba4258db1cecff6a5ad461')
 
 build()
 {
   cd "$pkgname-$pkgver"
 
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr	\
+	  --disable-docker-tests
   make
 }
 
