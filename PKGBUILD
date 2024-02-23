@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libnghttp2
-pkgver=1.58.0
+pkgver=1.59.0
 pkgrel=1
 pkgdesc='Framing layer of HTTP/2 is implemented as a reusable C library'
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -9,7 +9,7 @@ url='https://nghttp2.org/'
 license=('MIT')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/nghttp2/nghttp2.git#tag=v${pkgver}")
-sha512sums=('SKIP')
+sha256sums=('SKIP')
 
 prepare() {
   cd $pkgname
