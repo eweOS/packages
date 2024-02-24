@@ -1,5 +1,34 @@
-PATH='/usr/local/bin:/bin:/usr/bin'
+# /etc/profile
+
+# Append "$1" to $PATH when not already in.
+# This function API is accessible to scripts in /etc/profile.d
+append_path () {
+    case ":$PATH:" in
+        *:"$1":*)
+            ;;
+        *)
+            PATH="${PATH:+$PATH:}$1"
+    esac
+}
+
+# Append our default paths
+append_path '/usr/local/sbin'
+append_path '/usr/local/bin'
+append_path '/usr/bin'
+
+# Force PATH to be environment
 export PATH
+
+# Load profiles from /etc/profile.d
+if test -d /etc/profile.d/; then
+	for profile in /etc/profile.d/*.sh; do
+		test -r "$profile" && . "$profile"
+	done
+	unset profile
+fi
+
+# Unload our profile API functions
+unset -f append_path
 
 [ -z "$TERM" ] && TERM=linux
 [ -z "$PAGER" ] && PAGER=less
@@ -16,3 +45,8 @@ then
 	. /etc/bashrc
 fi
 
+# Termcap is outdated, old, and crusty, kill it.
+unset TERMCAP
+
+# Man is much better than us at figuring this out
+unset MANPATH
