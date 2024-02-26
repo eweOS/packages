@@ -2,7 +2,7 @@
 
 pkgname=ostree
 pkgver=2024.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Operating system and container binary deployment and upgrades"
 url="https://ostreedev.github.io/ostree/"
 arch=(x86_64 aarch64 riscv64)
@@ -10,6 +10,7 @@ license=(LGPL-2.0-or-later)
 depends=(
   bash
   fuse3
+  gpgme
   libgpg-error
   libsodium
   util-linux
@@ -43,6 +44,7 @@ sha256sums=('SKIP'
 prepare() {
   cd $pkgname
 
+  # Use CC instead of GCC
   sed -i 's/CC=gcc/CC=cc/' Makefile-libostree.am
 
   # use fusemount3 (fuse3)
@@ -70,7 +72,6 @@ build() {
     --with-ed25519-libsodium
     --with-openssl
     --without-soup
-    --without-gpgme
   )
 
   cd $pkgname
@@ -86,7 +87,7 @@ check() {
 }
 
 package() {
-  depends+=(curl glib libarchive openssl xz)
+  depends+=(curl glib gpgme libarchive openssl xz)
 
   make DESTDIR="$pkgdir" install -C $pkgname
 }
