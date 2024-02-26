@@ -2,7 +2,7 @@
 
 pkgname=busybox
 pkgver=1.36.1
-pkgrel=15
+pkgrel=16
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64)
 url="https://www.busybox.net"
@@ -58,7 +58,7 @@ prepare()
   # Fix eweOS/bugs/#2
   patch -p1 < ../remove_empty_dir.patch
   # Fix depmod: buffer 67104768 too small with gz modules
-  sed -i 's/64*1024*1024/512*1024*1024/' modutils/depmod.c
+  sed -i 's/64i\*1024\*1024/512\*1024\*1024/' modutils/depmod.c
 }
 
 build()
