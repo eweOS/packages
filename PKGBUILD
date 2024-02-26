@@ -3,8 +3,8 @@
 
 pkgname=(go go-doc)
 epoch=2
-pkgver=1.21.5
-pkgrel=2
+pkgver=1.22.0
+pkgrel=1
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(x86_64 aarch64 riscv64)
 url='https://golang.org/'
@@ -13,13 +13,13 @@ makedepends=(go git)
 replaces=(go-pie)
 provides=(go-pie)
 options=(!strip staticlibs)
-source=("https://go.dev/dl/go${pkgver}.src.tar.gz")
-sha256sums=('285cbbdf4b6e6e62ed58f370f3f6d8c30825d6e56c5853c66d3c23bcdb09db19')
+source=("https://go.dev/dl/go${pkgver}.src.tar.gz" remove-use-gold.patch)
+sha256sums=('4d196c3d41a0d6c1dfc64d04e3cc1f608b0c436bd87b7060ce3e23234e1f4d5c' 'SKIP')
 
 prepare()
 {
   # do not try to use gold in arm64, we use mold
-  sed -i '1609,1628d' $pkgname/src/cmd/link/internal/ld/lib.go
+  _patch_ $pkgname
 }
 
 build()
