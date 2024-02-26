@@ -2,12 +2,13 @@
 
 pkgname=harfbuzz
 pkgver=8.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenType text shaping engine"
 url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
 arch=(x86_64 aarch64 riscv64)
 license=(MIT)
-makedepends=(glib freetype2 cairo python meson icu gobject-introspection)
+depends=(glib freetype2 cairo icu)
+makedepends=(python meson gobject-introspection)
 source=("https://github.com/harfbuzz/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
 provides=(libharfbuzz-subset.so libharfbuzz-cairo.so libharfbuzz.so
 	  libharfbuzz-icu.so libharfbuzz-gobject.so)
