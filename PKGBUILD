@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=git
-pkgver=2.41.0
+pkgver=2.44.0
 pkgrel=1
 pkgdesc='the fast distributed version control system'
 arch=(x86_64 aarch64 riscv64)
@@ -11,7 +11,7 @@ depends=('curl' 'expat' 'perl' 'perl-error'
   'openssl' 'pcre2' 'zlib')
 makedepends=('python')
 source=("https://www.kernel.org/pub/software/scm/git/git-${pkgver}.tar.xz")
-sha256sums=('e748bafd424cfe80b212cbc6f1bbccc3a47d4862fb1eb7988877750478568040')
+sha256sums=('e358738dcb5b5ea340ce900a0015c03ae86e804e7ff64e47aa4631ddee681de3')
 
 _make_paths=(
   prefix='/usr'
