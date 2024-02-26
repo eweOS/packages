@@ -1,0 +1,18 @@
+--- a/dinit-userservd.cc
++++ b/dinit-userservd.cc
+@@ -346,6 +346,8 @@
+         }
+         /* write boot service */
+         std::fprintf(f, "type = scripted\n");
++        /* wait for system user service directory */
++        std::fprintf(f, "waits-for.d = /usr/lib/dinit/user/boot.d\n");
+         /* wait for a service directory */
+         std::fprintf(f, "waits-for.d = %s/boot.d\n", udir);
+         /* readiness notification */
+@@ -1158,4 +1160,4 @@
+         }
+     }
+     return 0;
+-}
+\ No newline at end of file
++}
