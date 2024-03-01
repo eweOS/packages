@@ -1,11 +1,12 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <barthalion@gmail.com>
 # Contributor: Thomas S Hatch <thatch45 at gmail dot com>
 
 pkgname=libaio
 pkgver=0.3.113
-pkgrel=2
+pkgrel=3
 pkgdesc="The Linux-native asynchronous I/O facility (aio) library"
 arch=(x86_64 aarch64 riscv64)
 url="https://pagure.io/libaio"
@@ -28,6 +29,7 @@ build()
   case "${CARCH}" in
     x86_64)  MARCH="x86-64" ;;
     aarch64) MARCH="armv8-a" ;;
+    riscv64) MARCH="rv64gc" ;;
   esac
   CFLAGS="-march=${MARCH} -mtune=generic -O2 -pipe"
   make -C $pkgname-$pkgname-$pkgver
