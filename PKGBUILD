@@ -4,7 +4,7 @@
 
 pkgname=chrpath
 pkgver=0.16
-pkgrel=3
+pkgrel=4
 pkgdesc="Change or delete the rpath or runpath in ELF files"
 arch=(x86_64 aarch64 riscv64)
 url="https://directory.fsf.org/project/chrpath/"
@@ -12,6 +12,12 @@ license=('GPL2')
 depends=('musl')
 source=("http://http.debian.net/debian/pool/main/c/chrpath/chrpath_$pkgver.orig.tar.gz")
 sha256sums=('bb0d4c54bac2990e1bdf8132f2c9477ae752859d523e141e72b3b11a12c26e7b')
+
+prepare()
+{
+  cd "${srcdir}"/$pkgname-$pkgver
+  autoreconf -fiv
+}
 
 build()
 {
