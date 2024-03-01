@@ -2,7 +2,7 @@
 
 pkgname=nss
 pkgver=3.98
-pkgrel=2
+pkgrel=3
 pkgdesc="Network Security Services"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 arch=(x86_64 aarch64 riscv64)
@@ -22,13 +22,15 @@ makedepends=(
 source=(
   "nss::git+https://github.com/nss-dev/nss#tag=NSS_${pkgver/./_}_RTM"
   "nss-3.87-use-clang-as.patch"
+  'do-not-use-arm-gcm.patch'
 )
 sha256sums=('SKIP'
-            'd78b83d7f80dcbcfceb91716a6cf0e3f388a984a5b295d0a9dc69417bc7f9825')
+            'd78b83d7f80dcbcfceb91716a6cf0e3f388a984a5b295d0a9dc69417bc7f9825'
+            '4587713da0a82ac2a994f71c08f6b73a8fbba95e4373f39402f22f813fc4259e')
 
 prepare() {
+  _patch_ nss
   cd nss
-  patch -p1 < ../nss-3.87-use-clang-as.patch
   sed -i "s@'force_integrated_as%': 0,@'force_integrated_as%': 1,@g" coreconf/config.gypi
 }
 
