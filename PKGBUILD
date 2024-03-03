@@ -3,8 +3,8 @@
 
 pkgbase=musl
 pkgname=(musl musl-static)
-pkgver=1.2.4
-pkgrel=4
+pkgver=1.2.5
+pkgrel=1
 pkgdesc='An implementation of the C/POSIX standard library.'
 arch=(x86_64 aarch64 riscv64)
 url='https://musl.libc.org'
@@ -20,7 +20,7 @@ source=(
   getent.c
   iconv.c
 )
-sha256sums=('7a35eae33d5372a7c0da1188de798726f68825513b7ae3ebe97aaaa52114f039'
+sha256sums=('a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4'
             'd87d0cbb3690ae2c5d8cc218349fd8278b93855dd625deaf7ae50e320aad247c'
             '002c1a216f6bed0f816ab1cfebde94a0b127193ef410c36b2190599983e015b8'
             'f79a2930a2e5bb0624321589edf8b889d1e9b603e01e6b7ae214616605b3fdd7')
