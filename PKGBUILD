@@ -2,7 +2,7 @@
 
 pkgname=gcompat
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU C Library compatibility layer for musl"
 url="https://git.adelielinux.org/adelie/gcompat"
 arch=(x86_64 aarch64 riscv64)
@@ -30,4 +30,8 @@ package()
   make ${_make_args[@]} DESTDIR="$pkgdir" install
   mkdir $pkgdir/usr
   mv $pkgdir/lib $pkgdir/usr/lib
+
+  for i in libc.so.6 libcrypt.so.1 libm.so.6 libpthread.so.0 libresolv.so.2 librt.so.1 libutil.so.1; do
+	ln -sfv libgcompat.so.0 "$pkgdir"/usr/lib/$i
+  done
 }
