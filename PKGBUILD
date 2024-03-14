@@ -2,7 +2,7 @@
 
 pkgname=lua54
 pkgver=5.4.6
-pkgrel=7
+pkgrel=8
 pkgdesc='Powerful lightweight programming language designed for extending applications'
 url='https://www.lua.org'
 arch=(x86_64 aarch64 riscv64)
@@ -56,7 +56,7 @@ build()
   )
   defCPath=$(
     tr -d "\n" << "----"
-./?.lua;
+./?.so;
 /usr/lib/lua/5.4/?.so;
 /usr/lib/lua/common/?.so;
 /usr/lib/lua/5.4/loadall.so
