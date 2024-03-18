@@ -3,7 +3,7 @@
 
 pkgbase=kmod
 pkgname=(kmod libkmod)
-pkgver=30
+pkgver=32
 pkgrel=1
 pkgdesc="Linux kernel module management"
 arch=(x86_64 aarch64 riscv64)
@@ -11,7 +11,15 @@ url='https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
 depends=('musl' 'zlib' 'openssl' 'xz' 'zstd' 'llvm-libs')
 #checkdepends=('linux-headers' 'libelf')
 source=("https://www.kernel.org/pub/linux/utils/kernel/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('f897dd72698dc6ac1ef03255cd0a5734ad932318e4adbaebc7338ef2f5202f9f')
+sha256sums=('630ed0d92275a88cb9a7bf68f5700e911fdadaf02e051cf2e4680ff8480bd492')
+
+prepare()
+{
+  cd "$pkgbase-$pkgver"
+  for srcfile in shared/util.c tools/kmod.c tools/depmod.c libkmod/libkmod-config.c; do
+    sed -i '1s/^/#include <libgen.h>\n/' $srcfile
+  done
+}
 
 build()
 {
