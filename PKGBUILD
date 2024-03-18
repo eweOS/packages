@@ -3,7 +3,7 @@
 pkgbase=pulseaudio
 pkgname=libpulse
 pkgver=16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A featureful, general-purpose sound server"
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 arch=(x86_64 aarch64 riscv64)
@@ -13,7 +13,6 @@ makedepends=(
   alsa-lib
   attr
   dbus
-  elogind
   git
   gtk3
   libcap
