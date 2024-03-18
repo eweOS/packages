@@ -1,6 +1,6 @@
 type = process
 command = greetd
 depends-on = rc.target
-depends-on = elogind
+depends-on = seatd
 waits-for.d = /usr/lib/dinit/system/greetd.d
 before = login.target
