@@ -3,7 +3,7 @@
 pkgname=foot
 pkgdesc='A fast, lightweight and minimalistic Wayland terminal emulator'
 pkgver=1.16.2
-pkgrel=3
+pkgrel=4
 url="https://codeberg.org/dnkl/$pkgname"
 arch=(x86_64 aarch64 riscv64)
 license=(MIT)
@@ -12,7 +12,6 @@ makedepends=(
   ninja
   python
   tllist
-  sway
   scdoc
   wayland
   wayland-protocols
