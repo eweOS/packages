@@ -2,7 +2,7 @@
 
 pkgbase=fakeroot
 pkgname=(fakeroot fakeroot-tcp)
-pkgver=1.33
+pkgver=1.34
 pkgrel=1
 pkgdesc='Tool for simulating superuser privileges'
 arch=(x86_64 aarch64 riscv64)
