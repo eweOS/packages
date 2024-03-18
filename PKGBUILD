@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ffmpeg
-pkgver=6.0
-pkgrel=2
+pkgver=6.1.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(x86_64 aarch64 riscv64)
 url=https://ffmpeg.org/
@@ -43,7 +43,7 @@ provides=(
 #_tag=3949db4d261748a9f34358a388ee255ad1a7f0c0
 #source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag})
 source=(https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n$pkgver.tar.gz)
-sha256sums=('9a1fa94608300e835bf89bdfcd7d77deceba67bff3494f609816f84bd69a459e')
+sha256sums=('7c1ebea95d815e49c1e60c7ee816410dec73a81b8ac002b276780d2f9048e598')
 
 prepare() {
   cd FFmpeg-n$pkgver
@@ -62,7 +62,6 @@ build() {
     --disable-amf \
     --disable-avisynth \
     --disable-cuda-llvm \
-    --disable-lto \
     --disable-fontconfig \
     --enable-gmp \
     --disable-gnutls \
