@@ -1,7 +1,7 @@
 # Maintainer: YukariChiba <i@0x7f.cc>
 
 pkgname="hyprland"
-pkgver="0.35.0"
+pkgver="0.37.1"
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(x86_64 aarch64 riscv64)
@@ -21,6 +21,7 @@ depends=(
   tomlplusplus
   libdrm
   libegl
+  hyprcursor
 )
 makedepends=(
   git
