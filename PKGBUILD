@@ -2,7 +2,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=minizip
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 license=('custom')
@@ -10,7 +10,7 @@ pkgdesc="Mini zip and unzip based on zlib"
 url="https://www.zlib.net/"
 depends=('musl' 'zlib')
 source=("https://zlib.net/zlib-${pkgver}.tar.gz")
-sha256sums=('ff0ba4c292013dbc27530b3a81e1f9a813cd39de01ca5e0f8bf355702efa593e')
+sha256sums=('9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23')
 
 build()
 {
