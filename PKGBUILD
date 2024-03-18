@@ -6,7 +6,7 @@ pkgname=(
   libwireplumber
 )
 pkgver=0.4.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Session / policy manager implementation for PipeWire"
 url="https://pipewire.pages.freedesktop.org/wireplumber/"
 arch=(x86_64 aarch64 riscv64)
@@ -16,7 +16,6 @@ makedepends=(
   lua54
   meson
   pipewire
-  elogind
   glib
 )
 checkdepends=(pipewire)
@@ -27,7 +26,7 @@ build()
 {
   local meson_options=(
     -D doc=disabled
-    -D elogind=enabled
+    -D elogind=disabled
     -D system-lua=true
     -D systemd=disabled
     -D introspection=disabled
@@ -52,7 +51,6 @@ package_wireplumber()
     "libwireplumber=$pkgver-$pkgrel"
     lua54
     pipewire
-    elogind
   )
   meson install -C build --destdir "$pkgdir"
   (
