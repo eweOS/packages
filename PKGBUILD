@@ -2,7 +2,7 @@
 
 pkgname=pam_rundir
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='PAM module to provide user runtime directory on Linux systems '
 arch=(x86_64 aarch64 riscv64)
 url="http://jjacky.com/$pkgname"
@@ -13,7 +13,7 @@ sha256sums=('c779b699ed23777a3bdba87b7f67ed395fe957f3c96138faee45f87a27bcc020')
 
 build() {
   cd $pkgname-$pkgver
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --with-parentdir=/run/user
   make
 }
 
