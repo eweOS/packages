@@ -2,7 +2,7 @@
 
 pkgname=connman
 pkgver=1.42
-pkgrel=2
+pkgrel=3
 pkgdesc="Intel's modular network connection manager"
 url="https://01.org/connman"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -24,6 +24,7 @@ prepare() {
   cd "${pkgname}-${pkgver}"
   patch -p1 < ../musl-res-ninit.patch
   sed -i '1s/^/#include<stdio.h>\n/' src/dnsproxy.c
+  sed -i '1s/^/#include <libgen.h>\n/' src/log.c
 }
 
 build() {
