@@ -2,12 +2,12 @@
 
 pkgname=dinit-userservd
 pkgver=0.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="user dinit instance spawner + manager daemon."
 arch=(x86_64 aarch64 riscv64)
 url="https://github.com/Xynonners/dinit-userservd"
 license=('BSD')
-depends=('dinit' 'elogind')
+depends=('dinit' 'seatd' 'pam')
 source=("$pkgname::git+$url#tag=v$pkgver" 0_service-dir.patch 1_system-user-boot.patch)
 makedepends=('meson' 'git')
 sha256sums=('SKIP'
@@ -16,6 +16,7 @@ sha256sums=('SKIP'
 
 prepare() {
   _patch_ $pkgname
+  sed -i 's/elogind/seatd/' $pkgname/dinit-userservd
 }
 
 build() {
