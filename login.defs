@@ -1,0 +1,5 @@
+# this file is not used by login from busybox.
+# it comes from greetd-regreet
+
+UID_MIN                  1000
+UID_MAX                 60000
