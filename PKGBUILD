@@ -3,7 +3,7 @@
 pkgbase=gtk4
 pkgname=(gtk4 gtk-update-icon-cache)
 pkgver=4.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-platform toolkit for creating graphical user interfaces"
 url="https://www.gtk.org/"
 arch=(x86_64 aarch64 riscv64)
@@ -26,14 +26,13 @@ depends=(
 )
 makedepends=(
   meson
-  binutils-gold
-  binutils-objcopy
   sassc
   wayland-protocols
   gobject-introspection
   vulkan-headers
   vulkan-icd-loader
   glslang
+  lld
 )
 checkdepends=(weston)
 source=(
@@ -46,8 +45,6 @@ sha256sums=('8e6dfd97a9dbe21c0a6d2596fb0c68e6860012848653491d566575846e629a22'
 
 build()
 {
-  mkdir -p $srcdir/binutils-bin && cp /usr/bin/binutils-objcopy $srcdir/binutils-bin/objcopy
-  export PATH="$srcdir/binutils-bin:$PATH"
   local meson_options=(
     --libdir=lib
     -D x11-backend=false
@@ -60,7 +57,7 @@ build()
     -D build-tests=false
     -D build-testsuite=false
   )
-  LD=binutils-gold ewe-meson gtk-$pkgver build "${meson_options[@]}"
+  LD=ld.lld ewe-meson gtk-$pkgver build "${meson_options[@]}"
   meson compile -C build
 }
 
