@@ -3,7 +3,7 @@
 pkgbase=gtk4
 pkgname=(gtk4 gtk-update-icon-cache)
 pkgver=4.14.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-platform toolkit for creating graphical user interfaces"
 url="https://www.gtk.org/"
 arch=(x86_64 aarch64 riscv64)
@@ -23,6 +23,7 @@ depends=(
   libxkbcommon
   graphene
   libepoxy
+  desktop-file-utils
 )
 makedepends=(
   meson
