@@ -2,7 +2,7 @@
 
 pkgname=gtk3
 pkgver=3.24.38
-pkgrel=4
+pkgrel=5
 pkgdesc="Multi-platform toolkit for creating graphical user interfaces"
 url="https://www.gtk.org/"
 arch=(x86_64 aarch64 riscv64)
@@ -26,8 +26,6 @@ depends=(
 )
 makedepends=(
   meson
-  binutils-gold
-  binutils-objcopy
   sassc
   wayland-protocols
   gobject-introspection
@@ -37,8 +35,6 @@ sha256sums=('6cdf7189322b8465745fbb30249044d05b792a8f006746ccce9213db671ec16d')
 
 build()
 {
-  mkdir -p $srcdir/binutils-bin && cp /usr/bin/binutils-objcopy $srcdir/binutils-bin/objcopy
-  export PATH="$srcdir/binutils-bin:$PATH"
   local meson_options=(
     --libdir=lib
     -D x11_backend=false
@@ -49,7 +45,7 @@ build()
     -D examples=false
     -D tests=false
   )
-  LD=binutils-gold ewe-meson gtk-$pkgver build "${meson_options[@]}"
+  ewe-meson gtk-$pkgver build "${meson_options[@]}"
   meson compile -C build
 }
 
