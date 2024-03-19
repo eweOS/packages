@@ -2,7 +2,7 @@
 
 pkgname=gtk3
 pkgver=3.24.38
-pkgrel=6
+pkgrel=7
 pkgdesc="Multi-platform toolkit for creating graphical user interfaces"
 url="https://www.gtk.org/"
 arch=(x86_64 aarch64 riscv64)
@@ -52,7 +52,7 @@ build()
 
 package()
 {
-  depends+=(gtk-update-icon-cache)
+  depends+=(gtk-update-icon-cache adwaita-icon-theme)
   meson install -C build --destdir "$pkgdir"
 
   # Built by GTK 4, shared with GTK 3
