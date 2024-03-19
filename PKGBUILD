@@ -3,7 +3,7 @@
 pkgbase=gtk4
 pkgname=(gtk4 gtk-update-icon-cache)
 pkgver=4.14.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Multi-platform toolkit for creating graphical user interfaces"
 url="https://www.gtk.org/"
 arch=(x86_64 aarch64 riscv64)
@@ -66,7 +66,7 @@ build()
 
 package_gtk4()
 {
-  depends+=(gtk-update-icon-cache)
+  depends+=(gtk-update-icon-cache adwaita-icon-theme)
   meson install -C build --destdir "$pkgdir"
   
   cd $pkgdir
