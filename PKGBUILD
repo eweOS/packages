@@ -4,7 +4,7 @@ pkgname=(linux linux-headers)
 _basename=linux
 _pkgver=6.7.5
 pkgver=6.7.5
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64)
 url='http://www.kernel.org'
 license=(GPL2)
@@ -62,6 +62,7 @@ package_linux()
 
   make LLVM=1 LLVM_IAS=1 ARCH=${build_arch} \
     INSTALL_MOD_PATH="$pkgdir/usr" \
+    INSTALL_MOD_STRIP=1 \
     modules_install
 
   rm -f "$modulesdir/build"
