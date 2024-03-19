@@ -2,7 +2,7 @@
 
 pkgname=libadwaita
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Building blocks for modern adaptive GNOME applications"
 url="https://gnome.pages.gitlab.gnome.org/libadwaita/"
 arch=(x86_64 aarch64 riscv64)
@@ -48,8 +48,6 @@ check() (
 )
 
 package_libadwaita() {
-  depends+=(libgtk-4.so)
   provides+=(libadwaita-1.so)
-
   meson install -C build --destdir "$pkgdir"
 }
