@@ -5,7 +5,7 @@
 pkgbase=pacman
 pkgname=(libalpm pacman makepkg repo-tools)
 pkgver=6.0.2
-pkgrel=15
+pkgrel=16
 arch=(x86_64 aarch64 riscv64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
@@ -20,6 +20,7 @@ source=(
   function_pick.sh
   function_sysutils.sh
   function_license.sh
+  function_lua.sh
   script_warndirs.sh
 )
 sha256sums=('7d8e3e8c5121aec0965df71f59bedf46052c6cf14f96365c4411ec3de0a4c1a5'
@@ -30,6 +31,7 @@ sha256sums=('7d8e3e8c5121aec0965df71f59bedf46052c6cf14f96365c4411ec3de0a4c1a5'
             '7d2ad28bef8f9f77f33929d2050244a6f29941de6ad0793b6820caee3dbd84e3'
             '5648db8988c73588c05eccaa4329f6d3bd95ec1e39f2337eb1f21641ee73d479'
             '35bcd3281043a7f4cc6ac7ee4b8978c0a90b3a14961139fdf24622100107af98'
+	    'e1d2212971daa6ec1b56f25ef4a67487a782637f548b3ea5d56e1c382a0a5cec'
             '855d0730810fcb63fa10dcc66d5599200079673643bee5adaf750cbaddfa423a')
 
 _fetchpkg()
@@ -149,6 +151,7 @@ package_makepkg()
   install -Dm644 "$srcdir/function_dinit.sh" "$pkgdir/usr/share/makepkg/function_dinit.sh"
   install -Dm644 "$srcdir/function_sysutils.sh" "$pkgdir/usr/share/makepkg/function_sysutils.sh"
   install -Dm644 "$srcdir/function_license.sh" "$pkgdir/usr/share/makepkg/function_license.sh"
+  install -Dm644 "$srcdir/function_lua.sh" "$pkgdir/usr/share/makepkg/function_lua.sh"
   install -Dm644 "$srcdir/script_warndirs.sh" "$pkgdir/usr/share/makepkg/lint_package/warndirs.sh"
 }
 
