@@ -1,0 +1,2 @@
+d /var/log/regreet 0755 greeter greeter - -
+d /var/cache/regreet 0755 greeter greeter - -
