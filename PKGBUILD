@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=firefox
-pkgver=123.0
+pkgver=124.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/"
@@ -35,12 +35,14 @@ source=(
   lolmalloc.patch
   res_nquery.patch
   firefox.desktop
+  distribution.ini
 )
-sha256sums=('9e885abdaddb14cd4f313c1575282fec6af5901f445e9744fe24e2ea837d4cb7'
+sha256sums=('345a1235123ad808cecdb4a9af09ea48bf52ad09d3d380fc704406e3dd13c9d8'
             '3fa5049fe26dba8f18e1d21be70b238f24bca79462ecfa5be348639f8dc9a620'
             '84c490d8314fcc2b37ade636d6ae8467980c07caa351c65d06bf71a65ba01d9d'
             '7a9e1e0b60879983c81148e59a44074e3f5cd805b2c16d1d2211336b3af04e51'
-            '18a0f1df76834ac3d4ddb150aa857785df641b54f9fbf0cfb6ffcec64dad72d4')
+            '18a0f1df76834ac3d4ddb150aa857785df641b54f9fbf0cfb6ffcec64dad72d4'
+            'a22ceb0bbf5830d3afbacd656e6893ff0ce455fae5f48c7daa5f836112291ba7')
 # FIXME: ADD MORE MEMORY!!!
 options=(!lto)
 
@@ -63,7 +65,6 @@ build() {
   export MOZ_NOSPAM=1
   export CXXSTDLIB=c++
 
-
   # set rpath so linker finds the libs
   export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/lib/firefox"
   # malloc_usable_size is used in various parts of the codebase
@@ -78,17 +79,7 @@ package() {
   DESTDIR="$pkgdir" ./mach install
 
   local distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
-  install -Dvm644 /dev/stdin "$distini" <<END
-[Global]
-id=eweos
-version=1.0
-about=Mozilla Firefox for eweOS
-
-[Preferences]
-app.distributor=eweos
-app.distributor.channel=$pkgname
-app.partner.eweos=eweos
-END
+  install -Dvm644 $srcdir/distribution.ini "$distini"
 
   local i theme=official
   for i in 16 22 24 32 48 64 128 256; do
