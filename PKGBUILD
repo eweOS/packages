@@ -2,7 +2,7 @@
 
 pkgname=samurai
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='a ninja-compatible build tool written in C99'
 url='https://github.com/michaelforney/samurai/'
 arch=(x86_64 aarch64 riscv64)
@@ -17,7 +17,6 @@ build () {
 }
 
 package() {
-  provides+=(ninja)
   conflicts+=(ninja)
 
   cd samurai-$pkgver
