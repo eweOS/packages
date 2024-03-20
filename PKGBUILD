@@ -3,7 +3,7 @@
 
 pkgname=filesystem
 pkgver=1.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc='The base directory structure and a few core files for the system.'
 arch=(any)
 url='https://os.ewe.moe'
@@ -22,6 +22,7 @@ source=(
   hosts
   motd
   fstab
+  locale.sh
 )
 sha256sums=('4fecb0831d4cc037813cf758bf8957f7d979c6415a139efca4c8554e159242d1'
             'ab1e9388edd7947b307b9812f5648f738d797117d99a91deb7e4fb2096c1926f'
@@ -33,7 +34,8 @@ sha256sums=('4fecb0831d4cc037813cf758bf8957f7d979c6415a139efca4c8554e159242d1'
             'a9589ae7a6d52dd8866e7504023bbe13c233fa3fef9593ceb49d3fdd20675975'
             'c0fca42f35a4c2034fb2105cdd428f65ecd5d5454fc8e58f5620adbfc0ec9509'
             '95b9288fbefc8af3f6412b1369ca2ee2df6daf038e0c035476c0f6bed27307b5'
-            '45d48dd125685c737136fc3deae94887bbdba46a5fb59244fb1ffb39cadb6620')
+            '45d48dd125685c737136fc3deae94887bbdba46a5fb59244fb1ffb39cadb6620'
+            'adb040b79a9b89757f46b2cfdcbcbc5c73cb8d96c55aabf0ef003b438eab5777')
 
 backup=(
   etc/passwd
@@ -84,4 +86,8 @@ package()
   for user in {passwd,shadow,group,profile,shells,services,protocols,os-release,hosts,motd,fstab}; do
     install -m0644 $srcdir/$user "etc/$user"
   done
+
+  # files in /etc/profile.d
+  install -d etc/profile.d
+  install -m0644 $srcdir/locale.sh "etc/profile.d/20-setlocale.sh"
 }
