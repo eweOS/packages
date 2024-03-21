@@ -1,16 +1,12 @@
---- rustc-1.74.0-src/compiler/rustc_target/src/spec/linux_musl_base.rs
-+++ rustc-1.74.0-src/compiler/rustc_target/src/spec/linux_musl_base.rs
-@@ -1,16 +1,12 @@
--use crate::spec::crt_objects::{self, LinkSelfContainedDefault};
- use crate::spec::TargetOptions;
- 
- pub fn opts() -> TargetOptions {
-     let mut base = super::linux_base::opts();
+--- rustc-1.74.0-src/compiler/rustc_target/src/spec/base/linux_musl.rs
++++ rustc-1.74.0-src/compiler/rustc_target/src/spec/base/linux_musl.rs
+@@ -5,12 +5,9 @@
+     let mut base = base::linux::opts();
  
      base.env = "musl".into();
 -    base.pre_link_objects_self_contained = crt_objects::pre_musl_self_contained();
 -    base.post_link_objects_self_contained = crt_objects::post_musl_self_contained();
--    base.link_self_contained = LinkSelfContainedDefault::Musl;
+-    base.link_self_contained = LinkSelfContainedDefault::InferredForMusl;
  
      // These targets statically link libc by default
 -    base.crt_static_default = true;
@@ -18,6 +14,7 @@
  
      base
  }
+
 --- rustc-1.74.0-src/compiler/rustc_target/src/spec/crt_objects.rs
 +++ rustc-1.74.0-src/compiler/rustc_target/src/spec/crt_objects.rs
 @@ -63,28 +63,6 @@
