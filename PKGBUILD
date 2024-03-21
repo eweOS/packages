@@ -2,22 +2,16 @@
 
 _srcname=SPIRV-LLVM-Translator
 pkgname=spirv-llvm-translator
-pkgver=17.0.0
+pkgver=18.1.0
 pkgrel=1
 pkgdesc="Tool and a library for bi-directional translation between SPIR-V and LLVM IR"
 arch=(x86_64 aarch64 riscv64)
 url="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
 license=(custom)
 depends=(llvm-libs spirv-tools)
-makedepends=(cmake llvm spirv-headers openmp llvm-lto)
-_commit=17174acb0f497d031e96c366d83ea40f88f64ded
-source=(git+${url}.git#commit=$_commit)
+makedepends=(cmake llvm spirv-headers openmp llvm-lto git)
+source=(git+${url}.git#tag=v$pkgver)
 sha256sums=('SKIP')
-
-pkgver() {
-  cd ${_srcname}
-  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./;s/-/+/'
-}
 
 build()
 {
