@@ -2,9 +2,9 @@
 
 pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang wasi-libc++ wasi-libc++abi wasi-compiler-rt)
 _realpkgname=llvm-project
-pkgver=17.0.6
-_binutilsver=2.41
-pkgrel=3
+pkgver=18.1.2
+_binutilsver=2.42
+pkgrel=1
 arch=('x86_64' 'aarch64' 'riscv64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -30,8 +30,8 @@ source=(
   wasi-toolchain.cmake::https://raw.githubusercontent.com/WebAssembly/wasi-sdk/main/wasi-sdk.cmake
   rv64-disable-lldb-server.patch
 )
-sha256sums=('58a8818c60e6627064f312dbf46c02d9949956558340938b71cf731ad8bc0813'
-            'ae9a5789e23459e59606e6714723f2d3ffc31c03174191ef0d015bdf06007450'
+sha256sums=('51073febd91d1f2c3b411d022695744bda322647e76e0b4eb1918229210c48d5'
+            'f6e4d41fd5fc778b06b7891457b3620da5ecea1006c6a4a41ae998109f85a800'
             '7ded3468de11201bc58c761ca065bc6f42ed9381a7b13721364befff9876b30a'
             '19ad5d5208e7271e0517de15b8ec652a0445298aa34cb7057d5da254966aa781')
 
@@ -159,6 +159,7 @@ build()
     -DLIBCXX_USE_COMPILER_RT=ON
     -DLIBCXXABI_USE_COMPILER_RT=ON
     -DLIBUNWIND_USE_COMPILER_RT=ON
+    -DLIBUNWIND_ENABLE_FRAME_APIS=ON
     -DLIBUNWIND_INSTALL_HEADERS=ON
     -DCOMPILER_RT_BUILD_GWP_ASAN=OFF
     -DCOMPILER_RT_BUILD_XRAY=OFF
@@ -199,6 +200,7 @@ build()
     -DLIBCXX_HAS_MUSL_LIBC=ON
     -DLIBCXX_HAS_EXTERNAL_THREAD_API=OFF
     -DLIBCXXABI_HAS_EXTERNAL_THREAD_API=OFF
+    -DLIBCXXABI_USE_LLVM_UNWINDER=OFF
   )
 
   export WASI_CRT_ARGS=(
