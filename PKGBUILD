@@ -3,7 +3,7 @@
 pkgname='mesa'
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=24.0.1
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm')
 makedepends=('meson' 'wayland' 'wayland-protocols')
@@ -16,7 +16,7 @@ source=(
   orcjit.patch
 )
 sha512sums=('1eaff5dcff8dd314b2dfe249d25db68d530d3f0fb54e926999768d0a48aa34b67c31ec3587bb2a7d1969845b26e79a4d87aceb7a141fd2e811ae0c47c00b0963'
-            '6d7a1745e685d44ec9356bd6ad63466e8c71fa617614de0d14b06274dbc1287fc586e3940819b979e91783633f348405b916eae919047c7c45152611e578c027')
+            'e56dcacfb601c85cc683cba218d3be35cb27f15f48988aecc29f38d04fb14151d80b3cffaaacdf76c5be41c7eff596a39ea1ba83926684495bd239f56a7df798')
 
 prepare()
 {
