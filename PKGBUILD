@@ -2,8 +2,8 @@
 
 pkgname='mesa'
 pkgdesc="An open-source implementation of the OpenGL specification"
-pkgver=24.0.1
-pkgrel=2
+pkgver=24.0.3
+pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm')
 makedepends=('meson' 'wayland' 'wayland-protocols')
@@ -15,7 +15,7 @@ source=(
   https://mesa.freedesktop.org/archive/$pkgname-$pkgver.tar.xz
   orcjit.patch
 )
-sha512sums=('1eaff5dcff8dd314b2dfe249d25db68d530d3f0fb54e926999768d0a48aa34b67c31ec3587bb2a7d1969845b26e79a4d87aceb7a141fd2e811ae0c47c00b0963'
+sha512sums=('76b3b479877c40f729d7f530af4e3577fa74363edcd3d9474350d498a51dbb761fc034b39bee8547e97c30fd3a520cbc50c742d5a187746e83ddab1df44f37e9'
             'e56dcacfb601c85cc683cba218d3be35cb27f15f48988aecc29f38d04fb14151d80b3cffaaacdf76c5be41c7eff596a39ea1ba83926684495bd239f56a7df798')
 
 prepare()
