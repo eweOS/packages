@@ -3,22 +3,23 @@
 _pkg=SPIRV-Headers
 pkgname=spirv-headers
 epoch=2
-pkgver=1.3.261.1
+pkgver=1.3.280.0
 pkgrel=1
 pkgdesc="SPIR-V Headers"
+_pkgpfx=vulkan-sdk
 arch=(any)
 url="https://www.khronos.org/registry/spir-v/"
 license=(MIT)
 makedepends=(cmake)
-source=(https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/sdk-${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('46d14e993d58e641ec4d2bb96e76f4f2bd8426fb1e33b77e7d053cea80dcf5ffae3d4d6136559d4a66387fba3a4e4a4a74ad5af83445a3be0d171e47414599e1')
+source=(https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/${_pkgpfx}-${pkgver}/${pkgname}-${pkgver}.tar.gz)
+sha512sums=('6c20022df343e900793370cb30ccea6f4e64f42f4f7c495a0fbb9d3c5fcf3c15a173b93fe883e407d40f8c6dd9d0a6853d8a6907e3df5aa61ad48ae8485019e8')
 
 build() {
-  cmake -B build -S ${_pkg}-sdk-${pkgver} -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -B build -S ${_pkg}-${_pkgpfx}-${pkgver} -DCMAKE_INSTALL_PREFIX=/usr
   make -C build
 }
 
 package() {
   make -C build DESTDIR="${pkgdir}" install
-  install -Dm644 ${_pkg}-sdk-${pkgver}/LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
+  install -Dm644 ${_pkg}-${_pkgpfx}-${pkgver}/LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
