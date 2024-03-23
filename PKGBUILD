@@ -2,7 +2,7 @@
 
 pkgname=fcgiwrap
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A simple server for running CGI applications over FastCGI.'
 arch=(x86_64 aarch64 riscv64)
 license=('MIT')
@@ -14,8 +14,8 @@ source=(
   fcgiwrap.tmpfiles
 )
 sha256sums=('4c7de0db2634c38297d5fcef61ab4a3e21856dd7247d49c33d9b19542bd1c61f'
-  '68837760666aa20bace0119aaa802f865f711c868c4ebead8bfc1f979b5954e4'
-  'e28e199514eaa7d7c649fc8be0ecef8d56e66f2d317a14d1713dfd3805c984e2')
+            '98c7497215d82a8522a8e5ad31bfee35c0aad12dfb89bb28b626a87d756edb5a'
+            'e28e199514eaa7d7c649fc8be0ecef8d56e66f2d317a14d1713dfd3805c984e2')
 
 prepare()
 {
@@ -34,8 +34,6 @@ package()
 {
   cd ${pkgbase}-${pkgver}
   make DESTDIR="${pkgdir}" install
-  install -d $pkgdir/etc/dinit.d/prerun.d
-  install $srcdir/fcgiwrap.service $pkgdir/etc/dinit.d/fcgiwrap
-  install -d $pkgdir/etc/tmpfiles.d
-  install $srcdir/fcgiwrap.tmpfiles $pkgdir/etc/tmpfiles.d/fcgiwrap.conf
+  _dinit_install_services_ $srcdir/fcgiwrap.service
+  _install_tmpfiles_ $srcdir/fcgiwrap.tmpfiles
 }

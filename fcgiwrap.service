@@ -4,5 +4,4 @@ stop-command = rm /var/run/fcgiwrap/socket
 run-as = www-data
 smooth-recovery = true
 restart = false
-depends-on = target-login
-depends-on = fcgiwrap-prerun
+depends-on = network.target
