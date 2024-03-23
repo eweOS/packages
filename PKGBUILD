@@ -2,7 +2,7 @@
 
 pkgname=cronie
 pkgver=1.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Daemon that runs specified programs at scheduled times and related too"
 url="https://github.com/cronie-crond/cronie"
 license=('custom:BSD')
@@ -35,7 +35,6 @@ package()
   install -d "$pkgdir/etc/cron.d"
   install -d "$pkgdir/etc/dinit.d"
   echo "# Placeholder for deny files" > $pkgdir/etc/cron.deny
-  install "$srcdir/cron.service" "$pkgdir/etc/dinit.d/cron"
-
-  install -Dm0644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/COPYIG
+  _dinit_install_services_ $srcdir/cron.service
+  _install_license_ COPYING COPYING
 }
