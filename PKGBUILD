@@ -2,7 +2,7 @@
 
 pkgname=nginx
 pkgver=1.25.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server'
 arch=(x86_64 aarch64 riscv64)
 url='https://nginx.org'
@@ -74,6 +74,24 @@ package()
   depends+=(dinit catnest)
   cd $pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
+
+  sed -e '44s|html|/usr/share/nginx/html|' \
+      -e '54s|html|/usr/share/nginx/html|' \
+    -i "$pkgdir"/etc/nginx/nginx.conf
+
+  rm "$pkgdir"/etc/nginx/*.default
+
+  install -d "$pkgdir"/var/lib/nginx
+  install -dm700 "$pkgdir"/var/lib/nginx/proxy
+
+  chmod 755 "$pkgdir"/var/log/nginx
+  chown root:root "$pkgdir"/var/log/nginx
+
+  install -d "$pkgdir"/usr/share/nginx
+  mv "$pkgdir"/etc/nginx/html/ "$pkgdir"/usr/share/nginx
+
+  rmdir "$pkgdir"/run
+
   _dinit_install_services_ ${srcdir}/nginx.service
   install -Dm644 "${srcdir}/nginx.sysusers" $pkgdir/usr/lib/sysusers.d/nginx.conf
   _install_license_ LICENSE LICENSE
