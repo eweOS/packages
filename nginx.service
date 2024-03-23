@@ -1,5 +1,7 @@
-type = process
-command = /usr/bin/nginx -g "daemon off;"
+type = bgprocess
+command = /usr/bin/nginx
 smooth-recovery = true
 logfile = /var/log/nginx.log
 depends-on = network.target
+pid-file = /run/nginx.pid
+

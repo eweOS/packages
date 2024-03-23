@@ -2,7 +2,7 @@
 
 pkgname=nginx
 pkgver=1.25.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server'
 arch=(x86_64 aarch64 riscv64)
 url='https://nginx.org'
@@ -16,7 +16,7 @@ source=(
 options=(!lto)
 backup=(etc/nginx/nginx.conf)
 sha256sums=('760729901acbaa517996e681ee6ea259032985e37c2768beef80df3a877deed9'
-            'a026b59522a9d156db545fcede6593d6c0b707721a0456658cee955e8c812090'
+            '0c34877109a40df6ae357c6c7832642ecdcf1bc8f181e9552503a674bc426626'
             'f1634ba56d49c9e4ddd3f98cbcff594178b39efa068ad43894c4347a04272518')
 
 _activated_modules=(
@@ -60,6 +60,11 @@ build()
     --user=www-data \
     --group=www-data \
     --http-log-path=/var/log/nginx/access.log \
+    --http-client-body-temp-path=/var/lib/nginx/client-body \
+    --http-proxy-temp-path=/var/lib/nginx/proxy \
+    --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
+    --http-scgi-temp-path=/var/lib/nginx/scgi \
+    --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
     ${_activated_modules[@]}
   make
 }
@@ -69,9 +74,7 @@ package()
   depends+=(dinit catnest)
   cd $pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
-  install -d $pkgdir/etc/dinit.d
-  install -m 0754 "${srcdir}/nginx.service" $pkgdir/etc/dinit.d/nginx
-  install -d $pkgdir/usr/lib/sysusers.d
-  install -m 0644 "${srcdir}/nginx.sysusers" $pkgdir/usr/lib/sysusers.d/nginx.conf
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  _dinit_install_services_ ${srcdir}/nginx.service
+  install -Dm644 "${srcdir}/nginx.sysusers" $pkgdir/usr/lib/sysusers.d/nginx.conf
+  _install_license_ LICENSE LICENSE
 }
