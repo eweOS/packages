@@ -2,5 +2,6 @@ type = process
 command = connmand -n
 smooth-recovery = yes
 depends-on = rc.target
+depends-on = dbus
 waits-for.d = /usr/lib/dinit/system/connman.d
 before = network.target

@@ -2,7 +2,7 @@
 
 pkgname=connman
 pkgver=1.42
-pkgrel=3
+pkgrel=4
 pkgdesc="Intel's modular network connection manager"
 url="https://01.org/connman"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -17,7 +17,7 @@ source=(
 )
 sha256sums=('a3e6bae46fc081ef2e9dae3caa4f7649de892c3de622c20283ac0ca81423c2aa'
             '9b006bcf19c461d298d61ee8015263063197c7480c0bf629b9c7ad34bcffbb53'
-            'f205bc93138df06ba796e7b38ff7fb66b842a1ab9388173358e0b3f89f93c8e1')
+            '75ef31a644b8c7c2d33a728a022c811f6f3ddff5e5b0667a25840d61e133042d')
 options=(emptydirs)
 
 prepare() {
