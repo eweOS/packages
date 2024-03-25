@@ -2,9 +2,9 @@
 
 pkgname=(linux linux-headers)
 _basename=linux
-_pkgver=6.7.5
-pkgver=6.7.5
-pkgrel=2
+_pkgver=6.8.1
+pkgver=6.8.1
+pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 url='http://www.kernel.org'
 license=(GPL2)
@@ -14,7 +14,7 @@ source=(
   "kernel-config::git+https://github.com/eweOS/kernel-config.git"
   busybox-find-compat.patch
 )
-sha256sums=('29f6464061b8179cbb77fc5591e06a2199324e018c9ed730ca3e6dfb145539ff'
+sha256sums=('8d0c8936e3140a0fbdf511ad7a9f21121598f3656743898f47bb9052d37cff68'
             'SKIP'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
 
@@ -49,6 +49,7 @@ build()
   esac
   make LLVM=1 LLVM_IAS=1 ARCH=${build_arch} defconfig
   scripts/kconfig/merge_config.sh -m .config $srcdir/kernelconfig
+  make LLVM=1 LLVM_IAS=1 ARCH=${build_arch} olddefconfig
   make LLVM=1 LLVM_IAS=1 ARCH=${build_arch}
 }
 
