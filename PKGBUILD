@@ -5,11 +5,11 @@
 pkgbase=pacman
 pkgname=(libalpm pacman makepkg repo-tools)
 pkgver=6.0.2
-pkgrel=16
+pkgrel=17
 arch=(x86_64 aarch64 riscv64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
-makedepends=(meson libarchive openssl ninja acl curl xz)  # TODO: asciidoc doxygen
+makedepends=(meson libarchive openssl ninja acl curl xz gpgme)  # TODO: asciidoc doxygen
 checkdepends=(python)
 source=(
   https://sources.archlinux.org/other/$pkgbase/$pkgbase-$pkgver.tar.xz
@@ -101,11 +101,12 @@ build()
   sed -i -e 's/EUID == 0/EUID == -1/' scripts/makepkg.sh.in
   sed -i '/bsdtar -xf .*dbfile/s|-C|--no-fflags -C|' scripts/repo-add.sh.in
 
-  meson --prefix=/usr \
-        --buildtype=plain \
-        -Dscriptlet-shell=/usr/bin/bash \
-        -Dldconfig=/usr/bin/ldconfig \
-        build  # TODO: -Ddoc=enabled -Ddoxygen=enabled
+  ewe-meson \
+    -Dscriptlet-shell=/usr/bin/bash \
+    -Dldconfig=/usr/bin/ldconfig \
+    -Ddoc=disabled \
+    build
+  # TODO: -Ddoc=enabled -Ddoxygen=enabled
   meson compile -C build
 
   DESTDIR="$srcdir/PKGDIR" meson install -C build
@@ -118,7 +119,7 @@ build()
 package_libalpm()
 {
   pkgdesc="Arch Linux package management library"
-  depends=(libarchive curl gettext libxml2)
+  depends=(libarchive curl gettext libxml2 gpgme)
   provides=(libalpm.so)
 
   mv "$srcdir"/pkgs/libalpm/* "$pkgdir"
