@@ -3,9 +3,9 @@
 # Contributor: Eric Long <i@hack3r.moe>
 
 pkgbase=pacman
-pkgname=(libalpm pacman makepkg repo-tools)
+pkgname=(libalpm pacman repo-tools)
 pkgver=6.0.2
-pkgrel=17
+pkgrel=18
 arch=(x86_64 aarch64 riscv64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
@@ -62,9 +62,6 @@ FLIST_PACMAN=(
   'usr/share/zsh/site-functions/_pacman'
   'var/cache/pacman/pkg/'
   'var/lib/pacman/'
-)
-
-FLIST_MAKEPKG=(
   'usr/bin/makepkg*'
   'usr/share/bash-completion/completions/makepkg*'
   'usr/share/makepkg-template/'
@@ -128,22 +125,13 @@ package_libalpm()
 package_pacman()
 {
   pkgdesc="A library-based package manager with dependency support"
-  depends=(bash "libalpm=$pkgver")
-  backup=(etc/pacman.conf)
+  depends=(bash "libalpm=$pkgver" fakeroot)
+  provides+=(makepkg)
+  backup=(etc/pacman.conf etc/makepkg.conf)
 
   mv "$srcdir"/pkgs/pacman/* "$pkgdir"
   install -Dm644 "$srcdir/pacman.conf" "$pkgdir/etc/pacman.conf"
-}
 
-package_makepkg()
-{
-  pkgdesc="A script to automate the building of pacman packages"
-  arch=(any)
-  depends=("pacman=$pkgver" fakeroot)
-  groups=(base-devel)
-  backup=(etc/makepkg.conf)
-
-  mv "$srcdir"/pkgs/makepkg/* "$pkgdir"
   install -Dm644 "$srcdir/makepkg.conf" "$pkgdir/etc/makepkg.conf"
   install -Dm644 "$srcdir/function_patch.sh" "$pkgdir/usr/share/makepkg/function_patch.sh"
   install -Dm644 "$srcdir/function_pick.sh" "$pkgdir/usr/share/makepkg/function_pick.sh"
