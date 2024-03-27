@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=bird
-pkgver=2.15.0
+pkgver=2.15.1
 _pkgver=2.15
 pkgrel=0
 pkgdesc='RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon'
