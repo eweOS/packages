@@ -2,7 +2,7 @@
 
 pkgname=flatpak
 pkgver=1.15.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux application sandboxing and distribution framework (formerly xdg-app)"
 url="https://flatpak.org"
 arch=(x86_64 aarch64 riscv64)
@@ -16,6 +16,7 @@ depends=(
   glib
   json-glib
   libarchive
+  libseccomp
   python
   wayland
   ostree
@@ -87,7 +88,6 @@ build() {
     -D system_helper=disabled
     -D systemd=disabled
     -D xauth=disabled
-    -D seccomp=disabled
     -D gtkdoc=disabled
     -D tests=false
   )
