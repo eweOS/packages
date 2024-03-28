@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ostree
-pkgver=2024.3
-pkgrel=2
+pkgver=2024.5
+pkgrel=1
 pkgdesc="Operating system and container binary deployment and upgrades"
 url="https://ostreedev.github.io/ostree/"
 arch=(x86_64 aarch64 riscv64)
