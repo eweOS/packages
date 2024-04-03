@@ -4,13 +4,13 @@ pkgbase=lua-luv
 pkgname=(lua51-luv lua54-luv libluv)
 pkgver=1.48.0.2
 _pkgver=1.48.0-2
-pkgrel=1
+pkgrel=2
 pkgdesc='Bare livuv bindings for Lua'
 url='https://github.com/luvit/luv'
 arch=(x86_64 aarch64 riscv64)
 license=(Apache-2.0)
 depends=(libuv)
-makedepends=(lua51-compat53 cmake)
+makedepends=(lua51 lua54 lua51-compat53 cmake)
 source=("https://github.com/luvit/luv/archive/refs/tags/$_pkgver.tar.gz")
 sha256sums=('e64cd8a0197449288b37df6ca058120e8d2308fc305f543162b5bf3e92273a05')
 
@@ -67,7 +67,7 @@ do_package() {
 }
 
 package_lua51-luv() {
-	depends=(libuv lua51)
+	depends=(libuv lua51 lua51-compat53)
 	do_package 5.1
 }
 
