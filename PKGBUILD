@@ -2,16 +2,16 @@
 # Contributor: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 
 pkgname=nudoku
-pkgver=2.1.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="ncurses based sudoku game"
-arch=('any')
+arch=(x86_64 aarch64 riscv64)
 url="https://jubalh.github.io/nudoku"
 license=('GPL3')
 depends=('ncurses' 'cairo' 'gettext')
 makedepends=('autoconf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jubalh/nudoku/archive/$pkgver.tar.gz")
-sha512sums=('dde16d1dccc1cae8d156f57fccf8b112f3fee7d23b912b5cd7ecc092ecbf04a8e85f469e53fa02e6bd2d0b9498e4a65a219e1aad8091f82638dceab32f320670')
+sha512sums=('7a87bb73d2a440b361544681c7924c62284fc3d6ac0122ddda51f5539a837ceb89fc7fcef06b134599cd7a11e2ba37fa49df0f89d5d8ab4cd454551492cb6d6e')
 
 prepare() {
 	cd "$pkgname-$pkgver"
