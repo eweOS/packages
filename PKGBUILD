@@ -2,8 +2,8 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nmon
-pkgver=16n
-pkgrel=2
+pkgver=16p
+pkgrel=1
 pkgdesc="AIX & Linux Performance Monitoring tool"
 arch=(x86_64 aarch64 riscv64)
 url="http://nmon.sourceforge.net"
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('ncurses')
 source=("https://downloads.sourceforge.net/$pkgname/lmon$pkgver.c"
   fix-fstab-header.patch)
-sha256sums=('c0012cc2d925dee940c37ceae297abac64ba5a5c30e575e7418b04028613f5f2'
+sha256sums=('5dc6045f6725e3249a969918fae69663a1d669162087720babcdb90fce9e6b2a'
             'a3bf2a06991750aa0b65ff63e3e7494768490b67a61125837251872bb5a6c5ba')
 
 prepare()
