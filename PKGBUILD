@@ -2,8 +2,8 @@
 
 _pkgbase=elfutils
 pkgname=(libelf elfutils)
-pkgver=0.189
-pkgrel=2
+pkgver=0.191
+pkgrel=1
 pkgdesc="libelf is a free ELF object file access library"
 arch=(x86_64 aarch64 riscv64)
 url="https://sourceware.org/elfutils/"
@@ -11,7 +11,7 @@ license=(LGPL3 GPL3)
 makedepends=(curl llvm-libs libarchive sqlite xz zlib libuargp musl-fts musl-obstack)
 options=(staticlibs)
 source=(https://sourceware.org/$_pkgbase/ftp/$pkgver/$_pkgbase-$pkgver.tar.bz2 musl-utils.patch)
-sha256sums=('39bd8f1a338e2b7cd4abc3ff11a0eddc6e690f69578a57478d8179b4148708c8'
+sha256sums=('df76db71366d1d708365fc7a6c60ca48398f14367eb2b8954efc8897147ad871'
             'c92ade324270f3f34fe4978cd55dbfcdc867cf8421d23edc23c78414b5b1ebb3')
 
 prepare()
@@ -40,7 +40,7 @@ build()
     --program-prefix="eu-" \
     --enable-deterministic-archives \
     --disable-debuginfod
-  make CFLAGS=-Wno-error
+  make CFLAGS=-Wno-error CXXFLAGS=-Wno-error
   mkdir -p $srcdir/install
   make DESTDIR="$srcdir/install" install
 
@@ -60,6 +60,7 @@ package_libelf()
 {
   pkgdesc+=" (libraries)"
   depends=(xz zlib musl-fts musl-obstack libuargp)
+  provides=(libasm libdebuginfod libdw libelf)
   mv "$srcdir/pkgs/libelf/usr" $pkgdir/usr
 }
 
