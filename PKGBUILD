@@ -4,7 +4,7 @@ pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang wasi-libc++ wasi-libc++ab
 _realpkgname=llvm-project
 pkgver=17.0.6
 _binutilsver=2.41
-pkgrel=4
+pkgrel=5
 arch=('x86_64' 'aarch64' 'riscv64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -132,6 +132,10 @@ prepare()
 
 build()
 {
+  # build RTTI but disable rtti in makepkg
+  export CFLAGS="${CFLAGS//-fno-rtti/}"
+  export CXXFLAGS="${CXXFLAGS//-fno-rtti/}"
+
   # https://os-wiki.ewe.moe/llvm
   export CMARGS=(
     -G Ninja
@@ -144,6 +148,7 @@ build()
     -DCLANG_DEFAULT_RTLIB='compiler-rt'
     -DLLVM_INSTALL_UTILS=ON
     -DLLVM_ENABLE_LIBCXX=ON
+    -DLLVM_ENABLE_RTTI=ON
     -DLLVM_ENABLE_FFI=ON
     -DLLVM_ENABLE_LLD=ON
     -DLLVM_INSTALL_BINUTILS_SYMLINKS=ON
