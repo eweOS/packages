@@ -5,7 +5,7 @@
 pkgbase=pacman
 pkgname=(libalpm pacman repo-tools)
 pkgver=6.0.2
-pkgrel=19
+pkgrel=20
 arch=(x86_64 aarch64 riscv64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
@@ -80,11 +80,12 @@ FLIST_REPO_TOOLS=(
 
 build()
 {
+  makepkg_cflags="-Os -pipe -fno-plt -fno-rtti"
   # TODO: riscv64
   case $CARCH in
-    x86_64) makepkg_cflags="-march=x86-64 -Os -pipe -fno-plt -fstack-clash-protection -fcf-protection" ;;
-    aarch64) makepkg_cflags="-march=armv8-a -Os -pipe -fno-plt" ;;
-    riscv64) makepkg_cflags="-march=rv64gc -Os -pipe -fno-plt" ;;
+    x86_64) makepkg_cflags+=" -march=x86-64 -fstack-clash-protection -fcf-protection" ;;
+    aarch64) makepkg_cflags+=" -march=armv8-a" ;;
+    riscv64) makepkg_cflags+=" -march=rv64gc" ;;
   esac
   sed -i ./makepkg.conf \
     -e "s|@@BUILD_GEN_CFLAGS@@|$makepkg_cflags|g"
