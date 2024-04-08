@@ -4,7 +4,7 @@ pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang wasi-libc++ wasi-libc++ab
 _realpkgname=llvm-project
 pkgver=17.0.6
 _binutilsver=2.41
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'aarch64' 'riscv64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -29,11 +29,13 @@ source=(
   "https://mirrors.tuna.tsinghua.edu.cn/gnu/binutils/binutils-${_binutilsver}.tar.xz"
   wasi-toolchain.cmake::https://raw.githubusercontent.com/WebAssembly/wasi-sdk/main/wasi-sdk.cmake
   rv64-disable-lldb-server.patch
+  llvm-install-prefix.patch
 )
 sha256sums=('58a8818c60e6627064f312dbf46c02d9949956558340938b71cf731ad8bc0813'
             'ae9a5789e23459e59606e6714723f2d3ffc31c03174191ef0d015bdf06007450'
             '7ded3468de11201bc58c761ca065bc6f42ed9381a7b13721364befff9876b30a'
-            '19ad5d5208e7271e0517de15b8ec652a0445298aa34cb7057d5da254966aa781')
+            '19ad5d5208e7271e0517de15b8ec652a0445298aa34cb7057d5da254966aa781'
+            'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94')
 
 _basedir=$_realpkgname-$pkgver.src
 
@@ -124,6 +126,7 @@ prepare()
   sed -i "/dlfcn.h/s@\$@\n#include <sys/types.h>@" \
     compiler-rt/lib/fuzzer/FuzzerInterceptors.cpp
   patch -p1 < $srcdir/rv64-disable-lldb-server.patch
+  patch -p1 < $srcdir/llvm-install-prefix.patch
   mkdir -p cmake/Platform && echo "set(WASI 1)" > cmake/Platform/WASI.cmake
 }
 
