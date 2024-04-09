@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pciutils
-pkgver=3.11.1
+pkgver=3.12.0
 pkgrel=1
 pkgdesc="PCI bus configuration space access library and tools"
 arch=(x86_64 aarch64 riscv64)
@@ -10,7 +10,13 @@ groups=(base)
 makedepends=(zlib)
 url="https://git.kernel.org/pub/scm/utils/pciutils/pciutils.git"
 source=("https://www.kernel.org/pub/software/utils/pciutils/pciutils-${pkgver}.tar.xz")
-sha256sums=('3f472ad864473de5ba17f765cc96ef5f33e1b730918d3adda6f945a2a9290df4')
+sha256sums=('f185d116d5ff99b797497efce8f19f1ee8ccc5a668b97a159e3d13472f674154')
+
+prepare()
+{
+  cd $pkgname-$pkgver
+  sed -i '1s/^/#include<libgen.h> /' lib/sysfs.c
+}
 
 build()
 {
