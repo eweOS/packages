@@ -1,11 +1,10 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Contributor: csslayer <wengxt AT gmail com>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fcitx5
 pkgver=5.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation of fcitx"
-arch=('x86_64')
+arch=(x86_64 aarch64 riscv64)
 url="https://github.com/fcitx/fcitx5"
 license=('LGPL-2.1-or-later AND Unicode-DFS-2016')
 groups=('fcitx5-im')
