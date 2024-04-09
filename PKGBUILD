@@ -2,8 +2,8 @@
 
 pkgname=foot
 pkgdesc='A fast, lightweight and minimalistic Wayland terminal emulator'
-pkgver=1.16.2
-pkgrel=4
+pkgver=1.17.0
+pkgrel=1
 url="https://codeberg.org/dnkl/$pkgname"
 arch=(x86_64 aarch64 riscv64)
 license=(MIT)
@@ -26,8 +26,8 @@ depends=(
   libutf8proc
   wayland
 )
-source=("git+$url#tag=$pkgver")
-sha256sums=('SKIP')
+source=("$url/archive/$pkgver.tar.gz")
+sha256sums=('ab5603edad89d26e8ae543e92c72210a1fbbe7abdf15a0729664b41baed6a3b8')
 
 prepare() {
   sed -i 's/werror=true/werror=false/g' $pkgname/meson.build
