@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=atkmm
-pkgver=2.36.2
+pkgver=2.36.3
 pkgrel=1
 pkgdesc="C++ bindings for Cairo"
 url="https://www.cairographics.org/cairomm/"
@@ -11,7 +11,7 @@ depends=(atk glibmm)
 makedepends=(meson mm-common perl-xml-parser)
 options=(!emptydirs)
 source=("https://gitlab.gnome.org/GNOME/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('31e9c8d866bf0e308b53c2aa5f906e09ecd2fe0cb134eab85c0af39ae49bb7ca')
+sha256sums=('725cf386ffd055a9644cdc75a3c98956205814f3f857427bedc34ac75552385d')
 
 build() {
   ewe-meson $pkgname-$pkgver build \
