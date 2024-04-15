@@ -10,7 +10,7 @@ license=(PerlArtistic GPL)
 depends=(perl perl-exception-class perl-test-deep perl-test-differences
 	 perl-test-exception perl-test-warn)
 options=(!emptydirs)
-source=("https://cpan.metacpan.org/authors/id/O/OV/OVID/Test-Most-$pkgver.tar.gz");
+source=("https://cpan.metacpan.org/authors/id/O/OV/OVID/Test-Most-$pkgver.tar.gz")
 sha256sums=('089eb894f7bace4c37c6334e0e290eb20338ee10223af0c82cbe7281c78382df')
 
 build () {
