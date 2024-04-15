@@ -3,7 +3,7 @@
 
 pkgname=bash
 pkgver=5.2.21
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Bourne Again shell'
 arch=(x86_64 aarch64 riscv64)
 license=(GPL3)
@@ -17,7 +17,7 @@ source=(
 )
 
 sha256sums=('c8e31bdc59b69aaffc5b36509905ba3e5cbb12747091d27b4b977f078560d5b8'
-            'b3c0c7600098df7ab736cc5ea7ecd671a6cc83b7a01ea23dec94ac073fe86b6b')
+            'dd2494e4748d24139d5bdd5a190c28b7b25c9de864abd3958192a352b7a5bdf4')
 
 build()
 {
