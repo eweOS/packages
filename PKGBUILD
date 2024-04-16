@@ -1,7 +1,7 @@
 # Maintainer: YukariChiba <i@0x7f.cc>
 
 pkgname="hyprland"
-pkgver="0.38.1"
+pkgver="0.39.0"
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(x86_64 aarch64 riscv64)
@@ -48,9 +48,9 @@ build() {
   ewe-meson $pkgname build \
     -Dsystemd=disabled \
     -Dxwayland=disabled \
-    -Dwlroots:backends=drm,libinput \
-    -Dwlroots:xwayland=disabled \
-    -Dwlroots:renderers=gles2,vulkan
+    -Dwlroots-hyprland:backends=drm,libinput \
+    -Dwlroots-hyprland:xwayland=disabled \
+    -Dwlroots-hyprland:renderers=gles2,vulkan
   meson compile -C build
 }
 
