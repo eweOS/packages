@@ -1,11 +1,8 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
-# Contributor: David Runge <dvzrv@archlinux.org>
-# Contributor: Lukas Fleischer <lfleischer@archlinux.org>
-# Contributor: Hilton Medeiros <medeiros.hilton@gmail.com>
-# Contributor: Dave Reisner <d@falconindy.com>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libgit2
-pkgver=1.5.0
+pkgver=1.8.0
 pkgrel=1
 epoch=1
 pkgdesc="A linkable library for Git"
@@ -17,17 +14,8 @@ makedepends=(cmake libssh2 python)
 provides=(libgit2.so)
 source=(
   $pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz
-  $pkgname-1.5.0-remove_http-parse_incompatible_tests.patch
 )
-sha512sums=('7a32b27cd32bd03ce7be6c127317f82a4ac6f16615c3234699676781f4858d057edb0410b2fe36fd2e634b00748a8b0be17f23809e09a7602ba48185134300f7'
-            'f9bb9ad7eb0f43003f5f72c81575ef5751b893fdf257d888b56818ee2c136b496b7cf72627a53dbd01319e33d0dd373e9d6df887360f7bec367419ef0c7ab711')
-
-prepare()
-{
-  # remove tests that are only compatible with the (modified) vendored version
-  # of http-parser, but not with upstream http-parser
-  patch -d $pkgname-$pkgver -Np1 -i ../$pkgname-1.5.0-remove_http-parse_incompatible_tests.patch
-}
+sha512sums=('e5634267bd9c6a594c9a954d09c657e7b8aadf213609bf7dd83b99863d0d0c7109a5277617dd508abc2da54ea3f12c2af1908d1aeb73c000e94056e2f3653144')
 
 build()
 {
