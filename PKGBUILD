@@ -2,7 +2,7 @@
 
 pkgname=foot
 pkgdesc='A fast, lightweight and minimalistic Wayland terminal emulator'
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 url="https://codeberg.org/dnkl/$pkgname"
 arch=(x86_64 aarch64 riscv64)
@@ -27,11 +27,7 @@ depends=(
   wayland
 )
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('ab5603edad89d26e8ae543e92c72210a1fbbe7abdf15a0729664b41baed6a3b8')
-
-prepare() {
-  sed -i 's/werror=true/werror=false/g' $pkgname/meson.build
-}
+sha256sums=('da49d302fb98d61e674dace27d44ab6e6e6446a1ee156a09a430efb738d74b39')
 
 build() {
   ewe-meson $pkgname build \
