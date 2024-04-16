@@ -2,7 +2,7 @@
 
 pkgname='mesa'
 pkgdesc="An open-source implementation of the OpenGL specification"
-pkgver=24.0.1
+pkgver=24.0.5
 pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm')
@@ -14,15 +14,18 @@ options=(!lto)
 source=(
   https://mesa.freedesktop.org/archive/$pkgname-$pkgver.tar.xz
   orcjit.patch
+  orcjit-cache.patch
 )
-sha512sums=('1eaff5dcff8dd314b2dfe249d25db68d530d3f0fb54e926999768d0a48aa34b67c31ec3587bb2a7d1969845b26e79a4d87aceb7a141fd2e811ae0c47c00b0963'
-            '6d7a1745e685d44ec9356bd6ad63466e8c71fa617614de0d14b06274dbc1287fc586e3940819b979e91783633f348405b916eae919047c7c45152611e578c027')
+sha512sums=('9476af4b9ac8db5dce397084ef169927d10b28adea7e74aa5b3136810b499ac98ddf7ab564e7d1ff81c887208c8ebab3ad2d4e27e7f46136609b5c67527018eb'
+            '4da09202e5bde01492cc895efb7aa98ee5fc044a343ab013f8d6940dd091cc469d35c13a43f7043da76c3cad7a810f990894bd0c07e36211b1f90d982194976d'
+            'c1a12a660a246424e75e9c8c1c2b39daccf58812e4899652c5ca72553e034259fc451a895cd330c34ef6366f56791fa09e1c3be83cd00896b00c040248e17456')
 
 prepare()
 {
   # workaround since python-mako is not available
   pip install mako
   # https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/26018
+  # https://gitlab.freedesktop.org/icenowy/mesa/-/tree/orcjit-shader-cache
   _patch_ $pkgname-$pkgver
 }
 
@@ -54,7 +57,6 @@ build()
     -Dosmesa=true \
     -Dvulkan-drivers=${VULKAN_DRI} \
     -Dgallium-drivers=${GALLIUM_DRI} \
-    -Dcpp_rtti=false \
     -Dmicrosoft-clc=disabled \
     -Dxlib-lease=disabled \
     -Dgallium-vdpau=disabled \
