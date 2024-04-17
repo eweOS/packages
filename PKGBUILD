@@ -2,14 +2,14 @@
 
 pkgbase=font-awesome
 pkgname=(ttf-font-awesome otf-font-awesome)
-pkgver=6.5.1
+pkgver=6.5.2
 pkgrel=1
 pkgdesc="The iconic SVG, font, and CSS toolkit"
 url="https://fontawesome.com/"
 license=('custom:OFL')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FortAwesome/Font-Awesome/archive/$pkgver.tar.gz")
-sha256sums=('4cc4c537892e9b774ecdf070e0592ce0971b8f8a1b0649448133967977409d46')
+sha256sums=('e65e5bb2c7e27d8f3ddddc69d1277bc33ede27c3fe950c5de20500a4ab726dfd')
 
 package_ttf-font-awesome() {
   cd "Font-Awesome-${pkgver}"
