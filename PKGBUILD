@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=appstream
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Provides a standard for creating app stores across distributions'
 arch=(x86_64 aarch64 riscv64)
@@ -27,7 +27,7 @@ makedepends=(docbook-xsl
 	     meson)
 source=(https://www.freedesktop.org/software/appstream/releases/AppStream-$pkgver.tar.xz
         update-appstream-cache.hook)
-sha256sums=('fa4d5994e5c6f22e9b66cb0b52e8b5f5d96e7353ea5528b56436e0150829203b'
+sha256sums=('1a5148ca97dcbf5eb6e9c380278bb0d20938569292ea8652df1b3cac8bd2736b'
             'edc632e4a76ebe5efc76a56fe5f797e5c981cca6f2f0111c7ce0170d1330c788')
 
 build() {
