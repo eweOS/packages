@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=flatpak
-pkgver=1.15.6
-pkgrel=2
+pkgver=1.15.8
+pkgrel=1
 pkgdesc="Linux application sandboxing and distribution framework (formerly xdg-app)"
 url="https://flatpak.org"
 arch=(x86_64 aarch64 riscv64)
@@ -43,7 +43,6 @@ source=(
   git+https://gitlab.gnome.org/alexl/variant-schema-compiler.git
   https://dl.flathub.org/repo/flathub.flatpakrepo
   flatpak-bindir.sh
-  0001-HACK-Use-fusermount3.patch
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -51,8 +50,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '3371dd250e61d9e1633630073fefda153cd4426f72f4afa0c3373ae2e8fea03a'
-            '1824cb4eb1cc88702cb2b9f1c55b6dfdf20fca5eab83f6e8e532099281328745'
-            'fe358fe7a7b54d165e94f43e8284ad9fa7d00610bc67179fdefe86538d3b660a')
+            '1824cb4eb1cc88702cb2b9f1c55b6dfdf20fca5eab83f6e8e532099281328745')
 
 pkgver() {
   cd flatpak
@@ -61,10 +59,6 @@ pkgver() {
 
 prepare() {
   cd flatpak
-
-  # Support fuse3
-  # https://bugs.archlinux.org/task/75623
-  git apply -3 ../0001-HACK-Use-fusermount3.patch
 
   git submodule init
   git submodule set-url subprojects/libglnx "$srcdir/libglnx"
@@ -89,6 +83,8 @@ build() {
     -D systemd=disabled
     -D xauth=disabled
     -D gtkdoc=disabled
+    -D docbook_docs=disabled
+    -D man=disabled
     -D tests=false
   )
 
