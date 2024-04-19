@@ -1,24 +1,49 @@
---- neofetch	2022-09-07 12:46:34.640858684 +0800
-+++ neofetch	2022-09-07 12:50:15.522613778 +0800
-@@ -780,7 +780,7 @@
- #       Chapeau, Chrom*, Cleanjaro, ClearOS, Clear_Linux, Clover,
- #       Condres, Container_Linux, CRUX, Cucumber, Debian, Deepin,
- #       DesaOS, Devuan, DracOS, DarkOs, DragonFly, Drauger, Elementary,
--#       EndeavourOS, Endless, EuroLinux, Exherbo, Fedora, Feren, FreeBSD,
-+#       EndeavourOS, Endless, EuroLinux, eweOS, Exherbo, Fedora, Feren, FreeBSD,
- #       FreeMiNT, Frugalware, Funtoo, GalliumOS, Garuda, Gentoo, Pentoo,
- #       gNewSense, GNOME, GNU, GoboLinux, Grombyang, Guix, Haiku, Huayra,
- #       Hyperbola, janus, Kali, KaOS, KDE_neon, Kibojoe, Kogaion,
-@@ -4923,7 +4923,7 @@
-                                 Chrom, Cleanjaro, ClearOS, Clear_Linux, Clover, Condres,
-                                 Container_Linux, CRUX, Cucumber, Debian, Deepin, DesaOS, Devuan,
-                                 DracOS, DarkOs, DragonFly, Drauger, Elementary, EndeavourOS, Endless,
--                                EuroLinux, Exherbo, Fedora, Feren, FreeBSD, FreeMiNT, Frugalware,
-+                                EuroLinux, eweOS, Exherbo, Fedora, Feren, FreeBSD, FreeMiNT, Frugalware,
-                                 Funtoo, GalliumOS, Garuda, Gentoo, Pentoo, gNewSense, GNOME, GNU,
-                                 GoboLinux, Grombyang, Guix, Haiku, Huayra, Hyperbola, janus, Kali,
-                                 KaOS, KDE_neon, Kibojoe, Kogaion, Korora, KSLinux, Kubuntu, LEDE,
-@@ -6900,6 +6900,27 @@
+From ece02c5d4495a49b6ac93bc5ddd9630728051c31 Mon Sep 17 00:00:00 2001
+From: Yukari Chiba <i@0x7f.cc>
+Date: Fri, 19 Apr 2024 13:42:47 +0800
+Subject: [PATCH] add eweOS
+
+---
+ docs/neofetch.1 |  2 +-
+ neofetch        | 25 +++++++++++++++++++++++--
+ 2 files changed, 24 insertions(+), 3 deletions(-)
+
+diff --git a/docs/neofetch.1 b/docs/neofetch.1
+index 044f4e654..a0e71efe3 100644
+--- a/docs/neofetch.1
++++ b/docs/neofetch.1
+@@ -327,7 +327,7 @@ Container Linux by CoreOS, CRUX, Crystal Linux, Cucumber,
+ CutefishOS, CuteOS, CyberOS, dahlia, DarkOs, Darwin, Debian, Deepin,
+ DesaOS, Devuan, DietPi, digital UNIX, DracOS, DragonFly, Drauger,
+ Droidian, Elementary, Elive, EncryptOS, EndeavourOS, Endless, Enso,
+-EuroLinux, EvolutionOS, Exherbo, Exodia Predator OS, Fedora,
++EuroLinux, EvolutionOS, eweOS, Exherbo, Exodia Predator OS, Fedora,
+ FemboyOS, Feren, Finnix, Floflis, FreeBSD, FreeMiNT, Frugalware,
+ Funtoo, GalliumOS, Garuda, Gentoo, GhostBSD, glaucus, gNewSense,
+ GNOME, GNU, GoboLinux, GrapheneOS, Grombyang, Guix, Haiku, HamoniKR,
+diff --git a/neofetch b/neofetch
+index ab012efd0..4a1454142 100755
+--- a/neofetch
++++ b/neofetch
+@@ -865,7 +865,7 @@ image_source="auto"
+ # Chrom, Cleanjaro, Clear Linux OS, ClearOS, Clover, Cobalt, Condres, Container Linux by CoreOS,
+ # CRUX, Crystal Linux, Cucumber, CutefishOS, CuteOS, CyberOS, dahlia, DarkOs, Darwin, Debian,
+ # Deepin, DesaOS, Devuan, DietPi, digital UNIX, DracOS, DragonFly, Drauger, Droidian, Elementary,
+-# Elive, EncryptOS, EndeavourOS, Endless, Enso, EuroLinux, EvolutionOS, Exherbo, Exodia Predator OS,
++# Elive, EncryptOS, EndeavourOS, Endless, Enso, EuroLinux, EvolutionOS, eweOS, Exherbo, Exodia Predator OS,
+ # Fedora, FemboyOS, Feren, Finnix, Floflis, FreeBSD, FreeMiNT, Frugalware, Funtoo, GalliumOS,
+ # Garuda, Gentoo, GhostBSD, glaucus, gNewSense, GNOME, GNU, GoboLinux, GrapheneOS, Grombyang, Guix,
+ # Haiku, HamoniKR, HarDClanZ, Hash, Huayra, Hybrid, HydroOS, Hyperbola, iglunix, instantOS, Interix,
+@@ -6521,7 +6521,7 @@ ASCII:
+                                 CutefishOS, CuteOS, CyberOS, dahlia, DarkOs, Darwin, Debian, Deepin,
+                                 DesaOS, Devuan, DietPi, digital UNIX, DracOS, DragonFly, Drauger,
+                                 Droidian, Elementary, Elive, EncryptOS, EndeavourOS, Endless, Enso,
+-                                EuroLinux, EvolutionOS, Exherbo, Exodia Predator OS, Fedora,
++                                EuroLinux, EvolutionOS, eweOS, Exherbo, Exodia Predator OS, Fedora,
+                                 FemboyOS, Feren, Finnix, Floflis, FreeBSD, FreeMiNT, Frugalware,
+                                 Funtoo, GalliumOS, Garuda, Gentoo, GhostBSD, glaucus, gNewSense,
+                                 GNOME, GNU, GoboLinux, GrapheneOS, Grombyang, Guix, Haiku, HamoniKR,
+@@ -9632,6 +9632,27 @@ ${c1}\e[1;32m      dddddddddddddddddddddddd
  EOF
          ;;
  
@@ -46,4 +71,3 @@
          "Exherbo"*)
              set_colors 4 7 1
              read -rd '' ascii_data <<'EOF'
-
