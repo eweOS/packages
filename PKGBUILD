@@ -2,14 +2,14 @@
 
 pkgname=nftables
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Netfilter tables userspace tools'
 arch=('x86_64' 'aarch64' 'riscv64')
 url='https://netfilter.org/projects/nftables/'
 license=('GPL2')
 depends=('libmnl' 'libnftnl' 'gmp' 'readline' 'ncurses' 'jansson')
 optdepends=('python: Python bindings')
-makedepends=('asciidoc' 'python' 'python-setuptools' 'python-build'
+makedepends=('python' 'python-setuptools' 'python-build'
              'python-installer' 'python-wheel')
 backup=('etc/nftables.conf')
 source=("https://netfilter.org/projects/nftables/files/nftables-$pkgver.tar.xz"
