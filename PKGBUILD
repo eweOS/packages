@@ -5,7 +5,7 @@
 pkgbase=pacman
 pkgname=(libalpm pacman repo-tools)
 pkgver=6.0.2
-pkgrel=21
+pkgrel=22
 arch=(x86_64 aarch64 riscv64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
@@ -23,7 +23,7 @@ source=(
   script_warndirs.sh
 )
 sha256sums=('7d8e3e8c5121aec0965df71f59bedf46052c6cf14f96365c4411ec3de0a4c1a5'
-            '45735476a908373bcf8392cf3b4fb88bd4b4914d10b76f35542e7a679ad01229'
+            '0865036ef04a06b00926640ac7db2275988b834f435101e8110eedf8a2e58b88'
             '4d7758227d57714a34c04b82e816efd609f0feff91bca6c3505d7ee0c6d9a26f'
             '6338de233368bfa76ee17353785709e282ace072eae6996c1289f0fb5b84ffc4'
             'd99d4fe5e414cb4748f4e9b20637d9fd69ec8c392e3f862edbc69b6564a52876'
@@ -126,7 +126,7 @@ package_libalpm()
 package_pacman()
 {
   pkgdesc="A library-based package manager with dependency support"
-  depends=(bash "libalpm=$pkgver" fakeroot)
+  depends=(bash "libalpm=$pkgver" fakeroot pacman-mirrorlist)
   provides+=(makepkg)
   backup=(etc/pacman.conf etc/makepkg.conf)
 
