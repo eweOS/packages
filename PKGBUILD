@@ -3,10 +3,10 @@
 pkgname='mesa'
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=24.0.5
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm')
-makedepends=('meson' 'wayland' 'wayland-protocols')
+makedepends=('meson' 'wayland' 'wayland-protocols' 'python-packaging')
 url="https://www.mesa3d.org/"
 license=('custom')
 # mold may fails with lto enabled
