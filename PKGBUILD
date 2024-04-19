@@ -1,14 +1,8 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
-# Contributor: Felix Yan <felixonmars@archlinux.org>
-# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Alexandre Bique <bique.alexandre@gmail.com>
-# Contributor: Louis R. Marascio <lrm@fitnr.com>
-# Contributor: Cody Maloney <cmaloney@theoreticalchaos.com>
-# Contributor: acxz <akashpatel2008 at yahoo dot com>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=googletest
-pkgver=1.12.1
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='C++ testing utility based on the xUnit framework'
 url='https://github.com/google/googletest'
@@ -18,13 +12,12 @@ depends=('llvm-libs' 'sh')
 makedepends=('python' 'cmake' 'llvm-libs' 'sh')
 optdepends=('python: gmock generator')
 provides=('gmock' 'gtest')
-_srcname=googletest-release-${pkgver}
-source=(${_srcname}.tar.gz::https://github.com/google/googletest/archive/release-${pkgver}.tar.gz)
-sha512sums=('a9104dc6c53747e36e7dd7bb93dfce51a558bd31b487a9ef08def095518e1296da140e0db263e0644d9055dbd903c0cb69380cb2322941dbfb04780ef247df9c')
+source=($url/archive/refs/tags/v${pkgver}.tar.gz)
+sha512sums=('765c326ccc1b87a01027385e69238266e356361cd4ee3e18e3c9d137a5d11fa5d657c164d02dd1be8fe693c8e10f2b580588dbfa57d27f070e2750f50d3e662c')
 
 build()
 {
-  cmake -H${_srcname} -Bbuild \
+  cmake -H$pkgname-$pkgver -Bbuild \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=ON \
     -Dgtest_build_tests=ON \
@@ -44,7 +37,7 @@ package()
   # Shouldn't be present
   find "${pkgdir}" -name '*.pump' -print -delete
 
-  cd ${_srcname}
+  cd $pkgname-$pkgver
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm 644 README.md CONTRIBUTORS -t "${pkgdir}/usr/share/doc/${pkgname}"
 
