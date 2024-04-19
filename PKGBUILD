@@ -1,25 +1,17 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sway
-pkgver=1.8.1
+pkgver=1.9
 pkgrel=1
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64 aarch64 riscv64)
 url='https://swaywm.org/'
 license=(MIT)
-depends=('cairo' 'json-c' 'libinput' 'seatd' 'libxkbcommon' 'mesa' 'pango' 'pcre' 'pixman' 'wayland' 'wlroots' 'gdk-pixbuf' 'elogind')
-makedepends=(linux-headers meson wayland-protocols scdoc)
+depends=('cairo' 'json-c' 'libinput' 'seatd' 'libxkbcommon' 'mesa' 'pango' 'pcre' 'pixman' 'wayland' 'wlroots' 'gdk-pixbuf')
+makedepends=(linux-headers meson wayland-protocols scdoc git)
 backup=('etc/sway/config')
-_commit="bff991dfdc63ca3785a810ff4d913ddfd71677a1"
-source=("git+https://github.com/swaywm/sway.git#commit=$_commit")
+source=("git+https://github.com/swaywm/sway.git#tag=$pkgver")
 sha256sums=('SKIP')
-
-pkgver()
-{
-  cd $pkgname
-  printf "$pkgver.r%s.%s" "$(git rev-list --count $pkgver..HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 
 prepare() {
   # Set the version information to 'eweOS' instead of 'makepkg'
@@ -32,7 +24,8 @@ build() {
     -D werror=false \
     -D b_ndebug=true \
     -D xwayland=disabled \
-    -D sd-bus-provider=libelogind
+    -D sd-bus-provider=basu \
+    -D tray=disabled
   ninja -C build
 }
 
