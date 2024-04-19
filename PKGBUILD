@@ -3,7 +3,7 @@
 pkgbase=python
 pkgname=(python python-tests)
 pkgver=3.12.2
-pkgrel=1
+pkgrel=2
 _pybasever=${pkgver%.*}
 pkgdesc='The Python programming language'
 arch=(x86_64 aarch64 riscv64)
@@ -88,6 +88,7 @@ package_python()
   ln -s idle3                 "${pkgdir}"/usr/bin/idle
   ln -s pydoc3                "${pkgdir}"/usr/bin/pydoc
   ln -s python${_pybasever}.1 "${pkgdir}"/usr/share/man/man1/python.1
+  ln -s pip3                  "${pkgdir}"/usr/bin/pip
 
   # some useful "stuff" FS#46146
   install -dm755 "${pkgdir}"/usr/lib/python${_pybasever}/Tools/{i18n,scripts}
