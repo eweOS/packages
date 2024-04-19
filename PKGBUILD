@@ -2,8 +2,8 @@
 
 pkgbase=pulseaudio
 pkgname=libpulse
-pkgver=16.1
-pkgrel=2
+pkgver=17.0
+pkgrel=1
 pkgdesc="A featureful, general-purpose sound server"
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 arch=(x86_64 aarch64 riscv64)
@@ -24,18 +24,8 @@ depends=(
   dbus
   libsndfile
 )
-source=(
-  "git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#tag=v$pkgver"
-  dont-assume-gdkx.patch
-)
-sha256sums=('SKIP'
-            'a37d84b2e488000c7e7b42885f929c056f6a8f731a4e3a88f1e54d4a3d00ea7c')
-
-prepare() {
-  cd $pkgbase
-  # https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/757
-  patch -p1 < ../dont-assume-gdkx.patch
-}
+source=("git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
 build() {
   local meson_options=(
