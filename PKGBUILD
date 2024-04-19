@@ -2,12 +2,18 @@
 
 pkgname=mercurial
 pkgver=6.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A scalable distributed SCM tool'
 arch=(x86_64 aarch64 riscv64)
 url="https://www.mercurial-scm.org/"
 license=(GPL)
 depends=(python)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
 backup=(etc/mercurial/hgrc)
 source=(https://www.mercurial-scm.org/release/${pkgname}-${pkgver}.tar.gz)
 sha512sums=('a7e0a466aa402659c1169a8c98c30be831b83cb7058416ed9cbe142977feda09008ff43f8c08c0dfdc217c449c6a1e8460cdcd62680e5dc1d0a632b52536486f')
