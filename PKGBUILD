@@ -2,7 +2,7 @@
 
 pkgname=waybar
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors'
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/Alexays/Waybar/"
@@ -28,6 +28,7 @@ makedepends=(
   'meson'
   'scdoc'
   'wayland-protocols'
+  'python-packaging'
 )
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
 sha256sums=('3af6665889868f2334ba1793c8b0f3104c4c3b176a8c759f0d08f07266ad2620')
