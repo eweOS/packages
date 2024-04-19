@@ -1,0 +1,16 @@
+##
+## eweOS repository mirrorlist
+## 
+
+## Worldwide (Auto Redirect)
+Server = https://os-repo-auto.ewe.moe/eweos/$repo/os/$arch
+
+## Europe
+Server = https://os-repo-bak.ewe.moe/eweos/$repo/os/$arch
+
+## Asia (slow)
+Server = https://os-repo.ewe.moe/eweos/$repo/os/$arch
+
+## DN42 (Uncomment if you have DN42 access)
+#Server = http://repo.nia.dn42/eweos/$repo/os/$arch
+
