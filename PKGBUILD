@@ -1,0 +1,48 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+_pypiname=wheel
+pkgname=python-wheel
+pkgver=0.43.0
+pkgrel=1
+pkgdesc="A built-package format for Python"
+arch=(any)
+url="https://pypi.python.org/pypi/wheel"
+license=('MIT')
+depends=('python-packaging')
+optdepends=('python-keyring: for wheel.signatures'
+            'python-xdg: for wheel.signatures')
+makedepends=('python-build' 'python-flit-core' 'python-installer')
+#checkdepends=('python-jsonschema' 'python-pytest' 'python-keyring' 'python-keyrings-alt'
+#              'python-xdg' 'python-pytest-cov' 'python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pypa/wheel/archive/$pkgver.tar.gz")
+sha512sums=('16e556272f6d47d33f2be39efc3c0882c8da90aa2945ec3574105df21ed2cb090390f7736d05a319a008f4842b3f109abea5e7607064ee80e663d499c2e67308')
+
+prepare() {
+  cd wheel-$pkgver
+  # https://github.com/pypa/wheel/pull/365 but why?
+  rm -r src/wheel/vendored
+  sed -i 's/from .vendored.packaging.requirements import Requirement/from packaging.requirements import Requirement/' src/wheel/metadata.py
+  sed -i 's/from .vendored.packaging import tags/from packaging import tags/' src/wheel/bdist_wheel.py
+  sed -i 's/from .vendored.packaging import version as _packaging_version/from packaging import version as _packaging_version/' src/wheel/bdist_wheel.py
+  sed -i 's/from wheel.vendored.packaging import tags/from packaging import tags/' tests/test_bdist_wheel.py
+}
+
+build() {
+  cd wheel-$pkgver
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  # Hack entry points by installing it
+  # FIXME: missing dependency
+  cd wheel-$pkgver
+  #python -m installer --destdir="$PWD/tmp_install" dist/*.whl
+  #local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  #PYTHONPATH="$PWD/tmp_install/$site_packages" pytest
+}
+
+package() {
+  cd wheel-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/$pkgname/
+}
