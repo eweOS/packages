@@ -1,22 +1,16 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname='wlogout'
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="Logout menu for wayland"
 arch=('x86_64' 'aarch64' 'riscv64')
 license=("MIT")
 url="https://github.com/ArtsyMacaw/wlogout"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 makedepends=("meson" "scdoc")
-depends=("gtk3" "gobject-introspection" "gtk-layer-shell")
-sha256sums=('cc79c9e2ff1bd225b051a34ccb352bcf8a1991b83414a7db623fce7c49566940')
-
-prepare() {
-    cd $pkgname-$pkgver
-    # Use elogind instead of systemd
-    sed -i 's/systemd/loginctl/g' layout
-}
+depends=("gtk3" "gtk-layer-shell")
+sha256sums=('ceb64ada0cd16d7a2603f65dd5e1c4ab15837dc84ff1541de10d3f49637be243')
 
 build() {
     ewe-meson build $pkgname-$pkgver
