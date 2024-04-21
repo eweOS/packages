@@ -4,18 +4,18 @@
 # Contributor: Firmicus <francois.archlinux.org> 
 
 pkgname=perl-uri
-pkgver=5.12
+pkgver=5.28
 pkgrel=1
 pkgdesc="Uniform Resource Identifiers (absolute and relative)"
 arch=('any')
 url="https://search.cpan.org/dist/URI/"
 license=('PerlArtistic')
 depends=('perl')
-checkdepends=('perl-test-needs')
-provides=('perl-uri-escape=3.30')
+checkdepends=('perl-test-needs' 'perl-test-warnings' 'perl-test-fatal')
+provides=('perl-uri-escape')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-$pkgver.tar.gz")
-sha512sums=('9c379e9f2a099ae8cccf80d38b565906f7a4517c896433f0dfd535340f1fa17ce0f558fb9091ad0ed56320aefca3403cc9c22af29a329eff8f01dc14f2b0ccc1')
+sha512sums=('ffa2a560641cbb81f720d1b572371a237826627974735684e130ad42c5184cd143c4cd337d600346258892165f3b658cc94711d189a870f990ff8148c72968e5')
 
 build() {
   cd URI-$pkgver
