@@ -1,17 +1,16 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
-# Contributor: Giovanni Scafora <giovanni@archlinux.org>
-# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=tree
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="A directory listing program displaying a depth indented list of files"
 arch=(x86_64 aarch64 riscv64)
 url="http://mama.indstate.edu/users/ice/tree/"
 license=('GPL')
 depends=('musl')
 source=("https://gitlab.com/OldManProgrammer/unix-tree/-/archive/${pkgver}/unix-tree-${pkgver}.tar.gz")
-sha512sums=('0420f71c3c989837b06ec055139e0cc9e5fe35c7fed5583e5c81df139e30bb9d86a15c368586e3d0714bda60e357ff0d1d4a22694bbbc4427def78fe31f330e6')
+sha512sums=('997d20c5508d3eba026e9d621a4da2b3b0bf111d272bb7d705a9a0819d430887061e234f0a00ac3102c43413ef716c1371ee0620b8460fbd523d4a3790940a29')
 
 prepare()
 {
