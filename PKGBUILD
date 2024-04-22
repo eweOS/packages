@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=swww
-pkgver=0.8.1
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="Efficient animated wallpaper daemon for wayland, controlled at runtime"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('lz4' 'libxkbcommon')
 makedepends=('rust' 'scdoc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Horus645/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7612ae780d0aa86b772d1e224346137d490eba48e158033185d52649ff01b757')
+sha256sums=('87359135c6930776b6266fe611a97001fca5909bfb999aed0f9036f07533adf7')
 options=(!lto)
 
 prepare() {
