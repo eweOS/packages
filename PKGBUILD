@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=msgpack-c
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc=' An efficient object serialization library for C'
 url='https://github.com/msgpack/msgpack-c'
@@ -11,7 +11,7 @@ depends=(musl)
 makedepends=(cmake)
 provides=(libmsgpack-c.so)
 source=("https://github.com/msgpack/msgpack-c/archive/refs/tags/c-$pkgver.tar.gz")
-sha256sums=('af6f3cf25edb220aa2140b09bb5bdd73ddf00938194bd94ebe5c92090cccb466')
+sha256sums=('58d5fe49d0ee2b374d60a61aabf8028b2c92004e6f11bff04e74b639fc8ad541')
 
 build () {
 	cd msgpack-c-c-$pkgver
