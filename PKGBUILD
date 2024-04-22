@@ -1,8 +1,8 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=wget
-pkgver=1.21.3
-pkgrel=2
+pkgver=1.24.5
+pkgrel=1
 pkgdesc='Network utility to retrieve files from the Web'
 url='https://www.gnu.org/software/wget/wget.html'
 arch=(x86_64 aarch64 riscv64)
@@ -12,7 +12,7 @@ makedepends=('perl')
 checkdepends=('perl-http-daemon')
 backup=('etc/wgetrc')
 source=("https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.lz")
-sha512sums=('489b9beba237df4555ee3b22bf3ae1f654d448e29f5772a52690f7b7cd7e63679e295bdadb6d55d28d2e4f9ccf9a85a04a6b189e1b5333e9133613685d6cfc66')
+sha512sums=('d8972e94d9125133d115750542e0f126b85a311634d5563a69d8fe85ecf1200836dcc83528ee4285d56834c58c722be580bfe749b26436158fbe4afc566f5cc0')
 
 build()
 {
