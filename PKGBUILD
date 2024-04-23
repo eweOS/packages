@@ -3,7 +3,7 @@
 pkgname=qt6-tools
 _qtver=6.7.0
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=3
 arch=(x86_64 aarch64 riscv64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -12,8 +12,13 @@ _pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
 depends=(qt6-base zstd)
 makedepends=(cmake git ninja python qt6-declarative openmp)
 groups=(qt6)
-source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('c8da6b239e82fe1e23465cbf0936c0da5a334438d3fb433e19c503cbb1abee7b')
+source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz zstd-configure.patch)
+sha256sums=('c8da6b239e82fe1e23465cbf0936c0da5a334438d3fb433e19c503cbb1abee7b'
+            '1366f49682e19c344bdd94ab70c66b29879b0c0a2bc20826d1accd8da88f53d1')
+
+prepare() {
+  _patch_ $_pkgfn
+}
 
 build() {
   export CMARGS=(
