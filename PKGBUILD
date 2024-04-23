@@ -6,7 +6,7 @@ pkgname=(
   libwireplumber
 )
 pkgver=0.4.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Session / policy manager implementation for PipeWire"
 url="https://pipewire.pages.freedesktop.org/wireplumber/"
 arch=(x86_64 aarch64 riscv64)
@@ -17,6 +17,7 @@ makedepends=(
   meson
   pipewire
   glib
+  python-packaging
 )
 checkdepends=(pipewire)
 source=("https://gitlab.freedesktop.org/pipewire/$pkgbase/-/archive/$pkgver/$pkgbase-$pkgver.tar.gz")
