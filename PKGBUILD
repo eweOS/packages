@@ -2,7 +2,7 @@
 
 pkgname=wasi-libc
 pkgver=0+328+1dfe5c30
-_commit=d4dae89648d654cdcad6b0aa8b265bf957f07531
+_commit=9e8c542319242a5e536e14e6046de5968d298038
 pkgrel=1
 pkgdesc='WASI libc implementation for WebAssembly'
 arch=('any')
