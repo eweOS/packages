@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=spirv-tools
-_pkgver=2023.3
-_headerver=1.3.261.1
+_pkgver=2024.1
+_headerver=1.3.280.0
 pkgver=${_pkgver}+${_headerver}
 pkgrel=1
 pkgdesc="API and commands for processing SPIR-V modules"
@@ -11,12 +11,13 @@ url="https://www.khronos.org/vulkan/"
 license=('custom')
 depends=('llvm-libs')
 makedepends=('cmake' 'python' 'ninja' 'spirv-headers')
-source=("https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/sdk-${_headerver}.tar.gz")
-sha256sums=('ead95c626ad482882a141d1aa0ce47b9453871f72c42c0b28d39c82f60a52008')
+source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v${_pkgver}.tar.gz")
+#source=("https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/sdk-${_headerver}.tar.gz")
+sha256sums=('137780e2a8b5c722888f9ec0fb553e6e92f38a0a5c7fcdad9b715152448b9d82')
 
 build()
 {
-  cd SPIRV-Tools-sdk-${_headerver}
+  cd SPIRV-Tools-${_pkgver}
   cmake \
     -Bbuild \
     -GNinja \
@@ -32,7 +33,7 @@ build()
 
 package()
 {
-  cd SPIRV-Tools-sdk-${_headerver}
+  cd SPIRV-Tools-${_pkgver}
   DESTDIR="${pkgdir}" ninja -C build install
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
