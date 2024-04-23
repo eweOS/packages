@@ -1,12 +1,9 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
-# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor: Andrzej Giniewicz <gginiu@gmail.com>
-# Contributor: Johan Förberg <johan@forberg.se>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=zstd
-pkgver=1.5.2
-pkgrel=7
+pkgver=1.5.6
+pkgrel=1
 pkgdesc='Zstandard - Fast real-time compression algorithm'
 url='https://facebook.github.io/zstd/'
 arch=(x86_64 aarch64 riscv64)
@@ -15,7 +12,7 @@ depends=(zlib xz lz4)
 makedepends=(cmake ninja)
 provides=(libzstd.so)
 source=(https://github.com/facebook/zstd/releases/download/v${pkgver}/zstd-${pkgver}.tar.gz)
-sha256sums=('7c42d56fac126929a6a85dbc73ff1db2411d04f104fae9bdea51305663a83fd0')
+sha256sums=('8c29e06cf42aacc1eafc4077ae2ec6c6fcb96a626157e0593d5e82a34fd403c1')
 
 prepare()
 {
@@ -35,6 +32,9 @@ build()
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
+    -DZSTD_ZLIB_SUPPORT=ON \
+    -DZSTD_LZMA_SUPPORT=ON \
+    -DZSTD_LZ4_SUPPORT=ON \
     -DZSTD_BUILD_CONTRIB=ON \
     -DZSTD_BUILD_STATIC=OFF \
     -DZSTD_BUILD_TESTS=ON \
