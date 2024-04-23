@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=json-glib
-pkgver=1.6.6
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="JSON library built on GLib"
 url="https://wiki.gnome.org/Projects/JsonGlib"
 arch=(x86_64 aarch64 riscv64)
@@ -10,7 +10,7 @@ license=(GPL)
 depends=(glib)
 makedepends=(gobject-introspection meson)
 source=("https://gitlab.gnome.org/GNOME/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('bf4d1cd6c343ce13b9258e6703a0411a3b659887b65877e85a2aa488ae18b865')
+sha256sums=('97bc058fad49ebf5195ec539240370454ef6589d2b97bf626d7a9e2353d25e3f')
 
 build()
 {
