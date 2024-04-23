@@ -2,7 +2,7 @@
 
 pkgname=vulkan-headers
 _pkgname=Vulkan-Headers
-pkgver=1.3.262
+pkgver=1.3.280
 pkgrel=1
 pkgdesc="Vulkan header files"
 arch=(any)
@@ -10,7 +10,7 @@ url="https://www.khronos.org/vulkan/"
 license=('APACHE')
 makedepends=(cmake git)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/Vulkan-Headers/archive/v${pkgver}.tar.gz")
-sha256sums=('317e467a5fb2eaa6a18b984ec70fdbfaccd93595a3e6f4bcceca7d3fab280505')
+sha256sums=('717b49c52dbd37c78cf2f7f0fc715292c42e74841219e6cca918cd293ad5dce4')
 
 build() {
   cd ${_pkgname}-$pkgver
