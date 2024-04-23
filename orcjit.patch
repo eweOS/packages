@@ -563,7 +563,7 @@ new file mode 100644
 index 0000000000000..797c9e1612933
 --- /dev/null
 +++ b/src/gallium/auxiliary/gallivm/lp_bld_init_orc.cpp
-@@ -0,0 +1,955 @@
+@@ -0,0 +1,959 @@
 +#include "util/detect.h"
 +#include "util/u_cpu_detect.h"
 +#include "util/u_debug.h"
@@ -605,7 +605,11 @@ index 0000000000000..797c9e1612933
 +#include <llvm/Target/TargetMachine.h>
 +#include <llvm/Support/TargetSelect.h>
 +#include <llvm/Support/Casting.h>
++#if LLVM_VERSION_MAJOR >= 18
++#include <llvm/TargetParser/Host.h>
++#else
 +#include <llvm/Support/Host.h>
++#endif
 +#include <llvm/Support/CBindingWrapping.h>
 +#if LLVM_USE_INTEL_JITEVENTS
 +#include <llvm/ExecutionEngine/JITEventListener.h>
