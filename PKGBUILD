@@ -3,11 +3,12 @@
 pkgbase=gtk4
 pkgname=(gtk4 gtk-update-icon-cache)
 pkgver=4.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-platform toolkit for creating graphical user interfaces"
 url="https://www.gtk.org/"
 arch=(x86_64 aarch64 riscv64)
 license=(LGPL)
+options=(!lto)
 depends=(
   cairo
   fontconfig
@@ -58,6 +59,10 @@ build()
     -D build-tests=false
     -D build-testsuite=false
   )
+  if [ $(uname -m) = x86_64 ]; then
+    # fix unsupported relocation type 37
+    meson_options+=(-D f16c=disabled)
+  fi
   LD=ld.lld ewe-meson gtk-$pkgver build "${meson_options[@]}"
   meson compile -C build
 }
