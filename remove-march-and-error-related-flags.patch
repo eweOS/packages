@@ -1,0 +1,37 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ceda71b..f43c208 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -73,7 +73,6 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+         endif()
+     endif()
+ elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -Wall -Wextra -Werror -Wno-missing-field-initializers")
+     if (RAPIDJSON_BUILD_CXX11)
+         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+     endif()
+diff --git a/example/CMakeLists.txt b/example/CMakeLists.txt
+index 4d448cc..3d78a6d 100644
+--- a/example/CMakeLists.txt
++++ b/example/CMakeLists.txt
+@@ -27,8 +27,6 @@ add_definitions(-D__STDC_FORMAT_MACROS)
+ 
+ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -Werror -Wall -Wextra -Weffc++ -Wswitch-default")
+-elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wall -Wextra -Weffc++ -Wswitch-default -Wfloat-equal -Wimplicit-fallthrough -Weverything")
+ endif()
+ 
+ foreach (example ${EXAMPLES})
+diff --git a/test/unittest/CMakeLists.txt b/test/unittest/CMakeLists.txt
+index b3204d6..a7252e7 100644
+--- a/test/unittest/CMakeLists.txt
++++ b/test/unittest/CMakeLists.txt
+@@ -39,7 +39,6 @@ endif(CCACHE_FOUND)
+ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wall -Wextra -Weffc++ -Wswitch-default -Wfloat-equal")
+ elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wall -Wextra -Weffc++ -Wswitch-default -Wfloat-equal -Wimplicit-fallthrough -Weverything")
+     # If the user is running a newer version of Clang that includes the
+     # -Wdouble-promotion, we will ignore that warning.
+     if (CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 3.7)
