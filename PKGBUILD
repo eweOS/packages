@@ -1,32 +1,25 @@
-# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=libuargp
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="libuargp extracted from uclibc, modified lightly, intl-friendly"
 arch=(x86_64 aarch64 riscv64)
-url="https://github.com/xhebox/libuargp"
+url="https://github.com/eweOS/libuargp"
 license=(LGPL)
 provides=(libargp.so)
-source=(https://github.com/xhebox/libuargp/archive/refs/heads/master.tar.gz
-	fix-headers.patch)
-sha256sums=('84f3472a4931dfbd713a699b60896aac4e318a9032d39036a7ce78860e056fe2'
-	    'bb800afaf5644023d076d76fc778b83da2771d6892e63eb9dfd1f1da6d3865c1')
-
-prepare() {
-  cd $pkgbase-master
-  patch -p1 < $srcdir/fix-headers.patch
-}
+source=("https://github.com/eweOS/libuargp/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('1623fe037e88886f02282519ec129c3b161ddf44662eef59a92139a02336ae61')
 
 build()
 {
-  cd $pkgbase-master
-  sed -i 's/prefix=\/usr\/local/prefix=\/usr/g' Makefile
-  make
+	cd $pkgbase-$pkgver
+	sed -i 's/prefix=\/usr\/local/prefix=\/usr/g' Makefile
+	make
 }
 
 package()
 {
-  cd $pkgbase-master
-  make DESTDIR="$pkgdir" install
+  	cd $pkgbase-$pkgver
+	make DESTDIR="$pkgdir" install
 }
