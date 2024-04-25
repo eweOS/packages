@@ -2,7 +2,7 @@
 
 pkgname=limine
 pkgver=7.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, portable, multiprotocol bootloader"
 arch=(x86_64 aarch64 riscv64)
 url="https://limine-bootloader.org/"
@@ -20,7 +20,11 @@ sha256sums=('94f7ac81010d66431bc65ff8b21fb04d1db541f3c9839ec20e6a93c1ccb86f69'
 
 build() {
   cd "${pkgname}-${pkgver}"
-  ./configure --prefix=/usr --enable-uefi-$CARCH TOOLCHAIN_FOR_TARGET=llvm
+  local target_options=(
+    --enable-uefi-$CARCH
+  )
+  [ $CARCH = x86_64 ] && target_options+=(--enable-bios --enable-bios-cd)
+  ./configure --prefix=/usr ${target_options[*]} TOOLCHAIN_FOR_TARGET=llvm
   make
 }
 
