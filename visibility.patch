@@ -1,0 +1,13 @@
+--- a/build/moz.configure/toolchain.configure
++++ b/build/moz.configure/toolchain.configure
+@@ -2186,7 +2186,7 @@
+-@depends(target, build_environment)
++@depends(target, c_compiler, build_environment)
+-def visibility_flags(target, env):
++def visibility_flags(target, c_compiler, env):
+     if target.os != "WINNT":
+-        if target.kernel == "Darwin":
++        if target.kernel == "Darwin" or c_compiler.type == "clang":
+             return ("-fvisibility=hidden", "-fvisibility-inlines-hidden")
+         return (
+             "-I%s/system_wrappers" % os.path.join(env.dist),
