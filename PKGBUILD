@@ -2,7 +2,7 @@
 
 pkgname=firefox
 pkgver=124.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64 aarch64 riscv64)
@@ -36,13 +36,15 @@ source=(
   res_nquery.patch
   firefox.desktop
   distribution.ini
+  visibility.patch
 )
 sha256sums=('345a1235123ad808cecdb4a9af09ea48bf52ad09d3d380fc704406e3dd13c9d8'
             '3fa5049fe26dba8f18e1d21be70b238f24bca79462ecfa5be348639f8dc9a620'
             '84c490d8314fcc2b37ade636d6ae8467980c07caa351c65d06bf71a65ba01d9d'
             '7a9e1e0b60879983c81148e59a44074e3f5cd805b2c16d1d2211336b3af04e51'
             '18a0f1df76834ac3d4ddb150aa857785df641b54f9fbf0cfb6ffcec64dad72d4'
-            'a22ceb0bbf5830d3afbacd656e6893ff0ce455fae5f48c7daa5f836112291ba7')
+            'a22ceb0bbf5830d3afbacd656e6893ff0ce455fae5f48c7daa5f836112291ba7'
+            '98527320399c5efe4dd0103fa0af3732470700abb515871d28e001edc3e49e7e')
 # FIXME: ADD MORE MEMORY!!!
 options=(!lto)
 
