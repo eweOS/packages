@@ -15,7 +15,7 @@ source=("https://github.com/s-yata/darts-clone/archive/$_fullhash.tar.gz")
 sha256sums=('4a562824ec2fbb0ef7bd0058d9f73300173d20757b33bb69baa7e50349f65820')
 
 build () {
-	cd darts-clone
+	cd darts-clone-$_fullhash
 	autoreconf -i
 	export CXXFLAGS="-std=c++11 $CXXFLAGS"
 	./configure --prefix=/usr
@@ -23,12 +23,12 @@ build () {
 }
 
 check() {
-	cd darts-clone
+	cd darts-clone-$_fullhash
 	make check
 }
 
 package() {
-	cd darts-clone
+	cd darts-clone-$_fullhash
 	make install DESTDIR=${pkgdir}
 	_install_license_ COPYING.md
 }
