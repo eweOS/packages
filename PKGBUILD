@@ -1,6 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
-pkgname=tclap
+pkgbase=tclap
+pkgname=(tclap tclap-doc)
 pkgver=1.2.5
 pkgrel=1
 pkgdesc='Templatized C++ Command Line Parser Library'
@@ -15,6 +16,8 @@ build () {
 	cd tclap-$pkgver
 	./configure --prefix=/usr
 	make
+	make install DESTDIR=$srcdir/install
+	mv $srcdir/install/usr/share/doc $srcdir
 }
 
 check() {
@@ -22,8 +25,12 @@ check() {
 	make check
 }
 
-package() {
-	cd tclap-$pkgver
-	make install DESTDIR=${pkgdir}
-	_install_license_ COPYING
+package_tclap() {
+	mv $srcdir/install/usr $pkgdir
+	_install_license_ $srcdir/tclap-$pkgver/COPYING
+}
+
+package_tclap-doc() {
+	mkdir -p $pkgdir/usr/share
+	mv $srcdir/doc $pkgdir/usr/share
 }
