@@ -1,18 +1,18 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=spdlog
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Very fast, header-only/compiled, C++ logging library'
 arch=(x86_64 aarch64 riscv64)
 url='https://github.com/gabime/spdlog'
 license=('MIT')
 depends=('fmt')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('534f2ee1a4dcbeb22249856edfb2be76a1cf4f708a20b0ac2ed090ee24cfdbc9')
+sha256sums=('429a6b73ade8285cb21f83bacf89e2821dd1720ea7faa3cb518ffe04b4e00efc')
 
 prepare() {
     cd "$pkgname-$pkgver"
