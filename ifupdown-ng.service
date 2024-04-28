@@ -1,0 +1,5 @@
+type = scripted
+command = /usr/sbin/ifup -a
+restart = false
+depends-on = rc.target
+before = network.target
