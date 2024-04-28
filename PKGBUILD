@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname="hyprcursor"
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="The hyprland cursor format, library and utilities"
 arch=(any)
@@ -13,7 +13,7 @@ _archive="${pkgname}-${pkgver}"
 source=(
 	"$_archive.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('c830733c3e5243e0c5f06b8d137828a45083cc7483e7e874c4bd42e38a82ed9d')
+sha256sums=('853692df9b649b92453baf28cb4cbc38013ab624113a14a8efa507c71a3cb46a')
 
 prepare() {
 	_patch_ "$_archive"
