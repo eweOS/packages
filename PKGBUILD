@@ -2,9 +2,9 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=libutf8proc
-pkgver=2.8.0
-_sover=2
-pkgrel=2
+pkgver=2.9.0
+_sover=3.0.0
+pkgrel=1
 pkgdesc='C library for processing UTF-8 encoded Unicode strings'
 arch=(x86_64 aarch64 riscv64)
 url='https://github.com/JuliaStrings/utf8proc'
