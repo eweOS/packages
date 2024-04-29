@@ -8,6 +8,7 @@ url='https://github.com/ifupdown-ng/ifupdown-ng'
 arch=(x86_64 aarch64 riscv64)
 license=(ISC)
 depends=(musl)
+makedepends=(scdoc)
 options=(!lto emptydirs)
 source=("https://github.com/ifupdown-ng/ifupdown-ng/archive/refs/tags/ifupdown-ng-$pkgver.tar.gz"
 	"ifupdown-ng.service")
