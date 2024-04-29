@@ -2,8 +2,8 @@
 
 pkgname='mesa'
 pkgdesc="An open-source implementation of the OpenGL specification"
-pkgver=24.0.5
-pkgrel=3
+pkgver=24.0.6
+pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm')
 makedepends=('meson' 'wayland' 'wayland-protocols' 'python-packaging')
@@ -16,7 +16,7 @@ source=(
   orcjit.patch
   orcjit-cache.patch
 )
-sha512sums=('9476af4b9ac8db5dce397084ef169927d10b28adea7e74aa5b3136810b499ac98ddf7ab564e7d1ff81c887208c8ebab3ad2d4e27e7f46136609b5c67527018eb'
+sha512sums=('60fcc77132c3cb0c98e650d97d3324bfd18abe7f8f8a3aa5209f71b2fddd94510f939bbf5272b2241749307184d5badde9da4842be57ce13f5760875885ea6fc'
             'cc273e4cc9507e8d7d19e3dca00e8a2cda9e80f9b298341a38028968f2ffc4b6ecb3e71885bf1e9ab8a8ccf5b6b18e8ca0bbd6078e8d41919f8e1acb891be92d'
             'c1a12a660a246424e75e9c8c1c2b39daccf58812e4899652c5ca72553e034259fc451a895cd330c34ef6366f56791fa09e1c3be83cd00896b00c040248e17456')
 
