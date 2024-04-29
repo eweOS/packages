@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gtk3
-pkgver=3.24.38
-pkgrel=7
+pkgver=3.24.41
+pkgrel=1
 pkgdesc="Multi-platform toolkit for creating graphical user interfaces"
 url="https://www.gtk.org/"
 arch=(x86_64 aarch64 riscv64)
@@ -32,7 +32,7 @@ makedepends=(
   gobject-introspection
 )
 source=("https://gitlab.gnome.org/GNOME/gtk/-/archive/${pkgver}/gtk-${pkgver}.tar.gz")
-sha256sums=('6cdf7189322b8465745fbb30249044d05b792a8f006746ccce9213db671ec16d')
+sha256sums=('0ce1fa6cde05762cfb93a4064d4d211350944a77ebc954542d76e552d2cd0894')
 
 build()
 {
