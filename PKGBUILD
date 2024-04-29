@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=harfbuzz
-pkgver=8.3.0
-pkgrel=2
+pkgver=8.4.0
+pkgrel=1
 pkgdesc="OpenType text shaping engine"
 url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
 arch=(x86_64 aarch64 riscv64)
@@ -12,7 +12,7 @@ makedepends=(python meson gobject-introspection)
 source=("https://github.com/harfbuzz/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
 provides=(libharfbuzz-subset.so libharfbuzz-cairo.so libharfbuzz.so
 	  libharfbuzz-icu.so libharfbuzz-gobject.so)
-sha256sums=('109501eaeb8bde3eadb25fab4164e993fbace29c3d775bcaa1c1e58e2f15f847')
+sha256sums=('af4ea73e25ab748c8c063b78c2f88e48833db9b2ac369e29bd115702e789755e')
 
 build() {
   # Harfbuzz wants no exceptions
