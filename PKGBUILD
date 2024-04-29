@@ -1,14 +1,14 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=catnest
-pkgver=0.2.0
-pkgrel=2
+_commit="708d9351fc0bd8335508ac38c60295e391e90f70"
+pkgver=0.2.1.${_commit:0:7}
+pkgrel=1
 pkgdesc="A substitution of systemd-sysusers"
 url="https://github.com/eweOS/catnest"
 license=(MIT)
 arch=(x86_64 aarch64 riscv64)
 makedepends=(git)
-_commit="1c6d7a0c35b89debf9707e096e7c2457ee08255d"
 options=(emptydirs)
 source=(
   "git+https://github.com/eweOS/catnest#commit=${_commit}"
@@ -36,7 +36,7 @@ package()
   cd $pkgname
   mkdir -p $pkgdir/etc/sysusers.d
   install -D $pkgname $pkgdir/usr/bin/$pkgname
-  install -D ../basic.conf $pkgdir/usr/lib/sysusers.d/00-basic.conf
+  install -D ../basic.conf $pkgdir/usr/lib/sysusers.d/basic.conf
   install -D $pkgname.1 $pkgdir/usr/share/man/man1/$pkgname.1
   _install_license_ LICENSE
   _dinit_install_services_ $srcdir/$pkgname.service
