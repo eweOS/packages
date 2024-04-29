@@ -1,0 +1,4 @@
+type = process
+command = /usr/bin/caddy run --config /etc/caddy/config.json
+run-as = caddy
+depends-on = network.target
