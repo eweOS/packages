@@ -1,9 +1,8 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
-# Contributor: Andreas Radke <andyrtr@archlinux.org>
-# Contributor: judd <jvinet@zeroflux.org>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libgpg-error
-pkgver=1.48
+pkgver=1.49
 pkgrel=1
 pkgdesc="Support library for libgcrypt"
 arch=(x86_64 aarch64 riscv64)
@@ -11,7 +10,7 @@ url="https://www.gnupg.org"
 license=('LGPL')
 depends=('musl' 'sh')
 source=(https://www.gnupg.org/ftp/gcrypt/libgpg-error/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('8bdb504750b4da9e7daffa164cf1ed9900671f32')
+sha1sums=('28668dc3f693dfd8fa6724c702559e45ab5b15c0')
 
 prepare()
 {
