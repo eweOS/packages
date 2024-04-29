@@ -1,8 +1,8 @@
 # Maintainer: YukariChiba <i@0x7f.cc>
 
 pkgname=swaybg
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='Wallpaper tool for Wayland compositors'
 arch=(x86_64 aarch64 riscv64)
 url='https://github.com/swaywm/swaybg'
@@ -12,7 +12,7 @@ depends=(wayland cairo gdk-pixbuf)
 source=(
     "${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
 )
-sha256sums=('c0205b34f1fad94553b6cb2c2b983cc33186018026058cad0b841a00bc3087e3')
+sha256sums=('6af1fdf0e57b1cc5345febed786b761fea0e170943a82639f94cfaed7df84f8f')
 
 build() {
     mkdir -p build
