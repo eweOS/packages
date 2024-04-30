@@ -1,11 +1,11 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
+# Maintainer: Yao Zi <ziyao@disroot.org>
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: xRemaLx <anton.komolov@gmail.com>
 
 pkgname=perl-extutils-config
 _pkgname=ExtUtils-Config
-pkgver=0.008
-pkgrel=8
+pkgver=0.009
+pkgrel=1
 pkgdesc="ExtUtils::Config - A wrapper for perl's configuration"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -13,7 +13,7 @@ url="https://search.cpan.org/dist/ExtUtils-Config/"
 options=(!emptydirs)
 makedepends=('perl')
 source=("https://search.cpan.org/CPAN/authors/id/L/LE/LEONT/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('7775e2212b4605e60559c7e63604b8f2b4c56f4846e64f9f4454f3f5d0a7a21f618143e6c61eafabf5d9ee9bca8f722c04aedeaf9c51f59924de68c272b86db2')
+sha512sums=('7f3d054f31b08a9179dbad47204f9223607d8af84e4dfa1e9250981dd271b753576e571e2071d94408340376f13d3d766278d23407b7c754dbc493b7df30e2cd')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
