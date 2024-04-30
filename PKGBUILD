@@ -1,8 +1,8 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
+# Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=nasm
-pkgver=2.16.01
-pkgrel=2
+pkgver=2.16.03
+pkgrel=1
 pkgdesc='80x86 assembler designed for portability and modularity'
 url='https://www.nasm.us'
 arch=(x86_64 aarch64 riscv64)
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('musl')
 checkdepends=('perl')
 source=(https://www.nasm.us/pub/nasm/releasebuilds/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha512sums=('51fccb5639ce019d9c423c0f279750ffbd74c64cd41dd3b185d1aa1a1aaed79c5d3cd8d4bebbc13ee249a375ed27457ea2abde1a4dbb24d354598fffd1254833')
+sha512sums=('0c706e41a9c33e1ac3bad5056e8bf8cbcd51785b551a6e34ce7d0d723df8eaab8603a033e89b3dcda1004b558f9e9ef3196691500f10d8201bf47a323a516f84')
 
 build()
 {
