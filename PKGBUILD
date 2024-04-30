@@ -2,7 +2,7 @@
 
 pkgname=expat
 pkgver=2.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An XML parser library"
 arch=(x86_64 aarch64 riscv64)
 url="https://libexpat.github.io/"
@@ -25,7 +25,6 @@ build()
 package()
 {
   make VERBOSE=1 DESTDIR="$pkgdir" -C build install
-  mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"
   install -vDm 644 "$pkgname-$pkgver/COPYING" -t "${pkgdir}/usr/share/licenses/$pkgname/"
   install -vDm 644 "$pkgname-$pkgver/"{AUTHORS,Changes,README.md} -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
