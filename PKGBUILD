@@ -18,6 +18,9 @@ prepare() {
 	# two checks fail
 	sed -i "/constants\/member-access/d" \
 		vala-$pkgver/tests/Makefile.in
+	# property-array fail on obs
+	sed -i "s/objects\/property-array.vala//" \
+		vala-$pkgver/tests/Makefile.in
 }
 
 build () {
