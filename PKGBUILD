@@ -10,6 +10,7 @@ arch=(x86_64 aarch64 riscv64)
 license=(LGPL2)
 depends=(glib graphviz)
 makedepends=(gobject-introspection flex bison libxslt)
+checkdepends=(dbus)
 source=("https://download.gnome.org/sources/vala/$_ver/vala-$pkgver.tar.xz")
 sha256sums=('26100c4e4ef0049c619275f140d97cf565883d00c7543c82bcce5a426934ed6a')
 
