@@ -16,7 +16,7 @@ sha256sums=('8ffbe944e74043d0d3fb53d4a2a14c94de71f58dbea6a06d0dc92369542958ea')
 
 build () {
 	mkdir -p build
-	ewe-meson configure openh264-$pkgver \
+	ewe-meson openh264-$pkgver build \
 		-Dtests=enabled
 	meson compile -C build
 }
