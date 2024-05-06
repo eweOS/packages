@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pacman-mirrorlist
-pkgver=20240419
+pkgver=20240506
 pkgrel=1
 pkgdesc="eweOS mirror list for use by pacman"
 arch=('any')
@@ -14,4 +14,4 @@ package() {
   mkdir -p "$pkgdir/etc/pacman.d"
   install -m644 "$srcdir/mirrorlist" "$pkgdir/etc/pacman.d/"
 }
-sha256sums=('38f62e60be60041b0612447836c27305ca4dda279284d0998fda5868427e599d')
+sha256sums=('d46d2abe06cce732165c09da05ed648e2070bb2e57aa5df09ad8645a5c06dcf7')
