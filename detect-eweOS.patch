@@ -1,0 +1,18 @@
+diff --git a/kde-modules/KDEInstallDirsCommon.cmake b/kde-modules/KDEInstallDirsCommon.cmake
+index cf26671..a02b451 100644
+--- a/kde-modules/KDEInstallDirsCommon.cmake
++++ b/kde-modules/KDEInstallDirsCommon.cmake
+@@ -34,8 +34,11 @@ if((CMAKE_SYSTEM_NAME MATCHES "Linux|kFreeBSD" OR CMAKE_SYSTEM_NAME STREQUAL "GN
+     if(CMAKE_LIBRARY_ARCHITECTURE)
+       set(_LIBDIR_DEFAULT "lib/${CMAKE_LIBRARY_ARCHITECTURE}")
+     endif()
+-  else() # not debian, rely on CMAKE_SIZEOF_VOID_P:
+-    if(NOT DEFINED CMAKE_SIZEOF_VOID_P)
++  else() # not debian, check for eweOS or rely on CMAKE_SIZEOF_VOID_P:
++    cmake_host_system_information(RESULT __distro_id QUERY DISTRIB_ID)
++    if (__distro_id STREQUAL "ewe")
++      set(_LIBDIR_DEFAULT "lib")
++    elseif(NOT DEFINED CMAKE_SIZEOF_VOID_P)
+       message(AUTHOR_WARNING
+         "Unable to determine default LIB_INSTALL_LIBDIR directory because no target architecture is known. "
+         "Please enable at least one language before including KDEInstallDirs.")
