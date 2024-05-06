@@ -2,7 +2,7 @@
 
 pkgname=('boost' 'boost-libs')
 pkgver=1.85.0
-pkgrel=1
+pkgrel=2
 _srcname=boost_${pkgver//./_}
 pkgdesc="Free peer-reviewed portable C++ source libraries"
 arch=(x86_64 aarch64 riscv64)
@@ -88,7 +88,7 @@ package_boost-libs() {
     python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
 
   pkgdesc+=' (runtime libraries)'
-  depends=('bzip2' 'zlib' 'icu' 'zstd')
+  depends=('libbz2' 'zlib' 'icu' 'zstd')
   provides=(libboost_atomic.so libboost_chrono.so libboost_container.so
     libboost_context.so libboost_contract.so libboost_coroutine.so
     libboost_date_time.so libboost_fiber.so libboost_filesystem.so
