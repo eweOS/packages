@@ -2,7 +2,7 @@
 
 pkgname=opencc
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Conversion between Traditional and Simplified Chinese'
 url='https://github.com/BYVoid/OpenCC'
 arch=(x86_64 aarch64 riscv64)
@@ -17,6 +17,7 @@ build () {
 	cd OpenCC-ver.$pkgver
 	cmake . -B build \
 		-DCMAKE_BUILD_TYPE=Release	\
+		-DCMAKE_INSTALL_PREFIX=/usr	\
 		-DBUILD_DOCUMENTATION=OFF	\
 		-DENABLE_GTEST=ON		\
 		-DENABLE_BENCHMARK=OFF		\
