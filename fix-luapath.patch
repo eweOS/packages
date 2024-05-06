@@ -1,0 +1,13 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -54,6 +54,9 @@ endfunction()
+ 
+ if(USE_DLOPEN)
+     _RESOLVE_LIBRARY_PATH(LUA_LIBRARY_PATH  ${LUA_LIBRARY})
++    string(STRIP "${LUA_LIBRARY_PATH}" LUA_LIBRARY_PATH)
++    string(REPLACE ":" ";" LUA_LIBRARY_PATH ${LUA_LIBRARY_PATH})
++    list(GET LUA_LIBRARY_PATH 0 LUA_LIBRARY_PATH)
+ endif()
+ 
+ configure_file(config.h.in config.h)
+
