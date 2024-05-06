@@ -1,0 +1,13 @@
+diff --git a/src/shims/getprogname.h b/src/shims/getprogname.h
+index a768eed..40e6918 100644
+--- a/src/shims/getprogname.h
++++ b/src/shims/getprogname.h
+@@ -37,7 +37,7 @@ const char *getprogname(void);
+ static inline char *
+ getprogname(void)
+ {
+-# if HAVE_DECL_PROGRAM_INVOCATION_SHORT_NAME
++# if HAVE_DECL_PROGRAM_INVOCATION_SHORT_NAME || true
+ 	return program_invocation_short_name;
+ # elif defined(__ANDROID__)
+ 	return __progname;
