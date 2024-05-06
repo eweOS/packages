@@ -3,13 +3,14 @@
 pkgbase=bzip2
 pkgname=libbz2
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-quality data compression program"
 arch=(x86_64 aarch64 riscv64)
 license=('BSD')
 url="https://sourceware.org/bzip2/"
 depends=('musl' 'sh')
 makedepends=(meson)
+provides=(bzip2)
 _commit=2d8393924b9f3e014000c7420c7da7c3ddb74e2c
 source=(https://gitlab.com/bzip2/${pkgbase}/-/archive/${_commit}/bzip2-${_commit}.tar.gz)
 sha256sums=('19f03adba109479ed2dcd381890ae9b10a592adaa36d86218531800e1ad68c98')
