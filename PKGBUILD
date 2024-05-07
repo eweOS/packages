@@ -2,7 +2,7 @@
 
 pkgname=busybox
 pkgver=1.36.1
-pkgrel=18
+pkgrel=19
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64)
 url="https://www.busybox.net"
@@ -30,7 +30,7 @@ source=(
   "mdev-helper-dev-bus-usb"
 )
 sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
-            'df29218cb8a33afd6779ffb0fcc29b5ffd6883de55f8eb1d17fc03563aeea04e'
+            '679abfce121db67cf34c5b88020b1af9052d9e1ec704a75578077432a770ed3c'
             '204a0fc1dabe7cc02a8a18bdec4637d7ddb6547042c9ee1e5f9b71cd22de2f85'
             '644321e67516c8e6869dd1f09b9dfc06d6758dec91df0bdea3cb614419a1e0d3'
             '9c69f0ef1da1d48d1aa36c0925366f240b3a42f2ccd43bea54b5ee95ef9316d2'
@@ -47,8 +47,7 @@ sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
             'f641a4d722dfaeb70e43ee87d8b1ce6ecadc0aec4ee21bdc28bbe4564dd743f4'
             '32c89049dfcb5de3b2591b1039b25aa8ad83f0af9b6782ef460ed4dde7a8493d')
 
-prepare()
-{
+prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   sed "/CONFIG_PREFIX/s@=.*@=\"${pkgdir}/usr/\"@" \
     "${srcdir}/config" > .config
@@ -61,22 +60,19 @@ prepare()
   sed -i 's/64\*1024\*1024/512\*1024\*1024/' modutils/depmod.c
 }
 
-build()
-{
+build() {
   cd "$srcdir/$pkgname-$pkgver"
   make HOSTCC=clang CC=clang LDLIBS='-lutmps'
   cc -o $srcdir/busybox-suidwrapper $srcdir/busybox-suidwrapper.c
 }
 
-check()
-{
+check() {
   cd "$srcdir/$pkgname-$pkgver"
   # it takes too long to test 'md5sum-verifies-non-binary-file'
   #make HOSTCC=clang CC=clang LDLIBS='-lutmps' check
 }
 
-package()
-{
+package() {
   cd "$srcdir/$pkgname-$pkgver"
   make HOSTCC=clang CC=clang LDLIBS='-lutmps' install
   mv $pkgdir/usr/sbin/* $pkgdir/usr/bin
@@ -106,8 +102,7 @@ package()
   _dinit_install_services_ $srcdir/syslogd.service
   _dinit_install_services_ $srcdir/udhcpc.service
   _dinit_install_services_ $srcdir/mdev.service
-  for TTYNUM in 2 3 4 5 6
-  do
+  for TTYNUM in 2 3 4 5 6; do
     cat ${srcdir}/getty.service | sed "s/@TTYNUM@/$TTYNUM/g" > $srcdir/getty-tty$TTYNUM
     _dinit_install_services_ $srcdir/getty-tty$TTYNUM
   done
