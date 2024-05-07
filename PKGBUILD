@@ -2,10 +2,10 @@
 
 pkgname=openh264
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Source H264 Codec'
 url='https://github.com/cisco/openh264'
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 license=(BSD)
 depends=(musl)
 makedepends=(meson ninja nasm)
