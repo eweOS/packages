@@ -1,6 +1,6 @@
 #!/bin/sh
 
 if test -f PKGBUILD; then
-    shfmt -i 2 -bn -fn -ci -sr -w PKGBUILD
-    git add PKGBUILD
+  shfmt -i 2 -bn -ci -sr -w PKGBUILD
+  git add PKGBUILD
 fi
