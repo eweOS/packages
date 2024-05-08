@@ -3,7 +3,7 @@
 
 pkgname=filesystem
 pkgver=1.0.0
-pkgrel=8
+pkgrel=9
 pkgdesc='The base directory structure and a few core files for the system.'
 arch=(any)
 url='https://os.ewe.moe'
