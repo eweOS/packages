@@ -2,7 +2,7 @@
 
 pkgname=harfbuzz
 pkgver=8.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenType text shaping engine"
 url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
 arch=(x86_64 aarch64 riscv64)
@@ -13,6 +13,11 @@ source=("https://github.com/harfbuzz/$pkgname/releases/download/$pkgver/$pkgname
 provides=(libharfbuzz-subset.so libharfbuzz-cairo.so libharfbuzz.so
 	  libharfbuzz-icu.so libharfbuzz-gobject.so)
 sha256sums=('af4ea73e25ab748c8c063b78c2f88e48833db9b2ac369e29bd115702e789755e')
+
+prepare() {
+  cd $pkgname-$pkgver
+  sed -i 's/cpp_std=c++11/cpp_std=c++17/' meson.build
+}
 
 build() {
   # Harfbuzz wants no exceptions
