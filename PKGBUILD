@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ffmpeg
-pkgver=6.1.1
+pkgver=7.0
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(x86_64 aarch64 riscv64)
@@ -28,6 +28,7 @@ makedepends=(
   clang
   git
   mesa
+  linux-headers
   nasm
 )
 provides=(
@@ -43,7 +44,7 @@ provides=(
 #_tag=3949db4d261748a9f34358a388ee255ad1a7f0c0
 #source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag})
 source=(https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n$pkgver.tar.gz)
-sha256sums=('7c1ebea95d815e49c1e60c7ee816410dec73a81b8ac002b276780d2f9048e598')
+sha256sums=('a68fbc06a645cc93e5c877adbaa592cffc40e8595ba50eb716807c4a35bf0f03')
 
 prepare() {
   cd FFmpeg-n$pkgver
