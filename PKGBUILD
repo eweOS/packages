@@ -2,14 +2,14 @@
 
 pkgname=busybox
 pkgver=1.36.1
-pkgrel=19
+pkgrel=20
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64)
 url="https://www.busybox.net"
 license=('GPL')
 depends=("utmps")
 makedepends=("ncurses" "musl" "skalibs" "linux-headers")
-options=(!lto)
+options=(!lto emptydirs)
 source=(
   "$url/downloads/$pkgname-$pkgver.tar.bz2"
   "config"
@@ -28,6 +28,7 @@ source=(
   "mdev-helper-sound-control"
   "mdev-helper-storage-device"
   "mdev-helper-dev-bus-usb"
+  "acpid.service"
 )
 sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
             '679abfce121db67cf34c5b88020b1af9052d9e1ec704a75578077432a770ed3c'
@@ -45,7 +46,8 @@ sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
             'd6dc8bd5e9123e9352acfbb8754afe8e44a0a1e0a4539d309f7193a1d5ddc0fe'
             'f157359b7992e9d08da728b2c48c10f338e149e44856f3cb9665164c35f6e232'
             'f641a4d722dfaeb70e43ee87d8b1ce6ecadc0aec4ee21bdc28bbe4564dd743f4'
-            '32c89049dfcb5de3b2591b1039b25aa8ad83f0af9b6782ef460ed4dde7a8493d')
+            '32c89049dfcb5de3b2591b1039b25aa8ad83f0af9b6782ef460ed4dde7a8493d'
+            'db93d29f439b25a174216898915f92fc6e092042d27a07e0bdf58ea277e80085')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -94,19 +96,22 @@ package() {
   install -m 0755 "${srcdir}/udhcpc.script" \
     usr/share/udhcpc/default.script
 
+  # acpid config dir
+  install -d etc/acpi
+
   for helper in dev-bus-usb settle-nics sound-control storage-device; do
     install -Dm 0755 "$srcdir/mdev-helper-$helper" $pkgdir/usr/bin/mdev-helper-$helper
   done
 
-  _dinit_install_services_ $srcdir/ntpd.service
-  _dinit_install_services_ $srcdir/syslogd.service
-  _dinit_install_services_ $srcdir/udhcpc.service
-  _dinit_install_services_ $srcdir/mdev.service
+  for service in ntpd syslogd udhcpc mdev acpid; do
+    _dinit_install_services_ $srcdir/${service}.service
+  done
+
   for TTYNUM in 2 3 4 5 6; do
     cat ${srcdir}/getty.service | sed "s/@TTYNUM@/$TTYNUM/g" > $srcdir/getty-tty$TTYNUM
     _dinit_install_services_ $srcdir/getty-tty$TTYNUM
   done
 
-  # Enable tty2 and ntpd
-  _dinit_enable_services_ getty-tty2 ntpd
+  # Enable tty2, ntpd, acpid
+  _dinit_enable_services_ getty-tty2 ntpd acpid
 }

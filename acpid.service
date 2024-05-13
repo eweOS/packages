@@ -1,0 +1,5 @@
+type = process
+command = /sbin/acpid -f
+restart = false
+depends-on = rc.target
+before = login.target
