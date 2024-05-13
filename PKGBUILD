@@ -2,9 +2,9 @@
 
 pkgname=(linux linux-headers)
 _basename=linux
-_pkgver=6.8.8
-pkgver=6.8.8
-pkgrel=2
+_pkgver=6.9
+pkgver=6.9
+pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 url='http://www.kernel.org'
 license=(GPL2)
@@ -14,7 +14,7 @@ source=(
   "kernel-config::git+https://github.com/eweOS/kernel-config.git"
   busybox-find-compat.patch
 )
-sha256sums=('1c4cdcb9d560fad1fb95db2cb8afbedc922f9ead848371fe40363b13f9f631ba'
+sha256sums=('24fa01fb989c7a3e28453f117799168713766e119c5381dac30115f18f268149'
             'SKIP'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
 
