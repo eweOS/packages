@@ -2,12 +2,14 @@
 
 pkgname=bison
 pkgver=3.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU general-purpose parser generator"
 arch=(x86_64 aarch64 riscv64)
 url='http://www.gnu.org/software/bison/'
 license=('GPL3')
 makedepends=(flex perl)
+# pinned to use tiny version of gettext
+depends=(gettext-tiny)
 source=(
   "http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-$pkgver.tar.xz"
 )
