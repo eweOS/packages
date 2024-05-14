@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=mpv
-pkgver=0.36.0
+pkgver=0.38.0
 pkgrel=1
 pkgdesc='a free, open source, and cross-platform media player'
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -9,17 +9,18 @@ license=('GPL3')
 url='https://mpv.io/'
 depends=(
   'alsa-lib' 'wayland' 'zlib' 'ffmpeg' 'libass' 'lcms2' 'libarchive'
-  'sdl2' 'zimg' 'zlib' 'alsa-lib' 'pipewire' 'libpulse'
+  'sdl2' 'zimg' 'zlib' 'alsa-lib' 'pipewire' 'libpulse' 'libplacebo'
   'libdrm' 'libjpeg' 'libxkbcommon'
   'mesa' 'libglvnd') 
 makedepends=('git' 'meson' 'wayland-protocols')
 source=("https://github.com/mpv-player/mpv/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('29abc44f8ebee013bb2f9fe14d80b30db19b534c679056e4851ceadf5a5e8bf6')
+sha256sums=('86d9ef40b6058732f67b46d0bbda24a074fae860b3eaae05bab3145041303066')
 
 build() {
   local _audioout_features=(
     -D audiounit=disabled
     -D coreaudio=disabled
+    -D avfoundation=disabled
     -D jack=disabled
     -D openal=disabled
     -D opensles=disabled
@@ -44,9 +45,6 @@ build() {
     -D gl-dxinterop=disabled
     -D gl-win32=disabled
     -D gl-x11=disabled
-    -D libplacebo=disabled
-    -D libplacebo-next=disabled
-    -D rpi=disabled
     -D sdl2-video=disabled
     -D shaderc=disabled
     -D sixel=disabled
@@ -56,8 +54,8 @@ build() {
     -D vaapi=disabled
     -D vaapi-drm=disabled
     -D vaapi-wayland=disabled
+    -D vaapi-win32=disabled
     -D vaapi-x11=disabled
-    -D vaapi-x-egl=disabled
     -D vulkan=disabled
     -D x11=disabled
     -D xv=disabled  
@@ -70,14 +68,11 @@ build() {
     -D d3d9-hwaccel=disabled
     -D gl-dxinterop-d3d9=disabled
     -D ios-gl=disabled
-    -D rpi-mmal=disabled
     -D videotoolbox-gl=disabled
+    -D videotoolbox-pl=disabled
     -D vulkan-interop=disabled  
   )
   local _macos_features=(
-    -D macos-10-11-features=disabled
-    -D macos-10-12-2-features=disabled
-    -D macos-10-14-features=disabled
     -D macos-cocoa-cb=disabled
     -D macos-media-player=disabled
     -D macos-touchbar=disabled
@@ -95,12 +90,11 @@ build() {
     -D pthread-debug=disabled
     -D rubberband=disabled
     -D sdl2-gamepad=disabled
-    -D stdatomic=disabled
     -D uchardet=disabled
     -D uwp=disabled
     -D vapoursynth=disabled
     -D vector=disabled
-    -D win32-internal-pthreads=disabled
+    -D win32-threads=disabled
   )
   local _features=(
     -D lua=disabled
