@@ -6,7 +6,7 @@
 # Contributor: tardo <tardo@nagi-fanboi.net>
 
 pkgname=astyle
-pkgver=3.4.14
+pkgver=3.4.15
 _sover=3.2.0
 pkgrel=1
 pkgdesc='A free, fast and small automatic formatter for C, C++, C#, and Java source code.'
@@ -15,7 +15,7 @@ url='http://astyle.sourceforge.net/'
 license=('LGPL')
 depends=('llvm-libs')
 source=("https://downloads.sourceforge.net/sourceforge/astyle/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('606a83f39146733185f6763059d292433c40f393eb6f52042e163f8df4e16a3e')
+sha256sums=('0504c733bbfe96688b66c107b6df3fa05263defabb23858e42c44ba554586e6b')
 
 prepare()
 {
