@@ -4,8 +4,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.28
 
 pkgname='perl-test-warnings'
-pkgver=0.031
-pkgrel=3
+pkgver=0.033
+pkgrel=1
 pkgdesc="Test for warnings and the lack of them"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -14,7 +14,7 @@ depends=('perl')
 makedepends=()
 url='https://search.mcpan.org/dist/Test-Warnings'
 source=("https://search.mcpan.org/CPAN/authors/id/E/ET/ETHER/Test-Warnings-$pkgver.tar.gz")
-md5sums=('f608f7011b0bb8f27d3a27e646a52f60')
+sha256sums=('b9c375719f2c61c5f97aa5ee6cf4c901a972347c415969379b0b51f67c48bbcb')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
