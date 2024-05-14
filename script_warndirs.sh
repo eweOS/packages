@@ -7,7 +7,7 @@ LIBRARY=${LIBRARY:-'/usr/share/makepkg'}
 
 source "${LIBRARY}/util/message.sh"
 
-lint_package_functions+=('warndirs')
+lint_package_functions+=('lintdirs')
 
 errordirs() {
     if [ -d "$pkgdir/$1" ] && [ ! -L "$pkgdir/$1" ]; then
@@ -17,6 +17,12 @@ errordirs() {
 }
 
 warndirs() {
+    if [ -d "$pkgdir/$1" ] && [ ! -L "$pkgdir/$1" ]; then
+        warning "Directory warning: /$1"
+    fi
+}
+
+lintdirs() {
     errordirs lib
     errordirs lib64
     errordirs usr/lib64
@@ -26,4 +32,5 @@ warndirs() {
     errordirs var/run
     errordirs var/lock
     errordirs usr/lib/systemd
+    warndirs usr/local
 }
