@@ -2,7 +2,7 @@
 
 pkgname=libxkbcommon
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Keymap handling library for toolkits and window systems'
 url='https://xkbcommon.org/'
 arch=(x86_64 aarch64 riscv64)
@@ -14,6 +14,7 @@ makedepends=(
   wayland
   wayland-protocols
 )
+provides=(libxkbcommon.so libxkbregistry.so)
 depends=(libxml2 xkeyboard-config)
 source=("https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-${pkgver}.tar.gz")
 sha256sums=('20d5e40dabd927f7a7f4342bebb1e8c7a59241283c978b800ae3bf60394eabc4')
