@@ -3,7 +3,7 @@
 pkgbase=curl
 # Temporary add ca certs
 pkgname=(curl ca-certs)
-pkgver=8.6.0
+pkgver=8.7.1
 pkgrel=1
 pkgdesc='An URL retrieval utility and library'
 arch=(x86_64 aarch64 riscv64)
@@ -11,8 +11,7 @@ url='https://curl.haxx.se'
 license=('MIT')
 depends=('openssl' 'zlib')
 source=("https://curl.haxx.se/download/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('43fdb6b81b394f3382d353d5f57673b2b3d26cfe34b25d08a526bc0597f508d5298e5a7088d0736d1f139cad19cd922affa51533c3a5a4bb5f2de68891c2958d')
-
+sha512sums=('66e2c55a6366ad5a4c2649051ad3f645b5f272439051edd168d23a974089550091503da36d99630d60dfbf04cbb0b8aea3e4db0e95de9855d3d53627565deb5b')
 
 build()
 {
