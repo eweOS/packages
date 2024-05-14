@@ -2,7 +2,7 @@
 
 pkgname=firefox
 pkgver=124.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64 aarch64 riscv64)
