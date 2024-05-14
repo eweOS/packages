@@ -1,0 +1,57 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgname=python-soupsieve
+pkgver=2.5
+pkgrel=1
+pkgdesc='A CSS4 selector implementation for Beautiful Soup'
+arch=('any')
+url='https://github.com/facelessuser/soupsieve'
+license=('MIT')
+depends=('python')
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-hatchling'
+)
+# FIXME: missing dependencies
+#checkdepends=(
+#  'python-pytest'
+#  'python-beautifulsoup4'
+#  'python-html5lib'
+#  'python-lxml'
+#)
+_commit='51ec317ada7e34f70fad6bfddaef8a2cfac1aebd'
+source=("$pkgname::git+$url#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --tags | sed 's/^v//'
+}
+
+build() {
+  cd "$pkgname"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$pkgname"
+
+  # https://gitlab.gnome.org/GNOME/libxml2/-/issues/312
+  #pytest \
+  #  --deselect tests/test_extra/test_soup_contains.py::TestSoupContains::test_contains_cdata_html \
+  #  --deselect tests/test_extra/test_soup_contains_own.py::TestSoupContainsOwn::test_contains_own_cdata_html
+}
+
+package() {
+  cd "$pkgname"
+
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # symlink license file
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "$site_packages/${pkgname#python-}-$pkgver.dist-info/licenses/LICENSE.md" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+}
