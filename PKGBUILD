@@ -8,7 +8,6 @@ url='https://metacpan.org/pod/ExtUtils::HasCompiler'
 arch=(any)
 license=(PerlArtistic GPL)
 depends=(perl)
-checkdepends=(perl-test-more)
 source=("https://cpan.metacpan.org/authors/id/L/LE/LEONT/ExtUtils-HasCompiler-$pkgver.tar.gz")
 sha256sums=('02e1e7275df00682d3ca8ea1c27a30591d6dd08b3e3865c0958afae911635a66')
 
