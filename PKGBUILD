@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=perl-test-simple
-pkgver=1.302198
+pkgver=1.302199
 pkgrel=1
 pkgdesc="Framework for writing test tools that all work together."
 arch=('any')
@@ -10,7 +10,7 @@ license=('PerlArtistic' 'GPL')
 depends=('perl')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/E/EX/EXODIST/Test-Simple-$pkgver.tar.gz")
-sha256sums=('1dc07bcffd23e49983433c948de3e3f377e6e849ad7fe3432c717fa782024faa')
+sha256sums=('7b4b03cee7f9e928fe10e8a3efef02b2a286f0877979694b2a9ef99250bd8c5c')
 
 build() {
 	cd Test-Simple-${pkgver}
