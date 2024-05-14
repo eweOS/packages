@@ -2,7 +2,7 @@
 
 pkgname=xxhash
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc='An extremely fast hash algorithm'
 url='https://github.com/Cyan4973/xxHash'
 arch=(x86_64 aarch64 riscv64)
@@ -13,15 +13,27 @@ sha256sums=('baee0c6afd4f03165de7a4e67988d16f0f2b257b51d0e3cb91909302a26a79c4')
 
 build () {
   cd xxHash-$pkgver
-  make PREFIX=/usr DISPATCH=1
+  if [ "$CARCH" == "x86_64" ]; then
+    make PREFIX=/usr DISPATCH=1
+  else
+    make PREFIX=/usr
+  fi
 }
 
 check() {
   cd xxHash-$pkgver
-  make PREFIX=/usr DISPATCH=1 check
+  if [ "$CARCH" == "x86_64" ]; then
+    make PREFIX=/usr DISPATCH=1 check
+  else
+    make PREFIX=/usr check
+  fi
 }
 
 package() {
   cd xxHash-$pkgver
-  make PREFIX=/usr DISPATCH=1 install DESTDIR=$pkgdir
+  if [ "$CARCH" == "x86_64" ]; then
+    make PREFIX=/usr DISPATCH=1 install DESTDIR=$pkgdir
+  else
+    make PREFIX=/usr install DESTDIR=$pkgdir
+  fi
 }
