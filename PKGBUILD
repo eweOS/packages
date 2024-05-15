@@ -2,8 +2,8 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=tcl
-pkgver=8.6.13
-pkgrel=0
+pkgver=8.6.14
+pkgrel=1
 pkgdesc="Powerful, easy-to-learn dynamic programming language"
 arch=(x86_64 aarch64 riscv64)
 url="http://tcl.sourceforge.net/"
@@ -11,7 +11,7 @@ license=('custom')
 depends=('zlib')
 options=('staticlibs' '!lto')
 source=(https://downloads.sourceforge.net/sourceforge/tcl/tcl${pkgver}-src.tar.gz)
-sha256sums=('43a1fae7412f61ff11de2cfd05d28cfc3a73762f354a417c62370a54e2caf066')
+sha256sums=('5880225babf7954c58d4fb0f5cf6279104ce1cd6aa9b71e9a6322540e1c4de66')
 
 prepare()
 {
@@ -51,14 +51,14 @@ package()
     -e "s#'{/usr/lib} '#'/usr/lib/tcl$_tclver'#" \
     -i "${pkgdir}/usr/lib/tclConfig.sh"
 
-  tdbcver=tdbc1.1.5
+  tdbcver=tdbc1.1.7
   sed -e "s#${srcdir}/tcl${pkgver}/unix/pkgs/$tdbcver#/usr/lib/$tdbcver#" \
     -e "s#${srcdir}/tcl${pkgver}/pkgs/$tdbcver/generic#/usr/include#" \
     -e "s#${srcdir}/tcl${pkgver}/pkgs/$tdbcver/library#/usr/lib/tcl${pkgver%.*}#" \
     -e "s#${srcdir}/tcl${pkgver}/pkgs/$tdbcver#/usr/include#" \
     -i "${pkgdir}/usr/lib/$tdbcver/tdbcConfig.sh"
 
-  itclver=itcl4.2.3
+  itclver=itcl4.2.4
   sed -e "s#${srcdir}/tcl${pkgver}/unix/pkgs/$itclver#/usr/lib/$itclver#" \
     -e "s#${srcdir}/tcl${pkgver}/pkgs/$itclver/generic#/usr/include#" \
     -e "s#${srcdir}/tcl${pkgver}/pkgs/$itclver#/usr/include#" \
