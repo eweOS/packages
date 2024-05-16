@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=bash-completion
-pkgver=2.13.0
+pkgver=2.14.0
 pkgrel=1
 pkgdesc='Programmable completion for the bash shell'
 arch=(any)
@@ -11,7 +11,7 @@ depends=(bash)
 options=(!emptydirs !makeflags)
 source=($url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz)
 validpgpkeys=(A558062B6D5DA1347CD468D52B0AE2C1B09B07CB)
-sha256sums=('c5f99a39e40f0d154c03ff15438e87ece1f5ac666336a4459899e2ff4bedf3d1')
+sha256sums=('5c7494f968280832d6adb5aa19f745a56f1a79df311e59338c5efa6f7285e168')
 
 prepare() {
   _patch_ $pkgname-$pkgver
