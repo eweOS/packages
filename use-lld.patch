@@ -1,0 +1,14 @@
+diff --git a/cmake/options_linux.cmake b/cmake/options_linux.cmake
+index b74b493..b74f236 100644
+--- a/cmake/options_linux.cmake
++++ b/cmake/options_linux.cmake
+@@ -143,6 +143,8 @@ if (DESKTOP_APP_ASAN)
+     endif()
+ endif()
+ 
++target_link_options(common_options INTERFACE -fuse-ld=lld)
++
+ target_link_libraries(common_options
+ INTERFACE
+     ${CMAKE_DL_LIBS}
+
