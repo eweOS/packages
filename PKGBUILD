@@ -1,10 +1,7 @@
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
-# Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
-# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
-# Contributor: Alexandre Bique <bique.alexandre@gmail.com>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=re2
-_re2ver=2022-06-01
+_re2ver=2024-05-01
 pkgrel=1
 epoch=1
 pkgver=${_re2ver//-/}
@@ -12,9 +9,10 @@ pkgdesc="Fast, safe, thread-friendly regular expression engine"
 arch=(x86_64 aarch64 riscv64)
 url="https://github.com/google/re2"
 license=('BSD')
-depends=('llvm-libs')
+depends=('llvm-libs' 'abseil-cpp')
+checkdepends=('gtest' 'benchmark')
 source=(re2-$pkgver.tar.gz::https://github.com/google/re2/archive/$_re2ver.tar.gz)
-sha256sums=('f89c61410a072e5cbcf8c27e3a778da7d6fd2f2b5b1445cd4f4508bee946ab0f')
+sha256sums=('fef2f366578401eada34f5603679fb2aebe9b409de8d275a482ce5f2cbac2492')
 
 build()
 {
