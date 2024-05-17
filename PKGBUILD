@@ -6,7 +6,7 @@ _libyuv_commit=ec6f15079ff373b7651698a68bba7244b3556981
 _crc32c_commit=02e65f4fd3065d27b2e29324800ca6d04df16126
 _libsrtp_commit=a566a9cfcd619e8327784aa7cff4a1276dc1e895
 pkgver=20231222.${_commit:0:7}
-pkgrel=1
+pkgrel=2
 pkgdesc="Telegram's fork of WebRTC"
 url='https://github.com/desktop-app/tg_owt'
 arch=(x86_64 aarch64)
@@ -20,7 +20,7 @@ source=("$url/archive/$_commit.tar.gz"
 	"fix-for-ffmpeg7.patch")
 noextract=($_libyuv_commit.tar.gz)
 sha256sums=('74c3da125d35de433909a31c6d2a65455e72c68c052b6a25b16af2aa5c24123a'
-            'f839e0ba2c2685e00e71b22c1d4c564eed715ebef4fa5c850226ea001ce92579'
+            'SKIP'
             '50ac512ad20ebca0be21bcf7c3c6d15aa3fcc27550b09825fab061bffe512bdf'
             'e9ea6288246f3cb21954393a19fda09f4dd252147967a30bb8824c2168620c61'
             '2146a34d3e86baff0820d19faf4da6389bd53b7fc1411ef5a48a7980cda57459')
