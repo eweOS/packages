@@ -39,7 +39,7 @@ prepare() {
 build () {
 	cmake -B build -S tg_owt-$_commit \
 		-DCMAKE_INSTALL_PREFIX=/usr		\
-		-DCMAKE_BUILD_TYPE=RelWithDebInfo	\
+		-DCMAKE_BUILD_TYPE=Release		\
 		-DTG_OWT_USE_PIPEWIRE=OFF		\
 		-DTG_OWT_USE_X11=OFF
 	cmake --build build
