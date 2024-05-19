@@ -2,7 +2,7 @@
 
 pkgbase=lua-lpeg
 pkgname=(lua51-lpeg lua54-lpeg)
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Pattern-matching library for Lua'
 url='http://www.inf.puc-rio.br/~roberto/lpeg'
@@ -11,7 +11,7 @@ makedepends=(lua51 lua54)
 license=(MIT)
 source=("http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-$pkgver.tar.gz")
 _lvers=(5.1 5.4)
-sha256sums=('48d66576051b6c78388faad09b70493093264588fcd0f258ddaab1cdd4a15ffe')
+sha256sums=('4b155d67d2246c1ffa7ad7bc466c1ea899bbc40fef0257cc9c03cecbaed4352a')
 
 build() {
 	for v in ${_lvers[*]}; do
