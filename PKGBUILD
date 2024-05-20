@@ -1,15 +1,15 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=tmux
-pkgver=3.3_a
-pkgrel=2
+pkgver=3.4
+pkgrel=1
 pkgdesc='A terminal multiplexer'
 url='https://github.com/tmux/tmux/wiki'
 arch=(x86_64 aarch64 riscv64)
 license=('BSD')
 depends=('ncurses' 'libevent')
 source=("https://github.com/tmux/tmux/releases/download/${pkgver/_/}/tmux-${pkgver/_/}.tar.gz")
-sha256sums=('e4fd347843bd0772c4f48d6dde625b0b109b7a380ff15db21e97c11a4dcdf93f')
+sha256sums=('551ab8dea0bf505c0ad6b7bb35ef567cdde0ccb84357df142c254f35a23e19aa')
 
 build()
 {
