@@ -1,8 +1,9 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
+pkgbase=font-unifont
 pkgname=ttf-unifont
 pkgver=15.0.01
-pkgrel=1
+pkgrel=2
 pkgdesc="TrueType version of the GNU Unifont"
 url="https://unifoundry.com/unifont.html"
 arch=('any')
