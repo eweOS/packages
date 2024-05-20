@@ -1,10 +1,10 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ncurses
-pkgver=6.4
+pkgver=6.5
 pkgrel=1
 arch=(x86_64 aarch64 riscv64)
-license=(GPL2)
+license=(MIT-open-group)
 pkgdesc="System V Release 4.0 curses emulation library"
 url="https://invisible-island.net/ncurses/ncurses.html"
 
@@ -12,8 +12,8 @@ source=(
   "http://ftp.gnu.org/gnu/ncurses/ncurses-${pkgver}.tar.gz"
   https://invisible-mirror.net/archives/ncurses/current/termcap.src.gz
 )
-sha256sums=('6931283d9ac87c5073f30b6290c4c75f21632bb4fc3603ac8100812bed248159'
-  '11007fdad0867408cd14b93ec4ec4eb4f39370bbf0520957c9826db4fa6d66fd')
+sha256sums=('136d91bc269a9a5785e5f9e980bc76ab57428f604ce3e5a5a90cebc767971cc6'
+            'e53ce12919e351d46ccd0a8a6ac595764d5bfe9b688b74830a522a3959f3b02d')
 
 build()
 {
