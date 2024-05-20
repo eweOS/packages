@@ -1,8 +1,9 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
+pkgbase=font-dejavu
 pkgname=ttf-dejavu
 pkgver=2.37
-pkgrel=1
+pkgrel=2
 pkgdesc="Font family based on the Bitstream Vera Fonts with a wider range of characters"
 arch=('any')
 url="https://dejavu-fonts.github.io/"
