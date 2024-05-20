@@ -1,9 +1,10 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
+pkgbase=font-opensans
 pkgname=ttf-opensans
 _fullhash=bd7e37632246368c60fdcbd374dbf9bad11969b6
 pkgver=20231116.${_fullhash:0:7}
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Sans Font'
 url='https://github.com/googlefonts/opensans'
 arch=(any)
