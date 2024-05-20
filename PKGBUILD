@@ -9,8 +9,14 @@ arch=(x86_64 aarch64 riscv64)
 license=('MIT')
 provides=('libyaml-cpp.so')
 makedepends=('cmake' 'ninja')
-source=("https://github.com/jbeder/yaml-cpp/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('aae9d618f906117d620d63173e95572c738db518f4ff1901a06de2117d8deeb8045f554102ca0ba4735ac0c4d060153a938ef78da3e0da3406d27b8298e5f38e')
+source=("https://github.com/jbeder/yaml-cpp/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+	"disable-wc++11-narrowing.patch")
+sha512sums=('aae9d618f906117d620d63173e95572c738db518f4ff1901a06de2117d8deeb8045f554102ca0ba4735ac0c4d060153a938ef78da3e0da3406d27b8298e5f38e'
+            'c219ae2466d56a484df6243b59a30f72aed82027ff7a4e02364d280c13bd4e9b599e36902436606df0d4e03affbc41fff4019d9e7ee96deec7ee6f455fe70a99')
+
+prepare() {
+  _patch_ ${pkgname}-${pkgver}
+}
 
 build() {
   cd ${pkgname}-${pkgver}
