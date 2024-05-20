@@ -2,20 +2,20 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libgit2
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 epoch=1
 pkgdesc="A linkable library for Git"
 arch=(x86_64 aarch64 riscv64)
 url="https://github.com/libgit2/libgit2"
-license=(GPL2)
+license=(GPL-2.0-only-with-linking-exception)
 depends=(musl http-parser openssl pcre zlib)
 makedepends=(cmake libssh2 python)
 provides=(libgit2.so)
 source=(
   $pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz
 )
-sha512sums=('e5634267bd9c6a594c9a954d09c657e7b8aadf213609bf7dd83b99863d0d0c7109a5277617dd508abc2da54ea3f12c2af1908d1aeb73c000e94056e2f3653144')
+sha512sums=('7429fbdc46ae44fd359e9260cbe33d9ce9276db810c096f12c43e5d302d01011463cdfd98d604e59780187e020e216e839823a77479dc12f952a37628516af78')
 
 build()
 {
