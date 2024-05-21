@@ -3,14 +3,14 @@
 pkgname=qt6-base
 _qtver=6.7.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A cross-platform application and UI framework'
 _pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
 depends=(libjpeg fontconfig vulkan-headers
-         shared-mime-info sqlite mesa
+         shared-mime-info sqlite mesa icu
          libinput libxkbcommon dbus harfbuzz wayland)
 makedepends=(cmake ninja wayland-protocols)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
