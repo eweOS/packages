@@ -3,7 +3,7 @@
 pkgbase="cups"
 pkgname=('libcups' 'cups')
 pkgver=2.4.8
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64)
 license=('Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND Zlib AND BSD-2-Clause')
 url="https://openprinting.github.io/cups/"
@@ -16,6 +16,7 @@ source=(https://github.com/OpenPrinting/cups/releases/download/v${pkgver}/cups-$
         # bugfixes
         cups-freebind.patch
         guid.patch
+        cupsd.service
 )
 sha256sums=('75c326b4ba73975efcc9a25078c4b04cdb4ee333caaad0d0823dbd522c6479a0'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
@@ -23,7 +24,8 @@ sha256sums=('75c326b4ba73975efcc9a25078c4b04cdb4ee333caaad0d0823dbd522c6479a0'
             '06173dfaea37bdd9b39b3e09aba98c34ae7112a2f521db45a688907d8848caa2'
             'f0b15192952c151b1843742c87850ff3a7d0f3ba5dd236ed16623ef908472ad7'
             '3385047b9ac8a7b13aeb8f0ca55d15f793ce7283516db0155fe28a67923c592d'
-            '0bf6a75ba1b051771f155d9a5d36b307a6d40c6857d645b250fe93f3fb713474')
+            '0bf6a75ba1b051771f155d9a5d36b307a6d40c6857d645b250fe93f3fb713474'
+            '4191ecf3810c1549b7557a4492f542bc170077cee4217486d462655126ef908c')
 
 prepare() {
   cd "${pkgbase}"-${pkgver}
@@ -78,7 +80,7 @@ build() {
 
 package_libcups() {
 pkgdesc="OpenPrinting CUPS - client libraries and headers"
-depends=('openssl' 'zlib' 'sh')
+depends=('openssl' 'zlib' 'sh' 'libpaper')
 
   cd ${pkgbase}-${pkgver}
   make BUILDROOT="${pkgdir}" install-headers install-libs
@@ -159,6 +161,8 @@ optdepends=('cups-browsed: to browse the network for remote CUPS queues and IPP 
 
   # no more xinetd support
   rm -rf "${pkgdir}"/etc/xinetd.d
+
+  _dinit_install_services_ $srcdir/cupsd.service
 
   # add license + exception
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" {LICENSE,NOTICE}
