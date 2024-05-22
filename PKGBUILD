@@ -7,16 +7,24 @@ pkgname=(
   $pkgbase-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x,iwlwifi,amdgpu,atheros,mediatek,whence}
 )
 pkgver=20240410
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware files for Linux"
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
 license=('GPL2' 'GPL3' 'custom')
 arch=('any')
-makedepends=('git' 'rdfind')
+makedepends=('git' 'rdfind' 'symlinks')
 options=(!strip)
-source=("git+https://mirrors.tuna.tsinghua.edu.cn/git/linux-firmware.git#tag=$pkgver")
+source=("git+https://mirrors.tuna.tsinghua.edu.cn/git/linux-firmware.git#tag=$pkgver" fix-symlink.patch)
 #source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#tag=$pkgver")
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'e9a3111a614a4c4e48d4ec9e48d1f1c348c190d0a8bf5373ca06e3bf0447e0a7')
+
+prepare() {
+  _patch_ $pkgbase
+  # fix realpath
+  sed -i 's|realpath -m -s|realpath|g' $pkgbase/copy-firmware.sh
+  sed -i 's|realpath -s|realpath|g' $pkgbase/copy-firmware.sh
+}
 
 build() {
   mkdir -p kernel/x86/microcode

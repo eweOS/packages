@@ -1,0 +1,15 @@
+--- a/copy-firmware.sh
++++ b/copy-firmware.sh
+@@ -98,11 +98,7 @@
+ if [ "$skip_dedup" != 1 ] ; then
+ 	$verbose "Finding duplicate files"
+ 	rdfind -makesymlinks true -makeresultsfile false "$destdir" >/dev/null
+-	find "$destdir" -type l | while read -r l; do
+-		target="$(realpath "$l")"
+-		$verbose "Correcting path for $l"
+-		ln -fs "$(realpath --relative-to="$(dirname "$(realpath -s "$l")")" "$target")" "$l"
+-	done
++	symlinks -rc "$destdir"
+ fi
+ 
+ # shellcheck disable=SC2162 # file/folder name can include escaped symbols
