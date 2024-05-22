@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg
 pkgver=7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(x86_64 aarch64 riscv64)
 url=https://ffmpeg.org/
@@ -23,6 +23,7 @@ depends=(
   libx265
   xz
   zlib
+  libva
 )
 makedepends=(
   clang
@@ -114,6 +115,7 @@ build() {
     --disable-opencl \
     --disable-opengl \
     --enable-shared \
+    --enable-vaapi \
     --enable-version3 \
     --disable-vulkan
   make
