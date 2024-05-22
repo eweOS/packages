@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=iperf3
-pkgver=3.16
+pkgver=3.17.1
 pkgrel=1
 pkgdesc='The ultimate speed test tool for TCP, UDP and SCTP'
 url='https://iperf.fr/'
@@ -9,7 +9,7 @@ arch=(x86_64 aarch64 riscv64)
 license=(BSD)
 depends=(musl)
 source=("https://github.com/esnet/iperf/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('be859e7168d0c867029e7013a8de273a169b4842ec7c24cd6570af75d5080aa3')
+sha256sums=('105b4fe7fbce31c9b94a3fec10c46e3b4b298adc076e1e3af52b990e1faf2db9')
 provides=(libiperf.so)
 
 build () {
