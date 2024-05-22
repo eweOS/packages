@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fcitx5-gtk
-pkgver=5.1.2
+pkgver=5.1.3
 pkgrel=1
 pkgdesc="Fcitx5 gtk im module and glib based dbus client library"
 arch=(x86_64 aarch64 riscv64)
@@ -10,9 +10,9 @@ license=('GPL')
 groups=('fcitx5-im')
 provides=('fcitx-gtk')
 depends=('glib')
-makedepends=('python' 'extra-cmake-modules' 'gobject-introspection' 'gtk3' 'gtk4' 'ninja' 'vulkan-headers')
-source=("https://download.fcitx-im.org/fcitx5/$pkgname/$pkgname-$pkgver.tar.xz")
-sha512sums=('585a64b81caef55391e352a5efc2efcded1220c8be378be93e4fc6abc6b70132b3bb3211271d5ed02b1623a6ffcf7ce784de026969025b5efb3497f82676fefa')
+makedepends=('python' 'extra-cmake-modules' 'gobject-introspection' 'gtk3' 'gtk4' 'ninja' 'vulkan-headers' 'zstd')
+source=("https://download.fcitx-im.org/fcitx5/$pkgname/$pkgname-$pkgver.tar.zst")
+sha512sums=('e19ba77e9e3d37947871b2c90ecec9089840a5639c2f0dc1a2b11efeda8291c2ee28809a2b4dd69d12f1e5988a13fbd7826cf15c88ce595fa287c81b3efc7f0e')
 
 build(){
   cd $pkgname-$pkgver
