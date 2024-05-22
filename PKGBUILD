@@ -2,7 +2,7 @@
 
 pkgname=mpv
 pkgver=0.38.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a free, open source, and cross-platform media player'
 arch=('x86_64' 'aarch64' 'riscv64')
 license=('GPL3')
@@ -11,7 +11,7 @@ depends=(
   'alsa-lib' 'wayland' 'zlib' 'ffmpeg' 'libass' 'lcms2' 'libarchive'
   'sdl2' 'zimg' 'zlib' 'alsa-lib' 'pipewire' 'libpulse' 'libplacebo'
   'libdrm' 'libjpeg' 'libxkbcommon'
-  'mesa' 'libglvnd') 
+  'mesa' 'libglvnd' 'libva') 
 makedepends=('git' 'meson' 'wayland-protocols')
 source=("https://github.com/mpv-player/mpv/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('86d9ef40b6058732f67b46d0bbda24a074fae860b3eaae05bab3145041303066')
@@ -51,9 +51,6 @@ build() {
     -D spirv-cross=disabled
     -D vdpau=disabled
     -D vdpau-gl-x11=disabled
-    -D vaapi=disabled
-    -D vaapi-drm=disabled
-    -D vaapi-wayland=disabled
     -D vaapi-win32=disabled
     -D vaapi-x11=disabled
     -D vulkan=disabled
