@@ -2,14 +2,14 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=e2fsprogs
-pkgver=1.47.0
+pkgver=1.47.1
 pkgrel=1
 pkgdesc='Ext2/3/4 filesystem utilities'
 arch=(x86_64 aarch64 riscv64)
 license=('GPL' 'LGPL' 'MIT')
 url='http://e2fsprogs.sourceforge.net'
 depends=('util-linux-libs')
-makedepends=('util-linux')
+makedepends=('util-linux' 'linux-headers')
 optdepends=('lvm2: for e2scrub'
   'util-linux: for e2scrub'
   'smtp-forwarder: for e2scrub_fail script')
@@ -18,7 +18,7 @@ provides=('libcom_err.so'
   'libext2fs.so'
   'libss.so')
 source=("https://www.kernel.org/pub/linux/kernel/people/tytso/${pkgname}/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('144af53f2bbd921cef6f8bea88bb9faddca865da3fbc657cc9b4d2001097d5db')
+sha256sums=('5a33dc047fd47284bca4bb10c13cfe7896377ae3d01cb81a05d406025d99e0d1')
 
 build()
 {
