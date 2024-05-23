@@ -1,23 +1,22 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=hicolor-icon-theme
-pkgver=0.17
+pkgver=0.18
 pkgrel=1
 pkgdesc="Freedesktop.org Hicolor icon theme"
 arch=('any')
 url="https://www.freedesktop.org/wiki/Software/icon-theme/"
 license=('GPL2')
+makedepends=(meson)
 source=("https://icon-theme.freedesktop.org/releases/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('317484352271d18cbbcfac3868eab798d67fff1b8402e740baa6ff41d588a9d8')
+sha256sums=('db0e50a80aa3bf64bb45cbca5cf9f75efd9348cf2ac690b907435238c3cf81d7')
 
 build() {
-  cd $pkgname-$pkgver
-  ./configure --prefix=/usr
-  make
+  ewe-meson $pkgname-$pkgver build
+  meson compile -C build
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR="${pkgdir}" install
+  meson install -C build --destdir "$pkgdir"
 }
 
