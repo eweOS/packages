@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=wmenu
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc='dmenu substitution on Wayland'
 url='https://sr.ht/~adnano/wmenu/'
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(cairo pango wayland wayland-protocols libxkbcommon)
 makedepends=(meson samurai scdoc)
 source=("https://git.sr.ht/~adnano/wmenu/archive/$pkgver.tar.gz")
-sha256sums=('f86c9bfb32a907d467c59d34123c8e7d55cda08524735b7c640b682830f854b9')
+sha256sums=('0079d3bbe82e0b02035450b4b31609dd5b822116ea4c14979d2e26d91db3c461')
 
 build () {
 	ewe-meson wmenu-$pkgver build \
