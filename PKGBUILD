@@ -2,12 +2,12 @@
 
 pkgname=iperf3
 pkgver=3.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The ultimate speed test tool for TCP, UDP and SCTP'
 url='https://iperf.fr/'
 arch=(x86_64 aarch64 riscv64)
-license=(BSD)
-depends=(musl)
+license=(BSD-3-Clause)
+depends=(musl openssl)
 source=("https://github.com/esnet/iperf/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('105b4fe7fbce31c9b94a3fec10c46e3b4b298adc076e1e3af52b990e1faf2db9')
 provides=(libiperf.so)
