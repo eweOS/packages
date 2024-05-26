@@ -1,19 +1,20 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname="hyprcursor"
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="The hyprland cursor format, library and utilities"
 arch=(any)
 url="https://github.com/hyprwm/hyprcursor"
 license=('BSD')
-depends=('hyprlang>=0.4.2' 'cairo' 'librsvg' 'libzip' 'tomlplusplus')
+depends=('hyprlang' 'libhyprlang.so' 'cairo' 'librsvg' 'libzip' 'tomlplusplus')
+provides=("lib$pkgname.so")
 makedepends=('git' 'cmake')
 _archive="${pkgname}-${pkgver}"
 source=(
 	"$_archive.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('853692df9b649b92453baf28cb4cbc38013ab624113a14a8efa507c71a3cb46a')
+sha256sums=('313cd91436af343918e6dec4a666d4bf3666149ac3cac6f36c683b70304eada4')
 
 prepare() {
 	_patch_ "$_archive"
