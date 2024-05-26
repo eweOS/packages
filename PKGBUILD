@@ -3,9 +3,10 @@
 pkgname=cmake
 _major_minor=3.29
 pkgver="${_major_minor}.3"
-pkgrel=1
+pkgrel=2
 pkgdesc='The CMake toolsuite for building, testing and packaging software.'
 arch=(x86_64 aarch64 riscv64)
+depends=(openssl)
 makedepends=(linux-headers)
 url='https://cmake.org'
 license=('GPL2')
