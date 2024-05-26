@@ -3,7 +3,7 @@
 pkgbase=rust
 pkgname=(rust rust-nightly)
 pkgver=1.78.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=(x86_64 aarch64 riscv64)
 url='https://www.rust-lang.org/'
@@ -18,7 +18,7 @@ sha256sums=('ff544823a5cb27f2738128577f1e7e00ee8f4c83f2a348781ae4fc355e91d5a9'
             '1f4a6ec736919d0548573239c655d7d49400f9becfc867ef48947748416545c8'
             'e36b2a8dbcaccb27ae0ac113168bd57bee10610106df2dcbfce1e3f095e75795')
 
-depends=(musl llvm-libs musl-static curl libssh2)
+depends=(musl llvm-libs musl-static curl libssh2 openssl)
 makedepends=(rust llvm libffi perl python cmake ninja)
 
 prepare()
