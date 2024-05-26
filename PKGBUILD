@@ -1,11 +1,8 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
-# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Contributor: Gaetan Bisson <bisson@archlinux.org>
-# Contributor: Vesa Kaihlavirta <vesa@archlinux.org>
-# Contributor: Roman Cheplyaka <roma@ro-che.info>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libedit
-_pkgver=20230828-3.1
+_pkgver=20240517-3.1
 pkgver=${_pkgver/-/_}
 pkgrel=1
 pkgdesc="Command line editor library providing generic line editing, history, and tokenization functions"
@@ -15,7 +12,7 @@ license=('BSD')
 depends=('musl' 'ncurses')
 provides=('libedit.so')
 source=(${url}/${pkgname}-${_pkgver}.tar.gz)
-sha256sums=('4ee8182b6e569290e7d1f44f0f78dac8716b35f656b76528f699c69c98814dad')
+sha256sums=('3a489097bb4115495f3bd85ae782852b7097c556d9500088d74b6fa38dbd12ff')
 
 build()
 {
