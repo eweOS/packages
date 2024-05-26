@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fcft
-pkgver=3.1.6
-pkgrel=4
+pkgver=3.1.8
+pkgrel=1
 pkgdesc='Simple library for font loading and glyph rasterization'
 arch=(x86_64 aarch64 riscv64)
 url=https://codeberg.org/dnkl/${pkgname}
