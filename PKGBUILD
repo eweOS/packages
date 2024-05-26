@@ -2,12 +2,12 @@
 
 pkgname=sudo
 pkgver=1.9.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for delegating authority to users and groups.'
 arch=(x86_64 aarch64 riscv64)
 url='http://www.sudo.ws/'
 license=(BSD)
-depends=(zlib)
+depends=(openssl zlib)
 makedepends=(utmps)
 options=(emptydirs)
 backup=('etc/sudo.conf'
