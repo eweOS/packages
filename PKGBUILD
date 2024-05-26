@@ -3,19 +3,25 @@
 pkgbase=hyfetch
 pkgname=(hyfetch neowofetch)
 pkgver=1.4.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Neofetch with LGBTQ+ pride flags!"
 arch=('any')
 url='https://github.com/hykilpikonna/hyfetch'
 license=('MIT')
 makedepends=('python-setuptools' 'python-typing_extensions')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('79cd6706a681fa7c05754b35d9338abf96bebce222c27376a4155e94d6a5350d')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
+	"eweOS.patch")
+sha256sums=('79cd6706a681fa7c05754b35d9338abf96bebce222c27376a4155e94d6a5350d'
+            '76df6b4a5cc5323da248541f77a18e0422673d73c391bae174eaf6474c543671')
+
+prepare() {
+  _patch_ "${pkgbase}-${pkgver}"
+}
 
 build() {
   cd "${pkgbase}-${pkgver}"
   python setup.py build
-  
+
   mkdir -p $srcdir/pkgdir
   python setup.py install --root="$srcdir/pkgdir" --optimize=1 --skip-build
   mv $srcdir/pkgdir/usr/bin/neowofetch $srcdir/neowofetch
