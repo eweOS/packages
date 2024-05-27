@@ -1,17 +1,17 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=openssl
-pkgver=1.1.1w
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='A toolkit for the TLS and SSL protocols'
 arch=(x86_64 aarch64 riscv64)
 url='https://www.openssl.org'
 license=(BSD)
-makedepends=(perl zlib)
+makedepends=(perl zlib linux-headers)
 source=(
   "https://www.openssl.org/source/openssl-${pkgver}.tar.gz"
 )
-sha256sums=('cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8')
+sha256sums=('53e66b043322a606abf0087e7699a0e033a37fa13feb9742df35c3a33b18fb02')
 
 build()
 {
@@ -38,5 +38,5 @@ package()
 {
   cd "$srcdir/$pkgname-$pkgver"
   make HOSTCC=clang CC=clang DESTDIR="$pkgdir" MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
