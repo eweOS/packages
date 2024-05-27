@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ffmpeg
-pkgver=7.0
-pkgrel=2
+pkgver=7.0.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(x86_64 aarch64 riscv64)
 url=https://ffmpeg.org/
@@ -24,6 +24,13 @@ depends=(
   xz
   zlib
   libva
+  libass
+  librsvg
+  zimg
+  libwebp
+  libvpx
+  soxr
+  fontconfig
 )
 makedepends=(
   clang
@@ -44,10 +51,12 @@ provides=(
 )
 #_tag=3949db4d261748a9f34358a388ee255ad1a7f0c0
 #source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag})
-source=(https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n$pkgver.tar.gz)
-sha256sums=('a68fbc06a645cc93e5c877adbaa592cffc40e8595ba50eb716807c4a35bf0f03')
+source=(https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n$pkgver.tar.gz fix-musl.patch)
+sha256sums=('8dab1da0c7ebccb2dce99265901f22ac40f8e0fbbe4a89a368d7645f2e79caa0'
+            '2b3cafee6a58afcf768a90acdbd993e3f30728acc39aa72a26981ab6bb774a79')
 
 prepare() {
+  _patch_ FFmpeg-n$pkgver
   cd FFmpeg-n$pkgver
   sed -i 's@cc_default="gcc"@cc_default="clang"@g' ./configure
   sed -i 's@cxx_default="g++"@cxx_default="clang++"@g' ./configure
@@ -64,13 +73,13 @@ build() {
     --disable-amf \
     --disable-avisynth \
     --disable-cuda-llvm \
-    --disable-fontconfig \
+    --enable-fontconfig \
     --enable-gmp \
     --disable-gnutls \
     --enable-gpl \
     --disable-ladspa \
     --disable-libaom \
-    --disable-libass \
+    --enable-libass \
     --disable-libbluray \
     --disable-libbs2b \
     --disable-libdav1d \
@@ -91,8 +100,8 @@ build() {
     --enable-libopus \
     --enable-libpulse \
     --disable-librav1e \
-    --disable-librsvg \
-    --disable-libsoxr \
+    --enable-librsvg \
+    --enable-libsoxr \
     --disable-libspeex \
     --enable-libsrt \
     --disable-libssh \
@@ -102,14 +111,14 @@ build() {
     --disable-libvidstab \
     --disable-libvmaf \
     --enable-libvorbis \
-    --disable-libvpx \
-    --disable-libwebp \
+    --enable-libvpx \
+    --enable-libwebp \
     --enable-libx264 \
     --enable-libx265 \
     --disable-libxcb \
     --enable-libxml2 \
     --disable-libxvid \
-    --disable-libzimg \
+    --enable-libzimg \
     --disable-nvdec \
     --disable-nvenc \
     --disable-opencl \
