@@ -2,14 +2,14 @@
 
 pkgbase=python
 pkgname=(python python-tests)
-pkgver=3.12.2
-pkgrel=4
+pkgver=3.12.3
+pkgrel=1
 _pybasever=${pkgver%.*}
 pkgdesc='The Python programming language'
 arch=(x86_64 aarch64 riscv64)
 url='http://www.python.org'
 license=('PSF-2.0')
-depends=(libffi ncurses expat openssl readline sqlite)
+depends=(libffi ncurses expat openssl readline sqlite mpdecimal)
 makedepends=(
   libffi
   ncurses
@@ -20,17 +20,13 @@ makedepends=(
 )
 source=(
   "https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
-  python-expat-2.6.patch::https://github.com/python/cpython/pull/115289.patch
   EXTERNALLY-MANAGED)
-sha256sums=('be28112dac813d2053545c14bf13a16401a21877f1a69eb6ea5d84c4a0f3d870'
-            'e2f9a36df0442f34b838db4f261c8be9daf18f81679f800282bf5a5f0d8a9eb7'
+sha256sums=('56bfef1fdfc1221ce6720e43a661e3eb41785dd914ce99698d8c7896af4bdaa1'
             'fbe6c6ac37ccc7ad8b60f6508e58f542a6745d45602f27b68bbcc80b502168a4')
 
 prepare()
 {
   cd Python-${pkgver}
-
-  patch -Np1 -i ../python-expat-2.6.patch
 
   # FS#23997
   sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
@@ -58,6 +54,7 @@ build()
     --with-lto \
     --enable-shared \
     --without-static-libpython \
+    --with-system-libmpdec \
     --enable-loadable-sqlite-extensions \
     ax_cv_c_float_words_bigendian=no
 
