@@ -1,15 +1,16 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=mtdev
-pkgver=1.1.6
-pkgrel=3
+pkgver=1.1.7
+pkgrel=1
 pkgdesc="A stand-alone library which transforms all variants of kernel MT events to the slotted type B protocol"
 arch=(x86_64 aarch64 riscv64)
 url="https://bitmath.org/code/mtdev/"
 license=('custom:MIT')
 source=("$url$pkgname-$pkgver.tar.bz2")
-makedepends=(autoconf)
-sha256sums=('15d7b28da8ac71d8bc8c9287c2045fd174267bc740bec10cfda332dc1204e0e0')
+provides=('libmtdev.so')
+makedepends=(autoconf linux-headers)
+sha256sums=('a107adad2101fecac54ac7f9f0e0a0dd155d954193da55c2340c97f2ff1d814e')
 
 build()
 {
