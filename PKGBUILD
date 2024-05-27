@@ -1,14 +1,14 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pipewire
-pkgver=1.0.5
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64 aarch64 riscv64)
 license=(MIT)
 depends=('dbus' 'libudev' 'libsndfile' 'libusb' 'libpulse' 'alsa-lib')
-makedepends=('meson')
+makedepends=('meson' 'linux-headers')
 source=(
   "https://gitlab.freedesktop.org/pipewire/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
   fix-udev-zero.patch
@@ -16,7 +16,7 @@ source=(
   pipewire-pulse.user.service
   pipewire.conf.in
 )
-sha256sums=('c5a5de26d684a1a84060ad7b6131654fb2835e03fccad85059be92f8e3ffe993'
+sha256sums=('9c45eef65e66224804ae8671849452a7f221e913813072b3aad346f20df666a8'
             '5e41f524ac1112cc093858412d948637d31d42da989a1a4ad562aef83f6dda37'
             '4d808f22ea2adc5137d98702b21aeecbe00e15fed4ab9768da7d68a0acbe8560'
             'bca9d53e4c5cf0eb1ecb7124365abf5ea740889887690423fef1d7b377b3660b'
