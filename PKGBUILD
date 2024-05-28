@@ -4,7 +4,7 @@
 
 pkgname=libevent
 pkgver=2.1.12
-pkgrel=3
+pkgrel=4
 pkgdesc="Event notification library"
 url="https://libevent.org/"
 arch=(x86_64 aarch64 riscv64)
