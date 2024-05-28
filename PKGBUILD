@@ -3,7 +3,7 @@
 
 pkgname=libgit2
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A linkable library for Git"
 arch=(x86_64 aarch64 riscv64)
