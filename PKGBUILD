@@ -6,8 +6,8 @@ pkgname=(
   amd-ucode
   $pkgbase-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x,iwlwifi,amdgpu,atheros,mediatek,whence}
 )
-pkgver=20240410
-pkgrel=2
+pkgver=20240513
+pkgrel=1
 pkgdesc="Firmware files for Linux"
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
 license=('GPL2' 'GPL3' 'custom')
