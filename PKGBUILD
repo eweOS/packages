@@ -5,7 +5,7 @@ pkgname=(
   adwaita-icon-theme
   adwaita-cursors
 )
-pkgver=46.0
+pkgver=46.2
 pkgrel=1
 pkgdesc="GNOME standard icons"
 url="https://gitlab.gnome.org/GNOME/adwaita-icon-theme"
