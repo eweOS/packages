@@ -2,7 +2,7 @@
 
 pkgname=socat
 pkgver=1.8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Multipurpose relay'
 url='http://www.dest-unreach.org/socat/'
 license=('GPL2')
