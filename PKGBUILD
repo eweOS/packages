@@ -5,7 +5,7 @@
 pkgname=w3m
 _pkgver=0.5.3+git20220429
 pkgver=${_pkgver/+git/_}
-pkgrel=1
+pkgrel=2
 pkgdesc='Text-based Web browser & gopher browser, as well as pager'
 url='https://github.com/tats/w3m'
 license=('MIT')
