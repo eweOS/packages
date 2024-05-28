@@ -2,7 +2,7 @@
 
 pkgname=nmap
 pkgver=7.95
-pkgrel=1
+pkgrel=2
 pkgdesc='Utility for network discovery and security auditing'
 url='https://nmap.org/'
 arch=(x86_64 aarch64 riscv64)
