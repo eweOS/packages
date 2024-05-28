@@ -3,7 +3,7 @@
 pkgbase=rust
 pkgname=(rust rust-nightly)
 pkgver=1.78.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=(x86_64 aarch64 riscv64)
 url='https://www.rust-lang.org/'
