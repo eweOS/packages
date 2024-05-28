@@ -3,7 +3,7 @@
 pkgname=qt6-base
 _qtver=6.7.0
 pkgver=${_qtver/-/}
-pkgrel=3
+pkgrel=4
 arch=(x86_64 aarch64 riscv64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
