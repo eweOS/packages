@@ -4,7 +4,7 @@ pkgbase=curl
 # Temporary add ca certs
 pkgname=(curl ca-certs)
 pkgver=8.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An URL retrieval utility and library'
 arch=(x86_64 aarch64 riscv64)
 url='https://curl.haxx.se'
