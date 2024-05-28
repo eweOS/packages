@@ -5,7 +5,7 @@
 pkgbase=pacman
 pkgname=(libalpm pacman repo-tools)
 pkgver=6.0.2
-pkgrel=24
+pkgrel=25
 arch=(x86_64 aarch64 riscv64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
