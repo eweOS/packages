@@ -2,7 +2,7 @@
 
 pkgname=rsync
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and versatile file copying tool for remote and local files'
 arch=(x86_64 aarch64 riscv64)
 url='https://rsync.samba.org/'
