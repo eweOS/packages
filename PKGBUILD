@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libnghttp2
-pkgver=1.61.0
+pkgver=1.62.1
 pkgrel=1
 pkgdesc='Framing layer of HTTP/2 is implemented as a reusable C library'
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -14,6 +14,7 @@ source=(
   'git+https://github.com/mruby/mruby.git'
   'git+https://github.com/tatsuhiro-t/neverbleed.git'
 )
+provides=('libnghttp2')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -37,7 +38,6 @@ build() {
   ./configure \
     --prefix=/usr \
     --disable-examples \
-    --disable-python-bindings \
     --enable-lib-only
   make
 }
