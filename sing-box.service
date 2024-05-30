@@ -1,5 +1,6 @@
 type = process
 command = /usr/bin/sing-box run -c /etc/sing-box/config.json
 depends-on = network.target
+run-as = singbox
 log-type = file
 logfile = /var/log/sing-box.log
