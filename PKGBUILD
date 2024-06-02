@@ -2,12 +2,12 @@
 
 pkgname=seatd
 pkgver=0.8.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A minimal seat management daemon, and a universal seat management library"
 arch=(x86_64 aarch64 riscv64)
 url="https://sr.ht/~kennylevinsen/seatd/"
 license=('MIT')
-makedepends=('meson' 'ninja' 'scdoc')
+makedepends=('meson' 'ninja' 'scdoc' 'linux-headers')
 source=(
   "$pkgname-$pkgver.tar.gz::https://git.sr.ht/~kennylevinsen/$pkgname/archive/$pkgver.tar.gz"
   seatd.service
@@ -35,6 +35,11 @@ package()
 {
   DESTDIR="$pkgdir/" meson install -C build
   _dinit_install_services_ $srcdir/seatd.service
+
+  # install seatd as dependency of greetd
+  install -d $pkgdir/usr/lib/dinit/system/greetd.d
+  ln -s ../seatd $pkgdir/usr/lib/dinit/system/greetd.d/
+
   _install_sysusers_ $srcdir/seatd.sysusers
   _install_license_ $srcdir/$pkgname-$pkgver/LICENSE
 }
