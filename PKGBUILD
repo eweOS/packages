@@ -2,12 +2,13 @@
 
 pkgname=xdg-user-dirs
 pkgver=0.18
-pkgrel=3
+pkgrel=4
 pkgdesc="Manage user directories like ~/Desktop and ~/Music"
 url="https://www.freedesktop.org/wiki/Software/xdg-user-dirs"
 arch=(x86_64 aarch64 riscv64)
 license=(GPL)
 makedepends=(docbook-xsl git)
+optdepends=('turnstile: for user service support')
 backup=(etc/xdg/user-dirs.conf etc/xdg/user-dirs.defaults)
 options=(!emptydirs)
 source=("git+https://gitlab.freedesktop.org/xdg/xdg-user-dirs.git#tag=$pkgver"
@@ -27,7 +28,6 @@ build() {
 }
 
 package() {
-  depends+=(dinit-userservd)
   cd $pkgname
   make DESTDIR="$pkgdir" install 
 
