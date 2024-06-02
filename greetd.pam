@@ -1,7 +1,6 @@
 #%PAM-1.0
 
-session    optional     pam_rundir.so
-session    optional     pam_dinit_userservd.so
+session    optional     pam_turnstile.so
 
 auth       include      login
 account    include      login
