@@ -1,0 +1,5 @@
+type       = process
+before     = login.target
+depends-on = rc.target
+command    = /usr/bin/turnstiled
+logfile    = /var/log/turnstiled.log
