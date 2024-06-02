@@ -1,65 +1,90 @@
 #!/bin/env sh
 
-source /etc/os-release
+exec >/dev/stderr
 
-_limine_first=1
+source /etc/os-release
+source /etc/limine.conf
 
 BUILD_ID=${1:-$BUILD_ID}
 
-cat <<EOF
-DEFAULT_ENTRY=1
-TIMEOUT=5
-EOF
+OPTSTRING=":o:b:"
+CFGOUT=/dev/stdout
 
-for kernel in /usr/lib/modules/*/ ; do
+while getopts ${OPTSTRING} opt; do
+  case ${opt} in
+    o)
+      CFGOUT=${OPTARG}
+      ;;
+    b)
+      BUILD_ID=${OPTARG:-$BUILD_ID}
+      ;;
+    ?)
+      echo "err: Invalid option: -${OPTARG}"
+      exit 1
+      ;;
+  esac
+done
+
+cat /etc/default/limine > $CFGOUT
+
+function render_advgroup() {
+  cat <<EOF >> $CFGOUT
+:${PRETTY_NAME} ${BUILD_ID} ($pkgbase $kernelver) (Advanced Boot Options)
+    COMMENT=Advanced Boot Options for ${PRETTY_NAME} ${BUILD_ID} ($pkgbase $kernelver)
+EOF
+}
+
+function render_menu() {
+  MENULEVEL=$1
+  MENUTYPE=$2
+  if [ "$LIMINE_BOOTPROTO" == "linux" ]; then
+    MENUTITLE="$pkgbase $kernelver"
+    CMDLINE="$LIMINE_KERNEL_CMDLINE_NORMAL"
+    if [ "$MENUTYPE" == "normal" ]; then
+      MENUTITLE+=", normal mode"
+    fi
+    if [ "$MENUTYPE" == "recovery" ]; then
+      CMDLINE="$LIMINE_KERNEL_CMDLINE_RECOVERY"
+      MENUTITLE+=", recovery mode"
+    fi
+    if [ "$MENULEVEL" == "1" ]; then
+      cat <<EOF >> $CFGOUT
+:${PRETTY_NAME} ${BUILD_ID} ($MENUTITLE)
+    COMMENT=${PRETTY_NAME} ${BUILD_ID} ($MENUTITLE)
+    PROTOCOL=linux
+    KERNEL_PATH=boot:///vmlinuz-${pkgbase}
+    KERNEL_CMDLINE=$LIMINE_KERNEL_CMDLINE_COMMON $CMDLINE
+    MODULE_PATH=boot:///initramfs-${pkgbase}.img
+EOF
+    fi
+    if [ "$MENULEVEL" == "2" ]; then
+      cat <<EOF >> $CFGOUT
+    ::${PRETTY_NAME} ${BUILD_ID} ($MENUTITLE)
+        COMMENT=${PRETTY_NAME} ${BUILD_ID} ($MENUTITLE)
+        PROTOCOL=linux
+        KERNEL_PATH=boot:///vmlinuz-${pkgbase}
+        KERNEL_CMDLINE=$LIMINE_KERNEL_CMDLINE_COMMON $CMDLINE
+        MODULE_PATH=boot:///initramfs-${pkgbase}.img
+EOF
+    fi
+  fi
+}
+
+for kernel in $(find /usr/lib/modules/* -maxdepth 0 | sort -r) ; do
   if ! pacman -Qqo "${kernel}" > /dev/null 2>&1; then
     # if pkgbase does not belong to any package then skip this kernel
     continue
   fi
   pkgbase=$(pacman -Qqo "${kernel}" 2>/dev/null)
-  tinyramfs -f -k ${kernel##/usr/lib/modules/} /boot/initramfs-${pkgbase}.img
-  install -Dm644 "${kernel}/vmlinuz" "/boot/vmlinuz-${pkgbase}"
-  kernelver=`basename $kernel`
-  if [ "$_limine_first" == "1" ]; then
-      cat <<EOF
-:${PRETTY_NAME} ${BUILD_ID}
-    COMMENT=${PRETTY_NAME}
-    PROTOCOL=linux
-    KERNEL_PATH=boot:///vmlinuz-${pkgbase}
-    KERNEL_CMDLINE=console=tty1 console=ttyS0,115200 2 quiet splash
-    MODULE_PATH=boot:///initramfs-${pkgbase}.img
-:${PRETTY_NAME} ${BUILD_ID} (Advanced Boot Options)
-    COMMENT=Advanced Boot Options for ${PRETTY_NAME} 
-    ::${PRETTY_NAME} ${BUILD_ID} (${pkgbase} ${kernelver})
-        COMMENT=${PRETTY_NAME} ${BUILD_ID} (${pkgbase} ${kernelver})
-        PROTOCOL=linux
-        KERNEL_PATH=boot:///vmlinuz-${pkgbase}
-        KERNEL_CMDLINE=console=tty1 console=ttyS0,115200 2 quiet splash
-        MODULE_PATH=boot:///initramfs-${pkgbase}.img
-
-    ::${PRETTY_NAME} ${BUILD_ID} (${pkgbase} ${kernelver}, recovery)
-        COMMENT=${PRETTY_NAME} ${BUILD_ID} (${pkgbase} ${kernelver}, single user mode)
-        PROTOCOL=linux
-        KERNEL_PATH=boot:///vmlinuz-${pkgbase}
-        KERNEL_CMDLINE=console=tty1 console=ttyS0,115200 2 -- single
-        MODULE_PATH=boot:///initramfs-${pkgbase}.img
-EOF
-      _limine_first=0
-    else
-      cat <<EOF
-    ::${PRETTY_NAME} ${BUILD_ID} (${pkgbase} ${kernelver})
-        COMMENT=${PRETTY_NAME} ${BUILD_ID} (${pkgbase} ${kernelver})
-        PROTOCOL=linux
-        KERNEL_PATH=boot:///vmlinuz-${pkgbase}
-        KERNEL_CMDLINE=console=tty1 console=ttyS0,115200 2 quiet splash
-        MODULE_PATH=boot:///initramfs-${pkgbase}.img
-
-    ::${PRETTY_NAME} ${BUILD_ID} (${pkgbase} ${kernelver}, recovery)
-        COMMENT=${PRETTY_NAME} ${BUILD_ID} (${pkgbase} ${kernelver}, single user mode)
-        PROTOCOL=linux
-        KERNEL_PATH=boot:///vmlinuz-${pkgbase}
-        KERNEL_CMDLINE=console=tty1 console=ttyS0,115200 2 -- single
-        MODULE_PATH=boot:///initramfs-${pkgbase}.img
-EOF
+  if [ "$LIMINE_AUTO_COPY_KERNEL" == "1" ]; then
+    install -Dm644 "${kernel}/vmlinuz" "/boot/vmlinuz-${pkgbase}"
   fi
+  if [ "$LIMINE_AUTO_GEN_INITRD" == "1" ]; then
+    tinyramfs -f -k ${kernel##/usr/lib/modules/} /boot/initramfs-${pkgbase}.img
+  fi
+  kernelver=`basename $kernel`
+  render_menu 1
+  render_advgroup
+  render_menu 2 normal
+  render_menu 2 recovery
 done
