@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=slibtool
-pkgver=0.5.35
+pkgver=0.5.36
 pkgrel=1
 pkgdesc="Skinny libtool implementation, written in C"
 url='http://git.midipix.org/cgit.cgi/slibtool'
@@ -14,7 +14,7 @@ source=(
   depcomp libtoolize ltargz.m4 ltmain.sh ltoptions.m4 ltversion.m4
   config.guess config.sub
 )
-sha256sums=('a3033319370fb705742190852f0782664ea6dafd2518ebb63b07cbc94d36a0f8'
+sha256sums=('fea4bdd8ec5f73e6c7e4cc78f6c3542afd58228ae65c8ef0c76e35167fcc5aff'
             'a8e92a6becc767713e58a5e381b121dca25bb40224c4f956e7330e985bddcff5'
             'd7c113e5484fce8b48f9a34a7a91e385ec279247d415b0b7d749bd56ad8ee8a2'
             '94ebc155f41e96e5cb8762a2661e0d39426274e1b2b930bfb6d99c680a041c58'
