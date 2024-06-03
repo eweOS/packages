@@ -1,0 +1,10 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = etc/tmpfiles.d
+
+[Action]
+Description = Reloading pawprint config from tmpfiles.d...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/pawprint-reload
