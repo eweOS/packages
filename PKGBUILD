@@ -2,7 +2,7 @@
 
 pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang wasi-libc++ wasi-libc++abi wasi-compiler-rt)
 _realpkgname=llvm-project
-pkgver=18.1.4
+pkgver=18.1.6
 _binutilsver=2.42
 pkgrel=1
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -31,7 +31,7 @@ source=(
   rv64-disable-lldb-server.patch
   llvm-install-prefix.patch
 )
-sha256sums=('2c01b2fbb06819a12a92056a7fd4edcdc385837942b5e5260b9c2c0baff5116b'
+sha256sums=('bd4b4cb6374bcd5fc5a3ba60cb80425d29da34f316b8821abc12c0db225cf6b4'
             'f6e4d41fd5fc778b06b7891457b3620da5ecea1006c6a4a41ae998109f85a800'
             '7ded3468de11201bc58c761ca065bc6f42ed9381a7b13721364befff9876b30a'
             '19ad5d5208e7271e0517de15b8ec652a0445298aa34cb7057d5da254966aa781'
