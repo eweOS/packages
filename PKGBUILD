@@ -2,7 +2,7 @@
 
 pkgname=wayfire
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A modular and extensible wayland compositor"
 arch=(x86_64 aarch64 riscv64)
 url=https://wayfire.org
