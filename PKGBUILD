@@ -2,12 +2,12 @@
 
 pkgname=limine
 pkgver=7.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced, portable, multiprotocol bootloader"
 arch=(x86_64 aarch64 riscv64)
 url="https://limine-bootloader.org/"
 license=('BSD')
-makedepends=('nasm' 'lld')
+makedepends=('nasm' 'lld' 'mtools')
 source=(
   "https://github.com/limine-bootloader/limine/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
   limine.cfg
@@ -25,8 +25,9 @@ build() {
   cd "${pkgname}-${pkgver}"
   local target_options=(
     --enable-uefi-$CARCH
+    --enable-uefi-cd
   )
-  [ $CARCH = x86_64 ] && target_options+=(--enable-bios --enable-bios-cd)
+  [ $CARCH = x86_64 ] && target_options+=(--enable-bios --enable-bios-cd --enable-bios-pxe)
   ./configure --prefix=/usr ${target_options[*]} TOOLCHAIN_FOR_TARGET=llvm
   make
 }
