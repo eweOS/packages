@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 10f3629..13ad9e0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -381,7 +381,7 @@ fi
+ AC_SUBST(INSERT_NO_RWLOCK)
+ 
+ case "${host}" in
+-    *-*-linux*|*-*-gnu*)
++    *-*-linux-gnu*|*-*-gnu*)
+         INSERT_EXPOSE_RWLOCK_API="defined(__USE_UNIX98) || defined(__USE_XOPEN2K)"
+         ;;
+     *)
