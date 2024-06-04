@@ -2,7 +2,7 @@
 
 pkgname=python-typing_extensions
 _name=${pkgname#python-}
-pkgver=4.11.0
+pkgver=4.12.1
 pkgrel=1
 pkgdesc='Backported and Experimental Type Hints for Python 3.8+'
 arch=(any)
@@ -10,7 +10,7 @@ url=https://github.com/python/typing_extensions
 license=(Python-2.0.1)
 depends=(python)
 makedepends=(git python-build python-flit-core python-installer)
-checkdepends=(python-tests)
+checkdepends=(python-tests python-typing_extensions)
 provides=(python-typing-extensions)
 conflicts=(python-typing-extensions)
 source=("git+${url}.git#tag=${pkgver}")
