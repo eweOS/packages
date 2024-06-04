@@ -2,7 +2,7 @@
 
 pkgname=wf-config
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for managing configuration files, written for wayfire"
 arch=(x86_64 aarch64 riscv64)
 url=https://github.com/WayfireWM/wf-config
