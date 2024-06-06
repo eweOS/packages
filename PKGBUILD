@@ -1,18 +1,27 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname='mesa'
+pkgbase='mesa'
+pkgname=(
+  mesa
+  libva-mesa-driver
+  vulkan-swrast
+  vulkan-virtio
+  vulkan-intel
+  vulkan-radeon
+  vulkan-mesa-layers
+)
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=24.0.6
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm')
-makedepends=('meson' 'wayland' 'wayland-protocols' 'python-packaging')
+makedepends=('libva' 'glslang' 'meson' 'wayland' 'wayland-protocols' 'python-packaging' 'linux-headers')
 url="https://www.mesa3d.org/"
 license=('custom')
 # mold may fails with lto enabled
 options=(!lto)
 source=(
-  https://mesa.freedesktop.org/archive/$pkgname-$pkgver.tar.xz
+  https://mesa.freedesktop.org/archive/$pkgbase-$pkgver.tar.xz
   orcjit.patch
   orcjit-cache.patch
 )
@@ -26,7 +35,7 @@ prepare()
   pip install mako
   # https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/26018
   # https://gitlab.freedesktop.org/icenowy/mesa/-/tree/orcjit-shader-cache
-  _patch_ $pkgname-$pkgver
+  _patch_ $pkgbase-$pkgver
 }
 
 build()
@@ -34,18 +43,19 @@ build()
   case "${CARCH}" in
     x86_64)
 	    GALLIUM_DRI="r300,r600,radeonsi,nouveau,virgl,svga,swrast,i915,iris,crocus,zink"
-	    VULKAN_DRI="swrast,virtio"
+	    VULKAN_DRI="amd,intel,intel_hasvk,swrast,virtio"
 	    ;;
     aarch64)
 	    GALLIUM_DRI="r300,r600,radeonsi,nouveau,virgl,svga,swrast,kmsro,panfrost,zink"
-	    VULKAN_DRI="swrast,virtio"
+	    VULKAN_DRI="amd,intel,intel_hasvk,swrast,virtio"
 	    ;;
     riscv64)
 	    GALLIUM_DRI="r300,r600,radeonsi,nouveau,virgl,svga,swrast,zink"
-	    VULKAN_DRI="swrast,virtio"
+	    VULKAN_DRI="amd,intel,intel_hasvk,swrast,virtio"
 	    ;;
   esac
-  ewe-meson $pkgname-$pkgver build \
+  VULKAN_LAYER=device-select,intel-nullhw,overlay
+  ewe-meson $pkgbase-$pkgver build \
     --libdir=lib \
     -D platforms=wayland \
     -Dglvnd=true \
@@ -56,11 +66,13 @@ build()
     -Dgles2=enabled \
     -Dosmesa=true \
     -Dvulkan-drivers=${VULKAN_DRI} \
+    -Dvulkan-layers=${VULKAN_LAYER} \
     -Dgallium-drivers=${GALLIUM_DRI} \
+    -Dgallium-extra-hud=true \
+    -Dgallium-vdpau=disabled \
+    -Dvideo-codecs=all \
     -Dmicrosoft-clc=disabled \
     -Dxlib-lease=disabled \
-    -Dgallium-vdpau=disabled \
-    -Dgallium-va=disabled \
     -Dandroid-libbacktrace=disabled \
     -Dvalgrind=disabled \
     -Dlibunwind=disabled \
@@ -72,7 +84,118 @@ build()
   meson compile -C build
 }
 
-package()
+package_mesa()
 {
   DESTDIR="${pkgdir}" meson install -C build
+
+  cd $pkgdir
+
+  # libva-mesa-driver
+  _pick_ libva-mesa-driver usr/lib/dri/*_drv_video.so
+
+  # vulkan-swrast
+  _pick_ vulkan-swrast usr/share/vulkan/icd.d/lvp_icd*.json
+  _pick_ vulkan-swrast usr/lib/libvulkan_lvp.so
+
+  # vulkan-virtio
+  _pick_ vulkan-virtio usr/share/vulkan/icd.d/virtio_icd*.json
+  _pick_ vulkan-virtio usr/lib/libvulkan_virtio.so
+
+  # vulkan-mesa-layers
+  _pick_ vulkan-mesa-layers usr/share/vulkan/explicit_layer.d
+  _pick_ vulkan-mesa-layers usr/share/vulkan/implicit_layer.d
+  _pick_ vulkan-mesa-layers usr/lib/libVkLayer_*.so
+  _pick_ vulkan-mesa-layers usr/bin/mesa-overlay-control.py
+
+  # vulkan-radeon
+  _pick_ vulkan-radeon usr/share/drirc.d/00-radv-defaults.conf
+  _pick_ vulkan-radeon usr/share/vulkan/icd.d/radeon_icd*.json
+  _pick_ vulkan-radeon usr/lib/libvulkan_radeon.so
+
+  # vulkan-intel
+  _pick_ vulkan-intel usr/share/vulkan/icd.d/intel_*.json
+  _pick_ vulkan-intel usr/lib/libvulkan_intel*.so
+
+  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
+    -t "$pkgdir/usr/share/licenses/$pkgname"
+}
+
+package_libva-mesa-driver()
+{
+  pkgdesc="Open-source VA-API drivers"
+  depends=(
+    'expat'
+    'libdrm'
+    'libelf'
+    'llvm-libs'
+    'zlib'
+    'zstd'
+  )
+  provides=('libva-driver')
+
+  mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
+
+  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
+    -t "$pkgdir/usr/share/licenses/$pkgname"
+}
+
+_vulkan_driver_deps=('expat' 'libdrm' 'vulkan-icd-loader' 'wayland' 'zlib' 'zstd')
+
+package_vulkan-swrast()
+{
+  pkgdesc="Open-source Vulkan driver for CPUs (Software Rasterizer)"
+  depends=(${_vulkan_driver_deps[*]})
+  optdepends=('vulkan-mesa-layers: additional vulkan layers')
+  provides=('vulkan-driver')
+  mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
+
+  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
+    -t "$pkgdir/usr/share/licenses/$pkgname"
+}
+
+package_vulkan-virtio()
+{
+  pkgdesc="Open-source Vulkan driver for Virtio-GPU (Venus)"
+  depends=(${_vulkan_driver_deps[*]})
+  optdepends=('vulkan-mesa-layers: additional vulkan layers')
+  provides=('vulkan-driver')
+  mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
+
+  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
+    -t "$pkgdir/usr/share/licenses/$pkgname"
+}
+
+package_vulkan-radeon()
+{
+  pkgdesc="Open-source Vulkan driver for AMD GPUs"
+  depends=(${_vulkan_driver_deps[*]})
+  optdepends=('vulkan-mesa-layers: additional vulkan layers')
+  provides=('vulkan-driver')
+  mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
+
+  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
+    -t "$pkgdir/usr/share/licenses/$pkgname"
+}
+
+package_vulkan-intel()
+{
+  pkgdesc="Open-source Vulkan driver for Intel GPUs"
+  depends=(${_vulkan_driver_deps[*]})
+  optdepends=('vulkan-mesa-layers: additional vulkan layers')
+  provides=('vulkan-driver')
+  mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
+
+  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
+    -t "$pkgdir/usr/share/licenses/$pkgname"
+}
+
+package_vulkan-mesa-layers()
+{
+  pkgdesc="Mesa's Vulkan layers"
+  depends=('libdrm' 'wayland' 'python')
+
+  mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"  
+
+  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
+    -t "$pkgdir/usr/share/licenses/$pkgname"
 }
