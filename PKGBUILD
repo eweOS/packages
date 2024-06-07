@@ -9,13 +9,18 @@ arch=(x86_64 aarch64 riscv64)
 license=(MIT)
 depends=(musl)
 makedepends=(git)
-_commit=86d9b993d0e09d8f8788dcd18c308206a199a82a
-source=("git+$url.git#commit=$_commit")
-sha256sums=('SKIP')
+_commit=d58fc972ac44670d547d74bfcd05fbbe2ecd7e5c
+source=("git+$url.git#commit=$_commit" fix-plural.patch)
+sha256sums=('SKIP'
+            '6a7693746a24028133d786e69ba89b3c6b2cbdb91571fdecbfdbfb716ca12c27')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "$pkgver.r%s.%s" "$(git rev-list --count v$pkgver..HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  _patch_ $pkgname
 }
 
 build() {
