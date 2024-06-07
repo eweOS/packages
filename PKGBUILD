@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=(luarocks51 luarocks54)
-pkgver=3.11.0
+pkgver=3.11.1
 pkgrel=1
 pkgdesc='The package manager for Lua modules.'
 url='https://luarocks.org'
@@ -10,8 +10,7 @@ license=(MIT)
 depends=(musl base-devel)
 makedepends=(lua51 lua54)
 source=("https://luarocks.org/releases/luarocks-$pkgver.tar.gz")
-luarocks54_provides=(luarocks)
-sha256sums=('25f56b3c7272fb35b869049371d649a1bbe668a56d24df0a66e3712e35dd44a6')
+sha256sums=('c3fb3d960dffb2b2fe9de7e3cb004dc4d0b34bb3d342578af84f84325c669102')
 
 luaver="5.1 5.4"
 
@@ -51,6 +50,7 @@ variables["LD"] = "clang"
 
 package_luarocks54() {
 	depends+=(lua54)
+	provides=(luarocks)
 	_package 4
 }
 
