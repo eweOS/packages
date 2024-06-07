@@ -2,21 +2,21 @@
 
 pkgname=(linux linux-headers)
 _basename=linux
-_pkgver=6.9.2
-pkgver=6.9.2
+_pkgver=6.9.3
+pkgver=6.9.3
 pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 url='http://www.kernel.org'
-license=(GPL2)
+license=(GPL-2.0-only)
 makedepends=(bison flex perl python libelf linux-headers rsync lld git)
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz"
   "kernel-config::git+https://github.com/eweOS/kernel-config.git"
   busybox-find-compat.patch
 )
-sha256sums=('d46c5bdf2c5961cc2a4dedefe0434d456865e95e4a7cd9f93fff054f9090e5f9'
-	    'SKIP'
-	    'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
+sha256sums=('c321c46401368774fc236f57095b205a5da57415f9a6008018902f9fd5eddfae'
+            'SKIP'
+            'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
 
 prepare()
 {
