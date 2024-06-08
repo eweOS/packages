@@ -9,6 +9,7 @@ Server = https://os-repo-auto.ewe.moe/eweos/$repo/os/$arch
 Server = https://os-repo-bak.ewe.moe/eweos/$repo/os/$arch
 
 ## Asia
+Server = https://mirrors.nju.edu.cn/eweos/$repo/os/$arch
 Server = https://mirrors.wsyu.edu.cn/eweos/$repo/os/$arch
 
 ## Asia (proxied)
