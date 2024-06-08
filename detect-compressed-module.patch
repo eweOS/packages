@@ -1,0 +1,61 @@
+From 3176cb0befb5f3ab75ba5dd77222f4daf4520953 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Sat, 8 Jun 2024 19:17:09 +0000
+Subject: [PATCH] Do not try finit_module() when loading compressed module
+
+This eliminates dmesg warning like "Invalid ELF header magic: != ELF"
+---
+ modutils/modutils.c | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/modutils/modutils.c b/modutils/modutils.c
+index f7ad5e8..d14e205 100644
+--- a/modutils/modutils.c
++++ b/modutils/modutils.c
+@@ -196,7 +196,9 @@ int FAST_FUNC bb_init_module(const char *filename, const char *options)
+ 	size_t image_size;
+ 	char *image;
+ 	int rc;
++	int fd;
+ 	bool mmaped;
++	unsigned char buf[4];
+ 
+ 	if (!options)
+ 		options = "";
+@@ -207,6 +209,15 @@ int FAST_FUNC bb_init_module(const char *filename, const char *options)
+ 		return bb_init_module_24(filename, options);
+ #endif
+ 
++	fd = open(filename, O_RDONLY | O_CLOEXEC);
++	if (read(fd, &buf, 4) < 0)
++		return errno;
++
++	close(fd);
++
++	if (memcmp(buf, "\x7f""ELF", 4))
++		goto compressed_module;
++
+ 	/*
+ 	 * First we try finit_module if available.  Some kernels are configured
+ 	 * to only allow loading of modules off of secure storage (like a read-
+@@ -215,7 +226,7 @@ int FAST_FUNC bb_init_module(const char *filename, const char *options)
+ 	 */
+ # ifdef __NR_finit_module
+ 	{
+-		int fd = open(filename, O_RDONLY | O_CLOEXEC);
++		fd = open(filename, O_RDONLY | O_CLOEXEC);
+ 		if (fd >= 0) {
+ 			rc = finit_module(fd, options, 0) != 0;
+ 			close(fd);
+@@ -225,6 +236,8 @@ int FAST_FUNC bb_init_module(const char *filename, const char *options)
+ 	}
+ # endif
+ 
++compressed_module:
++
+ 	image_size = INT_MAX - 4095;
+ 	mmaped = 0;
+ 	image = try_to_mmap_module(filename, &image_size);
+-- 
+2.45.2
+
