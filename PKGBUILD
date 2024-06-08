@@ -2,7 +2,7 @@
 
 pkgname=busybox
 pkgver=1.36.1
-pkgrel=20
+pkgrel=21
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64)
 url="https://www.busybox.net"
@@ -29,6 +29,7 @@ source=(
   "mdev-helper-storage-device"
   "mdev-helper-dev-bus-usb"
   "acpid.service"
+  "detect-compressed-module.patch"
 )
 sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
             '679abfce121db67cf34c5b88020b1af9052d9e1ec704a75578077432a770ed3c'
@@ -47,7 +48,8 @@ sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
             'f157359b7992e9d08da728b2c48c10f338e149e44856f3cb9665164c35f6e232'
             'f641a4d722dfaeb70e43ee87d8b1ce6ecadc0aec4ee21bdc28bbe4564dd743f4'
             '32c89049dfcb5de3b2591b1039b25aa8ad83f0af9b6782ef460ed4dde7a8493d'
-            'db93d29f439b25a174216898915f92fc6e092042d27a07e0bdf58ea277e80085')
+            'db93d29f439b25a174216898915f92fc6e092042d27a07e0bdf58ea277e80085'
+            '0b92c82c56bf9d81da6a1b64742b313ea11a483cfaf2a7ebb5a68e7f5258471c')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -60,6 +62,8 @@ prepare() {
   patch -p1 < ../remove_empty_dir.patch
   # Fix depmod: buffer 67104768 too small with gz modules
   sed -i 's/64\*1024\*1024/512\*1024\*1024/' modutils/depmod.c
+  # Fix dmesg like 'Invalid ELF header magic: != ELF'
+  patch -p1 < ../detect-compressed-module.patch
 }
 
 build() {
