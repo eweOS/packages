@@ -2,33 +2,30 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libinput
-pkgver=1.25.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc="Input device management and event handling library"
 url="https://gitlab.freedesktop.org/libinput"
 arch=(x86_64 aarch64 riscv64)
 license=(custom:X11)
 depends=('libudev' 'libevdev' 'mtdev')
-makedepends=('meson' 'wayland-protocols')
+makedepends=('meson' 'wayland-protocols' 'check' 'linux-headers')
+checkdepends=('python-pytest')
 source=("$url/libinput/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('f7e8425f185cadba5761d0a1dae6be041750d351163ffa04adc5b9a79a13c0ec')
+sha256sums=('bda944e6d60741432e10f29001c3326ee8aba2968787f78611f420f90580bd8b')
 
 build()
 {
-  # tests require "check" package which is not available currently
   ewe-meson $pkgname-$pkgver build \
     -D documentation=false \
     -D libwacom=false \
-    -D debug-gui=false \
-    -D tests=false
+    -D debug-gui=false
   meson configure build
   meson compile -C build
 }
 
 check()
 {
-  # FIXME: no pytest in repo
-  pip install pytest
   meson test -C build --print-errorlogs
 }
 
