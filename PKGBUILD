@@ -2,44 +2,40 @@
 
 pkgname=tinyramfs
 pkgver=0.1.0
-pkgrel=10
+pkgrel=11
 pkgdesc="Tiny initramfs generator written in POSIX shell"
 arch=('any')
 url="https://github.com/illiliti/tinyramfs"
+_url="https://github.com/eweOS/tinyramfs"
 license=('GPL3')
 depends=('sh')
+makedepends=('git')
+_refcommit="de2d6aea4dfe1b284ed0d485f0acd16303ff253b"
+_commit="5a9e947178a321daa6e89e3b54329e353bc49b47"
 source=(
-  "$url/archive/refs/tags/${pkgver}.tar.gz"
+  "git+$_url.git#commit=$_commit"
   "config"
-  "0-add-live.patch"
-  "1-fix-kernel-args.patch"
-  "2-add-plymouth-support.patch"
 )
 backup=("etc/$pkgname/config")
-sha512sums=('4f8eeb445cd277d1a535424b5f33c71670e46dfc1edd0cece08913db31f2f5f021d632e14fc43c5764d2ae331d7d8a3390b5064bbf28314a84fe13e1f4682bfc'
-            'd0f0afe7b8f2f32ff6b6a49d11ef58dc4976b609748781799d0209cea9ef43c423267007252c16168eeb8f295a99caa287519348348597885891d47da8f2a946'
-            'b9ec43f8299492dad57e84b482d050b7120522c86fb8cda30cb4ffcaf46bfb739618422c5f2fb852d9e11030e38e181b6bd56673e3dbeb1432d40be37d998f1d'
-            '971d0a230de4274ad028f31f58d363f7e85e81f09218f9459df44324e8e1f781445e77a90b037e44dbb644b201ac9a169b039b02f9cc0ab63cd64726a21a5a22'
-            'df47f70b3b4f7db2d2359c23bdd9cf8aa5278e23432285b1b9df24c15031df0be1dfdd967397af9104ca3a276ea0a2d2ae1f1cf8e6990b3d06ad315c2fab4fd5')
+sha512sums=('SKIP'
+            'd0f0afe7b8f2f32ff6b6a49d11ef58dc4976b609748781799d0209cea9ef43c423267007252c16168eeb8f295a99caa287519348348597885891d47da8f2a946')
 
-prepare()
+pkgver()
 {
-  # https://github.com/illiliti/tinyramfs/pull/17
-  # https://github.com/illiliti/tinyramfs/pull/42
-  # add plymouth support WIP
-  _patch_ $pkgname-$pkgver
+  cd $pkgname
+  printf "$pkgver.r%s.%s" "$(git rev-list --count $_refcommit..HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 check()
 {
-  cd $pkgname-$pkgver
+  cd $pkgname
   # need all component presents
   #make check
 }
 
 package()
 {
-  cd $pkgname-$pkgver
+  cd $pkgname
   make PREFIX=/usr DESTDIR=$pkgdir install
   install -d $pkgdir/etc/$pkgname
   install -D $srcdir/config $pkgdir/etc/$pkgname/config
