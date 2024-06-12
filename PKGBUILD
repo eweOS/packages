@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-hatchling
-pkgver=1.21.1
+pkgver=1.24.2
 pkgrel=1
 pkgdesc="Extensible, standards compliant build backend used by Hatch"
 arch=('any')
@@ -16,7 +16,7 @@ _name=${pkgname/python-/}
 source=(
   "${_url}/archive/refs/tags/${_name}-v${pkgver}.tar.gz"
 )
-sha256sums=('c931dd012812e8afc29c9d6f9943252960bfc4c81273aa5b2458bdea74ae2b39')
+sha256sums=('b8e6974a780dc2c5b43676c352f20e19c61a33b7a4e1cb47b05c364ae22f0a8c')
 
 build() {
   cd "hatch-${_name}-v${pkgver}/backend"
