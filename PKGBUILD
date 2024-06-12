@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-pluggy
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Plugin and hook calling mechanisms for python"
 arch=('any')
