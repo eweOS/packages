@@ -2,7 +2,7 @@
 
 _name=setuptools_scm
 pkgname=python-setuptools-scm
-pkgver=8.0.4
+pkgver=8.1.0
 pkgrel=1
 pkgdesc="Handles managing your python package versions in scm metadata"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/pypa/setuptools_scm"
 license=('MIT')
 depends=('python-packaging' 'python-setuptools' 'python-typing_extensions')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
-#checkdepends=('mercurial' 'python-pip' 'python-pytest' 'python-rich')
+# checkdepends=('mercurial' 'python-pytest' 'python-rich')
 source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
@@ -24,7 +24,7 @@ check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   # FIXME: test errors
-  #test-env/bin/python -m pytest -vk 'not test_not_owner' || :
+  # test-env/bin/python -m pytest -vk 'not test_not_owner' || :
 }
 
 package() {
