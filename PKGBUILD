@@ -2,7 +2,7 @@
 
 pkgname=python-platformdirs
 _name="${pkgname#python-}"
-pkgver=4.2.0
+pkgver=4.2.2
 pkgrel=1
 pkgdesc='A library to determine platform-specific system directories'
 arch=('any')
@@ -15,18 +15,13 @@ makedepends=(
   'python-hatchling'
   'python-hatch-vcs'
 )
-#checkdepends=(
-#  'python-pytest'
-#  'python-pytest-mock'
-#  'python-appdirs'
-#)
+checkdepends=(
+  'python-pytest'
+  'python-pytest-mock'
+  'python-appdirs'
+)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('b2c96d13b80972809cc225d428879ea87e21ad0859fe8cb8fa05dd040e9c2499')
-
-prepare() {
-  # FIXME: install using pip
-  python -m pip install pytest-mock appdirs
-}
+sha256sums=('d08de97cfab1a7b7b1fa7997b545c44d40308c81b28ab8fb7e0da032d0160632')
 
 build() {
   cd "$_name-$pkgver"
@@ -36,8 +31,7 @@ build() {
 
 check() {
   cd "$_name-$pkgver"
-  # FIXME: missing dependency
-  #PYTHONPATH="$(pwd)/src" pytest -v
+  PYTHONPATH="$(pwd)/src" pytest -v
 }
 
 package() {
