@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-jaraco.classes
-pkgver=3.3.1
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='Module for classes manipulation'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python-w
 conflicts=(python-jaraco)
 replaces=(python-jaraco)
 source=("https://github.com/jaraco/jaraco.classes/archive/refs/tags/v$pkgver/jaraco.classes-$pkgver.tar.gz")
-sha512sums=('dac9511926507ece5a8e2c413e70d8f44fcb3d27f4a74e9745545a3122a74b2752fb92fa58e6c3c166039a8576aee2a9f9e426b49a4aa556b824ddb2899b7645')
+sha512sums=('dd321db10ffe0e5af0b8d061e2f2cfa42a6f61cc3117a1bdb84e5b403155525f467413279057aecc6fcc2d306dade0f542adb92540d71f525afc19aae717a103')
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
 
