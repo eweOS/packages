@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-jaraco.context
-pkgver=5.1.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Context managers by jaraco"
 url="https://github.com/jaraco/jaraco.context"
@@ -9,7 +9,7 @@ license=('MIT')
 arch=('any')
 depends=('python')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
-checkdepends=('python-pytest')
+checkdepends=('python-pytest' 'python-portend')
 source=("git+https://github.com/jaraco/jaraco.context.git#tag=v$pkgver")
 sha512sums=('SKIP')
 
