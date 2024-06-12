@@ -5,13 +5,13 @@
 pkgname=perl-extutils-config
 _pkgname=ExtUtils-Config
 pkgver=0.009
-pkgrel=1
+pkgrel=2
 pkgdesc="ExtUtils::Config - A wrapper for perl's configuration"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 url="https://search.cpan.org/dist/ExtUtils-Config/"
 options=(!emptydirs)
-makedepends=('perl')
+depends=('perl')
 source=("https://search.cpan.org/CPAN/authors/id/L/LE/LEONT/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('7f3d054f31b08a9179dbad47204f9223607d8af84e4dfa1e9250981dd271b753576e571e2071d94408340376f13d3d766278d23407b7c754dbc493b7df30e2cd')
 
