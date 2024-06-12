@@ -4,12 +4,12 @@
 
 pkgname=perl-test-fatal
 pkgver=0.017
-pkgrel=1
+pkgrel=2
 pkgdesc="Incredibly simple helpers for testing code with exceptions"
 arch=('any')
 url="https://metacpan.org/release/Test-Fatal"
 license=('PerlArtistic' 'GPL')
-depends=('perl-try-tiny')
+depends=('perl' 'perl-try-tiny')
 options=('!emptydirs')
 source=(https://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Test-Fatal-$pkgver.tar.gz)
 sha512sums=('e88bb9749bd1cbc4ed169e13bcd5a1ac7411873d8ae00d8b7ecf1dfc39ed9a02f0286d885876913c69b5c90033144d5fda6a5517ef64175d13e284d3c971a6e7')
