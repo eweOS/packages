@@ -4,12 +4,12 @@
 _name=pmix
 pkgname=openpmix
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Extended version of the PMI standard"
 arch=(x86_64 aarch64 riscv64)
 url="https://github.com/openpmix/openpmix"
 license=(BSD)
-depends=(curl glibc hwloc jansson libevent zlib curl)
+depends=(curl hwloc jansson libevent zlib curl)
 makedepends=(perl python)
 provides=(libpmix.so pmix)
 backup=(etc/$pkgname/pmix-mca-params.conf)
