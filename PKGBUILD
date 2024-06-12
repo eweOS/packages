@@ -5,7 +5,7 @@
 pkgbase=pacman
 pkgname=(libalpm pacman repo-tools)
 pkgver=6.0.2
-pkgrel=25
+pkgrel=26
 arch=(x86_64 aarch64 riscv64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
@@ -21,6 +21,7 @@ source=(
   function_sysutils.sh
   function_license.sh
   script_warndirs.sh
+  script_noglibc.sh
 )
 sha256sums=('7d8e3e8c5121aec0965df71f59bedf46052c6cf14f96365c4411ec3de0a4c1a5'
             '0865036ef04a06b00926640ac7db2275988b834f435101e8110eedf8a2e58b88'
@@ -30,7 +31,8 @@ sha256sums=('7d8e3e8c5121aec0965df71f59bedf46052c6cf14f96365c4411ec3de0a4c1a5'
             '7d2ad28bef8f9f77f33929d2050244a6f29941de6ad0793b6820caee3dbd84e3'
             '5648db8988c73588c05eccaa4329f6d3bd95ec1e39f2337eb1f21641ee73d479'
             '35bcd3281043a7f4cc6ac7ee4b8978c0a90b3a14961139fdf24622100107af98'
-            '9dbd7446b7b3d1b6373939cc9ee1946be1c5ded717401518e36281c584e8eb09')
+            '9dbd7446b7b3d1b6373939cc9ee1946be1c5ded717401518e36281c584e8eb09'
+            '403a7a06966faad2ec06ff6aedf553728d24714dc8f16183afa227b3bd9dbe4a')
 
 _fetchpkg()
 {
@@ -140,6 +142,7 @@ package_pacman()
   install -Dm644 "$srcdir/function_sysutils.sh" "$pkgdir/usr/share/makepkg/function_sysutils.sh"
   install -Dm644 "$srcdir/function_license.sh" "$pkgdir/usr/share/makepkg/function_license.sh"
   install -Dm644 "$srcdir/script_warndirs.sh" "$pkgdir/usr/share/makepkg/lint_package/warndirs.sh"
+  install -Dm644 "$srcdir/script_noglibc.sh" "$pkgdir/usr/share/makepkg/lint_package/noglibc.sh"
 }
 
 package_repo-tools()
