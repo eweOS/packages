@@ -2,12 +2,12 @@
 
 pkgname=perl-xml-sax-expat
 pkgver=0.51
-pkgrel=1
+pkgrel=2
 pkgdesc="SAX2 Driver for Expat (XML::Parser) "
 arch=('any')
 url="https://search.cpan.org/dist/XML-SAX-Expat"
 license=('GPL' 'PerlArtistic')
-depends=('perl-xml-namespacesupport' 'perl-xml-parser' 'perl-xml-sax')
+depends=('perl' 'perl-xml-namespacesupport' 'perl-xml-parser' 'perl-xml-sax')
 install=perl-xml-sax-expat.install
 options=('!emptydirs')
 source=(https://www.cpan.org/authors/id/B/BJ/BJOERN/XML-SAX-Expat-$pkgver.tar.gz)
