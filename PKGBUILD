@@ -5,7 +5,7 @@
 pkgbase=pacman
 pkgname=(libalpm pacman repo-tools)
 pkgver=6.0.2
-pkgrel=26
+pkgrel=27
 arch=(x86_64 aarch64 riscv64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
@@ -25,7 +25,7 @@ source=(
 )
 sha256sums=('7d8e3e8c5121aec0965df71f59bedf46052c6cf14f96365c4411ec3de0a4c1a5'
             '0865036ef04a06b00926640ac7db2275988b834f435101e8110eedf8a2e58b88'
-            '8a97e77fa817d490f0ccec2cc3f0721746b966dbdf26234eaddfc943736d2e14'
+            'fe023e23480454bc796adf6ba9a11b78aa88af2abb3f884910e9e9883574908d'
             '6338de233368bfa76ee17353785709e282ace072eae6996c1289f0fb5b84ffc4'
             'd99d4fe5e414cb4748f4e9b20637d9fd69ec8c392e3f862edbc69b6564a52876'
             '7d2ad28bef8f9f77f33929d2050244a6f29941de6ad0793b6820caee3dbd84e3'
@@ -83,14 +83,16 @@ FLIST_REPO_TOOLS=(
 build()
 {
   makepkg_cflags="-Os -pipe -fno-plt"
-  # TODO: riscv64
+  makepkg_ldflags=""
+  # mold bug: need --no-as-needed for riscv64
   case $CARCH in
     x86_64) makepkg_cflags+=" -march=x86-64 -fstack-clash-protection -fcf-protection" ;;
     aarch64) makepkg_cflags+=" -march=armv8-a" ;;
-    riscv64) makepkg_cflags+=" -march=rv64gc" ;;
+    riscv64) makepkg_cflags+=" -march=rv64gc" makepkg_ldflags+="-Wl,--no-as-needed" ;;
   esac
   sed -i ./makepkg.conf \
-    -e "s|@@BUILD_GEN_CFLAGS@@|$makepkg_cflags|g"
+    -e "s|@@BUILD_GEN_CFLAGS@@|$makepkg_cflags|g" \
+    -e "s|@@BUILD_GEN_LDFLAGS@@|$makepkg_ldflags|g"
 
   if [ "$CARCH" == "riscv64" ]; then
     # disable lto since for riscv gold is not ready
