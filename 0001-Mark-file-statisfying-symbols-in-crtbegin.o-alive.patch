@@ -1,0 +1,37 @@
+From 7075d23f129c00fa36a8ee258e3625f8d3b25fd7 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Fri, 14 Jun 2024 06:52:04 +0000
+Subject: [PATCH] Mark file statisfying symbols in crtbegin.o alive
+
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ elf/passes.cc | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/elf/passes.cc b/elf/passes.cc
+index 49fa569f..aba8787e 100644
+--- a/elf/passes.cc
++++ b/elf/passes.cc
+@@ -284,6 +284,19 @@ void do_resolve_symbols(Context<E> &ctx) {
+       file->resolve_symbols(ctx);
+     });
+ 
++    for (InputFile<E> *file : ctx.objs) {
++      auto opts = std::regex_constants::optimize | std::regex_constants::ECMAScript;
++      static std::regex re(R"(clang_rt\.crtbegin)", opts);
++
++      std::smatch m;
++      if (std::regex_search(file->filename, m, re)) {
++	for (Symbol<E> *sym : file->symbols)
++	  if (sym->file)
++	    sym->file->is_alive = true;
++        break;
++      }
++    }
++
+     // Mark reachable objects to decide which files to include into an output.
+     // This also merges symbol visibility.
+     mark_live_objects(ctx);
+-- 
+2.45.2
+
