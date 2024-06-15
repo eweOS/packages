@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libime
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="A library to support generic input method implementation"
 arch=(x86_64 aarch64 riscv64)
@@ -10,7 +10,7 @@ license=('LGPL-2.1-or-later')
 depends=('boost-libs' 'fcitx5')
 makedepends=('boost' 'extra-cmake-modules' 'ninja' 'python' 'zstd')
 source=("https://download.fcitx-im.org/fcitx5/libime/libime-${pkgver}_dict.tar.zst")
-sha512sums=('67b69fe33e2a55cf9f82c668f3c97929fe8a0531e1540fa593ef15535ba66e079171928a54b268638a1d5fd14901f47500d1a6f79ad0e28f7f81e426f1384b42')
+sha512sums=('5fa6683dcaa92d754b87ed01989a7a98eee9d4ee642720b1ac1b0b58416a6202ca929e2593dfe59ae361afb7d311d8e238a188530ba99db7aaa3164713c95a4a')
 
 build(){
   cd $pkgname-$pkgver
