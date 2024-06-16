@@ -4,7 +4,7 @@ pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang wasi-libc++ wasi-libc++ab
 _realpkgname=llvm-project
 pkgver=18.1.7
 _binutilsver=2.42
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64' 'riscv64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -173,6 +173,7 @@ build()
     -DCOMPILER_RT_BUILD_GWP_ASAN=OFF
     -DCOMPILER_RT_BUILD_XRAY=OFF
     -DCOMPILER_RT_BUILD_LIBFUZZER=OFF
+    -DCOMPILER_RT_CRT_USE_EH_FRAME_REGISTRY=OFF
     -DLLVM_ENABLE_PER_TARGET_RUNTIME_DIR=OFF
     -DLLVM_LIBGCC_EXPLICIT_OPT_IN=ON
     -DLLVM_BINUTILS_INCDIR=$srcdir/binutils-${_binutilsver}/include
