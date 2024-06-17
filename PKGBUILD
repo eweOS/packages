@@ -2,7 +2,7 @@
 
 pkgname=ifupdown-ng
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Flexible ifup/ifdown implementation'
 url='https://github.com/ifupdown-ng/ifupdown-ng'
 arch=(x86_64 aarch64 riscv64)
@@ -19,14 +19,14 @@ sha256sums=('d42c8c18222efbce0087b92a14ea206de4e865d5c9dde6c0864dcbb2b45f2d85'
 
 build () {
 	cd ifupdown-ng-ifupdown-ng-$pkgver
-	make
+	make EXECUTOR_PATH=/usr/lib/ifupdown-ng
 	make docs
 }
 
 package() {
 	_dinit_install_services_ ifupdown-ng.service
 	cd ifupdown-ng-ifupdown-ng-$pkgver
-	make install DESTDIR=$pkgdir SBINDIR=/usr/bin
+	make install DESTDIR=$pkgdir SBINDIR=/usr/bin EXECUTOR_PATH=/usr/lib/ifupdown-ng
 	make install_docs DESTDIR=$pkgdir
 	_install_license_ COPYING
 	rm $pkgdir/etc/network/ifupdown-ng.conf.example
