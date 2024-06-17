@@ -1,0 +1,51 @@
+From 600aae4dfc4f9695fed8581456018d10660175b5 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Mon, 17 Jun 2024 19:49:24 +0000
+Subject: [PATCH] [clang]: force libc linked with --no-as-needed when using
+ compiler-rt
+
+crtbegin.o in compiler-rt contains weak reference to __cxa_finalize,
+which is implemented in libc. When building a shared library with
+--as-needed option, libc may be incorrectly marked as inactive,
+resulting in unresolved symbols in crtbegin.o
+
+This commit forces libc is linked with --no-as-needed option when using
+compiler-rt, fixing the problem.
+
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ clang/lib/Driver/ToolChains/Gnu.cpp | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/clang/lib/Driver/ToolChains/Gnu.cpp b/clang/lib/Driver/ToolChains/Gnu.cpp
+index dedbfac6cb2..419c6b6e436 100644
+--- a/clang/lib/Driver/ToolChains/Gnu.cpp
++++ b/clang/lib/Driver/ToolChains/Gnu.cpp
+@@ -378,6 +378,7 @@ void tools::gnutools::Linker::ConstructJob(Compilation &C, const JobAction &JA,
+   const bool HasCRTBeginEndFiles =
+       ToolChain.getTriple().hasEnvironment() ||
+       (ToolChain.getTriple().getVendor() != llvm::Triple::MipsTechnologies);
++  const ToolChain::RuntimeLibType RLTType = ToolChain.GetRuntimeLibType(Args);
+ 
+   ArgStringList CmdArgs;
+ 
+@@ -625,8 +626,15 @@ void tools::gnutools::Linker::ConstructJob(Compilation &C, const JobAction &JA,
+       if (Args.hasArg(options::OPT_fsplit_stack))
+         CmdArgs.push_back("--wrap=pthread_create");
+ 
+-      if (!Args.hasArg(options::OPT_nolibc))
++      if (!Args.hasArg(options::OPT_nolibc)) {
++        if (RLTType == ToolChain::RLT_CompilerRT) {  
++          CmdArgs.push_back("--push-state");
++          CmdArgs.push_back("--no-as-needed");
++        }
+         CmdArgs.push_back("-lc");
++        if (RLTType == ToolChain::RLT_CompilerRT)
++          CmdArgs.push_back("--pop-state");
++      }
+ 
+       // Add IAMCU specific libs, if needed.
+       if (IsIAMCU)
+-- 
+2.45.2
+
