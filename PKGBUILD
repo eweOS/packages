@@ -2,7 +2,7 @@
 
 pkgname=cmake
 _major_minor=3.29
-pkgver="${_major_minor}.5"
+pkgver="${_major_minor}.6"
 pkgrel=1
 pkgdesc='The CMake toolsuite for building, testing and packaging software.'
 arch=(x86_64 aarch64 riscv64)
@@ -12,7 +12,7 @@ url='https://cmake.org'
 license=('GPL2')
 source=("${url}/files/v${_major_minor}/${pkgname}-${pkgver}.tar.gz"
 	"detect-eweOS.patch")
-sha256sums=('dd63da7d763c0db455ca232f2c443f5234fe0b11f8bd6958a81d29cc987dfd6e'
+sha256sums=('1391313003b83d48e2ab115a8b525a557f78d8c1544618b48d1d90184a10f0af'
             '61399bb31861e501da22d520badafc0ba4a7d4bc742aaa3352539065943e93b1')
 
 prepare() {
