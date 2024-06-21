@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libva
-pkgver=2.21.0
+pkgver=2.22.0
 pkgrel=1
 pkgdesc='Video Acceleration (VA) API for Linux'
 arch=(x86_64 aarch64 riscv64)
@@ -14,6 +14,7 @@ depends=(
 makedepends=(
   git
   libglvnd
+  linux-headers
   mesa
   meson
 )
