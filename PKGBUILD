@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libdisplay-info
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='EDID and DisplayID library'
 url="https://gitlab.freedesktop.org/emersion/$pkgname"
@@ -15,7 +15,7 @@ makedepends=(
 )
 provides=(libdisplay-info.so)
 source=("$url/-/releases/$pkgver/downloads/$pkgname-$pkgver.tar.xz")
-sha256sums=('0d8731588e9f82a9cac96324a3d7c82e2ba5b1b5e006143fefe692c74069fb60')
+sha256sums=('5a2f002a16f42dd3540c8846f80a90b8f4bdcd067a94b9d2087bc2feae974176')
 
 build() {
   ewe-meson $pkgname-$pkgver build
