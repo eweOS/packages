@@ -1,7 +1,8 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=zlib-ng
-pkgver=2.1.6
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='zlib data compression library for the next generation systems'
 arch=(x86_64 aarch64 riscv64)
@@ -12,7 +13,7 @@ makedepends=(cmake googletest)
 provides=(zlib)
 conflicts=(zlib)
 source=($pkgname-$pkgver::"https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a5d504c0d52e2e2721e7e7d86988dec2e290d723ced2307145dedd06aeb6fef2')
+sha256sums=('6e688263f704cd2e5e5dbab07b0fd0f494c24d393be7d15da02e7ae76b630b76')
 
 prepare()
 {
