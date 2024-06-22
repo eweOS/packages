@@ -1,0 +1,91 @@
+From df942062b6235acdc77cf487147717f227b90863 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Sat, 22 Jun 2024 15:33:41 +0000
+Subject: [PATCH 1/2] fix install command
+
+---
+ Makefile | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 2ad5e5d..d07940f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -312,11 +312,11 @@ $(TOAST):	$(BIN) $(TOAST_OBJECTS) $(LIBGSM)
+ 
+ $(UNTOAST):	$(BIN) $(TOAST)
+ 		-rm $(RMFLAGS) $(UNTOAST)
+-		$(LN) $(TOAST) $(UNTOAST)
++		$(LN) toast $(UNTOAST)
+ 
+ $(TCAT):	$(BIN) $(TOAST)
+ 		-rm $(RMFLAGS) $(TCAT)
+-		$(LN) $(TOAST) $(TCAT)
++		$(LN) toast $(TCAT)
+ 
+ 
+ # The local bin and lib directories
+@@ -352,50 +352,50 @@ toastuninstall:
+ 
+ $(TOAST_INSTALL_BIN)/toast:	$(TOAST)
+ 		-rm $(RMFLAGS) $@
+-		cp $(TOAST) $@
++		install -D $(TOAST) $@
+ 		chmod 755 $@
+ 
+ $(TOAST_INSTALL_BIN)/untoast:	$(TOAST_INSTALL_BIN)/toast
+ 		-rm $(RMFLAGS) $@
+-		$(LN) $? $@
++		$(LN) toast $@
+ 
+ $(TOAST_INSTALL_BIN)/tcat:	$(TOAST_INSTALL_BIN)/toast
+ 		-rm $(RMFLAGS) $@
+-		$(LN) $? $@
++		$(LN) toast $@
+ 
+ $(TOAST_INSTALL_MAN)/toast.1:	$(MAN)/toast.1
+ 		-rm $(RMFLAGS) $@
+-		cp $? $@
++		install -D $? $@
+ 		chmod 444 $@
+ 
+ $(GSM_INSTALL_MAN)/gsm.3:	$(MAN)/gsm.3
+ 		-rm $(RMFLAGS) $@
+-		cp $? $@
++		install -D $? $@
+ 		chmod 444 $@
+ 
+ $(GSM_INSTALL_MAN)/gsm_option.3:	$(MAN)/gsm_option.3
+ 		-rm $(RMFLAGS) $@
+-		cp $? $@
++		install -D $? $@
+ 		chmod 444 $@
+ 
+ $(GSM_INSTALL_MAN)/gsm_explode.3:	$(MAN)/gsm_explode.3
+ 		-rm $(RMFLAGS) $@
+-		cp $? $@
++		install -D $? $@
+ 		chmod 444 $@
+ 
+ $(GSM_INSTALL_MAN)/gsm_print.3:	$(MAN)/gsm_print.3
+ 		-rm $(RMFLAGS) $@
+-		cp $? $@
++		install -D $? $@
+ 		chmod 444 $@
+ 
+ $(GSM_INSTALL_INC)/gsm.h:	$(INC)/gsm.h
+ 		-rm $(RMFLAGS) $@
+-		cp $? $@
++		install -D $? $@
+ 		chmod 444 $@
+ 
+ $(GSM_INSTALL_LIB)/libgsm.a:	$(LIBGSM)
+ 		-rm $(RMFLAGS) $@
+-		cp $? $@
++		install -D $? $@
+ 		chmod 444 $@
+ 
+ 
+-- 
+2.45.2
+
