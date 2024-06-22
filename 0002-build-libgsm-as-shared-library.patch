@@ -1,0 +1,73 @@
+From 9323136e4540602355a309cddb83ff24e100bdb0 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Sat, 22 Jun 2024 15:33:59 +0000
+Subject: [PATCH 2/2] build libgsm as shared library
+
+---
+ Makefile | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index d07940f..684a89e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -140,6 +140,7 @@ LFLAGS	= $(LDFLAGS) $(LDINC)
+ # Targets
+ 
+ LIBGSM	= $(LIB)/libgsm.a
++LIBGSMSO = $(LIB)/libgsm.so
+ 
+ TOAST	= $(BIN)/toast
+ UNTOAST	= $(BIN)/untoast
+@@ -258,6 +259,7 @@ STUFF = 	ChangeLog			\
+ 
+ GSM_INSTALL_TARGETS =	\
+ 		$(GSM_INSTALL_LIB)/libgsm.a		\
++		$(GSM_INSTALL_LIB)/libgsm.so		\
+ 		$(GSM_INSTALL_INC)/gsm.h		\
+ 		$(GSM_INSTALL_MAN)/gsm.3		\
+ 		$(GSM_INSTALL_MAN)/gsm_explode.3	\
+@@ -279,7 +281,7 @@ TOAST_INSTALL_TARGETS =	\
+ 
+ # Target rules
+ 
+-all:		$(LIBGSM) $(TOAST) $(TCAT) $(UNTOAST)
++all:		$(LIBGSM) $(LIBGSMSO) $(TOAST) $(TCAT) $(UNTOAST)
+ 		@-echo $(ROOT): Done.
+ 
+ tst:		$(TST)/lin2cod $(TST)/cod2lin $(TOAST) $(TST)/test-result
+@@ -304,11 +306,18 @@ $(LIBGSM):	$(LIB) $(GSM_OBJECTS)
+ 		$(AR) $(ARFLAGS) $(LIBGSM) $(GSM_OBJECTS)
+ 		$(RANLIB) $(LIBGSM)
+ 
++$(LIBGSMSO):	$(LIB) $(GSM_OBJECTS)
++		-rm $(RMFLAGS) $(LIBGSMSO)
++		-rm $(RMFLAGS) $(LIBGSMSO).1
++		-rm $(RMFLAGS) $(LIBGSMSO).$(SOVER)
++		$(LD) -shared -o $(LIBGSMSO).$(SOVER) -Wl,-soname,libgsm.so.$(SOVER) $(GSM_OBJECTS)
++		$(LN) -s libgsm.so.$(SOVER) $(LIBGSMSO).1
++		$(LN) -s libgsm.so.$(SOVER) $(LIBGSMSO)
+ 
+ # Toast, Untoast and Tcat -- the compress-like frontends to gsm.
+ 
+ $(TOAST):	$(BIN) $(TOAST_OBJECTS) $(LIBGSM)
+-		$(LD) $(LFLAGS) -o $(TOAST) $(TOAST_OBJECTS) $(LIBGSM) $(LDLIB)
++		$(LD) $(LFLAGS) -o $(TOAST) $(TOAST_OBJECTS) -L$(LIB) -lgsm $(LDLIB)
+ 
+ $(UNTOAST):	$(BIN) $(TOAST)
+ 		-rm $(RMFLAGS) $(UNTOAST)
+@@ -398,6 +407,11 @@ $(GSM_INSTALL_LIB)/libgsm.a:	$(LIBGSM)
+ 		install -D $? $@
+ 		chmod 444 $@
+ 
++$(GSM_INSTALL_LIB)/libgsm.so:	$(LIBGSMSO)
++		-rm $(RMFLAGS) $@
++		install -D $(LIBGSMSO) $@
++		install -D $(LIBGSMSO).1 $@.1
++		install -D $(LIBGSMSO).$(SOVER) $@.$(SOVER)
+ 
+ # Distribution
+ 
+-- 
+2.45.2
+
