@@ -2,18 +2,16 @@
 
 pkgname=dav1d
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A new open-source AV1 decoder.'
 url='https://www.videolan.org/projects/dav1d.html'
 arch=(x86_64 aarch64 riscv64)
 license=(BSD-2-Clause)
 depends=(musl xxhash)
-makedepends=(meson ninja)
+makedepends=(meson ninja nasm)
 provides=(libdav1d.so)
 source=("https://downloads.videolan.org/pub/videolan/dav1d/$pkgver/dav1d-$pkgver.tar.xz")
 sha256sums=('42fe524bcc82ea3a830057178faace22923a79bad3d819a4962d8cfc54c36f19')
-
-[ $CARCH = x86_64 ] && makedepends+=(nasm)
 
 build () {
 	local arch_options=()
