@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gtk3
-pkgver=3.24.41
+pkgver=3.24.42
 pkgrel=1
 pkgdesc="Multi-platform toolkit for creating graphical user interfaces"
 url="https://www.gtk.org/"
@@ -30,9 +30,14 @@ makedepends=(
   sassc
   wayland-protocols
   gobject-introspection
+  linux-headers
 )
-source=("https://gitlab.gnome.org/GNOME/gtk/-/archive/${pkgver}/gtk-${pkgver}.tar.gz")
-sha256sums=('0ce1fa6cde05762cfb93a4064d4d211350944a77ebc954542d76e552d2cd0894')
+source=(
+  "https://gitlab.gnome.org/GNOME/gtk/-/archive/${pkgver}/gtk-${pkgver}.tar.gz"
+  gtk-query-immodules-3.0.hook
+)
+sha256sums=('7dbab66d2b25b0cef7fc8fed152eeeb525629f8c679536605f34fdb65acc7b19'
+            '554a03b0b36b0e69b74cdc917c3ed1a36d31f68c3fe36c7dab787e5dd6c3a5d0')
 
 build()
 {
@@ -52,9 +57,12 @@ build()
 
 package()
 {
+  install=gtk3.install
   depends+=(gtk-update-icon-cache adwaita-icon-theme)
   meson install -C build --destdir "$pkgdir"
 
   # Built by GTK 4, shared with GTK 3
   rm $pkgdir/usr/bin/gtk-update-icon-cache
+
+  install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 gtk-query-immodules-3.0.hook
 }
