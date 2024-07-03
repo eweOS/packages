@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libass
-pkgver=0.17.2
-pkgrel=2
+pkgver=0.17.3
+pkgrel=1
 pkgdesc='A portable library for SSA/ASS subtitles rendering'
 arch=(x86_64 aarch64 riscv64)
 url=https://github.com/libass/libass/
