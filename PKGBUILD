@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libplacebo
-pkgver=6.338.2
+pkgver=7.349.0
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives'
 url='https://github.com/haasn/libplacebo'
@@ -15,7 +15,7 @@ makedepends=(
 )
 provides=('libplacebo.so')
 source=(https://code.videolan.org/videolan/libplacebo/-/archive/v${pkgver}/libplacebo-v${pkgver}.tar.gz)
-sha512sums=('0f20ae47bc2a7cd128d667ec2dd750a2d6ad5f16be6ab97122c2dda1ebf239958ee4bf453a7f835bea2dafb60a2e27b795801532aad994e002854c190aa6bbd8')
+sha512sums=('94fb0ad4f6cdafc81a43f06a73e49ef8ed7f81e751ad2a028f6f91295a06d8c12f2959e2595bd654db946fc5aa89758ab9d37f985ebb82badbd517ed02f3ddca')
 
 build() {
   cd ${pkgname}-v${pkgver}
