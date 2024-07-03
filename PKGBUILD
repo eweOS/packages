@@ -1,12 +1,8 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
-# Contributor: David Runge <dvzrv@archlinux.org>
-# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor: Stéphane Gaudreault <stephane@archlinux.org>
-# Contributor: Allan McRae <allan@archlinux.org>
-# Contributor: judd <jvinet@zeroflux.org>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=gdbm
-pkgver=1.23
+pkgver=1.24
 pkgrel=1
 pkgdesc="GNU database library"
 arch=(x86_64 aarch64 riscv64)
@@ -15,7 +11,7 @@ license=(GPL3)
 depends=(readline)
 provides=(libgdbm_compat.so libgdbm.so)
 source=("https://ftp.gnu.org/gnu/gdbm/$pkgname-$pkgver.tar.gz")
-sha512sums=('918080cb0225b221c11eb7339634a95e00c526072395f7a3d46ccf42ef020dea7c4c5bec34aff2c4f16033e1fff6583252b7e978f68b8d7f8736b0e025838e10')
+sha512sums=('401ff8c707079f21da1ac1d6f4714a87f224b6f41943078487dc891be49f51fd1ac7a32fd599aae0fad185f2c6ba7432616d328fd6aaab068eb54db9562ff7fa')
 
 prepare()
 {
