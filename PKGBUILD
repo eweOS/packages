@@ -2,7 +2,7 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=zlib-ng
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='zlib data compression library for the next generation systems'
 arch=(x86_64 aarch64 riscv64)
@@ -13,7 +13,7 @@ makedepends=(cmake googletest)
 provides=(zlib)
 conflicts=(zlib)
 source=($pkgname-$pkgver::"https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('6e688263f704cd2e5e5dbab07b0fd0f494c24d393be7d15da02e7ae76b630b76')
+sha256sums=('ec6a76169d4214e2e8b737e0850ba4acb806c69eeace6240ed4481b9f5c57cdf')
 
 prepare()
 {
