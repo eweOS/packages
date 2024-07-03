@@ -1,8 +1,9 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=wlroots
-pkgver=0.17.3
-pkgrel=2
+pkgver=0.17.4
+pkgrel=1
 license=('MIT')
 pkgdesc='Modular Wayland compositor library'
 url='https://gitlab.freedesktop.org/wlroots/wlroots'
@@ -11,7 +12,7 @@ depends=('libdrm' 'libinput' 'seatd' 'libudev-zero' 'libxkbcommon' 'libgles' 'li
 makedepends=('flex' 'linux-headers' 'meson' 'wayland-protocols' 'hwdata')
 provides=('libwlroots.so')
 source=("$pkgname-$pkgver.tar.gz::$url/-/releases/$pkgver/downloads/wlroots-$pkgver.tar.gz")
-sha256sums=('04d31521bd2b737541b9680098e55ebaaf956e68d692f80479f4ee1236606d98')
+sha256sums=('d3190d19d03446955e68a92c77d4c74af78384b0db39a85a0b1582adc80f36d1')
 
 build() {
     ewe-meson "$pkgname-$pkgver" build \
