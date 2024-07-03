@@ -2,7 +2,7 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=hwloc
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="a portable abstraction of hierarchical architectures"
 url='https://www.open-mpi.org/projects/hwloc/'
@@ -12,7 +12,7 @@ depends=('libxml2' 'libudev')
 makedepends=('cairo' 'ncurses')
 optdepends=('cairo' 'ncurses')
 source=(https://www.open-mpi.org/software/hwloc/v${pkgver%.*}/downloads/${pkgname}-${pkgver}.tar.bz2)
-sha512sums=('8fcf448ef16874862e5cf5a814ecc4885d53817369640bb8a0079b0c7d9294b3933a6a8cf2472e8e104a5c346e09e1fffab401a1976d7b2da0457f0c5271a18a')
+sha512sums=('be5ca33627cfb97515e2779b040775df58ee2fcdcf210ee698e5566fff8bcf17abc57e4923a4e8dd1f5f61858a3bc5fc821fc774a45db4cf5fc3f7c78057f0a2')
 
 build()
 {
