@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fcitx5
-pkgver=5.1.9
+pkgver=5.1.10
 pkgrel=1
 pkgdesc="Next generation of fcitx"
 arch=(x86_64 aarch64 riscv64)
@@ -10,9 +10,10 @@ license=('LGPL-2.1-or-later AND Unicode-DFS-2016')
 groups=('fcitx5-im')
 provides=('fcitx')
 depends=('cairo' 'dbus' 'iso-codes' 'libuv' 'libxkbcommon' 'pango' 'wayland' 'gdk-pixbuf' 'json-c')
-makedepends=('ninja' 'wayland-protocols' 'fmt' 'extra-cmake-modules' 'zstd')
+makedepends=('ninja' 'wayland-protocols' 'fmt' 'extra-cmake-modules' 'zstd'
+	     'linux-headers')
 source=("https://download.fcitx-im.org/fcitx5/fcitx5/fcitx5-${pkgver}_dict.tar.zst")
-sha512sums=('b4964eb48acf224f5bda66a5d81c673983e8e20822b28a37afae00c9319fff9bf5f684e417b799afd92ee51f3d44822d9954640f63ce75d846dbb4868c4a4a22')
+sha512sums=('196bc26f7dd50596da90e6b4b0a8b4886b57ec928c182427fb8763507f1f4cb39a252bfddcbd6eccaa0cc920070b7b9fda03f18fd444f84154ddd925678ad7d4')
 
 build() {
   cd $pkgname-$pkgver
