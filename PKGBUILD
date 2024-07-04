@@ -1,8 +1,10 @@
 # Maintainer: Ziyao <ziyao@disroot.org>
 
 pkgname=lua54
-pkgver=5.4.6
-pkgrel=8
+pkgver=5.4.7
+pkgrel=1
+_V=5.4
+_R=5.4.7
 pkgdesc='Powerful lightweight programming language designed for extending applications'
 url='https://www.lua.org'
 arch=(x86_64 aarch64 riscv64)
@@ -13,8 +15,9 @@ provides=(lua)
 source=(https://www.lua.org/ftp/lua-$pkgver.tar.gz
   Makefile.patch
   src-Makefile.patch)
-_V=5.4
-_R=5.4.6
+sha256sums=('9fbf5e28ef86c69858f6d3d34eccc32e911c1a28b4120ff3e84aaa70cfbf1e30'
+	    '521841c5803146ef4cc9b728b86926455bb2dc325aa262ccde8471ac8387df17'
+	    'ac9205c6952a6ad3c4d08480c1859d61aa287318b4aad91e1784d528590841bf')
 
 prepare()
 {
@@ -86,7 +89,3 @@ package()
   ln -s lua$_V/liblua.so $pkgdir/usr/lib/liblua-$_V.so
   ln -s /lua$_V.pc $pkgdir/usr/lib/pkgconfig/lua$_V-c++.pc
 }
-
-sha256sums=('7d5ea1b9cb6aa0b59ca3dde1c6adcb57ef83a1ba8e5432c0ecd06bf439b3ad88'
-            '521841c5803146ef4cc9b728b86926455bb2dc325aa262ccde8471ac8387df17'
-            'ac9205c6952a6ad3c4d08480c1859d61aa287318b4aad91e1784d528590841bf')
