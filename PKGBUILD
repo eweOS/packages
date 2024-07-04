@@ -1,14 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ostree
-pkgver=2024.5
-pkgrel=2
+pkgver=2024.6
+pkgrel=1
 pkgdesc="Operating system and container binary deployment and upgrades"
 url="https://ostreedev.github.io/ostree/"
 arch=(x86_64 aarch64 riscv64)
 license=(LGPL-2.0-or-later)
 depends=(
   bash
+  composefs
   fuse3
   gpgme
   libgpg-error
@@ -23,6 +24,7 @@ makedepends=(
   glib
   gobject-introspection
   libarchive
+  linux-headers
   openssl
   python
   xz
@@ -30,13 +32,11 @@ makedepends=(
 provides=(libostree-1.so)
 source=(
   git+https://github.com/ostreedev/ostree#tag=v$pkgver
-  git+https://github.com/containers/composefs.git
   git+https://github.com/mendsley/bsdiff
   git+https://gitlab.gnome.org/GNOME/libglnx.git
   $pkgname-2023.1-use_fuse3.patch
 )
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             '6cc1e10db1f8c744eec5d128ad7bcd5aa92a8da167784f6727d832c9a4c545bb')
@@ -51,7 +51,6 @@ prepare() {
   git apply -3 ../$pkgname-2023.1-use_fuse3.patch
 
   git submodule init
-  git submodule set-url composefs "$srcdir/composefs"
   git submodule set-url bsdiff "$srcdir/bsdiff"
   git submodule set-url libglnx "$srcdir/libglnx"
   git -c protocol.file.allow=always submodule update
