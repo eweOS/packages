@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=perl
-pkgver=5.38.2
+pkgver=5.40.0
 _baseversion="${pkgver%.*}"
 pkgrel=1
 pkgdesc="A highly capable, feature-rich programming language"
@@ -9,21 +9,9 @@ arch=(x86_64 aarch64 riscv64)
 url='https://www.perl.org'
 license=('GPL' 'PerlArtistic')
 depends=('musl' 'libxcrypt')
-source=(
-  "https://www.cpan.org/src/5.0/perl-${pkgver}.tar.xz"
-  "https://github.com/pmqs/Compress-Raw-Zlib/archive/refs/tags/v2.211.tar.gz"
-)
+source=("https://www.cpan.org/src/5.0/perl-${pkgver}.tar.xz")
 options=('makeflags' '!purge' 'emptydirs' '!lto')
-sha256sums=('d91115e90b896520e83d4de6b52f8254ef2b70a8d545ffab33200ea9f1cf29e8'
-            'ec51c96d1bc202a927aed2f17390a2fe97e991a328f5403edb1c338bb6c0e093')
-
-prepare()
-{
-  # Replace zlib module to use zlib-ng
-  cd $srcdir/$pkgname-$pkgver/cpan
-  rm -rf ./Compress-Raw-Zlib
-  cp -r "$srcdir/Compress-Raw-Zlib-2.211" ./Compress-Raw-Zlib
-}
+sha256sums=('d5325300ad267624cb0b7d512cfdfcd74fa7fe00c455c5b51a6bd53e5e199ef9')
 
 build()
 {
