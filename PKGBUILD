@@ -2,7 +2,7 @@
 
 pkgname=greetd
 pkgver=0.9.0
-pkgrel=11
+pkgrel=12
 pkgdesc="Generic greeter daemon"
 arch=(x86_64 aarch64 riscv64)
 url="https://git.sr.ht/~kennylevinsen/greetd"
@@ -21,6 +21,12 @@ depends=(pam)
 optdepends=('turnstile: user service and session manager support')
 makedepends=(rust)
 options=(emptydirs)
+
+prepare() {
+  cd greetd-$pkgver
+  # we use vt 7 for graphical session
+  sed -i 's/vt = 1/vt = 7/' config.toml
+}
 
 build() {
   cd greetd-$pkgver
