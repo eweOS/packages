@@ -2,7 +2,7 @@
 
 pkgname=warzone2100
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="3D realtime strategy game on a future Earth"
 url="https://wz2100.net/"
 arch=(x86_64 aarch64 riscv64)
