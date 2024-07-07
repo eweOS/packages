@@ -1,0 +1,57 @@
+From 7725f6ed5aca20eff825666937e76ae80ab7ea7d Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Mon, 8 Jul 2024 20:28:26 +0000
+Subject: [PATCH] Fix build with fmt11
+
+Since fmt 11.0.0, formatter:format() is required to be const.Mark
+affected functions as const to stay compatible with fmt 11.
+
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ include/util/date.hpp   | 2 +-
+ include/util/format.hpp | 2 +-
+ src/client.cpp          | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/include/util/date.hpp b/include/util/date.hpp
+index 2431b766..a467cc56 100644
+--- a/include/util/date.hpp
++++ b/include/util/date.hpp
+@@ -64,7 +64,7 @@ struct fmt::formatter<date::zoned_time<Duration, TimeZonePtr>> {
+   }
+ 
+   template <typename FormatContext>
+-  auto format(const date::zoned_time<Duration, TimeZonePtr>& ztime, FormatContext& ctx) {
++  auto format(const date::zoned_time<Duration, TimeZonePtr>& ztime, FormatContext& ctx) const {
+     if (ctx.locale()) {
+       const auto loc = ctx.locale().template get<std::locale>();
+       return fmt::format_to(ctx.out(), "{}", date::format(loc, fmt::to_string(specs), ztime));
+diff --git a/include/util/format.hpp b/include/util/format.hpp
+index 069d8897..a5630cf4 100644
+--- a/include/util/format.hpp
++++ b/include/util/format.hpp
+@@ -45,7 +45,7 @@ struct formatter<pow_format> {
+   }
+ 
+   template <class FormatContext>
+-  auto format(const pow_format& s, FormatContext& ctx) -> decltype(ctx.out()) {
++  auto format(const pow_format& s, FormatContext& ctx) const -> decltype(ctx.out()) {
+     const char* units[] = {"", "k", "M", "G", "T", "P", nullptr};
+ 
+     auto base = s.binary_ ? 1024ull : 1000ll;
+diff --git a/src/client.cpp b/src/client.cpp
+index 5768b1b0..cac1ffe8 100644
+--- a/src/client.cpp
++++ b/src/client.cpp
+@@ -123,7 +123,7 @@ void waybar::Client::handleMonitorAdded(Glib::RefPtr<Gdk::Monitor> monitor) {
+ }
+ 
+ void waybar::Client::handleMonitorRemoved(Glib::RefPtr<Gdk::Monitor> monitor) {
+-  spdlog::debug("Output removed: {} {}", monitor->get_manufacturer(), monitor->get_model());
++  spdlog::debug("Output removed: {} {}", monitor->get_manufacturer().c_str(), monitor->get_model().c_str());
+   /* This event can be triggered from wl_display_roundtrip called by GTK or our code.
+    * Defer destruction of bars for the output to the next iteration of the event loop to avoid
+    * deleting objects referenced by currently executed code.
+-- 
+2.45.2
+
