@@ -15,7 +15,7 @@ pkgname=(qemu-common
 	 qemu-tests
 	 qemu-guest-agent
 	) # TODO: split firmwares
-pkgver=9.0.0
+pkgver=9.0.1
 pkgrel=1
 pkgdesc='A generic and open source machine emulator and virtualizer.'
 url='https://www.qemu.org/'
@@ -30,8 +30,11 @@ makedepends=(alsa-lib bzip2 cairo curl dtc fuse3 gtk3 glib ncurses pipewire
 	     meson ninja)
 qemu_archs=(aarch64 alpha arm i386 loongarch64 m68k mips mips64 mips64el
 	    mipsel ppc ppc64 riscv32 riscv64 s390x sparc sparc64 x86_64)
-source=("https://download.qemu.org/qemu-$pkgver.tar.xz")
-sha256sums=('32708ac66c30d8c892633ea968c771c1c76d597d70ddead21a0d22ccf386da69')
+source=("https://download.qemu.org/qemu-$pkgver.tar.xz"
+	"0001-meson.build-fix-libgcrypt-detection-on-system-withou.patch")
+sha256sums=('d0f4db0fbd151c0cf16f84aeb2a500f6e95009732546f44dafab8d2049bbb805'
+	    'cf99d2c77df7b3bc9c972e9974c4e11b7771800a29804f8d6a46c4a9640ae3a1')
+# TODO: enable (static) user targets
 
 system_targets=""
 for t in ${qemu_archs[*]}; do
@@ -49,6 +52,10 @@ F_QEMU_TOOLS=(
 	qemu-pr-helper
 	qemu-storage-daemon
 )
+
+prepare() {
+	_patch_ qemu-$pkgver
+}
 
 build () {
 	local common_options=(
@@ -413,13 +420,15 @@ depends=(glib ncurses qemu-common=$pkgver-$pkgrel)
 }
 
 package_qemu-ui-egl-headless() {
-depends=(libepoxy pixman qemu-common=$pkgver-$pkgrel)
+depends=(libepoxy pixman qemu-common=$pkgver-$pkgrel
+	 qemu-ui-opengl=$pkgver-$pkgrel)
 
 	mv $srcdir/pkgs/$pkgname/* $pkgdir
 }
 
 package_qemu-ui-gtk() {
-depends=(cairo libepoxy gtk3 glib pixman qemu-common=$pkgver-$pkgrel)
+depends=(cairo libepoxy gtk3 glib pixman qemu-common=$pkgver-$pkgrel
+	 qemu-ui-opengl=$pkgver-$pkgrel)
 
 	mv $srcdir/pkgs/$pkgname/* $pkgdir
 }
@@ -431,7 +440,8 @@ depends=(libepoxy mesa pixman qemu-common=$pkgver-$pkgrel)
 }
 
 package_qemu-ui-sdl() {
-depends=(sdl2 glib pixman qemu-common=$pkgver-$pkgrel)
+depends=(sdl2 glib pixman qemu-common=$pkgver-$pkgrel
+	 qemu-ui-opengl=$pkgver-$pkgrel)
 
 	mv $srcdir/pkgs/$pkgname/* $pkgdir
 }
