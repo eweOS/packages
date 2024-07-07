@@ -1,0 +1,34 @@
+From cc437b316dd0f230a801d726ad85bf2fbd1ec1af Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Sat, 6 Jul 2024 19:45:07 +0000
+Subject: [PATCH] meson.build: fix libgcrypt detection on system without
+ libgcrypt-config
+
+libgcrypt starts providing correct pkg-config configuration and dropping
+libgcrypt-config since 1.11.0. So use auto method for detection of
+libgcrypt, in which meson will try both pkg-config and libgcrypt-config.
+
+This fixes build failure when libgcrypt is enabled on a system without
+ligcrypt-config. Auto method for libgcrypt is supported by meson since
+0.49.0, which is higher than the version qemu requires.
+
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ meson.build | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 6a93da48e1..1b71824548 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1695,7 +1695,6 @@ endif
+ if not gnutls_crypto.found()
+   if (not get_option('gcrypt').auto() or have_system) and not get_option('nettle').enabled()
+     gcrypt = dependency('libgcrypt', version: '>=1.8',
+-                        method: 'config-tool',
+                         required: get_option('gcrypt'))
+     # Debian has removed -lgpg-error from libgcrypt-config
+     # as it "spreads unnecessary dependencies" which in
+-- 
+2.45.2
+
