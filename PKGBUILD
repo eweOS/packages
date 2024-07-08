@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=hwdata
-pkgver=0.383
+pkgver=0.384
 pkgrel=1
 pkgdesc="hardware identification and configuration databases."
 url=https://github.com/vcrhonek/hwdata
