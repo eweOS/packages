@@ -2,7 +2,7 @@
 
 pkgname=spdlog
 pkgver=1.14.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Very fast, header-only/compiled, C++ logging library'
 arch=(x86_64 aarch64 riscv64)
 url='https://github.com/gabime/spdlog'
@@ -27,6 +27,7 @@ build() {
         -DSPDLOG_FMT_EXTERNAL=ON \
         -DSPDLOG_BUILD_SHARED=ON \
         -DSPDLOG_BUILD_TESTS=ON \
+        -DSPDLOG_BUILD_EXAMPLE=OFF \
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
