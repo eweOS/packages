@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=limine
-pkgver=7.9.1
+pkgver=7.9.2
 pkgrel=1
 pkgdesc="An advanced, portable, multiprotocol bootloader"
 arch=(x86_64 aarch64 riscv64)
@@ -15,7 +15,7 @@ source=(
   limine.defaults
   limine.conf
 )
-sha256sums=('711ea2955e608b0bdba94a0e19b9d7427a99cd4cffa0bece1993d836814abf2d'
+sha256sums=('5ab27d680bd5e3f95893567a965c5f0e0cef3acc74e1874dbf1be8bf13c9dfa0'
             '0dae8d8ee6bc3a563afc8d47939ed0e8e77916620fbfdfd2e15dd662bfd87326'
             '71cd1b3ab4e05fa9b987dd9e3fbd2d981a9247df523aa76dd0033b601ba1be79'
             'e9cee335f19ddfe723537fed9170a52b2490495fbb2c54c4469f4b7c7c5f717d'
