@@ -2,12 +2,13 @@
 
 pkgname=iftop
 pkgver=1.0pre4
-pkgrel=1
+pkgrel=2
 pkgdesc="Display bandwidth usage on an interface"
 arch=(x86_64 aarch64 riscv64)
 url="http://www.ex-parrot.com/~pdw/iftop/"
 license=('GPL')
 depends=('libpcap' 'ncurses')
+makedepends=('autoconf')
 source=("http://www.ex-parrot.com/~pdw/$pkgname/download/$pkgname-$pkgver.tar.gz"
         mac-address-fix.patch)
 sha512sums=('abd74e8025bb82fef9ebab4997b1d018201a523d47c0128128ca37797490046538d74758dc4471735c22b890e5bd238ad6b2a30776d465138ede367cdd263d22'
@@ -17,6 +18,7 @@ prepare() {
   cd $pkgname-$pkgver
   # FS#75357
   patch -p0 -i ../mac-address-fix.patch
+  autoreconf -fiv
 }
 
 build() {
