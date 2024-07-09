@@ -1,7 +1,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libassuan
-pkgver=2.5.7
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='IPC library used by some GnuPG related software'
 url="https://www.gnupg.org/related_software/libassuan/"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('musl' 'libgpg-error')
 provides=('libassuan.so')
 source=("https://gnupg.org/ftp/gcrypt/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('ca33bd0325bbebccb63b6a84cc0aa5c85b25c6275a68df83aeb3f3729b2cd38220198a941c3479bd461f16b7ddb6b558c0664697ca3153c7fb430544303d773f')
+sha512sums=('6914a02c20053bae0fc4c29c5c40655f1cec711983d57fa85e46df34e90b10e33d31256dd50ae7c7faa8d8d750a529bf9072da0cda3bdd77ebfedbc0e26e5e16')
 
 build()
 {
