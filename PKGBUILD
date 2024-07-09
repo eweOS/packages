@@ -3,7 +3,7 @@
 pkgname=gnupg
 pkgdesc='GNU Privacy Guard'
 pkgver=2.4.5
-pkgrel=1
+pkgrel=2
 url='https://gnupg.org'
 license=('GPL2')
 depends=('musl' 'libassuan' 'libgpg-error' 'npth' 'libksba' 'pinentry'
