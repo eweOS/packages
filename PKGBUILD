@@ -3,7 +3,7 @@
 pkgbase=gpgme
 pkgname=gpgme
 pkgver=1.23.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A C wrapper library for GnuPG'
 arch=(x86_64 aarch64 riscv64)
 url='https://www.gnupg.org/related_software/gpgme/'
@@ -45,7 +45,7 @@ check() {
 }
 
 package() {
-  depends=('libgpg-error' 'gnupg>=2')
+  depends=('libgpg-error' 'gnupg>=2' 'libassuan')
   options+=('!emptydirs')
   provides=('libgpgme.so'
             'libgpgmepp.so')
