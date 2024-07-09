@@ -2,7 +2,7 @@
 
 pkgname=nss
 pkgver=3.98
-pkgrel=2
+pkgrel=3
 pkgdesc="Network Security Services"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 arch=(x86_64 aarch64 riscv64)
@@ -14,6 +14,7 @@ depends=(
   sh
 )
 makedepends=(
+  linux-headers
   perl
   python
   gyp
@@ -27,12 +28,15 @@ sha256sums=('SKIP'
             'd78b83d7f80dcbcfceb91716a6cf0e3f388a984a5b295d0a9dc69417bc7f9825')
 
 prepare() {
+  _patch_ nss
   cd nss
-  patch -p1 < ../nss-3.87-use-clang-as.patch
   sed -i "s@'force_integrated_as%': 0,@'force_integrated_as%': 1,@g" coreconf/config.gypi
 }
 
 build() {
+  # remove -march, nss adds +crypto to march for aarch64
+  export CFLAGS=`echo $CFLAGS | sed 's/-march=[^ ]*//'`
+  export CXXFLAGS=`echo $CXXFLAGS | sed 's/-march=[^ ]*//'`
   local buildsh_options=(
     --disable-tests
     --clang
