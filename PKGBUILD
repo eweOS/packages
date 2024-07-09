@@ -1,15 +1,8 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
-# Contributor: Thore Bödecker <foxxx0@archlinux.org>
-# Contributor: Morten Linderud <foxboron@archlinux.org>
-# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
-# Contributor: Pierre Neidhardt <ambrevar@gmail.com>
-# Contributor: Hermann Zahnweh (eigengrau)
-# Contributor: Andy Weidenbaum <archbaum@gmail.com>
-# Contributor: foalsrock <foalsrock at gmail dot-com>
-# Contributor: jebaum <jebaum at ucla dot edu>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=fzf
-pkgver=0.53.0
+pkgver=0.54.0
 pkgrel=1
 pkgdesc='Command-line fuzzy finder'
 arch=(x86_64 aarch64 riscv64)
@@ -21,7 +14,7 @@ optdepends=('fish: fish keybindings'
   'tmux: fzf-tmux script for launching fzf in a tmux pane'
   'vim: plugin'
   'zsh: zsh keybindings')
-source=("git+https://github.com/junegunn/fzf.git#tag=${pkgver}")
+source=("git+https://github.com/junegunn/fzf.git#tag=v${pkgver}")
 sha512sums=('SKIP')
 
 prepare()
