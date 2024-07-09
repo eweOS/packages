@@ -2,17 +2,20 @@
 
 pkgname=libseccomp
 pkgver=2.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Enhanced seccomp library'
 arch=(x86_64 aarch64 riscv64)
 license=('LGPL2.1')
 url="https://github.com/seccomp/libseccomp"
-makedepends=('gperf')
+makedepends=('gperf' 'linux-headers')
 source=(https://github.com/seccomp/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
 sha256sums=('248a2c8a4d9b9858aa6baf52712c34afefcf9c9e94b76dce02c1c9aa25fb3375')
 
 prepare() {
   cd ${pkgbase}-${pkgver}
+  # disable test 52 since unsupported riscv64 worker kernel and qemu-user
+  sed -i '/52-/d' tests/Makefile.am
+  rm tests/52-*
   autoreconf -fiv
 }
 
