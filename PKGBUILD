@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=hyprpicker
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A wlroots-compatible Wayland color picker that does not suck."
 arch=(x86_64 aarch64 riscv64)
@@ -17,11 +17,14 @@ makedepends=('cmake'
              'wayland-protocols'
              'wlroots')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('fa1b0c29682f5ede5a03d754770d152f38d869bc1faa300564680cef2de0758a')
+sha256sums=('a443188ef7619be48c9992ea208121772b7e1da6662d672c650e30e159eeb891')
 
 build() {
-	cd "$pkgname-$pkgver"
-	make all
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DCMAKE_BUILD_TYPE='None' \
+		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-Wno-dev
+	cmake --build build
 }
 
 package() {
