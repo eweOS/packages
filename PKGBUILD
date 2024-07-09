@@ -3,7 +3,7 @@
 pkgname=pinentry
 pkgdesc='The standard pinentry collection.'
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 url='https://gnupg.org/ftp/gcrypt/pinentry/'
 license=('GPL2')
 depends=('musl' 'libassuan' 'libgpg-error' 'ncurses')
