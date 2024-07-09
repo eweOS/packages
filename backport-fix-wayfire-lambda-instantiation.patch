@@ -1,0 +1,61 @@
+From b286dcfb2ae59d650e6b49fee97f159e2e958dcc Mon Sep 17 00:00:00 2001
+From: huqizhi <huqizhi@feysh.com>
+Date: Sun, 17 Mar 2024 17:48:05 +0800
+Subject: [PATCH] [Clang][Sema] Fix a crash in lambda instantiation
+
+---
+ clang/docs/ReleaseNotes.rst    |  1 +
+ clang/lib/Sema/TreeTransform.h | 10 ++++++++++
+ clang/test/Sema/PR85343.cpp    | 22 ++++++++++++++++++++++
+ 3 files changed, 33 insertions(+)
+ create mode 100644 clang/test/Sema/PR85343.cpp
+
+diff --git a/clang/lib/Sema/TreeTransform.h b/clang/lib/Sema/TreeTransform.h
+index 2d22692f3ab75..f2f7d7ab9c7c3 100644
+--- a/clang/lib/Sema/TreeTransform.h
++++ b/clang/lib/Sema/TreeTransform.h
+@@ -13714,6 +13714,16 @@ TreeTransform<Derived>::TransformLambdaExpr(LambdaExpr *E) {
+ 
+     // Capturing 'this' is trivial.
+     if (C->capturesThis()) {
++      // If this is a lambda that is part of a default member initialiser
++      // and which we're instantiating outside the class that 'this' is
++      // supposed to refer to, adjust the type of 'this' accordingly.
++      //
++      // Otherwise, leave the type of 'this' as-is.
++      Sema::CXXThisScopeRAII ThisScope(
++          getSema(),
++          dyn_cast_if_present<CXXRecordDecl>(
++              getSema().getFunctionLevelDeclContext()),
++          Qualifiers());
+       getSema().CheckCXXThisCapture(C->getLocation(), C->isExplicit(),
+                                     /*BuildAndDiagnose*/ true, nullptr,
+                                     C->getCaptureKind() == LCK_StarThis);
+diff --git a/clang/test/Sema/PR85343.cpp b/clang/test/Sema/PR85343.cpp
+new file mode 100644
+index 0000000000000..d90ef19d42345
+--- /dev/null
++++ b/clang/test/Sema/PR85343.cpp
+@@ -0,0 +1,22 @@
++// RUN: %clang_cc1 -std=c++14 -verify %s
++// expected-no-diagnostics
++
++template <typename c> auto ab() -> c ;
++
++template <typename> struct e {};
++
++template <typename f> struct ac {
++  template <typename h> static e<decltype(ab<h>()(ab<int>))> i;
++  decltype(i<f>) j;
++};
++
++struct d {
++  template <typename f>
++  d(f) { 
++    ac<f> a;
++  }
++};
++struct a {
++  d b = [=](auto) { (void)[this] {}; };
++};
++void b() { new a; }
