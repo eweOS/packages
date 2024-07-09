@@ -5,8 +5,6 @@ exec >/dev/stderr
 source /etc/os-release
 source /etc/limine.conf
 
-BUILD_ID=${1:-$BUILD_ID}
-
 OPTSTRING=":o:b:"
 CFGOUT=/dev/stdout
 

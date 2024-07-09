@@ -2,7 +2,7 @@
 
 pkgname=limine
 pkgver=7.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, portable, multiprotocol bootloader"
 arch=(x86_64 aarch64 riscv64)
 url="https://limine-bootloader.org/"
@@ -17,7 +17,7 @@ source=(
 )
 sha256sums=('5ab27d680bd5e3f95893567a965c5f0e0cef3acc74e1874dbf1be8bf13c9dfa0'
             '0dae8d8ee6bc3a563afc8d47939ed0e8e77916620fbfdfd2e15dd662bfd87326'
-            '71cd1b3ab4e05fa9b987dd9e3fbd2d981a9247df523aa76dd0033b601ba1be79'
+            'a5e1cd8bcd925c60428adb757dc371a317a97ad0f51506ec73404d0d7f1e8d99'
             'e9cee335f19ddfe723537fed9170a52b2490495fbb2c54c4469f4b7c7c5f717d'
             'f722aacb1e5865489483c14b950900998241fe6558e58875b1119579ef91a5e0')
 
