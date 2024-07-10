@@ -2,7 +2,7 @@
 
 pkgname=perl-test-most
 pkgver=0.38
-pkgrel=1
+pkgrel=2
 pkgdesc='Most commonly needed test functions and features.'
 url='https://metacpan.org/dist/Test-Most'
 arch=(any)
