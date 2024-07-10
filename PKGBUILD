@@ -2,7 +2,7 @@
 
 pkgname=lua54
 pkgver=5.4.7
-pkgrel=1
+pkgrel=2
 _V=5.4
 _R=5.4.7
 pkgdesc='Powerful lightweight programming language designed for extending applications'
@@ -26,9 +26,10 @@ prepare()
   patch -p1 src/Makefile < ../src-Makefile.patch
 
   pc=../lua$_V.pc
-  grep '^V=' Makefile > $pc
-  grep '^R=' Makefile >> $pc
-  grep '^INSTALL_.*=' Makefile | sed 's/INSTALL_TOP/prefix/' >> $pc
+  echo "V=$_V" > $pc
+  echo "R=$_R" >> $pc
+  grep '^INSTALL_.*=' Makefile |
+    sed 's/INSTALL_TOP/prefix/;s/$(/${/;s/)/}/;s/$V/${V}/' >> $pc
 
   cat - >> $pc << "EOF"
 exec_prefix=${prefix}
@@ -37,7 +38,7 @@ includedir=${prefix}/include/lua5.4
 Name: Lua
 Description: An Extensible Extension Language
 Version: ${R}
-Requires: 
+Requires:
 Libs: -L${libdir} -llua -lm
 Cflags: -I${includedir}
 EOF
