@@ -2,7 +2,7 @@
 
 pkgname=perl-test-simple
 pkgver=1.302199
-pkgrel=1
+pkgrel=2
 pkgdesc="Framework for writing test tools that all work together."
 arch=('any')
 url='https://metacpan.org/dist/Test-Simple'
