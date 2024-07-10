@@ -4,7 +4,7 @@ pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang wasi-libc++ wasi-libc++ab
 _realpkgname=llvm-project
 pkgver=18.1.7
 _binutilsver=2.42
-pkgrel=4
+pkgrel=5
 arch=('x86_64' 'aarch64' 'riscv64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -40,7 +40,7 @@ sha256sums=('74446ab6943f686391954cbda0d77ae92e8a60c432eff437b8666e121d748ec4'
             '19ad5d5208e7271e0517de15b8ec652a0445298aa34cb7057d5da254966aa781'
             'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94'
             '57808d224fd9218a936e6669bf4129eaf4aa04fbd45ab9f7fd5a20efc304e307'
-            'd05c5a2e035e4a50020de305ad3277ad149b4281b99f734a0c9d0de5fc45574b')
+            'a25dacfebddbbc0e07c4b479d7e1e9c4cc2cc12f4689a95721dc773003101460')
 
 _basedir=$_realpkgname-$pkgver.src
 
