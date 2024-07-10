@@ -2,7 +2,7 @@
 
 pkgname=perl-xml-sax-expat
 pkgver=0.51
-pkgrel=2
+pkgrel=3
 pkgdesc="SAX2 Driver for Expat (XML::Parser) "
 arch=('any')
 url="https://search.cpan.org/dist/XML-SAX-Expat"
