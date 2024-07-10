@@ -2,7 +2,7 @@
 
 pkgname=perl-devel-stacktrace
 pkgver=2.05
-pkgrel=1
+pkgrel=2
 pkgdesc='An object representing a stack trace'
 url='https://metacpan.org/dist/Devel-StackTrace'
 arch=(any)
