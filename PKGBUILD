@@ -2,7 +2,7 @@
 
 pkgname=perl-text-diff
 pkgver=1.45
-pkgrel=1
+pkgrel=2
 pkgdesc='Perform diffs on files and record sets'
 url='https://metacpan.org/dist/Text-Diff'
 arch=(any)
