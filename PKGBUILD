@@ -2,7 +2,7 @@
 
 pkgname=perl-xml-sax-base
 pkgver=1.09
-pkgrel=1
+pkgrel=2
 pkgdesc="Base class SAX Drivers and Filters"
 arch=('any')
 url="https://search.cpan.org/dist/XML-SAX-Base"
