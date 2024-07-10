@@ -2,7 +2,7 @@
 
 pkgname=lua51
 pkgver=5.1.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Powerful lightweight programming language designed for extending applications'
 url='https://www.lua.org'
 arch=(x86_64 aarch64 riscv64)
@@ -25,7 +25,8 @@ cd lua-$pkgver
 	pc=../lua$_V.pc
 	grep '^V=' Makefile > $pc
 	grep '^R=' Makefile >> $pc
-	grep '^INSTALL_.*=' Makefile | sed 's/INSTALL_TOP/prefix/' >> $pc
+	grep '^INSTALL_.*=' Makefile |
+	  sed 's/INSTALL_TOP/prefix/;s/$(/${/;s/)/}/;s/$V/${V}/' >> $pc
 
 	cat - >> $pc <<"EOF"
 exec_prefix=${prefix}
