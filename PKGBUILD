@@ -3,15 +3,14 @@
 pkgbase=linux-lts
 _pkgbase=linux
 pkgname=(linux-lts linux-lts-headers)
-_pkgver=6.6.36
 pkgver=6.6.36
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64)
 url='http://www.kernel.org'
 license=(GPL2)
 makedepends=(bison flex perl python libelf linux-headers rsync lld git)
 source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
   "kernel-config::git+https://github.com/eweOS/kernel-config.git"
   busybox-find-compat.patch
 )
@@ -21,7 +20,7 @@ sha256sums=('b9676828b737e8fb8eaa5198303d35d35e8df019550be153c8a42c99afe0cdd5'
 
 prepare()
 {
-  cd ${_pkgbase}-${_pkgver}
+  cd ${_pkgbase}-${pkgver}
   sed -i \
     -e '/^CC/s@gcc@cc@g' \
     -e '/^HOSTCC/s@gcc@cc@g' Makefile
@@ -36,7 +35,7 @@ build()
 	 cat $conf >> $srcdir/kernelconfig
   done
 
-  cd $srcdir/${_pkgbase}-${_pkgver}
+  cd $srcdir/${_pkgbase}-${pkgver}
   case $CARCH in
     x86_64)
       export build_arch=x86_64
@@ -57,9 +56,9 @@ build()
 package_linux-lts()
 {
   pkgdesc="The $pkgdesc kernel and modules"
-  cd ${_pkgbase}-${_pkgver}
+  cd ${_pkgbase}-${pkgver}
 
-  local modulesdir="$pkgdir/usr/lib/modules/$pkgver"
+  local modulesdir="`find $pkgdir/usr/lib/modules/ -maxdepth 1 -mindepth 1 | head -n 1`"
   install -Dm644 "$(make -s image_name ARCH=${build_arch})" "$modulesdir/vmlinuz"
 
   make LLVM=1 LLVM_IAS=1 ARCH=${build_arch} \
@@ -77,6 +76,6 @@ package_linux-lts()
 package_linux-lts-headers()
 {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-  cd ${_pkgbase}-${_pkgver}
+  cd ${_pkgbase}-${pkgver}
   make LLVM=1 LLVM_IAS=1 ARCH=${build_arch} INSTALL_HDR_PATH=$pkgdir/usr headers_install
 }
