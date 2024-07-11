@@ -2,7 +2,7 @@
 
 pkgname=busybox
 pkgver=1.36.1
-pkgrel=22
+pkgrel=23
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64)
 url="https://www.busybox.net"
@@ -114,8 +114,9 @@ package() {
   for TTYNUM in 1 2 3 4 5 6; do
     cat ${srcdir}/getty.service | sed "s/@TTYNUM@/$TTYNUM/g" > $srcdir/getty-tty$TTYNUM
     _dinit_install_services_ $srcdir/getty-tty$TTYNUM
+    _dinit_enable_services_ getty-tty$TTYNUM
   done
 
-  # Enable tty2, ntpd, acpid
-  _dinit_enable_services_ getty-tty2 ntpd acpid
+  # Enable ntpd, acpid
+  _dinit_enable_services_ ntpd acpid
 }
