@@ -4,7 +4,7 @@ pkgbase=linux-lts
 _pkgbase=linux
 pkgname=(linux-lts linux-lts-headers)
 pkgver=6.6.36
-pkgrel=2
+pkgrel=3
 arch=(x86_64 aarch64 riscv64)
 url='http://www.kernel.org'
 license=(GPL2)
@@ -58,13 +58,13 @@ package_linux-lts()
   pkgdesc="The $pkgdesc kernel and modules"
   cd ${_pkgbase}-${pkgver}
 
-  local modulesdir="`find $pkgdir/usr/lib/modules/ -maxdepth 1 -mindepth 1 | head -n 1`"
-  install -Dm644 "$(make -s image_name ARCH=${build_arch})" "$modulesdir/vmlinuz"
-
   make LLVM=1 LLVM_IAS=1 ARCH=${build_arch} \
     INSTALL_MOD_PATH="$pkgdir/usr" \
     INSTALL_MOD_STRIP=1 \
     modules_install
+
+  local modulesdir="`find $pkgdir/usr/lib/modules/ -maxdepth 1 -mindepth 1 | head -n 1`"
+  install -Dm644 "$(make -s image_name ARCH=${build_arch})" "$modulesdir/vmlinuz"
 
   rm -f "$modulesdir/build"
   rm -f "$modulesdir/source"
