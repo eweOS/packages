@@ -3,7 +3,7 @@
 pkgbase=greetd
 pkgname=(greetd greetd-agreety)
 pkgver=0.9.0
-pkgrel=13
+pkgrel=14
 pkgdesc="Generic greeter daemon"
 arch=(x86_64 aarch64 riscv64)
 url="https://git.sr.ht/~kennylevinsen/greetd"
@@ -26,6 +26,7 @@ prepare() {
   cd greetd-$pkgver
   # we use vt 7 for graphical session
   sed -i 's/vt = 1/vt = 7/' config.toml
+  sed -i 's@/bin/sh@/bin/bash@' config.toml
 }
 
 build() {
