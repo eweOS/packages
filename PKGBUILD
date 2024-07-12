@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libbpf
-pkgver=1.4.3
+pkgver=1.4.5
 pkgrel=1
 pkgdesc='Library for loading eBPF programs and reading and manipulating eBPF objects from user-space'
 url='https://github.com/libbpf/libbpf'
@@ -11,7 +11,7 @@ depends=('libelf' 'linux-headers')
 makedepends=('rsync')
 provides=('libbpf.so')
 source=(https://github.com/libbpf/libbpf/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('d03965f8abeaac840cda28fdacf9df378869fa6e5ef45d992fc5398bed5970ebedb24f20676b1779f8941b4b912bb691948e198eff87ea1d5d8e5cd95d6e06d1')
+sha512sums=('c5ed459e89a8897ef7c892723c61efb2f2fdb0e7bea63eaff1c9936d368d2cc9e63b8c093207eef0df3109c021156c52ddb570757f69c54e713909e866dbb2f5')
 
 build() {
   cd ${pkgname}-${pkgver}
