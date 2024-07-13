@@ -5,7 +5,7 @@
 
 pkgname=(mandoc mandoc-apropos mandoc-soelim)
 pkgver=1.14.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A suite of tools compiling mdoc from the OpenBSD project'
 arch=(x86_64 aarch64 riscv64)
 url='https://mdocml.bsd.lv/'
@@ -47,7 +47,12 @@ package_mandoc()
   DESTDIR="${pkgdir}" make install
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
   install -d $srcdir/others
+
   mv $pkgdir/usr/bin/{apropos,whatis,makewhatis,soelim} $srcdir/others
+  mv $pkgdir/usr/share/man/man1/soelim.1 $srcdir/others
+
+  # conflicts with groff
+  rm $pkgdir/usr/share/man/man7/roff.7
 }
 
 package_mandoc-apropos()
@@ -63,6 +68,8 @@ package_mandoc-soelim()
 {
   pkgdesc="mandoc so elimination tool"
   provides=('soelim')
+  conflicts=('groff')
   cd $srcdir/others
   install -Dm755 soelim $pkgdir/usr/bin/soelim
+  install -Dm644 soelim.1 $pkgdir/usr/share/man/man1/soelim.1
 }
