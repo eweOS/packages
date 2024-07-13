@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pipewire
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -15,7 +15,7 @@ source=(
   pipewire-pulse.user.service
   pipewire.conf.in
 )
-sha256sums=('477eb1245a66a982345404b57fab1b9f402c12292047c4d9bea90d6445374653'
+sha256sums=('ee26d1e906a930b283d759628de978dc2514522d68f9566f89b1497b2b534f76'
             '4d808f22ea2adc5137d98702b21aeecbe00e15fed4ab9768da7d68a0acbe8560'
             'bca9d53e4c5cf0eb1ecb7124365abf5ea740889887690423fef1d7b377b3660b'
             'a1d7812aabba038ff1d90a0af2139f0c420419c5f66ee401b9bc45d0445edfdd')
