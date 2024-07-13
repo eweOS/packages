@@ -1,0 +1,11 @@
+#!/bin/sh
+
+arg=()
+
+for x in $@; do
+	if [ x$x != "x-T" ]; then
+		arg+=($x)
+	fi
+done
+
+/usr/bin/install ${arg[*]}
