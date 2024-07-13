@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=telegram-desktop
-pkgver=5.1.8
-pkgrel=2
+pkgver=5.2.3
+pkgrel=1
 pkgdesc='Official Telegram Desktop client.'
 url='https://desktop.telegram.org/'
 arch=(x86_64 aarch64)
@@ -16,8 +16,8 @@ _apiid=611335
 _apihash=d524b414d21f4d37f08684c1df41ac9c
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v$pkgver/tdesktop-$pkgver-full.tar.gz"
 	"use-lld.patch")
-sha256sums=('a12ea1894b661c683e9073b401f28b1ad041129a36adc3a262644aad8d1131eb'
-	    '19cdd86b87ea3e756ea0f5872f2bad15efb3e458f335bd47a1c33b99017d8426')
+sha256sums=('d36a08859b4fb4dfdac0febbfcec9bd825ebcb4e8a0e937061870c03d51f320f'
+            '19cdd86b87ea3e756ea0f5872f2bad15efb3e458f335bd47a1c33b99017d8426')
 
 prepare() {
 	_patch_ tdesktop-$pkgver-full
