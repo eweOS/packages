@@ -3,7 +3,7 @@
 pkgname=(linux linux-headers)
 _basename=linux
 pkgver=6.9.8
-pkgrel=3
+pkgrel=4
 arch=(x86_64 aarch64 riscv64)
 url='http://www.kernel.org'
 license=(GPL-2.0-only)
