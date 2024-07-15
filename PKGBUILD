@@ -2,7 +2,7 @@
 
 pkgname=telegram-desktop
 pkgver=5.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Telegram Desktop client.'
 url='https://desktop.telegram.org/'
 arch=(x86_64 aarch64)
@@ -24,6 +24,7 @@ prepare() {
 }
 
 build () {
+	export LDFLAGS="$LDFLAGS -Wl,-z,stack-size=$((1024 * 1024))"
 	cmake -B build tdesktop-$pkgver-full -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr			\
 		-DCMAKE_BUILD_TYPE=Release			\
