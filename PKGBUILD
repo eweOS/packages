@@ -4,15 +4,15 @@
 
 pkgbase=pacman
 pkgname=(libalpm pacman repo-tools)
-pkgver=6.0.2
-pkgrel=26
+pkgver=6.1.0
+pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
 makedepends=(meson libarchive openssl ninja acl curl xz gpgme)  # TODO: asciidoc doxygen
 checkdepends=(python)
 source=(
-  https://sources.archlinux.org/other/$pkgbase/$pkgbase-$pkgver.tar.xz
+  https://gitlab.archlinux.org/pacman/pacman/-/archive/v$pkgver/pacman-v$pkgver.tar.gz
   pacman.conf
   makepkg.conf
   function_patch.sh
@@ -23,7 +23,7 @@ source=(
   script_warndirs.sh
   script_noglibc.sh
 )
-sha256sums=('7d8e3e8c5121aec0965df71f59bedf46052c6cf14f96365c4411ec3de0a4c1a5'
+sha256sums=('cb98c8574e4f2b0d488418e11d20ab7b4a3f20e3110d83381cc94a4c55d277cf'
             '0865036ef04a06b00926640ac7db2275988b834f435101e8110eedf8a2e58b88'
             '8a97e77fa817d490f0ccec2cc3f0721746b966dbdf26234eaddfc943736d2e14'
             '6338de233368bfa76ee17353785709e282ace072eae6996c1289f0fb5b84ffc4'
@@ -97,7 +97,7 @@ build()
     sed -i 's/lto/!lto/' ./makepkg.conf
   fi
 
-  cd "$pkgbase-$pkgver"
+  cd "$pkgbase-v$pkgver"
   sed -i -e 's/EUID == 0/EUID == -1/' scripts/makepkg.sh.in
   sed -i '/bsdtar -xf .*dbfile/s|-C|--no-fflags -C|' scripts/repo-add.sh.in
 
