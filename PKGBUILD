@@ -2,13 +2,13 @@
 
 pkgname=pacman-contrib
 pkgver=1.10.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Contributed scripts and tools for pacman systems'
 arch=(x86_64 aarch64 riscv64)
 url=https://gitlab.archlinux.org/pacman/pacman-contrib
 license=('GPL-2.0-or-later')
 depends=('pacman')
-makedepends=('git')
+makedepends=('git' 'asciidoc')
 optdepends=(
   'diffutils: for pacdiff'
   'fakeroot: for checkupdates'
@@ -31,8 +31,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
-    --localstatedir=/var \
-    --disable-doc
+    --localstatedir=/var
   make
 }
 
