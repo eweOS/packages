@@ -5,7 +5,7 @@ pkgname=(
   libxslt
   libxslt-docs
 )
-pkgver=1.1.39
+pkgver=1.1.40
 pkgrel=1
 pkgdesc="XML stylesheet transformation library"
 url="https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home"
