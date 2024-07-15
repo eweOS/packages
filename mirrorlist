@@ -2,18 +2,26 @@
 ## eweOS repository mirrorlist
 ## 
 
+### Redirector
+
 ## Worldwide (Auto Redirect)
 Server = https://os-repo-auto.ewe.moe/eweos/$repo/os/$arch
 
-## Europe
-Server = https://os-repo-bak.ewe.moe/eweos/$repo/os/$arch
+### Community Mirrors
 
 ## Asia
 Server = https://mirrors.nju.edu.cn/eweos/$repo/os/$arch
 Server = https://mirrors.wsyu.edu.cn/eweos/$repo/os/$arch
 
+### Official Mirrors
+
+## Europe
+Server = https://os-repo-nl.ewe.moe/eweos/$repo/os/$arch
+
 ## Asia (proxied)
-Server = https://os-repo.ewe.moe/eweos/$repo/os/$arch
+Server = https://os-repo-cn.ewe.moe/eweos/$repo/os/$arch
+
+### Special Mirrors
 
 ## DN42 (Uncomment if you have DN42 access)
 #Server = http://repo.nia.dn42/eweos/$repo/os/$arch
