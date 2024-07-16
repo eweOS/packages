@@ -15,8 +15,6 @@ ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
 export MOZ_APP_REMOTINGNAME=
-ac_add_options --target=x86_64-unknown-linux-musl
-ac_add_options --host=x86_64-unknown-linux-musl
 ac_add_options --without-wasm-sandboxed-libraries
 export CARGO_PROFILE_RELEASE_BUILD_OVERRIDE_DEBUG=true
 
