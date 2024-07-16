@@ -2,7 +2,7 @@
 
 pkgname=firefox
 pkgver=128.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64 aarch64 riscv64)
@@ -17,6 +17,7 @@ depends=(
 makedepends=(
   cbindgen
   clang
+  linux-headers
   llvm
   mesa
   nasm
@@ -38,7 +39,7 @@ source=(
   visibility.patch
 )
 sha256sums=('65271ffefb235ea1e162a081f2074a0f06fce27b2f613f573c126ba8eef95172'
-            '3fa5049fe26dba8f18e1d21be70b238f24bca79462ecfa5be348639f8dc9a620'
+            '7307e32b1b553d43a3f739d5e684d9a32c45f5d7db017860c568984a420f5bb1'
             '84c490d8314fcc2b37ade636d6ae8467980c07caa351c65d06bf71a65ba01d9d'
             '18a0f1df76834ac3d4ddb150aa857785df641b54f9fbf0cfb6ffcec64dad72d4'
             'a22ceb0bbf5830d3afbacd656e6893ff0ce455fae5f48c7daa5f836112291ba7'
@@ -58,6 +59,9 @@ prepare() {
 
 build() {
   cd firefox-$pkgver
+
+  echo "ac_add_options --target=$CARCH-unknown-linux-musl" >> .mozconfig
+  echo "ac_add_options --host=$CARCH-unknown-linux-musl" >> .mozconfig
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
