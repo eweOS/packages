@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=warzone2100
-pkgver=4.5.0
-pkgrel=2
+pkgver=4.5.1
+pkgrel=1
 pkgdesc="3D realtime strategy game on a future Earth"
 url="https://wz2100.net/"
 arch=(x86_64 aarch64 riscv64)
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('sdl2' 'openal' 'libvorbis' 'libtheora' 'libsodium' 'physfs' 'sqlite' 'freetype2' 'libopus' 'fmt' 'zip' 'harfbuzz' 'fribidi')
 makedepends=('libzip' 'mesa' 'vulkan-headers' 'shaderc' 'cmake' 'ninja' 'linux-headers')
 source=(${pkgname}-${pkgver}_src.tar.xz::https://github.com/Warzone2100/warzone2100/releases/download/${pkgver}/${pkgname}_src.tar.xz)
-sha256sums=('b6477532214699e9a83ba38e4f96360f7f13764efe5b8caafd851a25eecc0b7f')
+sha256sums=('f9b392d302734d93746d7a7428a2fb38ee10598e93621662d51e6f2689417434')
 
 prepare() {
   # to drop const qualifier
