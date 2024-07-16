@@ -2,14 +2,14 @@
 
 pkgname=git
 pkgver=2.45.2
-pkgrel=2
+pkgrel=3
 pkgdesc='the fast distributed version control system'
 arch=(x86_64 aarch64 riscv64)
 url='http://git-scm.com/'
 license=('GPL2')
 depends=('curl' 'expat' 'perl' 'perl-error'
   'openssl' 'pcre2' 'zlib')
-makedepends=('python')
+makedepends=('python' 'asciidoc' 'xmlto')
 source=("https://www.kernel.org/pub/software/scm/git/git-${pkgver}.tar.xz")
 sha256sums=('51bfe87eb1c02fed1484051875365eeab229831d30d0cec5d89a14f9e40e9adb')
 
@@ -41,6 +41,8 @@ build()
 
   make -C contrib/subtree "${_make_paths[@]}" "${_make_options[@]}" all
   make -C contrib/diff-highlight "${_make_paths[@]}" "${_make_options[@]}"
+
+  make -C Documentation "${_make_paths[@]}" "${_make_options[@]}" man
 }
 
 package()
@@ -67,4 +69,8 @@ package()
   # the rest of the contrib stuff
   find contrib/ -name '.gitignore' -delete
   cp -a ./contrib/* "$pkgdir"/usr/share/git/
+
+  # mandoc
+  make -C Documentation "${_make_paths[@]}" "${_make_options[@]}" \
+  	DESTDIR="$pkgdir" install-man
 }
