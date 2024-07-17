@@ -2,7 +2,7 @@
 
 pkgname=man-pages
 pkgver=6.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux kernel and C library user-space interface documentation.'
 url='https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git/'
 arch=(any)
@@ -18,6 +18,7 @@ sha256sums=('747a4aefde570c60bdce0b4a00615a16657dff099f9db745b24e4a2f7436ba69'
             'd4e0bf360243e64398fc512cdb62ac41f5df7b07ddb50893aff3d1570b08b628')
 
 package() {
+	chmod +x $srcdir/install
 	export PATH="$srcdir:$PATH"
 
 	cd man-pages-$pkgver
