@@ -2,9 +2,9 @@
 
 pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang wasi-libc++ wasi-libc++abi wasi-compiler-rt)
 _realpkgname=llvm-project
-pkgver=18.1.7
+pkgver=18.1.8
 _binutilsver=2.42
-pkgrel=5
+pkgrel=1
 arch=('x86_64' 'aarch64' 'riscv64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -29,18 +29,18 @@ source=(
   "https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz"
   "https://mirrors.tuna.tsinghua.edu.cn/gnu/binutils/binutils-${_binutilsver}.tar.xz"
   wasi-toolchain.cmake::https://raw.githubusercontent.com/WebAssembly/wasi-sdk/main/wasi-sdk.cmake
-  rv64-disable-lldb-server.patch
   llvm-install-prefix.patch
   0001-clang-force-libc-linked-with-no-as-needed-when-using.patch
   backport-fix-wayfire-lambda-instantiation.patch
+  fix-HandleSDNode.patch
 )
-sha256sums=('74446ab6943f686391954cbda0d77ae92e8a60c432eff437b8666e121d748ec4'
+sha256sums=('0b58557a6d32ceee97c8d533a59b9212d87e0fc4d2833924eb6c611247db2f2a'
             'f6e4d41fd5fc778b06b7891457b3620da5ecea1006c6a4a41ae998109f85a800'
-            '7ded3468de11201bc58c761ca065bc6f42ed9381a7b13721364befff9876b30a'
-            '19ad5d5208e7271e0517de15b8ec652a0445298aa34cb7057d5da254966aa781'
+            '22a5ee26eb8367ac9d35a9431f4ac0a8e64dcb372bfd55be8665d35200d70917'
             'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94'
             '57808d224fd9218a936e6669bf4129eaf4aa04fbd45ab9f7fd5a20efc304e307'
-            'a25dacfebddbbc0e07c4b479d7e1e9c4cc2cc12f4689a95721dc773003101460')
+            'a25dacfebddbbc0e07c4b479d7e1e9c4cc2cc12f4689a95721dc773003101460'
+            'adf4e3795ccaa74b04e90844e51868f9e526e0ec38972f378d8ab7fa777a82d3')
 
 _basedir=$_realpkgname-$pkgver.src
 
@@ -130,10 +130,10 @@ prepare()
     libcxx/include/locale
   sed -i "/dlfcn.h/s@\$@\n#include <sys/types.h>@" \
     compiler-rt/lib/fuzzer/FuzzerInterceptors.cpp
-  patch -p1 < $srcdir/rv64-disable-lldb-server.patch
   patch -p1 < $srcdir/llvm-install-prefix.patch
   patch -p1 < $srcdir/0001-clang-force-libc-linked-with-no-as-needed-when-using.patch
   patch -p1 < $srcdir/backport-fix-wayfire-lambda-instantiation.patch
+  patch -p1 < $srcdir/fix-HandleSDNode.patch
   mkdir -p cmake/Platform && echo "set(WASI 1)" > cmake/Platform/WASI.cmake
 }
 
