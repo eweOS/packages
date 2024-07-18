@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xkeyboard-config
-pkgver=2.41
+pkgver=2.42
 pkgrel=1
 pkgdesc="X keyboard configuration files"
 arch=(any)
@@ -10,7 +10,7 @@ url="https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config"
 makedepends=('python' 'meson')
 _dirname=xkeyboard-config-$pkgname-$pkgver
 source=("$url/-/archive/$pkgname-$pkgver/xkeyboard-config-$pkgname-$pkgver.tar.gz")
-sha256sums=('6ecaf8da66703bb45b8d6938b32ecbd756f86705ae8c5a46755a094585405732')
+sha256sums=('932ff62af3245ad248a3b659a4b1435354acdae7273bbbc61fd183fddb2e4748')
 
 build() {
   ewe-meson $_dirname build \
