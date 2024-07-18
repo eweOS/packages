@@ -5,7 +5,7 @@
 pkgbase=pacman
 pkgname=(libalpm pacman repo-tools)
 pkgver=6.1.0
-pkgrel=2
+pkgrel=3
 arch=(x86_64 aarch64 riscv64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
@@ -143,6 +143,9 @@ package_pacman()
   install -Dm644 "$srcdir/function_license.sh" "$pkgdir/usr/share/makepkg/function_license.sh"
   install -Dm644 "$srcdir/script_warndirs.sh" "$pkgdir/usr/share/makepkg/lint_package/warndirs.sh"
   install -Dm644 "$srcdir/script_noglibc.sh" "$pkgdir/usr/share/makepkg/lint_package/noglibc.sh"
+
+  # TODO: poor performance
+  sed -i 's/lint_package_functions/#lint_package_functions/' $pkgdir/usr/share/makepkg/lint_package/build_references.sh
 }
 
 package_repo-tools()
