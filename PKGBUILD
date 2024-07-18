@@ -2,7 +2,7 @@
 
 pkgbase=python
 pkgname=(python python-tests)
-pkgver=3.12.3
+pkgver=3.12.4
 pkgrel=1
 _pybasever=${pkgver%.*}
 pkgdesc='The Python programming language'
@@ -21,7 +21,7 @@ makedepends=(
 source=(
   "https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
   EXTERNALLY-MANAGED)
-sha256sums=('56bfef1fdfc1221ce6720e43a661e3eb41785dd914ce99698d8c7896af4bdaa1'
+sha256sums=('f6d419a6d8743ab26700801b4908d26d97e8b986e14f95de31b32de2b0e79554'
             'fbe6c6ac37ccc7ad8b60f6508e58f542a6745d45602f27b68bbcc80b502168a4')
 
 prepare()
