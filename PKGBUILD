@@ -4,8 +4,8 @@
 pkgbase=dinit
 pkgname=(dinit dinit-services)
 pkgver=0.17.1
-pkgrel=4
-_service_ver=0.1.3
+pkgrel=5
+_service_ver=0.1.4
 pkgdesc='Service monitoring / "init" system'
 url='https://github.com/davmac314/dinit'
 source=(
