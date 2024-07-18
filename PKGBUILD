@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=waybar
-pkgver=0.10.3
-pkgrel=3
+pkgver=0.10.4
+pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors'
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/Alexays/Waybar/"
@@ -31,14 +31,8 @@ makedepends=(
   'wayland-protocols'
   'python-packaging'
 )
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz"
-	"0001-Fix-build-with-fmt11.patch")
-sha256sums=('50a9ae85d3dcfef04e4bc4e0f3470f187964e4466c156e5558850cea84a3df5c'
-	    'SKIP')
-
-prepare() {
-	_patch_ "Waybar-$pkgver"
-}
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
+sha256sums=('ad1ead64aec35bc589207ea1edce90e848620d578985967d44a850a66b5ef829')
 
 build() {
   local features=(
