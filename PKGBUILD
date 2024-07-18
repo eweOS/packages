@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=vapoursynth
-pkgver=R68
+pkgver=R69
 pkgrel=1
 pkgdesc='A video processing framework with the future in mind'
 arch=(x86_64 aarch64 riscv64)
@@ -11,7 +11,7 @@ license=(
   custom:OFL
 )
 depends=(
-  libzimg.so
+  zimg
   python
 )
 makedepends=(
@@ -19,19 +19,28 @@ makedepends=(
   git
 )
 source=(
-  git+https://github.com/vapoursynth/vapoursynth.git#tag=$pkgver
+  https://github.com/vapoursynth/vapoursynth/archive/$pkgver.tar.gz
   vapoursynth.xml
 )
-sha256sums=('SKIP'
+sha256sums=('cbd5421df85ba58228ea373cc452ca677e0e2ec61b59944d7e514234633057d9'
             '71b26d66d42b9176b4f41e2f79685b8afb4d66c61e21b9aa3e84d87d3508567f')
 
 prepare() {
-  cd vapoursynth
+  cd vapoursynth-$pkgver
   ./autogen.sh
 }
 
 build() {
-  cd vapoursynth
+  cd vapoursynth-$pkgver
+
+  case $CARCH in
+    aarch64)
+      CFLAGS="$CFLAGS -mno-outline-atomics"
+      CXXFLAGS="$CXXFLAGS -mno-outline-atomics" ;;
+    *) ;;
+  esac
+
+  export CFLAGS CXXFLAGS
   ./configure \
     --prefix=/usr \
     --disable-static
@@ -40,7 +49,7 @@ build() {
 }
 
 package() {
-  cd vapoursynth
+  cd vapoursynth-$pkgver
 
   make DESTDIR="${pkgdir}" install
 
