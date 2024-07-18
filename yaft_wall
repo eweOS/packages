@@ -1,0 +1,21 @@
+#!/bin/sh
+# usage: yaft_wall /path/to/image
+# you can use fbv or idump
+
+if [ -f "/usr/bin/fbv" ]; then
+
+# fbv (http://www.eclis.ch/fbv/)
+echo -ne "\e[?25l" # hide cursor
+fbv -ciuker "$1" << EOF
+q
+EOF
+
+elif [ -f "/usr/bin/idump" ]; then
+
+# idump (https://github.com/uobikiemukot/idump)
+idump "$1"
+
+fi
+
+export YAFT="wall"
+exec yaft
