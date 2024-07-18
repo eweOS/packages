@@ -13,7 +13,7 @@ EOF
 elif [ -f "/usr/bin/idump" ]; then
 
 # idump (https://github.com/uobikiemukot/idump)
-idump "$1"
+idump -f "$1"
 
 fi
 
