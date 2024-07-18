@@ -2,7 +2,7 @@
 
 pkgname=yaft
 pkgver=0.2.9
-pkgrel=2
+pkgrel=3
 pkgdesc="yet another framebuffer terminal"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/uobikiemukot/yaft"
@@ -17,7 +17,7 @@ source=(
 )
 backup=(usr/share/terminfo/y/yaft-256color)
 sha256sums=('80f7e6937ff0a34f77859c684d6f8e23c55d696e0bac4ac8b2f11f785db0374c'
-            '6748cf906e79128c1973847ef6a55bf8316018959ecea0540de8b2810840a8bb'
+            '0158e132a23ca6240a6bc23716e22a45dc23ef2ecf9a3d2fac82c7db82806224'
             '92e29053f4433e39ba582ac617694e6d94e6384eeeee83f588a38d2b6cc5914e')
 
 prepare() {
