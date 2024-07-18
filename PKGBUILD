@@ -2,7 +2,7 @@
 
 pkgname=valgrind
 pkgver=3.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An instrumentation framework for building dynamic analysis tools.'
 url='https://valgrind.org/'
 arch=(x86_64 aarch64)
@@ -24,7 +24,13 @@ prepare() {
 
 build () {
 	cd valgrind-$pkgver
-	export LDFLAGS="$LDFLAGS -fuse-ld=lld"
+
+	case $CARCH in
+		aarch64)	CFLAGS="$CFLAGS -mno-outline-atomics" ;;
+		*)		;;
+	esac
+
+	export CFLAGS LDFLAGS="$LDFLAGS -fuse-ld=lld"
 	./configure --prefix=/usr \
 		--libexecdir=/usr/lib
 	make
