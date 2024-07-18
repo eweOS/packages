@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=vapoursynth
-pkgver=R68
+pkgver=R69
 pkgrel=1
 pkgdesc='A video processing framework with the future in mind'
 arch=(x86_64 aarch64 riscv64)
@@ -31,6 +31,10 @@ prepare() {
 }
 
 build() {
+  if [ "$CARCH" == "aarch64" ]; then
+    export CFLAGS="$CFLAGS -mno-outline-atomics"
+  fi
+
   cd vapoursynth
   ./configure \
     --prefix=/usr \
