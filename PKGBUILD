@@ -2,8 +2,8 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=benchmark
-pkgver=1.8.4
-pkgrel=2
+pkgver=1.8.5
+pkgrel=1
 pkgdesc="A microbenchmark support library"
 arch=(x86_64 aarch64 riscv64)
 url="https://github.com/google/benchmark"
@@ -12,15 +12,8 @@ depends=('llvm-libs')
 makedepends=('cmake' 'python')
 source=(
   "$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
-  01_fix-riscv64-cycleclock.patch
 )
-sha256sums=('3e7059b6b11fb1bbe28e33e02519398ca94c1818874ebed18e504dc6f709be45'
-            '638e954298f56252d324394424c9eefafb5deab6a55a98ca57abe957b8c79049')
-
-prepare()
-{
-  _patch_ $pkgname-$pkgver  
-}
+sha256sums=('d26789a2b46d8808a48a4556ee58ccc7c497fcd4c0af9b90197674a81e04798a')
 
 build()
 {
