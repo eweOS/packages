@@ -7,7 +7,7 @@ pkgdesc='Glasgow Haskell Compiler.'
 url='https://ghc.haskell.org/'
 arch=(x86_64)		# NOTICE: we use ncg only
 license=(BSD-3-Clause)
-depends=(musl libffi gmp ncurses)
+depends=(musl libffi gmp ncurses lld)
 # missing: (alex happy python-sphinx)
 makedepends=(python ghc cabal)
 options=(!strip)
