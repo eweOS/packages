@@ -1,0 +1,13 @@
+diff --git a/cabal-install.cabal b/cabal-install.cabal
+index 7c045d1..cc585c9 100644
+--- a/cabal-install.cabal
++++ b/cabal-install.cabal
+@@ -46,7 +46,7 @@ common warnings
+       ghc-options: -Wunused-packages
+ 
+ common base-dep
+-    build-depends: base >=4.10 && <4.17
++    build-depends: base >=4.10
+ 
+ common cabal-dep
+     build-depends: Cabal ^>=3.8
