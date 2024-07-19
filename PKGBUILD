@@ -8,7 +8,7 @@ url='https://haskell.org/cabal'
 arch=(x86_64)
 license=(BSD-3-Cluase)
 depends=(libffi gmp zlib-ng)
-makedpends=(cabal ghc)
+makedepends=(cabal ghc)
 source=("https://downloads.haskell.org/~cabal/cabal-install-$pkgver/cabal-install-$pkgver.tar.gz"
 	"fix-version.patch")
 sha256sums=('61ce436f2e14e12bf07ea1c81402362f46275014cd841a76566f0766d0ea67e6'
@@ -20,6 +20,7 @@ prepare() {
 
 build () {
 	cd cabal-install-$pkgver
+	cabal update
 	cabal v2-build -j$JOBS \
 		--prefix=/usr
 }
