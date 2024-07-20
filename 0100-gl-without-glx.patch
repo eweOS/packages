@@ -1,0 +1,128 @@
+From 48e2f25a93630bcf3573dfb28357fefcd1de7ca0 Mon Sep 17 00:00:00 2001
+From: Brendan King <Brendan.King@imgtec.com>
+Date: Thu, 11 Jun 2020 12:29:51 +0100
+Subject: [PATCH] meson: allow libGL to be built without GLX
+
+If Meson is run with option "glx" set to "null", build the
+OpenGL library without GLX.
+
+The "eglBindAPI workaround for dEQP bug" change to eglcurrent.h
+(commit 2d46c91040aeb8ebad486214159c34417fbc87db) has been
+modified to use a new EGL_WITH_OPENGL define, which indicates
+whether OpenGL is present or not. This allows EGL to be used
+with OpenGL on platforms other than X11.
+
+Signed-off-by: Randolph Sapp <rs@ti.com>
+---
+ meson.build               |  8 ++++++--
+ meson_options.txt         |  2 +-
+ src/egl/main/eglcurrent.h |  7 +++----
+ src/glx/meson.build       | 20 ++++++++++++++++----
+ src/meson.build           |  2 +-
+ 5 files changed, 27 insertions(+), 12 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 25f1b266c890b..c4ffcd4ff00fc 100644
+--- a/meson.build
++++ b/meson.build
+@@ -425,6 +425,10 @@ if with_egl and not _platforms.contains(egl_native_platform)
+   error('-Degl-native-platform does not specify an enabled platform')
+ endif
+ 
++if with_egl and with_opengl and with_glx != 'disabled'
++   pre_args += '-DEGL_WITH_OPENGL'
++endif
++
+ if 'x11' in _platforms
+   _platforms += 'xcb'
+ endif
+@@ -474,7 +478,7 @@ if not have_mtls_dialect
+   endif
+ endif
+ 
+-if with_glx != 'disabled'
++if with_glx != 'disabled' and with_glx != 'null'
+   if not (with_platform_x11 and with_any_opengl)
+     error('Cannot build GLX support without X11 platform support and at least one OpenGL API')
+   elif with_glx == 'xlib'
+@@ -520,7 +524,7 @@ if with_any_vk and (with_platform_x11 and not with_dri3)
+   error('Vulkan drivers require dri3 for X11 support')
+ endif
+ if with_dri
+-  if with_glx == 'disabled' and not with_egl and not with_gbm
++  if (with_glx == 'disabled' or with_glx == 'null') and not with_egl and not with_gbm
+     error('building dri drivers require at least one windowing system')
+   endif
+ endif
+diff --git a/meson_options.txt b/meson_options.txt
+index deec0da9bffe3..1ff5325f5642d 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -344,7 +344,7 @@ option(
+   'glx',
+   type : 'combo',
+   value : 'auto',
+-  choices : ['auto', 'disabled', 'dri', 'xlib'],
++  choices : ['auto', 'disabled', 'dri', 'xlib', 'null'],
+   description : 'Build support for GLX platform'
+ )
+ 
+diff --git a/src/glx/meson.build b/src/glx/meson.build
+index 20f04742894dd..93470d0a9e450 100644
+--- a/src/glx/meson.build
++++ b/src/glx/meson.build
+@@ -122,7 +122,15 @@ else
+   )
+ endif
+ 
+-libglx = static_library(
++gl_lib_cargs = [
++  '-D_REENTRANT',
++]
++
++if with_glx == 'null'
++  libglx_link = [libglapi]
++  libglx_link_whole = [libglapi_static]
++else
++  libglx = static_library(
+   'glx',
+   [files_libglx, glx_generated],
+   include_directories : [inc_include, inc_src, inc_mapi, inc_mesa, inc_gallium, inc_gallium_aux, inc_glapi, inc_loader],
+@@ -138,13 +146,17 @@ libglx = static_library(
+     idep_mesautil, idep_xmlconfig,
+     dep_libdrm, dep_dri2proto, dep_glproto, dep_x11, dep_glvnd, dep_xxf86vm, dep_xshmfence
+   ],
+-)
++  )
++
++  libglx_link = [libglapi_static,libglapi]
++  libglx_link_whole = [libglx]
++endif
+ 
+ libgl = shared_library(
+   gl_lib_name,
+   [],
+-  link_with : [libglapi_static, libglapi],
+-  link_whole : libglx,
++  link_with : libglx_link,
++  link_whole : libglx_link_whole,
+   link_args : [ld_args_bsymbolic, ld_args_gc_sections, extra_ld_args_libgl],
+   dependencies : [
+     dep_libdrm, dep_dl, dep_m, dep_thread, dep_x11, dep_xcb_glx, dep_xcb,
+diff --git a/src/meson.build b/src/meson.build
+index 02bb717555497..0cf479e68c946 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -124,7 +124,7 @@ endif
+ if with_gallium
+   subdir('mesa')
+   subdir('gallium')
+-  if with_glx == 'dri'
++  if with_glx == 'dri' or with_glx == 'null'
+      subdir('glx')
+   endif
+   # This has to be here since it requires libgallium, and subdir cannot
+-- 
+GitLab
+
+
