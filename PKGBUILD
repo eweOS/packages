@@ -2,7 +2,7 @@
 
 pkgname=man-pages
 pkgver=6.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux kernel and C library user-space interface documentation.'
 url='https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git/'
 arch=(any)
@@ -17,6 +17,12 @@ source=("https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git/snapshot/ma
 sha256sums=('747a4aefde570c60bdce0b4a00615a16657dff099f9db745b24e4a2f7436ba69'
             'd4e0bf360243e64398fc512cdb62ac41f5df7b07ddb50893aff3d1570b08b628')
 
+remove_man=(
+man3/crypt.3 man3/crypt_r.3				# libxcrypt
+man7/man.7						# mandoc
+man5/tzfile.5 man8/tzselect.8 man8/zdump.8 man8/zic.8	# tzdata
+)
+
 package() {
 	chmod +x $srcdir/install
 	export PATH="$srcdir:$PATH"
@@ -24,9 +30,7 @@ package() {
 	cd man-pages-$pkgver
 	make install prefix=/usr DESTDIR=$pkgdir
 
-	# libxcrypt
-	rm $pkgdir/usr/share/man/man3/{crypt,crypt_r}.3
-
-	# mandoc
-	rm $pkgdir/usr/share/man/man7/man.7
+	for f in ${remove_man[*]}; do
+		rm $pkgdir/usr/share/man/$f
+	done
 }
