@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wpa_supplicant
-pkgver=2.10
-pkgrel=4
+pkgver=2.11
+pkgrel=1
 pkgdesc='A utility providing key negotiation for WPA wireless networks'
 url='https://w1.fi/wpa_supplicant/'
 arch=(x86_64 aarch64 riscv64)
@@ -13,7 +13,7 @@ source=(
   config
   wpa_supplicant.service
 )
-sha256sums=('20df7ae5154b3830355f8ab4269123a87affdea59fe74fe9292a91d0d7e17b2f'
+sha256sums=('912ea06f74e30a8e36fbb68064d6cdff218d8d591db0fc5d75dee6c81ac7fc0a'
             'c22c3998f9bb0cae019435dcb0e85dcb5ddd2922a70eff17b797aacd48a4f011'
             'fe518aa7e03cc732a3c7bc73a40d345bfb42e23e07ed73127ba26dfb50dc6ac9')
 
