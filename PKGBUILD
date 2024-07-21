@@ -5,8 +5,8 @@ pkgname=(
   wireplumber
   libwireplumber
 )
-pkgver=0.4.14
-pkgrel=3
+pkgver=0.5.5
+pkgrel=1
 pkgdesc="Session / policy manager implementation for PipeWire"
 url="https://pipewire.pages.freedesktop.org/wireplumber/"
 arch=(x86_64 aarch64 riscv64)
@@ -21,7 +21,7 @@ makedepends=(
 )
 checkdepends=(pipewire)
 source=("https://gitlab.freedesktop.org/pipewire/$pkgbase/-/archive/$pkgver/$pkgbase-$pkgver.tar.gz")
-sha256sums=('b160424ce7c3eeeccba388726f6a448f53501d25085e5fa1bf6c690c1bcd85ea')
+sha256sums=('49075cd5c2f4820839a9e69d4a22386bc280c62b92c153af9be39ca439d45a09')
 
 build()
 {
