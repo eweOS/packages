@@ -2,7 +2,9 @@
 
 pkgname=python-dogpile.cache
 pkgver=1.3.3
-_ver=rel_${pkgver//./_}
+# fxxk obs
+# _ver=rel_${pkgver//./_}
+_ver=rel_1_3_3
 pkgrel=1
 pkgdesc='ython caching API which provides a generic interface to caching backends of any variety.'
 url='https://pypi.org/project/dogpile.cache/'
