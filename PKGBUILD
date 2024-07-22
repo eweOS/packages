@@ -2,17 +2,18 @@
 
 pkgname=python-pyproject-metadata
 _name="${pkgname#python-}"
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='PEP 621 metadata parsing'
 arch=(any)
 url='https://github.com/pypa/python-pyproject-metadata'
 license=(MIT)
 depends=(python python-packaging)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+makedepends=(python-build python-installer python-setuptools python-wheel
+	     python-flit-core)
 checkdepends=(python-pytest)
 source=($url/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-sha512sums=('3decbe7dae753bc03c0b3459a53707c34b7a4e140632da15c8234876d6cb07f43f8bb65e3661c68950fd3eac37904316767617954a057c606d0158e8982e0afa')
+sha512sums=('8d8c7839a318acce64b0cf15b3adbc49c2f309b453135b55f2d7942967ba8bbd4f85696d0f3c651e1246c50e33657e6108f0f05ac20b4a9162cdb2875269c548')
 
 build() {
   cd $_name-$pkgver
