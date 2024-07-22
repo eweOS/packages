@@ -1,4 +1,3 @@
-changelog-seen = 2
 profile = "user"
 [llvm]
 link-shared = true
