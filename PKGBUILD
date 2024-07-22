@@ -4,8 +4,8 @@
 pkgbase=dinit
 pkgname=(dinit dinit-services)
 pkgver=0.17.1
-pkgrel=5
-_service_ver=0.1.4
+pkgrel=6
+_service_ver=0.1.5
 pkgdesc='Service monitoring / "init" system'
 url='https://github.com/davmac314/dinit'
 source=(
@@ -71,8 +71,8 @@ package_dinit-services()
   install -d ${pkgdir}/usr/lib/dinit/user/boot.d
   install -d ${pkgdir}/usr/lib/dinit/exec/user
   install -m 0755 rc.local ${pkgdir}/etc/rc.local
-  cp ${srcdir}/$pkgname/services/* ${pkgdir}/usr/lib/dinit/system/
-  cp ${srcdir}/$pkgname/user-services/* ${pkgdir}/usr/lib/dinit/user/
+  cp -r ${srcdir}/$pkgname/services/* ${pkgdir}/usr/lib/dinit/system/
+  cp -r ${srcdir}/$pkgname/user-services/* ${pkgdir}/usr/lib/dinit/user/
   cp -r ${srcdir}/$pkgname/exec/* ${pkgdir}/usr/lib/dinit/exec/
   install -d ${pkgdir}/usr/lib/dinit/exec/shutdown
   install -m 0755 shutdown-hook ${pkgdir}/usr/lib/dinit/shutdown-hook
