@@ -1,6 +1,7 @@
+pkgbase=cyrus-sasl
 pkgname=(cyrus-sasl libsasl cyrus-sasl-gssapi cyrus-sasl-ldap)
 pkgver=2.1.28
-pkgrel=3
+pkgrel=4
 arch=(x86_64 aarch64 riscv64)
 url="https://www.cyrusimap.org/sasl/"
 license=(custom)
@@ -68,7 +69,7 @@ check()
 
 package_cyrus-sasl()
 {
-  depends=(gdbm libgdbm.so krb5 libkrb5.so libldap libsasl=$pkgver openssl pam libpam.so)
+  depends=(gdbm krb5 libldap libsasl=$pkgver openssl pam)
   pkgdesc="Cyrus saslauthd SASL authentication daemon"
   backup=(etc/conf.d/saslauthd)
 
@@ -83,7 +84,7 @@ package_cyrus-sasl()
 package_cyrus-sasl-gssapi()
 {
   pkgdesc="GSSAPI authentication mechanism for Cyrus SASL"
-  depends=(krb5 libgssapi_krb5.so libsasl=$pkgver)
+  depends=(krb5 libsasl=$pkgver)
   replaces=('cyrus-sasl-plugins')
 
   install -vdm 755 "$pkgdir/usr/lib/sasl2"
@@ -106,7 +107,7 @@ package_cyrus-sasl-ldap()
 package_libsasl()
 {
   pkgdesc="Cyrus Simple Authentication Service Layer (SASL) library"
-  depends=(gdbm libgdbm.so openssl)
+  depends=(gdbm openssl)
   provides=(libsasl2.so)
 
   local _target
