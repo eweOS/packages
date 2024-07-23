@@ -1,5 +1,6 @@
 type = process
 command = /usr/bin/dropbear -F -P /run/dropbear.pid -R
-logfile = /var/log/sshd.log
+logfile = /var/log/dropbear.log
 smooth-recovery = true
-depends-on = target-login
+depends-on = login.target
+depends-on = network.target
