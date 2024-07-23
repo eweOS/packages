@@ -2,13 +2,12 @@
 
 pkgname=rsync
 pkgver=3.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A fast and versatile file copying tool for remote and local files'
 arch=(x86_64 aarch64 riscv64)
 url='https://rsync.samba.org/'
 license=('GPL3')
-depends=('acl' 'openssl' 'perl' 'popt'
-  'zlib')
+depends=('acl' 'openssl' 'lz4' 'popt' 'xxhash' 'zlib' 'zstd')
 source=(https://github.com/WayneD/rsync/archive/refs/tags/v${pkgver}.tar.gz rsyncd.conf rsyncd.service)
 sha256sums=('bbc07ef74ac9e9b1506f7029c3a3630dd24cf270ee5256e96553bbd1cfd21610'
             'f1b14a01cfa3bbe6eecfd3491c9d1d43a51a2561dc9808485ca5d21941d660e5'
@@ -22,15 +21,14 @@ build()
     --disable-debug \
     --with-included-popt=no \
     --with-included-zlib=no \
-    --disable-md2man \
-    --disable-xxhash \
-    --disable-zstd \
-    --disable-lz4
+    --disable-md2man
   make
 }
 
 package()
 {
+  backup=(etc/rsyncd.conf)
+
   cd "$srcdir/${pkgname}-${pkgver}"
   make DESTDIR="$pkgdir" install
   _dinit_install_services_ $srcdir/rsyncd.service
