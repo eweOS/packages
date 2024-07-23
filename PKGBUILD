@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=skalibs
-pkgver=2.14.1.1
+pkgver=2.14.2.0
 pkgrel=1
 pkgdesc='A library suite supporting skarnet.org software.'
 arch=(x86_64 aarch64 riscv64)
@@ -13,7 +13,7 @@ source=(
   "http://skarnet.org/software/skalibs/skalibs-${pkgver}.tar.gz"
 )
 
-sha256sums=('b6b79b816f4ba0b6801676b0ed4179b59c8c7809eeffe26db672e404636befc3')
+sha256sums=('ddfec5730e5b2f19d0381ecf7f796b39a6e473236bda0ad8d3776a3fe7b07e43')
 
 build()
 {
