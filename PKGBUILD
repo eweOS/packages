@@ -12,9 +12,9 @@ pkgname=(
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=24.1.4
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64)
-depends=('libglvnd' 'libelf' 'zstd' 'libdrm')
+depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm')
 makedepends=(
   'libva'
   'glslang'
@@ -22,7 +22,8 @@ makedepends=(
   'wayland' 'wayland-protocols'
   'python-packaging'
   'linux-headers'
-  'libclc' 'spirv-llvm-translator' 'spirv-tools')
+  'libclc' 'spirv-llvm-translator' 'spirv-tools'
+  'python-mako')
 url="https://www.mesa3d.org/"
 license=('custom')
 # mold may fails with lto enabled
@@ -87,8 +88,6 @@ sha512sums=('0293f1493685888e5d2f0e616645c937e5a9c348fcb654b050b7c42bfdade1518c5
 
 prepare()
 {
-  # workaround since python-mako is not available
-  pip install mako
   # https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/26018
   # https://gitlab.freedesktop.org/icenowy/mesa/-/tree/orcjit-shader-cache
   _patch_ $pkgbase-$pkgver
@@ -186,6 +185,7 @@ package_libva-mesa-driver()
     'expat'
     'libdrm'
     'libelf'
+    'llvm'
     'llvm-libs'
     'zlib'
     'zstd'
@@ -198,7 +198,8 @@ package_libva-mesa-driver()
     -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
-_vulkan_driver_deps=('expat' 'libdrm' 'vulkan-icd-loader' 'wayland' 'zlib' 'zstd')
+_vulkan_driver_deps=('expat' 'libdrm' 'llvm' 'vulkan-icd-loader' 'wayland'
+		     'zlib' 'zstd')
 
 package_vulkan-swrast()
 {
@@ -253,7 +254,7 @@ package_vulkan-mesa-layers()
   pkgdesc="Mesa's Vulkan layers"
   depends=('libdrm' 'wayland' 'python')
 
-  mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"  
+  mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
 
   install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
     -t "$pkgdir/usr/share/licenses/$pkgname"
