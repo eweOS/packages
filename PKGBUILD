@@ -2,7 +2,9 @@
 
 pkgname=python-mako
 pkgver=1.3.5
-_pkgver=rel_${pkgver//./_}
+# fxxk obs
+# _pkgver=rel_${pkgver//./_}
+_pkgver=rel_1_3_5
 pkgrel=1
 pkgdesc='A template library written in Python.'
 url='https://pypi.org/project/Mako/'
