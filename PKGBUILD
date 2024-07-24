@@ -2,10 +2,10 @@
 
 pkgname=dosfstools
 pkgver=4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="DOS filesystem utilities"
 arch=(x86_64 aarch64 riscv64)
-depends=('glibc')
+depends=('musl')
 source=(https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz
 )
 url="https://github.com/dosfstools/dosfstools"
