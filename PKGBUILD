@@ -2,7 +2,7 @@
 
 pkgname=arch-install-scripts
 pkgver=28
-pkgrel=3
+pkgrel=4
 pkgdesc="Scripts to aid in installing Arch Linux"
 arch=('any')
 url="https://github.com/archlinux/arch-install-scripts"
@@ -20,6 +20,8 @@ prepare() {
   cd $pkgname
   # TODO: chroot does not accept "--"
   sed -i 's/-- "$chrootdir"/"$chrootdir"/' arch-chroot.in
+  # TODO: cp does not accept "--no-preserve"
+  sed -i 's/--no-preserve=ownership//' pacstrap.in
 }
 
 build() {
