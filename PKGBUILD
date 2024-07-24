@@ -2,7 +2,7 @@
 
 pkgname=arch-install-scripts
 pkgver=28
-pkgrel=4
+pkgrel=5
 pkgdesc="Scripts to aid in installing Arch Linux"
 arch=('any')
 url="https://github.com/archlinux/arch-install-scripts"
@@ -22,6 +22,8 @@ prepare() {
   sed -i 's/-- "$chrootdir"/"$chrootdir"/' arch-chroot.in
   # TODO: cp does not accept "--no-preserve"
   sed -i 's/--no-preserve=ownership//' pacstrap.in
+  # TODO: realpath does not accept "-m" and "-L"
+  sed -i 's/realpath -mL/realpath/' genfstab.in
 }
 
 build() {
