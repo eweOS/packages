@@ -2,13 +2,13 @@
 
 pkgname=pam
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="PAM (Pluggable Authentication Modules) library"
 arch=(x86_64 aarch64 riscv64)
 license=('GPL2')
 url="http://linux-pam.org"
 depends=('musl' 'libxcrypt' 'utmps')
-makedepends=('flex')
+makedepends=('flex' 'linux-headers')
 source=(
   https://github.com/linux-pam/linux-pam/releases/download/v$pkgver/Linux-PAM-$pkgver.tar.xz
   other.pam
@@ -21,6 +21,10 @@ sha256sums=('f8923c740159052d719dbfc2a2f81942d68dd34fcaf61c706a02c9b80feeef8e'
             '2462e923735fc366f57076878f157422bcb10c660a7edd44056651ebbe2cf845')
 options=('!emptydirs')
 provides=('libpam.so' 'libpamc.so' 'libpam_misc.so')
+backup=(etc/environment
+	etc/pam.d/{auth,login,other}
+        etc/security/{access,faillock,group,limits,namespace,pam_env,pwhistory,time}.conf
+	etc/security/namespace.init)
 
 build()
 {
