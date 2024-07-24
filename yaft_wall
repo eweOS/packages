@@ -18,4 +18,5 @@ idump -f "$1"
 fi
 
 export YAFT="wall"
-exec yaft
+shift
+exec yaft $@
