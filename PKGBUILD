@@ -6,7 +6,7 @@ pkgname=(
   libp11-kit
 )
 pkgver=0.25.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Loads and enumerates PKCS#11 modules"
 url="https://p11-glue.freedesktop.org"
 arch=(x86_64 aarch64 riscv64)
@@ -47,12 +47,13 @@ package_p11-kit() {
   meson install -C build --destdir "$pkgdir"
   ln -sf "/usr/bin/update-ca-trust" "$pkgdir/usr/lib/p11-kit/trust-extract-compat"
 
-  _pick_ lib "$pkgdir"/usr/include
-  _pick_ lib "$pkgdir"/usr/lib/{p11-kit-proxy.so,libp11-kit.*}
-  _pick_ lib "$pkgdir"/usr/lib/{pkcs11,pkgconfig}
-  _pick_ lib "$pkgdir"/usr/share/p11-kit
+  cd $pkgdir
+  _pick_ lib usr/include
+  _pick_ lib usr/lib/{p11-kit-proxy.so,libp11-kit.*}
+  _pick_ lib usr/lib/{pkcs11,pkgconfig}
+  _pick_ lib usr/share/p11-kit
 
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 p11-kit-$pkgver/COPYING
+  install -Dt $pkgdir/usr/share/licenses/$pkgname -m644 $srcdir/p11-kit-$pkgver/COPYING
 }
 
 package_libp11-kit() {
