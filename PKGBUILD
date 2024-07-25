@@ -3,13 +3,14 @@
 pkgname=wayfire
 pkgver=0.8.1.r316.44e1fa9c
 _pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A modular and extensible wayland compositor"
 arch=(x86_64 aarch64 riscv64)
 url=https://wayfire.org
 license=(MIT)
-depends=(cairo pango libjpeg libinput wlroots wf-config nlohmann-json)
-makedepends=(meson ninja wayland-protocols glm cmake mesa doctest git openmp linux-headers)
+depends=(cairo pango libjpeg libinput wlroots0.17 wf-config nlohmann-json)
+makedepends=(meson ninja wayland-protocols glm cmake mesa doctest git openmp
+	     linux-headers)
 _commit="44e1fa9c62e1f8c9f35cedbf3e86c6a0247e0b79"
 _refcommit="01726528ace8ed71216f23c3b0fb3344cda5a461" # v0.8.1
 source=("git+https://github.com/WayfireWM/${pkgname}.git#commit=$_commit")
