@@ -1,0 +1,13 @@
+diff --git a/librsvg-c/tests-c/Makefile.am b/librsvg-c/tests-c/Makefile.am
+index 68870eb..bf73e13 100644
+--- a/librsvg-c/tests-c/Makefile.am
++++ b/librsvg-c/tests-c/Makefile.am
+@@ -12,7 +12,7 @@ api_LDADD = $(top_builddir)/librsvg_c_api.la	\
+ 	$(LIBRSVG_LIBS)				\
+ 	$(LIBM)
+ 
+-api_LDFLAGS = -static
++api_LDFLAGS = -static -lunwind
+ 
+ AM_CPPFLAGS =					\
+ 	-I$(srcdir) 				\
