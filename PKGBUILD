@@ -2,7 +2,7 @@
 
 pkgbase="cups"
 pkgname=('libcups' 'cups')
-pkgver=2.4.9
+pkgver=2.4.10
 pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 license=('Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND Zlib AND BSD-2-Clause')
@@ -18,7 +18,7 @@ source=(https://github.com/OpenPrinting/cups/releases/download/v${pkgver}/cups-$
         guid.patch
         cupsd.service
 )
-sha256sums=('38fbf4535a10554113e013d54fedda03ee88007ea6a9761d626a04e1e4489e8c'
+sha256sums=('d75757c2bc0f7a28b02ee4d52ca9e4b1aa1ba2affe16b985854f5336940e5ad7'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '06173dfaea37bdd9b39b3e09aba98c34ae7112a2f521db45a688907d8848caa2'
