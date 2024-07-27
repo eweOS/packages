@@ -2,8 +2,8 @@
 
 pkgbase=greetd
 pkgname=(greetd greetd-agreety)
-pkgver=0.9.0
-pkgrel=14
+pkgver=0.10.3
+pkgrel=1
 pkgdesc="Generic greeter daemon"
 arch=(x86_64 aarch64 riscv64)
 url="https://git.sr.ht/~kennylevinsen/greetd"
@@ -14,7 +14,7 @@ source=(
   greetd.service
   greetd.sysusers
 )
-sha256sums=('a0cec141dea7fd7838b60a52237692d0fd5a0169cf748b8f8379d8409a3768eb'
+sha256sums=('ee5cb70e0add4ca9c9fe57e47581ab0002d44c07743fb5492469f3b570db640b'
             '4e71e90a060b82edc0c1794fef812e286c606d3f07493ef536b9909238e2189f'
             'a413aedea2ed6a24f6da43f1eeb357195559eb7f31d50c57e102801ebbfb1614'
             '703be69c0bfe1bba1815090113513a495f87198bfb46b02918634f56f5232fea')
