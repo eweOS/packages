@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=rollmeow
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc='A generic update checker.'
 url='https://github.com/eweOS/rollmeow'
 arch=(any)
@@ -10,7 +10,7 @@ license=(MPL-2.0)
 depends=(lua54 lua54-curl)
 makedepends=(lua54-lmerge)
 source=("https://github.com/eweOS/rollmeow/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e68d3079003a1c29ea4080d35a942b721eadb3853c7af45efbe59b610cfeb4a1')
+sha256sums=('988cf3ec6129abd3a249471a2a10b7866ef624f435dd9abca2fdf32f32bea8db')
 
 build() {
 	cd rollmeow-$pkgver/src
