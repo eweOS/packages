@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=asciidoc
-pkgver=10.2.0
+pkgver=10.2.1
 pkgrel=1
 pkgdesc='Text document format for short documents, articles, books and UNIX man pages'
 arch=('any')
@@ -21,10 +21,8 @@ optdepends=('graphviz: graphviz-filter'
             'fop: alternative pdf generation'
             'w3m: text generation'
             'lynx: alternative text generation')
-source=("$_url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
-        "suppress-python-warnings.patch::$_url/commit/cf72db316e3281249c6f69c5591a0092b231b53d.patch")
-sha256sums=('237b2ba5c35c0ae7ccd4cd44ebf1d87c20b2695dae01798954416d492ef7fa0e'
-            '26c4f502e92b975c9c1c6b86ff85e62fda2e3a7ddf3efddaa0bdbb9c88f2aeb8')
+source=("$_url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('aa7be8ae894f6cc1e67784d76ffa6c6b9e9f96efdc695db43c6bd63820e5072b')
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -32,8 +30,6 @@ prepare() {
     -e '/^build: /a \\tpython3 -m build -wn' \
     -e '/pip install/{s#pip install --root#installer -d#;s#\.$#dist/*.whl#}' \
     Makefile.in
-  # https://gitlab.archlinux.org/archlinux/packaging/packages/asciidoc/-/issues/2
-  patch -p1 -i ../suppress-python-warnings.patch
   # https://github.com/asciidoc-py/asciidoc-py/issues/234
   autoconf
 }
