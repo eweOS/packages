@@ -2,7 +2,7 @@
 
 pkgbase=rust
 pkgname=(rust rust-nightly)
-pkgver=1.79.0
+pkgver=1.80.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=(x86_64 aarch64 riscv64)
@@ -14,7 +14,7 @@ source=(
   config.toml.tpl
   musl-static.patch
 )
-sha256sums=('172ecf3c7d1f9d9fb16cd2a628869782670416ded0129e524a86751f961448c0'
+sha256sums=('6f606c193f230f6b2cae4576f7b24d50f5f9b25dff11dbf9b22f787d3521d672'
             '84dd7d30cc5391b48cfd7b074793da6356e867ff65f6a3052fb663a563321774'
             'e36b2a8dbcaccb27ae0ac113168bd57bee10610106df2dcbfce1e3f095e75795')
 
