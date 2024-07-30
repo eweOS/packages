@@ -1,2 +1,4 @@
 d! /run/utmps 0664 utmp utmp -
+f /run/utmps/utmp 0664 utmp utmp -
+f /run/utmps/wtmp 0664 utmp utmp -
 f /var/log/wtmp 0640 utmp utmp -
