@@ -1,5 +1,5 @@
 type = process
-command = tty2socket /run/utmps/.wtmpd-socket utmps-wtmpd
+command = tty2socket -m 777 --s6 /run/utmps/.wtmpd-socket utmps-wtmpd
 working-dir = /run/utmps
 run-as = utmp
 depends-on = pawprint
