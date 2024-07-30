@@ -5,8 +5,8 @@ pkgname=(
   ca-certificates-mozilla
 )
 pkgbase=nss
-pkgver=3.102
-pkgrel=2
+pkgver=3.102.1
+pkgrel=1
 pkgdesc="Network Security Services"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 arch=(x86_64 aarch64 riscv64)
@@ -26,7 +26,7 @@ makedepends=(
   git
 )
 source=(
-  "nss::git+https://github.com/nss-dev/nss#tag=NSS_${pkgver/./_}_RTM"
+  "nss::git+https://github.com/nss-dev/nss#tag=NSS_${pkgver//./_}_RTM"
   "nss-3.87-use-clang-as.patch"
   bundle.sh
   certdata2pem.py
