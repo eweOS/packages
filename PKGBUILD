@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=opencc
-pkgver=1.1.7
-pkgrel=2
+pkgver=1.1.8
+pkgrel=1
 pkgdesc='Conversion between Traditional and Simplified Chinese'
 url='https://github.com/BYVoid/OpenCC'
 arch=(x86_64 aarch64 riscv64)
@@ -11,7 +11,7 @@ depends=(libmarisa)
 makedepends=(cmake tclap python rapidjson)
 checkdepends=(googletest)
 source=("https://github.com/BYVoid/OpenCC/archive/refs/tags/ver.$pkgver.tar.gz")
-sha256sums=('80a12675094a0cac90e70ee530e936dc76ca0953cb0443f7283c2b558635e4fe')
+sha256sums=('51693032e702ccc60765b735327d3596df731bf6f426b8ab3580c677905ad7ea')
 
 build () {
 	cd OpenCC-ver.$pkgver
