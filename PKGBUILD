@@ -3,7 +3,7 @@
 pkgname=vala
 _ver=0.56
 pkgver=$_ver.17
-pkgrel=1
+pkgrel=2
 pkgdesc='Compiler for Vala'
 url='https://vala.dev'
 arch=(x86_64 aarch64 riscv64)
