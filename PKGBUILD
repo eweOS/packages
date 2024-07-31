@@ -2,13 +2,14 @@
 
 pkgname=cage
 pkgver=0.1.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A kiosk compositor for Wayland"
 arch=(x86_64 aarch64 riscv64)
 url="https://www.hjdskes.nl/projects/cage/"
 license=(MIT)
 depends=(wayland wlroots0.17)
-makedepends=(libxkbcommon meson pixman wayland-protocols git linux-headers)
+makedepends=(libxkbcommon meson pixman wayland-protocols git linux-headers
+	     wlroots0.17-devel)
 _commit=b6f8f925854cd90592b6f8abb4c8393ec51c9571
 source=("git+https://github.com/cage-kiosk/cage.git#commit=$_commit")
 sha512sums=('SKIP')
