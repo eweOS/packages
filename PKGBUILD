@@ -2,7 +2,7 @@
 
 pkgname=freeimage
 pkgver=3.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library project for developers who would like to support popular graphics image formats"
 arch=(x86_64 aarch64 riscv64)
 license=('GPL' 'custom:FIPL')
@@ -42,6 +42,17 @@ build() {
   cd FreeImage
   sh gensrclist.sh
   sh genfipsrclist.sh
+
+  case $CARCH in
+    aarch64|riscv64) 
+    export CFLAGS="$CFLAGS -fPIC"
+    export CXXFLAGS="$CXXFLAGS -fPIC" ;;
+    x86_64) ;;
+    *)
+      echo "check whether -fPIC is needed on $CARCH"
+      return 1 ;;
+  esac
+
   make -f Makefile.gnu
   make -f Makefile.fip
 }
