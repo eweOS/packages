@@ -2,7 +2,7 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=c-ares
-pkgver=1.29.0
+pkgver=1.32.3
 pkgrel=1
 pkgdesc="A C library for asynchronous DNS requests"
 arch=(x86_64 aarch64 riscv64)
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('musl')
 makedepends=('cmake')
 provides=('libcares.so')
-source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgname//-/}-${pkgver//./_}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('0287fd59aa6d831e0d1705deb6b4b1ab3b97a28c5c42feeeaa1eeab55ffb429998c7f0735f15cf5eaeb9177cb77800e6b0b01107bd28fb082cf737f8c12766d0')
+source=("https://github.com/${pkgname}/${pkgname}/archive/v$pkgver.tar.gz")
+sha512sums=('5c64cf308f618e70efc69df22b1610efd4633b9e2e81c61cd1fa04bfa6f90f1cb23657a289214be57ac1ed95e17fab6765a32a2a4fed3b758cfdf5295dac2164')
 
 build()
 {
@@ -37,6 +37,6 @@ package()
   cd "$pkgname-$pkgver"
   make DESTDIR="${pkgdir}" install -C build
   install -vDm 644 "LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -vDm 644 {AUTHORS,CHANGES,{CONTRIBUTING,README,RELEASE-NOTES}.md} \
+  install -vDm 644 {AUTHORS,{CONTRIBUTING,README,RELEASE-NOTES}.md} \
     -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
