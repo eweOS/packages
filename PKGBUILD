@@ -2,13 +2,14 @@
 
 pkgname=libcupsfilters
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenPrinting CUPS Filters - contains all the code of the filters of the former cups-filters package as library functions"
 arch=(x86_64 aarch64 riscv64)
 url="https://github.com/OpenPrinting/libcupsfilters"
 license=('Apache')
 depends=('libcups' 'libexif' 'qpdf' 'ghostscript'
          'libjpeg' 'libpng' 'libtiff' 'lcms2' 'fontconfig' 'dbus')
+makedepends=('linux-headers')
 checkdepends=('ttf-dejavu')
 source=("https://github.com/OpenPrinting/libcupsfilters/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
 sha256sums=('542f2bfbc58136a4743c11dc8c86cee03c9aca705612654e36ac34aa0d9aa601')
@@ -21,6 +22,13 @@ prepare() {
 
 build() {
   cd "$pkgname"-$pkgver
+
+  case $CARCH in
+    aarch64)
+      export CFLAGS="$CFLAGS -mno-outline-atomics"
+      export CXXFLAGS="$CXXFLAGS -mno-outline-atomics" ;;
+  esac
+
   ./configure --prefix=/usr  \
     --sysconfdir=/etc \
     --sbindir=/usr/bin \
