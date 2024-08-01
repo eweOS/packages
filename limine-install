@@ -1,0 +1,120 @@
+#!/bin/bash
+
+show_help() {
+  cat << EOF  
+Usage: limine-install [OPTION...] [OPTION] [INSTALL_DEVICE]
+Install Limine on your drive.
+
+      --target=TARGET        install Limine for TARGET platform
+                             [default=auto-efi]; available targets:
+                             *-efi
+      --bootloader-id=ID     the ID of bootloader. This option is only
+                             available on EFI. [default=limine]
+      --efi-directory=DIR    use DIR as the EFI System Partition root.
+                             [default=/boot]
+      --no-nvram             don't update the \`boot-device'/\`Boot*' NVRAM
+                             variables. This option is only available on EFI
+                             and IEEE1275 targets.
+      --removable            the installation device is removable. This option
+                             is only available on EFI.
+  -v, --verbose              print verbose messages.
+      --help                 give this help list
+
+INSTALL_DEVICE must be system device filename.
+
+Report bugs to eweOS developers.
+EOF
+}
+
+command_args="verbose,target:,efi-directory:,bootloader-id:,removable,no-nvram,help"
+
+options=$(getopt -o v -l "$command_args" -- "$@")
+
+eval set -- "$options"
+
+while true; do
+  case "$1" in
+    --verbose|-v)
+      set -x
+      ;;
+    --help) 
+      show_help
+      exit 0
+      ;;
+    --target) 
+      shift
+      export _target="$1"
+      ;;
+    --efi-directory)
+      shift
+      export _efi_directory="$1"
+      ;;
+    --bootloader-id)
+      shift
+      export _bootloader_id="$1"
+      ;;
+    --removable)
+      export _removable=1
+      ;;
+    --no-nvram)  
+      export _no_nvram=1
+      ;;
+    --)
+      shift
+      break
+      ;;
+  esac
+  shift
+done
+
+_device="$1"
+shift
+
+[ -z $_device ] && show_help && exit 1
+
+[ "$EUID" -ne 0 ] && echo "error: please run as root" && exit 1
+
+_target=${_target:-auto-efi}
+_efi_directory=${_efi_directory:-/boot}
+_bootloader_id=${_bootloader_id:-limine}
+_efi_src=$(find /usr/share/limine/*.EFI | head -n 1)
+
+if [ ! -f $_efi_src ]; then
+  echo "error: limine EFI file not exist"
+  exit 1
+fi
+
+if [ -z "$_removable" ]; then
+  _loader_path="/EFI/${_bootloader_id}/limine.efi"
+else
+  _loader_path="/EFI/BOOT/`basename $_efi_src`"
+fi
+
+_efi_dst="${_efi_directory}${_loader_path}"
+
+if [ ! -e $_device ]; then
+  echo "error: device not exist"
+  exit 1
+fi
+
+echo "Installing for $_target platform."
+
+case "$_target" in
+  *-efi)
+    command -v efibootmgr &> /dev/null || (echo "error: efibootmgr not found" && exit 1)
+    
+    install -D "$_efi_src" "$_efi_dst"
+    if [ -z $_no_nvram ] && [ -z $_removable ]; then
+      efibootmgr --create \
+        --disk $_device --part 1 \
+        --loader "$_loader_path" --label "$_bootloader_id" \
+	--unicode
+    fi
+    ;;
+  *)
+    echo "error: unsupported platform"
+    exit 1
+    ;;
+esac
+
+echo "Installation finished. No error reported."
