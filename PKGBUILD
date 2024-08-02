@@ -2,7 +2,7 @@
 
 pkgname=busybox
 pkgver=1.36.1
-pkgrel=26
+pkgrel=27
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64)
 url="https://www.busybox.net"
@@ -30,6 +30,7 @@ source=(
   "mdev-helper-dev-bus-usb"
   "acpid.service"
   "detect-compressed-module.patch"
+  "modprobe-S-option.patch"
 )
 sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
             '45253907d07f5888c5deb3ab957998e4a0b9fb0ab3e71ef6e1f7bc35e8f5f1af'
@@ -49,7 +50,8 @@ sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
             'f641a4d722dfaeb70e43ee87d8b1ce6ecadc0aec4ee21bdc28bbe4564dd743f4'
             '32c89049dfcb5de3b2591b1039b25aa8ad83f0af9b6782ef460ed4dde7a8493d'
             'db93d29f439b25a174216898915f92fc6e092042d27a07e0bdf58ea277e80085'
-            '0b92c82c56bf9d81da6a1b64742b313ea11a483cfaf2a7ebb5a68e7f5258471c')
+            '0b92c82c56bf9d81da6a1b64742b313ea11a483cfaf2a7ebb5a68e7f5258471c'
+            '0f54301a73af461e8066bc805b48d991cfed513d08a2f036e015b19f97cb424a')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -64,6 +66,8 @@ prepare() {
   sed -i 's/64\*1024\*1024/512\*1024\*1024/' modutils/depmod.c
   # Fix dmesg like 'Invalid ELF header magic: != ELF'
   patch -p1 < ../detect-compressed-module.patch
+  # add -S option for modprobe for tinyramfs
+  patch -p1 < ../modprobe-S-option.patch
 }
 
 build() {
