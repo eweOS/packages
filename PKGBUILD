@@ -3,7 +3,7 @@
 
 _name=pmix
 pkgname=openpmix
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 oac_commit=dfff67569fb72dbf8d73a1dcf74d091dad93f71b
 pkgdesc="Extended version of the PMI standard"
@@ -16,8 +16,8 @@ provides=(libpmix.so pmix)
 backup=(etc/$pkgname/pmix-mca-params.conf)
 source=("https://github.com/$pkgname/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 	"https://github.com/open-mpi/oac/archive/$oac_commit.tar.gz")
-sha512sums=('2828c14ed3c41cad6d926e1cbbe5feefe533d319282c44557fbb22afd0235d5655ce44578b58f8b3ecfc59f2eea23690f04eadab5e1f2cd2e2b4dfda09f1aedc'
-	    'ea8fcf8bd9ea8b7a2bbe6271942aa921362aebf998a0d5f07e41ec21f2d7d6ed8397899d332355822a305ba2fe3109a97c1c3869ba2c355d9a4331ba1ebcd824')
+sha512sums=('54dbb08bd3ffbfbc6d9dac7dba62043bcdc659952b3074a95bd4be190db155243a0bad0bb6740c0b77cc6b9e7346f634a87e11ef8296f4a69ed706c818de4cc8'
+            'ea8fcf8bd9ea8b7a2bbe6271942aa921362aebf998a0d5f07e41ec21f2d7d6ed8397899d332355822a305ba2fe3109a97c1c3869ba2c355d9a4331ba1ebcd824')
 
 prepare()
 {
