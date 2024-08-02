@@ -2,13 +2,13 @@
 
 pkgname=limine
 pkgver=7.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, portable, multiprotocol bootloader"
 arch=(x86_64 aarch64 riscv64)
 url="https://limine-bootloader.org/"
 license=('BSD')
 makedepends=('nasm' 'lld' 'mtools')
-optdepends=('efibootmgr: add entries in NVRAM')
+optdepends=('efibootmgr: efi entries managing for limine-install')
 source=(
   "https://github.com/limine-bootloader/limine/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
   limine.cfg
@@ -22,7 +22,7 @@ sha256sums=('f7066b5edad58c2ff157b487c10bf756ad662fd39759127a02406486743fd636'
             'a5e1cd8bcd925c60428adb757dc371a317a97ad0f51506ec73404d0d7f1e8d99'
             'e9cee335f19ddfe723537fed9170a52b2490495fbb2c54c4469f4b7c7c5f717d'
             'f722aacb1e5865489483c14b950900998241fe6558e58875b1119579ef91a5e0'
-            '4a929472ff24b71d67f5ad07d2136326fc7ee16a555fafbdbd1ffdafa8f5c53f')
+            '996416f738c981e2d04af00407adb7bc1e95a5acc5b11f65595d202cd6420290')
 
 build() {
   cd "${pkgname}-${pkgver}"

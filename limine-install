@@ -70,7 +70,7 @@ done
 _device="$1"
 shift
 
-[ -z $_device ] && show_help && exit 1
+[ -z $_removable ] && [ -z $_no_nvram ] && [ -z $_device ] && show_help && exit 1
 
 [ "$EUID" -ne 0 ] && echo "error: please run as root" && exit 1
 
@@ -92,7 +92,7 @@ fi
 
 _efi_dst="${_efi_directory}${_loader_path}"
 
-if [ ! -e $_device ]; then
+if [ -z $_removable ] && [ -z $_no_nvram ] && [ ! -e $_device ]; then
   echo "error: device not exist"
   exit 1
 fi
@@ -101,10 +101,10 @@ echo "Installing for $_target platform."
 
 case "$_target" in
   *-efi)
-    command -v efibootmgr &> /dev/null || (echo "error: efibootmgr not found" && exit 1)
-    
     install -D "$_efi_src" "$_efi_dst"
     if [ -z $_no_nvram ] && [ -z $_removable ]; then
+      command -v efibootmgr &> /dev/null || (echo "error: efibootmgr not found" && exit 1)
+
       efibootmgr --create \
         --disk $_device --part 1 \
         --loader "$_loader_path" --label "$_bootloader_id" \
