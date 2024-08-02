@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=turnstile
-pkgver=0.1.8
+pkgver=0.1.10
 pkgrel=1
 pkgdesc='Independent session/login tracker'
 url='https://github.com/chimera-linux/turnstile'
@@ -10,7 +10,7 @@ license=(BSD-2-Clause)
 depends=(pam)
 makedepends=(meson ninja scdoc)
 source=("git+$url.git#tag=v$pkgver" turnstiled.service dinit.conf)
-sha256sums=('SKIP'
+sha256sums=('e36592e97fc4613a46b71f661e57c118aab20d451f92733728c00b5a45aa57a2'
             '257fd00dc1f6ba7e79b70604aa358e481cff60b318de8d78b829acdec56f7eff'
             '77fc59cdb2134684f6087a1f2390b6a524216115ea420a94c318b53fecb540e4')
 
