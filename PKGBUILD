@@ -2,7 +2,7 @@
 
 pkgname=vapoursynth
 pkgver=R69
-pkgrel=1
+pkgrel=2
 pkgdesc='A video processing framework with the future in mind'
 arch=(x86_64 aarch64 riscv64)
 url=http://www.vapoursynth.com/
@@ -33,25 +33,17 @@ prepare() {
 build() {
   cd vapoursynth-$pkgver
 
-  case $CARCH in
-    aarch64)
-      CFLAGS="$CFLAGS -mno-outline-atomics"
-      CXXFLAGS="$CXXFLAGS -mno-outline-atomics" ;;
-    *) ;;
-  esac
-
   export CFLAGS CXXFLAGS
   ./configure \
     --prefix=/usr \
     --disable-static
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  make LIBTOOL=slibtool-shared
 }
 
 package() {
   cd vapoursynth-$pkgver
 
-  make DESTDIR="${pkgdir}" install
+  make LIBTOOL=slibtool-shared DESTDIR="${pkgdir}" install
 
   install -Dm 644 src/core/ter-116n.ofl.txt -t "${pkgdir}"/usr/share/licenses/vapoursynth/
   install -Dm 644 ../vapoursynth.xml -t "${pkgdir}"/usr/share/mime/packages/
