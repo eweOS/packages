@@ -16,7 +16,7 @@ pkgname=(qemu-common
 	 qemu-guest-agent
 	) # TODO: split firmwares
 pkgver=9.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A generic and open source machine emulator and virtualizer.'
 url='https://www.qemu.org/'
 arch=(x86_64 aarch64 riscv64)
@@ -184,6 +184,7 @@ build () {
 		--enable-zstd
 	)
 
+	export LDFLAGS="$LDFLAGS -Wl,-z,stack-size=$((1024 * 1024))"
 	mkdir -p $srcdir/build
 	cd $srcdir/build
 	$srcdir/qemu-$pkgver/configure \
