@@ -1,0 +1,24 @@
+From 36d974181da499369fcf3cb78792a3553fbd37ea Mon Sep 17 00:00:00 2001
+From: Vaxry <vaxry@vaxry.net>
+Date: Thu, 6 Jun 2024 11:49:13 +0200
+Subject: [PATCH] cmake: use CXX_STANDARD instead of a flag
+
+ref #74
+---
+ CMakeLists.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5010108..cd9f72b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -66,7 +66,8 @@ function(protocol protoPath protoName external)
+ endfunction()
+ 
+ include_directories(.)
+-add_compile_options(-std=c++23 -DWLR_USE_UNSTABLE )
++set(CMAKE_CXX_STANDARD 23)
++add_compile_options(-DWLR_USE_UNSTABLE)
+ add_compile_options(-Wall -Wextra -Wno-unused-parameter -Wno-unused-value -Wno-missing-field-initializers -Wno-narrowing -Wno-pointer-arith)
+ find_package(Threads REQUIRED)
+ 
