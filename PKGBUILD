@@ -5,7 +5,7 @@
 pkgbase=pacman
 pkgname=(libalpm pacman repo-tools)
 pkgver=6.1.0
-pkgrel=3
+pkgrel=4
 arch=(x86_64 aarch64 riscv64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
@@ -25,7 +25,7 @@ source=(
 )
 sha256sums=('cb98c8574e4f2b0d488418e11d20ab7b4a3f20e3110d83381cc94a4c55d277cf'
             '0865036ef04a06b00926640ac7db2275988b834f435101e8110eedf8a2e58b88'
-            '4437336941ff94f75f460eb1741971081289f55cf3115df9f011ff282d0861a3'
+            '1e059d75f80dc82b7e1bf76fd3c62f0c21ebc6a499fde19806467461d895172e'
             '6338de233368bfa76ee17353785709e282ace072eae6996c1289f0fb5b84ffc4'
             'd99d4fe5e414cb4748f4e9b20637d9fd69ec8c392e3f862edbc69b6564a52876'
             '7d2ad28bef8f9f77f33929d2050244a6f29941de6ad0793b6820caee3dbd84e3'
@@ -33,16 +33,6 @@ sha256sums=('cb98c8574e4f2b0d488418e11d20ab7b4a3f20e3110d83381cc94a4c55d277cf'
             '35bcd3281043a7f4cc6ac7ee4b8978c0a90b3a14961139fdf24622100107af98'
             '9dbd7446b7b3d1b6373939cc9ee1946be1c5ded717401518e36281c584e8eb09'
             '403a7a06966faad2ec06ff6aedf553728d24714dc8f16183afa227b3bd9dbe4a')
-
-_fetchpkg()
-{
-  local _pkgdir="$srcdir/pkgs/$1" && shift
-  mkdir -p "$_pkgdir"
-  for _file in $@; do
-    (cd "$srcdir/PKGDIR" && find $_file | cpio -pdvmu "$_pkgdir") || true
-    (cd "$srcdir/PKGDIR" && find $_file -delete) || true
-  done
-}
 
 FLIST_LIBALPM=(
   'usr/include/*'
@@ -110,10 +100,11 @@ build()
   meson compile -C build
 
   DESTDIR="$srcdir/PKGDIR" meson install -C build
-  _fetchpkg libalpm ${FLIST_LIBALPM[@]}
-  _fetchpkg pacman ${FLIST_PACMAN[@]}
-  _fetchpkg makepkg ${FLIST_MAKEPKG[@]}
-  _fetchpkg repo-tools ${FLIST_REPO_TOOLS[@]}
+  cd "$srcdir/PKGDIR"
+  _pick_ libalpm ${FLIST_LIBALPM[@]}
+  _pick_ pacman ${FLIST_PACMAN[@]}
+  _pick_ makepkg ${FLIST_MAKEPKG[@]}
+  _pick_ repo-tools ${FLIST_REPO_TOOLS[@]}
 }
 
 package_libalpm()
