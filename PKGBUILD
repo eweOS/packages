@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=eww
-pkgver=0.5.0
+pkgver=0.6.0
 #_pkgver=0.4.0
 pkgrel=1
 pkgdesc="A standalone widget system for wayland made in Rust"
@@ -11,7 +11,7 @@ license=(MIT)
 makedepends=(rust-nightly git)
 depends=(gtk3 gtk-layer-shell)
 source=("git+$url#tag=v$pkgver")
-md5sums=('SKIP')
+md5sums=('81548cfc83962830a10128597bd7b19c')
 
 #pkgver() {
 #  cd ${pkgname}
