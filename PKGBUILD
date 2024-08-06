@@ -3,7 +3,7 @@
 
 pkgname=lz4
 epoch=1
-pkgver=1.9.4
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Extremely fast compression algorithm'
 arch=(x86_64 aarch64 riscv64)
@@ -13,20 +13,6 @@ makedepends=('git')
 depends=('musl')
 source=("git+https://github.com/lz4/lz4.git#tag=v$pkgver")
 sha256sums=('SKIP')
-
-prepare()
-{
-  cd $pkgname
-  # apply patch from the source array (should be a pacman feature)
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    [[ $src = *.patch ]] || continue
-    msg2 "Applying patch $src..."
-    patch -Np1 < "../$src"
-  done
-}
 
 build()
 {
