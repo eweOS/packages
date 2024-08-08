@@ -5,7 +5,7 @@ pkgname=(
   ca-certificates-mozilla
 )
 pkgbase=nss
-pkgver=3.102.1
+pkgver=3.103
 pkgrel=1
 pkgdesc="Network Security Services"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
@@ -31,7 +31,7 @@ source=(
   bundle.sh
   certdata2pem.py
 )
-sha256sums=('SKIP'
+sha256sums=('25fb7c4f9639548f6b4ccc9c31f68fc00a287475004d1b7518dfdad83ae3523a'
             'd78b83d7f80dcbcfceb91716a6cf0e3f388a984a5b295d0a9dc69417bc7f9825'
             'f64282fbc8e73de51f88f41e5175d211a63a1a3e1cbf12512a8b9e229ad9d259'
             '142861cf04942c141e7a6d0d39a30b6d4b57f13f27d21bfa90c6abcd5d34de60')
