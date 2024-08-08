@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=firefox
-pkgver=128.0
-pkgrel=2
+pkgver=129.0
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64 aarch64 riscv64)
@@ -38,7 +38,7 @@ source=(
   distribution.ini
   visibility.patch
 )
-sha256sums=('65271ffefb235ea1e162a081f2074a0f06fce27b2f613f573c126ba8eef95172'
+sha256sums=('4b9ff955de7099f09aa1f00985e34695fa1a911e56c2d46cb4d60c3bff3d9174'
             '7307e32b1b553d43a3f739d5e684d9a32c45f5d7db017860c568984a420f5bb1'
             '84c490d8314fcc2b37ade636d6ae8467980c07caa351c65d06bf71a65ba01d9d'
             '18a0f1df76834ac3d4ddb150aa857785df641b54f9fbf0cfb6ffcec64dad72d4'
