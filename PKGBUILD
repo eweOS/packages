@@ -2,7 +2,7 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=googletest
-pkgver=1.15.0
+pkgver=1.15.2
 pkgrel=1
 pkgdesc='C++ testing utility based on the xUnit framework'
 url='https://github.com/google/googletest'
@@ -13,7 +13,7 @@ makedepends=('python' 'cmake' 'llvm-libs' 'sh')
 optdepends=('python: gmock generator')
 provides=('gmock' 'gtest')
 source=($url/archive/refs/tags/v${pkgver}.tar.gz)
-sha512sums=('1a623022f932925b7dc3e557c14cc81c5edc0631ca92cc94b5f80968c5ad38003880282129b71a99e4ee56d7204db71a156f5af12d79021cfad4417c2f80cc4b')
+sha512sums=('9046841044a2bf7edfd96854ad9c44ffae4fcb9fb59a075b367507c0762a98eb32cb6968d46663228272e26321e96f4dd287c95baa22c6af9bad902b8b6ede4e')
 
 build()
 {
