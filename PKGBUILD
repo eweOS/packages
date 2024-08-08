@@ -1,9 +1,9 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=at-spi2-core
-pkgver=2.52.0
+pkgver=2.53.1
 _gittag='AT_SPI2_CORE_2_52_0'
-pkgrel=2
+pkgrel=1
 pkgdesc="Protocol definitions and daemon for D-Bus at-spi"
 url="https://gitlab.gnome.org/GNOME/at-spi2-core"
 arch=(x86_64 aarch64 riscv64)
