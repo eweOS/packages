@@ -5,7 +5,7 @@ pkgname=(
   libxslt
   libxslt-docs
 )
-pkgver=1.1.40
+pkgver=1.1.42
 pkgrel=1
 pkgdesc="XML stylesheet transformation library"
 url="https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home"
@@ -25,13 +25,10 @@ checkdepends=(
 )
 source=(
   "git+https://gitlab.gnome.org/GNOME/libxslt.git#tag=v$pkgver"
-  fix-libxml2-test.patch
 )
-sha256sums=('SKIP'
-            'efaf91c7c8a6b0101ae993858af199b42260ec415b7869e3c03e45d554c3d722')
+sha256sums=('088acc3837fe1f995ddf35c8d68e84469ba06a88369af0f82e09c0e0e035514f')
 
 prepare() {
-  _patch_ libxslt
   cd libxslt
   rm tests/REC/test-10-3.* # FIXME: locale issue
   NOCONFIGURE=1 ./autogen.sh
