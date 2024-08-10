@@ -2,7 +2,7 @@
 
 pkgname=waybar
 pkgver=0.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors'
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/Alexays/Waybar/"
