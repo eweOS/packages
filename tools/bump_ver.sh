@@ -27,6 +27,11 @@ declare `grep "^pkgver=.*$" PKGBUILD`
 #Check if pkgver really exists
 (( $pkgver )) 2>/dev/null
 
+if [ `vercmp $pkgver $newpkgver` -ge 0 ]; then
+  echo "error: new pkgver is not greater than original pkgver"
+  exit 1
+fi
+
 sed -i "s/^pkgver=.*$/pkgver=$newpkgver/" PKGBUILD
 
 declare `grep "^pkgrel=.*$" PKGBUILD`
