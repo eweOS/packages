@@ -2,7 +2,7 @@
 
 pkgname=abseil-cpp
 pkgver=20240116.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Abseil Common Libraries (C++).'
 url='https://abseil.io'
 arch=(x86_64 aarch64 riscv64)
