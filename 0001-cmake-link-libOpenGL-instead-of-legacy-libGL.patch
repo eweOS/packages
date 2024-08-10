@@ -1,0 +1,48 @@
+From 59fd229cd834c488f9e0828f9ed8df1424e41240 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Sat, 10 Aug 2024 11:06:12 +0000
+Subject: [PATCH] cmake: link libOpenGL instead of legacy libGL
+
+From cmake documentation, Linux-specific chapter:
+
+  Projects may use the ``OpenGL::GL`` target (or ``OPENGL_LIBRARIES``
+  variable) to use legacy GL interfaces.  These will use the legacy GL
+  library located by ``OPENGL_gl_LIBRARY``, if available.  If
+  ``OPENGL_gl_LIBRARY`` is empty or not found and GLVND is available,
+  the ``OpenGL::GL`` target will use GLVND ``OpenGL::OpenGL`` and
+  ``OpenGL::GLX`` (and the ``OPENGL_LIBRARIES`` variable will use the
+  corresponding libraries).  Thus, for non-EGL-based Linux targets, the
+  ``OpenGL::GL`` target is most portable.
+
+which means linking with OpenGL::GL makes cmake find legacy libGL.so or
+GLX libraries, and as for now, the former contains GLX symbols and cannot
+be built without X libraries. Since we are working with EGL, it wouldn't
+provide extra portability, either.
+
+This patch switches to link aquamarine with modern OpenGL::OpenGL, which
+contains core OpenGL API only, makes it possible to build on a
+wayland-only system. Tested on eweOS, which is a distro without X
+libraries.
+
+Link: https://os.ewe.moe/
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 752e1cf..fc4db31 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -60,7 +60,7 @@ target_include_directories(
+   PRIVATE "./src" "./src/include" "./protocols" "${CMAKE_BINARY_DIR}")
+ set_target_properties(aquamarine PROPERTIES VERSION ${AQUAMARINE_VERSION}
+                                             SOVERSION 2)
+-target_link_libraries(aquamarine OpenGL::EGL OpenGL::GL PkgConfig::deps)
++target_link_libraries(aquamarine OpenGL::EGL OpenGL::OpenGL PkgConfig::deps)
+ 
+ check_include_file("sys/timerfd.h" HAS_TIMERFD)
+ pkg_check_modules(epoll IMPORTED_TARGET epoll-shim)
+-- 
+2.46.0
+
