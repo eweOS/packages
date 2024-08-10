@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ffmpeg
-pkgver=7.0.1
+pkgver=7.0.2
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(x86_64 aarch64 riscv64)
@@ -52,7 +52,7 @@ provides=(
 #_tag=3949db4d261748a9f34358a388ee255ad1a7f0c0
 #source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag})
 source=(https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n$pkgver.tar.gz fix-musl.patch)
-sha256sums=('8dab1da0c7ebccb2dce99265901f22ac40f8e0fbbe4a89a368d7645f2e79caa0'
+sha256sums=('5eb46d18d664a0ccadf7b0adee03bd3b7fa72893d667f36c69e202a807e6d533'
             '2b3cafee6a58afcf768a90acdbd993e3f30728acc39aa72a26981ab6bb774a79')
 
 prepare() {
