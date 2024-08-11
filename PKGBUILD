@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-validate-pyproject
-pkgver=0.16
+pkgver=0.18
 pkgrel=1
 pkgdesc="Validation library and CLI tool for checking on 'pyproject.toml' files using JSON Schema"
 url="https://github.com/abravalheri/validate-pyproject"
@@ -11,7 +11,7 @@ depends=('python-packaging' 'python-fastjsonschema' 'python-trove-classifiers')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
 checkdepends=('python-pytest')
 source=("git+https://github.com/abravalheri/validate-pyproject.git#tag=v$pkgver")
-sha512sums=('SKIP')
+sha512sums=('9316280953db8c6a43f8a2ff3e82f21862ddb998e414f20a59add23a6a7cf9be9571b6f307c4453561dbfdd5691678db7c0090cfc5ddad15fd08c0d3d9dd1c2e')
 
 prepare() {
   cd validate-pyproject
