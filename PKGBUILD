@@ -1,0 +1,30 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgname=python-filelock
+pkgver=3.13.3
+pkgrel=1
+pkgdesc="A platform independent file lock"
+url="https://github.com/benediktschmitt/py-filelock"
+license=('custom:Unlicense')
+arch=('any')
+depends=('python')
+makedepends=('git' 'python-build' 'python-installer' 'python-hatchling' 'python-hatch-vcs')
+checkdepends=('python-pytest' 'python-pytest-timeout' 'python-pytest-mock')
+source=("git+https://github.com/benediktschmitt/py-filelock.git#tag=$pkgver")
+sha512sums=('8a3d9baf75beb1f53cc5d661b9a59970e18483423d3c05a799c330e127406d3866999ad2de09490de60e6a4d74c0cf5d4bc6333164d3961e8a14cf0306210d70')
+
+build() {
+  cd py-filelock
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd py-filelock
+  PYTHONPATH=src pytest tests
+}
+
+package() {
+  cd py-filelock
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+}
