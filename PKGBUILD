@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-lxml
-pkgver=5.2.2
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Python3 binding for the libxml2 and libxslt libraries"
 arch=(x86_64 aarch64 riscv64)
@@ -19,7 +19,7 @@ source=(
   "https://github.com/lxml/lxml/archive/lxml-$pkgver.tar.gz"
   "tests-fix-encoding-name.patch"
 )
-sha512sums=('20b87a2d6e7ac82b6979d6fd18ecd5c224fec6eeee6b69d47a5bf2947ce53e6a517d1b86ab68836a5974f78ce86551ddc2317c1a7255932b418b98dc64d59376'
+sha512sums=('514477bf4c865541233d73f20de816b51d265dbd75c56a0d13779e14527c73e85ca890718d06c08728da228d410459016e9cb8abdad4d03b44a81a04a198fb54'
             'ef5ba4064166443e07040db315173a4d0cb0d83eb3cd49623f210253a25433ec1c408d6d8e538f93498a211bc1695fdaa3e39f8ac75f36a3319c38bd96ba73eb')
 
 prepare() {
