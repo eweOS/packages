@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-babel
-pkgver=2.15.0
+pkgver=2.16.0
 # See the number here
 # https://github.com/python-babel/babel/blob/master/scripts/download_import_cldr.py#L13
 _core=44
@@ -17,7 +17,7 @@ noextract=("cldr-core-$_core.zip")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/python-babel/babel/archive/v$pkgver.tar.gz"
         "cldr-core-$_core.zip::http://unicode.org/Public/cldr/$_core/core.zip"
         "cldr-common-$_core.0.zip::http://unicode.org/Public/cldr/$_core/cldr-common-$_core.0.zip")
-sha256sums=('b7dd3b7f0d4ef54720edc290a5b00229d145e9d1e7306e0ddd0c3ccc28453019'
+sha256sums=('8468baea3e88539548a71973a33522cfded775fd0677f1a74b4a9373b4a1ddde'
             'bd7f70adfe8a999cfa0f5d96145bf0a095b1a099024e4f451fa1afccf6e4aee6'
             'bd7f70adfe8a999cfa0f5d96145bf0a095b1a099024e4f451fa1afccf6e4aee6')
 
