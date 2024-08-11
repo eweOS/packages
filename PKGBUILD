@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-setuptools
-pkgver=69.5.1
+pkgver=72.2.0
 pkgrel=1
 pkgdesc="Easily download, build, install, upgrade, and uninstall Python packages"
 arch=('any')
@@ -20,7 +20,7 @@ source=("git+https://github.com/pypa/setuptools.git#tag=v$pkgver"
         system-validate-pyproject.patch
         add-dependency.patch
         build-no-isolation.patch)
-sha512sums=('SKIP'
+sha512sums=('0afbc655055c884ed838da6fa116aedea868b3a1933de48a096b988335954f8dd39411f2212f56411c1519efd7dac00a5a2f2ce40dada99fe5608a991544af20'
             '84e78d3fb129f939a046afec3302adfeb7db9f0d7598a519e611572f61602eeb918e13dad62cf37a744757497e43181db4128791a3af302fd00b7f1d37dbcb78'
             'f2dbdf501f1bbcd3b375f3b4930481ee6c3900213192dbd7f272fd93f09f926560cb606cbb8c8dca128d5170b57716948308cd864ab280329049f76564e485f1'
             '1bc856933de9b51f6313f5fc16ee0e96b72b48e5def71fdc568dd6812f3f80b3ad088bf37d0e4be288bec74518c4e1468537a4e178cc7acbb4343b32763c7914')
