@@ -1,7 +1,7 @@
 # Maintainer: YukariChiba <i@0x7f.cc>
 
 pkgname="hyprland"
-pkgver=0.41.2
+pkgver=0.42.0
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(x86_64 aarch64 riscv64)
@@ -25,6 +25,8 @@ depends=(
   hyprcursor
   hyprutils
   glslang
+  aquamarine
+  libxcurcommon-compat
 )
 makedepends=(
   git
@@ -59,6 +61,4 @@ build() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-  # hyprland does not support using system wlroots
-  rm -r $pkgdir/usr/lib
 }
