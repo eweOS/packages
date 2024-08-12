@@ -1,9 +1,9 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=krb5
-pkgver=1.21.1
+pkgver=1.21.3
 _pkgvermajor=${pkgver%.*}
-pkgrel=3
+pkgrel=1
 pkgdesc='The Kerberos network authentication system'
 url='https://web.mit.edu/kerberos/'
 arch=(x86_64 aarch64 riscv64)
@@ -28,7 +28,7 @@ backup=(
 )
 options=('!emptydirs')
 source=(https://web.mit.edu/kerberos/dist/krb5/${_pkgvermajor}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('6f04216b0a151d6a9886bf009777bc95a7d3f9bcab30427cc8bbef3357e0130748c1d42b477be0eb2d469d9e0fb65bf5ac5ff05c22d6e1046795e161fe6afbcc')
+sha512sums=('87bc06607f4d95ff604169cea22180703a42d667af05f66f1569b8bd592670c42820b335e5c279e8b4f066d1e7da20f1948a1e4def7c5d295c170cbfc7f49c71')
 
 prepare()
 {
