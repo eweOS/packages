@@ -25,7 +25,7 @@ description = "eweOS rust %RUSTVER%"
 rpath = false
 backtrace-on-ice = true
 remap-debuginfo = true
-jemalloc = true
+jemalloc = false
 musl-root = "/usr"
 llvm-libunwind = "system"
 # LLVM crashes when passing an object through ThinLTO twice.  This is triggered
