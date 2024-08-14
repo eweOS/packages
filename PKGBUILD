@@ -3,7 +3,7 @@
 pkgname=(linux linux-headers)
 _basename=linux
 pkgver=6.10.4
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64)
 url='http://www.kernel.org'
 license=(GPL-2.0-only)
@@ -63,7 +63,7 @@ package_linux()
     modules_install
 
   local modulesdir="`find $pkgdir/usr/lib/modules/ -maxdepth 1 -mindepth 1 | head -n 1`"
-  install -Dm644 "$(make -s image_name ARCH=${build_arch})" "$modulesdir/vmlinuz"
+  install -Dm644 "$(make -s image_name ARCH=${build_arch} | sed 's/.gz$//')" "$modulesdir/vmlinuz"
 
   rm -f "$modulesdir/build"
   rm -f "$modulesdir/source"
