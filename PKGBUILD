@@ -3,7 +3,7 @@
 pkgbase=rust
 pkgname=(rust rust-nightly)
 pkgver=1.80.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=(x86_64 aarch64 riscv64)
 url='https://www.rust-lang.org/'
@@ -12,11 +12,15 @@ options=(!lto)
 source=(
   https://static.rust-lang.org/dist/rustc-$pkgver-src.tar.gz
   config.toml.tpl
-  musl-static.patch
+  0001-musl-static.patch
+  0002-disable-no-default-libraries.patch
+  0003-drop-latomic-on-riscv-and-elsewhere.patch
 )
 sha256sums=('6f606c193f230f6b2cae4576f7b24d50f5f9b25dff11dbf9b22f787d3521d672'
-            '97c624740418a120c94736ca871dd5d298c1744a0627a398ab120ccbb4638229'
-            'e36b2a8dbcaccb27ae0ac113168bd57bee10610106df2dcbfce1e3f095e75795')
+	    '97c624740418a120c94736ca871dd5d298c1744a0627a398ab120ccbb4638229'
+	    'e36b2a8dbcaccb27ae0ac113168bd57bee10610106df2dcbfce1e3f095e75795'
+	    'f9340dde4ba5ed44b21f36de3605994fc32fbeaf24234a1036b162c1ee94b58d'
+	    '4e97142adb70f0ac3bdbc0b5d93bdb509808c8493e2421217d0b15f8e95f8ca5')
 
 depends=(musl llvm-libs musl-static curl libssh2 openssl)
 makedepends=(rust llvm libffi perl python cmake ninja)

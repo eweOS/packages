@@ -1,0 +1,12 @@
+diff --git a/compiler/rustc_target/src/spec/base/linux_musl.rs b/compiler/rustc_target/src/spec/base/linux_musl.rs
+index e375eca..f7a0f05 100644
+--- a/compiler/rustc_target/src/spec/base/linux_musl.rs
++++ b/compiler/rustc_target/src/spec/base/linux_musl.rs
+@@ -9,5 +9,7 @@ pub fn opts() -> TargetOptions {
+     // These targets statically link libc by default
+     base.crt_static_default = false;
+ 
++    base.no_default_libraries = false;
++
+     base
+ }
