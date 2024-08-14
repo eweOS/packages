@@ -2,7 +2,7 @@
 
 pkgname=librsvg
 pkgver=2.58.2
-pkgrel=1
+pkgrel=2
 pkgdesc="SVG rendering library"
 url="https://wiki.gnome.org/Projects/LibRsvg"
 arch=(x86_64 aarch64 riscv64)
@@ -42,6 +42,7 @@ build() {
   )
 
   cd librsvg-$pkgver
+  export LDFLAGS="$LDFLAGS -lunwind"
   ./configure "${configure_options[@]}"
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
   make
