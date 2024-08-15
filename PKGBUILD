@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=bubblewrap
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Unprivileged sandboxing tool'
 url='https://github.com/projectatomic/bubblewrap'
@@ -13,14 +13,10 @@ depends=(
 makedepends=(
   git
   meson
+  linux-headers
 )
 source=("git+$url#tag=v$pkgver")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
-}
+sha256sums=('96245c818e9533927863ba1cec173fdbd3dd9759e86861aaee843bb90c4fd0d7')
 
 build() {
   ewe-meson $pkgname build -D selinux=disabled -D man=disabled
