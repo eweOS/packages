@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=flatpak
-pkgver=1.15.8
+pkgver=1.15.10
 pkgrel=1
 pkgdesc="Linux application sandboxing and distribution framework (formerly xdg-app)"
 url="https://flatpak.org"
@@ -37,36 +37,15 @@ checkdepends=(
 )
 source=(
   "git+https://github.com/flatpak/flatpak#tag=$pkgver"
-  git+https://gitlab.gnome.org/GNOME/libglnx.git
-  git+https://github.com/projectatomic/bubblewrap
-  git+https://github.com/flatpak/xdg-dbus-proxy
-  git+https://gitlab.gnome.org/alexl/variant-schema-compiler.git
   https://dl.flathub.org/repo/flathub.flatpakrepo
   flatpak-bindir.sh
 )
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
+sha256sums=('b2692a6d61daca8a01a6872bd66a66e6199b0e657a2c231feeeda8e142f8b827'
             '3371dd250e61d9e1633630073fefda153cd4426f72f4afa0c3373ae2e8fea03a'
             '1824cb4eb1cc88702cb2b9f1c55b6dfdf20fca5eab83f6e8e532099281328745')
 
-pkgver() {
-  cd flatpak
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-}
-
 prepare() {
   cd flatpak
-
-  git submodule init
-  git submodule set-url subprojects/libglnx "$srcdir/libglnx"
-  git submodule set-url subprojects/bubblewrap "$srcdir/bubblewrap"
-  git submodule set-url subprojects/dbus-proxy "$srcdir/xdg-dbus-proxy"
-  git submodule set-url subprojects/variant-schema-compiler "$srcdir/variant-schema-compiler"
-  git -c protocol.file.allow=always submodule update
-
   # FIXME: package python-pyparsing
   pip install pyparsing
 }
