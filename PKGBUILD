@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=cups-filters
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="OpenPrinting CUPS Filters"
 arch=(x86_64 aarch64 riscv64)
@@ -10,9 +10,9 @@ license=('custom')
 depends=('libcups'
          'libcupsfilters'
          'libppd')
-makedepends=('ghostscript')
+makedepends=('ghostscript' 'linux-headers')
 source=(https://github.com/OpenPrinting/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz)
-sha256sums=('b5152e3dd148ed73835827ac2f219df7cf5808dbf9dbaec2aa0127b44de800d8')
+sha256sums=('39e71de3ce06762b342749f1dc7cba6817738f7bf4d322c1bb9ab10b8569ab80')
 
 prepare() {
   cd "$pkgname"-$pkgver
