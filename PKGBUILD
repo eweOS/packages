@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=glib
-pkgver=2.81.1
+pkgver=2.81.2
 _pkgver_major=${pkgver%.*}
 pkgrel=1
 pkgdesc="Low-level core library that forms the basis for projects such as GTK+ and GNOME"
@@ -16,7 +16,7 @@ source=(
   glib-compile-schemas.hook
   0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
 )
-sha256sums=('629365cde729a7b76b062fc218a109a84bbc4668ca0c92ab590ecccf969f824c'
+sha256sums=('ce84b241b84750a3d42c78c456976fac57f2d2726a110f2ba059c052a4349d1c'
             'e42404979cc47959a3e560bf6f6c52b9fc90e1566ebb9b5cafb29d7f4cb4fe5f'
             '7f8ee5db60987f0d0feba84643e1cf988c98a294a681fb8d4fce1a5b2c25d1d3')
 
