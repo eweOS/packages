@@ -1,0 +1,6 @@
+type = process
+command = /usr/bin/in.tftpd -L -l $/TFTPD_ARGS $/TFTPD_DIR
+env-file = /etc/conf.d/tftpd.conf
+depends-on = network.target
+before = login.target
+log-type = buffer
