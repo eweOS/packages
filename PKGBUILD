@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libei
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Library for Emulated Input"
 url="https://libinput.pages.freedesktop.org/libei/"
@@ -34,7 +34,8 @@ source=(
   "git+https://gitlab.freedesktop.org/libinput/libei.git#tag=$pkgver"
   "git+https://github.com/nemequ/munit.git"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('fbce70e474671c00d36861a3f11f0140c63643346f22fd6f0f40f41cf916f25c'
+            'SKIP')
 
 prepare() {
   cd libei
