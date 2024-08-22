@@ -4,7 +4,7 @@ pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang wasi-libc++ wasi-libc++ab
 _realpkgname=llvm-project
 pkgver=18.1.8
 _binutilsver=2.42
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64' 'riscv64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -28,7 +28,7 @@ makedepends=(
 source=(
   "https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz"
   "https://mirrors.tuna.tsinghua.edu.cn/gnu/binutils/binutils-${_binutilsver}.tar.xz"
-  wasi-toolchain.cmake::https://raw.githubusercontent.com/WebAssembly/wasi-sdk/main/wasi-sdk.cmake
+  wasi-toolchain.cmake::https://raw.githubusercontent.com/WebAssembly/wasi-sdk/fef66e3d2319d8360825dcba1cf23061f5313c11/wasi-sdk.cmake
   llvm-install-prefix.patch
   0001-clang-force-libc-linked-with-no-as-needed-when-using.patch
   backport-fix-wayfire-lambda-instantiation.patch
@@ -36,7 +36,7 @@ source=(
 )
 sha256sums=('0b58557a6d32ceee97c8d533a59b9212d87e0fc4d2833924eb6c611247db2f2a'
             'f6e4d41fd5fc778b06b7891457b3620da5ecea1006c6a4a41ae998109f85a800'
-            '22a5ee26eb8367ac9d35a9431f4ac0a8e64dcb372bfd55be8665d35200d70917'
+            '5e58f02fe01ea22ea0406e4250ad89a053d517ef103a1dacfade4ecd98a7f2bc'
             'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94'
             '57808d224fd9218a936e6669bf4129eaf4aa04fbd45ab9f7fd5a20efc304e307'
             'a25dacfebddbbc0e07c4b479d7e1e9c4cc2cc12f4689a95721dc773003101460'
@@ -163,7 +163,7 @@ build()
     -DLLVM_BUILD_LLVM_DYLIB=ON
     -DLLVM_LINK_LLVM_DYLIB=ON
     -DLLVM_INCLUDE_BENCHMARKS=OFF
-    -DLLVM_TARGETS_TO_BUILD="X86;AArch64;RISCV;WebAssembly;AMDGPU"
+    -DLLVM_TARGETS_TO_BUILD="X86;AArch64;RISCV;LoongArch;WebAssembly;AMDGPU"
     -DLIBCXX_HAS_MUSL_LIBC=ON
     -DLIBCXX_USE_COMPILER_RT=ON
     -DLIBCXX_INCLUDE_TESTS=OFF
