@@ -2,7 +2,7 @@
 
 pkgname=supertux
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A classic 2D jump'n'run sidescroller game in a style similar to the original SuperMario games"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/supertux/supertux"
