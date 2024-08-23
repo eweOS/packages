@@ -1,0 +1,45 @@
+From f68c69b6cbc1260a6034997d5f146e3d0a197ed8 Mon Sep 17 00:00:00 2001
+From: Xiongchuan Tan <xc-tan@outlook.com>
+Date: Jun 28 2022 15:53:38 +0000
+Subject: As of June 28th, 2022, the RISC-V spec[1] reserves the PTE permission bit
+
+combination of "write+!read", and the kernel would have incoherent behavior in
+the last test case of "harness/cases/5.t". Since it leads to undefined behavior,
+until further spec update, this test case should be disabled for RISC-V.
+
+A patch to disallow such permission in mmap() can be found here[2].
+
+[1]: https://github.com/riscv/riscv-isa-manual/releases/download/Priv-v1.12/riscv-privileged-20211203.pdf
+[2]: https://www.spinics.net/lists/kernel/msg4412421.html
+
+---
+
+diff --git a/harness/cases/5.t b/harness/cases/5.t
+index b0a7c56..8d6c959 100644
+--- a/harness/cases/5.t
++++ b/harness/cases/5.t
+@@ -37,6 +37,14 @@ int test_main(void)
+ 	status |= attempt_rw(rwfd, buf, SIZE,  0,  READ, -EFAULT);
+ 
+ 	res = munmap(buf, page_size);			assert(res == 0);
++
++	/* As of  June 28th, 2022,  the RISC-V spec Volume 2 Section 4.3
++	 * version "20211203 Privileged Architecture v1.12, Ratified"
++	 * reserves the usage of  the PTE permission bit combination  of
++	 * "write+!read",   so the next test leads to undefined behavior
++	 * and should be disabled. */
++#ifndef __riscv
++
+ 	buf = mmap(0, page_size, PROT_WRITE, MAP_SHARED, rwfd, 0);
+ 	assert(buf != (char *)-1);
+ 
+@@ -48,6 +56,8 @@ int test_main(void)
+ 	status |= attempt_rw(rwfd, buf, SIZE,  0,  READ, SIZE);
+ 	status |= attempt_rw(rwfd, buf, SIZE,  0, WRITE, res);
+ 
++#endif
++
+ 	return status;
+ }
+ 
+
