@@ -2,7 +2,7 @@
 
 pkgname=supertuxkart
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Kart racing game featuring Tux and his friends'
 arch=(x86_64 aarch64 riscv64)
 url='https://supertuxkart.net'
