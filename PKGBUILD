@@ -5,7 +5,7 @@
 
 pkgname=bottom
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical process/system monitor"
 arch=(x86_64 aarch64 riscv64)
 url="https://github.com/ClementTsang/bottom"
@@ -18,7 +18,7 @@ sha512sums=('79359181d04434bd85496392dd15eb737bc33441a0d8984b15c3caf26e60efb08d9
 prepare()
 {
   cd "$pkgname-$pkgver"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$RUSTHOST"
 }
 
 build()
