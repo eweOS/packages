@@ -5,7 +5,7 @@
 pkgbase=pacman
 pkgname=(libalpm pacman repo-tools)
 pkgver=6.1.0
-pkgrel=4
+pkgrel=5
 arch=(x86_64 aarch64 riscv64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
@@ -25,7 +25,7 @@ source=(
 )
 sha256sums=('cb98c8574e4f2b0d488418e11d20ab7b4a3f20e3110d83381cc94a4c55d277cf'
             '0865036ef04a06b00926640ac7db2275988b834f435101e8110eedf8a2e58b88'
-            '1e059d75f80dc82b7e1bf76fd3c62f0c21ebc6a499fde19806467461d895172e'
+            'd4f10271ed2cff01438623bbc05f58a09de3610bab07ee8413bb5ef0221cbc04'
             '6338de233368bfa76ee17353785709e282ace072eae6996c1289f0fb5b84ffc4'
             'd99d4fe5e414cb4748f4e9b20637d9fd69ec8c392e3f862edbc69b6564a52876'
             '7d2ad28bef8f9f77f33929d2050244a6f29941de6ad0793b6820caee3dbd84e3'
@@ -79,8 +79,13 @@ build()
     aarch64) makepkg_cflags+=" -march=armv8-a" ;;
     riscv64) makepkg_cflags+=" -march=rv64gc" ;;
   esac
+  case $CARCH in
+    riscv64) makepkg_rustarch="riscv64gc" ;;
+    *) makepkg_rustarch="${CARCH}"
+  esac
   sed -i ./makepkg.conf \
-    -e "s|@@BUILD_GEN_CFLAGS@@|$makepkg_cflags|g"
+    -e "s|@@BUILD_GEN_CFLAGS@@|$makepkg_cflags|g" \
+    -e "s|@@BUILD_GEN_RUSTARCH@@|$makepkg_rustarch|g"
 
   if [ "$CARCH" == "riscv64" ]; then
     # disable lto since for riscv gold is not ready
