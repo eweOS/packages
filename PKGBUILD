@@ -3,7 +3,7 @@
 pkgbase=ReGreet
 pkgname=greetd-regreet
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Clean and customizable greeter for greetd'
 url="https://github.com/rharish101/$pkgbase"
 license=(GPL3)
@@ -17,7 +17,7 @@ sha256sums=('a658c91cdf242dfea814f0bfd0c4d877bd39e3af498d36e5024061e3d07ea76b'
 
 prepare() {
   cd $pkgbase-$pkgver
-  cargo fetch --locked --target "$CARCH-unknown-linux-musl"
+  cargo fetch --locked --target "$RUSTHOST"
 }
 
 build() {
