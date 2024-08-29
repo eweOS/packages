@@ -3,7 +3,7 @@
 pkgbase=hyfetch
 pkgname=(hyfetch neowofetch)
 pkgver=1.4.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Neofetch with LGBTQ+ pride flags!"
 arch=('any')
 url='https://github.com/hykilpikonna/hyfetch'
@@ -28,7 +28,7 @@ build() {
 }
 
 package_hyfetch() {
-  depends=(python-typing_extensions)
+  depends=(python-setuptools python-typing_extensions)
 
   cd "${pkgbase}-${pkgver}"
   cp -r $srcdir/pkgdir/* $pkgdir/
