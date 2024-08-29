@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libdrm
-pkgver=2.4.122
+pkgver=2.4.123
 pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services"
 url="https://dri.freedesktop.org/"
@@ -11,8 +11,8 @@ depends=('libpciaccess')
 checkdepends=('cairo')
 makedepends=('meson' 'linux-headers')
 source=(https://dri.freedesktop.org/$pkgname/$pkgname-$pkgver.tar.xz COPYING)
-sha256sums=('d9f5079b777dffca9300ccc56b10a93588cdfbc9dde2fae111940dfb6292f251'
-	    '9631d4f694952e3e6ae5a05534c2e93e994e47d3413677a3a00e45c8cef6db93')
+sha256sums=('a2b98567a149a74b0f50e91e825f9c0315d86e7be9b74394dae8b298caadb79e'
+            '9631d4f694952e3e6ae5a05534c2e93e994e47d3413677a3a00e45c8cef6db93')
 
 build()
 {
