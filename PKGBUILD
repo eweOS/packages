@@ -13,18 +13,14 @@ license=(LGPL-2.1-or-later)
 depends=(llvm-libs glib2 musl libcap libelf)
 makedepends=(meson samurai glib2 gobject-introspection libdrm python-gobject
 	     bash-completion rust
-	# gst-plugins-base
 	     alsa-lib libopus libogg pango libvorbis iso-codes libglvnd mesa
 	     wayland-protocols
-	# gst-plugins-good
 	     nasm cairo libflac gdk-pixbuf gtk3 libjpeg libpng libpulse
 	     qt6-base qt6-wayland qt6-tools qt6-shadertools libvpx
-	# gst-plugins-bad
 	     vulkan-headers libdrm shaderc linux-headers libva
 	     libaom libbz2 curl fluidsynth gsm libopus libsndfile libxml2
 	     libsrt libwebp x265 openal-soft openexr libjpeg librsvg
 	     vulkan-icd-loader libass lcms2 openjpeg2
-	# gst-devtools
 	     json-glib ffmpeg)
 
 source=("https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/$pkgver/gstreamer-$pkgver.tar.gz")
