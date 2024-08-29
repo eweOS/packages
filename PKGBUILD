@@ -11,7 +11,7 @@ pkgname=(
   vulkan-mesa-layers
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
-pkgver=24.1.5
+pkgver=24.2.1
 pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm')
@@ -58,7 +58,7 @@ source=(
   0025-vulkan-runtime-Split-vk_object_list-into-separate-fi.patch
   0100-gl-without-glx.patch
 )
-sha512sums=('5916cc38c4a17161b012310c473077177887c5fff1bc5cb1f6efdf5da44878c18c99fe0c62318d897798cd4edb0f7206a989198ba085c2d402d49cdd0ee25288'
+sha512sums=('3b77e5faec51b67583131123b0cc010b52325ea308e4075323102aa999d9c9fbb65b873eb537ed4f577b5a0811e7f096e7e101510cb50326ea5c439b4b468380'
             'fd8801a3affe714aeb17b795b50151f93bd9d7648ba7e5c32fd3d7e2f253bd7f7ca1f2e24d6cca3daa2da36d40228fff7458a2fe68bfd3c1c34c648c0f4bcbf6'
             '6fce93fc3f2036dc30581540279d800c683f5eee14a9afb5d192fa20b192901a07da489cac378e243d10c330985ae13e5b899e0575e9c47a288c396f7cc41faf'
             'f4815f731af3ee5991444269775d5fccba3443d7e7f3b84552f58f2e1c60ae71d629f16ba4fc5cdfbfa2f322b3ee7f5a64ecbc1208dc973b16c7990b80b066ca'
