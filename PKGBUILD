@@ -1,25 +1,26 @@
-# Maintainer:
+# Maintainer: Yao Zi
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgbase=openldap
 pkgname=('libldap' 'openldap')
-pkgver=2.6.3
+pkgver=2.6.7
 pkgrel=1
 arch=(x86_64 aarch64 riscv64)
+pkgdesc='Implementaton of Lightweight Directory Access Protocol (LDAP)'
 url="https://www.openldap.org/"
 license=('custom')
-makedepends=('cyrus-sasl' 'e2fsprogs' 'util-linux-libs' 'chrpath' 'unixodbc' 'libsodium' 'libltdl' 'mandoc-soelim' 'libxcrypt' 'libldap')
+makedepends=('cyrus-sasl' 'e2fsprogs' 'util-linux-libs' 'chrpath' 'unixodbc'
+	     'libsodium' 'libltdl' 'mandoc-soelim' 'libxcrypt' 'libldap'
+	     'openssl' 'perl')
 options=('!makeflags' 'emptydirs')
 source=(
   https://www.openldap.org/software/download/OpenLDAP/openldap-release/${pkgbase}-${pkgver}.tgz
   openldap.tmpfiles
   openldap.sysusers
-  Add-UNIX_LINK_LIBS-Makefile.patch
   remove_la_references.patch)
-sha256sums=('d2a2a1d71df3d77396b1c16ad7502e674df446e06072b0e5a4e941c3d06c0d46'
+sha256sums=('cd775f625c944ed78a3da18a03b03b08eea73c8aabc97b41bb336e9a10954930'
             '0be46138e53ff2fa6d4b4c06bfbdd2100426e0bd2ed29bf3419ade6b5974e9a0'
             'bb6a9af3b5cce594b2e737b641d2edfa327fde63c85a26c824fd2246e0839de5'
-            'ce8e66ac525c4261c998c1041f8cb126933eb767fcc8b7e61c6e7707e7d17420'
             '3fe777e3f38a602e5b5ca3cb5b68b4fb6c6346c7bdaf7f9c08a9b70a61c0d211')
 options=(!lto)
 
@@ -35,7 +36,6 @@ prepare()
 {
   cd ${pkgbase}-${pkgver}
 
-  patch -p1 < $srcdir/Add-UNIX_LINK_LIBS-Makefile.patch
   patch -p1 < $srcdir/remove_la_references.patch
   # change perms from 0644 to 0755
   sed -i 's|-m 644 $(LIBRARY)|-m 755 $(LIBRARY)|' libraries/{liblber,libldap}/Makefile.in
@@ -101,7 +101,7 @@ check()
 package_libldap()
 {
   pkgdesc="Lightweight Directory Access Protocol (LDAP) client libraries"
-  depends=('e2fsprogs' 'libxcrypt') # add libsasl later!
+  depends=('e2fsprogs' 'libxcrypt' 'openssl') # add libsasl later!
   backup=('etc/openldap/ldap.conf')
 
   cd ${pkgbase}-${pkgver}
@@ -126,7 +126,8 @@ package_libldap()
 package_openldap()
 {
   pkgdesc="Lightweight Directory Access Protocol (LDAP) client and server"
-  depends=("libldap>=${pkgver}" 'libltdl' 'unixodbc' 'perl' 'libsodium')
+  depends=("libldap>=${pkgver}" 'libltdl' 'unixodbc' 'perl' 'libsodium'
+  	   'openssl')
   backup=('etc/openldap/slapd.conf' 'etc/openldap/slapd.ldif')
 
   cd ${pkgbase}-${pkgver}
