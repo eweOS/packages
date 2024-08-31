@@ -7,7 +7,7 @@ pkgname=(
   libgirepository
 )
 pkgver=1.80.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Introspection system for GObject-based libraries"
 url="https://wiki.gnome.org/Projects/GObjectIntrospection"
 arch=(x86_64 aarch64 riscv64)
@@ -30,14 +30,6 @@ source=(
 )
 sha256sums=('SKIP')
 
-prepare() {
-  cd $pkgbase
-  if [ "$CARCH" == "riscv64" ]; then
-    # will stuck at 'Generating tests/generate_typelib' when building on rv64
-    sed -i "s@subdir('tests')@warning('Skip tests')@g" meson.build
-  fi
-}
-  
 build() {
   local meson_options=(
     -D gtk_doc=false
