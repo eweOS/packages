@@ -2,7 +2,7 @@
 
 pkgname=telegram-desktop
 pkgver=5.2.3
-pkgrel=5
+pkgrel=6
 pkgdesc='Official Telegram Desktop client.'
 url='https://desktop.telegram.org/'
 arch=(x86_64 aarch64)
