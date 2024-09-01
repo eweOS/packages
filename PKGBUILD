@@ -2,7 +2,7 @@
 
 pkgname=re2
 _re2ver=2024-05-01
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgver=${_re2ver//-/}
 pkgdesc="Fast, safe, thread-friendly regular expression engine"
