@@ -2,7 +2,7 @@
 
 pkgname=('flac' 'libflac')
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 url='https://www.xiph.org/flac/'
 depends=('musl')
 source=("https://ftp.osuosl.org/pub/xiph/releases/flac/flac-${pkgver}.tar.xz")
@@ -34,6 +34,7 @@ check()
 package_libflac()
 {
   depends=('musl')
+  provides=('libFLAC.so' 'libFLAC++.so')
   license=('BSD')
   fakepkg=${srcdir}/pkg
   mkdir -p ${pkgdir}/usr/share/
