@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=cairo
-pkgver=1.18.0
+pkgver=1.18.2
 pkgrel=1
 pkgdesc="2D graphics library with support for multiple output devices"
 url="https://cairographics.org/"
@@ -12,7 +12,7 @@ source=(
 )
 depends=(libpng fontconfig pixman glib)
 makedepends=(meson)
-sha256sums=('39a78afdc33a435c0f2ab53a5ec2a693c3c9b6d2ec9783ceecb2b94d54d942b0')
+sha256sums=('7bbfb469b89b1f60584b4f39a1366789b7625a5796905870e108b6c0e8ca8216')
 
 build()
 {
