@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=limine
-pkgver=7.13.2
-pkgrel=2
+pkgver=8.0.7
+pkgrel=1
 pkgdesc="An advanced, portable, multiprotocol bootloader"
 arch=(x86_64 aarch64 riscv64)
 url="https://limine-bootloader.org/"
@@ -11,16 +11,14 @@ makedepends=('nasm' 'lld' 'mtools')
 optdepends=('efibootmgr: efi entries managing for limine-install')
 source=(
   "https://github.com/limine-bootloader/limine/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
-  limine.cfg
   limine-mkconfig
   limine.defaults
   limine.conf
   limine-install
 )
-sha256sums=('f7066b5edad58c2ff157b487c10bf756ad662fd39759127a02406486743fd636'
-            '0dae8d8ee6bc3a563afc8d47939ed0e8e77916620fbfdfd2e15dd662bfd87326'
-            'a5e1cd8bcd925c60428adb757dc371a317a97ad0f51506ec73404d0d7f1e8d99'
-            'e9cee335f19ddfe723537fed9170a52b2490495fbb2c54c4469f4b7c7c5f717d'
+sha256sums=('1f3f5c44b7064810a3fee8028847cb9748dbf63efeb6eb616946d554a7c88525'
+            '4133cca3df6955b27e47e71400b5748e40a7dc3f3d4eaa664a7257d001ff9fdb'
+            'b1d39bd3cc56b4d033f2ffe3c6f1eda8cbb0eb4788626e5041fcb56fa961ea86'
             'f722aacb1e5865489483c14b950900998241fe6558e58875b1119579ef91a5e0'
             '996416f738c981e2d04af00407adb7bc1e95a5acc5b11f65595d202cd6420290')
 
@@ -39,7 +37,6 @@ package() {
   cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-  install -Dm 644 $srcdir/limine.cfg "$pkgdir/usr/share/limine/limine.cfg"
   install -Dm 755 $srcdir/limine-mkconfig "$pkgdir/usr/bin/limine-mkconfig"
   install -Dm 755 $srcdir/limine-install "$pkgdir/usr/bin/limine-install"
   install -Dm 644 $srcdir/limine.defaults "$pkgdir/etc/default/limine"
