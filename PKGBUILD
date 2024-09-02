@@ -3,13 +3,14 @@
 pkgname=sqlite
 _srcver=3460000
 pkgver=3.46.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library that implements an SQL database engine"
 arch=(x86_64 aarch64 riscv64)
 license=('custom:Public Domain')
 url="https://www.sqlite.org/"
 makedepends=('readline' 'zlib')
 depends=('readline' 'zlib')
+provides=('sqlite3' 'libsqlite3.so')
 options=('!emptydirs')
 source=("https://sqlite.org/2024/sqlite-autoconf-${_srcver}.tar.gz")
 sha256sums=('6f8e6a7b335273748816f9b3b62bbdc372a889de8782d7f048c653a447417a7d')
