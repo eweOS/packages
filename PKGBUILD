@@ -1,16 +1,16 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libpcap
-pkgver=1.10.4
+pkgver=1.10.5
 pkgrel=1
 pkgdesc='A system-independent interface for user-level packet capture'
 arch=(x86_64 aarch64 riscv64)
 url='https://www.tcpdump.org/'
-license=(BSD)
+license=(BSD-3-Clause)
 depends=(musl libnl)
-makedepends=(flex bison)
+makedepends=(flex bison linux-headers)
 source=("https://www.tcpdump.org/release/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ed19a0383fad72e3ad435fd239d7cd80d64916b87269550159d20e47160ebe5f')
+sha256sums=('37ced90a19a302a7f32e458224a00c365c117905c2cd35ac544b6880a81488f0')
 
 build()
 {
