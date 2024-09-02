@@ -2,7 +2,7 @@
 
 pkgname=dbus
 pkgver=1.15.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(x86_64 aarch64 riscv64)
@@ -17,6 +17,10 @@ source=(
   dbus-user-session
   dbus.tmpfiles
   dbus.sysusers
+)
+provides=(
+  libdbus
+  libdbus-1.so
 )
 sha256sums=('3ae23cd28b96beac175eab0798d65c8e21e9fcf57132d840c170aaa7b21cd818'
             '5d134f6d22600337e0b577c53213d6dc9dddd83de8dcd17f8c56f632f76ed654'
