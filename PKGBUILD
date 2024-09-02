@@ -1,16 +1,32 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=pipewire
+pkgbase=pipewire
+pkgname=(
+  pipewire libpipewire
+)
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64 aarch64 riscv64)
 license=(MIT)
-depends=('dbus' 'libudev' 'libsndfile' 'libusb' 'libpulse' 'alsa-lib' 'glib')
-makedepends=('meson' 'linux-headers')
+makedepends=(
+  'meson'
+  'linux-headers'
+  'dbus'
+  'libudev'
+  'libsndfile'
+  'libusb'
+  'libpulse'
+  'alsa-lib'
+  'glib'
+)
+checkdepends=(
+  desktop-file-utils
+  openal
+)
 source=(
-  "https://gitlab.freedesktop.org/pipewire/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+  "https://gitlab.freedesktop.org/pipewire/${pkgbase}/-/archive/${pkgver}/${pkgbase}-${pkgver}.tar.gz"
   pipewire.user.service
   pipewire-pulse.user.service
   pipewire.conf.in
@@ -22,7 +38,7 @@ sha256sums=('f2645dda4294a46b58727bf81352f13180be232e74ff7fccbc44f30d31fa4766'
 
 prepare()
 {
-  cp pipewire.conf.in $pkgname-$pkgver/src/daemon/pipewire.conf.in
+  cp pipewire.conf.in $pkgbase-$pkgver/src/daemon/pipewire.conf.in
 }
 
 build()
@@ -30,7 +46,6 @@ build()
   local features=(
     -D man=disabled
     -D docs=disabled
-    -D tests=disabled
     -D gstreamer=disabled
     -D gstreamer-device-provider=disabled
     -D systemd=disabled
@@ -66,13 +81,35 @@ build()
     -D udevrulesdir=/usr/lib/udev/rules.d
   )
 
-  ewe-meson $pkgname-$pkgver build \
+  ewe-meson $pkgbase-$pkgver build \
     "${features[@]}"
   meson compile -C build
 }
 
-package()
+check() {
+  meson test -C build --print-errorlogs
+}
+
+_pwname=pipewire-0.3
+_spaname=spa-0.2
+
+package_pipewire()
 {
+  license+=(
+    # libspa-alsa
+    LGPL-2.1-or-later
+  )
+  depends+=(
+    "libpipewire=$epoch:$pkgver-$pkgrel"
+    'dbus'
+    'libudev'
+    'libsndfile'
+    'libusb'
+    'libpulse'
+    'alsa-lib'
+    'glib'
+  )
+
   meson install -C build --destdir "$pkgdir"
 
   # ALSA configuration
@@ -92,5 +129,25 @@ package()
 
   _dinit_install_user_services_ $srcdir/pipewire.user.service $srcdir/pipewire-pulse.user.service
 
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $pkgname-$pkgver/COPYING
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $pkgbase-$pkgver/COPYING
+
+  cd $pkgdir
+  
+  # Replace copies with symlinks
+  for _f in pipewire-{aes67,avb,pulse}; do
+    cmp usr/bin/pipewire usr/bin/$_f
+    ln -sf pipewire usr/bin/$_f
+  done
+
+  _pick_ lib usr/include/{$_pwname,$_spaname}
+  _pick_ lib usr/lib/lib$_pwname.so*
+  _pick_ lib usr/lib/pkgconfig/lib{$_pwname,$_spaname}.pc
+}
+
+package_libpipewire() {
+  pkgdesc+=" - client library"
+  provides=(lib$_pwname.so)
+  mv pkgs/lib/* "$pkgdir"
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $pkgbase-$pkgver/COPYING
 }
