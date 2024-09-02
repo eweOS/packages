@@ -2,17 +2,16 @@
 
 pkgname=pacman-contrib
 pkgver=1.10.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Contributed scripts and tools for pacman systems'
 arch=(x86_64 aarch64 riscv64)
-url=https://gitlab.archlinux.org/pacman/pacman-contrib
+url="https://gitlab.archlinux.org/pacman/pacman-contrib"
 license=('GPL-2.0-or-later')
-depends=('pacman')
+depends=('pacman' 'libalpm')
 makedepends=('git' 'asciidoc')
 optdepends=(
   'diffutils: for pacdiff'
   'fakeroot: for checkupdates'
-  'findutils: for pacdiff --find'
   'mlocate: for pacdiff --locate'
   'perl: for pacsearch'
   'sudo: privilege elevation for several scripts'
@@ -22,12 +21,12 @@ source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
-  cd $pkgname
+  cd "$pkgname"
   ./autogen.sh
 }
 
 build() {
-  cd $pkgname
+  cd "$pkgname"
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -36,12 +35,12 @@ build() {
 }
 
 check() {
-  cd $pkgname
+  cd "$pkgname"
   make check
 }
 
 package() {
-  cd $pkgname
+  cd "$pkgname"
   make DESTDIR="$pkgdir" install
-  rm -r $pkgdir/usr/lib/systemd
+  rm -r "$pkgdir"/usr/lib/systemd
 }
