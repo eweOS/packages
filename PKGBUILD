@@ -2,7 +2,7 @@
 
 pkgname=mpd
 pkgver=0.23.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Flexible, powerful, server-side application for playing music"
 arch=(x86_64 aarch64 riscv64)
 url="https://www.musicpd.org/"
@@ -105,7 +105,7 @@ package() {
     icu libicui18n.so libicuuc.so
     lame libmp3lame.so
     libogg libogg.so
-    libpipewire libpipewire-0.3.so
+    pipewire
     libpulse libpulse.so
     libsamplerate libsamplerate.so
     libsndfile libsndfile.so
