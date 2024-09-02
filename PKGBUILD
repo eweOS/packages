@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wayland
-pkgver=1.23.0
+pkgver=1.23.1
 pkgrel=1
 pkgdesc='A computer display server protocol'
 arch=(x86_64 aarch64 riscv64)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('musl' 'libffi' 'expat' 'libxml2')
 makedepends=('meson')
 source=("https://gitlab.freedesktop.org/wayland/$pkgname/-/releases/$pkgver/downloads/$pkgname-$pkgver.tar.xz")
-sha256sums=('05b3e1574d3e67626b5974f862f36b5b427c7ceeb965cb36a4e6c2d342e45ab2')
+sha256sums=('864fb2a8399e2d0ec39d56e9d9b753c093775beadc6022ce81f441929a81e5ed')
 
 build()
 {
