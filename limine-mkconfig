@@ -27,8 +27,8 @@ cat /etc/default/limine > $CFGOUT
 
 function render_advgroup() {
   cat <<EOF >> $CFGOUT
-:${PRETTY_NAME} ${BUILD_ID} ($pkgbase $kernelver) (Advanced Boot Options)
-    COMMENT=Advanced Boot Options for ${PRETTY_NAME} ${BUILD_ID} ($pkgbase $kernelver)
+/${PRETTY_NAME} ${BUILD_ID} ($pkgbase $kernelver) (Advanced Boot Options)
+    comment: Advanced Boot Options for ${PRETTY_NAME} ${BUILD_ID} ($pkgbase $kernelver)
 EOF
 }
 
@@ -47,24 +47,21 @@ function render_menu() {
     fi
     if [ "$MENULEVEL" == "1" ]; then
       cat <<EOF >> $CFGOUT
-:${PRETTY_NAME} ${BUILD_ID} ($MENUTITLE)
-    COMMENT=${PRETTY_NAME} ${BUILD_ID} ($MENUTITLE)
-    PROTOCOL=linux
-    KERNEL_PATH=boot:///vmlinuz-${pkgbase}
-    KERNEL_CMDLINE=$LIMINE_KERNEL_CMDLINE_COMMON $CMDLINE
-    MODULE_PATH=boot:///initramfs-${pkgbase}.img
+/${PRETTY_NAME} ${BUILD_ID} ($MENUTITLE)
 EOF
     fi
     if [ "$MENULEVEL" == "2" ]; then
       cat <<EOF >> $CFGOUT
-    ::${PRETTY_NAME} ${BUILD_ID} ($MENUTITLE)
-        COMMENT=${PRETTY_NAME} ${BUILD_ID} ($MENUTITLE)
-        PROTOCOL=linux
-        KERNEL_PATH=boot:///vmlinuz-${pkgbase}
-        KERNEL_CMDLINE=$LIMINE_KERNEL_CMDLINE_COMMON $CMDLINE
-        MODULE_PATH=boot:///initramfs-${pkgbase}.img
+//${PRETTY_NAME} ${BUILD_ID} ($MENUTITLE)
 EOF
     fi
+    cat <<EOF >> $CFGOUT
+    comment: ${PRETTY_NAME} ${BUILD_ID} ($MENUTITLE)
+    protocol: linux
+    kernel_path: boot():/vmlinuz-${pkgbase}
+    kernel_cmdline: $LIMINE_KERNEL_CMDLINE_COMMON $CMDLINE
+    module_path: boot():/initramfs-${pkgbase}.img
+EOF
   fi
 }
 

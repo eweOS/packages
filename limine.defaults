@@ -1,2 +1,2 @@
-DEFAULT_ENTRY=1
-TIMEOUT=5
+default_entry: 1
+timeout: 5
