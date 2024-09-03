@@ -1,0 +1,13 @@
+diff --git a/programs/explorer/desktop.c b/programs/explorer/desktop.c
+index fb59258..61f7ce0 100644
+--- a/programs/explorer/desktop.c
++++ b/programs/explorer/desktop.c
+@@ -38,7 +38,7 @@ WINE_DEFAULT_DEBUG_CHANNEL(explorer);
+ #define DESKTOP_CLASS_ATOM ((LPCWSTR)MAKEINTATOM(32769))
+ #define DESKTOP_ALL_ACCESS 0x01ff
+ 
+-static const WCHAR default_driver[] = {'m','a','c',',','x','1','1',0};
++static const WCHAR default_driver[] = {'w', 'a', 'y', 'l', 'a', 'n', 'd',0};
+ 
+ static BOOL using_root = TRUE;
+ 
