@@ -1,0 +1,53 @@
+From 6f3e86820102b0b68377275b5be52685cdce243b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?R=C3=A9mi=20Bernon?= <rbernon@codeweavers.com>
+Date: Sun, 25 Aug 2024 18:24:47 +0200
+Subject: [PATCH] opengl32: Add missing WOW64 process_attach unixlib entry.
+
+Wine-Bug: https://bugs.winehq.org/show_bug.cgi?id=57103
+Fixes: e64f35368e8ee831a968a1e5999dfeb227e2d3be
+---
+ dlls/opengl32/make_opengl   | 1 +
+ dlls/opengl32/unix_thunks.c | 1 +
+ include/wine/wgl_driver.h   | 2 +-
+ 3 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/dlls/opengl32/make_opengl b/dlls/opengl32/make_opengl
+index cbdc88f31d4..17ca200572e 100755
+--- a/dlls/opengl32/make_opengl
++++ b/dlls/opengl32/make_opengl
+@@ -1305,6 +1305,7 @@ foreach (sort keys %ext_functions)
+ 
+ print OUT "\nconst unixlib_entry_t __wine_unix_call_wow64_funcs[] =\n";
+ print OUT "{\n";
++print OUT "    process_attach,\n";
+ print OUT "    wow64_thread_attach,\n";
+ print OUT "    wow64_process_detach,\n";
+ print OUT "    wow64_get_pixel_formats,\n";
+diff --git a/dlls/opengl32/unix_thunks.c b/dlls/opengl32/unix_thunks.c
+index b8b4e5fb908..19510d9f527 100644
+--- a/dlls/opengl32/unix_thunks.c
++++ b/dlls/opengl32/unix_thunks.c
+@@ -92294,6 +92294,7 @@ extern NTSTATUS wow64_ext_wglQueryRendererStringWINE( void *args );
+ 
+ const unixlib_entry_t __wine_unix_call_wow64_funcs[] =
+ {
++    process_attach,
+     wow64_thread_attach,
+     wow64_process_detach,
+     wow64_get_pixel_formats,
+diff --git a/include/wine/wgl_driver.h b/include/wine/wgl_driver.h
+index 2d0c2f562ab..9a0e08f7eed 100644
+--- a/include/wine/wgl_driver.h
++++ b/include/wine/wgl_driver.h
+@@ -7,7 +7,7 @@
+ #define WINE_GLAPI
+ #endif
+ 
+-#define WINE_WGL_DRIVER_VERSION 26
++#define WINE_WGL_DRIVER_VERSION 27
+ 
+ struct wgl_context;
+ struct wgl_pbuffer;
+-- 
+GitLab
+
