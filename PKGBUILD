@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=spirv-tools
-_pkgver=2024.1
-_headerver=1.3.280.0
+_pkgver=2024.3
+_headerver=1.3.290.0
 pkgver=${_pkgver}+${_headerver}
 pkgrel=1
 pkgdesc="API and commands for processing SPIR-V modules"
@@ -13,7 +13,7 @@ depends=('llvm-libs')
 makedepends=('cmake' 'python' 'ninja' 'spirv-headers')
 source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v${_pkgver}.tar.gz")
 #source=("https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/sdk-${_headerver}.tar.gz")
-sha256sums=('137780e2a8b5c722888f9ec0fb553e6e92f38a0a5c7fcdad9b715152448b9d82')
+sha256sums=('3961edff3410599112a50bfcda2d4a828f7cb12e8294ee0f6169976ef0532b83')
 
 build()
 {
