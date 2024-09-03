@@ -5,7 +5,7 @@ pkgname=(gstreamer gstreamer-devel
 	 gst-plugins-base gst-plugins-good gst-plugins-bad
 	 gst-libav)
 pkgver=1.24.7
-pkgrel=1
+pkgrel=3
 pkgdesc='GStreamer multimedia framework'
 url='https://gstreamer.freedesktop.org/'
 arch=(x86_64 aarch64 riscv64)
@@ -16,7 +16,7 @@ makedepends=(meson samurai glib2 gobject-introspection libdrm python-gobject
 	     alsa-lib libopus libogg pango libvorbis iso-codes libglvnd mesa
 	     wayland-protocols
 	     nasm cairo libflac gdk-pixbuf gtk3 libjpeg libpng libpulse
-	     qt6-base qt6-wayland qt6-tools qt6-shadertools libvpx
+	     qt6-base qt6-wayland qt6-tools qt6-shadertools libvpx lame
 	     vulkan-headers libdrm shaderc linux-headers libva
 	     libaom libbz2 curl fluidsynth gsm libopus libsndfile libxml2
 	     libsrt libwebp x265 openal-soft openexr libjpeg librsvg
@@ -45,7 +45,6 @@ build () {
 		-Dgst-plugins-good:amrnb=disabled
 		-Dgst-plugins-good:amrwbdec=disabled
 		-Dgst-plugins-good:dv=disabled		# missing libdv
-		-Dgst-plugins-good:lame=disabled	# missing libmp3lame
 		-Dgst-plugins-good:libcaca=disabled	# missing libcaca
 		-Dgst-plugins-good:mpg123=disabled	# missing mpg123
 		-Dgst-plugins-good:qt-x11=disabled
@@ -245,7 +244,7 @@ avi,cutter,debug,navigationtest,deinterlace,dtmf,effectv,equalizer,flv,flxdec,\
 goom,goom2k1,icydemux,id3demux,imagefreeze,interleave,isomp4,alaw,mulaw,level,\
 matroska,monoscope,multifile,multipart,replaygain,rtp,rtpmanager,rtsp,\
 shapewipe,smpte,spectrum,udp,videobox,videocrop,videofilter,videomixer,wavenc,\
-wavparse,xingmux,y4menc}.so*
+wavparse,xingmux,y4menc,lame}.so*
 	_pick_ gst-plugins-good \
 		usr/lib/gstreamer-1.0/libgst{\
 adaptivedemux2,cairo,flac,gdkpixbuf,gtk,jpeg,png,pulseaudio,qml6,vpx}.so
@@ -310,7 +309,8 @@ package_gst-plugins-good() {
 		 gst-plugins-base="$pkgver-$pkgrel")
 	depends+=(libflac libglvnd qt6-base qt6-declarative at-spi2-core libbz2
 		  llvm-libs musl cairo libgcrypt gtk3 gdk-pixbuf glib harfbuzz
-		  libjpeg pango libpng libpulse libvpx wayland libxml2 zlib-ng)
+		  libjpeg pango libpng libpulse libvpx wayland libxml2 zlib-ng
+		  lame)
 	do_install
 }
 
