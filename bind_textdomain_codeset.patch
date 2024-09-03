@@ -1,0 +1,25 @@
+From 9705102e6d6e2ec5493a641ff56af61947735049 Mon Sep 17 00:00:00 2001
+From: Yukari Chiba <i@0x7f.cc>
+Date: Tue, 3 Sep 2024 16:23:47 +0800
+Subject: [PATCH] returns codeset in bind_textdomain_codeset
+
+---
+ libintl/libintl.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/libintl/libintl.c b/libintl/libintl.c
+index 0851fac..381b9d6 100644
+--- a/libintl/libintl.c
++++ b/libintl/libintl.c
+@@ -73,8 +73,9 @@ char *bind_textdomain_codeset(const char *domainname, const char *codeset)
+ {
+ 	if (!domainname || !*domainname || (codeset && strcasecmp(codeset, "UTF-8"))) {
+ 		errno = EINVAL;
++		return NULL;
+ 	}
+-	return NULL;
++	return codeset;
+ }
+ 
+ /* trick configure tests checking for gnu libintl, as in the copy included in gdb */
+
