@@ -2,7 +2,7 @@
 
 pkgname=waylyrics
 pkgver=0.3.13
-pkgrel=1
+pkgrel=2
 pkgdesc="the furry way to show desktop lyrics"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://waylyrics.github.io/waylyrics/waylyrics/"
@@ -21,6 +21,8 @@ options=(!lto)
 sha256sums=('a4145c0a068564e9b69830f14e3e22234462eb2308d79eba232e92395af0747d')
 optdepends=('xdg-desktop-portal: file dialog to import LRC')
 
+_features='mimalloc tray-icon i18n import-lyric i18n-local-lyric'
+
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
@@ -31,13 +33,13 @@ build() {
     export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/$pkgname/themes"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --release --frozen --all-targets --all-features
+    cargo build --release --frozen --all-targets --no-default-features --features="${_features}"
 }
 check() {
     cd "$srcdir/$pkgname-$pkgver"
     export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/$pkgname/themes"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --release --frozen --all-features
+    cargo test --release --frozen --no-default-features --features="${_features}"
 }
 package() {
     depends+=("hicolor-icon-theme")
