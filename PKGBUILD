@@ -5,7 +5,7 @@ pkgname=(gstreamer gstreamer-devel
 	 gst-plugins-base gst-plugins-good gst-plugins-bad
 	 gst-libav)
 pkgver=1.24.7
-pkgrel=3
+pkgrel=4
 pkgdesc='GStreamer multimedia framework'
 url='https://gstreamer.freedesktop.org/'
 arch=(x86_64 aarch64 riscv64)
@@ -17,7 +17,7 @@ makedepends=(meson samurai glib2 gobject-introspection libdrm python-gobject
 	     wayland-protocols
 	     nasm cairo libflac gdk-pixbuf gtk3 libjpeg libpng libpulse
 	     qt6-base qt6-wayland qt6-tools qt6-shadertools libvpx lame
-	     vulkan-headers libdrm shaderc linux-headers libva
+	     vulkan-headers libdrm shaderc linux-headers libva libsoup3
 	     libaom libbz2 curl fluidsynth gsm libopus libsndfile libxml2
 	     libsrt libwebp x265 openal-soft openexr libjpeg librsvg
 	     vulkan-icd-loader libass lcms2 openjpeg2
@@ -52,7 +52,6 @@ build () {
 		-Dgst-plugins-good:dv1394=disabled	# missing libavc1394
 							# libiec61883
 		-Dgst-plugins-good:shout2=disabled
-		-Dgst-plugins-good:soup=disabled
 		-Dgst-plugins-good:speex=disabled
 		-Dgst-plugins-good:taglib=disabled
 		-Dgst-plugins-good:twolame=disabled
@@ -244,7 +243,7 @@ avi,cutter,debug,navigationtest,deinterlace,dtmf,effectv,equalizer,flv,flxdec,\
 goom,goom2k1,icydemux,id3demux,imagefreeze,interleave,isomp4,alaw,mulaw,level,\
 matroska,monoscope,multifile,multipart,replaygain,rtp,rtpmanager,rtsp,\
 shapewipe,smpte,spectrum,udp,videobox,videocrop,videofilter,videomixer,wavenc,\
-wavparse,xingmux,y4menc,lame}.so*
+wavparse,xingmux,y4menc,lame,soup}.so*
 	_pick_ gst-plugins-good \
 		usr/lib/gstreamer-1.0/libgst{\
 adaptivedemux2,cairo,flac,gdkpixbuf,gtk,jpeg,png,pulseaudio,qml6,vpx}.so
@@ -310,7 +309,7 @@ package_gst-plugins-good() {
 	depends+=(libflac libglvnd qt6-base qt6-declarative at-spi2-core libbz2
 		  llvm-libs musl cairo libgcrypt gtk3 gdk-pixbuf glib harfbuzz
 		  libjpeg pango libpng libpulse libvpx wayland libxml2 zlib-ng
-		  lame)
+		  lame libsoup3)
 	do_install
 }
 
