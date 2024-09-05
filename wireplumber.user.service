@@ -1,0 +1,5 @@
+type = process
+command = wireplumber
+log-type = buffer
+depends-on = pipewire
+smooth-recovery = true

@@ -6,7 +6,7 @@ pkgname=(
   libwireplumber
 )
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Session / policy manager implementation for PipeWire"
 url="https://pipewire.pages.freedesktop.org/wireplumber/"
 arch=(x86_64 aarch64 riscv64)
@@ -20,8 +20,9 @@ makedepends=(
   python-packaging
 )
 checkdepends=(pipewire)
-source=("https://gitlab.freedesktop.org/pipewire/$pkgbase/-/archive/$pkgver/$pkgbase-$pkgver.tar.gz")
-sha256sums=('49075cd5c2f4820839a9e69d4a22386bc280c62b92c153af9be39ca439d45a09')
+source=("https://gitlab.freedesktop.org/pipewire/$pkgbase/-/archive/$pkgver/$pkgbase-$pkgver.tar.gz" wireplumber.user.service)
+sha256sums=('49075cd5c2f4820839a9e69d4a22386bc280c62b92c153af9be39ca439d45a09'
+            'd5f6bd4cd0cf6dcf8476c92aba3ea3d4443092d6f433196b854734311d114d76')
 
 build()
 {
@@ -63,8 +64,11 @@ package_wireplumber()
     _pick_ libw usr/share/gir-1.0
   )
 
+  _dinit_install_user_services_ $srcdir/wireplumber.user.service
+
   install -Dt "$pkgdir/usr/share/doc/$pkgname" -m644 $pkgbase-$pkgver/{NEWS,README}*
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $pkgbase-$pkgver/LICENSE
+
+  _install_license_ $pkgbase-$pkgver/LICENSE
 }
 
 package_libwireplumber()
@@ -72,5 +76,5 @@ package_libwireplumber()
   pkgdesc+=" - client library"
   depends=(glib pipewire)
   mv pkgs/libw/* "$pkgdir"
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $pkgbase-$pkgver/LICENSE
+  _install_license_ $pkgbase-$pkgver/LICENSE
 }
