@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sudo
-pkgver=1.9.15
-pkgrel=3
+pkgver=1.9.16
+pkgrel=1
 pkgdesc='Tool for delegating authority to users and groups.'
 arch=(x86_64 aarch64 riscv64)
 url='http://www.sudo.ws/'
@@ -14,7 +14,7 @@ backup=('etc/sudo.conf'
         'etc/sudo_logsrvd.conf'
         'etc/sudoers')
 source=("http://www.sudo.ws/sudo/dist/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('fd0e254870e92e873b508ba16382f5ac3af81a5a38d1ea9cf973606db4262589')
+sha256sums=('c0d84d797f06b732fc573d0b798ae83128c2bc33052057f05b560ec6bcbfa03d')
 
 _features=(
   --enable-static=false
