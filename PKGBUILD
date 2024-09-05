@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=weston
-pkgver=13.0.94
+pkgver=14.0.0
 pkgrel=1
 pkgdesc='Reference implementation of a Wayland compositor'
 arch=(x86_64 aarch64 riscv64)
@@ -11,7 +11,7 @@ depends=('musl' 'wayland' 'libxkbcommon' 'libinput' 'pixman'
   'libdrm' 'cairo' 'libpng' 'mesa' 'dbus' 'pam' 'seatd' 'libdisplay-info')
 makedepends=('wayland-protocols' 'meson' 'ninja' 'linux-headers')
 source=("https://gitlab.freedesktop.org/wayland/${pkgname}/-/releases/$pkgver/downloads/${pkgname}-$pkgver.tar.xz")
-sha256sums=('77d6b9dff7657362ba58f9af521d214f135024ff389546d718a2a34d40236f18')
+sha256sums=('47fd0325b0b948e9b003a38fdf4eb3a8581f3fdc740b8932b35ae8793bf4e4a5')
 
 _features=(
   -Dimage-jpeg=false
