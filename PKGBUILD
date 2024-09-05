@@ -4,7 +4,7 @@
 pkgbase=wlroots0.17
 pkgname=(wlroots0.17-devel wlroots0.17)
 pkgver=0.17.4
-pkgrel=3
+pkgrel=4
 license=('MIT')
 url='https://gitlab.freedesktop.org/wlroots/wlroots'
 arch=(x86_64 aarch64 riscv64)
@@ -35,8 +35,7 @@ package_wlroots0.17-devel() {
 }
 
 package_wlroots0.17() {
-    conflicts=('wlroots')
-    provides=('libwlroots.so.12' 'wlroots')
+    provides=('libwlroots.so.12')
     pkgdesc='Modular Wayland compositor library'
     depends=('libdrm' 'libinput' 'seatd' 'libudev-zero' 'libxkbcommon' 'libgles'
              'libegl' 'pixman' 'wayland' 'libdisplay-info')
