@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b735f07..9d422ae 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -114,7 +114,7 @@ if (TG_OWT_USE_PIPEWIRE)
+     find_package(PkgConfig REQUIRED)
+     pkg_check_modules(GBM REQUIRED gbm)
+     pkg_check_modules(DRM REQUIRED libdrm)
+-    pkg_check_modules(GL REQUIRED gl)
++    pkg_check_modules(GL REQUIRED opengl)
+     pkg_check_modules(EGL REQUIRED egl)
+ 
+     target_include_directories(tg_owt SYSTEM
