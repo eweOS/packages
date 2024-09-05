@@ -1,0 +1,33 @@
+From dfa704f1c5eeb7c82363c9024cc00498fab57329 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Fri, 6 Sep 2024 05:24:48 +0000
+Subject: [PATCH] remove -no-undefined from plugins' LDFLAGS
+
+connman plugins always have undefined symbols in the result dynamic
+library, which are santisfied when they are loaded into the connman
+daemon.
+
+GNU libtool simply ignores -no-undefined, but slibtool complaints about
+it.
+
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ Makefile.plugins | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.plugins b/Makefile.plugins
+index bd5049e..df7169a 100644
+--- a/Makefile.plugins
++++ b/Makefile.plugins
+@@ -1,7 +1,7 @@
+ 
+ plugin_cflags = -fvisibility=hidden -I$(srcdir)/gdbus \
+ 					@DBUS_CFLAGS@ @GLIB_CFLAGS@
+-plugin_ldflags = -no-undefined -module -avoid-version
++plugin_ldflags = -module -avoid-version
+ 
+ if LOOPBACK
+ builtin_modules += loopback
+-- 
+2.46.0
+
