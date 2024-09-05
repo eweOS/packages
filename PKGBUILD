@@ -15,8 +15,8 @@ pkgname=(qemu-common
 	 qemu-tests
 	 qemu-guest-agent
 	) # TODO: split firmwares
-pkgver=9.0.2
-pkgrel=2
+pkgver=9.1.0
+pkgrel=1
 pkgdesc='A generic and open source machine emulator and virtualizer.'
 url='https://www.qemu.org/'
 arch=(x86_64 aarch64 riscv64)
@@ -32,7 +32,7 @@ qemu_archs=(aarch64 alpha arm i386 loongarch64 m68k mips mips64 mips64el
 	    mipsel ppc ppc64 riscv32 riscv64 s390x sparc sparc64 x86_64)
 source=("https://download.qemu.org/qemu-$pkgver.tar.xz"
 	"0001-meson.build-fix-libgcrypt-detection-on-system-withou.patch")
-sha256sums=('a8c3f596aece96da3b00cafb74baafa0d14515eafb8ed1ee3f7f5c2d0ebf02b6'
+sha256sums=('816b7022a8ba7c2ac30e2e0cf973e826f6bcc8505339603212c5ede8e94d7834'
             'cf99d2c77df7b3bc9c972e9974c4e11b7771800a29804f8d6a46c4a9640ae3a1')
 # TODO: enable (static) user targets
 
