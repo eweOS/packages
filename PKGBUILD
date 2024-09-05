@@ -1,8 +1,8 @@
 # Maintainer : Yukari Chiba <i@0x7f.cc>
 
 pkgname=connman
-pkgver=1.42
-pkgrel=4
+pkgver=1.43
+pkgrel=1
 pkgdesc="Intel's modular network connection manager"
 url="https://01.org/connman"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -15,7 +15,7 @@ source=(
   musl-res-ninit.patch
   connman.service
 )
-sha256sums=('a3e6bae46fc081ef2e9dae3caa4f7649de892c3de622c20283ac0ca81423c2aa'
+sha256sums=('1257cebe327e7900b7e2b84c0fb330aa90815e455898cd2f941f4308ed2be3bc'
             '9b006bcf19c461d298d61ee8015263063197c7480c0bf629b9c7ad34bcffbb53'
             '75ef31a644b8c7c2d33a728a022c811f6f3ddff5e5b0667a25840d61e133042d')
 options=(emptydirs)
