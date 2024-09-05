@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sdl2
-pkgver=2.30.6
+pkgver=2.30.7
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -13,7 +13,7 @@ makedepends=('alsa-lib' 'mesa' 'libpulse' 'wayland' 'libxkbcommon'
              'wayland-protocols' 'meson' 'ninja' 'pipewire'
 	     'linux-headers')
 source=("https://github.com/libsdl-org/SDL/releases/download/release-${pkgver}/SDL2-${pkgver}.tar.gz")
-sha256sums=('c6ef64ca18a19d13df6eb22df9aff19fb0db65610a74cc81dae33a82235cacd4')
+sha256sums=('2508c80438cd5ff3bbeb8fe36b8f3ce7805018ff30303010b61b03bb83ab9694')
 
 build() {
   cmake -S SDL2-${pkgver} -B build -G Ninja \
