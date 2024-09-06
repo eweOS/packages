@@ -2,7 +2,7 @@
 
 pkgname=hyprpicker
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A wlroots-compatible Wayland color picker that does not suck."
 arch=(x86_64 aarch64 riscv64)
 url="https://github.com/hyprwm/hyprpicker"
@@ -14,12 +14,11 @@ makedepends=('cmake'
              'libjpeg'
              'ninja'
              'pango'
-             'wayland-protocols'
-             'wlroots')
+	     'wayland-protocols')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	"0001-cmake-use-CXX_STANDARD-instead-of-a-flag.patch")
 sha256sums=('a443188ef7619be48c9992ea208121772b7e1da6662d672c650e30e159eeb891'
-	    '69543b77de140263ad9d45b2d3b87ddfedce64009fd9c89b64908f13a94f12bd')
+            '69543b77de140263ad9d45b2d3b87ddfedce64009fd9c89b64908f13a94f12bd')
 
 prepare() {
 	_patch_ "$pkgname-$pkgver"
