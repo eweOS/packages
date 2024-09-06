@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg
 pkgver=7.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(x86_64 aarch64 riscv64)
 url=https://ffmpeg.org/
@@ -31,6 +31,7 @@ depends=(
   libvpx
   soxr
   fontconfig
+  openssl
 )
 makedepends=(
   clang
@@ -76,6 +77,7 @@ build() {
     --enable-fontconfig \
     --enable-gmp \
     --disable-gnutls \
+    --enable-openssl \
     --enable-gpl \
     --disable-ladspa \
     --disable-libaom \
