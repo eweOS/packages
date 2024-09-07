@@ -5,8 +5,8 @@ pkgname=(
   wireplumber
   libwireplumber
 )
-pkgver=0.5.5
-pkgrel=2
+pkgver=0.5.6
+pkgrel=1
 pkgdesc="Session / policy manager implementation for PipeWire"
 url="https://pipewire.pages.freedesktop.org/wireplumber/"
 arch=(x86_64 aarch64 riscv64)
@@ -21,7 +21,7 @@ makedepends=(
 )
 checkdepends=(pipewire)
 source=("https://gitlab.freedesktop.org/pipewire/$pkgbase/-/archive/$pkgver/$pkgbase-$pkgver.tar.gz" wireplumber.user.service)
-sha256sums=('49075cd5c2f4820839a9e69d4a22386bc280c62b92c153af9be39ca439d45a09'
+sha256sums=('ce7b7217d880bed1438e408ea412716a259cb46b09f597bfd652a577dc60185c'
             'd5f6bd4cd0cf6dcf8476c92aba3ea3d4443092d6f433196b854734311d114d76')
 
 build()
@@ -54,6 +54,7 @@ package_wireplumber()
     lua54
     pipewire
   )
+  provides=(pipewire-session-manager)
   meson install -C build --destdir "$pkgdir"
   (
     cd "$pkgdir"
