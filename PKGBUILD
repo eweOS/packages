@@ -1,7 +1,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=texinfo
-pkgver=7.1
+pkgver=7.1.1
 pkgrel=1
 pkgdesc='GNU documentation system for on-line information and printed output'
 arch=(x86_64 aarch64 riscv64)
@@ -10,7 +10,7 @@ license=(GPL3)
 groups=(base-devel)
 depends=(ncurses perl sh musl)
 source=("https://ftp.gnu.org/pub/gnu/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('deeec9f19f159e046fdf8ad22231981806dac332cc372f1c763504ad82b30953')
+sha256sums=('31ae37e46283529432b61bee1ce01ed0090d599e606fc6a29dca1f77c76a6c82')
 
 build()
 {
