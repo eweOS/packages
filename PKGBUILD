@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=glad
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc='Multi-Language Vulkan/GL/GLES/EGL/GLX/WGL Loader-Generator based on the official specs'
 url='https://github.com/Dav1dde/glad'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-jinja' 'python-lxml' 'python-setuptools')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=(${url}/archive/refs/tags/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('ad7e0544fdd07ba7e091ed8a985deb27f05affb0a830b8132d7c03d6690b57139b25433303260e3affba7b11c0dad38358fcd4ff5b7b30e7ca193e8beed8db48')
+sha512sums=('6aae5e36acd319913f3c313da2a552d3033f7acbfd38fd07da99e737a23eaf250091134d82eceaf106aaa26bdd9f3a95b64dea635d5a82010e4d9a0ba69fc0e1')
 
 build() {
   cd ${pkgname}-${pkgver}
