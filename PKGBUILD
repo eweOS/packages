@@ -11,7 +11,7 @@ pkgname=(
   vulkan-mesa-layers
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
-pkgver=24.2.1
+pkgver=24.2.2
 pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm')
@@ -32,7 +32,7 @@ source=(
   https://mesa.freedesktop.org/archive/$pkgbase-$pkgver.tar.xz
   0001-gl-without-glx.patch
 )
-sha512sums=('3b77e5faec51b67583131123b0cc010b52325ea308e4075323102aa999d9c9fbb65b873eb537ed4f577b5a0811e7f096e7e101510cb50326ea5c439b4b468380'
+sha512sums=('d9979f7a1ae7bfeb0658d1b6c9021b7d0043c3ca71db9deaa2fc8a3d4c07cd58497b9233737a31fb66ef711a369a859757a63fb86c2aadd859867f9a4eaf16a9'
             '83bf8b305713a22c9732a0a72be5eab3f75abf469a547043e6a78f662c5247dc051971565c9be91b2af85948980e677ccb48ac9ca6b25afe6fd8380510c4310e')
 
 prepare()
