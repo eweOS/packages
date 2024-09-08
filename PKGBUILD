@@ -2,7 +2,7 @@
 
 pkgname=python-jaraco.text
 # https://github.com/jaraco/jaraco.text/blob/main/NEWS.rst
-pkgver=3.12.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='Module for text manipulation'
 arch=('any')
@@ -13,12 +13,13 @@ makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python-w
 checkdepends=('python-pytest')
 conflicts=('python-jaraco')
 replaces=('python-jaraco')
-source=("https://files.pythonhosted.org/packages/source/j/jaraco.text/jaraco.text-$pkgver.tar.gz")
-sha512sums=('75068006c96dae3b8d21228f2ae21820939c68b1fb7e5db35bd0c1126a20399eb4d99c6bea15e88076599956c4b41104558cd32d860d8f4fd4e96aeeb22711c9')
+source=("https://github.com/jaraco/jaraco.text/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=('b818731b5e74f8d1a2feacee87ba20ca401f9a3aab74e6d642e3ac224b6b80aee541de064cf79cac7334fb7c13505b9b8aa08afa5e7f3697973505a2f3a8b664')
 
 build() {
   cd "$srcdir/jaraco.text-$pkgver"
-  python -m build --wheel --no-isolation
+  SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver" \
+    python -m build --wheel --no-isolation
 }
 
 check() {
