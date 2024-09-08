@@ -1,41 +1,35 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=cbindgen
-pkgver=0.26.0
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="A tool for generating C bindings to Rust code"
 url="https://github.com/eqrion/cbindgen"
 arch=(x86_64 aarch64 riscv64)
-license=(MPL2)
+license=(MPL-2.0)
 makedepends=(
+  rust
   cargo
-  git
 )
 checkdepends=(
   cmake
   python
 )
-_commit=703b53c06f9fe2dbc0193d67626558cfa84a0f62  # tags/0.26.0
-source=("git+$url#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd cbindgen
-  git describe --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
-}
+source=("https://github.com/eqrion/cbindgen/archive/v$pkgver.tar.gz")
+sha256sums=('af74dd0452ace58895088048873a765fffacc3ad55eea00c0f2999cc4bcf9b5d')
 
 prepare() {
-  cd cbindgen
-  cargo fetch --locked
+  cd cbindgen-"$pkgver"
+  cargo fetch --locked --target "$RUSTHOST"
 }
 
 build() {
-  cd cbindgen
+  cd cbindgen-"$pkgver"
   cargo build --release --frozen --all-targets
 }
 
 package() {
-  cd cbindgen
+  cd cbindgen-"$pkgver"
   install -Dt "$pkgdir/usr/bin" target/release/cbindgen
   install -Dt "$pkgdir/usr/share/doc/$pkgname" -m644 CHANGES \
     {README,docs,internals}.md
