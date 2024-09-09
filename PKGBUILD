@@ -2,7 +2,7 @@
 
 _name=urllib3
 pkgname=python-urllib3
-pkgver=1.26.19
+pkgver=1.26.20
 pkgrel=1
 pkgdesc="HTTP library with thread-safe connection pooling and file post support"
 arch=("any")
@@ -16,7 +16,7 @@ makedepends=(
   'python-wheel'
 )
 source=("https://github.com/urllib3/urllib3/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('6b72012dbd85434b2441229cbdea2a94583693f904dde349780e1290d581c8a5e10fe00a287a032ed1276349d0078b530f16a133e0f164dcea18105fa3dec79a')
+sha512sums=('63c4263c5e61adf28344e79b6c864c70e555b715a93e735aca5b6e169f041f3e4518961993c86c83dd13bcb149f7dd77b6e90140cf4aa2310c14fcaa0a52179b')
 
 prepare() {
   # remove python-mock requirement
