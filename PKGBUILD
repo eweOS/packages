@@ -6,8 +6,8 @@ pkgname=(
   gobject-introspection-runtime
   libgirepository
 )
-pkgver=1.80.1
-pkgrel=3
+pkgver=1.81.4
+pkgrel=1
 pkgdesc="Introspection system for GObject-based libraries"
 url="https://wiki.gnome.org/Projects/GObjectIntrospection"
 arch=(x86_64 aarch64 riscv64)
@@ -28,7 +28,7 @@ _glibver=2.80.0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gobject-introspection.git#tag=$pkgver"
 )
-sha256sums=('SKIP')
+sha256sums=('2bdfb7a0fafed36c6535cddc85a90dd6efa3dd3beef478e43204d219601b6421')
 
 build() {
   local meson_options=(
