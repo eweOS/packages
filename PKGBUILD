@@ -1,12 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=libffi
+pkgbase=libffi
+pkgname=(libffi libffi-static)
 pkgver=3.4.3
-pkgrel=3
+pkgrel=4
 pkgdesc='A portable Foregin Function Interface library.'
 arch=(x86_64 aarch64 riscv64)
 url='http://sourceware.org/libffi/'
-license=(BSD)
+license=(MIT)
+depends=(musl)
+makedepends=(linux-headers)
 source=(
   "ftp://sourceware.org/pub/libffi/libffi-${pkgver}.tar.gz"
   "declare-open_temp_exec_file.patch::https://github.com/libffi/libffi/pull/764.patch"
@@ -16,24 +19,30 @@ sha256sums=(
   '20570753cecbf39d73889a9be3cff1f56e9053a06049dee8ea9e7b0292b4f724'
 )
 
-prepare()
-{
-  cd ${pkgname}-${pkgver}
+prepare() {
+  cd "$pkgname-$pkgver"
   # https://github.com/libffi/libffi/issues/760
   patch -p1 < ../declare-open_temp_exec_file.patch
 }
 
-build()
-{
-  cd ${pkgname}-${pkgver}
+build() {
+  cd "$pkgname-$pkgver"
   ./configure \
     --prefix=/usr \
     --enable-shared
   make
 }
 
-package()
-{
-  cd $pkgname-$pkgver
-  make DESTDIR="${pkgdir}" install
+package_libffi() {
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
+
+  cd "$pkgdir"
+  _pick_ libffi-static usr/lib/*.a
+}
+
+package_libffi-static() {
+  depends=(libffi="$pkgver-$pkgrel")
+  options=(staticlibs !strip)
+  mv "$srcdir"/pkgs/libffi-static/* "$pkgdir"
 }
