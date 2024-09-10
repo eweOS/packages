@@ -1,9 +1,10 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
-pkgname=zlib-ng
+pkgbase=zlib-ng
+pkgname=(zlib-ng zlib-ng-static)
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='zlib data compression library for the next generation systems'
 arch=(x86_64 aarch64 riscv64)
 license=('custom')
@@ -34,9 +35,20 @@ check()
   ctest --verbose --output-on-failure -C Release
 }
 
-package()
+package_zlib-ng()
 {
   cd "$pkgname-$pkgver"
   make install DESTDIR="${pkgdir}"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/zlib/LICENSE"
+
+  cd "$pkgdir"
+  _pick_ zlib-ng-static usr/lib/libz.a
+}
+
+package_zlib-ng-static() {
+  depends=(zlib-ng="$pkgver-$pkgrel")
+  provides=(zlib-static)
+  conflicts=()
+  options=(!strip staticlibs)
+  mv "$srcdir/pkgs/$pkgname"/* "$pkgdir"
 }
