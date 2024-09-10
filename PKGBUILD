@@ -4,16 +4,20 @@ pkgbase=glib
 pkgname=(
   glib
   glib-docs
+  glib-static
 )
 pkgver=2.82.0
 _pkgver_major=${pkgver%.*}
-pkgrel=2
+pkgrel=3
 pkgdesc="Low-level core library that forms the basis for projects such as GTK+ and GNOME"
 url="https://wiki.gnome.org/Projects/GLib"
 license=(LGPL)
 arch=(x86_64 aarch64 riscv64)
 depends=(pcre2 libffi util-linux-libs zlib)
-makedepends=(gettext python libelf util-linux meson dbus gi-docgen python-packaging python-docutils gobject-introspection)
+makedepends=(gettext python libelf util-linux meson dbus gi-docgen
+	     python-packaging python-docutils gobject-introspection
+	     libffi-static pcre2-static)
+# static libraries are added to silent namcap errors
 source=(
   "https://download.gnome.org/sources/$pkgname/${_pkgver_major}/$pkgname-$pkgver.tar.xz"
   glib-compile-schemas.hook
@@ -62,14 +66,23 @@ package_glib()
 
   cd "$pkgdir"
   _pick_ docs usr/share/doc
+  _pick_ static usr/lib/*.a
 }
 
 package_glib-docs()
 {
   pkgdesc+=" - documentation"
   depends=()
+  options=(!strip)
   license+=(LicenseRef-Public-Domain)
   provides+=(glib2-docs)
   mv $srcdir/pkgs/docs/* "$pkgdir"
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $srcdir/$pkgbase-$pkgver/docs/reference/COPYING
+}
+
+package_glib-static() {
+  pkgdesc+=" - static library"
+  depends=(glib="$pkgver-$pkgrel" libffi-static pcre2-static)
+  options=(staticlibs !strip)
+  mv "$srcdir"/pkgs/static/* "$pkgdir"
 }
