@@ -1,7 +1,7 @@
 # Maintainer: YukariChiba <i@0x7f.cc>
 
 pkgname="hyprland"
-pkgver=0.42.0
+pkgver=0.43.0
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(x86_64 aarch64 riscv64)
@@ -40,11 +40,14 @@ makedepends=(
   hyprwayland-scanner
   linux-headers
 )
-source=("$pkgname::git+$url#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("$pkgname::git+$url#tag=v$pkgver" "https://patch-diff.githubusercontent.com/raw/hyprwm/Hyprland/pull/7510.patch")
+sha256sums=('fee6bae21e9bbe1766f28366672d5669efbd5e3dad63a3b9b1c2213f2ecb036b'
+            'a6be6ec38a078d9ab22b9919f5c907a2e31165dfb6cd8e86ad4bb6620d0cebf8')
 
 prepare() {
-  sed -i 's@g++ -std=c++23@c++ -std=c++2b@g' $pkgname/hyprctl/Makefile
+  cd "$pkgname"
+  # 32 bit fix breaks build
+  patch -R -p1 < $srcdir/7510.patch
 }
 
 build() {
@@ -52,10 +55,7 @@ build() {
   CXXFLAGS+=" -fexperimental-library"
   ewe-meson $pkgname build \
     -Dsystemd=disabled \
-    -Dxwayland=disabled \
-    -Dwlroots-hyprland:backends=drm,libinput \
-    -Dwlroots-hyprland:xwayland=disabled \
-    -Dwlroots-hyprland:renderers=gles2,vulkan
+    -Dxwayland=disabled
   meson compile -C build
 }
 
