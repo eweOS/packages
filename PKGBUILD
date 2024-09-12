@@ -3,7 +3,7 @@
 
 pkgname=filesystem
 pkgver=1.0.0
-pkgrel=8
+pkgrel=9
 pkgdesc='The base directory structure and a few core files for the system.'
 arch=(any)
 url='https://os.ewe.moe'
@@ -55,7 +55,7 @@ package()
 
   # directories
     # base dir
-  install -d -m 755 "boot" "dev" "etc/default" "home" "mnt" "srv" "usr" "run"
+  install -d -m 755 "boot" "dev" "etc/default" "home" "mnt" "srv" "usr" "run" "opt"
   install -d -m 750 "root"
   install -d -m 555 "proc" "sys"
   install -d -m 1777 "tmp" "var/tmp"
