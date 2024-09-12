@@ -16,12 +16,12 @@ pkgname=(qemu-common
 	 qemu-guest-agent
 	) # TODO: split firmwares
 pkgver=9.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A generic and open source machine emulator and virtualizer.'
 url='https://www.qemu.org/'
 arch=(x86_64 aarch64 riscv64)
 license=(Apache-2.0 BSD-2-Clause BSD-3-Clause FSFAP GPL-1.0-or-later
-	 GPL-2.0-only GPL-2,0-or-later GPL-2.0-or-later-WITH-GCC-exception-2.0
+	 GPL-2.0-only GPL-2.0-or-later GPL-2.0-or-later-WITH-GCC-exception-2.0
 	 LGPL-2.0-only LGPL-2.0-or-later MIT CC-BY-3.0)
 makedepends=(alsa-lib bzip2 cairo curl dtc fuse3 gtk3 glib ncurses pipewire
 	     pixman json-c libaio libgcrypt libgpg-error libpng libsasl
