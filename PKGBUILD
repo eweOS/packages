@@ -4,8 +4,8 @@
 
 pkgbase=pacman
 pkgname=(libalpm pacman repo-tools)
-pkgver=6.1.0
-pkgrel=5
+pkgver=7.0.0
+pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
@@ -23,7 +23,7 @@ source=(
   script_warndirs.sh
   script_noglibc.sh
 )
-sha256sums=('cb98c8574e4f2b0d488418e11d20ab7b4a3f20e3110d83381cc94a4c55d277cf'
+sha256sums=('ef08f258cb3e0885c5884ad43fb6cff0e9c327ed33024d79d03555f99c583744'
             '0865036ef04a06b00926640ac7db2275988b834f435101e8110eedf8a2e58b88'
             'd4f10271ed2cff01438623bbc05f58a09de3610bab07ee8413bb5ef0221cbc04'
             '6338de233368bfa76ee17353785709e282ace072eae6996c1289f0fb5b84ffc4'
