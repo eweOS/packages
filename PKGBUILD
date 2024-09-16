@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=nodejs
-pkgver=22.5.1
+pkgver=22.8.0
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript'
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -11,7 +11,7 @@ depends=('brotli' 'openssl' 'zlib' 'icu' 'libuv' 'libnghttp2' 'c-ares')
 makedepends=('git' 'python' 'linux-headers')
 #source=("git+https://github.com/nodejs/node.git#tag=v$pkgver")
 source=("https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v${pkgver}/node-v${pkgver}.tar.xz")
-sha512sums=('ad0efb9552cf9658b16a7d97edca8ac601841d9ef5b2383927d53181505fd5f0893bb0b4bbf2b42a17b15db66c6690d8e5a1c9e7f8d031325368bc6d47d0642c')
+sha512sums=('c2942c65dc9909b1f412489a54d16afae7be46a5c2a8bd292cde75e4c56ec763ccee6572fd72774c3f9d94796cfff6edbd9e93976893873cc182548225ac162a')
 
 prepare() {
   cd node-v$pkgver
