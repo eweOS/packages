@@ -5,7 +5,7 @@ pkgname=(
   adwaita-icon-theme
   adwaita-cursors
 )
-pkgver=46.2
+pkgver=47.0
 pkgrel=1
 pkgdesc="GNOME standard icons"
 url="https://gitlab.gnome.org/GNOME/adwaita-icon-theme"
@@ -25,7 +25,7 @@ makedepends=(
   meson
 )
 source=("git+https://gitlab.gnome.org/GNOME/adwaita-icon-theme.git#tag=$pkgver")
-sha256sums=('SKIP')
+sha256sums=('d57ccde018bca144dabe185ec24ce315109c73ae7e2a7c8b126f18f0e4a97186')
 
 build() {
   ewe-meson $pkgbase build
