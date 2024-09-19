@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libadwaita
-pkgver=1.5.3
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Building blocks for modern adaptive GNOME applications"
 url="https://gnome.pages.gitlab.gnome.org/libadwaita/"
@@ -23,7 +23,7 @@ makedepends=(
 )
 checkdepends=(weston)
 source=("git+https://gitlab.gnome.org/GNOME/libadwaita.git#tag=$pkgver")
-sha256sums=('569662f8b36afe62d1bfc53b3abf908bede1d33c6f0586a1973b6eb46604261a')
+sha256sums=('0f7eaf661fc3a7976207726eecf93c93c79744ff8428e322a16b55f12a4ee22d')
 
 build() {
   local meson_options=(
