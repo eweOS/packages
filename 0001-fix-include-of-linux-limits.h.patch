@@ -1,0 +1,24 @@
+From eaf55785f0b4f163e2dc77f20ffc83a25d8e2fe3 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Thu, 26 Sep 2024 14:23:36 +0000
+Subject: [PATCH] fix include of linux/limits.h
+
+---
+ libcomposefs/lcfs-writer.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libcomposefs/lcfs-writer.c b/libcomposefs/lcfs-writer.c
+index acbcf79..9ad8f44 100644
+--- a/libcomposefs/lcfs-writer.c
++++ b/libcomposefs/lcfs-writer.c
+@@ -30,6 +30,7 @@
+ #include <errno.h>
+ #include <string.h>
+ #include <linux/fsverity.h>
++#include <linux/limits.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+-- 
+2.46.1
+

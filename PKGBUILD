@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=composefs
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="A file system for mounting container images"
 arch=(x86_64 aarch64 riscv64)
@@ -12,36 +12,34 @@ license=(
   'GPL-2.0-only OR Apache-2.0'
   GPL-3.0-or-later
 )
-depends=(openssl)
-makedepends=(fuse3 linux-headers)
+depends=(musl openssl)
+# missing: go-md2man for docs
+makedepends=(fuse3 linux-headers meson ninja)
 checkdepends=(python)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('75038ba8b5569521ded4b878645e4353b7b7563dfdf011bc4df11571cdc74682')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+	"0001-fix-include-of-linux-limits.h.patch")
+sha256sums=('d54b302d91a2bf3f2fd0538555aed31ee86b05613d41185f744bbb9218cde4be'
+            'e318149c8cc7ab309971d985ae97b61c680332dcfefd0e59922011b24626507e')
 
 prepare() {
-  cd $pkgname-$pkgver
-  autoreconf -fiv
+  sed -i 's/c_std=c99/c_std=c11/g' "$pkgname-$pkgver"/meson.build
+  _patch_ "$pkgname-$pkgver"
 }
 
 build() {
-  local configure_options=(
-    --prefix=/usr
-    --sbindir=/usr/bin
-    --with-fuse
-  )
-
-  cd $pkgname-$pkgver
-  ./configure "${configure_options[@]}"
-  make
+  ewe-meson "$pkgname-$pkgver" build \
+    -Dfuse=enabled \
+    -Dman=disabled
+  meson compile -C build
 }
 
 check() {
   # self-depend to check
-  PATH=$srcdir/$pkgname-$pkgver/tools:$PATH
-  make -k check -C $pkgname-$pkgver
+  # PATH="$srcdir/$pkgname-$pkgver/tools:$PATH"
+  meson test -t 5 -C build
 }
 
 package() {
-  make DESTDIR="$pkgdir/" install -C $pkgname-$pkgver
-  install -vDm 644 $pkgname-$pkgver/BSD-2-Clause.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+  meson install -C build --destdir="$pkgdir"
+  _install_license_ "$pkgname-$pkgver"/BSD-2-Clause.txt
 }
