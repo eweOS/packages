@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=(dtc libfdt)
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='The device-tree compiler'
 url='https://git.kernel.org/pub/scm/utils/dtc/dtc.git/'
@@ -10,7 +10,7 @@ license=(BSD GPL2)
 depends=(musl)
 makedepends=(flex bison meson ninja)
 source=("https://git.kernel.org/pub/scm/utils/dtc/dtc.git/snapshot/dtc-$pkgver.tar.gz")
-sha256sums=('70d9c156ec86d63de0f7bdae50540ffa492b25ec1d69491c7520845c860b9a62')
+sha256sums=('c4c4a47b8af98ad81c488d934da051f28bd2d0143a4622ea14d1920bc8c90f75')
 
 build () {
 	cd dtc-$pkgver
