@@ -3,7 +3,7 @@
 pkgbase=x265
 pkgname=(libx265 x265)
 epoch=1
-pkgver=3.6
+pkgver=4.0
 pkgrel=1
 pkgdesc_libx265="x265/HEVC video coding library"
 pkgdesc_x265="video encoder for the H.265/HEVC standard"
@@ -13,7 +13,7 @@ license=(GPL2)
 depends=(musl)
 makedepends=(nasm cmake samurai)
 source=("https://bitbucket.org/multicoreware/x265_git/downloads/x265_$pkgver.tar.gz")
-sha256sums=('663531f341c5389f460d730e62e10a4fcca3428ca2ca109693867bc5fe2e2807')
+sha256sums=('75b4d05629e365913de3100b38a459b04e2a217a8f30efaa91b572d8e6d71282')
 
 build() {
 	cmake x265_$pkgver/source -B build -G Ninja \
