@@ -6,8 +6,8 @@ pkgname=(
   gobject-introspection-runtime
   libgirepository
 )
-pkgver=1.80.1
-pkgrel=3
+pkgver=1.82.0
+pkgrel=1
 pkgdesc="Introspection system for GObject-based libraries"
 url="https://wiki.gnome.org/Projects/GObjectIntrospection"
 arch=(x86_64 aarch64 riscv64)
@@ -17,26 +17,34 @@ license=(
 )
 makedepends=(
   glib
+  gtk-doc
   cairo
   git
   libffi
   meson
   python
   python-setuptools
+  python-markdown
+  python-mako
 )
-_glibver=2.80.0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gobject-introspection.git#tag=$pkgver"
+  "git+https://gitlab.gnome.org/GNOME/gobject-introspection-tests.git"
 )
-sha256sums=('SKIP')
+sha256sums=('cdc0a0e5d496bb08a488471326d182ffb09c8960ce2df56141dd18e41ef1f348'
+            'SKIP')
+
+
+prepare() {
+  cd $pkgbase
+
+  git submodule init
+  git submodule set-url gobject-introspection-tests "$srcdir/gobject-introspection-tests"
+  git -c protocol.file.allow=always -c protocol.allow=never submodule update
+}
 
 build() {
-  local meson_options=(
-    -D gtk_doc=false
-    -D doctool=disabled
-  )
-
-  ewe-meson $pkgbase build "${meson_options[@]}"
+  ewe-meson $pkgbase build
   meson compile -C build
 }
 
