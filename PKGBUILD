@@ -2,7 +2,7 @@
 
 pkgname=mold
 pkgver=2.33.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Modern Linker'
 arch=(x86_64 aarch64 riscv64)
 url='https://github.com/rui314/mold'
@@ -14,6 +14,8 @@ sha256sums=('37b3aacbd9b6accf581b92ba1a98ca418672ae330b78fe56ae542c2dcb10a155')
 
 build()
 {
+  export LDFLAGS="$LDFLAGS -Wl,-z,stack-size=$((1024 * 1024))"
+
   cmake \
     -S "$pkgname-$pkgver" \
     -B build \
