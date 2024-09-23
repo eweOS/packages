@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libzip
-pkgver=1.10.1
-pkgrel=2
+pkgver=1.11.1
+pkgrel=1
 pkgdesc="C library for reading, creating, and modifying zip archives"
 url="https://libzip.org"
 license=('BSD')
@@ -11,7 +11,7 @@ depends=('zlib' 'libbz2' 'zstd' 'openssl')
 makedepends=('cmake')
 provides=('libzip.so')
 source=("${url}/download/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('dc3c8d5b4c8bbd09626864f6bcf93de701540f761d76b85d7c7d710f4bd90318')
+sha256sums=('721e0e4e851073b508c243fd75eda04e4c5006158a900441de10ce274cc3b633')
 
 build() {
   cmake -B build -S ${pkgname}-${pkgver} \
