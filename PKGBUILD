@@ -2,7 +2,7 @@
 
 pkgname=zimg
 pkgver=3.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Scaling, colorspace conversion, and dithering library '
 url='https://github.com/sekrit-twc/zimg'
 arch=(x86_64 aarch64 riscv64)
