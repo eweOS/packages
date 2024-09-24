@@ -2,7 +2,7 @@
 
 pkgname=seatd
 pkgver=0.8.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A minimal seat management daemon, and a universal seat management library"
 arch=(x86_64 aarch64 riscv64)
 url="https://sr.ht/~kennylevinsen/seatd/"
@@ -37,8 +37,8 @@ package()
   _dinit_install_services_ $srcdir/seatd.service
 
   # install seatd as dependency of greetd
-  install -d $pkgdir/usr/lib/dinit/system/greetd.d
-  ln -s ../seatd $pkgdir/usr/lib/dinit/system/greetd.d/
+  install -d $pkgdir/usr/lib/dinit.d/greetd.d
+  ln -s ../seatd $pkgdir/usr/lib/dinit.d/greetd.d/
 
   _install_sysusers_ $srcdir/seatd.sysusers
   _install_license_ $srcdir/$pkgname-$pkgver/LICENSE
