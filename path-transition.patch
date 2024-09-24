@@ -1,0 +1,20 @@
+diff --git a/src/options-processing.cc b/src/options-processing.cc
+index bdc8d50..e97e74b 100644
+--- a/src/options-processing.cc
++++ b/src/options-processing.cc
+@@ -79,6 +79,7 @@ void service_dir_opt::build_paths(bool am_system_init)
+         if (home_service_dir_set) {
+             service_dir_paths.emplace_back("/etc/dinit.d/user", /*dyn_allocd=*/false);
+             service_dir_paths.emplace_back("/usr/lib/dinit.d/user", /*dyn_allocd=*/false);
++            service_dir_paths.emplace_back("/usr/lib/dinit/user", /*dyn_allocd=*/false);
+             service_dir_paths.emplace_back("/usr/local/lib/dinit.d/user", /*dyn_allocd=*/false);
+         }
+         else {
+@@ -86,6 +87,7 @@ void service_dir_opt::build_paths(bool am_system_init)
+             service_dir_paths.emplace_back("/run/dinit.d", false);
+             service_dir_paths.emplace_back("/usr/local/lib/dinit.d", false);
+             service_dir_paths.emplace_back("/lib/dinit.d", false);
++            service_dir_paths.emplace_back("/lib/dinit/system", false);
+         }
+     }
+     else {
