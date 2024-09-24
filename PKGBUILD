@@ -6,7 +6,7 @@ pkgname=(
   libwireplumber
 )
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Session / policy manager implementation for PipeWire"
 url="https://pipewire.pages.freedesktop.org/wireplumber/"
 arch=(x86_64 aarch64 riscv64)
