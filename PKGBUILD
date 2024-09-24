@@ -2,7 +2,7 @@
 
 pkgname=tftp-hpa
 pkgver=5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='TFTP server ported to Linux'
 url='https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git'
 arch=(x86_64 aarch64 riscv64)
