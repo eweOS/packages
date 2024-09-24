@@ -3,7 +3,7 @@
 pkgbase=bluez
 pkgname=('bluez' 'bluez-utils' 'bluez-libs' 'bluez-cups' 'bluez-mesh' 'bluez-obex')
 pkgver=5.77
-pkgrel=1
+pkgrel=2
 url="http://www.bluez.org/"
 arch=('x86_64' 'aarch64' 'riscv64')
 license=('GPL-2.0-only')
