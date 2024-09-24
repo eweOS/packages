@@ -2,7 +2,7 @@
 
 pkgname=connman
 pkgver=1.43
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel's modular network connection manager"
 url="https://01.org/connman"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=('1257cebe327e7900b7e2b84c0fb330aa90815e455898cd2f941f4308ed2be3bc'
             '9b006bcf19c461d298d61ee8015263063197c7480c0bf629b9c7ad34bcffbb53'
-            '75ef31a644b8c7c2d33a728a022c811f6f3ddff5e5b0667a25840d61e133042d'
+            'f6476589934bec28a1697dc9a6265d4fc2d0462fd8866ae31bbc6478c087a037'
             '89f3540f68c91c94a77a450abfd2d6570d5cca44425f75da815b1b6ac04a0346')
 options=(emptydirs)
 
@@ -48,6 +48,6 @@ build() {
 package() {
   make -C "${pkgname}-${pkgver}" DESTDIR="${pkgdir}" install
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/main.conf" "${pkgdir}/etc/connman/main.conf"
-  install -d $pkgdir/usr/lib/dinit/system/connman.d
+  install -d $pkgdir/usr/lib/dinit.d/connman.d
   _dinit_install_services_ connman.service
 }
