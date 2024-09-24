@@ -2,17 +2,16 @@
 
 pkgname=turnstile
 pkgver=0.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Independent session/login tracker'
 url='https://github.com/chimera-linux/turnstile'
 arch=(x86_64 aarch64 riscv64)
 license=(BSD-2-Clause)
 depends=(pam)
 makedepends=(meson ninja scdoc)
-source=("git+$url.git#tag=v$pkgver" turnstiled.service dinit.conf)
+source=("git+$url.git#tag=v$pkgver" turnstiled.service)
 sha256sums=('e36592e97fc4613a46b71f661e57c118aab20d451f92733728c00b5a45aa57a2'
-            '257fd00dc1f6ba7e79b70604aa358e481cff60b318de8d78b829acdec56f7eff'
-            '77fc59cdb2134684f6087a1f2390b6a524216115ea420a94c318b53fecb540e4')
+	'257fd00dc1f6ba7e79b70604aa358e481cff60b318de8d78b829acdec56f7eff')
 
 build () {
   ewe-meson $pkgname build -D manage_rundir=true
@@ -30,11 +29,8 @@ package() {
   _dinit_enable_services_ turnstiled
   
   # install turnstiled as dependency of greetd
-  install -d $pkgdir/usr/lib/dinit/system/greetd.d
-  ln -s ../turnstiled $pkgdir/usr/lib/dinit/system/greetd.d/
-  
-  # we use our own dinit user service config
-  cp $srcdir/dinit.conf $pkgdir/etc/turnstile/backend/dinit.conf
+  install -d $pkgdir/usr/lib/dinit.d/greetd.d
+  ln -s ../turnstiled $pkgdir/usr/lib/dinit.d/greetd.d/
   
   _install_license_ $pkgname/COPYING.md
 }
