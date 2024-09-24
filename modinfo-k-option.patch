@@ -1,0 +1,87 @@
+From 1754febf622c743855913e56b823296dd29335b0 Mon Sep 17 00:00:00 2001
+From: Jeff Pohlmeyer <yetanothergeek@gmail.com>
+Date: Fri, 2 Feb 2024 05:48:29 -0600
+Subject: [PATCH] modinfo: Add -k option to use a different kernel version
+
+---
+ modutils/modinfo.c | 30 ++++++++++++++++++++++++++++--
+ 1 file changed, 28 insertions(+), 2 deletions(-)
+
+diff --git a/modutils/modinfo.c b/modutils/modinfo.c
+index 0a86c3296..d4370aeb0 100644
+--- a/modutils/modinfo.c
++++ b/modutils/modinfo.c
+@@ -10,6 +10,17 @@
+ //config:	default y
+ //config:	help
+ //config:	Show information about a Linux Kernel module
++//config:config FEATURE_MODINFO_SET_VER
++//config:	bool "Support -k to use another kernel version (30 bytes)"
++//config:	default n
++//config:	depends on MODINFO
++//config:	help
++//config:	Normally modinfo will use version information from the currently
++//config:	running kernel (a la `uname -r`). Say 'y' here to enable the -k
++//config:	option, which will allow specifying a different kernel version.
++//config:	This can be useful when used with the -F depends and -F softdep
++//config:	options  to determine module dependencies when building a new
++//config:	initramfs after a kernel upgrade.
+ 
+ //applet:IF_MODINFO(APPLET_NOEXEC(modinfo, modinfo, BB_DIR_SBIN, BB_SUID_DROP, modinfo))
+ 
+@@ -43,6 +54,7 @@ enum {
+ 	 * fields not selectable with "shortcut" options
+ 	 */
+ 	OPT_n = (1 << 2),
++	OPT_k = (1 << 7) * ENABLE_FEATURE_MODINFO_SET_VER,
+ 	OPT_TAGS = ((1 << ARRAY_SIZE(shortcuts)) - 1) << 2,
+ };
+ 
+@@ -132,13 +144,20 @@ static void modinfo(const char *path, const char *version,
+ ////usage:     "\n	-n		Shortcut for '-F filename'"
+ //usage:     "\n	-F keyword	Keyword to look for"
+ //usage:     "\n	-0		NUL terminated output"
++//usage:	IF_FEATURE_MODINFO_SET_VER(
++//usage:     "\n	-k VERSION	Use kernel VERSION"
++//usage:	)
+ //usage:#define modinfo_example_usage
+ //usage:       "$ modinfo -F vermagic loop\n"
+ 
++#define MODINFO_OPTS "^" "0F:nadlp" IF_FEATURE_MODINFO_SET_VER("k:") \
++"\0" "-1" /*minimum one arg*/
++
+ int modinfo_main(int argc, char **argv) MAIN_EXTERNALLY_VISIBLE;
+ int modinfo_main(int argc UNUSED_PARAM, char **argv)
+ {
+ 	const char *field;
++	IF_FEATURE_MODINFO_SET_VER(const char *version = NULL;)
+ 	char name[MODULE_NAME_LEN];
+ 	struct utsname uts;
+ 	parser_t *parser;
+@@ -147,13 +166,20 @@ int modinfo_main(int argc UNUSED_PARAM, char **argv)
+ 	unsigned i;
+ 
+ 	field = NULL;
+-	opts = getopt32(argv, "^" "0F:nadlp" "\0" "-1"/*minimum one arg*/, &field);
++	opts = getopt32(argv, MODINFO_OPTS, &field IF_FEATURE_MODINFO_SET_VER(, &version));
++
++	uname(&uts);
++	IF_FEATURE_MODINFO_SET_VER(
++		if (opts & OPT_k) {
++			safe_strncpy(uts.release, version, sizeof(uts.release));
++			opts = (option_mask32 &= ~OPT_k);
++		}
++	)
+ 	/* If no field selected, show all */
+ 	if (!(opts & (OPT_TAGS|OPT_F)))
+ 		option_mask32 |= OPT_TAGS;
+ 	argv += optind;
+ 
+-	uname(&uts);
+ 	parser = config_open2(
+ 		xasprintf("%s/%s/%s", CONFIG_DEFAULT_MODULES_DIR, uts.release, CONFIG_DEFAULT_DEPMOD_FILE),
+ 		xfopen_for_read
+-- 
+2.43.0
+
+

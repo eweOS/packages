@@ -2,7 +2,7 @@
 
 pkgname=busybox
 pkgver=1.36.1
-pkgrel=28
+pkgrel=29
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64)
 url="https://www.busybox.net"
@@ -31,9 +31,10 @@ source=(
   "acpid.service"
   "detect-compressed-module.patch"
   "modprobe-S-option.patch"
+  "modinfo-k-option.patch"
 )
 sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
-            '45253907d07f5888c5deb3ab957998e4a0b9fb0ab3e71ef6e1f7bc35e8f5f1af'
+            '2a5d7006f3e9e976e021ba4af031c773dd60cbef5470ea64ec86e05232ff809a'
             '204a0fc1dabe7cc02a8a18bdec4637d7ddb6547042c9ee1e5f9b71cd22de2f85'
             '644321e67516c8e6869dd1f09b9dfc06d6758dec91df0bdea3cb614419a1e0d3'
             '9c69f0ef1da1d48d1aa36c0925366f240b3a42f2ccd43bea54b5ee95ef9316d2'
@@ -51,7 +52,8 @@ sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
             '32c89049dfcb5de3b2591b1039b25aa8ad83f0af9b6782ef460ed4dde7a8493d'
             'db93d29f439b25a174216898915f92fc6e092042d27a07e0bdf58ea277e80085'
             '0b92c82c56bf9d81da6a1b64742b313ea11a483cfaf2a7ebb5a68e7f5258471c'
-            '0f54301a73af461e8066bc805b48d991cfed513d08a2f036e015b19f97cb424a')
+            '0f54301a73af461e8066bc805b48d991cfed513d08a2f036e015b19f97cb424a'
+            'e6e3db7a22a1cddc547fc405f3439e1c755b8c534849f199c4c800cf0e84237a')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -68,6 +70,8 @@ prepare() {
   patch -p1 < ../detect-compressed-module.patch
   # add -S option for modprobe for tinyramfs
   patch -p1 < ../modprobe-S-option.patch
+  # add -k option for modinfo for tinyramfs
+  patch -p1 < ../modinfo-k-option.patch
 }
 
 build() {
