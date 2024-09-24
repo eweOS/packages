@@ -2,7 +2,7 @@
 
 pkgbase=dinit-services
 pkgname=dinit-services
-pkgver=20240924.1
+pkgver=20240924.2
 pkgrel=1
 pkgdesc='Service monitoring / "init" system (service files)'
 url='https://github.com/eweOS/dinit-services'
@@ -15,7 +15,7 @@ license=(Apache)
 options=(emptydirs)
 makedepends=(git)
 depends=(dinit)
-sha256sums=('1c22453292000109f29d04237cd48d10a72e739b1b6faa6491fa1c92918a25cf'
+sha256sums=('05bb09a6b497280b52acbd85f658ad57de8960337dc62bd3c605a791c5dd9db8'
             '6d6e651bce957f8be540aaa84e5b5185610244fa0bc5b5945ad281be6cc9f2d0'
             '9869773f5cd14c92d8107721b0ed866fec60e91d6b8a42e419719a8ee623c699')
 
