@@ -5,7 +5,7 @@
 pkgbase=pacman
 pkgname=(libalpm pacman repo-tools)
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
@@ -13,6 +13,7 @@ makedepends=(meson libarchive openssl ninja acl curl xz gpgme)  # TODO: asciidoc
 checkdepends=(python)
 source=(
   https://gitlab.archlinux.org/pacman/pacman/-/archive/v$pkgver/pacman-v$pkgver.tar.gz
+  fix-typo.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/c3aa1bc12367a8c29ddac310d8bb86ae10719bd2.patch
   pacman.conf
   makepkg.conf
   function_patch.sh
@@ -24,6 +25,7 @@ source=(
   script_noglibc.sh
 )
 sha256sums=('ef08f258cb3e0885c5884ad43fb6cff0e9c327ed33024d79d03555f99c583744'
+            '553c3547b524f0169e7edfad508226037582c882b97f2660942513545dc7a8cf'
             '0865036ef04a06b00926640ac7db2275988b834f435101e8110eedf8a2e58b88'
             'd4f10271ed2cff01438623bbc05f58a09de3610bab07ee8413bb5ef0221cbc04'
             '6338de233368bfa76ee17353785709e282ace072eae6996c1289f0fb5b84ffc4'
@@ -69,6 +71,10 @@ FLIST_REPO_TOOLS=(
   'usr/bin/repo*'
   'usr/share/man/man*/repo-*'
 )
+
+prepare(){
+  _patch_ "$pkgbase-v$pkgver"
+}
 
 build()
 {
