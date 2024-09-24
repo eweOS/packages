@@ -3,7 +3,7 @@
 pkgbase=greetd
 pkgname=(greetd greetd-agreety)
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic greeter daemon"
 arch=(x86_64 aarch64 riscv64)
 url="https://git.sr.ht/~kennylevinsen/greetd"
@@ -45,7 +45,7 @@ package_greetd() {
     "$pkgdir/etc/pam.d/greetd"
 
   # wait-for.d
-  install -d $pkgdir/usr/lib/dinit/system/greetd.d
+  install -d $pkgdir/usr/lib/dinit.d/greetd.d
 
   _dinit_install_services_ $srcdir/greetd.service
   _install_sysusers_ $srcdir/greetd.sysusers
