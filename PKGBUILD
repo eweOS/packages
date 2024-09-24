@@ -3,7 +3,7 @@
 pkgname=catnest
 _commit="708d9351fc0bd8335508ac38c60295e391e90f70"
 pkgver=0.2.1.${_commit:0:7}
-pkgrel=2
+pkgrel=3
 pkgdesc="A substitution of systemd-sysusers"
 url="https://github.com/eweOS/catnest"
 license=(MIT)
