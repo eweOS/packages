@@ -2,7 +2,7 @@
 
 pkgname=utmps
 pkgver=0.1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='An implementation of the utmpx.h family of functions performing user accounting'
 arch=(x86_64 aarch64 riscv64)
 url='http://skarnet.org/software/utmps/'
