@@ -2,13 +2,13 @@
 
 pkgname=plymouth
 pkgver=24.004.60
-pkgrel=5
+pkgrel=6
 pkgdesc='Graphical boot splash screen'
 arch=(x86_64 aarch64 riscv64)
 url='https://www.freedesktop.org/wiki/Software/Plymouth/'
 license=('GPL2')
 depends=('cairo' 'fontconfig' 'freetype2' 'libdrm' 'libevdev' 'libpng' 'libxkbcommon' 'pango' 'musl-rpmatch')
-makedepends=('meson')
+makedepends=('meson' 'linux-headers')
 backup=('etc/plymouth/plymouthd.conf')
 source=(
   "https://www.freedesktop.org/software/$pkgname/releases/$pkgname-$pkgver.tar.xz"
