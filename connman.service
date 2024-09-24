@@ -3,5 +3,5 @@ command = connmand -n
 smooth-recovery = yes
 depends-on = rc.target
 depends-on = dbus
-waits-for.d = /usr/lib/dinit/system/connman.d
+waits-for.d = /usr/lib/dinit.d/connman.d
 before = network.target
