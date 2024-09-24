@@ -2,7 +2,7 @@
 
 pkgname=plymouth
 pkgver=24.004.60
-pkgrel=5
+pkgrel=6
 pkgdesc='Graphical boot splash screen'
 arch=(x86_64 aarch64 riscv64)
 url='https://www.freedesktop.org/wiki/Software/Plymouth/'
