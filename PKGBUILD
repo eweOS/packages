@@ -2,7 +2,7 @@
 
 pkgname=dconf
 pkgver=0.40.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Configuration database system"
 url="https://wiki.gnome.org/Projects/dconf"
 arch=(x86_64 aarch64 riscv64)
