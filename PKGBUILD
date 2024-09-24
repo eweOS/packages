@@ -2,7 +2,7 @@
 
 pkgname=pawprint
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A substitution of systemd-tmpfiles"
 url="https://github.com/eweOS/pawprint"
 license=(MIT)
