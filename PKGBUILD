@@ -2,10 +2,10 @@
 
 pkgname=ghc
 pkgver=9.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Glasgow Haskell Compiler.'
 url='https://ghc.haskell.org/'
-arch=(x86_64)		# NOTICE: we use ncg only
+arch=(x86_64 aarch64)		# NOTICE: we use NCG only
 license=(BSD-3-Clause)
 depends=(musl libffi gmp ncurses lld)
 # missing: (alex happy python-sphinx)
