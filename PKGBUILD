@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=harfbuzz
-pkgver=9.0.0
+pkgver=10.0.1
 pkgrel=1
 pkgdesc="OpenType text shaping engine"
 url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
@@ -12,7 +12,7 @@ makedepends=(python meson gobject-introspection)
 source=("https://github.com/harfbuzz/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
 provides=(libharfbuzz-subset.so libharfbuzz-cairo.so libharfbuzz.so
 	  libharfbuzz-icu.so libharfbuzz-gobject.so)
-sha256sums=('a41b272ceeb920c57263ec851604542d9ec85ee3030506d94662067c7b6ab89e')
+sha256sums=('b2cb13bd351904cb9038f907dc0dee0ae07127061242fe3556b2795c4e9748fc')
 
 prepare() {
   cd $pkgname-$pkgver
