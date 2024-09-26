@@ -3,7 +3,7 @@
 
 pkgbase=openldap
 pkgname=('libldap' 'openldap')
-pkgver=2.6.7
+pkgver=2.6.8
 pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 pkgdesc='Implementaton of Lightweight Directory Access Protocol (LDAP)'
@@ -18,7 +18,7 @@ source=(
   openldap.tmpfiles
   openldap.sysusers
   remove_la_references.patch)
-sha256sums=('cd775f625c944ed78a3da18a03b03b08eea73c8aabc97b41bb336e9a10954930'
+sha256sums=('48969323e94e3be3b03c6a132942dcba7ef8d545f2ad35401709019f696c3c4e'
             '0be46138e53ff2fa6d4b4c06bfbdd2100426e0bd2ed29bf3419ade6b5974e9a0'
             'bb6a9af3b5cce594b2e737b641d2edfa327fde63c85a26c824fd2246e0839de5'
             '3fe777e3f38a602e5b5ca3cb5b68b4fb6c6346c7bdaf7f9c08a9b70a61c0d211')
