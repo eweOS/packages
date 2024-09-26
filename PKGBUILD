@@ -2,7 +2,7 @@
 
 pkgname=nodejs
 pkgver=22.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Evented I/O for V8 javascript'
 arch=('x86_64' 'aarch64' 'riscv64')
 url='https://nodejs.org/'
@@ -17,6 +17,7 @@ prepare() {
   cd node-v$pkgver
   # Clang with libc++
   sed -i 's/-latomic//g' node.gyp
+  sed -i 's/-latomic//g' tools/v8_gypfiles/v8.gyp
 }
 
 build() {
