@@ -2,7 +2,7 @@
 
 pkgname=python-platformdirs
 _name="${pkgname#python-}"
-pkgver=4.3.2
+pkgver=4.3.6
 pkgrel=1
 pkgdesc='A library to determine platform-specific system directories'
 arch=('any')
@@ -21,7 +21,7 @@ checkdepends=(
   'python-appdirs'
 )
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2670af8784dd2e7163c3d34b5cd52563acf60e82337c29a85f5d2cfc3f04cbde')
+sha256sums=('1f91a2f50af6795a0f9a890308d34ffc124f051a163dcf2162e547ce614974dc')
 
 build() {
   cd "$_name-$pkgver"
