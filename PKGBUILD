@@ -2,7 +2,7 @@
 
 _pkgname=build
 pkgname=python-build
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='A simple, correct Python build frontend'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   'python-virtualenv: to use virtualenv for build isolation'
 )
 source=("$pkgname::git+$url#tag=$pkgver")
-sha256sums=('SKIP')
+sha256sums=('2ba9e462fc394a27cf22f33961357405f923892a776319dab170fbe1c31bffaa')
 
 build() {
   cd $pkgname
