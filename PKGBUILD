@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=librsvg
-pkgver=2.58.2
-pkgrel=2
+pkgver=2.59.0
+pkgrel=1
 pkgdesc="SVG rendering library"
 url="https://wiki.gnome.org/Projects/LibRsvg"
 arch=(x86_64 aarch64 riscv64)
@@ -25,8 +25,8 @@ makedepends=(
 checkdepends=(ttf-dejavu)
 source=("https://gitlab.gnome.org/GNOME/librsvg/-/archive/$pkgver/librsvg-$pkgver.tar.gz"
 	"link-libunwind-in-test.patch")
-sha256sums=('22a7e326710d28f8f73d28de423ee0d1a61fb12f9e830d3e9ffe825a20edd348'
-	    '06b352f424d44e5d87751b91136c308e12d16f229b5c906a974c24f69079f85e')
+sha256sums=('7e1e2754b41ba9b7162bdfeee781e1705628354fa7fcc460df2a98b5c00ec29f'
+            '06b352f424d44e5d87751b91136c308e12d16f229b5c906a974c24f69079f85e')
 
 prepare() {
   _patch_ librsvg-$pkgver
