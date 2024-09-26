@@ -2,7 +2,7 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=fribidi
-pkgver=1.0.15
+pkgver=1.0.16
 pkgrel=1
 pkgdesc="A Free Implementation of the Unicode Bidirectional Algorithm"
 url="https://github.com/fribidi/fribidi/"
@@ -12,7 +12,7 @@ depends=(musl)
 makedepends=(meson)
 provides=(libfribidi.so)
 source=("$url/releases/download/v$pkgver/$pkgname-${pkgver}.tar.xz")
-sha256sums=('0bbc7ff633bfa208ae32d7e369cf5a7d20d5d2557a0b067c9aa98bcbf9967587')
+sha256sums=('1b1cde5b235d40479e91be2f0e88a309e3214c8ab470ec8a2744d82a5a9ea05c')
 
 build()
 {
