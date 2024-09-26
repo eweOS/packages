@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=telegram-desktop
-pkgver=5.4.6
-pkgrel=3
+pkgver=5.5.5
+pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url='https://desktop.telegram.org/'
 arch=(x86_64 aarch64)
@@ -14,13 +14,17 @@ depends=(qt6-base qt6-svg qt6-imageformats qt6-wayland openh264 abseil-cpp
 makedepends=(cmake ninja boost libtg_owt gobject-introspection lld)
 _apiid=611335
 _apihash=d524b414d21f4d37f08684c1df41ac9c
-source=("https://github.com/telegramdesktop/tdesktop/releases/download/v$pkgver/tdesktop-$pkgver-full.tar.gz"
-	"use-lld.patch")
-sha256sums=('1cd10f5937fa1e33b8e7987f3749ed0c17b235561923fb52646033f5c4f38189'
-            '19cdd86b87ea3e756ea0f5872f2bad15efb3e458f335bd47a1c33b99017d8426')
+source=(
+  "https://github.com/telegramdesktop/tdesktop/releases/download/v$pkgver/tdesktop-$pkgver-full.tar.gz"
+  "use-lld.patch"
+  "telegram-desktop-5_5_5-fix_build_with_cppgir.patch"
+)
+sha256sums=('dc620831d16af9ee970325e32d689ff3272a7d2aa1966a3e2a1b87513c6f23eb'
+            '19cdd86b87ea3e756ea0f5872f2bad15efb3e458f335bd47a1c33b99017d8426'
+            'ee54bdf8fe67c8fadfffc794763fc62f4c6a15eb535c80ba7b1b74d6ec178882')
 
 prepare() {
-	_patch_ tdesktop-$pkgver-full
+	patch -Np1 -d tdesktop-$pkgver-full/cmake/external/glib/cppgir -i "${srcdir}/telegram-desktop-5_5_5-fix_build_with_cppgir.patch"
 }
 
 build () {
