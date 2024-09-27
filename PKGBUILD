@@ -2,10 +2,10 @@
 
 pkgname=cabal
 pkgver=3.8.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a system for building and packaging Haskell libraries and programs.'
 url='https://haskell.org/cabal'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 license=(BSD-3-Cluase)
 depends=(libffi gmp zlib-ng)
 makedepends=(cabal ghc)
