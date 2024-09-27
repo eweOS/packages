@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kguiaddons
-pkgver=6.1.0
+pkgver=6.6.0
 pkgrel=1
 pkgdesc='Addons to QtGui'
 arch=(x86_64 aarch64 riscv64)
@@ -13,7 +13,7 @@ depends=(qt6-base
 makedepends=(extra-cmake-modules qt6-tools plasma-wayland-protocols)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('08d88452ae4bcdc073891499d9b414129cdc5982bd3bad88726dbef28ee5ac53')
+sha256sums=('bcaa36e4c046a4adadbe6bbb8649169c1b1b96ab68953e3ea1957d7b87c18331')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
