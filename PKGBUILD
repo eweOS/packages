@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-soupsieve
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc='A CSS4 selector implementation for Beautiful Soup'
 arch=('any')
@@ -14,21 +14,14 @@ makedepends=(
   'python-installer'
   'python-hatchling'
 )
-# FIXME: missing dependencies
-#checkdepends=(
-#  'python-pytest'
-#  'python-beautifulsoup4'
-#  'python-html5lib'
-#  'python-lxml'
-#)
-_commit='51ec317ada7e34f70fad6bfddaef8a2cfac1aebd'
-source=("$pkgname::git+$url#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-  git describe --tags | sed 's/^v//'
-}
+checkdepends=(
+  'python-pytest'
+  'python-beautifulsoup4'
+  'python-html5lib'
+  'python-lxml'
+)
+source=("$pkgname::git+$url#tag=$pkgver")
+sha256sums=('abd90592b3ff40f4f86188e5c3ea681a723b82f27e4b5386465585574bc80b5e')
 
 build() {
   cd "$pkgname"
@@ -37,11 +30,7 @@ build() {
 
 check() {
   cd "$pkgname"
-
-  # https://gitlab.gnome.org/GNOME/libxml2/-/issues/312
-  #pytest \
-  #  --deselect tests/test_extra/test_soup_contains.py::TestSoupContains::test_contains_cdata_html \
-  #  --deselect tests/test_extra/test_soup_contains_own.py::TestSoupContainsOwn::test_contains_own_cdata_html
+  pytest
 }
 
 package() {
