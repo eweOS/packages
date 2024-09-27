@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=busybox
-pkgver=1.36.1
-pkgrel=29
+pkgver=1.37.0
+pkgrel=1
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64)
 url="https://www.busybox.net"
@@ -32,9 +32,10 @@ source=(
   "detect-compressed-module.patch"
   "modprobe-S-option.patch"
   "modinfo-k-option.patch"
+  "sha-ni.patch"
 )
-sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
-            '2a5d7006f3e9e976e021ba4af031c773dd60cbef5470ea64ec86e05232ff809a'
+sha256sums=('3311dff32e746499f4df0d5df04d7eb396382d7e108bb9250e7b519b837043a4'
+            '38dc71d9bccce4b675b3c2e0aab4b86cbaedac05180a6561acc76ea6179add59'
             '204a0fc1dabe7cc02a8a18bdec4637d7ddb6547042c9ee1e5f9b71cd22de2f85'
             '644321e67516c8e6869dd1f09b9dfc06d6758dec91df0bdea3cb614419a1e0d3'
             '9c69f0ef1da1d48d1aa36c0925366f240b3a42f2ccd43bea54b5ee95ef9316d2'
@@ -53,25 +54,25 @@ sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
             'db93d29f439b25a174216898915f92fc6e092042d27a07e0bdf58ea277e80085'
             '0b92c82c56bf9d81da6a1b64742b313ea11a483cfaf2a7ebb5a68e7f5258471c'
             '0f54301a73af461e8066bc805b48d991cfed513d08a2f036e015b19f97cb424a'
-            'e6e3db7a22a1cddc547fc405f3439e1c755b8c534849f199c4c800cf0e84237a')
+            'e6e3db7a22a1cddc547fc405f3439e1c755b8c534849f199c4c800cf0e84237a'
+            'e44e31f3beea7cc4cce72ad93834b9491da35ccce01fe6d16e321692bdeb988e')
 
 prepare() {
+  # remove_empty_dir: Fix eweOS/bugs/#2  
+  # detect-compressed-module: Fix dmesg like 'Invalid ELF header magic: != ELF'
+  # sha-ni: Fix missing sha-NI guard
+  # modprobe-S-option: add -S option for modprobe for tinyramfs
+  # modinfo-k-option: add -k option for modinfo for tinyramfs
+  _patch_ $pkgname-$pkgver
+      
   cd "$srcdir/$pkgname-$pkgver"
   sed "/CONFIG_PREFIX/s@=.*@=\"${pkgdir}/usr/\"@" \
     "${srcdir}/config" > .config
   sed -i -e 's@<none>@-lutmps@' \
     -e '/^l_list=/s@$LDLIBS@-lutmps@' \
     scripts/trylink
-  # Fix eweOS/bugs/#2
-  patch -p1 < ../remove_empty_dir.patch
   # Fix depmod: buffer 67104768 too small with gz modules
   sed -i 's/64\*1024\*1024/512\*1024\*1024/' modutils/depmod.c
-  # Fix dmesg like 'Invalid ELF header magic: != ELF'
-  patch -p1 < ../detect-compressed-module.patch
-  # add -S option for modprobe for tinyramfs
-  patch -p1 < ../modprobe-S-option.patch
-  # add -k option for modinfo for tinyramfs
-  patch -p1 < ../modinfo-k-option.patch
 }
 
 build() {
