@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=busybox
-pkgver=1.36.1
-pkgrel=29
+pkgver=1.37.0
+pkgrel=1
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64)
 url="https://www.busybox.net"
@@ -33,7 +33,7 @@ source=(
   "modprobe-S-option.patch"
   "modinfo-k-option.patch"
 )
-sha256sums=('b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314'
+sha256sums=('3311dff32e746499f4df0d5df04d7eb396382d7e108bb9250e7b519b837043a4'
             '2a5d7006f3e9e976e021ba4af031c773dd60cbef5470ea64ec86e05232ff809a'
             '204a0fc1dabe7cc02a8a18bdec4637d7ddb6547042c9ee1e5f9b71cd22de2f85'
             '644321e67516c8e6869dd1f09b9dfc06d6758dec91df0bdea3cb614419a1e0d3'
