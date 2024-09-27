@@ -1,9 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wayfire
-pkgver=0.8.1.r316.44e1fa9c
-_pkgver=0.8.1
-pkgrel=4
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="A modular and extensible wayland compositor"
 arch=(x86_64 aarch64 riscv64)
 url=https://wayfire.org
@@ -11,16 +10,8 @@ license=(MIT)
 depends=(cairo pango libjpeg libinput wlroots0.17 wf-config nlohmann-json)
 makedepends=(meson ninja wayland-protocols glm cmake mesa doctest git openmp
 	     linux-headers wlroots0.17-devel)
-_commit="44e1fa9c62e1f8c9f35cedbf3e86c6a0247e0b79"
-_refcommit="01726528ace8ed71216f23c3b0fb3344cda5a461" # v0.8.1
-source=("git+https://github.com/WayfireWM/${pkgname}.git#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver()
-{
-  cd $pkgname
-  printf "$_pkgver.r%s.%s" "$(git rev-list --count $_refcommit..HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("git+https://github.com/WayfireWM/${pkgname}.git#tag=v$pkgver")
+sha256sums=('bb96bff746dd22f35cbc63c366566fc5552d9edac89edbb9d345206dbddc8cf7')
 
 build()
 {
