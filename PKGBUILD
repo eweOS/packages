@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=extra-cmake-modules
-pkgver=6.4.0
+pkgver=6.6.0
 pkgrel=1
 pkgdesc='Extra modules and scripts for CMake'
 arch=(any)
@@ -10,7 +10,7 @@ license=(LGPL)
 depends=(cmake)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz
 	detect-eweOS.patch)
-sha256sums=('ced3f20741ddad24185dc1280a0c0d9171ba2508f84762417d74808561295add'
+sha256sums=('206e23e05ba8934ac7a275c8fdd3704165f558878d3dbe3299f991473997ccb8'
             '9c4168e52667c6b4fcd4b39869480a401da5f13af8c4fbd5d747b3c670a85af0')
 
 prepare() {
