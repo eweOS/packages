@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kconfig
-pkgver=6.1.0
+pkgver=6.6.0
 pkgrel=1
 pkgdesc='Configuration system'
 arch=(x86_64 aarch64 riscv64)
@@ -11,7 +11,7 @@ depends=(qt6-base qt6-declarative)
 makedepends=(extra-cmake-modules qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('2fda5f25beac5260a70f3f629144b5c229bf352cae208893ed44a9732c6dcaf7')
+sha256sums=('070bd019b07e15201e4c7072b71337c75f6917407406a1a7107fca1bff2855fe')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
