@@ -1,0 +1,267 @@
+diff --git a/src/declarativeimports/core/windowthumbnail.cpp b/src/declarativeimports/core/windowthumbnail.cpp
+index 5e9731e52..53716fd57 100644
+--- a/src/declarativeimports/core/windowthumbnail.cpp
++++ b/src/declarativeimports/core/windowthumbnail.cpp
+@@ -6,7 +6,9 @@
+ #include "windowthumbnail.h"
+ // KF5
+ #include <KWindowSystem>
++#if HAVE_X11
+ #include <KX11Extras>
++#endif
+ // Qt
+ #include <QGuiApplication>
+ #include <QIcon>
+@@ -280,10 +282,12 @@ void WindowThumbnail::setWinId(uint32_t winId)
+     if (m_winId == winId) {
+         return;
+     }
++#if HAVE_X11
+     if (KWindowSystem::isPlatformX11() && !KX11Extras::self()->hasWId(winId)) {
+         // invalid Id, don't updated
+         return;
+     }
++#endif
+     if (window() && winId == window()->winId()) {
+         // don't redirect to yourself
+         return;
+@@ -393,12 +397,16 @@ bool WindowThumbnail::nativeEventFilter(const QByteArray &eventType, void *messa
+ void WindowThumbnail::iconToTexture(WindowTextureProvider *textureProvider)
+ {
+     QIcon icon;
++#if HAVE_X11
+     if (KWindowSystem::isPlatformX11() && KX11Extras::self()->hasWId(m_winId)) {
+         icon = KX11Extras::self()->icon(m_winId, boundingRect().width(), boundingRect().height());
+     } else {
++#endif
+         // fallback to plasma icon
+         icon = QIcon::fromTheme(QStringLiteral("plasma"));
++#if HAVE_X11
+     }
++#endif
+     QImage image = icon.pixmap(boundingRect().size().toSize(), window()->devicePixelRatio()).toImage();
+     textureProvider->setTexture(window()->createTextureFromImage(image, QQuickWindow::TextureCanUseAtlas));
+ }
+diff --git a/src/plasma/private/theme_p.cpp b/src/plasma/private/theme_p.cpp
+index acdd2d430..253260be5 100644
+--- a/src/plasma/private/theme_p.cpp
++++ b/src/plasma/private/theme_p.cpp
+@@ -20,7 +20,9 @@
+ #include <KSharedConfig>
+ #include <KWindowEffects>
+ #include <KWindowSystem>
++#if HAVE_X11
+ #include <KX11Extras>
++#endif
+ #include <kpluginmetadata.h>
+ 
+ namespace Plasma
+@@ -109,9 +111,11 @@ ThemePrivate::ThemePrivate(QObject *parent)
+     , apiMinor(0)
+     , apiRevision(0)
+ {
++#if HAVE_X11
+     if (KWindowSystem::isPlatformX11()) {
+         compositingActive = KX11Extras::self()->compositingActive();
+     }
++#endif
+ 
+     ThemeConfig config;
+     cacheTheme = config.cacheTheme();
+@@ -158,10 +162,12 @@ ThemePrivate::ThemePrivate(QObject *parent)
+         scheduleThemeChangeNotification(PixmapCache | SvgElementsCache);
+     });
+ 
++#if HAVE_X11
+     if (KWindowSystem::isPlatformX11()) {
+         connect(KX11Extras::self(), &KX11Extras::compositingChanged, this, &ThemePrivate::compositingChanged);
+         compositingChanged(KX11Extras::compositingActive());
+     }
++#endif
+ }
+ 
+ ThemePrivate::~ThemePrivate()
+diff --git a/src/plasmaquick/appletpopup.cpp b/src/plasmaquick/appletpopup.cpp
+index 79bda9b0b..c70dabe79 100644
+--- a/src/plasmaquick/appletpopup.cpp
++++ b/src/plasmaquick/appletpopup.cpp
+@@ -6,13 +6,17 @@
+ 
+ #include "appletpopup.h"
+ 
++#include "../declarativeimports/core/config-x11.h"
++
+ #include <QGuiApplication>
+ #include <QQmlProperty>
+ #include <qpa/qplatformwindow.h> // for QWINDOWSIZE_MAX
+ 
+ #include <KConfigGroup>
+ #include <KWindowSystem>
++#if HAVE_X11
+ #include <KX11Extras>
++#endif
+ #include <QSize>
+ 
+ #include "applet.h"
+@@ -65,11 +69,15 @@ AppletPopup::AppletPopup()
+     setAnimated(true);
+     setFlags(flags() | Qt::Dialog);
+ 
++#if HAVE_X11
+     if (KWindowSystem::isPlatformX11()) {
+         KX11Extras::setType(winId(), NET::AppletPopup);
+     } else {
++#endif
+         PlasmaShellWaylandIntegration::get(this)->setRole(QtWayland::org_kde_plasma_surface::role::role_appletpopup);
++#if HAVE_X11
+     }
++#endif
+ 
+     auto edgeForwarder = new EdgeEventForwarder(this);
+     edgeForwarder->setMargins(padding());
+diff --git a/src/plasmaquick/dialog.cpp b/src/plasmaquick/dialog.cpp
+index 4476e0000..edaf1122b 100644
+--- a/src/plasmaquick/dialog.cpp
++++ b/src/plasmaquick/dialog.cpp
+@@ -23,9 +23,13 @@
+ #include <QQuickItem>
+ #include <QScreen>
+ 
++#if HAVE_X11
+ #include <KWindowInfo>
++#endif
+ #include <KWindowSystem>
++#if HAVE_X11
+ #include <KX11Extras>
++#endif
+ 
+ #include <KWindowEffects>
+ #include <Plasma/Corona>
+@@ -252,15 +256,19 @@ void DialogPrivate::updateTheme()
+                                                  theme.backgroundSaturation(),
+                                                  mask);
+ 
++#if HAVE_X11
+         if (!KWindowSystem::isPlatformX11() || KX11Extras::compositingActive()) {
++#endif
+             if (hasMask) {
+                 hasMask = false;
+                 q->setMask(QRegion());
+             }
++#if HAVE_X11
+         } else {
+             hasMask = true;
+             q->setMask(dialogBackground->mask());
+         }
++#endif
+         if (q->isVisible()) {
+             DialogShadows::instance()->addWindow(q, dialogBackground->enabledBorders());
+         }
+@@ -744,11 +752,12 @@ void DialogPrivate::applyType()
+             q->setProperty("_q_xcb_wm_window_type", wmType);
+         }
+     }
+-#endif
+ 
+     if (!wmType && type != Dialog::Normal && KWindowSystem::isPlatformX11()) {
+         KX11Extras::setType(q->winId(), static_cast<NET::WindowType>(type));
+     }
++#endif
++
+     if (q->flags() & Qt::WindowStaysOnTopHint) {
+         // If the AppletPopup type is not explicitly requested, then use the Dock type in this case
+         // to avoid bug #454635.
+@@ -811,6 +820,7 @@ void DialogPrivate::applyType()
+         }
+     }
+ 
++#if HAVE_X11
+     if (KWindowSystem::isPlatformX11()) {
+         if (type == Dialog::Dock || type == Dialog::Notification || type == Dialog::OnScreenDisplay || type == Dialog::CriticalNotification) {
+             KX11Extras::setOnAllDesktops(q->winId(), true);
+@@ -818,6 +828,7 @@ void DialogPrivate::applyType()
+             KX11Extras::setOnAllDesktops(q->winId(), false);
+         }
+     }
++#endif
+ 
+     PlasmaShellWaylandIntegration::get(q)->setTakesFocus(!q->flags().testFlag(Qt::WindowDoesNotAcceptFocus));
+ }
+@@ -1077,9 +1088,13 @@ QPoint Dialog::popupPosition(QQuickItem *item, const QSize &size)
+     }
+ 
+     // if the item is in a dock or in a window that ignores WM we want to position the popups outside of the dock
++#if HAVE_X11
+     const KWindowInfo winInfo(item->window()->winId(), NET::WMWindowType);
+     const bool outsideParentWindow =
+         ((winInfo.windowType(NET::AllTypesMask) == NET::Dock) || (item->window()->flags() & Qt::X11BypassWindowManagerHint)) && item->window()->mask().isNull();
++#else
++    const bool outsideParentWindow = item->window()->mask().isNull();
++#endif
+ 
+     QRect parentGeometryBounds;
+     if (outsideParentWindow) {
+@@ -1350,9 +1365,11 @@ void Dialog::showEvent(QShowEvent *event)
+         DialogShadows::instance()->addWindow(this, d->dialogBackground->enabledBorders());
+     }
+ 
++#if HAVE_X11
+     if (KWindowSystem::isPlatformX11()) {
+         KX11Extras::setState(winId(), NET::SkipTaskbar | NET::SkipPager | NET::SkipSwitcher);
+     }
++#endif
+     QQuickWindow::showEvent(event);
+ }
+ 
+diff --git a/src/plasmaquick/plasmawindow.cpp b/src/plasmaquick/plasmawindow.cpp
+index 805812e8a..e264f166d 100644
+--- a/src/plasmaquick/plasmawindow.cpp
++++ b/src/plasmaquick/plasmawindow.cpp
+@@ -5,6 +5,8 @@
+ 
+ #include "plasmawindow.h"
+ 
++#include "../declarativeimports/core/config-x11.h"
++
+ #include "dialogshadows_p.h"
+ #include "private/dialogbackground_p.h"
+ 
+@@ -13,7 +15,9 @@
+ 
+ #include <KWindowEffects>
+ #include <KWindowSystem>
++#if HAVE_X11
+ #include <KX11Extras>
++#endif
+ 
+ #include <Plasma/Theme>
+ 
+@@ -143,9 +147,11 @@ void PlasmaWindow::showEvent(QShowEvent *e)
+ {
+     // EWMH states that the state is reset every hide
+     // Qt supports external factors setting state before the next show
++#if HAVE_X11
+     if (KWindowSystem::isPlatformX11()) {
+         KX11Extras::setState(winId(), NET::SkipTaskbar | NET::SkipPager | NET::SkipSwitcher);
+     }
++#endif
+     QQuickWindow::showEvent(e);
+ }
+ 
+@@ -171,11 +177,15 @@ void PlasmaWindowPrivate::handleFrameChanged()
+                                              theme.backgroundSaturation(),
+                                              mask);
+ 
++#if HAVE_X11
+     if (!KWindowSystem::isPlatformX11() || KX11Extras::compositingActive()) {
++#endif
+         q->setMask(QRegion());
++#if HAVE_X11
+     } else {
+         q->setMask(mask);
+     }
++#endif
+ }
+ 
+ void PlasmaWindowPrivate::updateMainItemGeometry()
+
