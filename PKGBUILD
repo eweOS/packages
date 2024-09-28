@@ -2,7 +2,7 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libedit
-_pkgver=20240517-3.1
+_pkgver=20240808-3.1
 pkgver=${_pkgver/-/_}
 pkgrel=1
 pkgdesc="Command line editor library providing generic line editing, history, and tokenization functions"
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('musl' 'ncurses')
 provides=('libedit.so')
 source=(${url}/${pkgname}-${_pkgver}.tar.gz)
-sha256sums=('3a489097bb4115495f3bd85ae782852b7097c556d9500088d74b6fa38dbd12ff')
+sha256sums=('5f0573349d77c4a48967191cdd6634dd7aa5f6398c6a57fe037cc02696d6099f')
 
 build()
 {
@@ -27,7 +27,6 @@ package()
   cd ${pkgname}-${_pkgver}
   make DESTDIR="${pkgdir}" install
 
-  rm "${pkgdir}"/usr/share/man/man3/history.3 # conflicts with readline
   install -Dm 644 "${pkgdir}"/usr/share/man/man3/editline.3 "${pkgdir}"/usr/share/man/man3/el.3
 
   install -Dm 644 ChangeLog -t "${pkgdir}/usr/share/doc/${pkgname}"
