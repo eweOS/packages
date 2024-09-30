@@ -3,17 +3,23 @@
 pkgname=qt6-wayland
 _qtver=6.7.2
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64)
 url='https://www.qt.io'
-license=(GPL3 LGPL3 FDL custom)
+license=(GPL-3.0-or-later LGPL-3.0-or-later FDL custom)
 pkgdesc='An implementation of the Language Server Protocol'
 _pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
 depends=(qt6-base qt6-declarative wayland)
 makedepends=(cmake git ninja wayland-protocols)
 groups=(qt6)
-source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('a2a057e1dd644bd44abb9990fecc194b2e25c2e0f39e81aa9fee4c1e5e2a8a5b')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz"
+	"ensure-shell-surface.patch::https://invent.kde.org/qt/qt/qtwayland/-/commit/92bcb8f6b7a852c7a5d662fc34de561692a7a454.patch")
+sha256sums=('a2a057e1dd644bd44abb9990fecc194b2e25c2e0f39e81aa9fee4c1e5e2a8a5b'
+            '2faabf39e563c3b2c1719a05f2de582f70dd9bc028f630906206739dceae1ea2')
+
+prepare() {
+	_patch_ "$_pkgfn"
+}
 
 build() {
   export CMARGS=(
