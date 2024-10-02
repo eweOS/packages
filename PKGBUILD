@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=ell
-pkgver=0.68
+pkgver=0.69
 pkgrel=1
 pkgdesc='Embedded Linux library'
 url='https://git.kernel.org/pub/scm/libs/ell/ell.git/about/'
@@ -11,7 +11,7 @@ depends=(musl)
 makedepends=(linux-headers)
 provides=(libell.so)
 source=("git+https://git.kernel.org/pub/scm/libs/ell/ell.git#tag=$pkgver")
-sha256sums=('593e260b6ae480b7357253e9d03b7c5d54fb62f404e08fe33a998683ccad8778')
+sha256sums=('578ed5b73f596cfbea60076b2495caeafcbd056ea5cbb64502a53cbe50e419a9')
 
 prepare() {
 	# disable unit/test-path because of glibc-style basename()
@@ -21,6 +21,10 @@ prepare() {
 	# disable dbus-related tests: random failures
 	sed -i "$pkgname/Makefile.am" \
 		-e 's/unit\/test-dbus[a-z-]*//g'
+
+	# disable sysctl tests: may fail in container
+	sed -i "$pkgname/Makefile.am" \
+		-e 's/unit\/test-sysctl//g'
 }
 
 build () {
