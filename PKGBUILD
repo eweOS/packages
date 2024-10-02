@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wine
-pkgver=9.16
-pkgrel=5
+pkgver=9.18
+pkgrel=1
 _pkgbasever=${pkgver/rc/-rc}
 source=(
   https://dl.winehq.org/wine/source/9.x/$pkgname-$_pkgbasever.tar.xz
@@ -11,7 +11,7 @@ source=(
   use-wayland-for-explorer.patch
   fix-missing-process_attach.patch
 )
-sha512sums=('5f2994d20b8c7635125b38b6a4d89db4b71791f096276fa93e36dc6951c47c25b8a3354f0be0931799ac83c54f048e34693b56512cc446b93c74344b1a458187'
+sha512sums=('d6e049374d1e654937a0c767215076e5f12c7ff69aac930881292c075d0eee1a1af4c38937271c515875db12b98adebe8553d356b30e32d78d9ac8b1c7914509'
             'e397c07e9c252a42679283af71ea5ad4627ba766ed594d7e88653648052520083299595c803123bd856fd8590c73453ea50bd464cd26d1b99b3b0dce98908cd4'
             '9881abfd0e7e4589cd5724291f9ec06ccb9d88b842c69abb5ea7865b6c27c778a060e60a9776c3620a030555cf61b8cceded55db9f04d5e45d9c627306763bff'
             'fede2c8326512144dda3097fbaf9b48df188c8f86b7eeffe3d0ac8ee1617a37e9e8c20e5c30ed5087887933464fed405468a195e32887614d7718d7d751da645'
