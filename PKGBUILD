@@ -2,8 +2,8 @@
 
 pkgbase=bluez
 pkgname=('bluez' 'bluez-utils' 'bluez-libs' 'bluez-cups' 'bluez-mesh' 'bluez-obex')
-pkgver=5.77
-pkgrel=2
+pkgver=5.78
+pkgrel=1
 url="http://www.bluez.org/"
 arch=('x86_64' 'aarch64' 'riscv64')
 license=('GPL-2.0-only')
@@ -18,7 +18,7 @@ source=(
   0003-allow-mesh-on-non-systemd-system.patch
   0008-grant-permission-to-bluetooth-group.patch
 )
-sha256sums=('5d032fdc1d4a085813554f57591e2e1fb0ceb2b3616ee56f689bc00e1d150812'
+sha256sums=('830fed1915c5d375b8de0f5e6f45fcdea0dcc5ff5ffb3d31db6ed0f00d73c5e3'
             'ea87de0d8182404d7ef7139ebc6bb2e8d57224f9b8dfae3e438f95308277c801'
             'd67c84fca3ba42fd1c67ce3605b0cbedde200ccef5e961975f4501887a724dec'
             '512e60ff0ceebb3e6db75b7284c2aaf52ae637077a607f693382be0471b42248'
