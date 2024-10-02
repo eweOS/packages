@@ -5,7 +5,7 @@ pkgname=(
   sof-firmware
   sof-tools
 )
-pkgver=2024.06
+pkgver=2024.09
 pkgrel=1
 pkgdesc="Sound Open Firmware"
 url="https://www.sofproject.org/"
@@ -15,7 +15,7 @@ license=(
   custom:ISC
 )
 source=(https://github.com/thesofproject/sof-bin/releases/download/v$pkgver/sof-bin-$pkgver.tar.gz)
-sha256sums=('581ca3285bb56837a8954953f629ebddce644152b673ecd4bbfae1504306d7d6')
+sha256sums=('ea47d99f81359008d07618bca103cf78f82d84e940bfe941a28afe07c8cbc620')
 
 package_sof-firmware() {
   options+=(!strip)
