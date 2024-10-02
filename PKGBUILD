@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=assimp
-pkgver=5.4.2
+pkgver=5.4.3
 pkgrel=1
 pkgdesc="Library to import various well-known 3D model formats in an uniform manner"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -10,7 +10,7 @@ depends=('zlib')
 makedepends=('cmake' 'ninja')
 url='https://github.com/assimp/assimp'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/assimp/assimp/archive/v${pkgver}.tar.gz")
-sha512sums=('4bfcc3a1b5a0cf3f382560564cac67088e13c62500c3c77dcef03811e67debe72ff318f5ed145b204d5017b56cb4293f3fe14b4060ca193813cef42b12eebe9d')
+sha512sums=('4738db84068d36face8caf61c0789178fdfc1310fa8e81ffb9b025e14183bde546b784d691c92438ab310a79ab7b75ab62ee0247d5f01e81ddf04fb94b7a9c0b')
 
 build() {
   cd ${pkgname}-${pkgver}
