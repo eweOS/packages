@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fastfetch
-pkgver=2.25.0
+pkgver=2.26.1
 pkgrel=1
 pkgdesc="Like Neofetch, but much faster because written in C"
 arch=(x86_64 aarch64 riscv64)
@@ -31,7 +31,7 @@ optdepends=(
   'libdrm: Displays detection'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz" eweos.patch)
-sha256sums=('17ea39fd062d5bccc9c608e868f593a665d569646bc9b447111b3a608b648783'
+sha256sums=('4320d1c304df6880e8c944e6a36340d12a3340477be40b2ead42be308a7fcdaf'
             '96d395a80b16819ced3d3e9053fd4fb0773a0bcffbf46ada0347f111b466bf5e')
 
 prepare() {
