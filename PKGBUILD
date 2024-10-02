@@ -2,7 +2,7 @@
 
 pkgbase=wlroots0.18
 pkgname=(wlroots0.18-devel wlroots0.18)
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=1
 license=('MIT')
 url='https://gitlab.freedesktop.org/wlroots/wlroots'
@@ -11,7 +11,7 @@ makedepends=('flex' 'linux-headers' 'meson' 'wayland-protocols' 'hwdata'
 	     'libinput' 'seatd' 'libudev-zero' 'libxkbcommon' 'libgles'
 	     'libegl' 'pixman' 'wayland' 'libdisplay-info' 'lcms2' 'libliftoff')
 source=("$url/-/releases/$pkgver/downloads/wlroots-$pkgver.tar.gz")
-sha256sums=('89e13735d83b02f0fa519268b1fe893f7843499a5ea34d2bbda054a011722e53')
+sha256sums=('b9c4bfef4123fe9f8662280b851e3c5741927457174315826827bfbb70612878')
 
 build() {
     ewe-meson "wlroots-$pkgver" build \
