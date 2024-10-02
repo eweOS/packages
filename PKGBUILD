@@ -2,7 +2,7 @@
 
 pkgname=(linux linux-headers)
 _basename=linux
-pkgver=6.11
+pkgver=6.11.1
 pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 url='http://www.kernel.org'
@@ -13,7 +13,7 @@ source=(
   "kernel-config::git+https://github.com/eweOS/kernel-config.git"
   busybox-find-compat.patch
 )
-sha256sums=('55d2c6c025ebc27810c748d66325dd5bc601e8d32f8581d9e77673529bdacb2e'
+sha256sums=('2a372373b4e1eaf55f2a2f104bfa91477ec9b263acf8f3aed08f4d8bdc78ee3d'
             'SKIP'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
 
