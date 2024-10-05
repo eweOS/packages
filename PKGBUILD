@@ -2,14 +2,14 @@
 
 pkgname=ghc
 pkgver=9.4.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Glasgow Haskell Compiler.'
 url='https://ghc.haskell.org/'
 arch=(x86_64 aarch64)		# NOTICE: we use NCG only
 license=(BSD-3-Clause)
 depends=(musl libffi gmp ncurses lld)
-# missing: (alex happy python-sphinx)
-makedepends=(python ghc cabal)
+# missing python-sphinx
+makedepends=(python ghc cabal alex happy)
 options=(!strip)
 source=("https://downloads.haskell.org/~ghc/9.4.8/ghc-9.4.8-src.tar.xz"
 	"fix-llvm-target-musl.patch")
@@ -18,7 +18,6 @@ sha256sums=('0bf407eb67fe3e3c24b0f4c8dea8cb63e07f63ca0f76cf2058565143507ab85e'
 
 prepare() {
 	cabal update
-	cabal install alex happy
 
 	_patch_ ghc-$pkgver
 	cd ghc-$pkgver
