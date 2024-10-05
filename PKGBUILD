@@ -1,13 +1,17 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgbase=bluez
-pkgname=('bluez' 'bluez-utils' 'bluez-libs' 'bluez-cups' 'bluez-mesh' 'bluez-obex')
+pkgname=('bluez' 'bluez-utils' 'bluez-libs' 'bluez-cups' 'bluez-mesh'
+         'bluez-obex')
 pkgver=5.78
-pkgrel=1
+pkgrel=2
+pkgdesc='Userspace daemons, utils and libraries of Linux Bluetooth stack'
 url="http://www.bluez.org/"
 arch=('x86_64' 'aarch64' 'riscv64')
 license=('GPL-2.0-only')
-makedepends=('dbus' 'libical' 'alsa-lib' 'json-c' 'ell' 'python-docutils' 'python-pygments' 'cups' 'autoconf' 'linux-headers')
+makedepends=('dbus' 'libical' 'alsa-lib' 'json-c' 'ell' 'python-docutils'
+             'python-pygments' 'cups' 'autoconf' 'linux-headers' 'glib2'
+             'readline')
 source=(
   https://www.kernel.org/pub/linux/bluetooth/${pkgname}-${pkgver}.tar.xz
   bluetoothd.service
