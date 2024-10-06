@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <libgen.h>
 
@@ -10,10 +11,10 @@ int main(int argc, char **argv)
         "ping",
         "ping6",
         "traceroute",
-	"passwd",
-	"login",
-	"vlock",
-	"wall"
+        "passwd",
+        "login",
+        "vlock",
+        "wall"
     };
 
     const char * baseexec = basename(argv[0]);
@@ -38,8 +39,17 @@ int main(int argc, char **argv)
     {
         if (!strcmp(cmds[i], baseexec))
         {
-            execv("/usr/bin/busybox", argv);
-            return 0;
+            char **newargv = malloc(sizeof(char *) * (argc + 2));
+            newargv[0] = "/usr/bin/busybox";
+            newargv[1] = (char *)baseexec;
+            for (int i = 1; i < argc; i++)
+                newargv[i + 1] = argv[i];
+            newargv[argc + 1] = NULL;
+
+            int ret = execv("/usr/bin/busybox", newargv);
+            free(newargv);
+            perror(argv[0]);
+            return ret;
         }
     }
     fprintf(stderr, "%s","error: command not in suid whitelist!\n");
