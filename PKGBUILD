@@ -2,7 +2,7 @@
 
 pkgname=libltdl
 _pkgname=libtool
-pkgver=2.4.7
+pkgver=2.5.3
 pkgrel=1
 pkgdesc='A small library aiming at hiding the various difficulties of dlopening libraries'
 arch=(x86_64 aarch64 riscv64)
@@ -11,7 +11,7 @@ license=(GPL)
 depends=(musl)
 provides=("libltdl.so")
 source=(https://ftpmirror.gnu.org/libtool/libtool-${pkgver}.tar.gz)
-sha256sums=('04e96c2404ea70c590c546eba4202a4e12722c640016c12b9b2f1ce3d481e9a8')
+sha256sums=('9322bd8f6bc848fda3e385899dd1934957169652acef716d19d19d24053abb95')
 
 build()
 {
