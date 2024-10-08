@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=neovim
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc='hyperextensible Vim-based text editor'
 url='https://neovim.io'
@@ -24,7 +24,7 @@ depends=(lua51
 	 unibilium)
 makedepends=(cmake samurai)
 source=("https://github.com/neovim/neovim/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('edce96e79903adfcb3c41e9a8238511946325ea9568fde177a70a614501af689')
+sha256sums=('546cb2da9fffbb7e913261344bbf4cf1622721f6c5a67aa77609e976e78b8e89')
 
 build () {
 	cmake -B build -G Ninja \
