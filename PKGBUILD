@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname="hyprcursor"
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="The hyprland cursor format, library and utilities"
 arch=(any)
@@ -13,8 +13,10 @@ makedepends=('git' 'cmake')
 _archive="${pkgname}-${pkgver}"
 source=(
 	"$_archive.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+	"0001-Fix-includes.patch"
 )
-sha256sums=('313cd91436af343918e6dec4a666d4bf3666149ac3cac6f36c683b70304eada4')
+sha256sums=('67e845404164fee4c5694209b3d5f93a31b6963dbb0bfd6ed2cd96c99b316a08'
+            '56be1a27d4fe90b5256782fe6410b2ef8e5c31c76499b81505c2535166975637')
 
 prepare() {
 	_patch_ "$_archive"

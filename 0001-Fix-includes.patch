@@ -1,0 +1,24 @@
+From a85ed06fc80840e302a7f3ca4556c5f454a75aa6 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Tue, 8 Oct 2024 11:15:59 +0000
+Subject: [PATCH] Fix includes
+
+---
+ libhyprcursor/hyprcursor.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libhyprcursor/hyprcursor.cpp b/libhyprcursor/hyprcursor.cpp
+index 3a83a26..fa89ec4 100644
+--- a/libhyprcursor/hyprcursor.cpp
++++ b/libhyprcursor/hyprcursor.cpp
+@@ -8,6 +8,7 @@
+ #include <cstring>
+ #include <algorithm>
+ #include <cmath>
++#include <sstream>
+ #include <librsvg/rsvg.h>
+ 
+ #include "manifest.hpp"
+-- 
+2.46.2
+
