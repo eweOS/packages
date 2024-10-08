@@ -1,28 +1,23 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=hyprpicker
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="A wlroots-compatible Wayland color picker that does not suck."
 arch=(x86_64 aarch64 riscv64)
 url="https://github.com/hyprwm/hyprpicker"
 license=('BSD-3-Clause')
-depends=('cairo' 'libxkbcommon' 'wayland')
+depends=('cairo' 'libxkbcommon' 'wayland' 'hyprutils')
 optdepends=('wl-clipboard: Allows --autocopy to automatically copy the output to the clipboard.')
 makedepends=('cmake'
+	     'hyprwayland-scanner'
              'libglvnd'
              'libjpeg'
              'ninja'
              'pango'
 	     'wayland-protocols')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-	"0001-cmake-use-CXX_STANDARD-instead-of-a-flag.patch")
-sha256sums=('a443188ef7619be48c9992ea208121772b7e1da6662d672c650e30e159eeb891'
-            '69543b77de140263ad9d45b2d3b87ddfedce64009fd9c89b64908f13a94f12bd')
-
-prepare() {
-	_patch_ "$pkgname-$pkgver"
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('e14d881f9645fd633b29370875ec4e98e24ad3455c522f7bcd68c3d17eda338a')
 
 build() {
 	cmake -S "$pkgname-$pkgver" -B build \
