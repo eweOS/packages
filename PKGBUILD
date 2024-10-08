@@ -1,17 +1,18 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=hyprlang
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='implementation library for the hypr config language'
 arch=(x86_64 aarch64 riscv64)
 url="https://github.com/hyprwm/$pkgname"
 license=(BSD)
+depends=(musl hyprutils)
 makedepends=(cmake)
 provides=("lib$pkgname.so")
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('66a1f87634c8ecdeb67d7ccc499a3fc1c19b064a098b103be042751e7430b5cc')
+sha256sums=('9715311d6b31c18f1e83da999269c71a61c0862645795d2666fa1d7b20d5d0f6')
 
 build() {
 	cd "$_archive"
