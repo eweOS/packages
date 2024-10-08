@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=cxxopts
-pkgver=3.1.1
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Lightweight C++ command line option parser"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/jarro2783/cxxopts"
 license=(MIT)
 makedepends=(cmake)
 source=($url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-sha512sums=('248e54e23564660467c7ecf50676b86d3cd10ade89e0ac1d23deb71334cb89cc5eb50f624b385d5119a43ca68ff8b1c74af82dc699b5ccfae54d6dcad4fd9447')
+sha512sums=('7841fb3e6c3c2a057917c962e29fc0090e6ed06f5515aaa5e2a868fef59071a9a99b74d81c32cf613ecf10a68a4d96d6ad07805f48c7c3951ded096a2317dc3d')
 
 prepare() {
   cd $pkgname-$pkgver
