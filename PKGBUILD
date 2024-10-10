@@ -4,15 +4,13 @@
 pkgbase=zlib-ng
 pkgname=(zlib-ng zlib-ng-static)
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='zlib data compression library for the next generation systems'
 arch=(x86_64 aarch64 riscv64)
 license=('custom')
 url="https://github.com/zlib-ng/zlib-ng"
 depends=(musl)
 makedepends=(cmake googletest)
-provides=(zlib)
-conflicts=(zlib)
 source=($pkgname-$pkgver::"https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('fcb41dd59a3f17002aeb1bb21f04696c9b721404890bb945c5ab39d2cb69654c')
 
@@ -37,6 +35,8 @@ check()
 
 package_zlib-ng()
 {
+  provides=(zlib libz.so)
+  conflicts=(zlib)
   cd "$pkgname-$pkgver"
   make install DESTDIR="${pkgdir}"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/zlib/LICENSE"
@@ -48,7 +48,6 @@ package_zlib-ng()
 package_zlib-ng-static() {
   depends=(zlib-ng="$pkgver-$pkgrel")
   provides=(zlib-static)
-  conflicts=()
   options=(!strip staticlibs)
   mv "$srcdir/pkgs/$pkgname"/* "$pkgdir"
 }
