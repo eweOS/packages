@@ -4,7 +4,7 @@
 pkgbase=zlib-ng
 pkgname=(zlib-ng zlib-ng-static)
 pkgver=2.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='zlib data compression library for the next generation systems'
 arch=(x86_64 aarch64 riscv64)
 license=('custom')
@@ -23,7 +23,7 @@ prepare()
 build()
 {
   cd "$pkgname-$pkgver"
-  cmake . -DZLIB_COMPAT=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
+  cmake . -DZLIB_COMPAT=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DWITH_RVV=OFF
   cmake --build . --config Release
 }
 
