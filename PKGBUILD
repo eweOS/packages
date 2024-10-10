@@ -2,12 +2,13 @@
 
 pkgname=readline
 pkgver=8.2
-pkgrel=2
+pkgrel=3
 pkgdesc='GNU readline library'
 arch=(x86_64 aarch64 riscv64)
 license=('GPL')
 depends=('musl' 'ncurses')
 options=('!emptydirs')
+provides=('libhistory.so' 'libreadline.so')
 
 PURGE_TARGETS+=(usr/share/info/* usr/share/readline/*)
 
