@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fcitx5-qt
-pkgver=5.1.6
+pkgver=5.1.7
 pkgrel=1
 pkgdesc="Fcitx5 Qt Library (Qt5 & Qt6 integrations)"
 arch=(x86_64 aarch64 riscv64)
@@ -11,7 +11,7 @@ groups=('fcitx5-im')
 depends=('libxkbcommon' 'fcitx5' 'qt6-base' 'qt6-wayland' 'wayland')
 makedepends=('extra-cmake-modules' 'qt6-base' 'ninja' 'zstd')
 source=("https://download.fcitx-im.org/fcitx5/$pkgname/$pkgname-$pkgver.tar.zst")
-sha512sums=('09acfdce384270e5ecee269ae2e15ec7895d01d2fc550ba08e3bf56d4b8b853c9c0b8e58c4b2631bce191d0efc0e304dc69674f57c4407003272791834c3f7d8')
+sha512sums=('1078c3f275fa883b7b9bf2e1b71e926c9f639f637f4838fe0401648a73338c3b9e08c1e83cd8ab44994b4450983247a6882c42b012e4642111592050ee2ce144')
 
 build(){
   cd $pkgname-$pkgver
