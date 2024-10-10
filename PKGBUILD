@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=android-tools
-pkgver=35.0.1
-pkgrel=3
+pkgver=35.0.2
+pkgrel=1
 pkgdesc='Android platform tools'
 url='http://tools.android.com/'
 arch=(x86_64 aarch64 riscv64)
@@ -11,7 +11,7 @@ depends=(brotli libusb pcre2 protobuf googletest zstd python abseil-cpp)
 optdepends=('python: mkbootimg, unpack_bootimg and repack_bootimg support')
 makedepends=(cmake go perl linux-headers)
 source=("https://github.com/nmeum/android-tools/releases/download/$pkgver/android-tools-$pkgver.tar.xz")
-sha256sums=('654030c7f96d25d7224cd6861fac14a043cf1d3980f40288cdfbe219f94ffaf9')
+sha256sums=('d2c3222280315f36d8bfa5c02d7632b47e365bfe2e77e99a3564fb6576f04097')
 
 build () {
 	cmake -S "$pkgname-$pkgver" -B build \
