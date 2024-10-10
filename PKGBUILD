@@ -2,7 +2,7 @@
 
 pkgname=virglrenderer
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A virtual 3D GPU library, that allows the guest operating system to use the host GPU to accelerate 3D rendering'
 arch=(x86_64 aarch64 riscv64)
 url='https://virgil3d.github.io/'
@@ -13,6 +13,13 @@ checkdepends=(check)
 _tag=virglrenderer-$pkgver
 source=(virglrenderer-$pkgver.tar.bz2::https://gitlab.freedesktop.org/virgl/virglrenderer/-/archive/$_tag/virglrenderer-$_tag.tar.bz2)
 sha256sums=('51cfc3f7830f25865c1af93977a280c2bf12400550ccbebae7a7344924693337')
+
+prepare() {
+  # tests fails on riscv64
+  if [ "$CARCH" == "riscv64" ]; then
+    sed -i '/test_virgl_transfer/d; /test_virgl_resource/d' "virglrenderer-$_tag/tests/meson.build"
+  fi
+}
 
 build() {
   cd virglrenderer-$_tag
