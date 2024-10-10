@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=utmps
-pkgver=0.1.2.2
-pkgrel=4
+pkgver=0.1.2.3
+pkgrel=1
 pkgdesc='An implementation of the utmpx.h family of functions performing user accounting'
 arch=(x86_64 aarch64 riscv64)
 url='http://skarnet.org/software/utmps/'
@@ -19,7 +19,7 @@ source=(
   utmp.h
 )
 
-sha256sums=('f7ffa3714c65973bb95fbcf1501c06fc0478d93a51cea1b373ec6811c2425f52'
+sha256sums=('318ac799ed17c3fbf4281085b4b071facbd35c29852a5c643c24fa2869fc0545'
             '77ced4656183e8e3fe4f59adacdbea79f4f620fac3aa8267b5e7a34d1616e395'
             '94e732ac7fc0855ce05e2dd118c80828938178a1a4d5282f226149d15671e01b'
             'cd4e9a446d0b6926603b8831dc5e29d2b9a652e11b865be5cf8e877d6adde745'
