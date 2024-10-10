@@ -6,7 +6,7 @@ pkgname=(qemu-user-static
 	 qemu-user-static-{mips64el,mipsel,ppc,ppc64,riscv32,riscv64,s390x}
 	 qemu-user-static-{sparc,sparc64,x86_64})
 pkgver=9.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='QEMU user mode emulation (static build)'
 url='https://www.qemu.org/'
 arch=(x86_64 aarch64 riscv64)
@@ -28,6 +28,13 @@ for t in "${qemu_archs[@]}"; do
 	user_targets="$t-linux-user,$user_targets"
 done
 user_targets=${user_targets:0:-1}
+
+prepare () {
+  # __NR_riscv_hwprobe
+  if [ "$CARCH" == "riscv64" ]; then
+    sed -i '1i #include <asm/unistd.h>' "qemu-$pkgver/util/cpuinfo-riscv.c"
+  fi
+}
 
 build () {
 	local common_options=(
