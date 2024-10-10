@@ -2,12 +2,18 @@
 
 pkgname=ncurses
 pkgver=6.5
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64)
 license=(MIT-open-group)
 pkgdesc="System V Release 4.0 curses emulation library"
 url="https://invisible-island.net/ncurses/ncurses.html"
-
+provides=(
+  libncurses++w.so
+  libformw.so
+  libmenuw.so
+  libpanelw.so
+  libncursesw.so
+)
 source=(
   "http://ftp.gnu.org/gnu/ncurses/ncurses-${pkgver}.tar.gz"
   https://invisible-mirror.net/archives/ncurses/current/termcap.src.gz
