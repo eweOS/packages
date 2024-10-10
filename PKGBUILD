@@ -2,12 +2,13 @@
 
 pkgname=libpng
 pkgver=1.6.44
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of routines used to create PNG format graphics files"
 arch=(x86_64 aarch64 riscv64)
 url="http://www.libpng.org/pub/png/libpng.html"
 license=('custom')
 depends=('zlib' 'sh')
+provides=('libpng16.so')
 source=("https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.xz")
 sha256sums=('60c4da1d5b7f0aa8d158da48e8f8afa9773c1c8baa5d21974df61f1886b8ce8e')
 
