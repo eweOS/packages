@@ -10,8 +10,14 @@ license=(LicenseRef-libmng)
 depends=(lcms2
          libjpeg-turbo
          zlib)
+makedepends=(autoconf)
 source=(https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.xz)
 sha256sums=('4a462fdd48d4bc82c1d7a21106c8a18b62f8cc0042454323058e6da0dbb57dd3')
+
+prepare() {
+  cd $pkgname-$pkgver
+  autoreconf -fiv
+}
 
 build() {
   cd $pkgname-$pkgver
