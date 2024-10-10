@@ -2,13 +2,14 @@
 
 pkgname=freetype2
 pkgver=2.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Font rasterization library"
 url="https://www.freetype.org/"
 arch=(x86_64 aarch64 riscv64)
 license=(GPL)
 depends=(zlib sh libbz2 libpng brotli)
 makedepends=(meson)
+provides=(libfreetype.so)
 source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-$pkgver.tar.xz)
 sha256sums=('0550350666d427c74daeb85d5ac7bb353acba5f76956395995311a9c6f063289')
 
