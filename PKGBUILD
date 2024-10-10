@@ -1,0 +1,33 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgname=python-msgpack
+pkgver=1.0.5
+pkgrel=1
+pkgdesc='MessagePack serializer implementation for Python'
+url='https://github.com/msgpack/msgpack-python'
+arch=('x86_64' 'aarch64' 'riscv64')
+license=('Apache-2.0')
+depends=('python')
+makedepends=('cython' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-pytest')
+source=(msgpack-python-$pkgver.tar.gz::https://github.com/msgpack/msgpack-python/archive/v$pkgver.tar.gz)
+sha512sums=('0d0b479044cda16519cf85d45acb8900b6e6585bf95816396fc96d6d1eb260036fb9c75bf8f88d99e212937a40d314a200d2b847d1da8a9ebc5694ab52e22896')
+
+prepare() {
+  sed -i 's/~=/>=/' msgpack-python-$pkgver/pyproject.toml
+}
+
+build() {
+  cd msgpack-python-$pkgver
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd msgpack-python-$pkgver
+  PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=$(printf '%s\n' $PWD/build/* | paste -sd:) py.test test
+}
+
+package() {
+  cd msgpack-python-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+}
