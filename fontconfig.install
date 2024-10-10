@@ -1,0 +1,9 @@
+post_upgrade() {
+  # a full forced directory scan is required here
+  echo "Rebuilding fontconfig cache..."
+  /usr/bin/fc-cache -rs
+}
+
+post_install() {
+  post_upgrade $1 0
+}
