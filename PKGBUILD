@@ -2,10 +2,10 @@
 
 pkgname=fcitx5-anthy
 pkgver=5.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Anthy wrapper for fcitx5.'
 url='https://github.com/fcitx/fcitx5-anthy'
-arch=(x86_64 aarch64 riscv6e4)
+arch=(x86_64 aarch64 riscv64)
 license=(GPL-2.0-or-later)
 depends=(anthy fcitx5)
 makedepends=(cmake extra-cmake-modules)
