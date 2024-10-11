@@ -2,19 +2,26 @@
 
 pkgname=libcupsfilters
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenPrinting CUPS Filters - contains all the code of the filters of the former cups-filters package as library functions"
 arch=(x86_64 aarch64 riscv64)
 url="https://github.com/OpenPrinting/libcupsfilters"
 license=('Apache')
-depends=('libcups' 'libexif' 'qpdf' 'ghostscript'
+depends=('libcups' 'libexif' 'qpdf' 'ghostscript' 'poppler'
          'libjpeg' 'libpng' 'libtiff' 'lcms2' 'fontconfig' 'dbus')
 makedepends=('linux-headers')
 checkdepends=('ttf-dejavu')
-source=("https://github.com/OpenPrinting/libcupsfilters/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('542f2bfbc58136a4743c11dc8c86cee03c9aca705612654e36ac34aa0d9aa601')
+source=(
+  "https://github.com/OpenPrinting/libcupsfilters/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
+  c++11.patch
+  CVE-2024-47076.patch
+)
+sha256sums=('542f2bfbc58136a4743c11dc8c86cee03c9aca705612654e36ac34aa0d9aa601'
+            'cd70a90d10881df87d1d76d44838cf15845a2deafad47391bf2cdf681c31a7d5'
+            'e8305c1f9bd369fad19cd6657119edc42ffacbc19527a168507602affb2a8611')
 
 prepare() {
+  _patch_ "$pkgname-$pkgver"
   cd "$pkgname"-$pkgver
   # avoid duplicate mkdir
   sed -i 's/-mkdir/-mkdir -p/' install-sh
@@ -33,8 +40,7 @@ build() {
     --sysconfdir=/etc \
     --sbindir=/usr/bin \
     --localstatedir=/var \
-    --disable-mutool \
-    --disable-poppler
+    --disable-mutool
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
