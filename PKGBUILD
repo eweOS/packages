@@ -1,8 +1,12 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=flatpak
+pkgbase=flatpak
+pkgname=(
+  flatpak
+  flatpak-docs
+)
 pkgver=1.15.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux application sandboxing and distribution framework (formerly xdg-app)"
 url="https://flatpak.org"
 arch=(x86_64 aarch64 riscv64)
@@ -12,6 +16,7 @@ depends=(
   bubblewrap
   curl
   dbus
+  dconf
   fuse3
   glib
   json-glib
@@ -27,8 +32,11 @@ makedepends=(
   docbook-xsl
   git
   gobject-introspection
+  gtk-doc
   libxslt
   meson
+  python-packaging
+  python-pyparsing
   xmlto
   wayland-protocols
 )
@@ -56,14 +64,10 @@ build() {
     -D selinux_module=disabled
     -D system_bubblewrap=bwrap
     -D system_dbus_proxy=xdg-dbus-proxy
-    -D dconf=disabled
     -D malcontent=disabled
     -D system_helper=disabled
     -D systemd=disabled
     -D xauth=disabled
-    -D gtkdoc=disabled
-    -D docbook_docs=disabled
-    -D man=disabled
     -D tests=false
   )
 
@@ -89,4 +93,13 @@ package_flatpak() {
 
   # remove systemd services
   rm -r $pkgdir/usr/lib/systemd
+
+  _pick_ docs "$pkgdir"/usr/share/{doc,gtk-doc}
 }
+
+package_flatpak-docs() {
+  pkgdesc+=" (documentation)"
+  depends=()
+  mv pkgs/docs/* "$pkgdir"
+}
+
