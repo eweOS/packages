@@ -1,0 +1,16 @@
+diff --git a/src/lj_err.c b/src/lj_err.c
+index 413cc6b0..b1ad3422 100644
+--- a/src/lj_err.c
++++ b/src/lj_err.c
+@@ -601,11 +601,7 @@ static const uint8_t err_frame_jit_template[] = {
+ #define ERR_FRAME_JIT_OFS_HANDLER	0x12
+ #define ERR_FRAME_JIT_OFS_FDE		(LJ_64 ? 0x20 : 0x18)
+ #define ERR_FRAME_JIT_OFS_CODE_SIZE	(LJ_64 ? 0x2c : 0x24)
+-#if LJ_TARGET_OSX
+ #define ERR_FRAME_JIT_OFS_REGISTER	ERR_FRAME_JIT_OFS_FDE
+-#else
+-#define ERR_FRAME_JIT_OFS_REGISTER	0
+-#endif
+ 
+ extern void __register_frame(const void *);
+ extern void __deregister_frame(const void *);
