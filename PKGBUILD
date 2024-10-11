@@ -2,7 +2,7 @@
 
 pkgname=swayimg
 pkgver=3.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A lightweight image viewer for Wayland display servers'
 arch=(x86_64 aarch64 riscv64)
 license=('MIT')
@@ -15,11 +15,13 @@ makedepends=(
 depends=(
     'cairo'
     'hicolor-icon-theme'
+    'libavif'
     'libexif.so'
     'fontconfig'
     'freetype2'
     'giflib'
     'glib'
+    'libheif'
     'libjpeg.so'
     'libjson-c.so'
     'libpng'
@@ -39,9 +41,9 @@ build() {
         -D bash=enabled \
         -D desktop=true \
         -D exif=enabled \
-        -D avif=disabled \
+        -D avif=enabled \
         -D gif=enabled \
-        -D heif=disabled \
+        -D heif=enabled \
         -D jpeg=enabled \
         -D jxl=disabled \
         -D man=true \
