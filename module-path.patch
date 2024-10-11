@@ -1,0 +1,28 @@
+diff --git a/etc/luajit.pc b/etc/luajit.pc
+index 96433008..ed8108b8 100644
+--- a/etc/luajit.pc
++++ b/etc/luajit.pc
+@@ -12,8 +12,8 @@ libdir=${exec_prefix}/${multilib}
+ libname=luajit-${abiver}
+ includedir=${prefix}/include/luajit-${majver}.${minver}
+ 
+-INSTALL_LMOD=${prefix}/share/lua/${abiver}
+-INSTALL_CMOD=${prefix}/${multilib}/lua/${abiver}
++INSTALL_LMOD=${prefix}/share/lua/5.1jit
++INSTALL_CMOD=${prefix}/${multilib}/lua/5.1jit
+ 
+ Name: LuaJIT
+ Description: Just-in-time compiler for Lua
+diff --git a/src/luaconf.h b/src/luaconf.h
+index 1cf3a03c..be1c3396 100644
+--- a/src/luaconf.h
++++ b/src/luaconf.h
+@@ -36,7 +36,7 @@
+ #define LUA_LMULTILIB	"lib"
+ #endif
+ #define LUA_LROOT	"/usr/local"
+-#define LUA_LUADIR	"/lua/5.1/"
++#define LUA_LUADIR	"/lua/5.1jit/"
+ 
+ #ifdef LUA_ROOT
+ #define LUA_JROOT	LUA_ROOT
