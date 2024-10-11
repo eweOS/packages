@@ -2,7 +2,7 @@
 
 pkgname=mpd
 pkgver=0.23.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Flexible, powerful, server-side application for playing music"
 arch=(x86_64 aarch64 riscv64)
 url="https://www.musicpd.org/"
@@ -14,6 +14,7 @@ depends=(
   hicolor-icon-theme
   pcre2
   zlib
+  zziplib
 )
 makedepends=(
   alsa-lib
@@ -29,6 +30,7 @@ makedepends=(
   git
   icu
   lame
+  libmpdclient
   libogg
   libpulse
   libsamplerate
@@ -65,7 +67,7 @@ prepare() {
 build() {
   local _disabled_comps=(
     adplug shine tremor io_uring chromaprint yajl id3tag cdio_paranoia mms
-    qobuz iso9660 zzip ao jack shout audiofile faad gme mad mikmod modplug
+    qobuz iso9660 ao jack shout audiofile faad gme mad mikmod modplug
     openmpt mpcdec mpg123 wavpack wildmidi sidplay twolame soundcloud
     libmpdclient nfs
   )
@@ -106,6 +108,7 @@ package() {
     lame libmp3lame.so
     libogg libogg.so
     pipewire
+    libmpdclient libmpdclient.so
     libpulse libpulse.so
     libsamplerate libsamplerate.so
     libsndfile libsndfile.so
