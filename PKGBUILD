@@ -2,7 +2,7 @@
 
 pkgname=ostree
 pkgver=2024.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Operating system and container binary deployment and upgrades"
 url="https://ostreedev.github.io/ostree/"
 arch=(x86_64 aarch64 riscv64)
@@ -24,6 +24,7 @@ makedepends=(
   glib
   gobject-introspection
   libarchive
+  libsoup3
   linux-headers
   openssl
   python
@@ -70,7 +71,6 @@ build() {
     --with-curl
     --with-ed25519-libsodium
     --with-openssl
-    --without-soup
   )
 
   cd $pkgname
