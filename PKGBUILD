@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xmlto
-pkgver=0.0.28
+pkgver=0.0.29
 pkgrel=1
 pkgdesc="Convert xml to many other formats"
 arch=(x86_64 aarch64 riscv64)
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libxslt')
 makedepends=('docbook-xsl')
 source=("https://releases.pagure.org/xmlto/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('1130df3a7957eb9f6f0d29e4aa1c75732a7dfb6d639be013859b5c7ec5421276')
+sha256sums=('6000d8e8f0f9040426c4f85d7ad86789bc88d4aeaef585c4d4110adb0b214f21')
 
 prepare() {
   cd $pkgname-$pkgver
