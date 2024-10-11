@@ -1,0 +1,4 @@
+type = bgprocess
+command = /usr/sbin/vnstatd -n
+smooth-recovery = true
+depends-on = network.target
