@@ -2,7 +2,7 @@
 
 pkgname=openjpeg2
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source JPEG 2000 codec written in C.'
 url='https://www.openjpeg.org/'
 arch=(x86_64 aarch64 riscv64)
@@ -14,7 +14,8 @@ source=("https://github.com/uclouvain/openjpeg/archive/refs/tags/v$pkgver.tar.gz
 build () {
 	cd openjpeg-$pkgver
 	cmake -DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib .
+	      -DCMAKE_INSTALL_LIBDIR=lib . \
+              -DBUILD_STATIC_LIBS=OFF 
 	make
 }
 
