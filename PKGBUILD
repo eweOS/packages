@@ -1,10 +1,10 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang wasi-libc++ wasi-libc++abi wasi-compiler-rt)
+pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang flang mlir wasi-libc++ wasi-libc++abi wasi-compiler-rt)
 _realpkgname=llvm-project
 pkgver=18.1.8
 _binutilsver=2.42
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'aarch64' 'riscv64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -119,6 +119,33 @@ FLIST_llvm_libs=(
   "usr/include/*unwind*"
 )
 
+FLIST_flang=(
+  "usr/bin/bbc"
+  "usr/bin/f18-parse-demo"
+  "usr/bin/fir-opt"
+  "usr/bin/flang-new"
+  "usr/bin/flang-to-external-fc"
+  "usr/bin/tco"
+  "usr/include/flang"
+  "usr/lib/cmake/flang"
+  "usr/lib/libFIR*"
+  "usr/lib/libHLFIR*"
+  "usr/lib/libFortran*"
+  "usr/lib/libflang*"
+)
+
+FLIST_mlir=(
+  "usr/bin/mlir-*"
+  "usr/bin/tblgen-lsp-server"
+  "usr/bin/tblgen-to-irdl"
+  "usr/lib/objects-Release/obj.MLIR*"
+  "usr/include/mlir"
+  "usr/include/mlir-c"
+  "usr/lib/cmake/mlir"
+  "usr/lib/libMLIR*"
+  "usr/lib/libmlir*"
+)
+
 prepare()
 {
   cd $_basedir
@@ -177,6 +204,7 @@ build()
     -DLIBUNWIND_USE_COMPILER_RT=ON
     -DLIBUNWIND_ENABLE_FRAME_APIS=ON
     -DLIBUNWIND_INSTALL_HEADERS=ON
+    -DSANITIZER_CXX_ABI=libcxxabi
     -DCOMPILER_RT_BUILD_GWP_ASAN=OFF
     -DCOMPILER_RT_BUILD_XRAY=OFF
     -DCOMPILER_RT_BUILD_LIBFUZZER=OFF
@@ -244,9 +272,14 @@ build()
 
   cmake -B build -G Ninja \
     "${CMARGS[@]}" \
-    -DLLVM_ENABLE_PROJECTS="clang;compiler-rt;lld;lldb;openmp" \
+    -DLLVM_ENABLE_PROJECTS="clang;compiler-rt;flang;mlir;lld;lldb;openmp;libclc" \
     -DLLVM_ENABLE_RUNTIMES="libunwind;libcxxabi;libcxx" \
     -S $_basedir/llvm
+
+  # Ensure compiler-rt has been available before building other rt libraries
+  ninja -C build clang LLVMgold
+  ninja -C build compiler-rt
+  ninja -C build runtimes
 
   ninja -C build
 
@@ -281,6 +314,8 @@ build()
 
   cd $srcdir/PKGDIR
   _pick_ clang "${FLIST_clang[@]}"
+  _pick_ flang "${FLIST_flang[@]}"
+  _pick_ mlir "${FLIST_mlir[@]}"
   _pick_ lldb "${FLIST_lldb[@]}"
   _pick_ openmp "${FLIST_openmp[@]}"
   _pick_ lld "${FLIST_lld[@]}"
@@ -298,6 +333,24 @@ package_clang()
   ln -s clang++ "${pkgdir}/usr/bin/c++"
 
   _install_license_ $_basedir/clang/LICENSE.TXT
+}
+
+package_flang()
+{
+  pkgdesc="ground-up implementation of a Fortran front end written in modern C++"
+  depends=("clang" "mlir")
+  mv "$srcdir/pkgs/flang/usr" "${pkgdir}/usr"
+
+  _install_license_ $_basedir/flang/LICENSE.TXT
+}
+
+package_mlir()
+{
+  pkgdesc="Multi-Level IR Compiler Framework for LLVM"
+  depends=("llvm-libs")
+  mv "$srcdir/pkgs/mlir/usr" "${pkgdir}/usr"
+
+  _install_license_ $_basedir/mlir/LICENSE.TXT
 }
 
 package_lldb()
