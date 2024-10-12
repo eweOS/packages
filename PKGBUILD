@@ -3,8 +3,8 @@
 # Contributor: Justin "juster" Davis <jrcd83@gmail.com>
 
 pkgname=perl-http-message
-pkgver=6.46
-pkgrel=2
+pkgver=7.00
+pkgrel=1
 pkgdesc="HTTP style messages"
 arch=('any')
 url='https://search.cpan.org/dist/HTTP-Message'
@@ -14,7 +14,7 @@ depends=('perl' 'perl-encode-locale' 'perl-http-date' 'perl-io-html'
 	 'perl-lwp-mediatypes' 'perl-uri' 'perl-clone')
 checkdepends=('perl-io-compress-brotli' 'perl-test-needs' 'perl-try-tiny')
 source=("https://search.cpan.org/CPAN/authors/id/O/OA/OALDERS/HTTP-Message-$pkgver.tar.gz")
-sha512sums=('86940c54f710cd44497c8ead305fff3922cedd95491eccfbdd6deb96ca57a579c441693d684d92536aa369ad13e87da160ce5b6ec6f2fdd54df03a002a8fd4da')
+sha512sums=('e3d62ddcc7be2641e4c9b294bec6c7f9558351c890a1d283d506eedbef29fb9d7cccf9631a0cbc4b690da2f52b14e9813f85076dae9eaec5cda1781946922546')
 
 build() {
   cd HTTP-Message-$pkgver
