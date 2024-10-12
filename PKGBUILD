@@ -1,14 +1,14 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libuv
-pkgver=1.49.0
+pkgver=1.49.1
 pkgrel=1
 pkgdesc="Multi-platform support library with a focus on asynchronous I/O"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/libuv/libuv"
 license=('custom')
 source=(https://dist.libuv.org/dist/v$pkgver/libuv-v$pkgver.tar.gz)
-sha256sums=('17e6463bb51c7956430f04ec722ae638402402b5cca669ea90dab2907d10091a')
+sha256sums=('8d84f714f4cfd167b1576a58b82430cc2166ef135463d0644964fd71c61a6766')
 
 build() {
     cd $pkgname-v$pkgver
