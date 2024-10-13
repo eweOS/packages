@@ -1,0 +1,32 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgname=python-wrapt
+pkgver=1.16.0
+pkgrel=1
+pkgdesc="A Python module for decorators, wrappers and monkey patching"
+arch=("x86_64" "aarch64" "riscv64")
+url="https://pypi.python.org/pypi/wrapt"
+license=("BSD-2-Clause")
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-pytest')
+source=("https://github.com/GrahamDumpleton/wrapt/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('65bdda3b6580748ceb720e8fc1a6b05832a355d541aa650bc87052f3aa8793d03d29a080b79eceb16392e297aed8f11a283e36f5f40a0db614b409b1dc2b6c9c')
+
+build() {
+  cd wrapt-$pkgver
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+
+  cd wrapt-$pkgver
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$python_version" py.test
+}
+
+package() {
+  cd wrapt-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}
