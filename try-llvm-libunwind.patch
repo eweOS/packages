@@ -1,0 +1,44 @@
+From 8fc98f215917d61ebdd7a52ebec2d3d423f6cc9c Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Fri, 11 Oct 2024 08:16:22 +0000
+Subject: [PATCH] [llvm][cmake] Try LLVM libunwind when frame registration is
+ unavailable
+
+Currently __register_frame and __unw_add_dynamic_fde are probed by
+default and OrcJIT prefers the later. But on a system with only LLVM
+libunwind available, we may need to link libunwind explicitly.
+
+This patch tries to link LLVM libunwind if frame registeration is not
+available by default, preventing LLVM-built systems falling back to
+__register_frame code path. Such fallback leads to errors like
+
+  $ clang-repl
+  clang-repl> 1 + 1;
+  libunwind: __unw_add_dynamic_fde: bad fde: FDE is really a CIE
+
+because __register_frame's behavior differs between libgcc and LLVM
+libunwind.
+
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ llvm/cmake/config-ix.cmake | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/llvm/cmake/config-ix.cmake b/llvm/cmake/config-ix.cmake
+index 86f2bac7d23e84..38d08f968ca9ea 100644
+--- a/llvm/cmake/config-ix.cmake
++++ b/llvm/cmake/config-ix.cmake
+@@ -272,6 +272,13 @@ endif()
+ check_symbol_exists(__register_frame "${CMAKE_CURRENT_LIST_DIR}/unwind.h" HAVE_REGISTER_FRAME)
+ check_symbol_exists(__deregister_frame "${CMAKE_CURRENT_LIST_DIR}/unwind.h" HAVE_DEREGISTER_FRAME)
+ check_symbol_exists(__unw_add_dynamic_fde "${CMAKE_CURRENT_LIST_DIR}/unwind.h" HAVE_UNW_ADD_DYNAMIC_FDE)
++if (NOT (HAVE_REGISTER_FRAME OR HAVE_DEREGISTER_FRAME OR HAVE_UNW_ADD_DYNAMIC_FDE))
++  check_library_exists(unwind __unw_add_dynamic_fde "" HAVE_LLVM_LIBUNWIND)
++  if (HAVE_LLVM_LIBUNWIND)
++    list(APPEND CMAKE_REQUIRED_LIBRARIES "unwind")
++    set(HAVE_UNW_ADD_DYNAMIC_FDE 1)
++  endif ()
++endif ()
+ 
+ check_symbol_exists(_Unwind_Backtrace "unwind.h" HAVE__UNWIND_BACKTRACE)
+ check_symbol_exists(getpagesize unistd.h HAVE_GETPAGESIZE)
