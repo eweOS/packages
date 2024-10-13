@@ -6,6 +6,7 @@ _patch_() {
   for FILE in ${source[@]}; do
     realfile=${FILE%::*}
     if [[ $realfile == *.patch ]]; then
+      msg2 "Applying $realfile"
       patch -p1 < $srcdir/$realfile
     fi
   done
