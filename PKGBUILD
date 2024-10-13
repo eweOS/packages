@@ -1,15 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=(llvm llvm-libs llvm-lto lldb openmp lld clang flang mlir wasi-libc++ wasi-libc++abi wasi-compiler-rt)
+pkgname=(llvm llvm-tools llvm-devel llvm-libs llvm-lto lldb openmp lld clang flang mlir wasi-libc++ wasi-libc++abi wasi-compiler-rt)
 _realpkgname=llvm-project
 pkgver=18.1.8
 _binutilsver=2.42
-pkgrel=4
-arch=('x86_64' 'aarch64' 'riscv64')
+pkgrel=5
+arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=(
-  llvm
+  llvm-devel
   cmake
   ninja
   utmps
@@ -21,7 +21,6 @@ makedepends=(
   libxml2
   lld
   wasi-libc
-  openmp
   spirv-llvm-translator
   python
 )
@@ -33,6 +32,7 @@ source=(
   0001-clang-force-libc-linked-with-no-as-needed-when-using.patch
   backport-fix-wayfire-lambda-instantiation.patch
   fix-HandleSDNode.patch
+  try-llvm-libunwind.patch
 )
 sha256sums=('0b58557a6d32ceee97c8d533a59b9212d87e0fc4d2833924eb6c611247db2f2a'
             'f6e4d41fd5fc778b06b7891457b3620da5ecea1006c6a4a41ae998109f85a800'
@@ -40,9 +40,17 @@ sha256sums=('0b58557a6d32ceee97c8d533a59b9212d87e0fc4d2833924eb6c611247db2f2a'
             'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94'
             '57808d224fd9218a936e6669bf4129eaf4aa04fbd45ab9f7fd5a20efc304e307'
             'a25dacfebddbbc0e07c4b479d7e1e9c4cc2cc12f4689a95721dc773003101460'
-            'adf4e3795ccaa74b04e90844e51868f9e526e0ec38972f378d8ab7fa777a82d3')
+            'adf4e3795ccaa74b04e90844e51868f9e526e0ec38972f378d8ab7fa777a82d3'
+            '13a1c761d41324c7a790df55650a3a98a9ade0348d6e88f1e269b6b77ce5df55')
 
 _basedir=$_realpkgname-$pkgver.src
+
+FLIST_llvm_devel=(
+  "usr/include/llvm-c"
+  "usr/include/llvm"
+  "usr/lib/cmake/llvm"
+  "usr/lib/libLLVM*.a"
+)
 
 FLIST_clang=(
   "usr/bin/*clang*"
@@ -59,6 +67,7 @@ FLIST_clang=(
   "usr/bin/intercept-build"
   "usr/bin/scan-*"
   "usr/lib/clang"
+  "usr/lib/diagtool"
   "usr/lib/libear"
   "usr/lib/libscanbuild"
   "usr/libexec/analyze-*"
@@ -105,6 +114,10 @@ FLIST_llvm_lto=(
   "usr/lib/LLVMgold.so*"
 )
 
+FLIST_llvm_tools=(
+  "usr/bin/*"
+)
+
 FLIST_llvm_libs=(
   "usr/lib/libc++.so*"
   "usr/lib/libc++abi.so*"
@@ -148,6 +161,7 @@ FLIST_mlir=(
 
 prepare()
 {
+  _patch_ $_basedir
   cd $_basedir
   sed -i \
     -e 's@strtoull_l@strtoull@g' \
@@ -157,10 +171,6 @@ prepare()
     libcxx/include/locale
   sed -i "/dlfcn.h/s@\$@\n#include <sys/types.h>@" \
     compiler-rt/lib/fuzzer/FuzzerInterceptors.cpp
-  patch -p1 < $srcdir/llvm-install-prefix.patch
-  patch -p1 < $srcdir/0001-clang-force-libc-linked-with-no-as-needed-when-using.patch
-  patch -p1 < $srcdir/backport-fix-wayfire-lambda-instantiation.patch
-  patch -p1 < $srcdir/fix-HandleSDNode.patch
   mkdir -p cmake/Platform && echo "set(WASI 1)" > cmake/Platform/WASI.cmake
 }
 
@@ -320,7 +330,20 @@ build()
   _pick_ openmp "${FLIST_openmp[@]}"
   _pick_ lld "${FLIST_lld[@]}"
   _pick_ llvm-lto "${FLIST_llvm_lto[@]}"
+  _pick_ llvm-devel "${FLIST_llvm_devel[@]}"
+  _pick_ llvm-tools "${FLIST_llvm_tools[@]}" # remaining usr/bin/*
   _pick_ llvm-libs "${FLIST_llvm_libs[@]}"
+}
+
+package_llvm-devel()
+{
+  pkgdesc="Development files for LLVM"
+  depends=("llvm" "llvm-libs" "mlir" "openmp")
+
+  mv "$srcdir/pkgs/llvm-devel/usr" "${pkgdir}/usr"
+
+  _install_license_ $_basedir/llvm/LICENSE.TXT LICENSE
+  _install_license_ $_basedir/llvm/CREDITS.TXT CREDITS
 }
 
 package_clang()
@@ -331,6 +354,8 @@ package_clang()
   mv "$srcdir/pkgs/clang/usr" "${pkgdir}/usr"
   ln -s clang "${pkgdir}/usr/bin/cc"
   ln -s clang++ "${pkgdir}/usr/bin/c++"
+  ln -s clang "${pkgdir}/usr/bin/c89"
+  ln -s clang "${pkgdir}/usr/bin/c99"
 
   _install_license_ $_basedir/clang/LICENSE.TXT
 }
@@ -411,6 +436,20 @@ package_llvm-libs()
     _install_license_ $_basedir/$comp_name/LICENSE.TXT LICENSE-$comp_name
   done
   _install_license_ $_basedir/libunwind/LICENSE.TXT LICENSE-libunwind
+}
+
+package_llvm-tools()
+{
+  pkgdesc="LLVM runtime tools."
+  depends=('llvm' 'llvm-libs')
+  provides=(binutils)
+  conflicts=(binutils)
+  replaces=(binutils)
+
+  mv "$srcdir/pkgs/llvm-tools/usr" "${pkgdir}/usr"
+
+  _install_license_ $_basedir/llvm/CREDITS.TXT CREDITS
+  _install_license_ $_basedir/llvm/LICENSE.TXT LICENSE
 }
 
 package_llvm()
