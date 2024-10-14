@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=libserialport
-pkgver=0.1.1
+pkgver=0.1.2
 _path=$pkgname-$pkgname-$pkgver
 pkgrel=1
 pkgdesc='A minimal, cross-platform serial port library.'
@@ -11,7 +11,7 @@ license=(LGPL-3.0-or-later)
 depends=(musl)
 provides=(libserialport.so)
 source=("https://github.com/sigrokproject/libserialport/archive/refs/tags/libserialport-$pkgver.tar.gz")
-sha256sums=('4e3573e3bdbb6b0a872f32c4826d1b6b630dcc3eeb5f05d0501bb79d738a09ea')
+sha256sums=('cbb1192a09ff31d34e7efdb17a2f50d9d1974461c0b81c29bb449515d78d8950')
 
 build () {
 	cd $_path
