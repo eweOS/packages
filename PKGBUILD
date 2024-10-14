@@ -12,7 +12,7 @@ pkgname=(
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=24.2.4
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm')
 makedepends=(
@@ -31,9 +31,13 @@ options=(!lto)
 source=(
   https://mesa.freedesktop.org/archive/$pkgbase-$pkgver.tar.xz
   0001-gl-without-glx.patch
+  0002-panvk-link-with-build-id.patch::https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/31654.patch
 )
 sha512sums=('f0f1c23591cce85966efaf3988afdb14b64ceb7216b3994e8fc50e8ddc62c35a84b2013285c84080d963aec2afb94dac345f5f00e7ccf9ae7e9ab3f5b9ba0bcb'
-            '83bf8b305713a22c9732a0a72be5eab3f75abf469a547043e6a78f662c5247dc051971565c9be91b2af85948980e677ccb48ac9ca6b25afe6fd8380510c4310e')
+            '83bf8b305713a22c9732a0a72be5eab3f75abf469a547043e6a78f662c5247dc051971565c9be91b2af85948980e677ccb48ac9ca6b25afe6fd8380510c4310e'
+            '581c2fbacc942b2d15a150b93908df3ecd7da0612fd69dbbc47c1e50df860a79de401429d5496c5d2c024a76da8440130ba0d0eeef8933ea565333727e2766ee')
+
+[ "$CARCH" = aarch64 ] && pkgname+=(vulkan-panfrost)
 
 prepare()
 {
@@ -51,7 +55,7 @@ build()
 	    ;;
     aarch64)
 	    GALLIUM_DRI="${GALLIUM_DRI_COMMON},panfrost"
-	    VULKAN_DRI="${VULKAN_DRI_COMMON}"
+	    VULKAN_DRI="${VULKAN_DRI_COMMON},panfrost"
 	    ;;
     riscv64)
 	    GALLIUM_DRI="${GALLIUM_DRI_COMMON}"
@@ -123,6 +127,10 @@ package_mesa()
   _pick_ vulkan-intel usr/share/vulkan/icd.d/intel_*.json
   _pick_ vulkan-intel usr/lib/libvulkan_intel*.so
 
+  # vulkan-panfrost
+  _pick_ vulkan-panfrost usr/share/vulkan/icd.d/panfrost_*.json
+  _pick_ vulkan-panfrost usr/lib/libvulkan_panfrost.so
+
   install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
     -t "$pkgdir/usr/share/licenses/$pkgname"
 }
@@ -189,6 +197,18 @@ package_vulkan-radeon()
 package_vulkan-intel()
 {
   pkgdesc="Open-source Vulkan driver for Intel GPUs"
+  depends=(${_vulkan_driver_deps[*]})
+  optdepends=('vulkan-mesa-layers: additional vulkan layers')
+  provides=('vulkan-driver')
+  mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
+
+  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
+    -t "$pkgdir/usr/share/licenses/$pkgname"
+}
+
+package_vulkan-panfrost()
+{
+  pkgdesc="Open-source Vulkan driver for Mali-GPUs"
   depends=(${_vulkan_driver_deps[*]})
   optdepends=('vulkan-mesa-layers: additional vulkan layers')
   provides=('vulkan-driver')
