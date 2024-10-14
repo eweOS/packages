@@ -5,7 +5,7 @@ pkgver=1.0.22
 _ver=${pkgver%.*}
 _patchlevel=${pkgver##*.}
 _verstr=${_ver}-pl${_patchlevel}
-pkgrel=1
+pkgrel=2
 pkgdesc='GSM lossy speech compression'
 url='https://quut.com/gsm/'
 arch=(x86_64 aarch64 riscv64)
@@ -38,11 +38,11 @@ package() {
 	_install_license_ COPYRIGHT
 	mkdir -p $pkgdir/usr
 	make install INSTALL_ROOT=$pkgdir/usr \
-		GSM_INSTALL_LIB=$pkgdir/usr/lib		\
-		GSM_INSTALL_INC=$pkgdir/usr/include	\
-		GSM_INSTALL_MAN=$pkgdir/usr/share/man	\
-		TOAST_INSTALL_BIN=$pkgdir/usr/bin	\
-		TOAST_INSTALL_MAN=$pkgdir/usr/man/man1	\
+		GSM_INSTALL_LIB=$pkgdir/usr/lib			\
+		GSM_INSTALL_INC=$pkgdir/usr/include		\
+		GSM_INSTALL_MAN=$pkgdir/usr/share/man/man3	\
+		TOAST_INSTALL_BIN=$pkgdir/usr/bin		\
+		TOAST_INSTALL_MAN=$pkgdir/usr/share/man/man1	\
 		LN='ln -s' SOVER=$pkgver
 }
 
