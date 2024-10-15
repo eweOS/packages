@@ -1,0 +1,10 @@
+--- a/src/core/devices/nm-device.c
++++ b/src/core/devices/nm-device.c
+@@ -7690,7 +7690,7 @@
+                         assume_state_connection_uuid,
+                         set_nm_owned,
+                         unmanaged_user_explicit,
+-                        FALSE);
++                        TRUE);
+     return TRUE;
+ }
