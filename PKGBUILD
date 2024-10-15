@@ -2,7 +2,7 @@
 
 pkgname=slang
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="S-Lang is a powerful interpreted language"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://www.jedsoft.org/slang/"
@@ -11,6 +11,15 @@ depends=('pcre')
 backup=('etc/slsh.rc')
 source=("https://www.jedsoft.org/releases/slang/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('f9145054ae131973c61208ea82486d5dd10e3c5cdad23b7c4a0617743c8f5a18')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  rm configure
+  cd autoconf
+  cp /usr/share/autoconf/build-aux/config.sub .
+  cp /usr/share/autoconf/build-aux/config.guess .
+  make ../configure
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
