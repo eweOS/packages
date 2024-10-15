@@ -3,7 +3,7 @@
 pkgname=qt6-base
 _qtver=6.7.2
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -59,6 +59,9 @@ build() {
     -DFEATURE_opengles32=ON
     -DFEATURE_opengl_desktop=OFF
   )
+
+  # disable LTO on riscv64
+  [ "$CARCH" = riscv64 ] && FEATUREARGS+=(-DFEATURE_ltcg=OFF)
 
   cmake -B build -S $_pkgfn -G Ninja \
     "${CMARGS[@]}" \
