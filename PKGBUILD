@@ -22,7 +22,7 @@ makedepends=(meson samurai glib2 gobject-introspection libdrm python-gobject
 	     libaom libbz2 curl fluidsynth gsm libopus libsndfile libxml2
 	     libsrt libwebp x265 openal-soft openexr libjpeg librsvg
 	     vulkan-icd-loader libass lcms2 openjpeg2
-	     json-glib ffmpeg)
+	     json-glib ffmpeg svt-av1)
 
 source=(
   "https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/$pkgver/gstreamer-$pkgver.tar.gz"
@@ -144,7 +144,6 @@ build () {
 		-Dgst-plugins-bad:soundtouch=disabled
 		-Dgst-plugins-bad:spandsp=disabled
 		-Dgst-plugins-bad:srtp=disabled		# missing libsrtp2
-		-Dgst-plugins-bad:svtav1=disabled	# missing SvtAv1Enc
 		-Dgst-plugins-bad:svthevcenc=disabled	# missing SvtHevcEnc
 		-Dgst-plugins-bad:teletext=disabled	# missing zsbi
 		-Dgst-plugins-bad:voaacenc=disabled
@@ -277,7 +276,7 @@ subenc,switchbin,timecode,transcode,unixfd,videofiltersbad,\
 videoframe_audiolevel,videoparsersbad,videosignal,vmnc,y4mdec}.so
 	_pick_ gst-plugins-bad \
 		usr/lib/gstreamer-1.0/libgst{\
-dvb,fbdevsink,ipcpipeline,kms,qsv,shm}.so
+dvb,fbdevsink,ipcpipeline,kms,qsv,shm,svtav1}.so
 	_pick_ gst-plugins-bad \
 		usr/lib/gstreamer-1.0/libgst{\
 aes,analyticsoverlay,aom,assrender,bz2,closedcaption,colormanagement,curl,\
@@ -338,7 +337,7 @@ package_gst-plugins-bad() {
 	depends+=(openexr imath libaom libass at-spi2-core libbz2 cairo openssl
 		  curl gdk-pixbuf gsm harfbuzz lcms2 openal-soft openjpeg2
 		  libopus pango librsvg libsndfile libsrt libwebp libx265
-		  libxml2)
+		  libxml2 svt-av1)
 	do_install
 }
 
