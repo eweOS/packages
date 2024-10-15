@@ -3,9 +3,10 @@
 pkgbase=gstreamer
 pkgname=(gstreamer gstreamer-devel
 	 gst-plugins-base gst-plugins-good gst-plugins-bad
+	 gst-plugins-gtk gst-plugins-qml6
 	 gst-libav)
 pkgver=1.24.8
-pkgrel=1
+pkgrel=2
 pkgdesc='GStreamer multimedia framework'
 url='https://gstreamer.freedesktop.org/'
 arch=(x86_64 aarch64 riscv64)
@@ -254,7 +255,7 @@ shapewipe,smpte,spectrum,udp,videobox,videocrop,videofilter,videomixer,wavenc,\
 wavparse,xingmux,y4menc,lame,soup}.so*
 	_pick_ gst-plugins-good \
 		usr/lib/gstreamer-1.0/libgst{\
-adaptivedemux2,cairo,flac,gdkpixbuf,gtk,jpeg,png,pulseaudio,qml6,vpx}.so
+adaptivedemux2,cairo,flac,gdkpixbuf,jpeg,png,pulseaudio,vpx}.so
 
 	msg2 "Picking bad plugin files"
 	_pick_ gst-plugins-bad \
@@ -280,12 +281,20 @@ dvb,fbdevsink,ipcpipeline,kms,qsv,shm}.so
 	_pick_ gst-plugins-bad \
 		usr/lib/gstreamer-1.0/libgst{\
 aes,analyticsoverlay,aom,assrender,bz2,closedcaption,colormanagement,curl,\
-dash,dtls,fluidsynthmidi,gsm,gtkwayland,openal,openexr,openjpeg,opusparse,\
+dash,dtls,fluidsynthmidi,gsm,openal,openexr,openjpeg,opusparse,\
 rsvg,sndfile,srt,ttmlsubs,vulkan,waylandsink,webp,x265}.so
 
 	msg2 "Picking gst-libav files"
 	_pick_ gst-libav \
 		usr/lib/gstreamer-1.0/libgstlibav.so
+
+	msg2 "Picking gst-plugins-gtk files"
+	_pick_ gst-plugins-gtk \
+		usr/lib/gstreamer-1.0/libgst{gtk,gtkwayland}.so
+
+	msg2 "Picking gst-plugins-qml6 files"
+	_pick_ gst-plugins-qml6 \
+		usr/lib/gstreamer-1.0/libgstqml6.so
 
 	depends=(glib python libxml2 zlib-ng gst-plugins-base)
 }
@@ -314,10 +323,9 @@ package_gst-plugins-good() {
 	pkgdesc+=" - good plugins"
 	depends=(musl gstreamer="$pkgver-$pkgrel"
 		 gst-plugins-base="$pkgver-$pkgrel")
-	depends+=(libflac libglvnd qt6-base qt6-declarative at-spi2-core libbz2
-		  llvm-libs musl cairo libgcrypt gtk3 gdk-pixbuf glib harfbuzz
-		  libjpeg pango libpng libpulse libvpx wayland libxml2 zlib-ng
-		  lame libsoup3)
+	depends+=(libflac libglvnd at-spi2-core libbz2 llvm-libs musl cairo
+		  libgcrypt gdk-pixbuf glib harfbuzz libjpeg pango libpng
+		  libpulse libvpx wayland libxml2 zlib-ng lame libsoup3)
 	do_install
 }
 
@@ -328,7 +336,7 @@ package_gst-plugins-bad() {
 	depends+=(llvm-libs musl libdrm glib libva vulkan-icd-loader wayland
 		  zlib-ng)
 	depends+=(openexr imath libaom libass at-spi2-core libbz2 cairo openssl
-		  curl gtk3 gdk-pixbuf gsm harfbuzz lcms2 openal-soft openjpeg2
+		  curl gdk-pixbuf gsm harfbuzz lcms2 openal-soft openjpeg2
 		  libopus pango librsvg libsndfile libsrt libwebp libx265
 		  libxml2)
 	do_install
@@ -338,5 +346,22 @@ package_gst-libav() {
 	pkgdesc+=" - libav plugin"
 	depends=(gstreamer="$pkgver-$pkgrel" gst-plugins-base="$pkgver-$pkgrel"
 		 ffmpeg glib2 musl)
+	do_install
+}
+
+package_gst-plugins-gtk() {
+	pkgdesc+=" - GTK plugins"
+	depends=(musl gstreamer="$pkgver-$pkgrel"
+		 gst-plugins-base="$pkgver-$pkgrel"
+		 at-spi2-core cairo libdrm gdk-pixbuf glib harfbuzz pango
+		 wayland)
+	do_install
+}
+
+package_gst-plugins-qml6() {
+	pkgdesc+=" - QML6 plugin"
+	depends=(musl gstreamer="$pkgver-$pkgrel"
+		 gst-plugins-base="$pkgver-$pkgrel"
+		 qt6-base qt6-declarative)
 	do_install
 }
