@@ -2,7 +2,7 @@
 
 pkgname=geos
 pkgver=3.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="C/C++ library for computational geometry"
 arch=(x86_64 aarch64 riscv64)
 url="https://libgeos.org/"
@@ -23,7 +23,7 @@ build() {
 
 check() {
   # https://github.com/libgeos/geos/issues/930/
-  if [ "$CARCH" == "x86_64" ]; then
+  if [ "$CARCH" == "x86_64" ] || [ "$CARCH" == "riscv64" ]; then
     extra_ctest_flags="--exclude-regex unit-geom-Envelope"
   fi
 
