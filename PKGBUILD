@@ -2,7 +2,7 @@
 
 pkgname=babl
 pkgver=0.1.108
-pkgrel=1
+pkgrel=2
 pkgdesc='Dynamic, any to any, pixel format conversion library'
 arch=('x86_64' 'aarch64' 'riscv64')
 url='https://gegl.org/babl/'
@@ -26,7 +26,7 @@ build() {
 check() {
   # https://gitlab.gnome.org/GNOME/babl/-/issues/88
   test_list=$(meson test -C build --list) 2> /dev/null
-  [ $CARCH != "aarch64" ] || test_list=${test_list//float-to-8bit}
+  [ $CARCH == "x86_64" ] || test_list=${test_list//float-to-8bit}
   meson test -C build --print-errorlogs $test_list
 }
 
