@@ -6,7 +6,7 @@ pkgname=(
   libsoup3-docs
 )
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP client/server library for GNOME"
 url="https://wiki.gnome.org/Projects/libsoup"
 arch=(x86_64 aarch64 riscv64)
@@ -14,6 +14,7 @@ license=(LGPL-2.0-or-later)
 depends=(
   brotli
   glib2
+  glib-networking
   krb5
   libnghttp2
   libpsl
@@ -34,9 +35,8 @@ sha256sums=('a83fffb4de51bc53d3e68849ebb721d51e4cad3334d7344cff357c6d500bdcfd')
 build() {
   local meson_options=(
     -D sysprof=disabled
-    -D tls_check=false
-    -D pkcs11_tests=disabled
     -D ntlm=disabled
+    -D pkcs11_tests=disabled
     -D autobahn=disabled
   )
 
@@ -47,9 +47,7 @@ build() {
 check() {
   # Python's output buffering messes with the tests reading stdout lines from
   # http2-server.py through a pipe
-  # ignore hsts tests
-  test_list=$(meson test --list -C build 2> /dev/null | grep -v 'hsts')
-  PYTHONUNBUFFERED=1 meson test -C build --print-errorlogs $test_list
+  PYTHONUNBUFFERED=1 meson test -C build --print-errorlogs --timeout-multiplier=10
 }
 
 package_libsoup3() {
