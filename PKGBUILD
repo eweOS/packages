@@ -5,7 +5,7 @@
 pkgbase=pacman
 pkgname=(libalpm pacman repo-tools)
 pkgver=7.0.0
-pkgrel=5
+pkgrel=6
 arch=(x86_64 aarch64 riscv64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
@@ -27,7 +27,7 @@ source=(
 sha256sums=('ef08f258cb3e0885c5884ad43fb6cff0e9c327ed33024d79d03555f99c583744'
             '553c3547b524f0169e7edfad508226037582c882b97f2660942513545dc7a8cf'
             '0865036ef04a06b00926640ac7db2275988b834f435101e8110eedf8a2e58b88'
-            'cc2a8c0de7dd0dfa6fad03efc721672308d61b0bdc5f15704387e6b740b14010'
+            'a68b8c096ef27422278f68ed8511d80cf8fdb885bb53912a2f0694accc5249a5'
             '738432ead6dae6c63a5cbd33e110f8a5e34f5143d125e183cf77dc3dbe87fe92'
             '9b1e4d7076137fb8ebb609068403024dc66d6d3c3b53b718401d4c79c8437d8f'
             '7d2ad28bef8f9f77f33929d2050244a6f29941de6ad0793b6820caee3dbd84e3'
@@ -89,14 +89,14 @@ build()
     riscv64) makepkg_rustarch="riscv64gc" ;;
     *) makepkg_rustarch="${CARCH}"
   esac
+  case $CARCH in
+    riscv64) makepkg_lto="!lto" ;;
+    *) makepkg_lto="lto"
+  esac
   sed -i ./makepkg.conf \
     -e "s|@@BUILD_GEN_CFLAGS@@|$makepkg_cflags|g" \
-    -e "s|@@BUILD_GEN_RUSTARCH@@|$makepkg_rustarch|g"
-
-  if [ "$CARCH" == "riscv64" ]; then
-    # disable lto since for riscv gold is not ready
-    sed -i 's/lto/!lto/' ./makepkg.conf
-  fi
+    -e "s|@@BUILD_GEN_RUSTARCH@@|$makepkg_rustarch|g" \
+    -e "s|@@BUILD_GEN_LTO@@|$makepkg_lto|g"
 
   cd "$pkgbase-v$pkgver"
   sed -i -e 's/EUID == 0/EUID == -1/' scripts/makepkg.sh.in
