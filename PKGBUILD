@@ -8,7 +8,7 @@ pkgname=(
 _pkgver_major=2.13
 _pkgver_minor=4
 pkgver=${_pkgver_major}.${_pkgver_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc="XML parsing library, version 2"
 arch=(x86_64 aarch64 riscv64)
 license=('MIT')
@@ -39,6 +39,9 @@ check() {
 
 package_libxml2()
 {
+  optdepends=('python: Python bindings')
+  provides=(libxml2.so)
+
   cd ${pkgbase}-${pkgver}
   make DESTDIR="${pkgdir}" install
 
