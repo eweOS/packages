@@ -3,7 +3,7 @@
 pkgname=qt6-base
 _qtver=6.7.2
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=3
 arch=(x86_64 aarch64 riscv64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -29,7 +29,6 @@ build() {
   export CMARGS=(
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_BUILD_TYPE=RelWithDebInfo
-    -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
     -DCMAKE_MESSAGE_LOG_LEVEL=STATUS
   )
 
@@ -60,8 +59,11 @@ build() {
     -DFEATURE_opengl_desktop=OFF
   )
 
-  # disable LTO on riscv64
-  [ "$CARCH" = riscv64 ] && FEATUREARGS+=(-DFEATURE_ltcg=OFF)
+  if check_option lto y; then
+    CMARGS+=(-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON)
+  else
+    FEATUREARGS+=(-DFEATURE_ltcg=OFF)
+  fi
 
   cmake -B build -S $_pkgfn -G Ninja \
     "${CMARGS[@]}" \
