@@ -2,9 +2,9 @@
 
 pkgname=git
 pkgver=2.47.0
-pkgrel=1
+pkgrel=2
 pkgdesc='the fast distributed version control system'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://git-scm.com/'
 license=('GPL2')
 depends=('curl' 'expat' 'perl' 'perl-error'
