@@ -2,9 +2,9 @@
 
 pkgname=file
 pkgver=5.45
-pkgrel=1
+pkgrel=2
 pkgdesc='File type identification utility'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('custom')
 groups=('base-devel')
 depends=('musl' 'zlib' 'xz' 'libbz2')
