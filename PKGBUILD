@@ -2,9 +2,9 @@
 
 pkgname=bison
 pkgver=3.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNU general-purpose parser generator"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.gnu.org/software/bison/'
 license=('GPL3')
 makedepends=(flex perl)
