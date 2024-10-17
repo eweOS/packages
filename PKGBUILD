@@ -2,10 +2,10 @@
 
 pkgname=gettext-tiny
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Tiny Internationalized Message Handling Library and tools"
 url="https://github.com/sabotage-linux/gettext-tiny"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 depends=(musl)
 makedepends=(git)
