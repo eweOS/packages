@@ -2,9 +2,9 @@
 
 pkgname=mimalloc
 pkgver=2.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="General-purpose allocator with excellent performance characteristics"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/microsoft/mimalloc"
 license=('MIT')
 makedepends=('cmake')
