@@ -2,7 +2,7 @@
 
 pkgname=xz
 pkgver=5.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Library and command line tools for XZ and LZMA compressed files'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL-2.0-or-later' 'GPL-3.0-or-later' 'LGPL-2.1-or-later' '0BSD')
