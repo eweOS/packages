@@ -3,10 +3,10 @@
 
 pkgname=zstd
 pkgver=1.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Zstandard - Fast real-time compression algorithm'
 url='https://facebook.github.io/zstd/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD GPL2)
 depends=(zlib xz lz4)
 makedepends=(cmake ninja)
