@@ -2,9 +2,9 @@
 
 pkgname=pkgconf
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Package compiler and linker metadata toolkit'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/pkgconf/pkgconf'
 license=(BSD)
 groups=(base-devel)
