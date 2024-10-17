@@ -3,9 +3,9 @@
 pkgname=perl
 pkgver=5.40.0
 _baseversion="${pkgver%.*}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A highly capable, feature-rich programming language"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.perl.org'
 license=('GPL' 'PerlArtistic')
 depends=('musl' 'libxcrypt')
