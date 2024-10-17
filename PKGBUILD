@@ -4,9 +4,9 @@
 pkgbase=zlib-ng
 pkgname=(zlib-ng zlib-ng-static)
 pkgver=2.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc='zlib data compression library for the next generation systems'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('custom')
 url="https://github.com/zlib-ng/zlib-ng"
 depends=(musl)
