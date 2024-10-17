@@ -2,28 +2,17 @@
 
 pkgbase=libffi
 pkgname=(libffi libffi-static)
-pkgver=3.4.3
-pkgrel=4
+pkgver=3.4.6
+pkgrel=1
 pkgdesc='A portable Foregin Function Interface library.'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://sourceware.org/libffi/'
 license=(MIT)
 depends=(musl)
 makedepends=(linux-headers)
-source=(
-  "ftp://sourceware.org/pub/libffi/libffi-${pkgver}.tar.gz"
-  "declare-open_temp_exec_file.patch::https://github.com/libffi/libffi/pull/764.patch"
-)
-sha256sums=(
-  '4416dd92b6ae8fcb5b10421e711c4d3cb31203d77521a77d85d0102311e6c3b8'
-  '20570753cecbf39d73889a9be3cff1f56e9053a06049dee8ea9e7b0292b4f724'
-)
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  # https://github.com/libffi/libffi/issues/760
-  patch -p1 < ../declare-open_temp_exec_file.patch
-}
+provides=(libffi.so)
+source=("https://github.com/libffi/libffi/releases/download/v3.4.6/libffi-3.4.6.tar.gz")
+sha256sums=('b0dea9df23c863a7a50e825440f3ebffabd65df1497108e5d437747843895a4e')
 
 build() {
   cd "$pkgname-$pkgver"
