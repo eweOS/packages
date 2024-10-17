@@ -2,12 +2,12 @@
 
 pkgname=slibtool
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Skinny libtool implementation, written in C"
 url='http://git.midipix.org/cgit.cgi/slibtool'
 license=('MIT')
 provides=(libtool)
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 source=(
   "http://midipix.org/dl/slibtool/slibtool-$pkgver.tar.xz"
   compile install-sh libtool.m4 ltdl.m4 lt~obsolete.m4 ltsugar.m4 missing
