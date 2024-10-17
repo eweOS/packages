@@ -2,9 +2,9 @@
 
 pkgname=mold
 pkgver=2.34.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Modern Linker'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/rui314/mold'
 license=('MIT')
 depends=('musl' 'mimalloc' 'openssl' 'zlib' 'cmake')
