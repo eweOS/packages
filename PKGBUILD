@@ -2,9 +2,9 @@
 
 pkgname=patch
 pkgver=2.7.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A utility to apply patch files to original sources"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL3)
 groups=(base-devel)
 depends=(musl attr)
