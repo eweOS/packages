@@ -3,9 +3,9 @@
 
 pkgname=(util-linux util-linux-libs)
 pkgver=2.40.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Miscellaneous system utilities for Linux'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://github.com/karelzak/util-linux
 license=(GPL)
 makedepends=('bison' 'gettext' 'libtool' 'sqlite' 'linux-headers')
