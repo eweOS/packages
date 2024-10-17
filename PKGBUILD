@@ -16,7 +16,7 @@ pkgname=(qemu-common
 	 qemu-guest-agent
 	) # TODO: split firmwares
 pkgver=9.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A generic and open source machine emulator and virtualizer.'
 url='https://www.qemu.org/'
 arch=(x86_64 aarch64 riscv64)
@@ -50,6 +50,13 @@ F_QEMU_TOOLS=(
 	qemu-pr-helper
 	qemu-storage-daemon
 )
+
+prepare () {
+  # __NR_riscv_hwprobe
+  if [ "$CARCH" == "riscv64" ]; then
+    sed -i '1i #include <asm/unistd.h>' "qemu-$pkgver/util/cpuinfo-riscv.c"
+  fi
+}
 
 build () {
 	local common_options=(
