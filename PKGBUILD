@@ -5,8 +5,8 @@
 pkgbase=pacman
 pkgname=(libalpm pacman repo-tools)
 pkgver=7.0.0
-pkgrel=6
-arch=(x86_64 aarch64 riscv64)
+pkgrel=7
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
 makedepends=(meson libarchive openssl ninja acl curl xz gpgme)  # TODO: asciidoc doxygen
@@ -84,13 +84,14 @@ build()
     x86_64) makepkg_cflags+=" -march=x86-64 -fstack-clash-protection -fcf-protection" ;;
     aarch64) makepkg_cflags+=" -march=armv8-a" ;;
     riscv64) makepkg_cflags+=" -march=rv64gc" ;;
+    loongarch64) makepkg_cflags+=" -march=la464" ;;
   esac
   case $CARCH in
     riscv64) makepkg_rustarch="riscv64gc" ;;
     *) makepkg_rustarch="${CARCH}"
   esac
   case $CARCH in
-    riscv64) makepkg_lto="!lto" ;;
+    riscv64|loongarch64) makepkg_lto="!lto" ;;
     *) makepkg_lto="lto"
   esac
   sed -i ./makepkg.conf \
