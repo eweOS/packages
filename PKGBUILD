@@ -2,9 +2,9 @@
 
 pkgname=openssl
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A toolkit for the TLS and SSL protocols'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.openssl.org'
 license=(BSD)
 makedepends=(perl zlib linux-headers)
@@ -22,6 +22,9 @@ build()
       ;;
     riscv64)
       export build_arch=linux64-riscv64
+      ;;
+    loongarch64)
+      export build_arch=linux64-loongarch64
       ;;
   esac
   cd "$srcdir/$pkgname-$pkgver"
