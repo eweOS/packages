@@ -3,9 +3,9 @@
 
 pkgname=icu
 pkgver=75.1
-pkgrel=1
+pkgrel=2
 pkgdesc="International Components for Unicode library"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://icu.unicode.org"
 license=('custom:icu')
 depends=('llvm-libs' 'sh')
