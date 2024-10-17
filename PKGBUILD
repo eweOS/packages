@@ -1,8 +1,9 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=gcompat
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNU C Library compatibility layer for musl"
 url="https://git.adelielinux.org/adelie/gcompat"
 arch=(x86_64 aarch64 riscv64)
@@ -13,10 +14,27 @@ source=("https://git.adelielinux.org/adelie/gcompat/-/archive/$pkgver/gcompat-$p
 sha512sums=('8f27aa8d268586ecb647bc147a9d56704d087b0f3ac357c6c239958663ec9e9e428e6cfdb9a063ead5c2098444cc4a7c4567c18477309feb05ed3de01b24f9e8')
 provides=('glibc')
 
-_make_args=('WITH_LIBUCONTEXT=1'
+case $CARCH in
+  x86_64)
+    loader_soname="ld-linux-x86-64.so.2"
+    ;;
+  aarch64)
+    loader_soname="ld-linux-aarch64.so.1"
+    ;;
+  riscv64)
+    loader_soname="ld-linux-riscv64-lp64d.so.1"
+    ;;
+  loongarch64)
+    loader_soname="ld-linux-loongarch-lp64d.so.1"
+    ;;
+esac
+
+_make_args=(
+  'WITH_LIBUCONTEXT=1'
   'WITH_OBSTACK=musl-obstack'
-  'LINKER_PATH=/usr/lib/ld-musl-x86_64.so.1'
-  'LOADER_NAME=ld-linux-x86-64.so.2')
+  "LINKER_PATH=/usr/lib/ld-musl-$CARCH.so.1"
+  "LOADER_NAME=$loader_soname"
+)
 
 build()
 {
