@@ -2,9 +2,9 @@
 
 pkgname=expat
 pkgver=2.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An XML parser library"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://libexpat.github.io/"
 license=(MIT)
 makedepends=(cmake)
