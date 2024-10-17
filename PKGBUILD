@@ -3,10 +3,10 @@
 
 pkgname=libunistring
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for manipulating Unicode strings and C strings'
 url='https://www.gnu.org/software/libunistring/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL)
 depends=(musl)
 provides=('libunistring.so')
