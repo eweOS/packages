@@ -2,9 +2,9 @@
 
 pkgname=limine
 pkgver=8.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, portable, multiprotocol bootloader"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://limine-bootloader.org/"
 license=('BSD')
 makedepends=('nasm' 'lld' 'mtools')
