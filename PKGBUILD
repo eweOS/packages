@@ -2,10 +2,10 @@
 
 pkgname=wget
 pkgver=1.24.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Network utility to retrieve files from the Web'
 url='https://www.gnu.org/software/wget/wget.html'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL3')
 depends=('libidn2' 'openssl' 'pcre2')
 makedepends=('perl')
