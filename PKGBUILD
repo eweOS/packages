@@ -3,10 +3,10 @@
 pkgbase=python
 pkgname=(python python-tests)
 pkgver=3.12.7
-pkgrel=1
+pkgrel=2
 _pybasever=${pkgver%.*}
 pkgdesc='The Python programming language'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.python.org'
 license=('PSF-2.0')
 depends=(libffi ncurses expat openssl readline sqlite mpdecimal)
