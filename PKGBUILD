@@ -6,10 +6,10 @@ pkgname=(
 )
 pkgbase=nss
 pkgver=3.105
-pkgrel=1
+pkgrel=2
 pkgdesc="Network Security Services"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL MPL)
 depends=(
   'nspr>=4.35'
