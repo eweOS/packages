@@ -2,7 +2,7 @@
 
 pkgname=libglvnd
 pkgver=1.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The GL Vendor-Neutral Dispatch library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gitlab.freedesktop.org/glvnd/libglvnd"
@@ -22,7 +22,7 @@ build()
   )
 
   case $CARCH in
-    riscv64)
+    riscv64 | loongarch64)
       MESONFLAGS+=("asm=disabled")
       ;;
   esac
