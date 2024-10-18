@@ -2,9 +2,9 @@
 
 pkgname=symlinks
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Scan and change symbolic links'
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('MIT')
 makedepends=('git')
 url="https://github.com/brandt/symlinks"
