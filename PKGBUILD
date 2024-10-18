@@ -2,9 +2,9 @@
 
 pkgname=shared-mime-info
 pkgver=2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Shared MIME Info"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL2')
 depends=('libxml2' 'glib')
 makedepends=('gettext' 'meson')
