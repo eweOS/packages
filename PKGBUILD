@@ -2,10 +2,10 @@
 
 pkgname=libarchive
 pkgver=3.7.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-format archive and compression library'
 url='https://libarchive.org/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('BSD')
 depends=('acl' 'openssl' 'xz' 'zlib' 'libxml2' 'libbz2' 'zstd')
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
