@@ -4,10 +4,10 @@ pkgbase=brotli
 pkgname=('brotli' 'python-brotli' 'brotli-testdata')
 _gitcommit=e61745a6b7add50d380cfd7d3883dd6c62fc2c71
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Generic-purpose lossless compression algorithm'
 url='https://github.com/google/brotli'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('MIT')
 makedepends=(
   musl llvm-libs cmake
