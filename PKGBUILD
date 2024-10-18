@@ -3,8 +3,8 @@
 pkgname=qt6-base
 _qtver=6.7.2
 pkgver=${_qtver/-/}
-pkgrel=3
-arch=(x86_64 aarch64 riscv64)
+pkgrel=4
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A cross-platform application and UI framework'
