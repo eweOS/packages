@@ -3,9 +3,9 @@
 
 pkgname=texinfo
 pkgver=7.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='GNU documentation system for on-line information and printed output'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.gnu.org/software/texinfo/'
 license=(GPL-3.0-or-later)
 depends=(ncurses perl sh musl)
