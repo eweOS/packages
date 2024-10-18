@@ -2,10 +2,10 @@
 
 pkgname=libdrm
 pkgver=2.4.123
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace interface to kernel DRM services"
 url="https://dri.freedesktop.org/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('custom')
 depends=('libpciaccess')
 checkdepends=('cairo')
