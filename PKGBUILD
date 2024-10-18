@@ -2,9 +2,9 @@
 
 pkgname=libpng
 pkgver=1.6.44
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of routines used to create PNG format graphics files"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://www.libpng.org/pub/png/libpng.html"
 license=('custom')
 depends=('zlib' 'sh')
