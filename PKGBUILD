@@ -2,10 +2,10 @@
 
 pkgname=freetype2
 pkgver=2.13.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Font rasterization library"
 url="https://www.freetype.org/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL)
 depends=(zlib sh libbz2 libpng brotli)
 makedepends=(meson)
