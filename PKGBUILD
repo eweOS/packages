@@ -2,10 +2,10 @@
 
 pkgname=libassuan
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='IPC library used by some GnuPG related software'
 url="https://www.gnupg.org/related_software/libassuan/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL3')
 depends=('musl' 'libgpg-error')
 provides=('libassuan.so')
