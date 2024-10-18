@@ -2,10 +2,10 @@
 
 pkgname=desktop-file-utils
 pkgver=0.27
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line utilities for working with desktop entries"
 url="https://www.freedesktop.org/wiki/Software/desktop-file-utils"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL)
 depends=(glib)
 makedepends=(
