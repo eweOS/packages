@@ -2,9 +2,9 @@
 
 pkgname=seatd
 pkgver=0.8.0
-pkgrel=7
+pkgrel=8
 pkgdesc="A minimal seat management daemon, and a universal seat management library"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://sr.ht/~kennylevinsen/seatd/"
 license=('MIT')
 makedepends=('meson' 'ninja' 'scdoc' 'linux-headers')
