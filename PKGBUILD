@@ -3,8 +3,8 @@
 pkgname=(linux linux-headers)
 _basename=linux
 pkgver=6.11.3
-pkgrel=1
-arch=(x86_64 aarch64 riscv64)
+pkgrel=2
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
 license=(GPL-2.0-only)
 makedepends=(bison flex perl python libelf linux-headers rsync lld git)
@@ -44,6 +44,9 @@ build()
       ;;
     riscv64)
       export build_arch=riscv
+      ;;
+    loongarch64)
+      export build_arch=loongarch
       ;;
   esac
   make LLVM=1 LLVM_IAS=1 ARCH=${build_arch} defconfig
