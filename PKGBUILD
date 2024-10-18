@@ -3,9 +3,9 @@
 _pkgbase=bzip2
 pkgname=libbz2
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A high-quality data compression program"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('BSD')
 url="https://sourceware.org/bzip2/"
 depends=('musl' 'sh')
