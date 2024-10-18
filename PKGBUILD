@@ -2,10 +2,10 @@
 
 pkgname=libwebp
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A library to encode and decode images in WebP format.'
 url='https://chromium.googlesource.com/webm/libwebp'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD)
 depends=(musl libjpeg libpng libtiff)
 source=("https://github.com/webmproject/libwebp/archive/refs/tags/v$pkgver.tar.gz")
