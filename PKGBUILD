@@ -2,9 +2,9 @@
 
 pkgname=tty2socket
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An adaptor from stdin & stdout to (UNIX) socket"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/eweOS/tty2socket"
 license=(MIT)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
