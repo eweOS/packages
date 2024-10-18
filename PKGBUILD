@@ -2,9 +2,9 @@
 
 pkgname=gperf
 pkgver=3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Perfect hash function generator"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.gnu.org/software/gperf/"
 license=('GPL3')
 depends=('llvm-libs')
