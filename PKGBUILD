@@ -2,10 +2,10 @@
 
 pkgname=librsvg
 pkgver=2.58.2
-pkgrel=2
+pkgrel=3
 pkgdesc="SVG rendering library"
 url="https://wiki.gnome.org/Projects/LibRsvg"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-2.1-or-later)
 depends=(
   cairo
