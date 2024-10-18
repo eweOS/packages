@@ -2,10 +2,10 @@
 
 pkgname=xxhash
 pkgver=0.8.2
-pkgrel=3
+pkgrel=4
 pkgdesc='An extremely fast hash algorithm'
 url='https://github.com/Cyan4973/xxHash'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD)
 depends=(musl)
 source=("https://github.com/Cyan4973/xxHash/archive/refs/tags/v$pkgver.tar.gz")
