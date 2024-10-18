@@ -3,10 +3,10 @@
 pkgname=libudev
 _pkgname=libudev-zero
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 so_ver=1.6.3
 pkgdesc="Daemonless replacement for libudev "
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/illiliti/libudev-zero"
 _commit=bbeb7ad51c1edb7ab3cf63f30a21e9bb383b7994
 license=('GPL')
