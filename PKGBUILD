@@ -2,14 +2,14 @@
 
 pkgname=python-argcomplete
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python and tab completion, better together.'
 url='https://kislyuk.github.io/argcomplete/'
 arch=(any)
 license=(Apache-2.0)
 depends=(python)
 makedepends=(python-build python-wheel python-installer python-setuptools
-	     python-setuptools-scm)
+	     python-setuptools-scm git)
 # checkdepends=(python-pytest)
 source=("git+https://github.com/kislyuk/argcomplete.git#tag=v$pkgver")
 sha256sums=('SKIP')
