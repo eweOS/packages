@@ -2,9 +2,9 @@
 
 pkgname=readline
 pkgver=8.2
-pkgrel=3
+pkgrel=4
 pkgdesc='GNU readline library'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL')
 depends=('musl' 'ncurses')
 options=('!emptydirs')
