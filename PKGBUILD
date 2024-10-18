@@ -2,13 +2,19 @@
 
 pkgname=libyaml
 pkgver=0.2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="YAML 1.1 library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://pyyaml.org/wiki/LibYAML"
 license=('MIT')
+makedepends=('autoconf')
 source=("https://pyyaml.org/download/libyaml/yaml-$pkgver.tar.gz")
 sha256sums=('c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4')
+
+prepare() {
+  cd "$srcdir/yaml-$pkgver"
+  autoreconf -fiv
+}
 
 build() {
   cd "$srcdir/yaml-$pkgver"
