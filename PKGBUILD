@@ -3,7 +3,7 @@
 
 pkgname=icu
 pkgver=75.1
-pkgrel=2
+pkgrel=3
 pkgdesc="International Components for Unicode library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://icu.unicode.org"
@@ -15,6 +15,11 @@ source=(
   https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/${pkgname}4c-${pkgver//./_}-src.tgz
 )
 sha512sums=('70ea842f0d5f1f6c6b65696ac71d96848c4873f4d794bebc40fd87af2ad4ef064c61a786bf7bc430ce4713ec6deabb8cc1a8cc0212eab148cee2d498a3683e45')
+
+prepare()
+{
+  cp /usr/share/autoconf/build-aux/config.{guess,sub} icu/source
+}
 
 build()
 {
