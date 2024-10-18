@@ -4,10 +4,10 @@
 
 pkgname=scdoc
 pkgver=1.11.3
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='Tool for generating roff manual pages'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://git.sr.ht/~sircmpwn/scdoc/'
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~sircmpwn/$pkgname/archive/$pkgver.tar.gz")
 sha512sums=('fbecc505b44c396890c53c05183d34336160dbd02993ee120421fc6e2a3ec78ba349747e8acfe97af956a0081c923309290ff97fb7babafbc3ca8addc9ec92f9')
