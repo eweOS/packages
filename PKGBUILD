@@ -2,9 +2,9 @@
 
 pkgname=mtools
 pkgver=4.0.45
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of utilities to access MS-DOS disks"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.gnu.org/software/mtools/"
 license=(GPL-3.0-or-later)
 depends=(bash)
