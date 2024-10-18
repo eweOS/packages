@@ -2,9 +2,9 @@
 
 pkgname=npth
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='The new GNU portable threads library'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.gnupg.org/software/npth/index.html"
 license=('LGPL-2.1-or-later')
 depends=('musl' 'sh')
