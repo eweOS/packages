@@ -4,13 +4,20 @@
 
 pkgname=oniguruma
 pkgver=6.9.9
-pkgrel=2
+pkgrel=3
 pkgdesc="a regular expressions library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/kkos/oniguruma"
 license=('BSD')
+makedepends=('autoconf')
 source=("https://github.com/kkos/oniguruma/releases/download/v$pkgver/onig-${pkgver/_/-}.tar.gz")
 sha256sums=('60162bd3b9fc6f4886d4c7a07925ffd374167732f55dce8c491bfd9cd818a6cf')
+
+prepare()
+{
+  cd "$srcdir"/onig-${pkgver%.1}
+  autoreconf -fiv
+}
 
 build()
 {
