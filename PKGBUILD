@@ -9,7 +9,7 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
 license=(custom)
 depends=(llvm-libs spirv-tools)
-makedepends=(cmake llvm spirv-headers openmp llvm-lto git)
+makedepends=(cmake llvm mlir spirv-headers openmp llvm-lto git)
 source=(git+${url}.git#tag=v$pkgver)
 sha256sums=('8b9e77c7d1817b1a3e49db18a3240c57769c72a3a5b2bf70c9bdab46cbb3124b')
 
