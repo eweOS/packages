@@ -3,10 +3,10 @@
 
 pkgname=fribidi
 pkgver=1.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A Free Implementation of the Unicode Bidirectional Algorithm"
 url="https://github.com/fribidi/fribidi/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL)
 depends=(musl)
 makedepends=(meson)
