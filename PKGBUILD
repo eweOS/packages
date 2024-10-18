@@ -6,9 +6,9 @@
 
 pkgname=jq
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line JSON processor'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://stedolan.github.io/jq/'
 license=('MIT')
 depends=('musl' 'oniguruma')
