@@ -4,9 +4,9 @@
 pkgname=lz4
 epoch=1
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Extremely fast compression algorithm'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://lz4.github.io/lz4/'
 license=('GPL2')
 makedepends=('git')
