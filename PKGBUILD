@@ -4,10 +4,10 @@ _pkgbase=libjpeg-turbo
 pkgbase=libjpeg
 pkgname=libjpeg
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="JPEG image codec with accelerated baseline compression and decompression"
 url="https://libjpeg-turbo.org/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD)
 provides=(
   libjpeg
