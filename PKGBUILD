@@ -2,10 +2,10 @@
 
 pkgname=python-msgpack
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='MessagePack serializer implementation for Python'
 url='https://github.com/msgpack/msgpack-python'
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('Apache-2.0')
 depends=('python')
 makedepends=('cython' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
