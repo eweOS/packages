@@ -2,8 +2,8 @@
 
 pkgname=vulkan-icd-loader
 pkgver=1.3.290
-pkgrel=1
-arch=(x86_64 aarch64 riscv64)
+pkgrel=2
+arch=(x86_64 aarch64 riscv64 loongarch64)
 pkgdesc="Vulkan Installable Client Driver (ICD) Loader"
 url="https://www.khronos.org/vulkan/"
 license=('custom')
