@@ -2,10 +2,10 @@
 
 pkgname=nspr
 pkgver=4.35
-pkgrel=1
+pkgrel=2
 pkgdesc="Netscape Portable Runtime"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSPR"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MPL GPL)
 makedepends=(mercurial)
 _revision=b563bfc16c887c48b038b7b441fcc4e40a126d3b
