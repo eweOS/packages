@@ -2,9 +2,9 @@
 
 pkgname=libyaml
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="YAML 1.1 library"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://pyyaml.org/wiki/LibYAML"
 license=('MIT')
 source=("https://pyyaml.org/download/libyaml/yaml-$pkgver.tar.gz")
