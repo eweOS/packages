@@ -4,9 +4,9 @@
 
 pkgname=oniguruma
 pkgver=6.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc="a regular expressions library"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/kkos/oniguruma"
 license=('BSD')
 source=("https://github.com/kkos/oniguruma/releases/download/v$pkgver/onig-${pkgver/_/-}.tar.gz")
