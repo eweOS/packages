@@ -2,10 +2,10 @@
 
 pkgname=nasm
 pkgver=2.16.03
-pkgrel=1
+pkgrel=2
 pkgdesc='80x86 assembler designed for portability and modularity'
 url='https://www.nasm.us'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('BSD')
 depends=('musl')
 checkdepends=('perl')
