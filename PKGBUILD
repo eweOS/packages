@@ -3,10 +3,10 @@
 
 pkgname=libinput
 pkgver=1.26.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Input device management and event handling library"
 url="https://gitlab.freedesktop.org/libinput"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(custom:X11)
 depends=('libudev' 'libevdev' 'mtdev')
 makedepends=('meson' 'wayland-protocols' 'check' 'linux-headers')
