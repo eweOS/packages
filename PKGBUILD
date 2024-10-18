@@ -2,16 +2,25 @@
 
 pkgname=rsync
 pkgver=3.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A fast and versatile file copying tool for remote and local files'
 arch=(x86_64 aarch64 riscv64)
 url='https://rsync.samba.org/'
 license=('GPL3')
 depends=('acl' 'openssl' 'lz4' 'popt' 'xxhash' 'zlib' 'zstd')
-source=(https://github.com/WayneD/rsync/archive/refs/tags/v${pkgver}.tar.gz rsyncd.conf rsyncd.service)
+source=(https://github.com/WayneD/rsync/archive/refs/tags/v${pkgver}.tar.gz
+	rsyncd.conf
+	rsyncd.service
+	workaround-awk-bug.patch)
 sha256sums=('bbc07ef74ac9e9b1506f7029c3a3630dd24cf270ee5256e96553bbd1cfd21610'
             'f1b14a01cfa3bbe6eecfd3491c9d1d43a51a2561dc9808485ca5d21941d660e5'
-            '31d640a82d022281736c9d61f971e6946541a9a8f11bc303479ff429a99cb99e')
+            '31d640a82d022281736c9d61f971e6946541a9a8f11bc303479ff429a99cb99e'
+	    '831492ff00d3e086a82cad36572cc4ebb72fef27e9269c4fb6f62677e6f8fd6f')
+
+prepare()
+{
+  _patch_ "$pkgname-$pkgver"
+}
 
 build()
 {

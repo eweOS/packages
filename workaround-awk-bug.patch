@@ -1,0 +1,15 @@
+diff --git a/help-from-md.awk b/help-from-md.awk
+index 1900797..fb14e20 100755
+--- a/help-from-md.awk
++++ b/help-from-md.awk
+@@ -19,7 +19,9 @@ BEGIN {
+ foundcomment {
+     if (backtick_cnt > 1) exit
+     if (backtick_cnt == 1) {
+-	gsub(/"/, "\\\"")
++	gsub(/"/, "XXXXZZZZYYYYWWWW")
++	gsub("XXXXZZZZ", "\\")
++	gsub("YYYYWWWW", "\"")
+ 	prints = prints "\n  rprintf(F,\"" $0 "\\n\");"
+     }
+     next
