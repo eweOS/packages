@@ -2,10 +2,10 @@
 
 pkgname=patchelf
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A small utility to modify the dynamic linker and RPATH of ELF executables.'
 url='https://github.com/NixOS/patchelf'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-3.0-or-later)
 depends=(musl)
 makedepends=(lld)
