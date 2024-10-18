@@ -2,9 +2,9 @@
 
 pkgname=libglvnd
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The GL Vendor-Neutral Dispatch library"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gitlab.freedesktop.org/glvnd/libglvnd"
 license=('BSD')
 makedepends=('python' 'meson')
