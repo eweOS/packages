@@ -2,9 +2,9 @@
 
 pkgname=python-wrapt
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python module for decorators, wrappers and monkey patching"
-arch=("x86_64" "aarch64" "riscv64")
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://pypi.python.org/pypi/wrapt"
 license=("BSD-2-Clause")
 depends=('python')
