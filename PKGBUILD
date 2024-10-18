@@ -2,9 +2,9 @@
 
 pkgname=pciutils
 pkgver=3.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PCI bus configuration space access library and tools"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL)
 groups=(base)
 makedepends=(zlib linux-headers)
