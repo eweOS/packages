@@ -2,11 +2,11 @@
 
 pkgname=pawprint
 pkgver=0.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A substitution of systemd-tmpfiles"
 url="https://github.com/eweOS/pawprint"
 license=(MIT)
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 makedepends=(git linux-headers)
 source=(
   "$pkgname::git+$url.git#branch=main"
