@@ -2,7 +2,7 @@
 
 pkgname=pixman
 pkgver=0.43.4
-pkgrel=2
+pkgrel=3
 pkgdesc="The pixel-manipulation library for X and cairo"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://cgit.freedesktop.org/pixman/"
@@ -38,6 +38,10 @@ build()
       _arglist+=("-Dsse2=disabled")
       _arglist+=("-Dssse3=disabled")
       ;;
+    loongarch64)
+      _arglist+=("-Dmmx=disabled")
+      _arglist+=("-Dsse2=disabled")
+      _arglist+=("-Dssse3=disabled")
   esac
   ewe-meson $pkgbase-$pkgver build \
     "${_arglist[@]}"
