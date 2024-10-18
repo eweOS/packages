@@ -2,9 +2,9 @@
 
 pkgname=ragel
 pkgver=6.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Finite state machine compiler"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://www.complang.org/ragel/"
 license=('GPL')
 depends=('llvm-libs')
