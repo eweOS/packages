@@ -4,9 +4,9 @@
 pkgname=(go go-doc)
 epoch=2
 pkgver=1.23.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Core compiler tools for the Go programming language'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://golang.org/'
 license=(BSD)
 makedepends=(go git)
@@ -35,6 +35,9 @@ build()
       ;;
     riscv64)
       export GOARCH=riscv64
+      ;;
+    loongarch64)
+      export GOARCH=loong64
       ;;
   esac
   export GOAMD64=v1 # make sure we're building for the right x86-64 version
