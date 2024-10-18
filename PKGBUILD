@@ -2,10 +2,10 @@
 
 pkgname=dconf
 pkgver=0.40.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Configuration database system"
 url="https://wiki.gnome.org/Projects/dconf"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL)
 depends=(glib2)
 makedepends=(vala dbus git python meson bash-completion docbook-xsl python-packaging)
