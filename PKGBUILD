@@ -4,9 +4,9 @@
 
 pkgname=libidn2
 pkgver=2.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Free software implementation of IDNA2008, Punycode and TR46"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.gnu.org/software/libidn/#libidn2"
 license=('GPL2' 'LGPL3')
 depends=('libunistring')
