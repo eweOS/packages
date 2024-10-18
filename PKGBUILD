@@ -3,9 +3,9 @@
 
 pkgname=bash
 pkgver=5.2.37
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Bourne Again shell'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL3)
 url="https://www.gnu.org/software/bash/"
 groups=(base)
