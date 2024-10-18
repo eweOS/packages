@@ -3,9 +3,9 @@
 pkgbase=gpgme
 pkgname=gpgme
 pkgver=1.23.2
-pkgrel=4
+pkgrel=5
 pkgdesc='A C wrapper library for GnuPG'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.gnupg.org/related_software/gpgme/'
 license=('LGPL')
 makedepends=(
