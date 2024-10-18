@@ -2,10 +2,10 @@
 
 pkgname=samurai
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 pkgdesc='a ninja-compatible build tool written in C99'
 url='https://github.com/michaelforney/samurai/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0)
 depends=(musl)
 source=("https://github.com/michaelforney/samurai/archive/refs/tags/$pkgver.tar.gz")
