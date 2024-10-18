@@ -2,10 +2,10 @@
  
 pkgname=graphene
 pkgver=1.10.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A thin layer of graphic data types"
 url="https://ebassi.github.io/graphene/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 depends=(glib)
 makedepends=(gobject-introspection meson glib)
