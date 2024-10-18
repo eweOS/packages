@@ -6,10 +6,10 @@ pkgname=(
   cairo-docs
 )
 pkgver=1.18.2
-pkgrel=2
+pkgrel=3
 pkgdesc="2D graphics library with support for multiple output devices"
 url="https://cairographics.org/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL MPL)
 source=(
   "https://gitlab.freedesktop.org/cairo/${pkgname}/-/archive/${pkgver}/${pkgbase}-${pkgver}.tar.gz"
