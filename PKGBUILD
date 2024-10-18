@@ -3,9 +3,9 @@
 pkgbase=fakeroot
 pkgname=(fakeroot fakeroot-tcp)
 pkgver=1.36
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for simulating superuser privileges'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL')
 url='https://tracker.debian.org/pkg/fakeroot'
 groups=('base-devel')
