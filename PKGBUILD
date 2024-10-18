@@ -3,9 +3,9 @@
 _pkgbase=dbus-python
 pkgname=python-dbus
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings for D-Bus'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.freedesktop.org/wiki/Software/dbus/'
 license=(MIT)
 depends=(
