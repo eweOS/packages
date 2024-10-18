@@ -3,7 +3,7 @@
 pkgname=python-cattrs
 _pipname=${pkgname#python-}
 pkgver=24.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Complex custom class converters for attrs'
 arch=(any)
 #url='https://catt.rs'
@@ -11,7 +11,8 @@ url='https://github.com/python-attrs/cattrs'
 license=(MIT)
 depends=(python
          python-attrs)
-makedepends=(python-build
+makedepends=(git
+	     python-build
              python-installer
              python-wheel
              python-hatch-vcs
