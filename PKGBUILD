@@ -2,10 +2,10 @@
 
 pkgname=libdisplay-info
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='EDID and DisplayID library'
 url="https://gitlab.freedesktop.org/emersion/$pkgname"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 makedepends=(
   hwdata
