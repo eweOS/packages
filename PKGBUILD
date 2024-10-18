@@ -2,10 +2,10 @@
 
 pkgname=lua51
 pkgver=5.1.5
-pkgrel=4
+pkgrel=5
 pkgdesc='Powerful lightweight programming language designed for extending applications'
 url='https://www.lua.org'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 depends=(readline)
 makedepends=(patch)
