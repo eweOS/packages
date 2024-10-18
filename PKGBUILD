@@ -4,7 +4,7 @@
 pkgname=(go go-doc)
 epoch=2
 pkgver=1.23.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://golang.org/'
@@ -53,8 +53,9 @@ check()
 {
   export GO_TEST_TIMEOUT_SCALE=3
 
-  # TODO: fix tests on riscv64
-  if [ $CARCH != riscv64 ]; then
+  # TODO: fix tests on riscv64 and loongarch64
+  # exec: "gcc": executable file not found in $PATH on cmd/internal/testdir
+  if [ $CARCH != riscv64 ] && [ $CARCH != loongarch64 ]; then
     cd $pkgname/src
     # syscall no privilege, cgo test failed, see https://github.com/golang/go/issues/39857
     # +plugins: https://github.com/golang/go/issues/46560
