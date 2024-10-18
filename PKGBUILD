@@ -2,9 +2,9 @@
 
 pkgname=pam
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="PAM (Pluggable Authentication Modules) library"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL2')
 url="http://linux-pam.org"
 depends=('musl' 'libxcrypt' 'utmps')
