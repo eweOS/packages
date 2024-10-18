@@ -3,12 +3,12 @@
 _pkgbase=elfutils
 pkgname=(libelf elfutils)
 pkgver=0.191
-pkgrel=3
+pkgrel=4
 pkgdesc="libelf is a free ELF object file access library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://sourceware.org/elfutils/"
 license=(LGPL3 GPL3)
-makedepends=(curl llvm-libs libarchive sqlite xz zlib libuargp musl-fts musl-obstack)
+makedepends=(curl llvm-libs libarchive sqlite xz zlib libuargp musl-fts musl-obstack linux-headers)
 options=(staticlibs)
 source=(https://sourceware.org/$_pkgbase/ftp/$pkgver/$_pkgbase-$pkgver.tar.bz2
 	musl-utils.patch
