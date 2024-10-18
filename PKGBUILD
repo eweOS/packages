@@ -2,10 +2,10 @@
 
 pkgname=libepoxy
 pkgver=1.5.10
-pkgrel=4
+pkgrel=5
 pkgdesc="Library handling OpenGL function pointer management"
 url="https://github.com/anholt/libepoxy"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 depends=(libglvnd)
 makedepends=(meson mesa)
