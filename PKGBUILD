@@ -2,7 +2,7 @@
 
 pkgname=python-attrs
 pkgver=24.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Attributes without boilerplate."
 arch=('any')
 license=('MIT')
@@ -12,7 +12,7 @@ makedepends=('git' 'python-build' 'python-installer' 'python-hatchling' 'python-
 # FIXME: missing dependencies
 #checkdepends=('python-pytest' 'python-cloudpickle' 'python-hypothesis' 'python-zope-interface')
 source=("git+https://github.com/python-attrs/attrs.git#tag=$pkgver")
-sha512sums=('3184a0f7f9877940663129aae3cc6e0eca8ffe14dd15d0d0e43b6651e8c5e3c8fab841432e06c3b22711b3d4579454e3ff47f60a957e5a6e3154caf138e8e6c1')
+sha512sums=('96fdd1aa13c2136b11f86f88ce97c7c9ffce73974353b2a96207978694a3588b32ddec73a0ee76c164a0a48567845cbcb5097c1a7f1ddb8abfef9e553564b590')
 
 build() {
   cd attrs
