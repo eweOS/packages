@@ -2,9 +2,9 @@
 
 pkgname=libinih
 pkgver=58
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple .INI file parser written in C'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://github.com/benhoyt/inih
 license=(BSD)
 depends=('llvm-libs' 'musl')
