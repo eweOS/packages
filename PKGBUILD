@@ -2,10 +2,10 @@
 
 pkgname=libftdi
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source library to talk to FTDI chips.'
 url='https://www.intra2net.com/en/developer/libftdi'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-2.1-only)
 depends=(libusb)
 makedepends=(cmake linux-headers)
