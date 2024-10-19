@@ -10,6 +10,7 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.netfilter.org/projects/libmnl/'
 license=('LGPL2.1')
 depends=('musl' 'sys-queue.h')
+makedepends=('linux-headers')
 source=("https://www.netfilter.org/projects/$pkgname/files/$pkgname-$pkgver.tar.bz2"
   musl-fix-headers.patch)
 sha256sums=('274b9b919ef3152bfb3da3a13c950dd60d6e2bcd54230ffeca298d03b40d0525'
