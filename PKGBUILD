@@ -2,12 +2,12 @@
 
 pkgname=zimg
 pkgver=3.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Scaling, colorspace conversion, and dithering library '
 url='https://github.com/sekrit-twc/zimg'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(WTFPL)
-depends=(musl)
+depends=(musl linux-headers)
 source=("https://github.com/sekrit-twc/zimg/archive/refs/tags/release-$pkgver.tar.gz")
 provides=('libzimg.so')
 
