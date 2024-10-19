@@ -2,14 +2,21 @@
 
 pkgname=tmux
 pkgver=3.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A terminal multiplexer'
 url='https://github.com/tmux/tmux/wiki'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('BSD')
 depends=('ncurses' 'libevent')
+makedepends=('autoconf')
 source=("https://github.com/tmux/tmux/releases/download/${pkgver/_/}/tmux-${pkgver/_/}.tar.gz")
 sha256sums=('551ab8dea0bf505c0ad6b7bb35ef567cdde0ccb84357df142c254f35a23e19aa')
+
+prepare()
+{
+  cd "$pkgname-${pkgver/_/}"
+  autoreconf -fiv
+}
 
 build()
 {
