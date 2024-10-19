@@ -2,10 +2,10 @@
 
 pkgname=ada-url
 pkgver=2.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='WHATWG-compliant and fast URL parser written in modern C++'
 url='https://ada-url.com'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0 MIT)
 depends=(musl)
 makedepends=(cmake python)
