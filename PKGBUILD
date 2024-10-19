@@ -2,9 +2,9 @@
 
 pkgname=cjson
 pkgver=1.7.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Ultralightweight JSON parser in ANSI C"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=("MIT")
 makedepends=("cmake" "ninja")
 url="https://github.com/DaveGamble/cJSON"
