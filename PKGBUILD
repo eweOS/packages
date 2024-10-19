@@ -2,9 +2,9 @@
 
 pkgname=htop
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Interactive process viewer'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://htop.dev/'
 license=('GPL')
 depends=('ncurses')
