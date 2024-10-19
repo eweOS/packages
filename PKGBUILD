@@ -3,14 +3,14 @@
 pkgname=qt6-tools
 _qtver=6.7.2
 pkgver=${_qtver/-/}
-pkgrel=1
-arch=(x86_64 aarch64 riscv64)
+pkgrel=2
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Classes for QML and JavaScript languages'
 _pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
 depends=(qt6-base zstd)
-makedepends=(cmake git ninja python qt6-declarative openmp)
+makedepends=(cmake git ninja python qt6-declarative llvm-devel)
 groups=(qt6)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz zstd-configure.patch)
 sha256sums=('58e855ad1b2533094726c8a425766b63a04a0eede2ed85086860e54593aa4b2a'
