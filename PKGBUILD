@@ -2,10 +2,10 @@
 
 pkgname=libnfs
 pkgver=5.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='NFS client library.'
 url='https://github.com/sahlberg/libnfs'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD-2-Clause LGPL-2.1-or-later GPL-3.0-or-later)
 depends=(musl)
 provides=(libnfs.so)
