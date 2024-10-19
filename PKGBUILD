@@ -2,9 +2,9 @@
 
 pkgname=alsa-lib
 pkgver=1.2.12
-pkgrel=2
+pkgrel=3
 pkgdesc="The Advanced Linux Sound Architecture (ALSA) - library"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.alsa-project.org"
 license=(LGPL2.1)
 makedepends=(linux-headers)
