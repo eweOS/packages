@@ -2,15 +2,21 @@
 
 pkgname=dosfstools
 pkgver=4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="DOS filesystem utilities"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('musl')
+makedepends=('autoconf')
 source=(https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz
 )
 url="https://github.com/dosfstools/dosfstools"
 license=('GPL-3.0-or-later')
 sha256sums=('64926eebf90092dca21b14259a5301b7b98e7b1943e8a201c7d726084809b527')
+
+prepare() {
+  cd $pkgname-$pkgver
+  autoreconf -fiv
+}
 
 build() {
   cd $pkgname-$pkgver
