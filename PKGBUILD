@@ -2,9 +2,9 @@
 
 pkgname=dos2unix
 pkgver=7.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Text file format converter'
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://waterlan.home.xs4all.nl/dos2unix.html'
 license=('BSD')
 makedepends=('perl')
