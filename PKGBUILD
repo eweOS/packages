@@ -3,10 +3,10 @@
 
 pkgname=gcompat
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The GNU C Library compatibility layer for musl"
 url="https://git.adelielinux.org/adelie/gcompat"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('NCSA')
 depends=('libucontext' 'musl' 'musl-obstack' 'utmps')
 makedepends=('musl-static')
