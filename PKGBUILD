@@ -2,9 +2,9 @@
 
 pkgname=aml
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Another Main Loop'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://github.com/any1/aml
 license=(custom:ISC)
 makedepends=(
