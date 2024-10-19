@@ -3,16 +3,22 @@
 
 pkgname=libnftnl
 pkgver=1.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Netfilter library providing interface to the nf_tables subsystem'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://netfilter.org/projects/libnftnl/'
 license=('GPL2')
 depends=('libmnl')
-makedepends=('linux-headers')
+makedepends=('linux-headers' 'autoconf')
 checkdepends=('jansson')
 source=("https://netfilter.org/projects/libnftnl/files/libnftnl-$pkgver.tar.xz")
 sha256sums=('37fea5d6b5c9b08de7920d298de3cdc942e7ae64b1a3e8b880b2d390ae67ad95')
+
+prepare()
+{
+  cd $pkgname-$pkgver
+  autoreconf -fiv
+}
 
 build()
 {
