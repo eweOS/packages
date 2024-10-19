@@ -2,10 +2,10 @@
 
 pkgname=aquamarine
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A very light linux rendering backend library'
 url='https://github.com/hyprwm/aquamarine'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD-3-Clause)
 depends=(libdrm libinput hyprutils pixman libdisplay-info wayland seatd mesa)
 makedepends=(cmake wayland-protocols hwdata hyprwayland-scanner linux-headers)
