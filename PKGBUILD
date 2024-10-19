@@ -3,9 +3,9 @@
 pkgname=aspell
 pkgver=0.60.8.1
 _pkgmajorver=0.60
-pkgrel=1
+pkgrel=2
 pkgdesc="A spell checker designed to eventually replace Ispell"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://aspell.net/"
 license=('LGPL')
 depends=('llvm-libs' 'ncurses')
