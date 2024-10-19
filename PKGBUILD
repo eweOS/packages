@@ -4,9 +4,9 @@
 
 pkgname=chrpath
 pkgver=0.16
-pkgrel=4
+pkgrel=5
 pkgdesc="Change or delete the rpath or runpath in ELF files"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://directory.fsf.org/project/chrpath/"
 license=('GPL2')
 depends=('musl')
