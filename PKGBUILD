@@ -2,9 +2,9 @@
 
 pkgname=sl
 pkgver=5.05
-pkgrel=1
+pkgrel=2
 pkgdesc='Steam Locomotive runs across your terminal when you type "sl" as you meant to type "ls"'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/eyJhb/sl"
 license=('custom')
 depends=('ncurses')
