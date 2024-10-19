@@ -2,11 +2,11 @@
 
 pkgname=libdaemon
 pkgver=0.14
-pkgrel=8
+pkgrel=9
 pkgdesc='Lightweight C library that eases the writing of UNIX daemons'
 url='http://0pointer.de/lennart/projects/libdaemon/'
 license=('LGPL2')
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 _config_githash='4ad4bb7c30aca1e705448ba8d51a210bbd47bb52'
 _config_url='http://git.savannah.gnu.org/gitweb/?p=config.git'
 source=(
