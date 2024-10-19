@@ -6,12 +6,13 @@
 
 pkgname=pcre
 pkgver=8.45
-pkgrel=4
+pkgrel=5
 pkgdesc='A library that implements Perl 5-style regular expressions'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.pcre.org/'
 license=('BSD')
 depends=('llvm-libs' 'readline' 'zlib' 'libbz2')
+makedepends=('autoconf')
 options=(staticlibs)
 provides=(libpcreposix.so libpcrecpp.so libpcre32.so libpcre16.so libpcre.so)
 source=(https://sourceforge.net/projects/pcre/files/pcre/$pkgver/pcre-$pkgver.tar.bz2)
@@ -28,7 +29,7 @@ prepare()
       patch -p1 -N -i "$srcdir/${filename##*/}"
     fi
   done
-  :
+  autoreconf -fiv
 }
 
 build()
