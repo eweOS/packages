@@ -3,10 +3,10 @@
 pkgname=anthy
 pkgver=9100h
 _filecode=37536
-pkgrel=1
+pkgrel=2
 pkgdesc='Anthy is a system for Japanese input method.'
 url='https://osdn.net/projects/anthy/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-or-later LGPL-2.1-or-later)
 depends=(musl)
 provides=(libanthy.so libanthyinput.so libanthydic.so)
