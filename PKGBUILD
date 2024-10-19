@@ -2,9 +2,9 @@
 
 pkgname=activate-linux
 pkgver=r4.d3bc7ea
-pkgrel=1
+pkgrel=2
 pkgdesc="The \"Activate Windows\" watermark for Wayland"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/Kljunas2/activate-linux.git'
 makedepends=('git')
 depends=('gtk3' 'gtk-layer-shell')
