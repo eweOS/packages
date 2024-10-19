@@ -2,10 +2,10 @@
 
 pkgname=libldac
 pkgver=2.0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="LDAC Bluetooth encoder library"
 url="https://github.com/EHfive/ldacBT"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0)
 makedepends=(git cmake)
 provides=(libldacBT_{abr,enc}.so)
