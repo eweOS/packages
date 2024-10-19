@@ -2,10 +2,10 @@
 
 pkgname=python-gobject
 pkgver=3.48.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for GLib/GObject/GIO/GTK"
 url="https://pygobject.gnome.org/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-2.1-or-later)
 depends=(
   gobject-introspection-runtime
