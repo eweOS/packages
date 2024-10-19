@@ -5,9 +5,9 @@
 pkgbase=libxcrypt
 pkgname=(libxcrypt libxcrypt-compat)
 pkgver=4.4.36
-pkgrel=2
+pkgrel=3
 pkgdesc='Modern library for one-way hashing of passwords'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/besser82/libxcrypt/'
 license=('GPL')
 depends=('musl' 'libucontext')
