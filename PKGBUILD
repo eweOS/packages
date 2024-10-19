@@ -2,10 +2,10 @@
 
 pkgname=a52dec
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A free library for decoding ATSC A/52 streams'
 url='https://git.adelielinux.org/community/a52dec/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-or-later)
 depends=(musl)
 makedepends=(linux-headers)
