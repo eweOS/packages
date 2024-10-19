@@ -2,12 +2,13 @@
 
 pkgname=libdispatch
 pkgver=5.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for concurrency on multicore hardware.'
 url='https://github.com/apple/swift-corelibs-libdispatch'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0)
 depends=(musl)
+makedepends=(linux-headers)
 provides=(libdispatch.so)
 source=("https://github.com/apple/swift-corelibs-libdispatch/archive/refs/tags/swift-$pkgver-RELEASE.tar.gz"
 	disable-werror.patch
