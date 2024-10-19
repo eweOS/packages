@@ -2,9 +2,9 @@
 
 pkgname=yaft
 pkgver=0.2.9.r41.g59ef091
-pkgrel=2
+pkgrel=3
 pkgdesc="yet another framebuffer terminal"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/uobikiemukot/yaft"
 license=('MIT')
 makedepends=('ncurses' 'linux-headers' 'git')
