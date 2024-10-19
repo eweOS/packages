@@ -2,10 +2,10 @@
 
 pkgname=libaom
 pkgver=3.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Alliance for Open Media (AOM) AV1 codec SDK.'
 url='https://aomedia.googlesource.com/aom/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD)
 depends=(musl)
 provides=(aom)
