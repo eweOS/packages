@@ -2,9 +2,9 @@
 
 pkgname=libbsd
 pkgver=0.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc='commonly-used BSD functions not implemented by all libcs'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://libbsd.freedesktop.org"
 license=('custom')
 depends=('musl' 'libmd')
