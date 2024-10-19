@@ -2,9 +2,9 @@
 
 pkgname=squashfs-tools
 pkgver=4.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Tools for squashfs, a highly compressed read-only filesystem for Linux'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/plougher/squashfs-tools'
 license=(GPL2)
 depends=(
