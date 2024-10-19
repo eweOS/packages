@@ -3,9 +3,9 @@
 
 pkgname=c-ares
 pkgver=1.34.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library for asynchronous DNS requests"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://c-ares.haxx.se/"
 license=('MIT')
 depends=('musl')
