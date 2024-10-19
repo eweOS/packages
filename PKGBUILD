@@ -3,14 +3,20 @@
 pkgname=libvorbis
 pkgdesc='Ogg Vorbis codec'
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 url='https://xiph.org/vorbis/'
 license=('BSD')
 depends=('musl' 'libogg')
+makedepends=('autoconf')
 source=("https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-${pkgver}.tar.gz")
 sha256sums=('0e982409a9c3fc82ee06e08205b1355e5c6aa4c36bca58146ef399621b0ce5ab')
 arch=(x86_64 aarch64 riscv64 loongarch64)
 provides=('libvorbis.so' 'libvorbisenc.so' 'libvorbisfile.so')
+
+prepare() {
+	cd libvorbis-${pkgver}
+	autoreconf -fiv
+}
 
 build() {
 	cd libvorbis-${pkgver}
