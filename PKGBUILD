@@ -2,10 +2,10 @@
 
 pkgname=ostree
 pkgver=2024.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Operating system and container binary deployment and upgrades"
 url="https://ostreedev.github.io/ostree/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-2.0-or-later)
 depends=(
   bash
