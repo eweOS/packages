@@ -2,10 +2,10 @@
 
 pkgname=jsoncpp
 pkgver=1.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ library for interacting with JSON'
 url='https://github.com/open-source-parsers/jsoncpp'
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('MIT' 'custom:Public_Domain')
 makedepends=('python' 'meson')
 source=($url/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
