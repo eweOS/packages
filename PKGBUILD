@@ -2,10 +2,10 @@
 
 pkgname=python-cairo
 pkgver=1.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for the cairo graphics library"
 url="https://pycairo.readthedocs.io/en/latest/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL2.1 MPL)
 depends=(cairo python)
 makedepends=(meson)
