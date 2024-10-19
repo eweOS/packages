@@ -4,10 +4,10 @@
 
 pkgname=libcue
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Parses so-called cue sheets and handles the parsed data'
 url='https://github.com/lipnitsk/libcue/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lipnitsk/libcue/archive/v$pkgver.tar.gz")
 makedepends=('cmake' 'bison' 'flex')
