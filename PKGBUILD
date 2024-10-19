@@ -2,10 +2,10 @@
 
 pkgname=connman
 pkgver=1.43
-pkgrel=2
+pkgrel=3
 pkgdesc="Intel's modular network connection manager"
 url="https://01.org/connman"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL-2.0-or-later')
 depends=('dbus' 'glib' 'nftables')
 optdepends=('wpa_supplicant: for wireless network support')
