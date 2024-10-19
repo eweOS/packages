@@ -3,9 +3,9 @@
 
 pkgname=libucontext
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ucontext function implementations"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/kaniini/$pkgname"
 license=('ISC')
 source=("https://distfiles.dereferenced.org/$pkgname/$pkgname-${pkgver}.tar.xz")
