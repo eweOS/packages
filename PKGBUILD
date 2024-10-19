@@ -3,10 +3,10 @@
 
 pkgname=googletest
 pkgver=1.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ testing utility based on the xUnit framework'
 url='https://github.com/google/googletest'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('BSD')
 depends=('llvm-libs' 'sh')
 makedepends=('python' 'cmake' 'llvm-libs' 'sh')
