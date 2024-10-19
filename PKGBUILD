@@ -12,7 +12,7 @@ pkgname=(
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=24.2.4
-pkgrel=3
+pkgrel=4
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm')
 makedepends=(
@@ -21,6 +21,7 @@ makedepends=(
   'meson'
   'wayland' 'wayland-protocols'
   'python-packaging'
+  'llvm-devel'
   'linux-headers'
   'libclc' 'spirv-llvm-translator' 'spirv-tools'
   'python-mako' 'python-yaml')
