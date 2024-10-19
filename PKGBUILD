@@ -2,9 +2,9 @@
 
 pkgname=libpaper
 pkgver=2.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for handling paper characteristics"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/rrthomas/libpaper"
 # https://github.com/rrthomas/libpaper/pull/37
 # libpaper is LGPL-2.1+
