@@ -4,9 +4,9 @@
 
 pkgname=cppunit
 pkgver=1.15.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A C++ unit testing framework"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.freedesktop.org/wiki/Software/cppunit"
 license=('LGPL')
 depends=('sh' 'llvm-libs')
