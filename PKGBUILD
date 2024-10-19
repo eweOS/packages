@@ -2,10 +2,10 @@
 
 pkgname=openal-soft
 pkgver=1.23.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A software implementation of the OpenAL 3D audio API'
 url='https://openal-soft.org'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD GPL2)
 depends=(alsa-lib pipewire zlib-ng)
 makedepends=(cmake ninja)
