@@ -3,10 +3,10 @@
 pkgname=zip
 pkgver=3.0
 _pkgver=${pkgver/./}
-pkgrel=1
+pkgrel=2
 pkgdesc='Compressor/archiver for creating and modifying zipfiles'
 url='http://www.info-zip.org/Zip.html'
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('custom')
 depends=('bzip2')
 source=("https://downloads.sourceforge.net/infozip/${pkgname}${_pkgver}.tar.gz"
