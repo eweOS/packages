@@ -2,14 +2,20 @@
 
 pkgname=lzo
 pkgver=2.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Portable lossless data compression library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.oberhumer.com/opensource/lzo"
 license=('GPL')
 provides=('liblzo2.so' 'libminilzo.so')
+makedepends=('autoconf')
 source=(https://www.oberhumer.com/opensource/lzo/download/lzo-${pkgver}.tar.gz)
 sha256sums=('c0f892943208266f9b6543b3ae308fab6284c5c90e627931446fb49b4221a072')
+
+prepare() {
+  cd lzo-${pkgver}
+  autoreconf -fiv
+}
 
 build() {
   cd lzo-${pkgver}
