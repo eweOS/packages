@@ -2,9 +2,9 @@
 
 pkgname=catdoc
 pkgver=0.95
-pkgrel=1
+pkgrel=2
 pkgdesc='A convertor for Microsoft Word, Excel, PowerPoint and RTF Files to text'
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.wagner.pp.ru/~vitus/software/catdoc/'
 license=('GPL')
 optdepends=('tk: for using wordview')
