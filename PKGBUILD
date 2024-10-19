@@ -2,12 +2,13 @@
 
 pkgname=zsh
 pkgver=5.9
-pkgrel=1
-arch=(x86_64 aarch64 riscv64)
+pkgrel=2
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.zsh.org/'
 license=('custom')
 pkgdesc='A very advanced and programmable command interpreter (shell) for UNIX'
 depends=('pcre' 'libcap' 'gdbm')
+makedepends=('linux-headers')
 source=("https://www.zsh.org/pub/zsh-${pkgver}.tar.xz"
   zsh-59-clang-15-configure.patch)
 sha512sums=('d9138b7f379ad942a5f46819d2dd52d31f3a1129f2a0d1b53d4c5cd43c318b60396da6d37c57c477b8e958fb750209aca0ae93f8c9dd42ac958de006a0ff067e'
