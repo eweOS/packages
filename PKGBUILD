@@ -2,9 +2,9 @@
 
 pkgname=lzo
 pkgver=2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Portable lossless data compression library"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.oberhumer.com/opensource/lzo"
 license=('GPL')
 provides=('liblzo2.so' 'libminilzo.so')
