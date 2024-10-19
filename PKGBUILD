@@ -2,9 +2,9 @@
 
 pkgname=minicom
 pkgver=2.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A serial communication program'
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://salsa.debian.org/minicom-team/minicom'
 license=('GPL-2.0-or-later')
 depends=('bash')
