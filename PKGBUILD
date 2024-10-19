@@ -3,11 +3,12 @@
 pkgname=man-pages-posix
 _commit=3032a293a74969989e3ed4921b690cf9442ac674
 pkgver=20210214.${_commit:0:7}
-pkgrel=1
+pkgrel=2
 pkgdesc='POSIX man pages.'
 url='https://www.kernel.org/doc/man-pages/index.html'
 arch=(any)
 license=(custom)
+makedepends=(git)
 source=("git+https://git.kernel.org/pub/scm/docs/man-pages/man-pages-posix.git#commit=$_commit")
 sha256sums=('SKIP')
 
