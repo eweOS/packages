@@ -2,9 +2,9 @@
 
 pkgname=libebur128
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A library that implements the EBU R 128 standard for loudness normalisation'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/jiixyj/libebur128'
 license=(MIT)
 makedepends=(cmake
