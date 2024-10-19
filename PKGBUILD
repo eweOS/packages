@@ -3,9 +3,9 @@
 
 pkgname=cfiles
 pkgver=1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A ncurses file manager written in C"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/mananapr/cfiles/"
 license=('MIT')
 depends=('ncurses' 'fzf')
