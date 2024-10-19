@@ -2,10 +2,10 @@
 
 pkgname=libmpack
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='a small binary serialization/RPC library that implements both the msgpack and msgpack-rpc specifications.'
 url='https://github.com/libmpack/libmpack'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 depends=(musl)
 makedepends=(libtool)
