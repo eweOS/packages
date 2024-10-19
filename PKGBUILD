@@ -8,12 +8,19 @@ url="https://github.com/cronie-crond/cronie"
 license=('custom:BSD')
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('bash')
+makedepends=('autoconf')
 source=(
   "$url/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
   cron.service
 )
 sha256sums=('f1da374a15ba7605cf378347f96bc8b678d3d7c0765269c8242cfe5b0789c571'
             '2573646115c9dc1cb2c22f9480f6f12d98ac611f6a5353a03cf0c6bf345fbe0b')
+
+prepare()
+{
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  autoreconf -fiv
+}
 
 build()
 {
