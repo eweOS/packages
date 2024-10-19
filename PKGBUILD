@@ -2,9 +2,9 @@
 
 pkgname=parted
 pkgver=3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A program for creating, destroying, resizing, checking and copying partitions'
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL3')
 url='https://www.gnu.org/software/parted/parted.html'
 depends=('util-linux-libs')
