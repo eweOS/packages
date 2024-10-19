@@ -2,10 +2,10 @@
 
 pkgname=caddy
 pkgver=2.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast and extensible HTTP/1-2-3 webserver'
 url='https://caddyserver.com'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0)
 depends=(musl)
 makedepends=(go)
