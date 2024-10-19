@@ -2,7 +2,7 @@
 
 pkgname=namcap
 pkgver=3.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A Pacman package analyzer'
 arch=(any)
 url="https://gitlab.archlinux.org/pacman/$pkgname"
@@ -21,7 +21,7 @@ sha256sums=('fbd3b1f0777fe457afd3dbb1f55de8adbaeb50257492626bcffd1a3eef67d618')
 
 prepare() {
   cd "$_archive"
-  find . -type f -exec sed -i "s/gcc /cc /g; s/'glibc'/'musl'/g; s/'i686' 'x86_64'/'i686' 'x86_64' 'aarch64' 'riscv64'/g" {} \;
+  find . -type f -exec sed -i "s/gcc /cc /g; s/'glibc'/'musl'/g; s/'i686' 'x86_64'/'i686' 'x86_64' 'aarch64' 'riscv64' 'loongarch64'/g" {} \;
   sed -i 's/glibc/musl/g' Namcap/tests/test_depends.py
   sed -i 's/glibc/musl/g' Namcap/tests/test_pacman.py
   # violate eweos makepkg sbin merge rule
