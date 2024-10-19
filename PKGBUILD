@@ -2,9 +2,9 @@
 
 pkgname=composefs
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A file system for mounting container images"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/containers/composefs"
 license=(
   LGPL-2.1-or-later
