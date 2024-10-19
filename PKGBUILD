@@ -2,10 +2,10 @@
 
 pkgname=lame
 pkgver=3.100
-pkgrel=2
+pkgrel=3
 pkgdesc='a high quality MP3 encoder licensed under the LGPL.'
 url='https://lame.sourceforge.io/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL3)
 depends=(musl)
 makedepends=(nasm autoconf)
