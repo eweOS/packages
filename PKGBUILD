@@ -3,10 +3,10 @@
 pkgbase=pulseaudio
 pkgname=libpulse
 pkgver=17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A featureful, general-purpose sound server"
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL)
 makedepends=(
   perl-xml-parser
@@ -19,6 +19,7 @@ makedepends=(
   libsndfile
   meson
   openssl
+  linux-headers
 )
 depends=(
   dbus
