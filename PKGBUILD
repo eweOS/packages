@@ -3,9 +3,9 @@
 pkgbase=glslang
 pkgname=(glslang glslang-static)
 pkgver=14.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenGL and OpenGL ES shader front end and validator'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/KhronosGroup/glslang'
 license=('BSD-3-Clause')
 depends=('spirv-tools')
