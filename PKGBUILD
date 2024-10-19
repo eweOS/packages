@@ -2,10 +2,10 @@
 
 pkgname=tinc
 pkgver=1.0.36
-pkgrel=1
+pkgrel=2
 pkgdesc='A Virtual Private Network (VPN) daemon'
 url='https://tinc-vpn.org/download/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-or-later)
 depends=(musl lzo openssl zlib-ng)
 makedepends=(linux-headers)
