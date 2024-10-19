@@ -3,8 +3,8 @@
 pkgbase="cups"
 pkgname=('libcups' 'cups')
 pkgver=2.4.11
-pkgrel=1
-arch=(x86_64 aarch64 riscv64)
+pkgrel=2
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND Zlib AND BSD-2-Clause')
 url="https://openprinting.github.io/cups/"
 makedepends=('acl' 'pam' 'libusb' 'libpaper' 'linux-headers')
