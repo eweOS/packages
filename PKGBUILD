@@ -1,13 +1,14 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 pkgname=wterm
 pkgver=20220907
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="xterm for wayland (simple wayland st suckless terminal)"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/majestrate/wterm"
 license=('MIT')
 depends=('wayland' 'libxkbcommon' 'fontconfig' 'pixman' 'libdrm')
+makedepends=('linux-headers')
 source=("https://github.com/majestrate/wterm/archive/refs/heads/master.tar.gz")
 md5sums=('4744e9eed08b4144ba847a3ab52230c2')
 
