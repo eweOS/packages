@@ -2,13 +2,13 @@
 
 pkgname=turnstile
 pkgver=0.1.10
-pkgrel=2
+pkgrel=3
 pkgdesc='Independent session/login tracker'
 url='https://github.com/chimera-linux/turnstile'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD-2-Clause)
 depends=(pam)
-makedepends=(meson ninja scdoc)
+makedepends=(meson ninja scdoc git)
 source=("git+$url.git#tag=v$pkgver" turnstiled.service)
 sha256sums=('e36592e97fc4613a46b71f661e57c118aab20d451f92733728c00b5a45aa57a2'
 	'257fd00dc1f6ba7e79b70604aa358e481cff60b318de8d78b829acdec56f7eff')
