@@ -2,10 +2,10 @@
 
 pkgname=vulkan-volk
 pkgver=1.3.295
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta loader for Vulkan API'
 url='https://github.com/zeux/volk'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 depends=(musl)
 makedepends=(cmake vulkan-headers)
