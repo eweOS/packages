@@ -2,10 +2,10 @@
 
 pkgname=('boost' 'boost-libs')
 pkgver=1.86.0
-pkgrel=1
+pkgrel=2
 _srcname=boost_${pkgver//./_}
 pkgdesc="Free peer-reviewed portable C++ source libraries"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.boost.org/"
 license=('custom')
 makedepends=('icu' 'linux-headers' 'python' 'libbz2' 'zlib' 'zstd')
