@@ -4,9 +4,9 @@
 pkgname=base16384
 pkgdesc="Encode binary file to printable utf16be, and vice versa."
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 license=('GPL')
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/fumiama/base16384"
 makedepends=('cmake')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
