@@ -2,9 +2,9 @@
 
 pkgname=libnl
 pkgver=3.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for applications dealing with netlink sockets'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/thom311/libnl/'
 license=('GPL')
 depends=('musl' 'flex' 'bison')
