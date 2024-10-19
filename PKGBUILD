@@ -6,9 +6,9 @@
 pkgname=perl-locale-gettext
 _realname=Locale-gettext
 pkgver=1.07
-pkgrel=13
+pkgrel=14
 pkgdesc="Permits access from Perl to the gettext() family of functions"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL' 'PerlArtistic')
 url="https://search.cpan.org/dist/${_realname}/"
 depends=('gettext' 'perl' 'libxcrypt')
