@@ -4,9 +4,9 @@
 
 pkgname=nano
 pkgver=8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Pico editor clone with enhancements"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL')
 url="https://www.nano-editor.org"
 depends=('ncurses' 'file' 'sh')
