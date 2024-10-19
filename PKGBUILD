@@ -2,10 +2,10 @@
 
 pkgname=nmap
 pkgver=7.95
-pkgrel=2
+pkgrel=3
 pkgdesc='Utility for network discovery and security auditing'
 url='https://nmap.org/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LicenseRef-Nmap-Public-Source-License-Version-0.95)
 depends=(
   libpcap
