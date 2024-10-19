@@ -2,9 +2,9 @@
 
 pkgname=assimp
 pkgver=5.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to import various well-known 3D model formats in an uniform manner"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('BSD')
 depends=('zlib')
 makedepends=('cmake' 'ninja')
