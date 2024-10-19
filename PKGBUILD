@@ -3,9 +3,9 @@
 
 pkgname=tree
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A directory listing program displaying a depth indented list of files"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://mama.indstate.edu/users/ice/tree/"
 license=('GPL')
 depends=('musl')
