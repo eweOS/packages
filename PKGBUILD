@@ -3,8 +3,8 @@
 pkgname=qt6-positioning
 _qtver=6.7.2
 pkgver=${_qtver/-/}
-pkgrel=1
-arch=(x86_64 aarch64 riscv64)
+pkgrel=2
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Provides access to position, satellite and area monitoring classes'
