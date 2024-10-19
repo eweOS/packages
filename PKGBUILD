@@ -2,10 +2,10 @@
 
 pkgname=libndp
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for Neighbor Discovery Protocol"
 url="http://libndp.org/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-2.1-or-later)
 makedepends=(git)
 source=("git+https://github.com/jpirko/libndp#tag=v$pkgver")
