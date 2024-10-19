@@ -10,13 +10,13 @@ pkgname=(blas
          lapack64
          lapacke64)
 pkgver=3.12.0
-pkgrel=1
+pkgrel=2
 url='https://www.netlib.org/lapack'
 pkgdesc='Linear Algebra PACKage'
 makedepends=(cmake
              python
              flang)
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(custom)
 source=(https://github.com/Reference-LAPACK/lapack/archive/v$pkgver/$pkgbase-$pkgver.tar.gz)
 sha256sums=('eac9570f8e0ad6f30ce4b963f4f033f0f643e7c3912fc9ee6cd99120675ad48b')
