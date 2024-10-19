@@ -3,11 +3,11 @@
 pkgbase=wlroots0.18
 pkgname=(wlroots0.18-devel wlroots0.18)
 pkgver=0.18.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Modular Wayland compositor library'
 license=('MIT')
 url='https://gitlab.freedesktop.org/wlroots/wlroots'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 makedepends=('flex' 'linux-headers' 'meson' 'wayland-protocols' 'hwdata'
 	     'libinput' 'seatd' 'libudev-zero' 'libxkbcommon' 'libgles'
 	     'libegl' 'pixman' 'wayland' 'libdisplay-info' 'lcms2' 'libliftoff'
