@@ -2,10 +2,10 @@
 
 pkgname=tmux
 pkgver=3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal multiplexer'
 url='https://github.com/tmux/tmux/wiki'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('BSD')
 depends=('ncurses' 'libevent')
 source=("https://github.com/tmux/tmux/releases/download/${pkgver/_/}/tmux-${pkgver/_/}.tar.gz")
