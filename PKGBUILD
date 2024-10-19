@@ -2,10 +2,10 @@
 
 pkgname=libbpf
 pkgver=1.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for loading eBPF programs and reading and manipulating eBPF objects from user-space'
 url='https://github.com/libbpf/libbpf'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('LGPL2.1')
 depends=('libelf' 'linux-headers')
 makedepends=('rsync')
