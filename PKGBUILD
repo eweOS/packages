@@ -2,11 +2,11 @@
 
 pkgname=(opendoas opendoas-pam)
 pkgver=6.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Run commands as super user or another user'
 url='https://github.com/Duncaen/OpenDoas'
 license=(custom:ISC)
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 provides=(doas)
 replaces=(doas)
 makedepends=(pam)
