@@ -3,10 +3,10 @@
 
 pkgname=hwloc
 pkgver=2.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="a portable abstraction of hierarchical architectures"
 url='https://www.open-mpi.org/projects/hwloc/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('BSD')
 depends=('libxml2' 'libudev')
 makedepends=('cairo' 'ncurses')
