@@ -12,7 +12,7 @@ pkgname=(
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=24.2.4
-pkgrel=4
+pkgrel=5
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm')
 makedepends=(
@@ -24,7 +24,7 @@ makedepends=(
   'llvm-devel'
   'linux-headers'
   'libclc' 'spirv-llvm-translator' 'spirv-tools'
-  'python-mako' 'python-yaml')
+  'python-mako' 'python-pycparser' 'python-yaml')
 url="https://www.mesa3d.org/"
 license=('custom')
 # mold may fails with lto enabled
@@ -55,10 +55,14 @@ build()
 	    VULKAN_DRI="${VULKAN_DRI_COMMON}"
 	    ;;
     aarch64)
-	    GALLIUM_DRI="${GALLIUM_DRI_COMMON},panfrost"
+	    GALLIUM_DRI="${GALLIUM_DRI_COMMON},panfrost,freedreno,lima,etnaviv"
 	    VULKAN_DRI="${VULKAN_DRI_COMMON},panfrost"
 	    ;;
     riscv64)
+	    GALLIUM_DRI="${GALLIUM_DRI_COMMON},etnaviv"
+	    VULKAN_DRI="${VULKAN_DRI_COMMON}"
+	    ;;
+    loongarch64)
 	    GALLIUM_DRI="${GALLIUM_DRI_COMMON}"
 	    VULKAN_DRI="${VULKAN_DRI_COMMON}"
 	    ;;
