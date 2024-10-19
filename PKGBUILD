@@ -2,9 +2,9 @@
 
 pkgname=sdl2
 pkgver=2.30.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.libsdl.org"
 license=('MIT')
 provides=('libsdl2')
