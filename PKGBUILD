@@ -2,9 +2,9 @@
 
 pkgname=dropbear
 pkgver=2024.85
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight SSH server'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/mkj/dropbear'
 license=(MIT)
 options=(emptydirs)
