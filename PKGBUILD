@@ -3,9 +3,9 @@
 
 pkgname=gdbm
 pkgver=1.24
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU database library"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.gnu.org/software/gdbm/gdbm.html"
 license=(GPL3)
 depends=(readline)
