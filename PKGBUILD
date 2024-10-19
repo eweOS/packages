@@ -5,10 +5,10 @@
 
 pkgname=libidn
 pkgver=1.42
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of the Stringprep, Punycode and IDNA specifications"
 url="https://www.gnu.org/software/libidn/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL3' 'LGPL')
 depends=('musl')
 source=("https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz")
