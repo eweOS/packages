@@ -2,9 +2,9 @@
 
 pkgname=libmicrohttpd
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='a small C library that is supposed to make it easy to run an HTTP server as part of another application.'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.gnu.org/software/libmicrohttpd/'
 license=('LGPL')
 depends=('musl')
