@@ -2,9 +2,9 @@
 
 pkgname="hyprutils"
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyprland utilities library used across the ecosystem"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/hyprwm/hyprutils"
 license=('BSD-3-Clause')
 depends=(pixman)
