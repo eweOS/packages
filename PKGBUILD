@@ -2,9 +2,9 @@
 
 pkgname=dosfstools
 pkgver=4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="DOS filesystem utilities"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('musl')
 source=(https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz
 )
