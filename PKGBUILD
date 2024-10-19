@@ -3,9 +3,9 @@
 
 pkgname=fzf
 pkgver=0.55.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line fuzzy finder'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/junegunn/fzf'
 license=('MIT')
 depends=('bash')
