@@ -2,10 +2,10 @@
 
 pkgname=abseil-cpp
 pkgver=20240722.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Abseil Common Libraries (C++).'
 url='https://abseil.io'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0)
 depends=(musl googletest)
 makedepends=(cmake linux-headers)
