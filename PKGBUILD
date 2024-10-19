@@ -4,9 +4,9 @@
 
 pkgname=cmatrix
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A curses-based scrolling 'Matrix'-like screen"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.asty.org/cmatrix/"
 license=('GPL3')
 depends=('ncurses')
