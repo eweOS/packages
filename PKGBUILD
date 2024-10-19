@@ -6,9 +6,9 @@
 
 pkgname=pcre
 pkgver=8.45
-pkgrel=3
+pkgrel=4
 pkgdesc='A library that implements Perl 5-style regular expressions'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.pcre.org/'
 license=('BSD')
 depends=('llvm-libs' 'readline' 'zlib' 'libbz2')
@@ -33,9 +33,9 @@ prepare()
 
 build()
 {
-  # No JIT support for riscv64
+  # No JIT support for riscv64 and loongarch64
   case $CARCH in
-    riscv64)	JIT_OPTIONS=(--disable-jit) ;;
+    riscv64 | loongarch64)	JIT_OPTIONS=(--disable-jit) ;;
     *)		JIT_OPTIONS=(--enable-jit) ;;
   esac
   cd $pkgname-$pkgver
