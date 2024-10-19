@@ -2,8 +2,8 @@
 
 pkgname=qt6-networkauth
 pkgver=6.7.2
-pkgrel=1
-arch=(x86_64 aarch64 riscv64)
+pkgrel=2
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Network authentication module'
