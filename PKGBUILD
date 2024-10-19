@@ -4,9 +4,9 @@
 
 pkgname=strace
 pkgver=6.11
-pkgrel=1
+pkgrel=2
 pkgdesc='A diagnostic, debugging and instructional userspace tracer'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://strace.io/'
 license=(BSD)
 depends=(perl)
