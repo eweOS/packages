@@ -2,10 +2,10 @@
 
 pkgname=android-tools
 pkgver=35.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Android platform tools'
 url='http://tools.android.com/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0 MIT)
 depends=(brotli libusb pcre2 protobuf googletest zstd python abseil-cpp)
 optdepends=('python: mkbootimg, unpack_bootimg and repack_bootimg support')
