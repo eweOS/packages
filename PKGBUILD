@@ -2,7 +2,7 @@
 
 pkgname=python-tqdm
 pkgver=4.66.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, Extensible Progress Meter'
 arch=('any')
 license=('MIT' 'MPL-2.0')
@@ -11,7 +11,7 @@ depends=('python')
 optdepends=('python-requests: telegram')
 makedepends=('git' 'python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel' 'python-toml')
 source=("git+https://github.com/tqdm/tqdm.git#tag=v${pkgver}")
-sha512sums=('10e2481f0a388dd17a6bbaee8891ac2e186e29fddc7fe4fae7e84b5a5ddaaffbb6b0d09ef3d7b835a92b3761788eed98ece5c88883f026b1e2830cd4b257ce57')
+sha512sums=('62e5e5ee12de4ed6f04fca1947ea839da3539fb8f763d1dcd0853d37915881fbe12f7e65f157dc240e48d3827d1bf1f2adb84f48ad093d5f14038c6bf393359e')
 
 build() {
   cd tqdm
