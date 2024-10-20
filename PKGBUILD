@@ -3,11 +3,11 @@
 
 pkgname=libaio
 pkgver=0.3.113
-pkgrel=6
+pkgrel=7
 pkgdesc="The Linux-native asynchronous I/O facility (aio) library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://pagure.io/libaio"
-license=(LGPL2.1)
+license=(LGPL-2.1-or-later)
 depends=(musl)
 makedepends=(linux-headers)
 provides=(libaio.so)
@@ -26,13 +26,21 @@ build()
 {
   # libaio is a thin wrapper around kernel syscalls, it does not use stdlib and
   # other helpers like stack protection libraries
-  case "${CARCH}" in
+  case "$CARCH" in
     x86_64)  MARCH="x86-64" ;;
     aarch64) MARCH="armv8-a" ;;
     riscv64) MARCH="rv64gc" ;;
     loongarch64) MARCH="la464" ;;
   esac
-  CFLAGS="-march=${MARCH} -mtune=generic -O2 -pipe"
+
+  # As for LLVM 18.1.8, -mtune=generic isn't available on loongarch64
+  if [ "$CARCH" = loongarch64 ]; then
+    MTUNE=
+  else
+    MTUNE="-mtune=generic"
+  fi
+
+  CFLAGS="-march=$MARCH $MTUNE -O2 -pipe"
   make -C $pkgname-$pkgname-$pkgver
 }
 
