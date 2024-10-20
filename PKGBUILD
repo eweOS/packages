@@ -3,7 +3,7 @@
 pkgbase=python
 pkgname=(python python-tests)
 pkgver=3.12.7
-pkgrel=2
+pkgrel=3
 _pybasever=${pkgver%.*}
 pkgdesc='The Python programming language'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -17,14 +17,13 @@ makedepends=(
   xz
   readline
   zlib
+  linux-headers
 )
 source=(
   "https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
-  EXTERNALLY-MANAGED
   musl-find_library.patch
 )
 sha256sums=('24887b92e2afd4a2ac602419ad4b596372f67ac9b077190f459aba390faf5550'
-            'fbe6c6ac37ccc7ad8b60f6508e58f542a6745d45602f27b68bbcc80b502168a4'
             '055a00bef64a9c22d746be5e9072d09b303e21cf0865daed1d7a67210207fb4f')
 
 prepare()
