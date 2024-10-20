@@ -2,12 +2,12 @@
 
 pkgname=python-tempora
 pkgver=5.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Objects and routines pertaining to date and time (tempora).'
 url='https://github.com/jaraco/tempora'
 arch=(any)
 license=(MIT)
-depends=(python python-jaraco.functools python-pytz)
+depends=(python python-jaraco.functools python-pytz python-dateutil)
 makedepends=(python-build python-wheel python-installer python-setuptools
 	     python-setuptools-scm git)
 # checkdepends=(python-freezegun python-pytest python-pytest-freezegun)
