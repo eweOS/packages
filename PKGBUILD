@@ -5,11 +5,11 @@
 pkgname=w3m
 _pkgver=0.5.3+git20220429
 pkgver=${_pkgver/+git/_}
-pkgrel=2
+pkgrel=3
 pkgdesc='Text-based Web browser & gopher browser, as well as pager'
 url='https://github.com/tats/w3m'
 license=('MIT')
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 makedepends=('git') # also add imlib2 when available
 #optdepends=('imlib2: for graphics support')
 depends=('openssl' 'gc' 'ncurses')
