@@ -3,7 +3,7 @@
 _pyname=ufoLib2
 pkgname=python-${_pyname,,}
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A library to deal with UFO font sources'
 arch=(any)
 url="https://github.com/fonttools/$_pyname"
@@ -14,7 +14,8 @@ depends=(python
          python-fonttools
          python-fs
          python-lxml)
-makedepends=(python-build
+makedepends=(git
+	     python-build
              python-installer
              python-wheel
              python-setuptools-scm) # scm required for _version file generation
