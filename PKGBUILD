@@ -2,7 +2,7 @@
 
 pkgname=python-license-expression
 pkgver=30.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Utility to parse, normalize and compare license expressions'
 arch=('any')
 url='https://github.com/nexB/license-expression'
@@ -23,7 +23,7 @@ checkdepends=(
   'python-pytest-xdist'
 )
 source=("$pkgname::git+$url#tag=v$pkgver")
-sha512sums=('76be20a9efa548f2d6e1cdc2d0a0ac3279c7165d40a7ba4df3992af5204554bd239462356859ad346b801274d9cb5f404a718cb9612b422f795fe9e29435b1d4')
+sha512sums=('f17d360226e46cf43a20c2ce19282e482735ebdc7d76616ca9269177ab30926f487d516c909af509b5450019bb18d3be77638170837b743b8e476deba29efa14')
 
 prepare() {
   cd "$pkgname"
