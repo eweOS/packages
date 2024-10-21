@@ -2,10 +2,10 @@
 
 pkgname=tree-sitter
 pkgver=0.24.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An incremental parsing system for programming tools '
 url='https://github.com/tree-sitter/tree-sitter'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 depends=(musl)
 provides=(libtree-sitter.so)
