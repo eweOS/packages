@@ -2,13 +2,13 @@
 
 pkgname=slurp
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Select a region in a Wayland compositor'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/emersion/slurp"
 license=('MIT')
 depends=('cairo' 'wayland' 'libxkbcommon')
-makedepends=('meson' 'scdoc' 'wayland-protocols')
+makedepends=('meson' 'scdoc' 'wayland-protocols' 'linux-headers')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/emersion/slurp/releases/download/v$pkgver/slurp-$pkgver.tar.gz"
 )
