@@ -2,10 +2,10 @@
 
 pkgname=duktape
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Embeddable Javascript engine'
 url='https://duktape.org/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 provides=(libduktape{,d}.so)
 source=("https://duktape.org/duktape-$pkgver.tar.xz")
