@@ -1,8 +1,11 @@
+change-id = 129295
 profile = "user"
+
 [llvm]
 link-shared = true
 static-libstdcpp = false
 use-libcxx = true
+
 [build]
 build = "%RUSTTARGET%"
 target = ["%RUSTTARGET%"]
@@ -16,8 +19,10 @@ sanitizers = false
 profiler = true
 # Generating docs fails with the wasm32-* targets
 docs = false
+
 [install]
 prefix = "/usr"
+
 [rust]
 debuginfo-level-std = 2
 channel = "stable"
@@ -35,8 +40,11 @@ llvm-libunwind = "system"
 codegen-units-std = 1
 # musl target produces warnings
 deny-warnings = false
+lld = false
+
 [target.%RUSTTARGET%]
 crt-static = false
 llvm-config = "/usr/bin/llvm-config"
+
 [dist]
 compression-formats = ["gz"]
