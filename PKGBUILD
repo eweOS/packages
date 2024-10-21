@@ -2,10 +2,10 @@
 
 pkgname=toml11
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='TOML for Modern C++'
 url='https://toruniina.github.io/toml11/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 depends=(musl)
 makedepends=(cmake)
