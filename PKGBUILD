@@ -2,9 +2,9 @@
 
 pkgname=convertlit
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='An extractor/converter for .LIT eBooks'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.convertlit.com/'
 license=(GPL-2.0-or-later)
 depends=(libtommath)
