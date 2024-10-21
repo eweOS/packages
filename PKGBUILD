@@ -2,9 +2,9 @@
 
 pkgname=tdb
 pkgver=1.4.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Trivial Database similar to GDBM but allows simultaneous commits'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL-3.0-or-later')
 url="https://tdb.samba.org/"
 makedepends=('python' 'libxslt' 'docbook-xsl')
