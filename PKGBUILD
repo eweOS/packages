@@ -2,10 +2,10 @@
 
 pkgname=kdegraphics-mobipocket
 pkgver=24.08.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A library to handle mobipocket files'
 url='https://invent.kde.org/graphics/kdegraphics-mobipocket'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-or-later LGPL-2.0-or-later)
 depends=(qt6-5compat
          qt6-base)
