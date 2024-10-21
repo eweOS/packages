@@ -2,10 +2,10 @@
 
 pkgname=msgpack-c
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc=' An efficient object serialization library for C'
 url='https://github.com/msgpack/msgpack-c'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSL-1.0)
 depends=(musl)
 makedepends=(cmake)
