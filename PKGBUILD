@@ -2,10 +2,10 @@
 
 pkgname=opencc
 pkgver=1.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Conversion between Traditional and Simplified Chinese'
 url='https://github.com/BYVoid/OpenCC'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0)
 depends=(libmarisa)
 makedepends=(cmake tclap python rapidjson)
