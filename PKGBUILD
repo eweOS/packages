@@ -16,10 +16,10 @@ pkgname=(qemu-common
 	 qemu-guest-agent
 	) # TODO: split firmwares
 pkgver=9.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A generic and open source machine emulator and virtualizer.'
 url='https://www.qemu.org/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0 BSD-2-Clause BSD-3-Clause FSFAP GPL-1.0-or-later
 	 GPL-2.0-only GPL-2.0-or-later GPL-2.0-or-later-WITH-GCC-exception-2.0
 	 LGPL-2.0-only LGPL-2.0-or-later MIT CC-BY-3.0)
@@ -30,8 +30,12 @@ makedepends=(alsa-lib bzip2 cairo curl dtc fuse3 gtk3 glib ncurses pipewire
 	     meson ninja)
 qemu_archs=(aarch64 alpha arm i386 loongarch64 m68k mips mips64 mips64el
 	    mipsel ppc ppc64 riscv32 riscv64 s390x sparc sparc64 x86_64)
-source=("https://download.qemu.org/qemu-$pkgver.tar.xz")
-sha256sums=('816b7022a8ba7c2ac30e2e0cf973e826f6bcc8505339603212c5ede8e94d7834')
+source=(
+  "https://download.qemu.org/qemu-$pkgver.tar.xz"
+  fix-strerrorname_np.patch
+)
+sha256sums=('816b7022a8ba7c2ac30e2e0cf973e826f6bcc8505339603212c5ede8e94d7834'
+            '26032d49d40e63b3a92a8346353cfca416029175d7fdc3e1f8b12b7b8914707f')
 # TODO: enable (static) user targets
 
 system_targets=""
@@ -52,6 +56,7 @@ F_QEMU_TOOLS=(
 )
 
 prepare () {
+  _patch_ "qemu-$pkgver"
   # __NR_riscv_hwprobe
   if [ "$CARCH" == "riscv64" ]; then
     sed -i '1i #include <asm/unistd.h>' "qemu-$pkgver/util/cpuinfo-riscv.c"
