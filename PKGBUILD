@@ -2,10 +2,10 @@
 
 pkgname=libcanberra
 pkgver=0.30
-pkgrel=1
+pkgrel=2
 pkgdesc="A small and lightweight implementation of the XDG Sound Theme Specification"
 url="https://0pointer.net/lennart/projects/libcanberra/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL)
 depends=(libvorbis libltdl alsa-lib libpulse tdb sound-theme-freedesktop)
 makedepends=(gtk-doc gtk3 git)
