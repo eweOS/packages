@@ -2,11 +2,11 @@
 
 pkgname=libzip
 pkgver=1.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="C library for reading, creating, and modifying zip archives"
 url="https://libzip.org"
 license=('BSD')
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('zlib' 'libbz2' 'zstd' 'openssl')
 makedepends=('cmake')
 provides=('libzip.so')
