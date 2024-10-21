@@ -2,9 +2,9 @@
 
 pkgname=ebook-tools
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools for accessing and converting various ebook file formats'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://sourceforge.net/projects/ebook-tools/'
 license=(MIT)
 depends=(convertlit
