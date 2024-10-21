@@ -4,9 +4,9 @@
 
 pkgname=libverto
 pkgver=0.3.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Main event loop abstraction library"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/latchset/libverto"
 license=(MIT)
 depends=('libevent')
