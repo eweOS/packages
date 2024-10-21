@@ -3,9 +3,9 @@
 
 pkgname=nmon
 pkgver=16q
-pkgrel=1
+pkgrel=2
 pkgdesc="AIX & Linux Performance Monitoring tool"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://nmon.sourceforge.net"
 license=('GPL')
 depends=('ncurses')
