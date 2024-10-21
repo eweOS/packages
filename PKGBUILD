@@ -3,10 +3,10 @@
 
 pkgname=libpsl
 pkgver=0.21.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Public Suffix List library'
 url='https://github.com/rockdaboot/libpsl'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 depends=(musl libidn2 libunistring)
 makedepends=(libidn2 libunistring meson)
