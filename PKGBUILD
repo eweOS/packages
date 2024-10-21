@@ -2,9 +2,9 @@
 
 pkgname=qqc2-desktop-style
 pkgver=6.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A style for Qt Quick Controls 2 to make it follow your desktop theme'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL-2.0-only LGPL-3.0-only)
 depends=(kcolorscheme
