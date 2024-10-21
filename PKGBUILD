@@ -2,9 +2,9 @@
 
 pkgname=oed
 pkgver=7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Portable version of the OpenBSD ed text editor"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/ibara/oed"
 license=('BSD' 'ISC')
 depends=('musl')
