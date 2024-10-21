@@ -2,10 +2,10 @@
 
 pkgname=glib-networking
 pkgver=2.80.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Network extensions for GLib"
 url="https://gitlab.gnome.org/GNOME/glib-networking"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-2.1-or-later)
 depends=(
   glib2
