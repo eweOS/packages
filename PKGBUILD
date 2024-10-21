@@ -6,10 +6,10 @@ pkgname=(qemu-user-static
 	 qemu-user-static-{mips64el,mipsel,ppc,ppc64,riscv32,riscv64,s390x}
 	 qemu-user-static-{sparc,sparc64,x86_64})
 pkgver=9.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='QEMU user mode emulation (static build)'
 url='https://www.qemu.org/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0 BSD-2-Clause BSD-3-Clause FSFAP GPL-1.0-or-later
 	 GPL-2.0-only GPL-2.0-or-later GPL-2.0-or-later-WITH-GCC-exception-2.0
 	 LGPL-2.0-only LGPL-2.0-or-later MIT CC-BY-3.0)
