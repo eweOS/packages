@@ -5,9 +5,9 @@
 
 pkgname=unixodbc
 pkgver=2.3.12
-pkgrel=2
+pkgrel=3
 pkgdesc="ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL2' 'LGPL2.1')
 url="http://www.unixodbc.org/"
 backup=('etc/odbc.ini' 'etc/odbcinst.ini')
