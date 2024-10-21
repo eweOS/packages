@@ -2,9 +2,9 @@
 
 pkgname=libvoikko
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A spelling and grammar checker, hyphenator and collection of related linguistic data for Finnish language"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://voikko.sourceforge.net"
 license=(GPL2)
 makedepends=(python)
