@@ -2,9 +2,9 @@
 
 pkgname=breeze-icons
 pkgver=6.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Breeze icon theme'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
 license=(GPL-3.0-or-later LGPL-2.1-only)
 depends=(qt6-base)
