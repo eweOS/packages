@@ -20,12 +20,21 @@ makedepends=(
 )
 optdepends=('cairo: Cairo bindings')
 source=("git+https://gitlab.gnome.org/GNOME/pygobject.git#tag=$pkgver")
-sha256sums=('SKIP')
+sha256sums=('f0c26deacc96a25c01139f650a161fe90066b2cb8e807b1f5e04f7caa3ec71be')
+
+prepare() {
+  cd pygobject
+  # fix compatibility with gobject-introspection 1.82.0
+  # tests: adjust for g-i _GI_TEST_EXTERN macro rename
+  git cherry-pick 9935e7ebbf718dae5761177d7b900e09bb13c2e0
+}
 
 build() {
   ewe-meson pygobject build
   meson compile -C build
 }
+
+# TODO: enable tests
 
 package_python-gobject() {
   meson install -C build --destdir "$pkgdir"
