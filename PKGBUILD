@@ -2,9 +2,9 @@
 
 pkgname=tomlplusplus
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Header-only TOML config file parser and serializer for C++17"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://marzer.github.io/tomlplusplus/"
 license=(MIT)
 makedepends=(cmake meson)
