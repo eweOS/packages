@@ -3,10 +3,10 @@
 pkgname=krb5
 pkgver=1.21.3
 _pkgvermajor=${pkgver%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc='The Kerberos network authentication system'
 url='https://web.mit.edu/kerberos/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('custom')
 depends=('musl' 'libverto' 'e2fsprogs' 'openssl')
 makedepends=('perl')
