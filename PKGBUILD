@@ -3,9 +3,9 @@
 
 pkgname=tcl
 pkgver=8.6.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful, easy-to-learn dynamic programming language"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://tcl.sourceforge.net/"
 license=('custom')
 depends=('zlib')
