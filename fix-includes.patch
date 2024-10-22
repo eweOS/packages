@@ -1,0 +1,13 @@
+diff --git a/config/eu.am b/config/eu.am
+index 0b7dab5..33c4ea6 100644
+--- a/config/eu.am
++++ b/config/eu.am
+@@ -31,7 +31,7 @@
+ ##
+ 
+ DEFS = -D_GNU_SOURCE -DHAVE_CONFIG_H -DLOCALEDIR='"${localedir}"'
+-AM_CPPFLAGS = -iquote . -I$(srcdir) -I$(top_srcdir)/lib -I..
++AM_CPPFLAGS = -iquote . -iquote $(srcdir) -I$(top_srcdir)/lib -I..
+ 
+ # Drop the 'u' flag that automake adds by default. It is incompatible
+ # with deterministic archives.

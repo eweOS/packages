@@ -2,8 +2,8 @@
 
 _pkgbase=elfutils
 pkgname=(libelf elfutils)
-pkgver=0.191
-pkgrel=4
+pkgver=0.192
+pkgrel=1
 pkgdesc="libelf is a free ELF object file access library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://sourceware.org/elfutils/"
@@ -12,11 +12,10 @@ makedepends=(curl llvm-libs libarchive sqlite xz zlib libuargp musl-fts musl-obs
 options=(staticlibs)
 source=(https://sourceware.org/$_pkgbase/ftp/$pkgver/$_pkgbase-$pkgver.tar.bz2
 	musl-utils.patch
-	fix-include.patch)	# https://bugs.gentoo.org/925241
-sha256sums=('df76db71366d1d708365fc7a6c60ca48398f14367eb2b8954efc8897147ad871'
+	fix-includes.patch)
+sha256sums=('616099beae24aba11f9b63d86ca6cc8d566d968b802391334c91df54eab416b4'
             'c92ade324270f3f34fe4978cd55dbfcdc867cf8421d23edc23c78414b5b1ebb3'
-            'ad48db627a7016dd8ce8c9da6662d187ae57b31e144299307b598ab9b7e962fa')
-
+	    'cb0f901094772355120a7bf428432f41eb315230404382cd36c90c27d3395f5f')
 prepare()
 {
   _patch_ $_pkgbase-$pkgver
@@ -37,7 +36,7 @@ FLIST_libelf=(
 build()
 {
   cd $_pkgbase-$pkgver
-  autoreconf
+  autoreconf -ivf
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --program-prefix="eu-" \
