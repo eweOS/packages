@@ -6,9 +6,9 @@ pkgname=(
   glib-docs
   glib-static
 )
-pkgver=2.82.1
+pkgver=2.82.2
 _pkgver_major=${pkgver%.*}
-pkgrel=2
+pkgrel=1
 pkgdesc="Low-level core library that forms the basis for projects such as GTK+ and GNOME"
 url="https://wiki.gnome.org/Projects/GLib"
 license=(LGPL)
@@ -24,7 +24,7 @@ source=(
   gio-querymodules.hook
   0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
 )
-sha256sums=('478634440bf52ee4ec4428d558787398c0be6b043c521beb308334b3db4489a6'
+sha256sums=('ab45f5a323048b1659ee0fbda5cecd94b099ab3e4b9abf26ae06aeb3e781fd63'
             'e42404979cc47959a3e560bf6f6c52b9fc90e1566ebb9b5cafb29d7f4cb4fe5f'
             'dea9edd111ba231f925b92e86e1cad06af92dc6ac306df4ad60182cc4d18ef59'
             '7f8ee5db60987f0d0feba84643e1cf988c98a294a681fb8d4fce1a5b2c25d1d3')
