@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libcupsfilters
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="OpenPrinting CUPS Filters - contains all the code of the filters of the former cups-filters package as library functions"
 arch=(x86_64 aarch64 riscv64)
 url="https://github.com/OpenPrinting/libcupsfilters"
@@ -16,7 +16,7 @@ source=(
   c++11.patch
   CVE-2024-47076.patch
 )
-sha256sums=('542f2bfbc58136a4743c11dc8c86cee03c9aca705612654e36ac34aa0d9aa601'
+sha256sums=('cbe900c7783e4aab0b1681629fad7322d82d082a51e8bae7e1c741d26bdcd294'
             'cd70a90d10881df87d1d76d44838cf15845a2deafad47391bf2cdf681c31a7d5'
             'e8305c1f9bd369fad19cd6657119edc42ffacbc19527a168507602affb2a8611')
 
