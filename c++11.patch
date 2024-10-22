@@ -1,7 +1,8 @@
-this doesn't do anything except fallback to throw() on libc++ and fail
+diff --git a/cupsfilters/pdftoraster.cxx b/cupsfilters/pdftoraster.cxx
+index 3b50030..89d5537 100644
 --- a/cupsfilters/pdftoraster.cxx
 +++ b/cupsfilters/pdftoraster.cxx
-@@ -2192,35 +2192,3 @@
+@@ -2193,39 +2193,3 @@ cfFilterPDFToRaster(int inputfd,            // I - File descriptor input stream
    return (ret);
  #endif // HAVE_POPPLER
  }
@@ -11,7 +12,11 @@ this doesn't do anything except fallback to throw() on libc++ and fail
 -// For compatibility with g++ >= 4.7 compilers _GLIBCXX_THROW
 -// should be used as a guard, otherwise use traditional definition
 -#ifndef _GLIBCXX_THROW
--#define _GLIBCXX_THROW throw
+-#  if __cplusplus >= 201103L
+-#    define _GLIBCXX_THROW(_EXC)
+-#  else
+-#    define _GLIBCXX_THROW(_EXC) throw(_EXC)
+-#  endif
 -#endif
 -
 -void * operator new(size_t size) _GLIBCXX_THROW (std::bad_alloc)
