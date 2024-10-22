@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=dav1d
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc='A new open-source AV1 decoder.'
 url='https://www.videolan.org/projects/dav1d.html'
 arch=(x86_64 aarch64 riscv64)
@@ -11,7 +11,7 @@ depends=(musl xxhash)
 makedepends=(meson ninja nasm)
 provides=(libdav1d.so)
 source=("https://downloads.videolan.org/pub/videolan/dav1d/$pkgver/dav1d-$pkgver.tar.xz")
-sha256sums=('42fe524bcc82ea3a830057178faace22923a79bad3d819a4962d8cfc54c36f19')
+sha256sums=('14bd6f5157808ed9aedcafbe50df689d304fd4810ac20be6eec1ab037436afd6')
 
 build () {
 	local arch_options=()
