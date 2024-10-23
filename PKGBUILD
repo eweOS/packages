@@ -6,18 +6,18 @@ pkgname=(
   amd-ucode
   $pkgbase-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x,iwlwifi,amdgpu,atheros,mediatek,whence}
 )
-pkgver=20240909
+pkgver=20241017
 pkgrel=1
 pkgdesc="Firmware files for Linux"
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
 license=('GPL2' 'GPL3' 'custom')
 arch=('any')
-makedepends=('git' 'rdfind' 'symlinks')
+makedepends=('git' 'rdfind' 'symlinks' 'python')
 options=(!strip)
 source=("git+https://mirrors.tuna.tsinghua.edu.cn/git/linux-firmware.git#tag=$pkgver" fix-symlink.patch)
 #source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#tag=$pkgver")
-sha256sums=('9018b7ac51edd8aac828f5b18ff3ea1ee4c015c47911dbb05d30d0a962300d1f'
-            'e9a3111a614a4c4e48d4ec9e48d1f1c348c190d0a8bf5373ca06e3bf0447e0a7')
+sha256sums=('aa1a14007b90e1c8c20ab7ac0224d340db4bc3481d54bf52182a773fd0828fdd'
+            '86046b3d56ccf28265aacc8dfdd2e0cad88e3c13139e934cb7f5b7cdd89c8d88')
 
 prepare() {
   _patch_ $pkgbase
@@ -46,7 +46,8 @@ package_linux-firmware() {
   depends=('linux-firmware-whence')
 
   cd $pkgbase
-  make DESTDIR="${pkgdir}" FIRMWAREDIR=/usr/lib/firmware install
+  make DESTDIR="${pkgdir}" FIRMWAREDIR=/usr/lib/firmware install-zst
+  make DESTDIR="${pkgdir}" FIRMWAREDIR=/usr/lib/firmware dedup
   
   cd "${pkgdir}"
   
