@@ -1,15 +1,38 @@
---- a/copy-firmware.sh
-+++ b/copy-firmware.sh
-@@ -98,11 +98,7 @@
- if [ "$skip_dedup" != 1 ] ; then
- 	$verbose "Finding duplicate files"
- 	rdfind -makesymlinks true -makeresultsfile false "$destdir" >/dev/null
--	find "$destdir" -type l | while read -r l; do
--		target="$(realpath "$l")"
--		$verbose "Correcting path for $l"
--		ln -fs "$(realpath --relative-to="$(dirname "$(realpath -s "$l")")" "$target")" "$l"
--	done
-+	symlinks -rc "$destdir"
+--- a/dedup-firmware.sh
++++ b/dedup-firmware.sh
+@@ -41,12 +41,5 @@
  fi
  
- # shellcheck disable=SC2162 # file/folder name can include escaped symbols
+ $verbose "Finding duplicate files"
+-rdfind -makesymlinks true -makeresultsfile true "$destdir" >/dev/null
+-
+-grep DUPTYPE_WITHIN_SAME_TREE results.txt | grep -o "$destdir.*" | while read -r l; do
+-    target="$(realpath "$l")"
+-    $verbose "Correcting path for $l"
+-    ln --force --symbolic --relative "$target" "$l"
+-done
++symlinks -rcv "$destdir"
+ 
+-rm results.txt
+--- a/copy-firmware.sh
++++ b/copy-firmware.sh
+@@ -84,7 +84,7 @@
+ grep -E '^Link:' WHENCE | sed -e 's/^Link: *//g;s/-> //g' | while read l t; do
+     directory="$destdir/$(dirname "$l")"
+     install -d "$directory"
+-    target="$(cd "$directory" && realpath -m -s "$t")"
++    target="$directory/$t"
+     if test -e "$target"; then
+         $verbose "creating link $l -> $t"
+         ln -s "$t" "$destdir/$l"
+@@ -95,8 +95,8 @@
+ done
+ 
+ # Verify no broken symlinks
+-if test "$(find "$destdir" -xtype l | wc -l)" -ne 0 ; then
+-    err "Broken symlinks found:\\n$(find "$destdir" -xtype l)"
++if test "$(find "$destdir" -type l ! -exec test -e {} \; -print | wc -l)" -ne 0 ; then
++    err "Broken symlinks found:\\n$(find "$destdir" -type l ! -exec test -e {} \; -print)"
+ fi
+ 
+ exit 0
