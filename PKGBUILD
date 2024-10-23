@@ -2,7 +2,7 @@
 
 pkgname=openssl
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A toolkit for the TLS and SSL protocols'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.openssl.org'
@@ -10,6 +10,12 @@ license=(BSD)
 makedepends=(perl zlib linux-headers)
 source=("https://github.com/openssl/openssl/releases/download/openssl-$pkgver/openssl-$pkgver.tar.gz")
 sha256sums=('e15dda82fe2fe8139dc2ac21a36d4ca01d5313c75f99f46c4e8a27709b7294bf')
+
+prepare()
+{
+  # fix riscv hwprobe
+  sed -i '1i #include <asm/unistd.h>' $pkgname-$pkgver/crypto/riscvcap.c
+}
 
 build()
 {
