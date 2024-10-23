@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fastfetch
-pkgver=2.27.1
-pkgrel=2
+pkgver=2.28.0
+pkgrel=1
 pkgdesc="Like Neofetch, but much faster because written in C"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/fastfetch-cli/fastfetch"
@@ -30,13 +30,8 @@ optdepends=(
   'zlib: Faster image output when using kitty graphics protocol'
   'libdrm: Displays detection'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz" eweos.patch)
-sha256sums=('de12f8cdb52bc1f123aa9b37813f009eeb09f15cbf43b033693c2936716e2626'
-            '96d395a80b16819ced3d3e9053fd4fb0773a0bcffbf46ada0347f111b466bf5e')
-
-prepare() {
-  _patch_ $pkgname-$pkgver
-}
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('115d9947ee0acf6246894888998db31de024f651123396c6251033390c241dc7')
 
 build() {
   cmake -B build -S "${pkgname}-${pkgver}" \
