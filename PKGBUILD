@@ -2,7 +2,7 @@
 
 pkgname=verilator
 pkgver=5.028
-pkgrel=1
+pkgrel=2
 pkgdesc='Verilog/SystemVerilog simulator.'
 url='https://www.veripool.org/verilator/'
 arch=(x86_64 aarch64 riscv64)
