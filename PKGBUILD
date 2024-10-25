@@ -6,8 +6,8 @@
 # Contributor: ice-man <icemanf@gmail.com>
 
 pkgname=libssh2
-pkgver=1.11.0
-pkgrel=3
+pkgver=1.11.1
+pkgrel=1
 pkgdesc="A library implementing the SSH2 protocol as defined by Internet Drafts"
 url="https://www.libssh2.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ license=('BSD')
 depends=('openssl' 'zlib')
 provides=('libssh2.so')
 source=("https://www.libssh2.org/download/$pkgname-$pkgver.tar.gz")
-sha256sums=('3736161e41e2693324deb38c26cfdc3efe6209d634ba4258db1cecff6a5ad461')
+sha256sums=('d9ec76cbe34db98eec3539fe2c899d26b0c837cb3eb466a56b0f109cabf658f7')
 
 build()
 {
