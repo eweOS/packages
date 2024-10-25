@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libnghttp2
-pkgver=1.63.0
-pkgrel=2
+pkgver=1.64.0
+pkgrel=1
 pkgdesc='Framing layer of HTTP/2 is implemented as a reusable C library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://nghttp2.org/'
@@ -15,7 +15,7 @@ source=(
   'git+https://github.com/tatsuhiro-t/neverbleed.git'
 )
 provides=('libnghttp2')
-sha256sums=('1c3d53df82f24e19a4f47087c7991ac8e52e08bba0335adf3d1d4a26f4e6ef80'
+sha256sums=('aed32c01da4788a9838319dd226355cfe8f4c2e8cc7f44860b8e648819653d30'
             'SKIP'
             'SKIP'
             'SKIP')
