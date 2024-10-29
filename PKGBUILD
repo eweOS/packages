@@ -2,7 +2,7 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libgit2
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 epoch=1
 pkgdesc="A linkable library for Git"
@@ -15,7 +15,7 @@ provides=(libgit2.so)
 source=(
   $pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz
 )
-sha512sums=('568daa01b254acd07624143c1fd949b131f174a0595e4c6031b1eee38afd59ec3917ffc5ade3310d2a17f22bf5062bc6d03603cb952b25cdefd6c1cec9b8033c')
+sha512sums=('5b21502bebb41c0a05ecce3f8a4e57f751a77c35c29ab5ab22f2a1495c97cd4ba1c02f8279f6791730c7827cb98c13c26c2fc86ee197d7bf54a695c5df75e983')
 
 build()
 {
