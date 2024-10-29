@@ -2,8 +2,8 @@
 
 pkgname=sqlite
 _srcver=3460000
-pkgver=3.46.1
-pkgrel=3
+pkgver=3.47.0
+pkgrel=1
 pkgdesc="A C library that implements an SQL database engine"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('custom:Public Domain')
