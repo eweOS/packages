@@ -37,7 +37,6 @@ prepare()
 build()
 {
   ewe-meson $pkgname-$pkgver build \
-    --default-library both \
     -D glib_debug=disabled \
     -D selinux=disabled \
     -D sysprof=disabled \
@@ -48,7 +47,22 @@ build()
     -D systemtap=disabled \
     -D dtrace=disabled \
     -D tests=false
+
+  ewe-meson $pkgname-$pkgver build-static \
+    --default-library static \
+    -D glib_debug=disabled \
+    -D selinux=disabled \
+    -D sysprof=disabled \
+    -D libmount=disabled \
+    -D gtk_doc=false \
+    -D man-pages=disabled \
+    -D documentation=false \
+    -D systemtap=disabled \
+    -D dtrace=disabled \
+    -D tests=false
+
   meson compile -C build
+  meson compile -C build-static
 }
 
 package_glib()
@@ -66,7 +80,6 @@ package_glib()
 
   cd "$pkgdir"
   _pick_ docs usr/share/doc
-  _pick_ static usr/lib/*.a
 }
 
 package_glib-docs()
@@ -84,5 +97,7 @@ package_glib-static() {
   pkgdesc+=" - static library"
   depends=(glib="$pkgver-$pkgrel" libffi-static pcre2-static)
   options=(staticlibs !strip)
-  mv "$srcdir"/pkgs/static/* "$pkgdir"
+
+  meson install -C build-static --destdir "$srcdir/static-install"
+  install -Dm644 "$srcdir/static-install/usr/lib"/lib*.a -t "$pkgdir"/usr/lib
 }
