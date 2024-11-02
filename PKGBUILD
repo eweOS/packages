@@ -2,17 +2,14 @@
 
 pkgname=(llvm llvm-tools llvm-devel llvm-libs llvm-lto lldb openmp lld clang flang mlir wasi-libc++ wasi-libc++abi wasi-compiler-rt)
 _realpkgname=llvm-project
-pkgver=18.1.8
+pkgver=19.1.3
 _binutilsver=2.42
-pkgrel=5
+pkgrel=1
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
-# TODO: combine llvm+mlir+openmp => llvm-devel
 makedepends=(
-  llvm
-  mlir
-  openmp
+  llvm-devel
   cmake
   ninja
   utmps
@@ -22,15 +19,12 @@ makedepends=(
   linux-headers
   git
   libxml2
-  lld
   wasi-libc
   spirv-llvm-translator
   python
 )
 # upstreamed:
-#  backport-fix-wayfire-...
-#  fix-HandleSDNode
-#  fix-loongarch64-sc-...
+#  check-before-using-glibc-f128-funcs: https://github.com/llvm/llvm-project/pull/110651
 # under review:
 #  try-llvm-libunwind
 # downstream:
@@ -41,20 +35,16 @@ source=(
   wasi-toolchain.cmake::https://raw.githubusercontent.com/WebAssembly/wasi-sdk/fef66e3d2319d8360825dcba1cf23061f5313c11/wasi-sdk.cmake
   llvm-install-prefix.patch
   0001-clang-force-libc-linked-with-no-as-needed-when-using.patch
-  backport-fix-wayfire-lambda-instantiation.patch
-  fix-HandleSDNode.patch
   try-llvm-libunwind.patch
-  "fix-loongarch64-sc-addrerr.patch::https://github.com/llvm/llvm-project/commit/1825cf28dc83113200b623ebcf063eea35ade79a.patch"
+  check-before-using-glibc-f128-funcs.patch
 )
-sha256sums=('0b58557a6d32ceee97c8d533a59b9212d87e0fc4d2833924eb6c611247db2f2a'
+sha256sums=('324d483ff0b714c8ce7819a1b679dd9e4706cf91c6caf7336dc4ac0c1d3bf636'
             'f6e4d41fd5fc778b06b7891457b3620da5ecea1006c6a4a41ae998109f85a800'
             '5e58f02fe01ea22ea0406e4250ad89a053d517ef103a1dacfade4ecd98a7f2bc'
             'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94'
             '57808d224fd9218a936e6669bf4129eaf4aa04fbd45ab9f7fd5a20efc304e307'
-            'a25dacfebddbbc0e07c4b479d7e1e9c4cc2cc12f4689a95721dc773003101460'
-            'adf4e3795ccaa74b04e90844e51868f9e526e0ec38972f378d8ab7fa777a82d3'
             '13a1c761d41324c7a790df55650a3a98a9ade0348d6e88f1e269b6b77ce5df55'
-            'd49121e00ccd5134bc8b42d1126b6b9bfc8a367ff268cd6dd98086818fae342c')
+            '0284b8f27f0d6d809291f2ad36b325b8fb12a6a0c6765735e48b8b0182fc3064')
 
 _basedir=$_realpkgname-$pkgver.src
 
@@ -208,7 +198,7 @@ build()
     -DLLVM_ENABLE_LIBCXX=ON
     -DLLVM_ENABLE_RTTI=ON
     -DLLVM_ENABLE_FFI=ON
-    -DLLVM_ENABLE_LLD=ON
+    -DLLVM_USE_LINKER=mold
     -DLLVM_INSTALL_BINUTILS_SYMLINKS=ON
     -DLLVM_BUILD_LLVM_DYLIB=ON
     -DLLVM_LINK_LLVM_DYLIB=ON
@@ -283,7 +273,7 @@ build()
 
   case $CARCH in
     x86_64)
-      CMARGS+=("-DCOMPILER_RT_BUILD_SANITIZERS=ON")
+      CMARGS+=("-DCOMPILER_RT_BUILD_SANITIZERS=OFF")
       ;;
     aarch64 | riscv64 | loongarch64)
       CMARGS+=("-DCOMPILER_RT_BUILD_SANITIZERS=OFF")
