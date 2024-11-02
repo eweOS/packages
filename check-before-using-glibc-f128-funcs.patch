@@ -1,0 +1,46 @@
+From 44887169aead0c259f028433cc9fda11eec1e574 Mon Sep 17 00:00:00 2001
+From: David Truby <david.truby@arm.com>
+Date: Tue, 1 Oct 2024 12:12:32 +0100
+Subject: [PATCH 1/2] [flang] Tighten requirements on some glibc float128
+ functions
+
+j0l, j1l, jnl, y0l, y1l and ynl are glibc extensions rather than
+standard POSIX functions, and so are not available in every Linux libc.
+This patch checks if __GLIBC__ and _GNU_SOURCE are defined before using
+these functions.
+
+This patch allows the float128 runtime to build with musl libc on Linux.
+---
+ flang/runtime/Float128Math/math-entries.h | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/flang/runtime/Float128Math/math-entries.h b/flang/runtime/Float128Math/math-entries.h
+index 151ed8a09fde0a..47f1993f22d659 100644
+--- a/flang/runtime/Float128Math/math-entries.h
++++ b/flang/runtime/Float128Math/math-entries.h
+@@ -185,9 +185,6 @@ DEFINE_SIMPLE_ALIAS(Hypot, std::hypot)
+ DEFINE_SIMPLE_ALIAS(Ilogb, std::ilogb)
+ DEFINE_SIMPLE_ALIAS(Isinf, std::isinf)
+ DEFINE_SIMPLE_ALIAS(Isnan, std::isnan)
+-DEFINE_SIMPLE_ALIAS(J0, j0l)
+-DEFINE_SIMPLE_ALIAS(J1, j1l)
+-DEFINE_SIMPLE_ALIAS(Jn, jnl)
+ DEFINE_SIMPLE_ALIAS(Ldexp, std::ldexp)
+ DEFINE_SIMPLE_ALIAS(Lgamma, std::lgamma)
+ DEFINE_SIMPLE_ALIAS(Llround, std::llround)
+@@ -204,9 +201,15 @@ DEFINE_SIMPLE_ALIAS(Tan, std::tan)
+ DEFINE_SIMPLE_ALIAS(Tanh, std::tanh)
+ DEFINE_SIMPLE_ALIAS(Tgamma, std::tgamma)
+ DEFINE_SIMPLE_ALIAS(Trunc, std::trunc)
++
++#if defined(__GLIBC__) && defined(_GNU_SOURCE)
++DEFINE_SIMPLE_ALIAS(J0, j0l)
++DEFINE_SIMPLE_ALIAS(J1, j1l)
++DEFINE_SIMPLE_ALIAS(Jn, jnl)
+ DEFINE_SIMPLE_ALIAS(Y0, y0l)
+ DEFINE_SIMPLE_ALIAS(Y1, y1l)
+ DEFINE_SIMPLE_ALIAS(Yn, ynl)
++#endif
+ 
+ // Use numeric_limits to produce infinity of the right type.
+ #define F128_RT_INFINITY \
