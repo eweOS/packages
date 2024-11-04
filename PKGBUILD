@@ -2,7 +2,7 @@
 
 _name=pyproject-hooks
 pkgname=python-pyproject-hooks
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A low-level library for calling build-backends in pyproject.toml-based project"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python)
 makedepends=(python-build python-installer python-flit-core python-wheel)
 checkdepends=(python-pytest python-setuptools python-testpath)
 source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('256028d13adbe35126a63431a2a49e0c48adddce5ffc3ff2eebad368eee7ce52591ecfd8a8526876de20bc59dfc87156533d6a97b55538a739873e60f9509eff')
+sha512sums=('c198624ca278001922e07039333aa623a87bd9ef9f38ec98346d6d49f19dec422f788f6737623b461d76586bc8fa752518906bc7501e822429803881700ce701')
 
 build() {
   cd $_name-$pkgver
