@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=python-mako
-pkgver=1.3.5
+pkgver=1.3.6
 # fxxk obs
 # _pkgver=rel_${pkgver//./_}
 _pkgver=rel_1_3_5
