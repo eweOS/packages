@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=valgrind
-pkgver=3.23.0
-pkgrel=2
+pkgver=3.24.0
+pkgrel=1
 pkgdesc='An instrumentation framework for building dynamic analysis tools.'
 url='https://valgrind.org/'
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ makedepends=(lld)
 options=(!strip)
 source=("https://sourceware.org/pub/valgrind/valgrind-$pkgver.tar.bz2"
 	"remove-libgcc.patch")
-sha256sums=('c5c34a3380457b9b75606df890102e7df2c702b9420c2ebef9540f8b5d56264d'
+sha256sums=('71aee202bdef1ae73898ccf7e9c315134fa7db6c246063afc503aef702ec03bd'
             'c2b346698755d9d2ea4f2b46c1a569bacf6ca82bdc14105f7057745150160a21')
 
 prepare() {
