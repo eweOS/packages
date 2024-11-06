@@ -4,7 +4,7 @@ pkgname=(llvm llvm-tools llvm-devel llvm-libs llvm-lto lldb openmp lld clang fla
 _realpkgname=llvm-project
 pkgver=19.1.3
 _binutilsver=2.42
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -282,7 +282,7 @@ build()
 
   cmake -B build -G Ninja \
     "${CMARGS[@]}" \
-    -DLLVM_ENABLE_PROJECTS="clang;compiler-rt;flang;mlir;lld;lldb;openmp;libclc" \
+    -DLLVM_ENABLE_PROJECTS="clang;compiler-rt;flang;mlir;lld;lldb;openmp" \
     -DLLVM_ENABLE_RUNTIMES="libunwind;libcxxabi;libcxx" \
     -S $_basedir/llvm
 
