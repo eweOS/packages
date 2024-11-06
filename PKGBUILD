@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pixman
-pkgver=0.43.4
-pkgrel=3
+pkgver=0.44.0
+pkgrel=1
 pkgdesc="The pixel-manipulation library for X and cairo"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://cgit.freedesktop.org/pixman/"
@@ -11,7 +11,7 @@ depends=('musl')
 makedepends=('meson' 'libpng')
 provides=('libpixman-1.so')
 source=(https://xorg.freedesktop.org/releases/individual/lib/${pkgname}-${pkgver}.tar.xz)
-sha512sums=('b40fb05bd58dc78f4e4e9b19c86991ab0611b708657c9a7fb42bfe82d57820a0fde01a34b00a0848a41da6c3fb90c2213942a70f435a0e9467631695d3bc7e36')
+sha512sums=('3ea293cd308a4faeb600939df2c98148154cf1faf8e435b9f33df46c33acfeb32572cb0c1e148ee9f6f39f9e8a49fbda627edcac03da2000d89e22941849a04d')
 
 _arglist=(
     -Dloongson-mmi=disabled
@@ -19,26 +19,16 @@ _arglist=(
     -Darm-simd=disabled
     -Da64-neon=disabled
     -Dneon=disabled
-    -Diwmmxt=disabled
+    -Drvv=disabled
     -Dopenmp=disabled
     -Dmips-dspr2=disabled
-    -Dgtk=disabled    
+    -Dgtk=disabled
 )
 
 build()
 {
   case $CARCH in
-    aarch64)
-      _arglist+=("-Dmmx=disabled")
-      _arglist+=("-Dsse2=disabled")
-      _arglist+=("-Dssse3=disabled")
-      ;;
-    riscv64)
-      _arglist+=("-Dmmx=disabled")
-      _arglist+=("-Dsse2=disabled")
-      _arglist+=("-Dssse3=disabled")
-      ;;
-    loongarch64)
+    aarch64|riscv64|loongarch64)
       _arglist+=("-Dmmx=disabled")
       _arglist+=("-Dsse2=disabled")
       _arglist+=("-Dssse3=disabled")
