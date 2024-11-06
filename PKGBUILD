@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fractal
-pkgver=8
+pkgver=9
 pkgrel=1
 pkgdesc="Matrix group messaging app"
 arch=(x86_64 aarch64 riscv64)
@@ -20,6 +20,7 @@ depends=(
   hicolor-icon-theme
   libadwaita
   pipewire
+  libseccomp
   libshumate
   openssl
   pango
@@ -37,7 +38,7 @@ optdepends=('org.freedesktop.secrets: password storage')
 source=(
   $url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz
 )
-sha512sums=('6a77843ff0fd3171ed674de59d074df04de335310a0c4aff96da04860bf003c76b12fb424e75af69deb6bd0a4770867e4c9cdba9191c7646cfa183b06bde4faf')
+sha512sums=('8b861083d985e15d19bf25418e4e5441cdb86afc26f899229ed7986b3d4014d2e326a885645873ea072513af08ccecce870c2b219afe59d93026cfa9c1141618')
 
 prepare() {
   # NOTE: usptream uses a custom CARGO_HOME from within meson
