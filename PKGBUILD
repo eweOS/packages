@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=composefs
-pkgver=1.0.6
-pkgrel=2
+pkgver=1.0.7
+pkgrel=1
 pkgdesc="A file system for mounting container images"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/containers/composefs"
@@ -16,15 +16,8 @@ depends=(musl openssl)
 # missing: go-md2man for docs
 makedepends=(fuse3 linux-headers meson ninja)
 checkdepends=(python)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-	"0001-fix-include-of-linux-limits.h.patch")
-sha256sums=('d54b302d91a2bf3f2fd0538555aed31ee86b05613d41185f744bbb9218cde4be'
-            'e318149c8cc7ab309971d985ae97b61c680332dcfefd0e59922011b24626507e')
-
-prepare() {
-  sed -i 's/c_std=c99/c_std=c11/g' "$pkgname-$pkgver"/meson.build
-  _patch_ "$pkgname-$pkgver"
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('ecab22e4bc00e1a3260765db8df45d2b68f796f8a265c4386be31cd308d17a75')
 
 build() {
   ewe-meson "$pkgname-$pkgver" build \
