@@ -2,8 +2,8 @@
 
 _srcname=SPIRV-LLVM-Translator
 pkgname=spirv-llvm-translator
-pkgver=18.1.4
-pkgrel=3
+pkgver=19.1.1
+pkgrel=1
 pkgdesc="Tool and a library for bi-directional translation between SPIR-V and LLVM IR"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
@@ -11,7 +11,7 @@ license=(custom)
 depends=(llvm-libs spirv-tools)
 makedepends=(cmake llvm-devel spirv-headers llvm-lto git)
 source=(git+${url}.git#tag=v$pkgver)
-sha256sums=('8b9e77c7d1817b1a3e49db18a3240c57769c72a3a5b2bf70c9bdab46cbb3124b')
+sha256sums=('8666eed1d77f81f436e7996bccb827b6937f22c51739fdd9433fbcf1bf178615')
 
 build()
 {
