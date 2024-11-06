@@ -12,7 +12,7 @@ pkgname=(
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=24.2.6
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm')
 makedepends=(
