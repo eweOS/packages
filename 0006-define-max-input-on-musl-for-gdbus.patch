@@ -1,0 +1,15 @@
+diff --git a/gdbus/object.c b/gdbus/object.c
+index 84f116b..bb483b5 100644
+--- a/gdbus/object.c
++++ b/gdbus/object.c
+@@ -22,6 +22,10 @@
+ #include "gdbus.h"
+ #include "src/shared/util.h"
+ 
++#ifndef MAX_INPUT
++#define MAX_INPUT _POSIX_MAX_INPUT
++#endif
++
+ #define info(fmt...)
+ #define error(fmt...)
+ #define debug(fmt...)

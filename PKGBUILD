@@ -3,8 +3,8 @@
 pkgbase=bluez
 pkgname=('bluez' 'bluez-utils' 'bluez-libs' 'bluez-cups' 'bluez-mesh'
          'bluez-obex')
-pkgver=5.78
-pkgrel=3
+pkgver=5.79
+pkgrel=1
 pkgdesc='Userspace daemons, utils and libraries of Linux Bluetooth stack'
 url="http://www.bluez.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,21 +15,21 @@ makedepends=('dbus' 'libical' 'alsa-lib' 'json-c' 'ell' 'python-docutils'
 source=(
   https://www.kernel.org/pub/linux/bluetooth/${pkgname}-${pkgver}.tar.xz
   bluetoothd.service
-  basename.patch
   0001-enable-dbus-without-systemd.patch
-  0001-src-org.bluez.service-start-dinit-service.patch
-  0002-allow-obexd-on-non-systemd-system.patch
+  0002-src-org.bluez.service-start-dinit-service.patch
   0003-allow-mesh-on-non-systemd-system.patch
-  0008-grant-permission-to-bluetooth-group.patch
+  0004-allow-obexd-on-non-systemd-system.patch
+  0005-grant-permission-to-bluetooth-group.patch
+  0006-define-max-input-on-musl-for-gdbus.patch
 )
-sha256sums=('830fed1915c5d375b8de0f5e6f45fcdea0dcc5ff5ffb3d31db6ed0f00d73c5e3'
+sha256sums=('4164a5303a9f71c70f48c03ff60be34231b568d93a9ad5e79928d34e6aa0ea8a'
             'ea87de0d8182404d7ef7139ebc6bb2e8d57224f9b8dfae3e438f95308277c801'
-            'd67c84fca3ba42fd1c67ce3605b0cbedde200ccef5e961975f4501887a724dec'
-            '512e60ff0ceebb3e6db75b7284c2aaf52ae637077a607f693382be0471b42248'
+            '93fa6d201bb4546bb680f6d6f903ba5e767829ab275361323c14b0389fb6c803'
             '1a7e4c8b13ffc41304a06fa3d669cb6d252f0870c23c54fe84f5d861d5c964e1'
-            '92f033e0e2f53cf4220bd26bbd52ad498144064a38f322c59fa4b0a3cdc2e3a4'
             '417ea301f980e0e9ff38083aa73b3ac4e011f930a3f3338fdeb3e80a585e8c1f'
-            '8fb22853838ddf51774da01eb6a812ac4f03da99f792256c07d6fe2f715d5bdd')
+            '92f033e0e2f53cf4220bd26bbd52ad498144064a38f322c59fa4b0a3cdc2e3a4'
+            '8fb22853838ddf51774da01eb6a812ac4f03da99f792256c07d6fe2f715d5bdd'
+            '36e7484d997dc437f505e3e5066401534d5ff7c362aa170bc6c639397e9e7a7a')
 
 prepare() {
   _patch_ "${pkgname}"-${pkgver}
@@ -83,7 +83,7 @@ build() {
   _pick_ bluez-utils usr/share/man/man1/bluetoothctl*.1
   _pick_ bluez-utils usr/share/man/man1/{btattach,btmgmt,btmon,isotest,l2ping,rctest}.1
   _pick_ bluez-utils usr/share/man/man5/org.bluez.{A,B,D,G,I,L,M,N,P}*.5
-  _pick_ bluez-utils usr/share/man/man7/l2cap.7
+  _pick_ bluez-utils usr/share/man/man7/{l2cap,hci}.7
   _pick_ bluez-utils usr/share/zsh/site-functions/_bluetoothctl
   
   _pick_ bluez-libs usr/include/bluetooth/*
