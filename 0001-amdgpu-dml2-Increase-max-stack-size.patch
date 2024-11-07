@@ -1,0 +1,39 @@
+From 54649c1f4e29af6f169d02e0570a41c4177b80b4 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Thu, 7 Nov 2024 14:53:38 +0000
+Subject: [PATCH] amdgpu: dml2: Increase max stack size
+
+AMDGPU dml2 fails to build with Clang 19 with error like
+
+error: stack frame size (2136) exceeds limit (2048) in 'dml_core_mode_support' [-Werror,-Wframe-larger-than]
+
+on x86_64. There has been report that AMDGPU exceeds stack size
+limitation when KASAN/KCSAN is on. But we encounter similar problem
+even with these options set to off.
+
+Let's increase the allowed stack size as a workaround.
+
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ drivers/gpu/drm/amd/display/dc/dml2/Makefile | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/display/dc/dml2/Makefile b/drivers/gpu/drm/amd/display/dc/dml2/Makefile
+index fea8572..c79cba1 100644
+--- a/drivers/gpu/drm/amd/display/dc/dml2/Makefile
++++ b/drivers/gpu/drm/amd/display/dc/dml2/Makefile
+@@ -28,11 +28,7 @@ dml2_ccflags := $(CC_FLAGS_FPU)
+ dml2_rcflags := $(CC_FLAGS_NO_FPU)
+ 
+ ifneq ($(CONFIG_FRAME_WARN),0)
+-ifeq ($(filter y,$(CONFIG_KASAN)$(CONFIG_KCSAN)),y)
+ frame_warn_flag := -Wframe-larger-than=3072
+-else
+-frame_warn_flag := -Wframe-larger-than=2048
+-endif
+ endif
+ 
+ # DRIVER_BUILD is mostly used in DML2.1 source
+-- 
+2.47.0
+
