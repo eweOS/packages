@@ -3,7 +3,7 @@
 pkgname=(linux linux-headers)
 _basename=linux
 pkgver=6.11.3
-pkgrel=5
+pkgrel=6
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
 license=(GPL-2.0-only)
@@ -12,18 +12,20 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
   "kernel-config::git+https://github.com/eweOS/kernel-config.git"
   busybox-find-compat.patch
+  0001-amdgpu-dml2-Increase-max-stack-size.patch
 )
 sha256sums=('057263d0afc17d5253794afd3d239ba4da4aa734b22fa36c1665f41b95449b73'
             'SKIP'
-            'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
+            'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd'
+            '881a82cdf13ffcc0baa85e9cbde17595c5460646614b313a3c2d46915cb0c45b')
 
 prepare()
 {
+  _patch_ "$_basename-$pkgver"
   cd ${_basename}-${pkgver}
   sed -i \
     -e '/^CC/s@gcc@cc@g' \
     -e '/^HOSTCC/s@gcc@cc@g' Makefile
-  patch -Np1 -i "${srcdir}/busybox-find-compat.patch"
 }
 
 build()
