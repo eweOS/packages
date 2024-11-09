@@ -1,0 +1,14 @@
+--- musl-1.2.5/src/locale/bind_textdomain_codeset.c
++++ musl-1.2.5.new/src/locale/bind_textdomain_codeset.c
+@@ -5,7 +5,9 @@
+ 
+ char *bind_textdomain_codeset(const char *domainname, const char *codeset)
+ {
+-	if (codeset && strcasecmp(codeset, "UTF-8"))
++	if (codeset && strcasecmp(codeset, "UTF-8")) {
+ 		errno = EINVAL;
+-	return NULL;
++		return NULL;
++	}
++	return codeset;
+ }
