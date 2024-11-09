@@ -1,12 +1,12 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=telegram-desktop
-pkgver=5.5.5
-pkgrel=2
+pkgver=5.7.2
+pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url='https://desktop.telegram.org/'
 arch=(x86_64 aarch64)
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(qt6-base qt6-svg qt6-imageformats qt6-wayland openh264 abseil-cpp
 	 ffmpeg openssl libopus libvpx glib glibmm libdispatch hunspell
 	 kcoreaddons openal-soft rnnoise xxhash zlib-ng boost-libs tl-expected
@@ -14,17 +14,15 @@ depends=(qt6-base qt6-svg qt6-imageformats qt6-wayland openh264 abseil-cpp
 makedepends=(cmake ninja boost libtg_owt gobject-introspection lld)
 _apiid=611335
 _apihash=d524b414d21f4d37f08684c1df41ac9c
-source=(
-  "https://github.com/telegramdesktop/tdesktop/releases/download/v$pkgver/tdesktop-$pkgver-full.tar.gz"
-  "use-lld.patch"
-  "telegram-desktop-5_5_5-fix_build_with_cppgir.patch"
-)
-sha256sums=('dc620831d16af9ee970325e32d689ff3272a7d2aa1966a3e2a1b87513c6f23eb'
+source=("https://github.com/telegramdesktop/tdesktop/releases/download/v$pkgver/tdesktop-$pkgver-full.tar.gz"
+	"use-lld.patch"
+	"ffmpeg-7.patch::https://github.com/telegramdesktop/tdesktop/pull/28611.patch")
+sha256sums=('3442e28e01d937376e687615e3ee13fb580788c4deb7561b410522ce3452fdef'
             '19cdd86b87ea3e756ea0f5872f2bad15efb3e458f335bd47a1c33b99017d8426'
-            'ee54bdf8fe67c8fadfffc794763fc62f4c6a15eb535c80ba7b1b74d6ec178882')
+            'ef1109a2debeb0d80e2fc5a8ad6c84921392be632ec12e111bb43416769ace34')
 
 prepare() {
-	patch -Np1 -d tdesktop-$pkgver-full/cmake/external/glib/cppgir -i "${srcdir}/telegram-desktop-5_5_5-fix_build_with_cppgir.patch"
+	_patch_ "tdesktop-$pkgver-full"
 }
 
 build () {
