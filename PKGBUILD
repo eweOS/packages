@@ -5,8 +5,8 @@ pkgname=(gstreamer gstreamer-devel
 	 gst-plugins-base gst-plugins-good gst-plugins-bad
 	 gst-plugins-gtk gst-plugins-qml6
 	 gst-libav)
-pkgver=1.24.8
-pkgrel=2
+pkgver=1.24.9
+pkgrel=1
 pkgdesc='GStreamer multimedia framework'
 url='https://gstreamer.freedesktop.org/'
 arch=(x86_64 aarch64 riscv64)
@@ -24,16 +24,8 @@ makedepends=(meson samurai glib2 gobject-introspection libdrm python-gobject
 	     vulkan-icd-loader libass lcms2 openjpeg2
 	     json-glib ffmpeg svt-av1)
 
-source=(
-  "https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/$pkgver/gstreamer-$pkgver.tar.gz"
-  "fix-gir.patch::https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/7554.patch"
-)
-sha256sums=('4c08cd1fb366f4d7a3db8554ba23e7e4720e1f4703cc95686bc9d1a118ef9e44'
-            '199333c2e92dd6400c829495b9fe7ead617b0eaf4dfff663c50fc06d3d55af5a')
-
-prepare () {
-  _patch_ "$pkgbase-$pkgver"
-}
+source=("https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/$pkgver/gstreamer-$pkgver.tar.gz")
+sha256sums=('ec9483e7ecc59306923d797c0824e859013901ed520975cbbad5f46c9413a748')
 
 build () {
 	local plugins_base_opt=(
