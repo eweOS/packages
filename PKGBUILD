@@ -3,7 +3,7 @@
 pkgbase=java-common
 pkgname=('java-runtime-common' 'java-environment-common')
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Common files for Java Runtime Environments'
 url='https://os.ewe.moe'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('bash')
 source=(profile_jre.sh
         bin_eweos-java)
 sha256sums=('cc59ae3426e27b234b3ef109906a464574520002bde409329dc6f24fd7713d9d'
-            '2c16e05f819c7069f9282c77ceeb49e5484cc070a5f3d7543ca1e228619ff95d')
+            '5719df0e1cb0bf21d1e512b556b34864904b2468f16df2d36a8608f5517e11b8')
 
 package_java-runtime-common() {
   pkgdesc='Common files for Java Runtime Environments'

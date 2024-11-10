@@ -34,7 +34,7 @@ check_param_count() {
 # Second level functions
 
 get_default_java() {
-  path=$(readlink -e ${DEFAULT_PATH})
+  path=$(readlink ${DEFAULT_PATH})
   if [ "x${path}" != "x/dev/null" ]; then
     echo ${path/${JVM_DIR}\/}
   else
