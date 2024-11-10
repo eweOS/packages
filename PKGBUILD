@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname="hyprutils"
-pkgver=0.2.3
-pkgrel=2
+pkgver=0.2.4
+pkgrel=1
 pkgdesc="Hyprland utilities library used across the ecosystem"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/hyprwm/hyprutils"
@@ -10,7 +10,7 @@ license=('BSD-3-Clause')
 depends=(pixman)
 makedepends=('git' 'cmake' 'make')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('06821949c3a060c6233bebcaad3a3a3e3a6dfc4b2e6e1034834a5c92d7236b21')
+sha256sums=('ce8455a7bb74e2266910f9a3c1fcbcc9fa4317ca057ba6e8fbf79ec95c8ef699')
 
 build() {
   cd "${pkgname}-${pkgver}"
