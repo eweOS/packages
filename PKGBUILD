@@ -2,13 +2,13 @@
 
 pkgname=ell
 pkgver=0.70
-pkgrel=1
+pkgrel=2
 pkgdesc='Embedded Linux library'
 url='https://git.kernel.org/pub/scm/libs/ell/ell.git/about/'
 arch=(x86_64 aarch64 riscv64)
 license=(LGPL-2.1-or-later)
 depends=(musl)
-makedepends=(linux-headers)
+makedepends=(linux-headers git)
 provides=(libell.so)
 source=("git+https://git.kernel.org/pub/scm/libs/ell/ell.git#tag=$pkgver")
 sha256sums=('769826f74f85bc913e51cc7d019241a6ebd15d6c9ce6c8b2d362df5db1e79000')
