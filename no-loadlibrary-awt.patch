@@ -1,0 +1,170 @@
+--- jdk23u-jdk-23.0.1-11/src/java.desktop/macosx/classes/com/apple/laf/ScreenMenu.java
++++ jdk23u-jdk-23.0.1-11-new/src/java.desktop/macosx/classes/com/apple/laf/ScreenMenu.java
+@@ -50,7 +50,6 @@
+         java.security.AccessController.doPrivileged(
+             new java.security.PrivilegedAction<Void>() {
+                 public Void run() {
+-                    System.loadLibrary("awt");
+                     return null;
+                 }
+             });
+--- jdk23u-jdk-23.0.1-11/src/java.desktop/macosx/classes/sun/awt/PlatformGraphicsInfo.java
++++ jdk23u-jdk-23.0.1-11-new/src/java.desktop/macosx/classes/sun/awt/PlatformGraphicsInfo.java
+@@ -35,7 +35,6 @@
+ 
+     static {
+         AccessController.doPrivileged((PrivilegedAction<Void>) () -> {
+-            System.loadLibrary("awt");
+             return null;
+         });
+     }
+--- jdk23u-jdk-23.0.1-11/src/java.desktop/macosx/classes/sun/lwawt/macosx/CAccessibility.java
++++ jdk23u-jdk-23.0.1-11-new/src/java.desktop/macosx/classes/sun/lwawt/macosx/CAccessibility.java
+@@ -83,7 +83,6 @@
+         java.security.AccessController.doPrivileged(
+             new java.security.PrivilegedAction<Void>() {
+                 public Void run() {
+-                    System.loadLibrary("awt");
+                     return null;
+                 }
+             });
+--- jdk23u-jdk-23.0.1-11/src/java.desktop/macosx/classes/sun/lwawt/macosx/LWCToolkit.java
++++ jdk23u-jdk-23.0.1-11-new/src/java.desktop/macosx/classes/sun/lwawt/macosx/LWCToolkit.java
+@@ -158,7 +158,6 @@
+                     // No resource file; defaults will be used.
+                 }
+ 
+-                System.loadLibrary("awt");
+                 System.loadLibrary("fontmanager");
+ 
+                 return platformResources;
+--- jdk23u-jdk-23.0.1-11/src/java.desktop/share/classes/java/awt/Toolkit.java
++++ jdk23u-jdk-23.0.1-11-new/src/java.desktop/share/classes/java/awt/Toolkit.java
+@@ -1381,7 +1381,6 @@
+             java.security.AccessController.doPrivileged(
+                 new java.security.PrivilegedAction<Void>() {
+                     public Void run() {
+-                        System.loadLibrary("awt");
+                         return null;
+                     }
+                 });
+--- jdk23u-jdk-23.0.1-11/src/java.desktop/share/classes/java/awt/event/NativeLibLoader.java
++++ jdk23u-jdk-23.0.1-11-new/src/java.desktop/share/classes/java/awt/event/NativeLibLoader.java
+@@ -57,7 +57,6 @@
+         java.security.AccessController.doPrivileged(
+             new java.security.PrivilegedAction<Void>() {
+                 public Void run() {
+-                    System.loadLibrary("awt");
+                     return null;
+                 }
+             });
+--- jdk23u-jdk-23.0.1-11/src/java.desktop/share/classes/java/awt/image/ColorModel.java
++++ jdk23u-jdk-23.0.1-11-new/src/java.desktop/share/classes/java/awt/image/ColorModel.java
+@@ -208,7 +208,6 @@
+             java.security.AccessController.doPrivileged(
+                 new java.security.PrivilegedAction<Void>() {
+                     public Void run() {
+-                        System.loadLibrary("awt");
+                         return null;
+                     }
+                 });
+--- jdk23u-jdk-23.0.1-11/src/java.desktop/share/classes/sun/awt/NativeLibLoader.java
++++ jdk23u-jdk-23.0.1-11-new/src/java.desktop/share/classes/sun/awt/NativeLibLoader.java
+@@ -57,7 +57,6 @@
+         java.security.AccessController.doPrivileged(
+             new java.security.PrivilegedAction<Void>() {
+                 public Void run() {
+-                    System.loadLibrary("awt");
+                     return null;
+                 }
+             });
+--- jdk23u-jdk-23.0.1-11/src/java.desktop/share/classes/sun/awt/image/NativeLibLoader.java
++++ jdk23u-jdk-23.0.1-11-new/src/java.desktop/share/classes/sun/awt/image/NativeLibLoader.java
+@@ -57,7 +57,6 @@
+         java.security.AccessController.doPrivileged(
+             new java.security.PrivilegedAction<Void>() {
+                 public Void run() {
+-                    System.loadLibrary("awt");
+                     return null;
+                 }
+             });
+--- jdk23u-jdk-23.0.1-11/src/java.desktop/share/classes/sun/font/FontManagerNativeLibrary.java
++++ jdk23u-jdk-23.0.1-11-new/src/java.desktop/share/classes/sun/font/FontManagerNativeLibrary.java
+@@ -34,7 +34,6 @@
+                                     new java.security.PrivilegedAction<Object>() {
+             public Object run() {
+                /* REMIND do we really have to load awt here? */
+-               System.loadLibrary("awt");
+                if (OSInfo.getOSType() == OSInfo.OSType.WINDOWS) {
+                    /* Ideally fontmanager library should not depend on
+                       particular implementation of the font scaler.
+--- jdk23u-jdk-23.0.1-11/src/java.desktop/share/classes/sun/java2d/Disposer.java
++++ jdk23u-jdk-23.0.1-11-new/src/java.desktop/share/classes/sun/java2d/Disposer.java
+@@ -65,7 +65,6 @@
+         java.security.AccessController.doPrivileged(
+             new java.security.PrivilegedAction<Void>() {
+                 public Void run() {
+-                    System.loadLibrary("awt");
+                     return null;
+                 }
+             });
+--- jdk23u-jdk-23.0.1-11/src/java.desktop/share/classes/sun/java2d/cmm/lcms/LCMS.java
++++ jdk23u-jdk-23.0.1-11-new/src/java.desktop/share/classes/sun/java2d/cmm/lcms/LCMS.java
+@@ -155,7 +155,6 @@
+                         /* We need to load awt here because of usage trace and
+                          * disposer frameworks
+                          */
+-                        System.loadLibrary("awt");
+                         System.loadLibrary("lcms");
+                         return null;
+                     }
+--- jdk23u-jdk-23.0.1-11/src/java.desktop/unix/classes/sun/awt/X11GraphicsEnvironment.java
++++ jdk23u-jdk-23.0.1-11-new/src/java.desktop/unix/classes/sun/awt/X11GraphicsEnvironment.java
+@@ -64,7 +64,6 @@
+         java.security.AccessController.doPrivileged(
+                           new java.security.PrivilegedAction<Object>() {
+             public Object run() {
+-                System.loadLibrary("awt");
+ 
+                 /*
+                  * Note: The XToolkit object depends on the static initializer
+--- jdk23u-jdk-23.0.1-11/src/java.desktop/unix/classes/sun/print/CUPSPrinter.java
++++ jdk23u-jdk-23.0.1-11-new/src/java.desktop/unix/classes/sun/print/CUPSPrinter.java
+@@ -96,7 +96,6 @@
+         java.security.AccessController.doPrivileged(
+             new java.security.PrivilegedAction<Void>() {
+                 public Void run() {
+-                    System.loadLibrary("awt");
+                     return null;
+                 }
+             });
+--- jdk23u-jdk-23.0.1-11/src/java.desktop/windows/classes/sun/awt/PlatformGraphicsInfo.java
++++ jdk23u-jdk-23.0.1-11-new/src/java.desktop/windows/classes/sun/awt/PlatformGraphicsInfo.java
+@@ -44,7 +44,6 @@
+         java.security.AccessController.doPrivileged(
+             new java.security.PrivilegedAction<Void>() {
+                 public Void run() {
+-                    System.loadLibrary("awt");
+                     return null;
+                 }
+             });
+--- jdk23u-jdk-23.0.1-11/src/java.desktop/windows/classes/sun/awt/windows/WToolkit.java
++++ jdk23u-jdk-23.0.1-11-new/src/java.desktop/windows/classes/sun/awt/windows/WToolkit.java
+@@ -175,7 +175,6 @@
+                 new java.security.PrivilegedAction<Void>() {
+                     @Override
+                     public Void run() {
+-                        System.loadLibrary("awt");
+                         return null;
+                     }
+                 });
+--- jdk23u-jdk-23.0.1-11/src/java.desktop/windows/classes/sun/print/PrintServiceLookupProvider.java
++++ jdk23u-jdk-23.0.1-11-new/src/java.desktop/windows/classes/sun/print/PrintServiceLookupProvider.java
+@@ -59,7 +59,6 @@
+         java.security.AccessController.doPrivileged(
+             new java.security.PrivilegedAction<Void>() {
+                 public Void run() {
+-                    System.loadLibrary("awt");
+                     return null;
+                 }
+             });
