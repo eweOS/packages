@@ -1,0 +1,158 @@
+diff --git a/src/java.desktop/unix/native/common/awt/awt.h b/src/java.desktop/unix/native/common/awt/awt.h
+index 817707789..1f6acced9 100644
+--- a/src/java.desktop/unix/native/common/awt/awt.h
++++ b/src/java.desktop/unix/native/common/awt/awt.h
+@@ -34,12 +34,6 @@
+ #include "jni_util.h"
+ #include "debug_util.h"
+ 
+-#if !defined(HEADLESS) && !defined(MACOSX)
+-#include <X11/Xlib.h>
+-#include <X11/Xutil.h>
+-typedef char Boolean;
+-#endif /* !HEADLESS && !MACOSX */
+-
+ 
+ /* The JVM instance: defined in awt_LoadLibrary.c */
+ extern JavaVM *jvm;
+@@ -125,9 +119,4 @@ extern void awt_output_flush();
+ #define AWT_NOTIFY()         AWT_NOTIFY_IMPL()
+ #define AWT_NOTIFY_ALL()     AWT_NOTIFY_ALL_IMPL()
+ 
+-#if !defined(HEADLESS) && !defined(MACOSX)
+-extern Display         *awt_display; /* awt_GraphicsEnv.c */
+-extern Boolean          awt_ModLockIsShiftLock; /* XToolkit.c */
+-#endif /* !HEADLESS && !MACOSX */
+-
+ #endif /* ! _AWT_ */
+diff --git a/src/java.desktop/unix/native/common/awt/color.h b/src/java.desktop/unix/native/common/awt/color.h
+index 92df41caf..aceff7afb 100644
+--- a/src/java.desktop/unix/native/common/awt/color.h
++++ b/src/java.desktop/unix/native/common/awt/color.h
+@@ -28,13 +28,4 @@
+ #include "awt.h"
+ #include "colordata.h"
+ 
+-#if !defined(HEADLESS) && !defined(MACOSX)
+-typedef struct {
+-    unsigned int Depth;
+-    XPixmapFormatValues wsImageFormat;
+-    ImgColorData clrdata;
+-    ImgConvertFcn *convert[NUM_IMGCV];
+-} awtImageData;
+-#endif /* !HEADLESS && !MACOSX */
+-
+ #endif           /* _COLOR_H_ */
+diff --git a/src/java.desktop/unix/native/common/awt/img_util_md.h b/src/java.desktop/unix/native/common/awt/img_util_md.h
+index dab21c5c0..28afb4754 100644
+--- a/src/java.desktop/unix/native/common/awt/img_util_md.h
++++ b/src/java.desktop/unix/native/common/awt/img_util_md.h
+@@ -26,51 +26,6 @@
+ #include "jni.h"
+ #include "color.h"
+ 
+-#if !defined(HEADLESS) && !defined(MACOSX)
+-typedef struct {
+-    ImgConvertData cvdata;      /* The data needed by ImgConvertFcn's */
+-    struct Hsun_awt_image_ImageRepresentation *hJavaObject;     /* backptr */
+-    XID pixmap;                 /* The X11 pixmap containing the image */
+-    XID mask;                   /* The X11 pixmap with the transparency mask */
+-    int bgcolor;                /* The current bg color installed in pixmap */
+-
+-    int depth;                  /* The depth of the destination image */
+-    int dstW;                   /* The width of the destination pixmap */
+-    int dstH;                   /* The height of the destination pixmap */
+-
+-    XImage *xim;                /* The Ximage structure for the temp buffer */
+-    XImage *maskim;             /* The Ximage structure for the mask */
+-
+-    int hints;                  /* The delivery hints from the producer */
+-
+-    Region curpixels;           /* The region of randomly converted pixels */
+-    struct {
+-        int num;                /* The last fully delivered scanline */
+-        char *seen;             /* The lines which have been delivered */
+-    } curlines;                 /* For hints=COMPLETESCANLINES */
+-} IRData;
+-
+-typedef unsigned int MaskBits;
+-
+-extern int image_Done(IRData *ird, int x1, int y1, int x2, int y2);
+-
+-extern void *image_InitMask(IRData *ird, int x1, int y1, int x2, int y2);
+-
+-#define BufComplete(cvdata, dstX1, dstY1, dstX2, dstY2)         \
+-    image_Done((IRData *) cvdata, dstX1, dstY1, dstX2, dstY2)
+-
+-#define SendRow(ird, dstY, dstX1, dstX2)
+-
+-#define ImgInitMask(cvdata, x1, y1, x2, y2)                     \
+-    image_InitMask((IRData *)cvdata, x1, y1, x2, y2)
+-
+-#define ScanBytes(cvdata)       (((IRData *)cvdata)->xim->bytes_per_line)
+-
+-#define MaskScan(cvdata)                                        \
+-        ((((IRData *)cvdata)->maskim->bytes_per_line) >> 2)
+-
+-#endif /* !HEADLESS && !MACOSX */
+-
+ #define MaskOffset(x)           ((x) >> 5)
+ 
+ #define MaskInit(x)             (1U << (31 - ((x) & 31)))
+diff --git a/src/java.desktop/unix/native/common/awt/utility/rect.h b/src/java.desktop/unix/native/common/awt/utility/rect.h
+index ceea38f43..7e687f6ea 100644
+--- a/src/java.desktop/unix/native/common/awt/utility/rect.h
++++ b/src/java.desktop/unix/native/common/awt/utility/rect.h
+@@ -28,10 +28,6 @@
+ #ifndef _AWT_RECT_H
+ #define _AWT_RECT_H
+ 
+-#ifndef MACOSX
+-#include <X11/Xlib.h>
+-typedef XRectangle RECT_T;
+-#else
+ // OSX still needs this for BitmapToYXBandedRectangles
+ typedef struct {
+     int x;
+@@ -39,7 +35,6 @@ typedef struct {
+     int width;
+     int height;
+ } RECT_T;
+-#endif /* !MACOSX */
+ 
+ #define RECT_EQ_X(r1,r2)        ((r1).x==(r2).x && (r1).width==(r2).width)
+
+--- a/make/autoconf/libraries.m4
++++ b/make/autoconf/libraries.m4
+@@ -48,7 +48,7 @@
+   else
+     # All other instances need X11, even if building headless only, libawt still
+     # needs X11 headers.
+-    NEEDS_LIB_X11=true
++    NEEDS_LIB_X11=false
+   fi
+ 
+   # Check if fontconfig is needed
+   
+--- a/make/modules/java.desktop/Lib.gmk
++++ b/make/modules/java.desktop/Lib.gmk
+@@ -35,7 +35,5 @@
+ ################################################################################
+ # Create the AWT/2D libraries
+ 
+-include lib/AwtLibraries.gmk
+-include lib/ClientLibraries.gmk
+ 
+ ifeq ($(call isTargetOs, aix), false)
+
+--- a/make/modules/java.desktop/Java.gmk
++++ b/make/modules/java.desktop/Java.gmk
+@@ -65,7 +65,7 @@
+     .template \
+     #
+ 
+-ifeq ($(call isTargetOs, macosx), true)
++ifeq ($(call isTargetOs, macosx), false)
+   # exclude all X11 on Mac.
+   EXCLUDES += \
+       sun/awt/screencast \

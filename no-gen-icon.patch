@@ -1,0 +1,71 @@
+--- jdk23u-jdk-23.0.1-11-new/make/modules/java.desktop/Gendata.gmk
++++ jdk23u-jdk-23.0.1-11-new2/make/modules/java.desktop/Gendata.gmk
+@@ -27,4 +27,4 @@
+ 
+ include gendata/GendataFontConfig.gmk
+ 
+-include gendata/GendataHtml32dtd.gmk
++
+--- jdk23u-jdk-23.0.1-11-new/make/modules/java.desktop/Gensrc.gmk
++++ jdk23u-jdk-23.0.1-11-new2/make/modules/java.desktop/Gensrc.gmk
+@@ -29,7 +29,7 @@
+ $(eval $(call IncludeCustomExtension, modules/java.desktop/Gensrc.gmk))
+ 
+ ifeq ($(call isTargetOs, windows), false)
+-  include gensrc/GensrcIcons.gmk
++  
+ endif
+ 
+ ifeq ($(call isTargetOs, linux aix), true)
+--- jdk23u-jdk-23.0.1-11-new/src/java.desktop/unix/classes/sun/awt/X11/XWarningWindow.java
++++ jdk23u-jdk-23.0.1-11-new2/src/java.desktop/unix/classes/sun/awt/X11/XWarningWindow.java
+@@ -61,31 +61,7 @@
+             if (icons == null) {
+                 icons = new IconInfo[4][3];
+                 if (XlibWrapper.dataModel == 32) {
+-                    icons[0][0] = new IconInfo(sun.awt.AWTIcon32_security_icon_bw16_png.security_icon_bw16_png);
+-                    icons[0][1] = new IconInfo(sun.awt.AWTIcon32_security_icon_interim16_png.security_icon_interim16_png);
+-                    icons[0][2] = new IconInfo(sun.awt.AWTIcon32_security_icon_yellow16_png.security_icon_yellow16_png);
+-                    icons[1][0] = new IconInfo(sun.awt.AWTIcon32_security_icon_bw24_png.security_icon_bw24_png);
+-                    icons[1][1] = new IconInfo(sun.awt.AWTIcon32_security_icon_interim24_png.security_icon_interim24_png);
+-                    icons[1][2] = new IconInfo(sun.awt.AWTIcon32_security_icon_yellow24_png.security_icon_yellow24_png);
+-                    icons[2][0] = new IconInfo(sun.awt.AWTIcon32_security_icon_bw32_png.security_icon_bw32_png);
+-                    icons[2][1] = new IconInfo(sun.awt.AWTIcon32_security_icon_interim32_png.security_icon_interim32_png);
+-                    icons[2][2] = new IconInfo(sun.awt.AWTIcon32_security_icon_yellow32_png.security_icon_yellow32_png);
+-                    icons[3][0] = new IconInfo(sun.awt.AWTIcon32_security_icon_bw48_png.security_icon_bw48_png);
+-                    icons[3][1] = new IconInfo(sun.awt.AWTIcon32_security_icon_interim48_png.security_icon_interim48_png);
+-                    icons[3][2] = new IconInfo(sun.awt.AWTIcon32_security_icon_yellow48_png.security_icon_yellow48_png);
+                 } else {
+-                    icons[0][0] = new IconInfo(sun.awt.AWTIcon64_security_icon_bw16_png.security_icon_bw16_png);
+-                    icons[0][1] = new IconInfo(sun.awt.AWTIcon64_security_icon_interim16_png.security_icon_interim16_png);
+-                    icons[0][2] = new IconInfo(sun.awt.AWTIcon64_security_icon_yellow16_png.security_icon_yellow16_png);
+-                    icons[1][0] = new IconInfo(sun.awt.AWTIcon64_security_icon_bw24_png.security_icon_bw24_png);
+-                    icons[1][1] = new IconInfo(sun.awt.AWTIcon64_security_icon_interim24_png.security_icon_interim24_png);
+-                    icons[1][2] = new IconInfo(sun.awt.AWTIcon64_security_icon_yellow24_png.security_icon_yellow24_png);
+-                    icons[2][0] = new IconInfo(sun.awt.AWTIcon64_security_icon_bw32_png.security_icon_bw32_png);
+-                    icons[2][1] = new IconInfo(sun.awt.AWTIcon64_security_icon_interim32_png.security_icon_interim32_png);
+-                    icons[2][2] = new IconInfo(sun.awt.AWTIcon64_security_icon_yellow32_png.security_icon_yellow32_png);
+-                    icons[3][0] = new IconInfo(sun.awt.AWTIcon64_security_icon_bw48_png.security_icon_bw48_png);
+-                    icons[3][1] = new IconInfo(sun.awt.AWTIcon64_security_icon_interim48_png.security_icon_interim48_png);
+-                    icons[3][2] = new IconInfo(sun.awt.AWTIcon64_security_icon_yellow48_png.security_icon_yellow48_png);
+                 }
+             }
+         }
+--- jdk23u-jdk-23.0.1-11-new/src/java.desktop/unix/classes/sun/awt/X11/XWindowPeer.java
++++ jdk23u-jdk-23.0.1-11-new2/src/java.desktop/unix/classes/sun/awt/X11/XWindowPeer.java
+@@ -438,15 +438,7 @@
+         if (defaultIconInfo == null) {
+             defaultIconInfo = new ArrayList<IconInfo>();
+             if (XlibWrapper.dataModel == 32) {
+-                defaultIconInfo.add(new IconInfo(sun.awt.AWTIcon32_java_icon16_png.java_icon16_png));
+-                defaultIconInfo.add(new IconInfo(sun.awt.AWTIcon32_java_icon24_png.java_icon24_png));
+-                defaultIconInfo.add(new IconInfo(sun.awt.AWTIcon32_java_icon32_png.java_icon32_png));
+-                defaultIconInfo.add(new IconInfo(sun.awt.AWTIcon32_java_icon48_png.java_icon48_png));
+             } else {
+-                defaultIconInfo.add(new IconInfo(sun.awt.AWTIcon64_java_icon16_png.java_icon16_png));
+-                defaultIconInfo.add(new IconInfo(sun.awt.AWTIcon64_java_icon24_png.java_icon24_png));
+-                defaultIconInfo.add(new IconInfo(sun.awt.AWTIcon64_java_icon32_png.java_icon32_png));
+-                defaultIconInfo.add(new IconInfo(sun.awt.AWTIcon64_java_icon48_png.java_icon48_png));
+             }
+         }
+         return defaultIconInfo;
