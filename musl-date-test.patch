@@ -1,0 +1,17 @@
+--- a/test/makekeys.sh
++++ b/test/makekeys.sh
+@@ -16,7 +16,12 @@
+ export REQDN STRMASK CADIR
+ 
+ asn1date() {
+-	date -d "$1" "+%y%m%d%H%M%SZ"
++	[ "$1" == "yesterday" ] && date "+%y%m%d%H%M%SZ" -d "@$(($(date +%s) - 86400))"
++	[ "$1" == "2 days ago" ] && date "+%y%m%d%H%M%SZ" -d "@$(($(date +%s) - 86400 - 86400))"
++	[ "$1" == "tomorrow" ] && date "+%y%m%d%H%M%SZ" -d "@$(($(date +%s) + 86400))"
++	[ "$1" == "2 days" ] && date "+%y%m%d%H%M%SZ" -d "@$(($(date +%s) + 86400 + 86400))"
++	[ "$1" == "1 year" ] && date "+%y%m%d%H%M%SZ" -d "@$(($(date +%s) + 31536000))"
++	[ "$1" == "2 years" ] && date "+%y%m%d%H%M%SZ" -d "@$(($(date +%s) + 63072000))"
+ }
+ 
+ openssl version 1>&2
+
