@@ -2,10 +2,10 @@
 
 pkgname=giflib
 pkgver=5.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for reading and writing gif images'
 url='http://giflib.sourceforge.net/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('MIT')
 provides=('libgif.so')
 makedepends=('xmlto' 'docbook-xml' 'docbook-xsl')
