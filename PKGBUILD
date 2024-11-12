@@ -1,0 +1,63 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgbase=cdrdao
+pkgname=('cdrdao' 'gcdmaster')
+pkgver=1.2.5
+pkgrel=1
+arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
+license=('GPL-2.0-or-later')
+url="http://cdrdao.sourceforge.net/"
+pkgdesc='Records audio/data CD-Rs in disk-at-once (DAO) mode'
+depends=('atkmm' 'cairomm' 'dconf' 'glib2' 'glibmm' 'gtk3' 'gtkmm3' 'lame'
+         'libao' 'libmad' 'libsigc++2' 'libvorbis' 'pangomm')
+makedepends=('linux-headers')
+options=('!emptydirs')
+source=(https://downloads.sourceforge.net/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2
+        cdrdao-uninitialized-filename.patch
+        cdrdao-version-command.patch)
+sha256sums=('d19b67c853c5dba2406afaab6cd788e77f35eebe634cac4679528477c7be01b6'
+            '970e5d18513f298b915f9d84f206d7489400e93f42b9c04ec55acf2fe9d43e5a'
+            'cbb8ec897e390d5a4c4c113e35a88893f5be3ebc2fec3b09eb2ae84bd4275021')
+
+prepare() {
+  cd ${pkgbase}-${pkgver}
+
+  # Fix uninitialized TOC data file name
+  # https://github.com/cdrdao/cdrdao/pull/21
+  patch -Np1 -i ../cdrdao-uninitialized-filename.patch
+
+  # Fix version command
+  # https://github.com/cdrdao/cdrdao/pull/25
+  patch -Np1 -i ../cdrdao-version-command.patch
+
+  # Remove gconf dependency
+  sed -i '/AM_GCONF_SOURCE_2/d' configure.ac
+}
+
+build() {
+  cd ${pkgbase}-${pkgver}
+  ./configure --prefix=/usr \
+	--mandir=/usr/share/man \
+	--sysconfdir=/etc \
+	--with-lame \
+	--with-ogg-support \
+	--with-mp3-support
+  make
+}
+
+package_cdrdao() {
+  depends=('lame' 'libao' 'libmad' 'libvorbis')
+
+  cd ${pkgbase}-${pkgver}
+  make DESTDIR="${pkgdir}" install
+  make -C gcdmaster DESTDIR="${pkgdir}" uninstall
+}
+
+package_gcdmaster() {
+  pkgdesc='GUI frontend for creating audio CDs and burning them using cdrdao'
+  depends=('atkmm' 'cairomm' 'cdrdao' 'dconf' 'glib2' 'glibmm' 'gtk3' 'gtkmm3'
+           'libao' 'libmad' 'libsigc++2' 'libvorbis' 'pangomm')
+
+  cd ${pkgbase}-${pkgver}
+  make -C gcdmaster DESTDIR="${pkgdir}" install
+}
