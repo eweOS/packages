@@ -2,9 +2,9 @@
 
 pkgname=wayfire
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modular and extensible wayland compositor"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://wayfire.org
 license=(MIT)
 depends=(cairo pango libjpeg libinput wlroots0.17 wf-config nlohmann-json)
