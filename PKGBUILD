@@ -3,13 +3,13 @@
 pkgname=jade-gui
 pkgver=1.9.4
 _pkgver=1.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Libadwaita based GUI front-end for Jade'
 license=('GPL-3.0-only')
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/eweOS/$pkgname"
 depends=('openssl' 'libadwaita' 'python-pytz' 'vte4' 'gtksourceview5' 'python-tzlocal')
-makedepends=('meson' 'ninja' 'desktop-file-utils' 'appstream-glib' 'gtk4')
+makedepends=('meson' 'ninja' 'desktop-file-utils' 'appstream-glib' 'gtk4' 'git')
 _refcommit=03cf282396b00bfaf2bd2b2b7b3831300a16c09a
 source=("git+${url}.git")
 sha256sums=('SKIP')
