@@ -2,10 +2,10 @@
 
 pkgname=openjpeg2
 pkgver=2.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc='An open-source JPEG 2000 codec written in C.'
 url='https://www.openjpeg.org/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD)
 depends=(libtiff libpng lcms2 zlib)
 provides=(libopenjp2.so)
