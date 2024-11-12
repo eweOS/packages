@@ -1,14 +1,19 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=librsvg
-pkgver=2.58.2
-pkgrel=3
+pkgbase=librsvg
+pkgname=(
+  librsvg
+  librsvg-docs
+)
+pkgver=2.59.2
+pkgrel=1
 pkgdesc="SVG rendering library"
 url="https://wiki.gnome.org/Projects/LibRsvg"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-2.1-or-later)
 depends=(
   cairo
+  dav1d
   freetype2
   gdk-pixbuf
   glib
@@ -17,46 +22,51 @@ depends=(
   pango
 )
 makedepends=(
+  cargo-c
+  gi-docgen
   git
   gobject-introspection
+  meson
+  python-docutils
   rust
-  python
+  vala
 )
 checkdepends=(ttf-dejavu)
-source=("https://gitlab.gnome.org/GNOME/librsvg/-/archive/$pkgver/librsvg-$pkgver.tar.gz"
-	"link-libunwind-in-test.patch")
-sha256sums=('22a7e326710d28f8f73d28de423ee0d1a61fb12f9e830d3e9ffe825a20edd348'
-	    '06b352f424d44e5d87751b91136c308e12d16f229b5c906a974c24f69079f85e')
+source=("https://gitlab.gnome.org/GNOME/librsvg/-/archive/$pkgver/librsvg-$pkgver.tar.gz")
+sha256sums=('ddd8e51426b41ef886898dc4198ca48d7e296668be19595173631fc86c79d689')
 
 prepare() {
-  _patch_ librsvg-$pkgver
-
   cd librsvg-$pkgver
-  NOCONFIGURE=1 ./autogen.sh
+  cargo fetch --locked --target "$RUSTHOST"
 }
 
 build() {
-  local configure_options=(
-    --prefix=/usr
-    --disable-static
+  local meson_options=(
+    -D avif=enabled
   )
 
-  cd librsvg-$pkgver
   export LDFLAGS="$LDFLAGS -lunwind"
-  ./configure "${configure_options[@]}"
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
-  make
+
+  ewe-meson librsvg-$pkgver build "${meson_options[@]}"
+  meson compile -C build
 }
 
 check() {
-  # Test suite is very dependent on the versions of
-  # Cairo, Pango, FreeType and HarfBuzz
-  # Tests need nightly features
-  RUSTC_BOOTSTRAP=1 make -C librsvg-$pkgver check || :
+  meson test -C build --print-errorlogs --no-rebuild
 }
 
 package_librsvg() {
   provides=(librsvg-${pkgver%%.*}.so)
 
-  make -C librsvg-$pkgver DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir" --no-rebuild
+
+  mkdir -p doc/usr/share
+  mv {"$pkgdir",doc}/usr/share/doc
+}
+
+package_librsvg-docs() {
+  pkgdesc+=" (documentation)"
+  depends=()
+
+  mv doc/* "$pkgdir"
 }
