@@ -2,10 +2,10 @@
 
 pkgname=glibmm
 pkgver=2.82.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ bindings for glib"
 url="https://www.gtkmm.org/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL)
 depends=(pango glib cairomm)
 makedepends=(meson mm-common libsigc++3 perl-xml-parser)
