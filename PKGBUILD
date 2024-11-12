@@ -2,9 +2,9 @@
 
 pkgname=fcitx5
 pkgver=5.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation of fcitx"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/fcitx/fcitx5"
 license=('LGPL-2.1-or-later AND Unicode-DFS-2016')
 groups=('fcitx5-im')
