@@ -2,9 +2,9 @@
 
 pkgname=pacman-contrib
 pkgver=1.10.6
-pkgrel=4
+pkgrel=5
 pkgdesc='Contributed scripts and tools for pacman systems'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gitlab.archlinux.org/pacman/pacman-contrib"
 license=('GPL-2.0-or-later')
 depends=('pacman' 'libalpm')
