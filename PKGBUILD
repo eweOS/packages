@@ -2,7 +2,7 @@
 
 pkgname=greetd-tui
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A console UI greeter for greetd'
 url='https://github.com/apognu/tuigreet'
 license=(GPL3)
@@ -11,6 +11,13 @@ depends=(greetd)
 makedepends=(rust)
 source=("tuigreet-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('14fd1fadeb84040eb31901da2b53a48aa55b0fdaccb36d96fa52ce2d2113667f')
+
+prepare() {
+  cd "tuigreet-$pkgver"
+  # loongarch64 requires newer libc
+  cargo update -p libc --precise 0.2.155
+  cargo fetch --locked --target "$RUSTHOST"
+}
 
 build() {
   cd "tuigreet-${pkgver}"
