@@ -1,9 +1,9 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 pkgname=gtklock
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK-based lockscreen for Wayland"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/jovanlanik/gtklock"
 license=('GPL3')
 depends=(pam wayland gtk3 gtk-session-lock)
