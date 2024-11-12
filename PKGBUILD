@@ -4,9 +4,9 @@ pkgbase=appstream
 pkgname=(appstream
          appstream-qt)
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Provides a standard for creating app stores across distributions'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://distributions.freedesktop.org/wiki/AppStream'
 license=(LGPL-2.1-or-later)
 depends=(cairo
