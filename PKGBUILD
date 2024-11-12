@@ -2,10 +2,10 @@
 
 pkgname=bubblewrap
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Unprivileged sandboxing tool'
 url='https://github.com/projectatomic/bubblewrap'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL)
 depends=(
   libcap
