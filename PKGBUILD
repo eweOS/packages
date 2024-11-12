@@ -2,9 +2,9 @@
 
 pkgname=libyuv
 pkgver=r2426+464c51a03
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for YUV scaling"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://chromium.googlesource.com/libyuv/libyuv/"
 license=(custom)
 depends=(libjpeg-turbo)
