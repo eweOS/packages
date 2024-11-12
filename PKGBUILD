@@ -2,10 +2,10 @@
 
 pkgname=soxr
 pkgver=0.1.3
-pkgrel=0
+pkgrel=1
 pkgdesc='High quality, one-dimensional sample-rate conversion library '
 url='https://sourceforge.net/projects/soxr/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD LGPL2)
 depends=(openmp)
 makedepends=(cmake)
