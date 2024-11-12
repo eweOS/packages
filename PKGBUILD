@@ -3,10 +3,10 @@
 pkgbase=gtkmm
 pkgname=gtkmm3
 pkgver=3.24.9
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ bindings for glib"
 url="https://www.gtkmm.org/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL)
 depends=(gtk3 pangomm-gtk3 atkmm-gtk3)
 makedepends=(meson mm-common perl-xml-parser)
