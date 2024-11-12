@@ -1,0 +1,214 @@
+From 5f2390c7b4d114d591b7880e6020a79d09957f3e Mon Sep 17 00:00:00 2001
+From: Xiaotian Wu <wuxiaotian@loongson.cn>
+Date: Mon, 1 Jan 2024 16:46:39 +0800
+Subject: [PATCH] fix build error
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+/build/libyuv/src/libyuv/source/row_lsx.cc: In function ‘void libyuv::ARGB1555ToUVRow_LSX(const uint8_t*, int, uint8_t*, uint8_t*, int)’:
+/build/libyuv/src/libyuv/source/row_lsx.cc:410:25: error: narrowing conversion of ‘9259542123273814144’ from ‘long unsigned int’ to ‘long long int’ [-Wnarrowing]
+  410 |   __m128i const_8080 = {0x8080808080808080, 0x8080808080808080};
+      |                         ^~~~~~~~~~~~~~~~~~
+---
+ source/row_lsx.cc | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/source/row_lsx.cc b/source/row_lsx.cc
+index 9c1e16f2..c7b30051 100644
+--- a/source/row_lsx.cc
++++ b/source/row_lsx.cc
+@@ -407,7 +407,7 @@ void ARGB1555ToUVRow_LSX(const uint8_t* src_argb1555,
+   __m128i const_38 = __lsx_vldi(0x413);
+   __m128i const_94 = __lsx_vldi(0x42F);
+   __m128i const_18 = __lsx_vldi(0x409);
+-  __m128i const_8080 = {0x8080808080808080, 0x8080808080808080};
++  __m128i const_8080 = {static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080)};
+ 
+   for (x = 0; x < len; x++) {
+     DUP4_ARG2(__lsx_vld, src_argb1555, 0, src_argb1555, 16, next_argb1555, 0,
+@@ -516,7 +516,7 @@ void RGB565ToUVRow_LSX(const uint8_t* src_rgb565,
+   __m128i const_38 = __lsx_vldi(0x413);
+   __m128i const_94 = __lsx_vldi(0x42F);
+   __m128i const_18 = __lsx_vldi(0x409);
+-  __m128i const_8080 = {0x8080808080808080, 0x8080808080808080};
++  __m128i const_8080 = {static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080)};
+ 
+   for (x = 0; x < len; x++) {
+     DUP4_ARG2(__lsx_vld, src_rgb565, 0, src_rgb565, 16, next_rgb565, 0,
+@@ -577,7 +577,7 @@ void RGB24ToUVRow_LSX(const uint8_t* src_rgb24,
+   __m128i const_38 = __lsx_vldi(0x413);
+   __m128i const_94 = __lsx_vldi(0x42F);
+   __m128i const_18 = __lsx_vldi(0x409);
+-  __m128i const_8080 = {0x8080808080808080, 0x8080808080808080};
++  __m128i const_8080 = {static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080)};
+   __m128i shuff0_b = {0x15120F0C09060300, 0x00000000001E1B18};
+   __m128i shuff1_b = {0x0706050403020100, 0x1D1A1714110A0908};
+   __m128i shuff0_g = {0x1613100D0A070401, 0x00000000001F1C19};
+@@ -630,7 +630,7 @@ void RAWToUVRow_LSX(const uint8_t* src_raw,
+   __m128i const_38 = __lsx_vldi(0x413);
+   __m128i const_94 = __lsx_vldi(0x42F);
+   __m128i const_18 = __lsx_vldi(0x409);
+-  __m128i const_8080 = {0x8080808080808080, 0x8080808080808080};
++  __m128i const_8080 = {static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080)};
+   __m128i shuff0_r = {0x15120F0C09060300, 0x00000000001E1B18};
+   __m128i shuff1_r = {0x0706050403020100, 0x1D1A1714110A0908};
+   __m128i shuff0_g = {0x1613100D0A070401, 0x00000000001F1C19};
+@@ -865,7 +865,7 @@ void BGRAToUVRow_LSX(const uint8_t* src_bgra,
+   __m128i const_38 = __lsx_vldi(0x413);
+   __m128i const_94 = __lsx_vldi(0x42F);
+   __m128i const_18 = __lsx_vldi(0x409);
+-  __m128i const_8080 = {0x8080808080808080, 0x8080808080808080};
++  __m128i const_8080 = {static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080)};
+ 
+   for (x = 0; x < len; x++) {
+     DUP4_ARG2(__lsx_vld, src_bgra, 0, src_bgra, 16, src_bgra, 32, src_bgra, 48,
+@@ -913,7 +913,7 @@ void ABGRToUVRow_LSX(const uint8_t* src_abgr,
+   __m128i const_38 = __lsx_vldi(0x413);
+   __m128i const_94 = __lsx_vldi(0x42F);
+   __m128i const_18 = __lsx_vldi(0x409);
+-  __m128i const_8080 = {0x8080808080808080, 0x8080808080808080};
++  __m128i const_8080 = {static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080)};
+ 
+   for (x = 0; x < len; x++) {
+     DUP4_ARG2(__lsx_vld, src_abgr, 0, src_abgr, 16, src_abgr, 32, src_abgr, 48,
+@@ -961,7 +961,7 @@ void RGBAToUVRow_LSX(const uint8_t* src_rgba,
+   __m128i const_38 = __lsx_vldi(0x413);
+   __m128i const_94 = __lsx_vldi(0x42F);
+   __m128i const_18 = __lsx_vldi(0x409);
+-  __m128i const_8080 = {0x8080808080808080, 0x8080808080808080};
++  __m128i const_8080 = {static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080)};
+ 
+   for (x = 0; x < len; x++) {
+     DUP4_ARG2(__lsx_vld, src_rgba, 0, src_rgba, 16, src_rgba, 32, src_rgba, 48,
+@@ -1010,7 +1010,7 @@ void ARGBToUVJRow_LSX(const uint8_t* src_argb,
+   __m128i const_21 = __lsx_vldi(0x415);
+   __m128i const_53 = __lsx_vldi(0x435);
+   __m128i const_10 = __lsx_vldi(0x40A);
+-  __m128i const_8080 = {0x8080808080808080, 0x8080808080808080};
++  __m128i const_8080 = {static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080)};
+ 
+   for (x = 0; x < len; x++) {
+     DUP4_ARG2(__lsx_vld, src_argb, 0, src_argb, 16, src_argb, 32, src_argb, 48,
+@@ -1388,7 +1388,7 @@ void ARGBBlendRow_LSX(const uint8_t* src_argb,
+   __m128i const_256 = __lsx_vldi(0x500);
+   __m128i zero = __lsx_vldi(0);
+   __m128i alpha = __lsx_vldi(0xFF);
+-  __m128i control = {0xFF000000FF000000, 0xFF000000FF000000};
++  __m128i control = {static_cast<long long>(0xFF000000FF000000), static_cast<long long>(0xFF000000FF000000)};
+ 
+   for (x = 0; x < len; x++) {
+     DUP4_ARG2(__lsx_vld, src_argb, 0, src_argb, 16, src_argb1, 0, src_argb1, 16,
+@@ -1434,7 +1434,7 @@ void ARGBQuantizeRow_LSX(uint8_t* dst_argb,
+   __m128i vec_offset = __lsx_vreplgr2vr_b(interval_offset);
+   __m128i vec_scale = __lsx_vreplgr2vr_w(scale);
+   __m128i zero = __lsx_vldi(0);
+-  __m128i control = {0xFF000000FF000000, 0xFF000000FF000000};
++  __m128i control = {static_cast<long long>(0xFF000000FF000000), static_cast<long long>(0xFF000000FF000000)};
+ 
+   for (x = 0; x < len; x++) {
+     DUP4_ARG2(__lsx_vld, dst_argb, 0, dst_argb, 16, dst_argb, 32, dst_argb, 48,
+-- 
+2.42.0
+
+--- a/source/row_lasx.cc
++++ b/source/row_lasx.cc
+@@ -543,8 +543,8 @@
+   __m256i vec_yb, vec_yg, vec_ub, vec_vr, vec_ug, vec_vg;
+   __m256i vec_ubvr, vec_ugvg;
+   __m256i const_0x80 = __lasx_xvldi(0x80);
+-  __m256i alpha = {0xF000F000F000F000, 0xF000F000F000F000, 0xF000F000F000F000,
+-                   0xF000F000F000F000};
++  __m256i alpha = {static_cast<long long>(0xF000F000F000F000), static_cast<long long>(0xF000F000F000F000), static_cast<long long>(0xF000F000F000F000),
++                   static_cast<long long>(0xF000F000F000F000)};
+   __m256i mask = {0x00F000F000F000F0, 0x00F000F000F000F0, 0x00F000F000F000F0,
+                   0x00F000F000F000F0};
+ 
+@@ -595,8 +595,8 @@
+   __m256i vec_yb, vec_yg, vec_ub, vec_vr, vec_ug, vec_vg;
+   __m256i vec_ubvr, vec_ugvg;
+   __m256i const_0x80 = __lasx_xvldi(0x80);
+-  __m256i alpha = {0x8000800080008000, 0x8000800080008000, 0x8000800080008000,
+-                   0x8000800080008000};
++  __m256i alpha = {static_cast<long long>(0x8000800080008000), static_cast<long long>(0x8000800080008000), static_cast<long long>(0x8000800080008000),
++                   static_cast<long long>(0x8000800080008000)};
+ 
+   YUVTORGB_SETUP(yuvconstants, vec_ub, vec_vr, vec_ug, vec_vg, vec_yg, vec_yb);
+   vec_ubvr = __lasx_xvilvl_h(vec_ub, vec_vr);
+@@ -799,8 +799,8 @@
+                         0x0009000900090009, 0x0009000900090009};
+   __m256i control = {0x0000000400000000, 0x0000000500000001, 0x0000000600000002,
+                      0x0000000700000003};
+-  __m256i const_0x8080 = {0x8080808080808080, 0x8080808080808080,
+-                          0x8080808080808080, 0x8080808080808080};
++  __m256i const_0x8080 = {static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080),
++                          static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080)};
+ 
+   for (x = 0; x < len; x++) {
+     DUP4_ARG2(__lasx_xvld, src_argb0, 0, src_argb0, 32, src_argb0, 64,
+@@ -1037,8 +1037,8 @@
+   __m256i const_38 = __lasx_xvldi(38);
+   __m256i const_94 = __lasx_xvldi(94);
+   __m256i const_18 = __lasx_xvldi(18);
+-  __m256i const_0x8080 = {0x8080808080808080, 0x8080808080808080,
+-                          0x8080808080808080, 0x8080808080808080};
++  __m256i const_0x8080 = {static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080),
++                          static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080)};
+   __m256i control = {0x0000000400000000, 0x0000000500000001, 0x0000000600000002,
+                      0x0000000700000003};
+   for (x = 0; x < len; x++) {
+@@ -1609,8 +1609,8 @@
+   __m256i const_38 = __lasx_xvldi(0x413);
+   __m256i const_94 = __lasx_xvldi(0x42F);
+   __m256i const_18 = __lasx_xvldi(0x409);
+-  __m256i const_8080 = {0x8080808080808080, 0x8080808080808080,
+-                        0x8080808080808080, 0x8080808080808080};
++  __m256i const_8080 = {static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080),
++                        static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080)};
+ 
+   for (x = 0; x < len; x++) {
+     DUP4_ARG2(__lasx_xvld, src_argb1555, 0, src_argb1555, 32, next_argb1555, 0,
+@@ -1726,8 +1726,8 @@
+   __m256i const_38 = __lasx_xvldi(0x413);
+   __m256i const_94 = __lasx_xvldi(0x42F);
+   __m256i const_18 = __lasx_xvldi(0x409);
+-  __m256i const_8080 = {0x8080808080808080, 0x8080808080808080,
+-                        0x8080808080808080, 0x8080808080808080};
++  __m256i const_8080 = {static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080),
++                        static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080)};
+ 
+   for (x = 0; x < len; x++) {
+     DUP4_ARG2(__lasx_xvld, src_rgb565, 0, src_rgb565, 32, next_rgb565, 0,
+@@ -1793,8 +1793,8 @@
+   __m256i const_38 = __lasx_xvldi(0x413);
+   __m256i const_94 = __lasx_xvldi(0x42F);
+   __m256i const_18 = __lasx_xvldi(0x409);
+-  __m256i const_8080 = {0x8080808080808080, 0x8080808080808080,
+-                        0x8080808080808080, 0x8080808080808080};
++  __m256i const_8080 = {static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080),
++                        static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080)};
+   __m256i shuff0_b = {0x15120F0C09060300, 0x00000000001E1B18,
+                       0x15120F0C09060300, 0x00000000001E1B18};
+   __m256i shuff1_b = {0x0706050403020100, 0x1D1A1714110A0908,
+@@ -1856,8 +1856,8 @@
+   __m256i const_38 = __lasx_xvldi(0x413);
+   __m256i const_94 = __lasx_xvldi(0x42F);
+   __m256i const_18 = __lasx_xvldi(0x409);
+-  __m256i const_8080 = {0x8080808080808080, 0x8080808080808080,
+-                        0x8080808080808080, 0x8080808080808080};
++  __m256i const_8080 = {static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080),
++                        static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080)};
+   __m256i shuff0_r = {0x15120F0C09060300, 0x00000000001E1B18,
+                       0x15120F0C09060300, 0x00000000001E1B18};
+   __m256i shuff1_r = {0x0706050403020100, 0x1D1A1714110A0908,
+@@ -2242,8 +2242,8 @@
+   __m256i const_21 = __lasx_xvldi(0x415);
+   __m256i const_53 = __lasx_xvldi(0x435);
+   __m256i const_10 = __lasx_xvldi(0x40A);
+-  __m256i const_8080 = {0x8080808080808080, 0x8080808080808080,
+-                        0x8080808080808080, 0x8080808080808080};
++  __m256i const_8080 = {static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080),
++                        static_cast<long long>(0x8080808080808080), static_cast<long long>(0x8080808080808080)};
+   __m256i shuff = {0x1614060412100200, 0x1E1C0E0C1A180A08, 0x1715070513110301,
+                    0x1F1D0F0D1B190B09};
+ 
