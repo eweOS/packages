@@ -4,15 +4,15 @@
 pkgname=libutf8proc
 pkgver=2.9.0
 _sover=3
-pkgrel=2
+pkgrel=3
 pkgdesc='C library for processing UTF-8 encoded Unicode strings'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/JuliaStrings/utf8proc'
 license=(custom)
 makedepends=(cmake git ninja)
 source=("git+$url#tag=v$pkgver"
   libutf8proc.pc.in)
-sha256sums=('SKIP'
+sha256sums=('6cedaa080bebc16b7e4cb1e145fe44d5036fcea9d9425d922283f43284c766e3'
             '1d221111ba69df56fb94cd8384af82cb3a267e966baee8c1e32c92aa6c81d257')
 
 prepare()
