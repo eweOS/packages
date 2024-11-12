@@ -1,8 +1,9 @@
+
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=libvpx
 pkgver=1.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for the vp8/vp9 codecs'
 url='https://www.webmproject.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -24,15 +25,17 @@ build () {
   cd libvpx-$pkgver
   export CC=clang
   export LD=clang
-  ./configure	\
-    --prefix=/usr				\
-    --enable-postproc			\
-    --enable-vp9-postproc			\
-    --enable-vp8				\
-    --enable-vp9				\
-    --enable-vp9-highbitdepth		\
+  ./configure \
+    --prefix=/usr \
+    --enable-postproc \
+    --enable-vp9-postproc \
+    --enable-vp8 \
+    --enable-vp9 \
+    --enable-vp9-highbitdepth \
+    --disable-lsx \
+    --disable-lasx \
     --enable-shared
-	
+
   make
 }
 
