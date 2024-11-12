@@ -2,7 +2,7 @@
 
 pkgname=dav1d
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A new open-source AV1 decoder.'
 url='https://www.videolan.org/projects/dav1d.html'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,8 @@ sha256sums=('14bd6f5157808ed9aedcafbe50df689d304fd4810ac20be6eec1ab037436afd6')
 
 build () {
 	local arch_options=()
-	[ $CARCH = x86_64 ] && arch_options+=(-Denable_asm=true)
+	# ../dav1d-1.5.0/src/loongarch/loopfilter.S:732:50: error: invalid operand for instruction
+	[ $CARCH = loongarch64 ] && arch_options+=(-Denable_asm=false)
 	ewe-meson build dav1d-$pkgver \
 		-Denable_tools=true		\
 		-Denable_tests=true		\
