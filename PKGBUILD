@@ -6,10 +6,10 @@ pkgname=(
   json-glib-docs
 )
 pkgver=1.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="JSON library built on GLib"
 url="https://wiki.gnome.org/Projects/JsonGlib"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL)
 depends=(glib)
 makedepends=(
