@@ -2,10 +2,10 @@
 
 pkgname=libvpx
 pkgver=1.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for the vp8/vp9 codecs'
 url='https://www.webmproject.org/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD)
 depends=(musl)
 options=(!lto)
