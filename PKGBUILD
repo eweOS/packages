@@ -7,10 +7,10 @@ pkgname=(
   libadwaita-docs
 )
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Building blocks for modern adaptive GNOME applications"
 url="https://gnome.pages.gitlab.gnome.org/libadwaita/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-2.1-or-later)
 depends=(
   appstream
