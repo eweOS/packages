@@ -2,9 +2,9 @@
 
 pkgname=netease-cloud-music-gtk
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust + GTK-based NetEase Cloud Music Player for Linux"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/gmg137/netease-cloud-music-gtk"
 license=('GPL-3.0-or-later')
 depends=(
