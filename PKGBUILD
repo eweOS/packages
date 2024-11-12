@@ -2,10 +2,10 @@
 
 pkgname=binwalk
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to identify, and optionally extract, files and data that have been embedded inside of other files'
 url='https://github.com/ReFirmLabs/binwalk'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 depends=(libbz2 freetype2 fontconfig xz)
 makedepends=(rust)
