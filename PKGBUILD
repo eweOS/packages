@@ -2,19 +2,24 @@
 
 pkgname=graphviz
 pkgver=12.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source graph visualization software.'
 url='https://graphviz.org/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(EPL-1.0)
 depends=(musl expat libjpeg librsvg libwebp libpng freetype2 pango cairo glib
 	 libltdl)
-makedepends=(lua54 swig flex bison)
+makedepends=(lua54 swig flex bison autoconf)
 install=install
 source=("https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/$pkgver/graphviz-$pkgver.tar.gz"
 	"graphviz-update-config.hook")
 sha256sums=('f219ef266ffe68ba7d41eec8a716f1dfa1152e1987ff50f3b1dde6aa19f5d7de'
             '0bcd6093bb981eb85df76fe2b34237782cf4f54ad24def4b0feb8ad1e1263bcd')
+
+prepare () {
+    cd graphviz-"$pkgver"
+    cp /usr/share/autoconf/build-aux/{config.guess,config.sub,install-sh} ./config/
+}
 
 build () {
 	cd graphviz-"$pkgver"
