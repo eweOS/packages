@@ -2,10 +2,10 @@
 
 pkgname=gtk-session-lock
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 provides=(libgtk-session-lock.so=0-64)
 pkgdesc="A library to create screen lockers for Wayland using the ext-session-lock protocol"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL3)
 url="https://github.com/Cu3PO42/gtk-session-lock"
 depends=(
