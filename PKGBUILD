@@ -2,9 +2,9 @@
 
 pkgname=swww
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Efficient animated wallpaper daemon for wayland, controlled at runtime"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/Horus645/swww"
 license=('GPL')
 depends=('lz4' 'libxkbcommon')
