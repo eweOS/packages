@@ -3,10 +3,10 @@
 pkgname=atkmm-gtk3
 _pkgname=atkmm
 pkgver=2.28.4
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ bindings for ATK"
 url="https://www.cairographics.org/cairomm/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL MPL)
 depends=(atk glibmm-gtk3)
 makedepends=(meson mm-common perl-xml-parser)
