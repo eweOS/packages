@@ -2,9 +2,9 @@
 
 pkgname=sway
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://swaywm.org/'
 license=(MIT)
 depends=('cairo' 'json-c' 'libinput' 'seatd' 'libxkbcommon' 'mesa' 'pango'
