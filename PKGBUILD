@@ -2,9 +2,9 @@
 
 pkgname=(texlive-bin libsynctex)
 pkgver=20240312
-pkgrel=1
+pkgrel=2
 license=(GPL-2.0-or-later)
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 makedepends=(bash
              cairo
              clisp
