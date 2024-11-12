@@ -3,12 +3,12 @@
 pkgname=jade
 pkgver=1.3.5
 _pkgver=1.3.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Scriptable backend & TUI Installer for eweOS"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/eweOS/$pkgname"
 license=('GPL-3.0-only')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 _refcommit=284a5a2983600752fa46ea22a048a93c16cd5730
 source=("git+${url}.git")
 sha256sums=('SKIP')
