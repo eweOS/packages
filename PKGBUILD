@@ -3,11 +3,11 @@
 pkgbase=gtkgreet
 pkgname=greetd-gtk
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='GTK based greeter for greetd'
 url="https://git.sr.ht/~kennylevinsen/$pkgbase"
 license=(GPL3)
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=(greetd gtk3 json-c gtk-layer-shell)
 makedepends=(meson ninja scdoc)
 source=("$url/archive/${pkgver}.tar.gz")
