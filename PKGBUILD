@@ -3,10 +3,10 @@
 pkgbase=mtr
 pkgname=(mtr mtr-gtk)
 pkgver=0.95
-pkgrel=4
+pkgrel=5
 pkgdesc='Combines the functionality of traceroute and ping into one tool'
 url='https://www.bitwizard.nl/mtr/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL2')
 depends=('ncurses' 'libcap')
 makedepends=('gtk3')
