@@ -2,9 +2,9 @@
 
 pkgname=glm
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ mathematics library for 3D software based on the OpenGL Shading Language (GLSL) specification"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('MIT')
 url="http://glm.g-truc.net"
 makedepends=('cmake' 'ninja')
