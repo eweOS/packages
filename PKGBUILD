@@ -2,11 +2,11 @@
 
 pkgname=wdisplays
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI display configurator for wlroots compositors"
 url="https://github.com/artizirk/wdisplays"
 license=(GPL3)
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=(
   gtk3
   libepoxy
