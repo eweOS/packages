@@ -3,7 +3,7 @@
 pkgbase=greetd
 pkgname=(greetd greetd-agreety)
 pkgver=0.10.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Generic greeter daemon"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://git.sr.ht/~kennylevinsen/greetd"
@@ -27,6 +27,10 @@ prepare() {
   # we use vt 7 for graphical session
   sed -i 's/vt = 1/vt = 7/' config.toml
   sed -i 's@/bin/sh@/bin/bash@' config.toml
+
+  # loongarch64 requires newer libc
+  cargo update -p libc --precise 0.2.155
+  cargo fetch --locked --target "$RUSTHOST"
 }
 
 build() {
