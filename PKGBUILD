@@ -2,9 +2,9 @@
 
 pkgname=svt-av1
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Scalable Video Technology AV1 encoder and decoder'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://gitlab.com/AOMediaCodec/SVT-AV1
 license=(
   BSD
