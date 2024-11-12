@@ -2,10 +2,10 @@
 
 pkgname=libcdio
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Compact Disc Input and Control Library"
 url="https://www.gnu.org/software/libcdio/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL3)
 depends=(ncurses)
 makedepends=(git help2man texinfo linux-headers)
