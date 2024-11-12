@@ -2,9 +2,9 @@
 
 pkgname=libseccomp
 pkgver=2.5.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Enhanced seccomp library'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('LGPL-2.1-or-later')
 url="https://github.com/seccomp/libseccomp"
 depends=('linux-headers')
