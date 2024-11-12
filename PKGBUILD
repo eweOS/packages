@@ -2,10 +2,10 @@
 
 pkgname=swig
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Language binding tool for C/C++'
 url='https://www.swig.org/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(custom:SWIG)
 depends=(pcre2)
 source=("https://prdownloads.sourceforge.net/swig/swig-4.2.1.tar.gz")
