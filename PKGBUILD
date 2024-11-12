@@ -6,10 +6,10 @@ pkgname=(
   libproxy-docs
 )
 pkgver=0.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic proxy configuration management library"
 url="https://libproxy.github.io/libproxy/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-2.1-or-later)
 depends=(
   curl
