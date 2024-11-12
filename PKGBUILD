@@ -2,9 +2,9 @@
 
 pkgname='wlogout'
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Logout menu for wayland"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=("MIT")
 url="https://github.com/ArtsyMacaw/wlogout"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
