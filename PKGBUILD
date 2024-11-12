@@ -2,10 +2,10 @@
 
 pkgname=cairomm
 pkgver=1.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ bindings for Cairo"
 url="https://www.cairographics.org/cairomm/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL MPL)
 depends=(cairo libsigc++3)
 makedepends=(meson mm-common)
