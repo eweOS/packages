@@ -2,10 +2,10 @@
 
 pkgname=cbindgen
 pkgver=0.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for generating C bindings to Rust code"
 url="https://github.com/eqrion/cbindgen"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MPL-2.0)
 makedepends=(
   rust
