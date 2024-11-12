@@ -2,9 +2,9 @@
 
 pkgname=idump
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="tiny image viewer for framebuffer"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/uobikiemukot/idump"
 license=('MIT')
 depends=('libpng' 'libjpeg')
