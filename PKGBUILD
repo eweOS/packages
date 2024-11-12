@@ -2,10 +2,10 @@
 
 pkgname=d-spy
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="D-Bus debugger for GNOME"
 url="https://gitlab.gnome.org/GNOME/d-spy"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(
   GPL-3.0-or-later
   LGPL-3.0-or-later
