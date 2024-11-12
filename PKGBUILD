@@ -2,7 +2,7 @@
 
 pkgname=gparted
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A Partition Magic clone, frontend to GNU Parted'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://gparted.org/'
@@ -28,6 +28,7 @@ sha256sums=('9b9f51b3ce494ddcb59a55e1ae6679c09436604e331dbf5a536d60ded6c6ea5b')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
+  cp /usr/share/autoconf/build-aux/config.{guess,sub} .
   ./configure --prefix=/usr \
       --sbindir=/usr/bin \
       --libexecdir=/usr/lib/gparted \
