@@ -2,13 +2,13 @@
 
 pkgname=rofi
 pkgver=1.7.5.wayland1.r42.g5d4a3e14
-pkgrel=1
+pkgrel=2
 pkgdesc='A window switcher, application launcher and dmenu replacement (fork with Wayland support)'
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/lbonn/rofi'
 license=(MIT)
 depends=('libxkbcommon' 'wayland' 'glib' 'cairo' 'pango' 'gdk-pixbuf')
-makedepends=('git' 'meson' 'wayland-protocols')
+makedepends=('git' 'meson' 'wayland-protocols' 'linux-headers')
 source=("$pkgname::git+$url.git#branch=wayland"
         "git+https://github.com/sardemff7/libgwater.git"
         "git+https://github.com/sardemff7/libnkutils.git")
