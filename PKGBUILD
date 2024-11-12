@@ -2,10 +2,10 @@
 
 pkgname=imath
 pkgver=3.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics'
 url='https://www.openexr.com/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD-3-Clause)
 optdepends=('boost-libs: python bindings'
             'python: python bindings')
