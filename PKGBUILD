@@ -2,7 +2,7 @@
 
 pkgname=rav1e
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc='An AV1 encoder focused on speed and safety'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://github.com/xiph/rav1e/
@@ -29,6 +29,7 @@ pkgver() {
 
 prepare() {
   cp -f Cargo-rav1e-${pkgver}.lock rav1e/Cargo.lock
+  cargo update -p libc --precise 0.2.155 --manifest-path rav1e/Cargo.toml
   cargo fetch \
     --locked \
     --manifest-path rav1e/Cargo.toml
