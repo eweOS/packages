@@ -2,10 +2,10 @@
 
 pkgname=xdg-user-dirs
 pkgver=0.18
-pkgrel=5
+pkgrel=6
 pkgdesc="Manage user directories like ~/Desktop and ~/Music"
 url="https://www.freedesktop.org/wiki/Software/xdg-user-dirs"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL)
 makedepends=(docbook-xsl git)
 optdepends=('turnstile: for user service support')
@@ -13,7 +13,7 @@ backup=(etc/xdg/user-dirs.conf etc/xdg/user-dirs.defaults)
 options=(!emptydirs)
 source=("git+https://gitlab.freedesktop.org/xdg/xdg-user-dirs.git#tag=$pkgver"
         xdg-user-dirs-update.user.service)
-sha256sums=('SKIP'
+sha256sums=('a63a58e5a5541e7fde10a458231092be65d042e651f68840049c208b831d5611'
             'b5182186f37cea2146741fb645ad81c3976468c827b19aa1bce2be17c4ce4ccd')
 
 prepare() {
