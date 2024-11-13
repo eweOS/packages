@@ -17,4 +17,5 @@ floppy:x:26:
 audio:x:27:
 video:x:28:
 input:x:29:
+proc:x:30:
 nogroup:x:99:
