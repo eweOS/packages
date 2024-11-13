@@ -3,7 +3,7 @@ Type = Path
 Operation = Install
 Operation = Upgrade
 Operation = Remove
-Target = usr/lib/sysusers.d
+Target = usr/lib/sysusers.d/*
 
 [Action]
 Description = Reloading catnest config from sysusers.d...
