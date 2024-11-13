@@ -2,22 +2,21 @@
 
 pkgbase=dinit-services
 pkgname=dinit-services
-pkgver=20240924.2
-pkgrel=2
+pkgver=20241113.1
+pkgrel=1
 pkgdesc='Service monitoring / "init" system (service files)'
 url='https://github.com/eweOS/dinit-services'
 source=(
   "$pkgbase::git+$url.git#tag=$pkgver"
-  rc.local shutdown-hook
+  rc.local
 )
 arch=(any)
 license=(Apache)
 options=(emptydirs)
 makedepends=(git)
 depends=(dinit)
-sha256sums=('05bb09a6b497280b52acbd85f658ad57de8960337dc62bd3c605a791c5dd9db8'
-            '6d6e651bce957f8be540aaa84e5b5185610244fa0bc5b5945ad281be6cc9f2d0'
-            '9869773f5cd14c92d8107721b0ed866fec60e91d6b8a42e419719a8ee623c699')
+sha256sums=('542e7111b340bddc8d7336476a676228a9c677d5e51eadc2911fb274a37f3b9b'
+            '6d6e651bce957f8be540aaa84e5b5185610244fa0bc5b5945ad281be6cc9f2d0')
 
 package()
 {
@@ -32,5 +31,5 @@ package()
   cp -r ${srcdir}/$pkgbase/user-services/* ${pkgdir}/usr/lib/dinit.d/user/
   cp -r ${srcdir}/$pkgbase/exec/* ${pkgdir}/usr/lib/dinit/exec/
   install -d ${pkgdir}/usr/lib/dinit/exec/shutdown
-  install -m 0755 shutdown-hook ${pkgdir}/usr/lib/dinit/shutdown-hook
+  install -m 0755 ${srcdir}/$pkgbase/shutdown-hook ${pkgdir}/usr/lib/dinit/shutdown-hook
 }

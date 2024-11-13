@@ -1,3 +1,0 @@
-#!/bin/bash
-
-find /usr/lib/dinit/exec/shutdown -type f -executable -exec {} \& \;
