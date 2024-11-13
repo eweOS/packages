@@ -1,9 +1,7 @@
 type = process
-command = /sbin/getty tty@TTYNUM@ 115200
+command = /sbin/getty $1 115200
 restart = true
 termsignal = HUP
 smooth-recovery = true
-inittab-id = @TTYNUM@
-inittab-line = tty@TTYNUM@
 depends-on = rc.target
 before = login.target

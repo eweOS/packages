@@ -2,7 +2,7 @@
 
 pkgname=busybox
 pkgver=1.37.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.busybox.net"
@@ -44,7 +44,7 @@ sha256sums=('3311dff32e746499f4df0d5df04d7eb396382d7e108bb9250e7b519b837043a4'
             '69e028725a63763e21684fb0ce941f6a34a4b72bb328a0cab43b4d39d6d767dc'
             'd090013b1537d43c3925bf69cb6bcd8ca304b91774ceb1b944ae6edd8714ad1f'
             '9c6d96a3e0d044d0ebb39e00bcad0eceb98001146c807eea98b0685076ed1945'
-            '71a1983dfb80a34e3c11faab1aa490dd2edb2e057fa1db18cbce96a67a3398c3'
+            'ff1cd59bf41a658916459636b93bc98d8bfaf0482c5c879095c31116c88b0a00'
             '622d0a1743a127bab1fc15e5057034db52c7fa475298b8d085cfc7c046ae5537'
             '3557692ba310fc114459819f690fdf76047d67c8146dddbb4cc9ad7b8d931b64'
             'd6dc8bd5e9123e9352acfbb8754afe8e44a0a1e0a4539d309f7193a1d5ddc0fe'
@@ -116,14 +116,12 @@ package() {
     install -Dm 0755 "$srcdir/mdev-helper-$helper" $pkgdir/usr/bin/mdev-helper-$helper
   done
 
-  for service in ntpd syslogd udhcpc mdev acpid; do
+  for service in ntpd syslogd udhcpc mdev acpid getty; do
     _dinit_install_services_ $srcdir/${service}.service
   done
 
   for TTYNUM in 1 2 3 4 5 6; do
-    cat ${srcdir}/getty.service | sed "s/@TTYNUM@/$TTYNUM/g" > $srcdir/getty-tty$TTYNUM
-    _dinit_install_services_ $srcdir/getty-tty$TTYNUM
-    _dinit_enable_services_ getty-tty$TTYNUM
+    _dinit_enable_services_ getty@tty$TTYNUM
   done
 
   # Enable ntpd, acpid
