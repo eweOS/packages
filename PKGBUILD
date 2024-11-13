@@ -8,7 +8,7 @@ _minorver=0
 _securityver=1
 _updatever=11
 pkgver=$_majorver.$_minorver.$_securityver.u$_updatever
-pkgrel=1
+pkgrel=2
 _git_tag=jdk-$_majorver.$_minorver.$_securityver+$_updatever
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://openjdk.java.net/'
@@ -44,7 +44,7 @@ _commondeps=('ca-certificates-utils' 'nss' 'libjpeg'
            'lcms2' 'freetype2' 'harfbuzz' 'java-runtime-common')
 
 prepare() {
-  sed -i 's/%THIS_NAME%/java-${_majorver}-openjdk/' install_openjdk.sh
+  sed -i "s/%THIS_NAME%/java-${_majorver}-openjdk/" install_openjdk.sh
 
   _patch_ $_jdkdir
   cd $_jdkdir
