@@ -3,7 +3,7 @@
 pkgbase=base
 pkgname=(base base-baremetal)
 pkgver=1
-pkgrel=3
+pkgrel=4
 arch=('any')
 license=('GPL')
 
@@ -14,7 +14,7 @@ package_base() {
     'busybox' 'file'
     'util-linux' 'ca-certs'
     'gettext-tiny' 'xz'
-    'pacman'
+    'pacman' 'catnest'
   )
   optdepends=('base-baremetal: bare metal support')
 }
