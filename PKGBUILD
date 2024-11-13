@@ -3,7 +3,7 @@
 pkgname=catnest
 _commit="708d9351fc0bd8335508ac38c60295e391e90f70"
 pkgver=0.2.1.${_commit:0:7}
-pkgrel=4
+pkgrel=5
 pkgdesc="A substitution of systemd-sysusers"
 url="https://github.com/eweOS/catnest"
 license=(MIT)
@@ -16,9 +16,9 @@ source=(
   "basic.conf"
   "catnest-reload.hook"
 )
-sha256sums=('SKIP'
+sha256sums=('77eee89bf6bff93d62b07422f2aac275d11da04208bfea1d5c618ce9af245171'
             '37ac92afc1b5b79f72fffdd57c1771b8bc060f659b1e71c266da1d08982f65eb'
-            '23f9c703fb4cb7887cc91a3137e139f8d3b2b1bc43f2cb597c94a1707f47be58'
+            '4da0d59545032644ad7083da40f92783328ecc28b8e51a7eeb11e262a29bef55'
             'da464cea8c2c804b10f79efefaf57c9e8511d52d7e79cf2294ee50f3d6e241b3')
 
 prepare()
