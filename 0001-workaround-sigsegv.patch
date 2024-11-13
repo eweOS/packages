@@ -1,0 +1,30 @@
+diff --git a/src/backend/drm/impl/Atomic.cpp b/src/backend/drm/impl/Atomic.cpp
+index b031076..254f4f5 100644
+--- a/src/backend/drm/impl/Atomic.cpp
++++ b/src/backend/drm/impl/Atomic.cpp
+@@ -162,6 +162,10 @@ bool Aquamarine::CDRMAtomicRequest::commit(uint32_t flagssss) {
+         return false;
+     }
+ 
++    if (!conn.get()) {
++        return false;
++    }
++
+     if (auto ret = drmModeAtomicCommit(backend->gpu->fd, req, flagssss, &conn->pendingPageFlip); ret) {
+         backend->log((flagssss & DRM_MODE_ATOMIC_TEST_ONLY) ? AQ_LOG_DEBUG : AQ_LOG_ERROR,
+                      std::format("atomic drm request: failed to commit: {}, flags: {}", strerror(-ret), flagsToStr(flagssss)));
+@@ -337,6 +341,7 @@ bool Aquamarine::CDRMAtomicImpl::commit(Hyprutils::Memory::CSharedPointer<SDRMCo
+ }
+ 
+ bool Aquamarine::CDRMAtomicImpl::reset() {
++
+     CDRMAtomicRequest request(backend);
+ 
+     for (auto const& crtc : backend->crtcs) {
+@@ -365,4 +370,4 @@ bool Aquamarine::CDRMAtomicImpl::moveCursor(SP<SDRMConnector> connector, bool sk
+     }
+ 
+     return true;
+-}
+\ No newline at end of file
++}
