@@ -2,8 +2,8 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=fzf
-pkgver=0.55.0
-pkgrel=2
+pkgver=0.56.2
+pkgrel=1
 pkgdesc='Command-line fuzzy finder'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/junegunn/fzf'
@@ -15,7 +15,7 @@ optdepends=('fish: fish keybindings'
   'vim: plugin'
   'zsh: zsh keybindings')
 source=("git+https://github.com/junegunn/fzf.git#tag=v${pkgver}")
-sha512sums=('f9aa07dd4a950860caf776171ed4c489d336aa49bf976320367f8c597c8d140bf8de66e858dcd1fc8fc48d334117866e11224ffe34353e8c66ae19283a03c488')
+sha512sums=('2471ee5b6b2b2d0991e4e5c87e5e134002a1f50d68ee0d1477179ebe5b1fe8527233a06e8744ebdada6dba72b9ba9475e492883602e5ed16caafdd9e49547cb4')
 
 prepare()
 {
