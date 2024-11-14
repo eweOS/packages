@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=openh264
-pkgver=2.4.1
-pkgrel=3
+pkgver=2.5.0
+pkgrel=1
 pkgdesc='Open Source H264 Codec'
 url='https://github.com/cisco/openh264'
 arch=(x86_64 aarch64 riscv64)
@@ -12,7 +12,7 @@ makedepends=(nasm)
 checkdepends=(googletest)
 provides=(libopenh264.so)
 source=("https://github.com/cisco/openh264/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8ffbe944e74043d0d3fb53d4a2a14c94de71f58dbea6a06d0dc92369542958ea')
+sha256sums=('94c8ca364db990047ec4ec3481b04ce0d791e62561ef5601443011bdc00825e3')
 
 build () {
 	case "$CARCH" in
