@@ -4,7 +4,7 @@
 # Contributor: Firmicus <francois.archlinux.org> 
 
 pkgname=perl-uri
-pkgver=5.30
+pkgver=5.31
 pkgrel=1
 pkgdesc="Uniform Resource Identifiers (absolute and relative)"
 arch=('any')
@@ -15,7 +15,7 @@ checkdepends=('perl-test-needs' 'perl-test-warnings' 'perl-test-fatal')
 provides=('perl-uri-escape')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-$pkgver.tar.gz")
-sha512sums=('054c0ef59b1eb017e28dff9774b869b700b5cfe7234e2e7e37c70fe5d786459675e4d7600d84b785cf199e0b71e6e7d4490f00b6377044448e2637c2129858d8')
+sha512sums=('81bc29fbfc06c4b884bc5d47b6b7a3d171f526bb1edd6618aec6d72a65407c3130130dbfe31de18c439d03f5e60cfab6573352b1473959c6edc6e4ad828672c5')
 
 build() {
   cd URI-$pkgver
