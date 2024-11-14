@@ -6,7 +6,7 @@ pkgname=(
   amd-ucode
   $pkgbase-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x,iwlwifi,amdgpu,atheros,mediatek,whence}
 )
-pkgver=20241017
+pkgver=20241110
 pkgrel=1
 pkgdesc="Firmware files for Linux"
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
@@ -16,7 +16,7 @@ makedepends=('git' 'rdfind' 'symlinks' 'python')
 options=(!strip)
 source=("git+https://mirrors.tuna.tsinghua.edu.cn/git/linux-firmware.git#tag=$pkgver" fix-symlink.patch)
 #source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#tag=$pkgver")
-sha256sums=('aa1a14007b90e1c8c20ab7ac0224d340db4bc3481d54bf52182a773fd0828fdd'
+sha256sums=('48d3c1168fabdc519fad35ecda156c34284883400c8ed9a0e199c6296a87da85'
             '86046b3d56ccf28265aacc8dfdd2e0cad88e3c13139e934cb7f5b7cdd89c8d88')
 
 prepare() {
