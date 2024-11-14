@@ -2,15 +2,15 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libgpg-error
-pkgver=1.50
-pkgrel=2
+pkgver=1.51
+pkgrel=1
 pkgdesc="Support library for libgcrypt"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.gnupg.org"
 license=('LGPL')
 depends=('musl' 'sh')
 source=(https://www.gnupg.org/ftp/gcrypt/libgpg-error/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('6790fc3d6e7bbd7576654b43971bbe15e953ccc4')
+sha1sums=('0a9386ff70a5d1f771771bf0b8db2b956e292f13')
 
 prepare()
 {
