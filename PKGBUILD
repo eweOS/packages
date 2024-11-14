@@ -2,7 +2,7 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=c-ares
-pkgver=1.34.2
+pkgver=1.34.3
 pkgrel=1
 pkgdesc="A C library for asynchronous DNS requests"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ depends=('musl')
 makedepends=('cmake')
 provides=('libcares.so')
 source=("https://github.com/${pkgname}/${pkgname}/archive/v$pkgver.tar.gz")
-sha512sums=('0c4041ef3ec8e54d11826ae5ea3dbb3752fbd6dcfeb65c3777e56309dc0f4944068c24d54b39cced219c7ee440aae7a6704269558627c26a90001d872d99ded9')
+sha512sums=('bafe97923a316bb4c33f616448faa04b938f46336cdf26a38ab619faeabcaa88f285e645f4309b928995008e9a0ede232609d58ee344a1729a9e29a9cbe4d94c')
 
 build()
 {
