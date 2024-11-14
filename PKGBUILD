@@ -2,8 +2,8 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=ranger
-pkgver=1.9.3
-pkgrel=5
+pkgver=1.9.4
+pkgrel=1
 pkgdesc='Simple, vim-like file manager'
 arch=('any')
 url='https://ranger.github.io'
@@ -33,7 +33,7 @@ optdepends=(
     'w3m: for previews of images and html pages')
 checkdepends=('python-pytest')
 source=(https://ranger.github.io/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('5cd7bea714a6542d0a5445f5f0cf929b2df4377df3ef710f3786c6c46dd58b017a8060cde3969076637bfaac03c13297d3020fd82f4574dc49546ca223c0e8d3')
+sha512sums=('18cd1d66838a5f85176e6b7502521a7e449aaa0b12e97d62142d39f980c529c5b97a50f6fb8a65adb64612fa80450b1e13047327f7bcc005a494af4ab321e4d4')
 
 check() {
   cd ${pkgname}-${pkgver}
