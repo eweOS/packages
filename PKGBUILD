@@ -4,7 +4,7 @@ pkgname=(llvm llvm-tools llvm-devel llvm-libs llvm-lto lldb openmp lld clang fla
 _realpkgname=llvm-project
 pkgver=19.1.3
 _binutilsver=2.42
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -37,6 +37,7 @@ source=(
   0001-clang-force-libc-linked-with-no-as-needed-when-using.patch
   try-llvm-libunwind.patch
   check-before-using-glibc-f128-funcs.patch
+  typeinfo-comparison-2.patch
 )
 sha256sums=('324d483ff0b714c8ce7819a1b679dd9e4706cf91c6caf7336dc4ac0c1d3bf636'
             'f6e4d41fd5fc778b06b7891457b3620da5ecea1006c6a4a41ae998109f85a800'
@@ -44,7 +45,8 @@ sha256sums=('324d483ff0b714c8ce7819a1b679dd9e4706cf91c6caf7336dc4ac0c1d3bf636'
             'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94'
             '57808d224fd9218a936e6669bf4129eaf4aa04fbd45ab9f7fd5a20efc304e307'
             '13a1c761d41324c7a790df55650a3a98a9ade0348d6e88f1e269b6b77ce5df55'
-            '0284b8f27f0d6d809291f2ad36b325b8fb12a6a0c6765735e48b8b0182fc3064')
+            '0284b8f27f0d6d809291f2ad36b325b8fb12a6a0c6765735e48b8b0182fc3064'
+            'ad4cf06e0d616599369fe144d39d9eaaafec9b6ed99fa17a7a3faaab3911bfa5')
 
 _basedir=$_realpkgname-$pkgver.src
 
