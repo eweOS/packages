@@ -2,7 +2,7 @@
 
 pkgname=(linux linux-headers linux-devel linux-docs)
 _basename=linux
-pkgver=6.11.7
+pkgver=6.11.8
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
@@ -15,7 +15,7 @@ source=(
   0001-amdgpu-dml2-Increase-max-stack-size.patch
 )
 options=(!strip)
-sha256sums=('0bf5ec644817d7928920f763581311f5bf258a92759cf2f30985da743af3ebb2'
+sha256sums=('aee8a844fe152420bece70ffae8525b9b23089aa4da31fa32f30e1859bf93c3d'
             'SKIP'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd'
             '881a82cdf13ffcc0baa85e9cbde17595c5460646614b313a3c2d46915cb0c45b')
