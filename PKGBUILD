@@ -3,7 +3,6 @@
 pkgbase='mesa'
 pkgname=(
   mesa
-  libva-mesa-driver
   vulkan-swrast
   vulkan-virtio
   vulkan-intel
@@ -12,7 +11,7 @@ pkgname=(
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=24.2.7
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm')
 makedepends=(
@@ -100,12 +99,14 @@ build()
 
 package_mesa()
 {
+  provides=(
+    libva-mesa-driver mesa-libgl
+    libva-driver opengl-driver
+  )
+
   DESTDIR="${pkgdir}" meson install -C build
 
   cd $pkgdir
-
-  # libva-mesa-driver
-  _pick_ libva-mesa-driver usr/lib/dri/*_drv_video.so
 
   # vulkan-swrast
   _pick_ vulkan-swrast usr/share/vulkan/icd.d/lvp_icd*.json
@@ -133,26 +134,6 @@ package_mesa()
   # vulkan-panfrost
   _pick_ vulkan-panfrost usr/share/vulkan/icd.d/panfrost_*.json
   _pick_ vulkan-panfrost usr/lib/libvulkan_panfrost.so
-
-  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
-    -t "$pkgdir/usr/share/licenses/$pkgname"
-}
-
-package_libva-mesa-driver()
-{
-  pkgdesc="Open-source VA-API drivers"
-  depends=(
-    'expat'
-    'libdrm'
-    'libelf'
-    'llvm'
-    'llvm-libs'
-    'zlib'
-    'zstd'
-  )
-  provides=('libva-driver')
-
-  mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
 
   install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
     -t "$pkgdir/usr/share/licenses/$pkgname"
