@@ -6,7 +6,7 @@ pkgname=(
   librsvg-docs
 )
 pkgver=2.59.2
-pkgrel=1
+pkgrel=2
 pkgdesc="SVG rendering library"
 url="https://wiki.gnome.org/Projects/LibRsvg"
 arch=(x86_64 aarch64 riscv64 loongarch64)
