@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=openal-soft
-pkgver=1.23.1
-pkgrel=4
+pkgver=1.24.0
+pkgrel=1
 pkgdesc='A software implementation of the OpenAL 3D audio API'
 url='https://openal-soft.org'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(alsa-lib pipewire zlib-ng)
 makedepends=(cmake ninja)
 provides=(openal libopenal.so)
 source=("https://github.com/kcat/openal-soft/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('dfddf3a1f61059853c625b7bb03de8433b455f2f79f89548cbcbd5edca3d4a4a')
+sha256sums=('d3753f7aba798574ce2dc934e3c47dc655cd7a4652c038f2a860b0e81ff6d3dc')
 
 build () {
 	cmake openal-soft-$pkgver -B build -G Ninja \
