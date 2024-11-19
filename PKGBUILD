@@ -3,9 +3,10 @@
 pkgbase=pipewire
 pkgname=(
   pipewire libpipewire
+  gst-plugin-pipewire
 )
 pkgver=1.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -20,10 +21,14 @@ makedepends=(
   'libpulse'
   'alsa-lib'
   'glib'
+  'gstreamer-devel'
 )
 checkdepends=(
   desktop-file-utils
   openal
+)
+optdepends=(
+  'gst-plugin-pipewire: GStreamer plugin'
 )
 source=(
   "https://gitlab.freedesktop.org/pipewire/${pkgbase}/-/archive/${pkgver}/${pkgbase}-${pkgver}.tar.gz"
@@ -46,8 +51,6 @@ build()
   local features=(
     -D man=disabled
     -D docs=disabled
-    -D gstreamer=disabled
-    -D gstreamer-device-provider=disabled
     -D systemd=disabled
     -D logind=disabled
     -D systemd-user-service=disabled
@@ -143,6 +146,7 @@ package_pipewire()
   _pick_ lib usr/include/{$_pwname,$_spaname}
   _pick_ lib usr/lib/lib$_pwname.so*
   _pick_ lib usr/lib/pkgconfig/lib{$_pwname,$_spaname}.pc
+  _pick_ gst usr/lib/gstreamer-1.0
 }
 
 package_libpipewire() {
@@ -152,3 +156,18 @@ package_libpipewire() {
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $pkgbase-$pkgver/COPYING
 }
+
+package_gst-plugin-pipewire() {
+  pkgdesc+=" - pipewire plugin"
+  depends=(
+    glib2
+    gst-plugins-base-libs
+    gstreamer
+    lib$_pwname.so
+    pipewire
+  )
+  mv pkgs/gst/* "$pkgdir"
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $pkgbase-$pkgver/COPYING
+}
+
