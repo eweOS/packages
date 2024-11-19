@@ -3,7 +3,7 @@
 pkgname=qt6-wayland
 _qtver=6.7.2
 pkgver=${_qtver/-/}
-pkgrel=3
+pkgrel=4
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL-3.0-or-later LGPL-3.0-or-later FDL custom)
@@ -15,13 +15,15 @@ groups=(qt6)
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz"
 	"ensure-shell-surface.patch::https://invent.kde.org/qt/qt/qtwayland/-/commit/92bcb8f6b7a852c7a5d662fc34de561692a7a454.patch")
 sha256sums=('a2a057e1dd644bd44abb9990fecc194b2e25c2e0f39e81aa9fee4c1e5e2a8a5b'
-            '4f48c118fcabd9d60892eb739ca4338fcbf01a57f864eb3b9260e103c21ffb37')
+            '2faabf39e563c3b2c1719a05f2de582f70dd9bc028f630906206739dceae1ea2')
 
 prepare() {
 	_patch_ "$_pkgfn"
 }
 
 build() {
+  CXXFLAGS+=" -D_LIBCPP_TYPEINFO_COMPARISON_IMPLEMENTATION=2"
+
   export CMARGS=(
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_BUILD_TYPE=RelWithDebInfo
