@@ -1,16 +1,16 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wasi-libc
-pkgver=0+328+1dfe5c30
-_commit=9e8c542319242a5e536e14e6046de5968d298038
+pkgver=0+392+b9ef79d7
+_commit=b9ef79d7dbd47c6c5bafdae760823467c2f60b70 # tags/wasi-sdk-24
 pkgrel=1
 pkgdesc='WASI libc implementation for WebAssembly'
 arch=('any')
 url='https://github.com/WebAssembly/wasi-libc'
-license=('Apache' 'MIT')
+license=('Apache-2.0 WITH LLVM-exception AND Apache-2.0 AND MIT')
 makedepends=('git' 'llvm' 'clang')
 source=("git+https://github.com/WebAssembly/wasi-libc.git#commit=${_commit}")
-sha256sums=('SKIP')
+sha256sums=('f10dc387ca7aa5b59c557a212515871d06f12a5afd463568b1683a31a864c15c')
 options=('staticlibs')
 
 pkgver()
@@ -28,13 +28,19 @@ build()
     AR=ar
     WASM_NM=/usr/bin/llvm-nm
     NM=nm
-    # Remove bulk memory support
-    # https://bugzilla.mozilla.org/show_bug.cgi?id=1773200#c4
-    BULK_MEMORY_SOURCES=
+  )
+  local -A targets=(
+    wasm32-wasi           ''
+    wasm32-wasip1         ''
+    wasm32-wasip1-threads 'THREAD_MODEL=posix'
+    wasm32-wasip2         'WASI_SNAPSHOT=p2'
   )
 
   cd ${pkgname}
-  make "${make_options[@]}"
+
+  for target in "${!targets[@]}"; do
+    make "${make_options[@]}" TARGET_TRIPLE="$target" ${targets[$target]}
+  done
 }
 
 package()
@@ -42,4 +48,5 @@ package()
   cd ${pkgname}
   install -dm755 "${pkgdir}"/usr/share
   cp -dr -p sysroot "${pkgdir}"/usr/share/wasi-sysroot
+  install -Dm644 LICENSE* -t "${pkgdir}"/usr/share/licenses/${pkgname}
 }
