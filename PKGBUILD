@@ -2,12 +2,13 @@
 
 pkgname=xdg-desktop-portal
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://flatpak.github.io/xdg-desktop-portal/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL)
 depends=(
+  geoclue
   glib
   json-glib
   pipewire
@@ -19,6 +20,7 @@ makedepends=(
   docbook-xsl
   flatpak
   git
+  libportal
   meson
   xmlto
   python-packaging
@@ -34,8 +36,6 @@ prepare() {
 build() {
   local features=(
     -D documentation=disabled	# missing python-sphinx
-    -D geoclue=disabled
-    -D libportal=disabled
     -D systemd=disabled
     -D man-pages=disabled
     -D pytest=disabled
