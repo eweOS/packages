@@ -2,7 +2,7 @@
 
 pkgname=pavucontrol
 pkgver=6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="PulseAudio Volume Control"
 url="https://freedesktop.org/software/pulseaudio/pavucontrol/"
 arch=(x86_64 aarch64 riscv64)
@@ -13,10 +13,10 @@ depends=(
   gtk4
   gtkmm
   json-glib
+  libcanberra
   libpulse
   libsigc++3
 )
-#TODO: libcanberra to depends
 makedepends=(
   git
   meson
