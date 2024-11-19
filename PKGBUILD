@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=minetest
-pkgver=5.9.1
+pkgver=5.10.0
 pkgrel=1
 pkgdesc='An open source voxel game-creation platform with easy modding and game creation'
 url='https://www.minetest.net/'
@@ -13,7 +13,7 @@ depends=(libjpeg libpng sdl2 freetype2 sqlite zlib zstd luajit gmp jsoncpp
 # missing doxygen
 makedepends=(cmake)
 source=("https://github.com/minetest/minetest/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('aa9a6ae57445b779f57dcba5a83b0704fabd24c5eca37c6c8611e885bdf09d7c')
+sha256sums=('2a3161c04e7389608006f01280eda30507f8bacfa1d6b64c2af1b820a62d2677')
 
 build () {
 	# disabled features:
