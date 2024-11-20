@@ -2,8 +2,8 @@
 
 pkgbase=python
 pkgname=(python python-tests)
-pkgver=3.12.7
-pkgrel=3
+pkgver=3.13.0
+pkgrel=1
 _pybasever=${pkgver%.*}
 pkgdesc='The Python programming language'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -23,7 +23,7 @@ source=(
   "https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
   musl-find_library.patch
 )
-sha256sums=('24887b92e2afd4a2ac602419ad4b596372f67ac9b077190f459aba390faf5550'
+sha256sums=('086de5882e3cb310d4dca48457522e2e48018ecd43da9cdf827f6a0759efb07d'
             '055a00bef64a9c22d746be5e9072d09b303e21cf0865daed1d7a67210207fb4f')
 
 prepare()
@@ -31,12 +31,10 @@ prepare()
   _patch_ Python-${pkgver}
   cd Python-${pkgver}
 
-  # FS#23997
-  sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
-
   # Ensure that we are using the system copy of various libraries
   # rather than copies shipped in the tarball
   rm -r Modules/expat
+  rm -r Modules/_decimal/libmpdec
 
   # Ignore "x86_64-linux-gnu" output for "cc --print-multiarch"
   sed -i 's@--print-multiarch@@g' ./configure
@@ -53,7 +51,6 @@ build()
     --with-computed-gotos \
     --enable-ipv6 \
     --with-system-expat \
-    --enable-optimizations \
     --with-lto \
     --enable-shared \
     --without-static-libpython \
