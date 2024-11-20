@@ -2,9 +2,9 @@
 
 _comp=serialport
 pkgname=qt6-$_comp
-_qtver=6.7.2
+_qtver=6.8.0
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -17,7 +17,7 @@ makedepends=(cmake
 groups=(qt6)
 _pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('21c34cd1161cb5197bcec662d26a17647b59b6fdff5c364576883c42dbd3b4fc')
+sha256sums=('7767d72ecfadb1045c50d0b30b952327c242a6eb40a46780e8e01b75ad77e7c3')
 
 build() {
   export CMARGS=(
