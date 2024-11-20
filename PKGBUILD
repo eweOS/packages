@@ -1,7 +1,7 @@
 # Maintainer: YukariChiba <i@0x7f.cc>
 
 pkgname="hyprland"
-pkgver=0.45.1
+pkgver=0.45.2
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -41,7 +41,7 @@ makedepends=(
   linux-headers
 )
 source=("$pkgname::git+$url#tag=v$pkgver")
-sha256sums=('1d973d5ed28f8fc3b80b6f7e0511ff4b79c6fd50b7e6128c555acf3dfcd0df95')
+sha256sums=('eababa4c2b6da7a4029d361f1201a2e2f41e6740b36f54e50f0cb225ebd67111')
 
 build() {
   cd "$srcdir"
