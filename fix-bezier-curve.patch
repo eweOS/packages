@@ -1,0 +1,25 @@
+--- qtquick3d-everywhere-src-6.8.0/src/3rdparty/embree/kernels/geometry/pointi.h
++++ qtquick3d-everywhere-src-6.8.0-new/src/3rdparty/embree/kernels/geometry/pointi.h
+@@ -210,9 +210,9 @@
+     };
+ 
+     /*! output operator */
+-    friend __forceinline embree_ostream operator<<(embree_ostream cout, const PointMi& line)
++    friend __forceinline embree_ostream operator<<(embree_ostream cout, const PointMi& point)
+     {
+-      return cout << "Line" << M << "i {" << line.v0 << ", " << line.geomID() << ", " << line.primID() << "}";
++      return cout << "Point" << M << "i {" << point.geomID() << ", " << point.primID() << "}";
+     }
+ 
+    public:
+--- qtquick3d-everywhere-src-6.8.0/src/3rdparty/embree/kernels/subdiv/bezier_curve.h
++++ qtquick3d-everywhere-src-6.8.0-new/src/3rdparty/embree/kernels/subdiv/bezier_curve.h
+@@ -135,7 +135,7 @@
+       }
+       
+       friend embree_ostream operator<<(embree_ostream cout, const QuadraticBezierCurve& a) {
+-        return cout << "QuadraticBezierCurve ( (" << a.u.lower << ", " << a.u.upper << "), " << a.v0 << ", " << a.v1 << ", " << a.v2 << ")";
++        return cout << "QuadraticBezierCurve (" << a.v0 << ", " << a.v1 << ", " << a.v2 << ")";
+       }
+     };
+   

@@ -1,8 +1,9 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-quick3d
-pkgver=6.7.2
-pkgrel=2
+_qtver=6.8.0
+pkgver=${_qtver/-/}
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3)
@@ -18,9 +19,17 @@ makedepends=(assimp
              ninja)
 optdepends=('assimp: assimp import plugin')
 groups=(qt6)
-_pkgfn=${pkgname/6-/}
-source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver)
-sha256sums=('b531bcd15d2a0342cf0915e44bc13eefa22a1ee0c10cf94cb3e3ed870cccf214')
+_pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
+source=(
+  https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
+  fix-bezier-curve.patch
+)
+sha256sums=('3e95044ee2da33db1a6fa3f834b09e71b2491c4899bac3a3bdf0c10b06f0223f'
+            '15e8c0d30873abd3060eb02e9671861b56c43dfc9cc0432fd968e5f5ab109349')
+
+prepare() {
+  _patch_ $_pkgfn
+}
 
 build() {
   export CMARGS=(
