@@ -3,7 +3,7 @@
 pkgname=qt6-shadertools
 _qtver=6.8.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -19,9 +19,10 @@ build() {
   export CMARGS=(
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_BUILD_TYPE=RelWithDebInfo
-    -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
     -DCMAKE_MESSAGE_LOG_LEVEL=STATUS
   )
+
+  check_option lto y && CMARGS+=(-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON)
 
   export DIRARGS=(
     -DINSTALL_BINDIR=lib/qt6/bin
