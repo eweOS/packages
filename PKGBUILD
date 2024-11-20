@@ -1,28 +1,48 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-base
-_qtver=6.7.2
+_qtver=6.8.0
 pkgver=${_qtver/-/}
-pkgrel=5
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
-license=(GPL3 LGPL3 FDL custom)
+license=(GPL-3.0-only
+         LGPL-3.0-only
+         LicenseRef-Qt-Commercial
+         Qt-GPL-exception-1.0)
 pkgdesc='A cross-platform application and UI framework'
 _pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
 depends=(libjpeg fontconfig vulkan-headers
          shared-mime-info sqlite mesa icu openssl
-         libinput libxkbcommon dbus harfbuzz wayland)
-makedepends=(cmake ninja linux-headers wayland-protocols)
+         libinput libxkbcommon dbus harfbuzz wayland
+         libproxy)
+makedepends=(cmake ninja linux-headers wayland-protocols gtk3)
+optdepends=('freetds: MS SQL driver'
+            'gdk-pixbuf2: GTK platform plugin'
+            'gtk3: GTK platform plugin'
+            'libfbclient: Firebird/iBase driver'
+            'mariadb-libs: MariaDB driver'
+            'pango: GTK platform plugin'
+            'perl: for syncqt'
+            'postgresql-libs: PostgreSQL driver'
+            'qt6-wayland: to run Qt6 applications in a Wayland session'
+            'unixodbc: ODBC driver')
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
         qt6-base-cflags.patch
-        qt6-base-nostrip.patch)
-sha256sums=('c5f22a5e10fb162895ded7de0963328e7307611c688487b5d152c9ee64767599'
+        qt6-base-nostrip.patch
+        0001-QThread-Unix-refactor-to-split-QThreadPrivate-finish.patch)
+sha256sums=('1bad481710aa27f872de6c9f72651f89a6107f0077003d0ebfcc9fd15cba3c75'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
-            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
+            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094'
+            '352cab05d413c0d2f0065923851ffd962822ca454ec70e19bc071857d3abfdf7')
 
 prepare() {
-  patch -d $_pkgfn -p1 < qt6-base-cflags.patch # Use system CFLAGS
-  patch -d $_pkgfn -p1 < qt6-base-nostrip.patch # Don't strip binaries with qmake
+  _patch_ $_pkgfn
+  # qt6-base-cflags.patch: Use system CFLAGS
+  # qt6-base-nostrip.patch: Don't strip binaries with qmake
+  # 0001-QThread-Unix-refactor-to-split-QThreadPrivate-finish.patch: 
+  #   https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/75516
+
 }
 
 build() {
