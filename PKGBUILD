@@ -4,9 +4,10 @@ pkgbase=qt6-multimedia
 pkgname=(qt6-multimedia
          qt6-multimedia-ffmpeg
          qt6-multimedia-gstreamer)
-pkgver=6.7.2
+_qtver=6.8.0
+pkgver=${_qtver/-/}
 pkgrel=1
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Classes for audio, video, radio and camera functionality'
@@ -23,9 +24,9 @@ makedepends=(cmake
              qt6-quick3d
              qt6-shadertools)
 groups=(qt6)
-_pkgfn=${pkgname/6-/}
-source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver)
-sha256sums=('20ef112e2f6dc07dd8e8b2f2f72b4c8ffe510367ac3f301b76ea7514f5535169')
+_pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
+source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
+sha256sums=('28766aa562fa7aa7dfa8420defd6ece90a891a0496b8d8a4c51958182d73cfcd')
 
 build() {
   export CMARGS=(
@@ -63,12 +64,12 @@ package_qt6-multimedia() {
 # Split plugins
   rm -r "$pkgdir"/usr/lib/qt6/plugins/
   rm "$pkgdir"/usr/lib/cmake/Qt6Multimedia/Qt6Q{FFmpeg,Gstreamer}*
-  rm -r "$pkgdir"/usr/include/qt6/QtQGstreamerMediaPlugin \
-        "$pkgdir"/usr/lib/cmake/Qt6QGstreamerMediaPluginPrivate \
-        "$pkgdir"/usr/lib/libQt6QGstreamerMediaPlugin.a \
-        "$pkgdir"/usr/lib/qt6/metatypes/qt6qgstreamermediapluginprivate_relwithdebinfo_metatypes.json \
-        "$pkgdir"/usr/lib/qt6/mkspecs/modules/qt_lib_qgstreamermediaplugin_private.pri \
-        "$pkgdir"/usr/lib/qt6/modules/QGstreamerMediaPluginPrivate.json
+  rm -r "$pkgdir"/usr/include/qt6/QtQGstreamerMediaPluginImpl \
+        "$pkgdir"/usr/lib/cmake/Qt6QGstreamerMediaPluginImplPrivate \
+        "$pkgdir"/usr/lib/libQt6QGstreamerMediaPluginImpl.a \
+        "$pkgdir"/usr/lib/qt6/metatypes/qt6qgstreamermediapluginimplprivate_relwithdebinfo_metatypes.json \
+        "$pkgdir"/usr/lib/qt6/mkspecs/modules/qt_lib_qgstreamermediapluginimpl_private.pri \
+        "$pkgdir"/usr/lib/qt6/modules/QGstreamerMediaPluginImplPrivate.json
 
   install -d "$pkgdir"/usr/share/licenses
   ln -s /usr/share/licenses/qt6-base "$pkgdir"/usr/share/licenses/$pkgname
