@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-quicktimeline
-pkgver=6.7.2
-pkgrel=2
+pkgver=6.8.0
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -15,7 +15,7 @@ makedepends=(cmake
 groups=(qt6)
 _pkgfn=${pkgname/6-/}
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver)
-sha256sums=('0af45b0708787120bddb8ec4d886d21aec6788637943715a67268392985e79cd')
+sha256sums=('4159ed8048b922c646576f2181156cce56cbc770519aa530d6e6abd6d96a4c46')
 
 build() {
   export CMARGS=(
