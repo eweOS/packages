@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-networkauth
-pkgver=6.7.2
-pkgrel=2
+pkgver=6.8.0
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -12,7 +12,7 @@ makedepends=(cmake git ninja)
 groups=(qt6)
 _pkgfn=${pkgname/6-/}
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver)
-sha256sums=('dad2b7be351f2722ae4c768b15e6c489152434be9d7ba68fafeaaa5fb3db63dd')
+sha256sums=('46c1d112304abe5c6967c3beac8d0cddd5832dce8a0078b2b8b3ae89793dbb81')
 
 build() {
   export CMARGS=(
