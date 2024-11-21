@@ -2,9 +2,9 @@
 
 pkgname=fluidsynth
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A real-time software synthesizer based on the SoundFont 2 specifications"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.fluidsynth.org/"
 license=(LGPL-2.1-or-later)
 groups=(pro-audio)
