@@ -4,7 +4,7 @@
 pkgname=(go go-doc)
 epoch=2
 pkgver=1.23.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://golang.org/'
@@ -45,6 +45,12 @@ build()
   export GOROOT_BOOTSTRAP=/usr/lib/go
   export CC=/usr/bin/cc
 
+  # internal link is needed in check()
+  unset GOFLAGS
+  unset CGO_LDFLAGS
+  unset CGO_CXXFLAGS
+  unset CGO_CFLAGS
+
   cd "$pkgname/src"
   ./make.bash -v
 }
@@ -57,6 +63,11 @@ check()
   # exec: "gcc": executable file not found in $PATH on cmd/internal/testdir
   if [ $CARCH != riscv64 ] && [ $CARCH != loongarch64 ]; then
     cd $pkgname/src
+    # internal link is needed in check()
+    unset GOFLAGS
+    unset CGO_LDFLAGS
+    unset CGO_CXXFLAGS
+    unset CGO_CFLAGS
     # syscall no privilege, cgo test failed, see https://github.com/golang/go/issues/39857
     # +plugins: https://github.com/golang/go/issues/46560
     ./run.bash --no-rebuild -run '!(^cgo_test$|syscall|runtime|plugin)'
