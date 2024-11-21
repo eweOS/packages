@@ -5,7 +5,7 @@ pkgname=(
   libshumate
   libshumate-docs
 )
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Map widget for GTK 4"
 url="https://wiki.gnome.org/Projects/libshumate"
@@ -35,14 +35,8 @@ makedepends=(
 checkdepends=(weston)
 source=(
   "git+https://gitlab.gnome.org/GNOME/libshumate.git#tag=${pkgver/[a-z]/.&}"
-  fix-test.patch
 )
-sha256sums=('560b3ff0bb95e06ff60d3e4a850fec00a5bd0ab26563b2e64c4246f979a58564'
-            '271aac8098b23e8df3ed1f13588b462c55792c21911db5f975469d71078b00ef')
-
-prepare() {
-  _patch_ $pkgname
-}
+sha256sums=('55ba08cc953e8b71edfbfe927cedf8b343a45c117a641bc537a0539338538f05')
 
 build() {
   local meson_options=(
