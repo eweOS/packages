@@ -3,10 +3,10 @@
 pkgbase=ghostscript
 pkgname=(ghostscript ghostxps ghostpcl)
 pkgver=10.03.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An interpreter for the PostScript language"
 url="https://www.ghostscript.com/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('AGPL-3.0-or-later')
 depends=('libcups' 'fontconfig' 'zlib' 'libpng' 'libjpeg' 'jbig2dec'
          'libtiff' 'lcms2' 'libpaper' 'openjpeg2' 'libidn'
