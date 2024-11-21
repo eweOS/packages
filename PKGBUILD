@@ -2,9 +2,9 @@
 
 pkgname=libnewt
 pkgver=0.52.24
-pkgrel=1
+pkgrel=2
 pkgdesc="Not Erik's Windowing Toolkit - text mode windowing with slang"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://pagure.io/newt'
 license=(GPL)
 depends=(popt slang)
