@@ -1,0 +1,11 @@
+--- mpfr-4.2.1/src/mpfr-longlong.h
++++ mpfr-4.2.1-new/src/mpfr-longlong.h
+@@ -1168,7 +1168,7 @@
+   do {									\
+     UDItype __u = (u), __v = (v);					\
+     (w0) = __u * __v;							\
+-    (w1) = (unsigned __int128__) __u * __v >> 64;			\
++    (w1) = (unsigned __int128) __u * __v >> 64;			\
+   } while (0)
+ #endif
+ 
