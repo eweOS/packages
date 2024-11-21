@@ -3,7 +3,7 @@
 pkgname=qt6-quick3d
 _qtver=6.8.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3)
@@ -23,9 +23,11 @@ _pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
   fix-bezier-curve.patch
+  fix-loongarch64.patch
 )
 sha256sums=('3e95044ee2da33db1a6fa3f834b09e71b2491c4899bac3a3bdf0c10b06f0223f'
-            '15e8c0d30873abd3060eb02e9671861b56c43dfc9cc0432fd968e5f5ab109349')
+            '15e8c0d30873abd3060eb02e9671861b56c43dfc9cc0432fd968e5f5ab109349'
+            '5e9ee7be367a4cac9c882cef7f13331eaf25b2c21e269a07ce7720610892b36b')
 
 prepare() {
   _patch_ $_pkgfn

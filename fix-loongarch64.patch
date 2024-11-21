@@ -1,0 +1,11 @@
+--- qtquick3d-everywhere-src-6.8.0/src/3rdparty/openxr/src/common/platform_utils.hpp
++++ qtquick3d-everywhere-src-6.8.0-new/src/3rdparty/openxr/src/common/platform_utils.hpp
+@@ -71,6 +71,8 @@
+ #define XR_ARCH_ABI "riscv64"
+ #elif defined(__sparc__) && defined(__arch64__)
+ #define XR_ARCH_ABI "sparc64"
++#elif defined(__loongarch64) || defined(_LOONGARCH_ARCH_LOONGARCH64)
++#define XR_ARCH_ABI "loongarch64"
+ #else
+ #error "No architecture string known!"
+ #endif
