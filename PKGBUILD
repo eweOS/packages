@@ -2,9 +2,9 @@
 
 pkgname=qpdf
 pkgver=11.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="QPDF: A Content-Preserving PDF Transformation System"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/qpdf/qpdf"
 license=('Apache-2.0' 'Artistic-2.0')
 makedepends=('libjpeg' 'zlib' 'openssl' 'cmake')
