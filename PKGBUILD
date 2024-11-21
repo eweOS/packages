@@ -1,0 +1,26 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgname=lxqt-menu-data
+pkgver=2.1.0
+pkgrel=1
+pkgdesc='LXQt menu files'
+arch=(any)
+url='https://github.com/lxqt/lxqt-menu-data'
+license=('GPL' 'LGPL')
+makedepends=(cmake lxqt-build-tools qt6-tools)
+source=(
+  "https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
+)
+sha512sums=('3546fad2ae1ce571c93a34328912c5ffa95e7107197e74ac691b4f721130c69449166d28c57aeba5429593d28d581643ae9811c811c92f46b8c858dfd7997b1f')
+
+build() {
+  cmake -B build -S $pkgname-$pkgver \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=None
+  make -C build
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}
