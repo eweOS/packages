@@ -2,9 +2,9 @@
 
 pkgname=libmpdclient
 pkgver=2.22
-pkgrel=1
+pkgrel=2
 pkgdesc="C library to implement a MPD client"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.musicpd.org/libs/libmpdclient/"
 license=(BSD-2-Clause BSD-3-Clause)
 makedepends=(meson)
