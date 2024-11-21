@@ -3,13 +3,13 @@
 pkgbase=libfm
 pkgname=(libfm libfm-extra libfm-gtk3)
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for file management'
 url='https://lxde.org/'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 license=('GPL')
 depends=('gtk3' 'libexif' 'menu-cache')
-makedepends=('intltool' 'gtk-doc')
+makedepends=('intltool' 'gtk-doc' 'vala')
 source=(https://downloads.sourceforge.net/pcmanfm/libfm-$pkgver.tar.xz)
 sha256sums=('a5042630304cf8e5d8cff9d565c6bd546f228b48c960153ed366a34e87cad1e5')
 
@@ -30,7 +30,8 @@ build() {
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --with-gnu-ld \
-    --with-gtk=3
+    --with-gtk=3 \
+    --enable-gtk-doc
 
   #https://bugzilla.gnome.org/show_bug.cgi?id=656231
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
