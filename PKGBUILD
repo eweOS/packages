@@ -2,10 +2,10 @@
 
 pkgname=openexr
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A high dynamic-range image file format library'
 url='https://www.openexr.com/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD-3-Clause)
 depends=(imath libdeflate)
 makedepends=(cmake)
