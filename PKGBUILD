@@ -2,9 +2,9 @@
 
 pkgname=libspiro
 pkgver=20240903
-pkgrel=1
+pkgrel=2
 pkgdesc='Library that simplifies the drawing of beautiful curves'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/fontforge/libspiro'
 license=(GPL-3.0-or-later)
 makedepends=(git)
