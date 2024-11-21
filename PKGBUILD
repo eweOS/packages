@@ -4,7 +4,7 @@
 
 pkgname=typespeed
 pkgver=0.6.5
-pkgrel=12
+pkgrel=13
 pkgdesc="Test your typing speed, and get your fingers' CPS."
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://typespeed.sourceforge.net"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('ncurses')
 _config_githash='4ad4bb7c30aca1e705448ba8d51a210bbd47bb52'
 _config_url='http://git.savannah.gnu.org/gitweb/?p=config.git'
-source=(https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz
+source=(https://altushost-swe.dl.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz
 	"config.sub::${_config_url};a=blob_plain;f=config.sub;hb=${_config_githash}"
 	"config.guess::${_config_url};a=blob_plain;f=config.guess;hb=${_config_githash}")
 sha256sums=('5c860385ceed8a60f13217cc0192c4c2b4705c3e80f9866f7d72ff306eb72961'
