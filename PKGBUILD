@@ -2,7 +2,7 @@
 
 pkgname=ell
 pkgver=0.70
-pkgrel=3
+pkgrel=4
 pkgdesc='Embedded Linux library'
 url='https://git.kernel.org/pub/scm/libs/ell/ell.git/about/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -25,6 +25,12 @@ prepare() {
 	# disable sysctl tests: may fail in container
 	sed -i "$pkgname/Makefile.am" \
 		-e 's/unit\/test-sysctl//g'
+
+	# disable test-uuid: many riscv64 devices lack needed kernel config
+	# https://bugs.gentoo.org/657352
+	[ "$CARCH" != "riscv64" ] || \
+		sed -i "$pkgname/Makefile.am" \
+			-e 's/unit\/test-uuid//g'
 }
 
 build () {
