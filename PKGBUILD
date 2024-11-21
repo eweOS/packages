@@ -2,7 +2,7 @@
 
 pkgname=gd
 pkgver=2.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Library for the dynamic creation of images by programmers"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://libgd.github.io/"
@@ -36,6 +36,11 @@ prepare() {
 
 build() {
   cd libgd-${pkgname}-${pkgver}
+  if [ "$CARCH" == "loongarch64" ]; then
+    # fix test gdimagecopyresampled/bug00201
+    # https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=278105
+    CFLAGS+=" -ffp-contract=off"
+  fi
 
   ./bootstrap.sh
   ./configure \
