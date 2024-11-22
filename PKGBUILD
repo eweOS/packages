@@ -2,7 +2,7 @@
 
 pkgname=geoclue
 pkgver=2.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Modular geoinformation service built on the D-Bus messaging system"
 url="https://gitlab.freedesktop.org/geoclue/geoclue/-/wikis/home"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -57,6 +57,6 @@ package() {
   echo 'u geoclue - "Geoinformation service" /var/lib/geoclue' |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/geoclue.conf"
 
-  echo 'd /var/lib/geoclue 0755 geoclue geoclue' |
+  echo 'd /var/lib/geoclue 0755 geoclue geoclue -' |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/geoclue.conf"
 }
