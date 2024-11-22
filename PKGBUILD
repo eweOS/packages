@@ -3,7 +3,7 @@
 pkgbase=base
 pkgname=(base base-baremetal)
 pkgver=1
-pkgrel=4
+pkgrel=5
 arch=('any')
 license=('GPL')
 
@@ -23,7 +23,7 @@ package_base-baremetal() {
   pkgdesc='Minimal package set to define a baremetal eweOS installation'
   depends=(
     'base' 'pciutils' 'dinit' 'dinit-services'
-    'limine' 'tinyramfs'
+    'limine' 'tinyramfs' 'kmod'
   )
   optdepends=(
     'linux: linux kernel (stable)'
