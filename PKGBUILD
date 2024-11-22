@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=js128
-pkgver=128.3.1
-pkgrel=2
+pkgver=128.4.0
+pkgrel=1
 pkgdesc="JavaScript interpreter and libraries - Version 128"
 url="https://spidermonkey.dev/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -26,7 +26,7 @@ source=(
   https://archive.mozilla.org/pub/firefox/releases/$_relver/source/firefox-$_relver.source.tar.xz
   mozconfig
 )
-sha256sums=('c1f4052f3a88d96a122551d5025053304007f7649886d5e2fdfd1a11ce3d70a8'
+sha256sums=('074014e1c26144e10707b12a271176a4b6b67021e91444b613edae38d188febc'
             'a76d1f0802ec486c9212f45541cab02aa1027e05d10ccc3becb68eadd762cc3e')
 
 # Make sure the duplication between bin and lib is found
@@ -35,6 +35,9 @@ COMPRESSZST+=(--long)
 prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
+
+  # fix for icu 76
+  sed -i 's/icu-i18n/icu-uc &/' js/moz.configure
 
   echo "ac_add_options --target=$CARCH-unknown-linux-musl" >> .mozconfig
   echo "ac_add_options --host=$CARCH-unknown-linux-musl" >> .mozconfig
