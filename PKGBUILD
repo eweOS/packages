@@ -1,16 +1,16 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=nspr
-pkgver=4.35
-pkgrel=3
+pkgver=4.36
+pkgrel=1
 pkgdesc="Netscape Portable Runtime"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSPR"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MPL GPL)
 makedepends=(mercurial autoconf)
-_revision=b563bfc16c887c48b038b7b441fcc4e40a126d3b
+_revision=9bee7f5d1af535aae05d7511fade18462e2fcab2
 source=("hg+https://hg.mozilla.org/projects/nspr#revision=$_revision")
-sha256sums=('SKIP')
+sha256sums=('2a8157ca62b6530792249ca28c614622be80a4594aa02ae8817083b0df861126')
 
 pkgver() {
   cd nspr
