@@ -2,7 +2,7 @@
 
 pkgname=busybox
 pkgver=1.37.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.busybox.net"
@@ -29,13 +29,10 @@ source=(
   "mdev-helper-storage-device"
   "mdev-helper-dev-bus-usb"
   "acpid.service"
-  "detect-compressed-module.patch"
-  "modprobe-S-option.patch"
-  "modinfo-k-option.patch"
   "sha-ni.patch"
 )
 sha256sums=('3311dff32e746499f4df0d5df04d7eb396382d7e108bb9250e7b519b837043a4'
-            '38dc71d9bccce4b675b3c2e0aab4b86cbaedac05180a6561acc76ea6179add59'
+            'd84dc861b9dc42ce64cc8e6f99a7bdc30e0c3a780b8a5f3f2edeba87e452a4fa'
             '204a0fc1dabe7cc02a8a18bdec4637d7ddb6547042c9ee1e5f9b71cd22de2f85'
             '644321e67516c8e6869dd1f09b9dfc06d6758dec91df0bdea3cb614419a1e0d3'
             '9c69f0ef1da1d48d1aa36c0925366f240b3a42f2ccd43bea54b5ee95ef9316d2'
@@ -52,17 +49,11 @@ sha256sums=('3311dff32e746499f4df0d5df04d7eb396382d7e108bb9250e7b519b837043a4'
             'f641a4d722dfaeb70e43ee87d8b1ce6ecadc0aec4ee21bdc28bbe4564dd743f4'
             '32c89049dfcb5de3b2591b1039b25aa8ad83f0af9b6782ef460ed4dde7a8493d'
             'db93d29f439b25a174216898915f92fc6e092042d27a07e0bdf58ea277e80085'
-            '0b92c82c56bf9d81da6a1b64742b313ea11a483cfaf2a7ebb5a68e7f5258471c'
-            '0f54301a73af461e8066bc805b48d991cfed513d08a2f036e015b19f97cb424a'
-            'e6e3db7a22a1cddc547fc405f3439e1c755b8c534849f199c4c800cf0e84237a'
             'e44e31f3beea7cc4cce72ad93834b9491da35ccce01fe6d16e321692bdeb988e')
 
 prepare() {
   # remove_empty_dir: Fix eweOS/bugs/#2  
-  # detect-compressed-module: Fix dmesg like 'Invalid ELF header magic: != ELF'
   # sha-ni: Fix missing sha-NI guard
-  # modprobe-S-option: add -S option for modprobe for tinyramfs
-  # modinfo-k-option: add -k option for modinfo for tinyramfs
   _patch_ $pkgname-$pkgver
       
   cd "$srcdir/$pkgname-$pkgver"
