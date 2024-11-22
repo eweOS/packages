@@ -1,0 +1,22 @@
+--- kmod-33/Makefile.am
++++ kmod-33-new/Makefile.am
+@@ -199,7 +199,7 @@
+ 	testsuite/init_module.la \
+ 	testsuite/delete_module.la
+ TESTSUITE_OVERRIDE_LIBS_LDFLAGS = \
+-	avoid-version -module -shared -export-dynamic -rpath /nowhere -ldl
++	-avoid-version -module -shared -rpath /nowhere -ldl
+ 
+ check-am: rootfs
+ 
+--- kmod-33/Makefile.in
++++ kmod-33-new/Makefile.in
+@@ -1020,7 +1020,7 @@
+ 	testsuite/delete_module.la
+ 
+ TESTSUITE_OVERRIDE_LIBS_LDFLAGS = \
+-	avoid-version -module -shared -export-dynamic -rpath /nowhere -ldl
++	-avoid-version -module -shared -rpath /nowhere -ldl
+ 
+ check_LTLIBRARIES = $(TESTSUITE_OVERRIDE_LIBS) \
+ 	testsuite/libtestsuite.la
