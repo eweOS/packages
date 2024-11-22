@@ -6,11 +6,11 @@ pkgname=(
   libxml2-docs
 )
 pkgver=2.13.5
-pkgrel=1
+pkgrel=2
 pkgdesc="XML parsing library, version 2"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('MIT')
-depends=('zlib' 'ncurses' 'xz' 'icu')
+depends=('zlib' 'ncurses' 'xz')
 makedepends=('python')
 url="http://www.xmlsoft.org/"
 source=(https://download.gnome.org/sources/${pkgbase}/${pkgver%.*}/${pkgbase}-${pkgver}.tar.xz)
@@ -19,15 +19,12 @@ sha256sums=('74fc163217a3964257d3be39af943e08861263c4231f9ef5b496b6f6d4c7b2b6')
 build()
 {
   cd ${pkgbase}-${pkgver}
-  # fix undefined references
-  export MAKEFLAGS="CC=cc CXX=c++ -j$JOBS"
   autoreconf
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --with-threads \
     --with-history \
-    --with-icu \
     --with-python=/usr/bin/python
   make
 }
@@ -41,8 +38,6 @@ package_libxml2()
 {
   optdepends=('python: Python bindings')
   provides=(libxml2.so)
-  # fix undefined references
-  export MAKEFLAGS="CC=cc CXX=c++ -j$JOBS"
 
   cd ${pkgbase}-${pkgver}
   make DESTDIR="${pkgdir}" install
