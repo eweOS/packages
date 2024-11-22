@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=mtools
-pkgver=4.0.45
-pkgrel=2
+pkgver=4.0.46
+pkgrel=1
 pkgdesc="A collection of utilities to access MS-DOS disks"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.gnu.org/software/mtools/"
@@ -11,7 +11,7 @@ depends=(bash)
 makedepends=(texinfo)
 backup=(etc/$pkgname.conf)
 source=(https://ftp.gnu.org/gnu/mtools/$pkgname-$pkgver.tar.bz2)
-sha256sums=('0b008a96bd0efe0e542fa4383d469af66bc4a93394990b103730a8160a67d618')
+sha256sums=('9aad8dd859f88fb7787924ec47590192d3abf7bad6c840509c854290d6bc16c0')
 
 prepare() {
   # comment entry in default config
