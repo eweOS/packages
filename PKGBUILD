@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wayvnc
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='VNC server for wlroots-based Wayland compositors'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -27,7 +27,7 @@ makedepends=(
 )
 optdepends=('pam: PAM authentication')
 source=(git+https://github.com/any1/wayvnc.git#tag=v${pkgver})
-sha256sums=('2685aa0a547405ff3422958a221072c24473485fb8ccee746f3ed63f01460a60')
+sha256sums=('42426a7054ca00d4ee3e80b327de883e5269beccb6d4f44e7b94d6a4ea93ff7b')
 
 build() {
   ewe-meson wayvnc build
