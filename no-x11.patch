@@ -1,0 +1,266 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c1a5786..7b5d254 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -39,13 +39,7 @@ message(STATUS "Building with Qt ${Qt6Core_VERSION}")
+ include(LXQtPreventInSourceBuilds)
+ include(LXQtCompilerSettings NO_POLICY_SCOPE)
+ 
+-# TODO: make the X11 stuff optional.
+-# for screenshot support
+-find_package(X11 REQUIRED)
+-
+ find_package(PkgConfig REQUIRED)
+-# Xfixes is needed to capture the mouse cursor image
+-pkg_check_modules(XFIXES REQUIRED xfixes)
+ 
+ # add src subdirectory
+ add_subdirectory(src)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index ce911b8..99f005c 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,8 +1,3 @@
+-include_directories(
+-    ${X11_INCLUDE_DIR}
+-    ${XFIXES_INCLUDE_DIRS}
+-)
+-
+ # For some unknown reasons these are required for build on FreeBSD
+ link_directories(
+     ${QT_LIBRARY_DIR}
+@@ -97,7 +92,6 @@ target_link_libraries(lximage-qt
+     fm-qt6
+     ${QT_LIBRARIES}
+     ${EXIF_LIBRARIES}
+-    ${X11_LIBRARIES}
+     ${XFIXES_LDFLAGS}
+ )
+ 
+diff --git a/src/application.cpp b/src/application.cpp
+index 668d828..07d3512 100644
+--- a/src/application.cpp
++++ b/src/application.cpp
+@@ -94,24 +94,15 @@ bool Application::parseCommandLineArgs() {
+   );
+   parser.addOption(fullscreenOption);
+ 
+-  const bool isX11 = QGuiApplication::platformName() == QStringLiteral("xcb");
+-
+   QCommandLineOption screenshotOption(
+     QStringList() << QStringLiteral("s") << QStringLiteral("screenshot"),
+     tr("Take a screenshot (deprecated, please use screengrab instead)")
+   );
+-  if(isX11) {
+-    parser.addOption(screenshotOption);
+-  }
+-
+ 
+   QCommandLineOption screenshotOptionDir(
+     QStringList() << QStringLiteral("d") << QStringLiteral("dirscreenshot"),
+     tr("Take a screenshot and save it to the directory without showing the GUI (deprecated, please use screengrab instead)"), tr("DIR")
+   );
+-  if(isX11) {
+-    parser.addOption(screenshotOptionDir);
+-  }
+ 
+   const QString files = tr("[FILE1, FILE2,...]");
+   parser.addPositionalArgument(QStringLiteral("files"), files, files);
+@@ -120,8 +111,6 @@ bool Application::parseCommandLineArgs() {
+ 
+   const QStringList args = parser.positionalArguments();
+   bool screenshotTool = false;
+-  if(isX11)
+-    screenshotTool = parser.isSet(screenshotOption);
+ 
+   QStringList paths;
+   for(const QString& arg : args) {
+@@ -130,14 +119,6 @@ bool Application::parseCommandLineArgs() {
+   }
+ 
+ 
+-  //silent no-gui screenshot
+-  if(isX11) {
+-    if (parser.isSet(screenshotOptionDir)) {
+-        ScreenshotDialog::cmdTopShotToDir(parser.value(screenshotOptionDir));
+-        return false;
+-    }
+-  }
+-
+   bool keepRunning = false;
+   if(isPrimaryInstance) {
+     settings_.load();
+diff --git a/src/screenshotdialog.cpp b/src/screenshotdialog.cpp
+index 2e7d269..14d8fbd 100644
+--- a/src/screenshotdialog.cpp
++++ b/src/screenshotdialog.cpp
+@@ -32,9 +32,6 @@
+ #include <QFile>
+ #include <QFileInfo>
+ 
+-#include <X11/Xlib.h>
+-#include <X11/Xatom.h>
+-#include <X11/extensions/Xfixes.h>
+ #include <sstream>
+ #include <iostream>
+ 
+@@ -52,9 +49,6 @@ using namespace LxImage;
+ 
+ static bool hasXFixes() {
+   int event_base, error_base;
+-  if(auto x11NativeInterfce = qApp->nativeInterface<QNativeInterface::QX11Application>()) {
+-    return XFixesQueryExtension(x11NativeInterfce->display(), &event_base, &error_base);
+-  }
+   return false;
+ }
+ 
+@@ -76,9 +70,6 @@ void ScreenshotDialog::done(int r) {
+   if(r == QDialog::Accepted) {
+     hide();
+     QDialog::done(r);
+-    if(auto x11NativeInterfce = qApp->nativeInterface<QNativeInterface::QX11Application>()) {
+-      XSync(x11NativeInterfce->display(), 0); // is this useful?
+-    }
+ 
+     int delay = ui.delay->value();
+     if(delay == 0) {
+@@ -102,51 +93,11 @@ void ScreenshotDialog::done(int r) {
+ 
+ QRect ScreenshotDialog::windowFrame(WId wid) {
+   QRect result;
+-  if(auto x11NativeInterfce = qApp->nativeInterface<QNativeInterface::QX11Application>()) {
+-    XWindowAttributes wa;
+-    if(XGetWindowAttributes(x11NativeInterfce->display(), wid, &wa)) {
+-      Window child;
+-      int x, y;
+-      // translate to root coordinate
+-      XTranslateCoordinates(x11NativeInterfce->display(), wid, wa.root, 0, 0, &x, &y, &child);
+-      //qDebug("%d, %d, %d, %d", x, y, wa.width, wa.height);
+-      result.setRect(x, y, wa.width, wa.height);
+-
+-      // get the frame widths added by the window manager
+-      Atom atom = XInternAtom(x11NativeInterfce->display(), "_NET_FRAME_EXTENTS", false);
+-      unsigned long type, resultLen, rest;
+-      int format;
+-      unsigned char* data = nullptr;
+-      if(XGetWindowProperty(x11NativeInterfce->display(), wid, atom, 0, G_MAXLONG, false,
+-                            XA_CARDINAL, &type, &format, &resultLen, &rest, &data) == Success) {
+-      }
+-      if(data) {  // left, right, top, bottom
+-        long* offsets = reinterpret_cast<long*>(data);
+-        result.setLeft(result.left() - offsets[0]);
+-        result.setRight(result.right() + offsets[1]);
+-        result.setTop(result.top() - offsets[2]);
+-        result.setBottom(result.bottom() + offsets[3]);
+-        XFree(data);
+-      }
+-    }
+-  }
+   return result;
+ }
+ 
+ WId ScreenshotDialog::activeWindowId() {
+   WId result = 0;
+-  if(auto x11NativeInterfce = qApp->nativeInterface<QNativeInterface::QX11Application>()) {
+-    Atom atom = XInternAtom(x11NativeInterfce->display(), "_NET_ACTIVE_WINDOW", false);
+-    unsigned long type, resultLen, rest;
+-    int format;
+-    unsigned char* data = nullptr;
+-    if(XGetWindowProperty(x11NativeInterfce->display(), XDefaultRootWindow(x11NativeInterfce->display()),
+-                          atom, 0, 1, false,
+-                          XA_WINDOW, &type, &format, &resultLen, &rest, &data) == Success) {
+-      result = *reinterpret_cast<long*>(data);
+-      XFree(data);
+-    }
+-  }
+   return result;
+ }
+ 
+@@ -156,37 +107,6 @@ QImage ScreenshotDialog::takeScreenshot(const WId& wid, const QRect& rect, bool
+   if(screen) {
+     QPixmap pixmap = screen->grabWindow(wid, rect.x(), rect.y(), rect.width(), rect.height());
+     image = pixmap.toImage();
+-
+-    //call to hasXFixes() maybe executed here from cmd line with no gui mode (some day though, currently ignore cursor)
+-    if(takeCursor &&  hasXFixes()) {
+-      // capture the cursor if needed
+-      if(auto x11NativeInterfce = qApp->nativeInterface<QNativeInterface::QX11Application>()) {
+-        XFixesCursorImage* cursor = XFixesGetCursorImage(x11NativeInterfce->display());
+-        if(cursor) {
+-          if(cursor->pixels) {  // pixles should be an ARGB array
+-            QImage cursorImage;
+-            if(sizeof(long) == 4) {
+-              // FIXME: will we encounter byte-order problems here?
+-              cursorImage = QImage((uchar*)cursor->pixels, cursor->width, cursor->height, QImage::Format_ARGB32);
+-            }
+-            else { // XFixes returns long integers which is not 32 bit on 64 bit systems.
+-              long len = cursor->width * cursor->height;
+-              quint32* buf = new quint32[len];
+-              for(long i = 0; i < len; ++i) {
+-                buf[i] = (quint32)cursor->pixels[i];
+-              }
+-              cursorImage = QImage((uchar*)buf, cursor->width, cursor->height, QImage::Format_ARGB32, [](void* b) {
+-                delete[](quint32*)b;
+-              }, buf);
+-            }
+-            // paint the cursor on the current image
+-            QPainter painter(&image);
+-            painter.drawImage(cursor->x - cursor->xhot, cursor->y - cursor->yhot, cursorImage);
+-          }
+-          XFree(cursor);
+-        }
+-      }
+-    }
+   }
+   return image;
+ }
+@@ -239,49 +159,6 @@ static QString buildNumericFnPart() {
+ 
+ static QString getWindowName(WId wid) {
+   QString result;
+-  if(auto x11NativeInterfce = qApp->nativeInterface<QNativeInterface::QX11Application>()) {
+-    if(wid) {
+-      static const char* atoms[] = {
+-        "WM_NAME",
+-        "_NET_WM_NAME",
+-        "STRING",
+-        "UTF8_STRING",
+-      };
+-
+-
+-      const auto display = x11NativeInterfce->display();
+-
+-      Atom a = None, type;
+-
+-
+-      for(const auto& c : atoms) {
+-        if(None != (a = XInternAtom(display, c, true))) {
+-          int form;
+-          unsigned long remain, len;
+-          unsigned char *list;
+-
+-          errno = 0;
+-          if(XGetWindowProperty(display, wid, a, 0, 1024, False, XA_STRING,
+-                                &type, &form, &len, &remain, &list) == Success) {
+-
+-            if(list && *list) {
+-
+-              std::string dump((const char*)list);
+-              std::stringstream ss;
+-              for(const auto& sym : dump) {
+-                if(std::isalnum(sym)) {
+-                  ss.put(sym);
+-                }
+-              }
+-              result = QString::fromStdString(ss.str());
+-              break;
+-            }
+-          }
+-
+-        }
+-      }
+-    }
+-  }
+   return (result.isEmpty()) ? QStringLiteral("UNKNOWN") : result;
+ }
+ 
