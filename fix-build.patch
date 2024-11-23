@@ -1,0 +1,17 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 377389a..930a906 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -125,12 +125,6 @@ add_library(${LIBFM_QT_LIBRARY_NAME} SHARED
+     ${QM_FILES}
+ )
+ 
+-install(EXPORT
+-    "${LIBFM_QT_LIBRARY_NAME}-targets"
+-    DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/${LIBFM_QT_LIBRARY_NAME}"
+-    COMPONENT Devel
+-)
+-
+ target_link_libraries(${LIBFM_QT_LIBRARY_NAME}
+     Qt6::Widgets
+     ${GLIB_LIBRARIES}

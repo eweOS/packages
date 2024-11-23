@@ -1,0 +1,128 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 377389a..16a6dca 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -93,7 +93,6 @@ set(libfm_SRCS
+     filesearchdialog.cpp
+     filedialog.cpp
+     fm-search.c # might be moved to libfm later
+-    xdndworkaround.cpp
+     filedialoghelper.cpp
+ )
+ 
+diff --git a/src/applaunchcontext.cpp b/src/applaunchcontext.cpp
+index 21fdf06..6e566bb 100644
+--- a/src/applaunchcontext.cpp
++++ b/src/applaunchcontext.cpp
+@@ -20,7 +20,6 @@
+ 
+ #include "applaunchcontext.h"
+ #include <QApplication>
+-#include <X11/Xlib.h>
+ 
+ typedef struct _FmAppLaunchContext {
+   GAppLaunchContext parent;
+@@ -29,13 +28,6 @@ typedef struct _FmAppLaunchContext {
+ G_DEFINE_TYPE(FmAppLaunchContext, fm_app_launch_context, G_TYPE_APP_LAUNCH_CONTEXT)
+ 
+ static char* fm_app_launch_context_get_display(GAppLaunchContext * /*context*/, GAppInfo * /*info*/, GList * /*files*/) {
+-  if(auto x11NativeInterface = qApp->nativeInterface<QNativeInterface::QX11Application>()) {
+-    Display* dpy = x11NativeInterface->display();
+-    if(dpy) {
+-      char* xstr = DisplayString(dpy);
+-      return g_strdup(xstr);
+-    }
+-  }
+   return nullptr;
+ }
+ 
+diff --git a/src/folderview.cpp b/src/folderview.cpp
+index c9113cd..6889a0b 100644
+--- a/src/folderview.cpp
++++ b/src/folderview.cpp
+@@ -46,8 +46,6 @@
+ #include <QTextEdit>
+ #include <QWidgetAction> // for detailed list header context menu
+ #include <QLabel> // for detailed list header context menu
+-#include <xcb/xcb.h> // for XDS support
+-#include "xdndworkaround.h" // for XDS support
+ #include "folderview_p.h"
+ 
+ #include <algorithm>
+@@ -1571,44 +1569,6 @@ void FolderView::childDropEvent(QDropEvent* e) {
+     // NOTE: in theory, it's not possible to implement XDS with pure Qt.
+     // We achieved this with some dirty XCB/XDND workarounds.
+     // Please refer to XdndWorkaround::clientMessage() in xdndworkaround.cpp for details.
+-    if(QGuiApplication::platformName() == QStringLiteral("xcb") && e->mimeData()->hasFormat(QStringLiteral("XdndDirectSave0"))) {
+-        e->setDropAction(Qt::CopyAction);
+-        const QWidget* targetWidget = childView()->viewport();
+-        // these are dynamic QObject property set by our XDND workarounds in xdndworkaround.cpp.
+-        xcb_window_t dndSource = xcb_window_t(targetWidget->property("xdnd::lastDragSource").toUInt());
+-        //xcb_timestamp_t dropTimestamp = (xcb_timestamp_t)targetWidget->property("xdnd::lastDropTime").toUInt();
+-        // qDebug() << "XDS: source window" << dndSource << dropTimestamp;
+-        if(dndSource != 0) {
+-            xcb_atom_t XdndDirectSaveAtom = XdndWorkaround::internAtom("XdndDirectSave0", 15);
+-            xcb_atom_t textAtom = XdndWorkaround::internAtom("text/plain", 10);
+-
+-            // 1. get the filename from XdndDirectSave property of the source window
+-            QByteArray basename = XdndWorkaround::windowProperty(dndSource, XdndDirectSaveAtom, textAtom, 1024);
+-
+-            // 2. construct the fill URI for the file, and update the source window property.
+-            Fm::FilePath filePath;
+-            if(model_) {
+-                QModelIndex index = view->indexAt(e->position().toPoint());
+-                auto info = model_->fileInfoFromIndex(index);
+-                if(info && info->isDir()) {
+-                    filePath = info->path().child(basename.constData());
+-                }
+-            }
+-            if(!filePath.isValid()) {
+-                filePath = path().child(basename.constData());
+-            }
+-            QByteArray fileUri = filePath.uri().get();
+-            XdndWorkaround::setWindowProperty(dndSource,  XdndDirectSaveAtom, textAtom, (void*)fileUri.constData(), fileUri.length());
+-
+-            // 3. send to XDS selection data request with type "XdndDirectSave" to the source window and
+-            //    receive result from the source window. (S: success, E: error, or F: failure)
+-            QByteArray result = e->mimeData()->data(QStringLiteral("XdndDirectSave0"));
+-            // NOTE: there seems to be some bugs in file-roller so it always replies with "E" even if the
+-            //       file extraction is finished successfully. Anyways, we ignore any error at the moment.
+-        }
+-        e->accept(); // yeah! we've done with XDS so stop Qt from further event propagation.
+-        return;
+-    }
+ 
+     if(e->modifiers() == Qt::NoModifier) {
+         // If no key modifiers are used, pop up a menu
+diff --git a/src/fontbutton.cpp b/src/fontbutton.cpp
+index c9ac45e..150601f 100644
+--- a/src/fontbutton.cpp
++++ b/src/fontbutton.cpp
+@@ -20,7 +20,6 @@
+ 
+ #include "fontbutton.h"
+ #include <QFontDialog>
+-#include <X11/X.h>
+ 
+ namespace Fm {
+ 
+diff --git a/src/libfmqt.cpp b/src/libfmqt.cpp
+index 48f1e7d..9dee79a 100644
+--- a/src/libfmqt.cpp
++++ b/src/libfmqt.cpp
+@@ -21,7 +21,6 @@
+ #include <QLocale>
+ #include <QPixmapCache>
+ #include "core/thumbnailer.h"
+-#include "xdndworkaround.h"
+ #include "core/vfs/fm-file.h"
+ #include "core/legacy/fm-config.h"
+ 
+@@ -32,7 +31,6 @@ struct LibFmQtData {
+     ~LibFmQtData();
+ 
+     QTranslator translator;
+-    XdndWorkaround workaround;
+     int refCount;
+     Q_DISABLE_COPY(LibFmQtData)
+ };
