@@ -1,0 +1,34 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 12ad5f8..184470a 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,6 +1,4 @@
+ add_subdirectory(backendlauncher)
+-add_subdirectory(doctor)
+-add_subdirectory(libdpms)
+ set(libkscreen_SRCS
+     abstractbackend.cpp
+     backendmanager.cpp
+diff --git a/src/backendmanager.cpp b/src/backendmanager.cpp
+index 5d69e8b..5f7d88a 100644
+--- a/src/backendmanager.cpp
++++ b/src/backendmanager.cpp
+@@ -24,7 +24,6 @@
+ #include <QGuiApplication>
+ #include <QStandardPaths>
+ #include <QThread>
+-#include <QtGui/private/qtx11extras_p.h>
+ 
+ #include <memory>
+ 
+@@ -132,9 +131,7 @@ QFileInfo BackendManager::preferredBackend(const QString &backend)
+     } else if (!env_kscreen_backend.isEmpty()) {
+         backendFilter = env_kscreen_backend;
+     } else {
+-        if (QX11Info::isPlatformX11()) {
+-            backendFilter = QStringLiteral("XRandR");
+-        } else if (QGuiApplication::platformName().startsWith(QLatin1String("wayland"))) {
++        if (QGuiApplication::platformName().startsWith(QLatin1String("wayland"))) {
+             backendFilter = QStringLiteral("KWayland");
+         } else {
+             backendFilter = QStringLiteral("QScreen");
