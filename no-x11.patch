@@ -1,0 +1,100 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9757466..cacb1d1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -58,9 +58,6 @@ set(QXT_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/src/third-party")
+ if(APPLE)
+    find_library(CARBON_LIBRARY Carbon REQUIRED)
+    message(STATUS "CARBON_LIBRARY: ${CARBON_LIBRARY}")
+-elseif(UNIX)
+-   find_package(X11 REQUIRED)
+-   message(STATUS "X11_X11_LIB: ${X11_X11_LIB}")
+ endif()
+ 
+ add_definitions(
+@@ -110,19 +107,6 @@ if (Qt6DBus_FOUND)
+     message(STATUS "Building with Qt6DBus support")
+ endif()
+ 
+-if(NOT QXT_FOUND)
+-    set(QTERM_SRC ${QTERM_SRC} src/third-party/qxtglobalshortcut.cpp)
+-    set(QTERM_MOC_SRC ${QTERM_MOC_SRC} src/third-party/qxtglobalshortcut.h)
+-
+-    if(WIN32)
+-        set(QTERM_SRC ${QTERM_SRC} src/third-party/qxtglobalshortcut_win.cpp)
+-    elseif(APPLE)
+-        set(QTERM_SRC ${QTERM_SRC} src/third-party/qxtglobalshortcut_mac.cpp)
+-    else()
+-        set(QTERM_SRC ${QTERM_SRC} src/third-party/qxtglobalshortcut_x11.cpp)
+-    endif()
+-endif()
+-
+ set(QTERM_UI_SRC
+     src/forms/qterminal.ui
+     src/forms/propertiesdialog.ui
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index 1029060..0249d77 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -106,7 +106,6 @@ MainWindow::MainWindow(TerminalConfig &cfg,
+ 
+     connect(actAbout, &QAction::triggered, this, &MainWindow::actAbout_triggered);
+     connect(actAboutQt, &QAction::triggered, qApp, &QApplication::aboutQt);
+-    connect(&m_dropShortcut, &QxtGlobalShortcut::activated, this, &MainWindow::showHide);
+ 
+     setContentsMargins(0, 0, 0, 0);
+     if (m_dropMode) {
+@@ -196,22 +195,9 @@ void MainWindow::enableDropMode()
+     setKeepOpen(Properties::Instance()->dropKeepOpen);
+     m_dropLockButton->setAutoRaise(true);
+ 
+-    setDropShortcut(Properties::Instance()->dropShortCut);
+     realign();
+ }
+ 
+-void MainWindow::setDropShortcut(const QKeySequence& dropShortCut)
+-{
+-    if (!m_dropMode)
+-        return;
+-
+-    if (m_dropShortcut.shortcut() != dropShortCut)
+-    {
+-        m_dropShortcut.setShortcut(dropShortCut);
+-        qWarning().noquote() << tr("Press \"%1\" to see the terminal.").arg(dropShortCut.toString());
+-    }
+-}
+-
+ void MainWindow::setup_Action(const char *name, QAction *action, const char *defaultShortcut, const QObject *receiver,
+                               const char *slot, QMenu *menu, const QVariant &data)
+ {
+@@ -712,8 +698,6 @@ void MainWindow::propertiesChanged()
+     setWindowOpacity(1.0 - Properties::Instance()->appTransparency/100.0);
+     consoleTabulator->setTabPosition((QTabWidget::TabPosition)Properties::Instance()->tabsPos);
+     consoleTabulator->propertiesChanged();
+-    setDropShortcut(Properties::Instance()->dropShortCut);
+-
+ 
+     const auto menuBarActions = m_menuBar->actions();
+     if (Properties::Instance()->noMenubarAccel)
+diff --git a/src/mainwindow.h b/src/mainwindow.h
+index 4a35383..c427d56 100644
+--- a/src/mainwindow.h
++++ b/src/mainwindow.h
+@@ -24,7 +24,6 @@
+ #include <QMainWindow>
+ #include <QAction>
+ 
+-#include "qxtglobalshortcut.h"
+ #include "terminalconfig.h"
+ #include "dbusaddressable.h"
+ 
+@@ -86,9 +85,7 @@ private:
+     void enableDropMode();
+     QToolButton *m_dropLockButton;
+     bool m_dropMode;
+-    QxtGlobalShortcut m_dropShortcut;
+     void realign();
+-    void setDropShortcut(const QKeySequence& dropShortCut);
+ 
+     bool hasMultipleTabs(QAction *);
+     bool hasMultipleSubterminals(QAction *);
