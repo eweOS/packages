@@ -1,0 +1,57 @@
+diff --git a/pcmanfm/application.cpp b/pcmanfm/application.cpp
+index 236d4ea..ae7b40d 100644
+--- a/pcmanfm/application.cpp
++++ b/pcmanfm/application.cpp
+@@ -56,8 +56,6 @@
+ #include "xdgdir.h"
+ #include "connectserverdialog.h"
+ 
+-#include <X11/Xlib.h>
+-
+ 
+ namespace PCManFM {
+ 
+diff --git a/pcmanfm/desktopwindow.cpp b/pcmanfm/desktopwindow.cpp
+index 8b5d774..55ee2f1 100644
+--- a/pcmanfm/desktopwindow.cpp
++++ b/pcmanfm/desktopwindow.cpp
+@@ -62,8 +62,6 @@
+ #include "desktopentrydialog.h"
+ 
+ #include <QScreen>
+-#include <xcb/xcb.h>
+-#include <X11/Xlib.h>
+ 
+ #define MIN_SLIDE_INTERVAL 5*60000 // 5 min
+ #define MAX_SLIDE_INTERVAL (24*60+55)*60000 // 24 h and 55 min
+@@ -1915,18 +1913,6 @@ bool DesktopWindow::event(QEvent* event) {
+         if(effectiveWinId() == 0) {
+             break;
+         }
+-        // set freedesktop.org EWMH hints properly
+-        if(QGuiApplication::platformName() == QStringLiteral("xcb")) {
+-            if(auto x11NativeInterfce = qApp->nativeInterface<QNativeInterface::QX11Application>()) {
+-                xcb_connection_t* con = x11NativeInterfce->connection();
+-                const char* atom_name = "_NET_WM_WINDOW_TYPE_DESKTOP";
+-                xcb_atom_t atom = xcb_intern_atom_reply(con, xcb_intern_atom(con, 0, strlen(atom_name), atom_name), nullptr)->atom;
+-                const char* prop_atom_name = "_NET_WM_WINDOW_TYPE";
+-                xcb_atom_t prop_atom = xcb_intern_atom_reply(con, xcb_intern_atom(con, 0, strlen(prop_atom_name), prop_atom_name), nullptr)->atom;
+-                xcb_atom_t XA_ATOM = 4;
+-                xcb_change_property(con, XCB_PROP_MODE_REPLACE, effectiveWinId(), prop_atom, XA_ATOM, 32, 1, &atom);
+-            }
+-        }
+         break;
+     }
+ #undef FontChange // FontChange is defined in the headers of XLib and clashes with Qt, let's undefine it.
+diff --git a/pcmanfm/desktopwindow.h b/pcmanfm/desktopwindow.h
+index 9506a8b..ec0084a 100644
+--- a/pcmanfm/desktopwindow.h
++++ b/pcmanfm/desktopwindow.h
+@@ -29,7 +29,6 @@
+ #include <QPoint>
+ #include <QByteArray>
+ #include <QScreen>
+-#include <xcb/xcb.h>
+ #include <libfm-qt6/core/folder.h>
+ 
+ namespace Fm {
