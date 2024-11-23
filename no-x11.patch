@@ -1,0 +1,70 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 715719c8..ccbb5011 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -51,9 +51,6 @@ add_definitions(
+ include(LXQtTranslate)
+ 
+ add_subdirectory(src)
+-if (WITH_INPUT OR WITH_APPEARANCE)
+-    add_subdirectory(liblxqt-config-cursor)
+-endif()
+ if (WITH_INPUT)
+     add_subdirectory(lxqt-config-input)
+ endif()
+diff --git a/lxqt-config-appearance/CMakeLists.txt b/lxqt-config-appearance/CMakeLists.txt
+index de75065e..d508e7cb 100644
+--- a/lxqt-config-appearance/CMakeLists.txt
++++ b/lxqt-config-appearance/CMakeLists.txt
+@@ -2,7 +2,6 @@ project(lxqt-config-appearance)
+ 
+ include_directories(
+     ${Qt6Gui_PRIVATE_INCLUDE_DIRS}
+-    "${CMAKE_CURRENT_SOURCE_DIR}/../liblxqt-config-cursor"
+ )
+ 
+ set(H_FILES
+@@ -76,7 +75,6 @@ target_link_libraries(${PROJECT_NAME}
+     Qt6::Widgets
+     Qt6::Xml
+     ${LIBRARIES}
+-    lxqt-config-cursor
+ )
+ 
+ set_target_properties("${PROJECT_NAME}"
+diff --git a/lxqt-config-appearance/main.cpp b/lxqt-config-appearance/main.cpp
+index 28a7a706..3b502025 100644
+--- a/lxqt-config-appearance/main.cpp
++++ b/lxqt-config-appearance/main.cpp
+@@ -40,8 +40,6 @@
+ #include "configothertoolkits.h"
+ #include "gtkconfig.h"
+ 
+-#include "../liblxqt-config-cursor/selectwnd.h"
+-
+ int main (int argc, char **argv)
+ {
+     LXQt::SingleApplication app(argc, argv);
+@@ -104,14 +102,6 @@ int main (int argc, char **argv)
+         dialog->enableButton(QDialogButtonBox::Apply, true);
+     });
+ 
+-    /*** Cursor Theme ***/
+-    SelectWnd* cursorPage = new SelectWnd(sessionSettings, dialog);
+-    cursorPage->setCurrent();
+-    dialog->addPage(cursorPage, QObject::tr("Cursor"), QStringList() << QStringLiteral("input-mouse") << QStringLiteral("preferences-desktop"));
+-    QObject::connect(cursorPage, &SelectWnd::settingsChanged, dialog, [dialog] {
+-            dialog->enableButton(QDialogButtonBox::Apply, true);
+-            });
+-
+     /*** GTK Theme ***/
+     GTKConfig* GTKPage = new GTKConfig(&mConfigAppearanceSettings, configOtherToolKits, dialog);
+     dialog->addPage(GTKPage, QObject::tr("GTK Style"), QStringList() << QStringLiteral("gtk-preferences") << QStringLiteral("preferences-desktop"));
+@@ -128,7 +118,6 @@ int main (int argc, char **argv)
+             iconPage->applyIconTheme();
+             themePage->applyLxqtTheme();
+             fontsPage->updateQtFont();
+-            cursorPage->applyCusorTheme();
+             GTKPage->applyGTKStyle();
+             stylePage->applyStyle(); // Cursor and font have to be set before style
+             // disable Apply button after changes are applied
