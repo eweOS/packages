@@ -1,0 +1,267 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 932f789..410c7e2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -31,7 +31,6 @@ find_package(Qt6Widgets ${QT_MINIMUM_VERSION} REQUIRED)
+ find_package(KF6WindowSystem ${KF6_MINIMUM_VERSION} REQUIRED)
+ find_package(lxqt ${LXQT_MINIMUM_VERSION} REQUIRED)
+ find_package(qtxdg-tools ${QTXDG_MINIMUM_VERSION} REQUIRED)
+-find_package(X11 REQUIRED)
+ find_package(LayerShellQt ${SHELLQT_MINIMUM_VERSION} REQUIRED)
+ message(STATUS "Building with Qt${Qt6Core_VERSION}")
+ find_package(PkgConfig REQUIRED)
+diff --git a/lxqt-session/src/lxqtmodman.cpp b/lxqt-session/src/lxqtmodman.cpp
+index 3f120c8..808a742 100644
+--- a/lxqt-session/src/lxqtmodman.cpp
++++ b/lxqt-session/src/lxqtmodman.cpp
+@@ -48,7 +48,6 @@
+ #include "log.h"
+ 
+ #include <KWindowSystem>
+-#include <NETWM>
+ 
+ #define MAX_CRASHES_PER_APP 5
+ 
+@@ -191,15 +190,6 @@ void LXQtModuleManager::themeChanged()
+ 
+ void LXQtModuleManager::startWm(LXQt::Settings *settings)
+ {
+-    // if the WM is active do not run WM.
+-    // all window managers must set their name according to the spec
+-    if (auto x11NativeInterface = qGuiApp->nativeInterface<QNativeInterface::QX11Application>()) {
+-        if (!QString::fromUtf8(NETRootInfo(x11NativeInterface->connection(), NET::SupportingWMCheck).wmName()).isEmpty())
+-        {
+-            return;
+-        }
+-    }
+-
+     if (mWindowManager.isEmpty())
+     {
+         mWindowManager = settings->value(QL1S("window_manager")).toString();
+@@ -219,16 +209,7 @@ void LXQtModuleManager::startWm(LXQt::Settings *settings)
+ 
+     // Wait until the WM loads
+     QEventLoop waitLoop;
+-    auto checker = [&waitLoop] {
+-        // all window managers must set their name according to the spec
+-        if (auto x11NativeInterface = qGuiApp->nativeInterface<QNativeInterface::QX11Application>()) {
+-            if (!QString::fromUtf8(NETRootInfo(x11NativeInterface->connection(), NET::SupportingWMCheck).wmName()).isEmpty())
+-            {
+-                qCDebug(SESSION) << "Window Manager started";
+-                waitLoop.exit();
+-            }
+-        }
+-    };
++    auto checker = [&waitLoop] { };
+     QTimer t;
+     connect(&t, &QTimer::timeout, this, checker);
+     t.setSingleShot(false);
+diff --git a/lxqt-session/src/numlock.cpp b/lxqt-session/src/numlock.cpp
+index 3672120..a2b8904 100644
+--- a/lxqt-session/src/numlock.cpp
++++ b/lxqt-session/src/numlock.cpp
+@@ -32,57 +32,10 @@
+ #include <QGuiApplication>
+ #include <string.h>
+ #include <stdlib.h>
+-#include <X11/Xlib.h>
+-#include <X11/XKBlib.h>
+-#include <X11/keysym.h>
+ 
+ /* the XKB stuff is based on code created by Oswald Buddenhagen <ossi@kde.org> */
+ 
+-static unsigned int xkb_mask_modifier(Display* /*dpy*/, XkbDescPtr xkb, const char *name )
+-{
+-    int i = 0;
+-    if( !xkb || !xkb->names )
+-        return 0;
+-    for( i = 0; i < XkbNumVirtualMods; i++ ) {
+-        char* modStr = XGetAtomName( xkb->dpy, xkb->names->vmods[i] );
+-        if( modStr != nullptr && strcmp(name, modStr) == 0 ) {
+-            unsigned int mask = 0;
+-            XkbVirtualModsToReal( xkb, 1 << i, &mask );
+-            return mask;
+-        }
+-    }
+-    return 0;
+-}
+-
+-static unsigned int xkb_numlock_mask(Display* dpy)
+-{
+-    XkbDescPtr xkb = nullptr;
+-    if(( xkb = XkbGetKeyboard( dpy, XkbAllComponentsMask, XkbUseCoreKbd )) != nullptr ) {
+-        unsigned int mask = xkb_mask_modifier( dpy, xkb, "NumLock" );
+-        XkbFreeKeyboard( xkb, 0, True );
+-        return mask;
+-    }
+-    return 0;
+-}
+-
+-static int xkb_set_on(Display* dpy)
+-{
+-    unsigned int mask = 0;
+-    mask = xkb_numlock_mask(dpy);
+-    if( mask == 0 )
+-        return 0;
+-    XkbLockModifiers ( dpy, XkbUseCoreKbd, mask, mask);
+-    return 1;
+-}
+-
+ void enableNumlock()
+ {
+     // this currently only works for X11
+-    if (QGuiApplication::platformName() == QStringLiteral("xcb")) {
+-        if (auto x11NativeInterface = qGuiApp->nativeInterface<QNativeInterface::QX11Application>()) {
+-            if (Display* dpy = x11NativeInterface->display()) {
+-                xkb_set_on(dpy);
+-            }
+-        }
+-    }
+ }
+diff --git a/lxqt-session/src/sessionapplication.cpp b/lxqt-session/src/sessionapplication.cpp
+index 30dc635..560ef0e 100644
+--- a/lxqt-session/src/sessionapplication.cpp
++++ b/lxqt-session/src/sessionapplication.cpp
+@@ -32,9 +32,6 @@
+ #include <QGuiApplication>
+ #include "log.h"
+ 
+-// XKB, this should be disabled in Wayland?
+-#include <X11/XKBlib.h>
+-
+ SessionApplication::SessionApplication(int& argc, char** argv) :
+     LXQt::Application(argc, argv),
+     lockScreenManager(new LockScreenManager(this))
+@@ -85,45 +82,6 @@ bool SessionApplication::startup()
+ 
+     // loadFontSettings(settings);
+ 
+-    bool isX11(QGuiApplication::platformName() == QStringLiteral("xcb"));
+-    if (isX11)
+-    {
+-        loadKeyboardSettings(settings);
+-        loadMouseSettings(settings);
+-
+-#if defined(WITH_LIBUDEV_MONITOR)
+-        UdevNotifier * dev_notifier = new UdevNotifier{QStringLiteral("input"), this}; //will be released upon our destruction
+-        QTimer * dev_timer = new QTimer{this}; //will be released upon our destruction
+-        dev_timer->setSingleShot(true);
+-        dev_timer->setInterval(500); //give some time to xorg... we need to reset keyboard afterwards
+-        connect(dev_timer, &QTimer::timeout, this, [this]
+-                {
+-                    // XXX: is this a race? (because settings can be currently changed by lxqt-config-input)
+-                    //      but with such a little probablity we can live...
+-                    LXQt::Settings settings(configName);
+-                    loadKeyboardSettings(settings);
+-                    QProcess::startDetached(QStringLiteral("lxqt-config-input"), QStringList(QStringLiteral("--load-touchpad")));
+-                });
+-        connect(dev_notifier, &UdevNotifier::deviceAdded, this, [this, dev_timer] (QString device)
+-                {
+-                    qCWarning(SESSION) << QStringLiteral("Session '%1', new input device '%2', keyboard, mouse and touchpad settings will be (optionally) reloaded...").arg(configName,device);
+-                    dev_timer->start();
+-                });
+-
+-        // Detect display connection:
+-        // Intel i915 doesn't updates display status properly. The command xrandr must be run to
+-        // update display status or run:
+-        // # echo detect > status
+-        // at /sys/devices/pciXXX/drm/cardX/cardX-XXX
+-        UdevNotifier *dev_notifier_drm_subsystem = new UdevNotifier(QStringLiteral("drm"), this); // will be released upon our destruction
+-        connect(dev_notifier_drm_subsystem, &UdevNotifier::deviceChanged, this, [this] (QString device)
+-                {
+-                    qCWarning(SESSION) << QStringLiteral("Session '%1': display device '%2'").arg(configName,device);
+-                    QProcess::startDetached(QStringLiteral("lxqt-config-monitor"), QStringList(QStringLiteral("-l")));
+-                });
+-#endif
+-    }
+-
+     if (lockScreenManager->startup(settings.value(QLatin1String("lock_screen_before_power_actions"), true).toBool()
+                 , settings.value(QLatin1String("power_actions_after_lock_delay"), 0).toInt()))
+         qCDebug(SESSION) << "LockScreenManager started successfully";
+@@ -193,26 +151,9 @@ void SessionApplication::loadKeyboardSettings(LXQt::Settings& settings)
+ {
+     qCDebug(SESSION) << settings.fileName();
+     settings.beginGroup(QSL("Keyboard"));
+-    XKeyboardControl values;
+     /* Keyboard settings */
+     unsigned int delay = 0;
+     unsigned int interval = 0;
+-    if (auto x11NativeInterface = qGuiApp->nativeInterface<QNativeInterface::QX11Application>()) {
+-        if (Display* dpy = x11NativeInterface->display()) {
+-            if(XkbGetAutoRepeatRate(dpy, XkbUseCoreKbd, (unsigned int*) &delay, (unsigned int*) &interval))
+-            {
+-                delay = settings.value(QSL("delay"), delay).toUInt();
+-                interval = settings.value(QSL("interval"), interval).toUInt();
+-                XkbSetAutoRepeatRate(dpy, XkbUseCoreKbd, delay, interval);
+-            }
+-
+-            // turn on/off keyboard beep
+-            bool beep = settings.value(QSL("beep")).toBool();
+-            values.bell_percent = beep ? -1 : 0;
+-            XChangeKeyboardControl(dpy, KBBellPercent, &values);
+-        }
+-    }
+-
+     // turn on numlock as needed
+     if(settings.value(QSL("numlock")).toBool())
+         enableNumlock();
+@@ -253,13 +194,6 @@ void SessionApplication::loadMouseSettings(LXQt::Settings& settings)
+     // other mouse settings
+     int accel_factor = settings.value(QSL("accel_factor")).toInt();
+     int accel_threshold = settings.value(QSL("accel_threshold")).toInt();
+-    if(accel_factor || accel_threshold) {
+-        if (auto x11NativeInterface = qGuiApp->nativeInterface<QNativeInterface::QX11Application>()) {
+-            if (Display* dpy = x11NativeInterface->display()) {
+-                XChangePointerControl(dpy, accel_factor != 0, accel_threshold != 0, accel_factor, 10, accel_threshold);
+-            }
+-        }
+-    }
+ 
+     // left handed mouse?
+     bool left_handed = settings.value(QSL("left_handed"), false).toBool();
+@@ -315,45 +249,6 @@ void SessionApplication::setLeftHandedMouse(bool mouse_left_handed)
+     int n_buttons = 0;
+     int i = 0;
+     int idx_1 = 0, idx_3 = 1;
+-
+-    if (auto x11NativeInterface = qGuiApp->nativeInterface<QNativeInterface::QX11Application>()) {
+-        if (Display* dpy = x11NativeInterface->display()) {
+-            buttons = (unsigned char*)malloc(DEFAULT_PTR_MAP_SIZE);
+-            if (!buttons)
+-            {
+-                return;
+-            }
+-            n_buttons = XGetPointerMapping(dpy, buttons, DEFAULT_PTR_MAP_SIZE);
+-            if (n_buttons > DEFAULT_PTR_MAP_SIZE)
+-            {
+-                more_buttons = (unsigned char*)realloc(buttons, n_buttons);
+-                if (!more_buttons)
+-                {
+-                    free(buttons);
+-                    return;
+-                }
+-                buttons = more_buttons;
+-                n_buttons = XGetPointerMapping(dpy, buttons, n_buttons);
+-            }
+-
+-            for (i = 0; i < n_buttons; i++)
+-            {
+-                if (buttons[i] == 1)
+-                    idx_1 = i;
+-                else if (buttons[i] == ((n_buttons < 3) ? 2 : 3))
+-                    idx_3 = i;
+-            }
+-
+-            if ((mouse_left_handed && idx_1 < idx_3) ||
+-                (!mouse_left_handed && idx_1 > idx_3))
+-            {
+-                buttons[idx_1] = ((n_buttons < 3) ? 2 : 3);
+-                buttons[idx_3] = 1;
+-                XSetPointerMapping(dpy, buttons, n_buttons);
+-            }
+-            free(buttons);
+-        }
+-    }
+ }
+ 
+ bool SessionApplication::updateDBusEnvironment()
