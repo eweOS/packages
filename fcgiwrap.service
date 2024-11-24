@@ -1,5 +1,5 @@
 type = process
-command = fcgiwrap -s unix:/var/run/fcgiwrap/socket
+command = /usr/bin/fcgiwrap -s unix:/var/run/fcgiwrap/socket
 stop-command = rm /var/run/fcgiwrap/socket
 run-as = www-data
 smooth-recovery = true
