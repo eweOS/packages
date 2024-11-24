@@ -2,7 +2,7 @@
 
 pkgname=fcgiwrap
 pkgver=1.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc='A simple server for running CGI applications over FastCGI.'
 arch=(x86_64 aarch64 riscv64)
 license=('MIT')
@@ -14,7 +14,7 @@ source=(
   fcgiwrap.tmpfiles
 )
 sha256sums=('4c7de0db2634c38297d5fcef61ab4a3e21856dd7247d49c33d9b19542bd1c61f'
-            '98c7497215d82a8522a8e5ad31bfee35c0aad12dfb89bb28b626a87d756edb5a'
+	    '935677204ab43e19ba35ac3063ea901bee9773efc5ea9425dae3c172a68cdda0'
             'e28e199514eaa7d7c649fc8be0ecef8d56e66f2d317a14d1713dfd3805c984e2')
 
 prepare()
