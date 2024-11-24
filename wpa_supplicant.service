@@ -1,5 +1,5 @@
 type = process
-command = wpa_supplicant -u
+command = /usr/bin/wpa_supplicant -u
 restart = false
 depends-on = rc.target
 depends-on = dbus
