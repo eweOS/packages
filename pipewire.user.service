@@ -1,4 +1,4 @@
 type               = process
-command            = pipewire
+command            = /usr/bin/pipewire
 depends-on         = dbus
 

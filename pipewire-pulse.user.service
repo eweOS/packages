@@ -1,4 +1,4 @@
 type               = process
-command            = pipewire-pulse
+command            = /usr/bin/pipewire-pulse
 depends-on         = pipewire
 
