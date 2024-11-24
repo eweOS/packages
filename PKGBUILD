@@ -1,19 +1,17 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wine
-pkgver=9.21
+pkgver=9.22
 pkgrel=1
 _pkgbasever=${pkgver/rc/-rc}
 source=(
   https://dl.winehq.org/wine/source/9.x/$pkgname-$_pkgbasever.tar.xz
   llvm-unwind.patch
   rpath.patch
-  use-wayland-for-explorer.patch
 )
-sha512sums=('9dc64eb49755342f9a3f5fbb5665d1b3b4fafeb9b2723c198b04bb6f5d486f8feb00198e32e519d618bd87d1cf6c7e6a134bf9110b91023334e949eff00e758f'
+sha512sums=('8b54aee952abd08969d3485ef12db9aabeea8627fdaf7a27cb3392477580f2b5882467cd15ba4670741b6b20cc48bb5e3585d44ee4fb95a013c513a3c04342e4'
             'e397c07e9c252a42679283af71ea5ad4627ba766ed594d7e88653648052520083299595c803123bd856fd8590c73453ea50bd464cd26d1b99b3b0dce98908cd4'
-            '9881abfd0e7e4589cd5724291f9ec06ccb9d88b842c69abb5ea7865b6c27c778a060e60a9776c3620a030555cf61b8cceded55db9f04d5e45d9c627306763bff'
-            'fede2c8326512144dda3097fbaf9b48df188c8f86b7eeffe3d0ac8ee1617a37e9e8c20e5c30ed5087887933464fed405468a195e32887614d7718d7d751da645')
+            '9881abfd0e7e4589cd5724291f9ec06ccb9d88b842c69abb5ea7865b6c27c778a060e60a9776c3620a030555cf61b8cceded55db9f04d5e45d9c627306763bff')
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 arch=(x86_64)
