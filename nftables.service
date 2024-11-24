@@ -1,5 +1,5 @@
 type = scripted
-command = nft -f /etc/nftables.conf
+command = /usr/bin/nft -f /etc/nftables.conf
 restart = false
 depends-on = rc.target
 before = network.target

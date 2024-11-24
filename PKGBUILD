@@ -2,7 +2,7 @@
 
 pkgname=nftables
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Netfilter tables userspace tools'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://netfilter.org/projects/nftables/'
@@ -17,7 +17,7 @@ source=("https://netfilter.org/projects/nftables/files/nftables-$pkgver.tar.xz"
         'nftables.service')
 sha256sums=('6358830f3a64f31e39b0ad421d7dadcd240b72343ded48d8ef13b8faf204865a'
             'e4555d37862430eb1317210132bc4d87bca258bafccf06ee39ea0481237e1483'
-            '1fbfc801aafa2a52581a99c56cae2986deadf6eed0a77c27cb0ddc2575e60c7f')
+	    'af89ba2491772ff5a2a1b85f171e091d5c007398716959cc452c6a2836e73a94')
 
 prepare() {
   cd $pkgname-$pkgver
