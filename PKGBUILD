@@ -2,7 +2,7 @@
 
 pkgname=utmps
 pkgver=0.1.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='An implementation of the utmpx.h family of functions performing user accounting'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://skarnet.org/software/utmps/'
@@ -20,8 +20,8 @@ source=(
 )
 
 sha256sums=('318ac799ed17c3fbf4281085b4b071facbd35c29852a5c643c24fa2869fc0545'
-            '77ced4656183e8e3fe4f59adacdbea79f4f620fac3aa8267b5e7a34d1616e395'
-            '94e732ac7fc0855ce05e2dd118c80828938178a1a4d5282f226149d15671e01b'
+            '782e17440a73740544d9cad00d92f3c0086f8120877e8e9784150646a30af634'
+            '8173e36280678a99a1545ad73e900cbf11c475b1f76ca74a43a1a90acfd13626'
             'cd4e9a446d0b6926603b8831dc5e29d2b9a652e11b865be5cf8e877d6adde745'
             '51e3ec061e78cb8052a757e3fa2c9cb22c428d4314f8be02f9844d393feab393'
             'b9b885065456df4d54bc68fd96cfdd9111d9cd300f6225a79e5b8cd2afa538aa'
