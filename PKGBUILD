@@ -2,7 +2,7 @@
 
 pkgname=perl-digest-hmac
 _perlname=Digest-HMAC
-pkgver=1.04
+pkgver=1.05
 pkgrel=1
 pkgdesc='Keyed-Hashing for Message Authentication'
 url='https://metacpan.org/dist/Digest-HMAC'
@@ -10,7 +10,7 @@ arch=(any)
 license=(GPL PerlArtistic)
 depends=(perl)
 source=("https://cpan.metacpan.org/authors/id/A/AR/ARODLAND/Digest-HMAC-$pkgver.tar.gz")
-sha256sums=('d6bc8156aa275c44d794b7c18f44cdac4a58140245c959e6b19b2c3838b08ed4')
+sha256sums=('215cb59cba610745cfb2d4b3f8ef756d590e57e3ad7986a992e87c4969fcdc7a')
 
 build () {
 	cd "$_perlname-$pkgver"
