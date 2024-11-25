@@ -2,7 +2,7 @@
 
 pkgbase=gtk4
 pkgname=(gtk4 gtk-update-icon-cache)
-pkgver=4.16.6
+pkgver=4.16.7
 pkgrel=1
 pkgdesc="Multi-platform toolkit for creating graphical user interfaces"
 url="https://www.gtk.org/"
@@ -42,7 +42,7 @@ source=(
   "https://gitlab.gnome.org/GNOME/gtk/-/archive/${pkgver}/gtk-${pkgver}.tar.gz"
   gtk-update-icon-cache.{hook,script}
 )
-sha256sums=('268177937ff915f726bf86a1fd9c4f04ac94c0aa9be63a87f006a2f7d94b2e83'
+sha256sums=('2afd7c3f9e0a5c7a0737f1f9b9b22293884dbf5d8d3dc46753693594355b1f1f'
             '5837dfc23c8a7c0621c88c3ccd3e22215d2a0d2e4ea96583c0a605be2f0675ca'
             '5914fd62534d7e8e9df49962162cbb27e3ff5497494d4af2e334af5018bb5eb2')
 
