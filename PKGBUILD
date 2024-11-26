@@ -2,10 +2,10 @@
 
 pkgname=xfce4-dev-tools
 pkgver=4.19.4
-pkgrel=1
+pkgrel=2
 pkgdesc='a collection of tools and macros for Xfce'
 url='https://docs.xfce.org/xfce/xfce4-dev-tools/start'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-or-later)
 depends=(musl glib meson)
 makedepends=(libxslt)
@@ -24,6 +24,8 @@ check() {
 }
 
 package() {
+	# run-time depends
+	depends+=(gtk-doc)
 	cd xfce4-dev-tools-$pkgver
 	make install DESTDIR=$pkgdir
 }
