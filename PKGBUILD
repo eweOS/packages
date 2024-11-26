@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gtkmm
-pkgver=4.14.0
+pkgver=4.16.0
 pkgrel=1
 pkgdesc="C++ bindings for GTK 4"
 url="https://www.gtkmm.org/"
@@ -22,7 +22,7 @@ makedepends=(
 )
 checkdepends=(weston)
 source=("git+https://gitlab.gnome.org/GNOME/gtkmm.git#tag=$pkgver")
-sha256sums=('9ea08c49f3642246befbe39ea4f650743346f4d9520ee1877e9d125e40134efd')
+sha256sums=('7d862f3bac6a3c673290ff4be29c22127ff6b61b8db7cdda7fd61a1b2d666975')
 
 build() {
   local meson_options=(
