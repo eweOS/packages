@@ -2,7 +2,7 @@
 
 pkgname=libxfce4ui
 pkgver=4.19.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Widgets library for the Xfce desktop environment'
 url='https://docs.xfce.org/xfce/libxfce4ui/start'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -29,7 +29,8 @@ build() {
 		--disable-gudev			\
 		--enable-epoxy			\
 		--enable-gtk-doc		\
-		--enable-tests
+		--enable-tests			\
+		--with-vendor-info='eweOS'
 	make
 }
 
