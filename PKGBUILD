@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=sing-box
-pkgver=1.10.2
+pkgver=1.10.3
 pkgrel=1
 pkgdesc='The universal proxy platform'
 url='https://sing-box.sagernet.org/'
@@ -12,7 +12,7 @@ makedepends=(go)
 source=("https://github.com/SagerNet/sing-box/archive/refs/tags/v$pkgver.tar.gz"
 	"sing-box.service"
 	"sing-box.sysusers")
-sha256sums=('cae964985e6f27a1ddefc074849a950437e27ef5bfb44847d5ce5d5b2a1b7a27'
+sha256sums=('93c4fe679988a5414e45886c66f3b969917aa1940bb807f2e0281fdaf4fe27ef'
             'd91869e4f5916a58312c9d2702561ee951336fe3d70066273b511f3ee75d98b6'
             '34c05361f1153fa624c23cec20aa5d9cb78d60a52250dab64081c4e926bbdd42')
 
