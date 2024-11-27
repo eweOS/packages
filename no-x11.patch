@@ -1,0 +1,46 @@
+diff --git a/settings/session-editor.c b/settings/session-editor.c
+index 96af2d11..59c97f53 100644
+--- a/settings/session-editor.c
++++ b/settings/session-editor.c
+@@ -23,7 +23,6 @@
+ #include <stdlib.h>
+ #endif
+ 
+-#include <X11/SM/SMlib.h>
+ #include <gio/gio.h>
+ #include <glib/gstdio.h>
+ #include <gtk/gtk.h>
+@@ -41,6 +40,33 @@
+ #define GsmDesktopFile "_GSM_DesktopFile"
+ #define TREE_ROW_REF_KEY "--tree-row-ref"
+ 
++
++/*
++ * Restart Style Hints
++ */
++
++#define SmRestartIfRunning	0
++#define SmRestartAnyway		1
++#define SmRestartImmediately	2
++#define SmRestartNever		3
++
++
++/*
++ * Property names
++ */
++
++#define SmCloneCommand		"CloneCommand"
++#define SmCurrentDirectory	"CurrentDirectory"
++#define SmDiscardCommand	"DiscardCommand"
++#define SmEnvironment		"Environment"
++#define SmProcessID		"ProcessID"
++#define SmProgram		"Program"
++#define SmRestartCommand	"RestartCommand"
++#define SmResignCommand		"ResignCommand"
++#define SmRestartStyleHint	"RestartStyleHint"
++#define SmShutdownCommand	"ShutdownCommand"
++#define SmUserID		"UserID"
++
+ enum
+ {
+   COL_OBJ_PATH = 0,
