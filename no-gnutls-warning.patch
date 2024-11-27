@@ -1,0 +1,21 @@
+diff --git a/src/vte.cc b/src/vte.cc
+index cb4f3912..77fbc08b 100644
+--- a/src/vte.cc
++++ b/src/vte.cc
+@@ -8260,16 +8260,6 @@ Terminal::Terminal(vte::platform::Widget* w,
+                 feed("\e[1m\e[31mWARNING:\e[39m Test mode enabled. This is insecure!\e[0m\n\e[G"sv, false);
+         }
+ #endif
+-
+-#if !WITH_GNUTLS
+-        std::string str{"\e[1m\e[31m"};
+-        str.append(_("WARNING"));
+-        str.append(":\e[39m ");
+-        str.append(_("GnuTLS not enabled; data will be written to disk unencrypted!"));
+-        str.append("\e[0m\n\e[G");
+-
+-        feed(str, false);
+-#endif
+ }
+ 
+ void
