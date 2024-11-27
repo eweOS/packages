@@ -7,7 +7,7 @@ pkgname=(
   vte4
 )
 pkgver=0.76.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Virtual Terminal Emulator widget"
 url="https://wiki.gnome.org/Apps/Terminal/VTE"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -41,9 +41,14 @@ makedepends=(
   vala
   linux-headers
 )
-source=("git+https://gitlab.gnome.org/GNOME/vte.git#tag=$pkgver" fix-W_EXITCODE.patch)
+source=(
+  "git+https://gitlab.gnome.org/GNOME/vte.git#tag=$pkgver"
+  fix-W_EXITCODE.patch
+  no-gnutls-warning.patch
+)
 sha256sums=('628e9202b3578a825e6a135508c711a0ea0c236579f4ec1afe5d11f3feecce90'
-            '7dbcba99d14b7c3c67a594beb62dfcd993cc895d5e1ac788187fc4be8a37f898')
+            '7dbcba99d14b7c3c67a594beb62dfcd993cc895d5e1ac788187fc4be8a37f898'
+            '0a53c59a27c7e5d9170a83da2f1db1df73b69355ab9e8557a4404b13fc7900b0')
 
 prepare() {
   _patch_ vte
