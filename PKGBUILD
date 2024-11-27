@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=ell
-pkgver=0.70
-pkgrel=4
+pkgver=0.71
+pkgrel=1
 pkgdesc='Embedded Linux library'
 url='https://git.kernel.org/pub/scm/libs/ell/ell.git/about/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(musl)
 makedepends=(linux-headers git)
 provides=(libell.so)
 source=("git+https://git.kernel.org/pub/scm/libs/ell/ell.git#tag=$pkgver")
-sha256sums=('769826f74f85bc913e51cc7d019241a6ebd15d6c9ce6c8b2d362df5db1e79000')
+sha256sums=('8f9a8af7a5a408ba69f0f60403e90afbe1917cc58774c6de82eeb53d77c8c5d0')
 
 prepare() {
 	# disable unit/test-path because of glibc-style basename()
