@@ -7,10 +7,10 @@ pkgname=(
   vte4
 )
 pkgver=0.76.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Virtual Terminal Emulator widget"
 url="https://wiki.gnome.org/Apps/Terminal/VTE"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(
   # Library
   LGPL-3.0-or-later
