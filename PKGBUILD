@@ -1,9 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=catnest
-_commit="708d9351fc0bd8335508ac38c60295e391e90f70"
-pkgver=0.2.1.${_commit:0:7}
-pkgrel=7
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="A substitution of systemd-sysusers"
 url="https://github.com/eweOS/catnest"
 license=(MIT)
@@ -11,12 +10,12 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 makedepends=(git)
 options=(emptydirs)
 source=(
-  "git+https://github.com/eweOS/catnest#commit=${_commit}"
+  "git+https://github.com/eweOS/catnest#tag=v$pkgver"
   "$pkgname.service"
   "basic.conf"
   "catnest-reload.hook"
 )
-sha256sums=('77eee89bf6bff93d62b07422f2aac275d11da04208bfea1d5c618ce9af245171'
+sha256sums=('2857f29520aeb92c29a8d6f8cbcdeaf6c8d869261d3821745694e0e16dd4c66e'
             '37ac92afc1b5b79f72fffdd57c1771b8bc060f659b1e71c266da1d08982f65eb'
             '719dd6b9794afc10206967feae0f1f6723df9a7c4c7e3f6321c874833a9058ad'
             'df7685e245d9afee96e237f4a233e3bf1a3b8431da0268fab29fb9ccb04913ce')
