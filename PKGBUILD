@@ -2,11 +2,12 @@
 
 pkgname=mousepad
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple text editor for the Xfce desktop environment.'
 url='https://docs.xfce.org/apps/mousepad/start'
 arch=(x86_64 aarch64 riscv64)
 license=(GPL-2.0-or-later)
+groups=('xfce4-goodies')
 # Missing: gspell
 depends=(glib gtk3 gtksourceview4 libxfce4util libxfce4ui)
 makedepends=(xfce4-dev-tools)
