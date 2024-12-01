@@ -3,8 +3,8 @@
 pkgbase=linux-lts
 _pkgbase=linux
 pkgname=(linux-lts linux-lts-headers)
-pkgver=6.6.58
-pkgrel=2
+pkgver=6.6.63
+pkgrel=1
 arch=(x86_64 aarch64 riscv64)
 url='http://www.kernel.org'
 license=(GPL2)
@@ -14,7 +14,7 @@ source=(
   "kernel-config::git+https://github.com/eweOS/kernel-config.git"
   busybox-find-compat.patch
 )
-sha256sums=('e7df81e588d70fab5ec3ec3bb04ac53d51f0860fc3b1ec45e0a4167a026899db'
+sha256sums=('d1054ab4803413efe2850f50f1a84349c091631ec50a1cf9e891d1b1f9061835'
             'SKIP'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
 
