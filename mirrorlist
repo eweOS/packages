@@ -16,6 +16,9 @@ Server = https://mirrors.sdust.edu.cn/eweos/$repo/os/$arch
 
 ### Official Mirrors
 
+## United States
+Server = https://os-repo-us.ewe.moe/eweos/$repo/os/$arch
+
 ## Europe
 Server = https://os-repo-nl.ewe.moe/eweos/$repo/os/$arch
 
