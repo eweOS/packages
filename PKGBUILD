@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=putty
-pkgver=0.81
-pkgrel=2
+pkgver=0.82
+pkgrel=1
 pkgdesc='A terminal integrated SSH/Telnet client'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.chiark.greenend.org.uk/~sgtatham/putty/'
@@ -13,7 +13,7 @@ source=("https://the.earth.li/~sgtatham/putty/${pkgver}/${pkgname}-${pkgver}.tar
         'putty.desktop'
         'putty.png'
         'putty.xpm')
-sha256sums=('cb8b00a94f453494e345a3df281d7a3ed26bb0dd7e36264f145206f8857639fe'
+sha256sums=('195621638bb6b33784b4e96cdc296f332991b5244968dc623521c3703097b5d9'
             '4a8af81fe8ac702ad298606076088f237b83beed82cc089a32f314888b67cf2c'
             '93ba8ea8abf942f4de1c6cd167d4b5c2d6246fb1aa39dc49571cc18d167460c1'
             'd65139883171ed0119d9778ff4a89e6a8151a5ae97fcf8dc7cafb59df424377f')
