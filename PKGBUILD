@@ -174,7 +174,6 @@ build () {
 		--enable-vhost-user-blk-server
 		--enable-vhost-vdpa
 		--enable-virtfs
-		--disable-virtfs-proxy-helper
 		--enable-vmdk
 		--enable-vnc
 		--enable-vnc-jpeg
