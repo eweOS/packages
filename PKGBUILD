@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=lxqt-notificationd
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="LXQt notification daemon and library."
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
@@ -16,7 +16,7 @@ source=(
 	"https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
 	no-x11.patch
 )
-sha512sums=('4bb72c8303161c036febfe88ee2a1b32f24f61d2fe17d86d1077045e7784cf31cade0138f526f49c408402f4b81143af0106093569654dd4d579cbb1dd036808'
+sha512sums=('01707fb5f848ea42858dd7ecaf34e46477206ccdc84b3711eb286a8a2c6d1f232361fd802cf27b39b90ccd109ecda578735307a01530bba28d7ff45f680ae0c0'
             '89aadf7567414bcbee4b7a8bbf851ca8c24e16c7f37823ac8c299c1e01a5d5e6760ace985b44b12dd2f545a47794713b0162b27a78ed847913d5b7cd0f69b0d3')
 
 prepare() {
