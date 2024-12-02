@@ -12,9 +12,9 @@ pkgname=(
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=24.3.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
-depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm')
+depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm' 'spirv-tools')
 makedepends=(
   'libva'
   'glslang'
@@ -167,7 +167,7 @@ package_opencl-clover-mesa() {
 }
 
 _vulkan_driver_deps=('expat' 'libdrm' 'llvm' 'vulkan-icd-loader' 'wayland'
-		     'zlib' 'zstd')
+		     'zlib' 'zstd' 'spirv-tools')
 
 package_vulkan-swrast()
 {
