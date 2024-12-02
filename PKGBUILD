@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=js128
-pkgver=128.4.0
+pkgver=128.5.1
 pkgrel=1
 pkgdesc="JavaScript interpreter and libraries - Version 128"
 url="https://spidermonkey.dev/"
@@ -26,7 +26,7 @@ source=(
   https://archive.mozilla.org/pub/firefox/releases/$_relver/source/firefox-$_relver.source.tar.xz
   mozconfig
 )
-sha256sums=('074014e1c26144e10707b12a271176a4b6b67021e91444b613edae38d188febc'
+sha256sums=('5fc6ac442b8817aab109a6afa9aeb997c50708cf897f7387c02399cda00794ab'
             'a76d1f0802ec486c9212f45541cab02aa1027e05d10ccc3becb68eadd762cc3e')
 
 # Make sure the duplication between bin and lib is found
