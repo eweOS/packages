@@ -5,7 +5,7 @@ pkgname=(
   flatpak
   flatpak-docs
 )
-pkgver=1.15.10
+pkgver=1.15.12
 pkgrel=3
 pkgdesc="Linux application sandboxing and distribution framework (formerly xdg-app)"
 url="https://flatpak.org"
@@ -48,15 +48,9 @@ source=(
   https://dl.flathub.org/repo/flathub.flatpakrepo
   flatpak-bindir.sh
 )
-sha256sums=('b2692a6d61daca8a01a6872bd66a66e6199b0e657a2c231feeeda8e142f8b827'
+sha256sums=('c9b5bc6e0612896a1d63180be8e799ab26930932d8a142451d066b53dc71ee42'
             '3371dd250e61d9e1633630073fefda153cd4426f72f4afa0c3373ae2e8fea03a'
             '1824cb4eb1cc88702cb2b9f1c55b6dfdf20fca5eab83f6e8e532099281328745')
-
-prepare() {
-  cd flatpak
-  # FIXME: package python-pyparsing
-  pip install pyparsing
-}
 
 build() {
   local meson_options=(
@@ -94,7 +88,8 @@ package_flatpak() {
   # remove systemd services
   rm -r $pkgdir/usr/lib/systemd
 
-  _pick_ docs "$pkgdir"/usr/share/{doc,gtk-doc}
+  cd $pkgdir
+  _pick_ docs usr/share/{doc,gtk-doc}
 }
 
 package_flatpak-docs() {
