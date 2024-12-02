@@ -2,7 +2,7 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=tree
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="A directory listing program displaying a depth indented list of files"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ url="http://mama.indstate.edu/users/ice/tree/"
 license=('GPL')
 depends=('musl')
 source=("https://gitlab.com/OldManProgrammer/unix-tree/-/archive/${pkgver}/unix-tree-${pkgver}.tar.gz")
-sha512sums=('95fd7b443a8005df27fb3c917ebbde2832499c0d09319950bb2633c1caf25b033224bcced38ea06a1e2491f21780cc36672e22b0c6355ede944f282a9d88ffcf')
+sha512sums=('e7f514c2c12bc409d28c83a2c359bf463f8c624b6fc78cb847e0849925dfca746a9dac9a9e55b721972c474a33dba99a069f69694eaa08c12f4ce77db6d49953')
 
 prepare()
 {
