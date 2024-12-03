@@ -3,7 +3,7 @@
 pkgbase=greetd
 pkgname=(greetd greetd-agreety)
 pkgver=0.10.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Generic greeter daemon"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://git.sr.ht/~kennylevinsen/greetd"
@@ -17,7 +17,7 @@ source=(
 sha256sums=('ee5cb70e0add4ca9c9fe57e47581ab0002d44c07743fb5492469f3b570db640b'
             '4e71e90a060b82edc0c1794fef812e286c606d3f07493ef536b9909238e2189f'
             'a413aedea2ed6a24f6da43f1eeb357195559eb7f31d50c57e102801ebbfb1614'
-            '703be69c0bfe1bba1815090113513a495f87198bfb46b02918634f56f5232fea')
+            'a4c75d861abbea1ddca31b139859c03972a61820c6e65283110be90d0c11f596')
 optdepends=('turnstile: user service and session manager support')
 makedepends=(rust pam)
 options=(emptydirs)
