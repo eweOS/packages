@@ -2,7 +2,7 @@
 
 pkgname=dropbear
 pkgver=2024.86
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight SSH server'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/mkj/dropbear'
@@ -39,6 +39,7 @@ package()
   make -C ${_srcdir} install DESTDIR="$pkgdir" \
     PROGRAMS='dbclient dropbear dropbearconvert dropbearkey scp'
   _dinit_install_services_ dropbear.service
+  mv "$pkgdir/usr/bin/"{scp,dbscp}
   install -Dm644 ${_srcdir}/LICENSE \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
