@@ -1,51 +1,57 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pam
-pkgver=1.6.1
-pkgrel=3
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="PAM (Pluggable Authentication Modules) library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL2')
 url="http://linux-pam.org"
 depends=('musl' 'libxcrypt' 'utmps')
-makedepends=('flex' 'linux-headers')
+makedepends=('flex' 'linux-headers' 'meson' 'git')
 source=(
-  https://github.com/linux-pam/linux-pam/releases/download/v$pkgver/Linux-PAM-$pkgver.tar.xz
-  other.pam
-  auth.pam
-  login.pam
+  "pam::git+https://github.com/linux-pam/linux-pam#tag=v${pkgver}"
+  "disable-i18n.patch::https://github.com/linux-pam/linux-pam/commit/900c9c82e0c703fee1f5c55fb4a0913a7fc95306.patch"
+  "$pkgname.tmpfiles"
 )
-sha256sums=('f8923c740159052d719dbfc2a2f81942d68dd34fcaf61c706a02c9b80feeef8e'
-            'd5ed59ec2157c19c87964a162f7ca84d53c19fb2bd68d3fbc1671ba8d906346f'
-            'ab40a73fd3aa69f2212785e149b8c3fd112328dd152e341052145004e76d5859'
-            '2462e923735fc366f57076878f157422bcb10c660a7edd44056651ebbe2cf845')
+sha256sums=('66ba7e8d6f8d1b985432a07180280e5bbc8c84bfc43fab7b1e071c26a04e2bde'
+            '62acdad6764a44b8a10c40e012087814f30faa5b0931ad35bb1f8127f620ed47'
+            '5631f224e90c4f0459361c2a5b250112e3a91ba849754bb6f67d69d683a2e5ac')
 options=('!emptydirs')
 provides=('libpam.so' 'libpamc.so' 'libpam_misc.so')
 backup=(etc/environment
-	etc/pam.d/{auth,login,other}
         etc/security/{access,faillock,group,limits,namespace,pam_env,pwhistory,time}.conf
 	etc/security/namespace.init)
 
+prepare() {
+  _patch_ "${pkgname}"
+}
+
 build()
 {
-  cd Linux-PAM-$pkgver
-  ./configure \
-    --libdir=/usr/lib \
-    --sbindir=/usr/bin \
-    --disable-db
-  make
+  LDFLAGS+=" -Wl,--undefined-version"
+  ewe-meson "${pkgname}" build \
+    -Dlogind=disabled \
+    -Dnis=disabled \
+    -Deconf=disabled \
+    -Dselinux=disabled \
+    -Dpam_userdb=disabled \
+    -Daudit=disabled \
+    -Ddocs=disabled \
+    -Di18n=disabled
+  meson compile -C build
 }
 
 package()
 {
-  cd Linux-PAM-$pkgver
-  make DESTDIR="$pkgdir" SCONFIGDIR=/etc/security install
-  chmod +s "$pkgdir"/usr/bin/unix_chkpwd
+  # base config
+  depends+=(pambase)
+  meson install -C build --destdir "${pkgdir}"
+  install -Dm 644 $pkgname.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
 
-  for f in $(ls ${srcdir}/*.pam); do
-    targetname=$(echo $f | cut -d "." -f 1)
-    install -D $f ${pkgdir}/etc/pam.d/${targetname##*/}
-  done
+  # set unix_chkpwd uid
+  chmod +s "${pkgdir}"/usr/bin/unix_chkpwd
+
   # remove systemd dir
   rm -r $pkgdir/usr/lib/systemd
 }
