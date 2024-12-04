@@ -2,7 +2,7 @@
 
 pkgname=python-lxml
 pkgver=5.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python3 binding for the libxml2 and libxslt libraries"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('BSD' 'custom')
