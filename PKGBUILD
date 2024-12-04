@@ -2,7 +2,7 @@
 
 pkgname=python-pyelftools
 pkgver=0.31
-pkgrel=1
+pkgrel=2
 pkgdesc='Parsing ELF and DWARF in Python.'
 url='https://github.com/eliben/pyelftools'
 arch=(any)
