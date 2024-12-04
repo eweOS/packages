@@ -3,7 +3,7 @@
 _name=pyproject-hooks
 pkgname=python-pyproject-hooks
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A low-level library for calling build-backends in pyproject.toml-based project"
 arch=(any)
 url="https://github.com/pypa/pyproject-hooks"
