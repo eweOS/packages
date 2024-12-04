@@ -2,7 +2,7 @@
 
 pkgname=python-execnet
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Rapid multi-Python deployment"
 arch=('any')
 license=('MIT')
