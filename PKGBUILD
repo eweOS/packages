@@ -7,7 +7,7 @@ pkgname=(
   libgirepository
 )
 pkgver=1.82.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Introspection system for GObject-based libraries"
 url="https://wiki.gnome.org/Projects/GObjectIntrospection"
 arch=(x86_64 aarch64 riscv64 loongarch64)
