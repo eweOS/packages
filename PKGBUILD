@@ -3,7 +3,7 @@
 pkgname=python-pysocks
 _pyname=PySocks
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A SOCKS proxy client and wrapper for Python.'
 url='https://github.com/Anorov/PySocks'
 arch=(any)
