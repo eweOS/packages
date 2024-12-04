@@ -2,7 +2,7 @@
 
 pkgname=python-structlog
 pkgver=24.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Structured Logging for Python"
 url="https://www.structlog.org"
 # https://github.com/hynek/structlog/blob/24.2.0/pyproject.toml#L14
