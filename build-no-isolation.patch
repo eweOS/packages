@@ -1,13 +1,12 @@
 diff --git a/setuptools/tests/fixtures.py b/setuptools/tests/fixtures.py
-index 524c6cbd2..90d82e7c7 100644
+index a5472984b..e2868182a 100644
 --- a/setuptools/tests/fixtures.py
 +++ b/setuptools/tests/fixtures.py
-@@ -82,6 +82,7 @@ def setuptools_sdist(tmp_path_factory, request):
+@@ -84,6 +84,7 @@ def _build_distributions(tmp_path_factory, request):
+             sys.executable,
              "-m",
              "build",
-             "--sdist",
 +            "--no-isolation",
              "--outdir",
              str(tmp),
              str(request.config.rootdir),
-
