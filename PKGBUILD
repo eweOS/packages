@@ -2,7 +2,7 @@
 
 pkgname=python-freezegun
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Let your Python tests travel through time'
 arch=('any')
 url='https://github.com/spulec/freezegun'
@@ -16,8 +16,13 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=('python-pytest')
-source=("$pkgname::git+$url#tag=$pkgver")
-sha256sums=('SKIP')
+source=("$pkgname::git+$url#tag=$pkgver" freezegun-support-python-3.13.patch)
+sha256sums=('e24b5ae5ed0b4057ca03a918b543a69568e1bfffb7db3989c10d525d32b4df64'
+            '0c70576b411217fc14698544942aa119c9b53f327c2b842241bf43f03550f098')
+
+prepare() {
+  _patch_ $pkgname
+}
 
 build() {
   cd "$pkgname"
