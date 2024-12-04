@@ -3,7 +3,7 @@
 pkgname='python-boolean.py'
 _name="${pkgname#python-}"
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Implements boolean algebra in one module'
 arch=('any')
 url='https://github.com/bastikr/boolean.py'
