@@ -6,7 +6,7 @@ pkgname=(
   libxml2-docs
 )
 pkgver=2.13.5
-pkgrel=2
+pkgrel=3
 pkgdesc="XML parsing library, version 2"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('MIT')
