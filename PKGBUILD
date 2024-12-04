@@ -3,7 +3,7 @@
 pkgname=python-pytest
 _name=${pkgname#python-}
 pkgver=8.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple powerful testing with Python"
 arch=('any')
 license=('MIT')
