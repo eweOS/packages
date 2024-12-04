@@ -1,10 +1,10 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-cffi
-pkgver=1.16.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc="Foreign Function Interface for Python calling C code"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://cffi.readthedocs.org/"
 license=('MIT')
 depends=('python-pycparser')
@@ -15,8 +15,8 @@ source=(
   "https://github.com/python-cffi/cffi/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
   clang-test-errors.patch
 )
-sha512sums=('2115f4d2431f36b18494182d2abb378a750c970dfdf083cfc287b004e52830efe703f07f71a17c89060b47eaa3b52e7b2390017d1980eb39695bdaf31bac3bb5'
-            '38cd68f82e0049c973d6258ff7294f4e969670d021c44ce861d6fb1f3a45316b5b259165b760426c793f697f298cb6b9f9c4d97ed0378c4ac11b2278ecf6e902')
+sha512sums=('bb22f2f21f4d9e097bdacaad24b883936304e794d0e319f24db794de37e47de690b3c352487d670e3b9e2322d5144cd3d3582fb847c4f6806be5eb549e63d9de'
+            'e311758c2859070da21b4bdd6a0907e4653c10872d7790679d75390fd6ef3f8768541196187774df11ab9dc71f668af4ca69c0cb340209617967086175427e59')
 
 prepare() {
   _patch_ cffi-$pkgver
@@ -43,4 +43,3 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
-
