@@ -3,7 +3,7 @@
 _pyname=ufoLib2
 pkgname=python-${_pyname,,}
 pkgver=0.16.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A library to deal with UFO font sources'
 arch=(any)
 url="https://github.com/fonttools/$_pyname"
