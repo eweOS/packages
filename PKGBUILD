@@ -2,8 +2,8 @@
 
 _name=fastjsonschema
 pkgname=python-fastjsonschema
-pkgver=2.20.0
-pkgrel=2
+pkgver=2.21.1
+pkgrel=1
 pkgdesc="Fast JSON schema validator for Python"
 arch=(any)
 url="https://github.com/horejsek/python-fastjsonschema"
@@ -17,7 +17,7 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('2dd82d0dbe4e4e0a78e4d688c8f6a999a2fce6ba603084adb4e58e6ff8404805b8b525bcf7ab05e1e04b4261dd174ed27c415b0679e754542fbe1d3af8847415')
+sha512sums=('5d6b27a5c914007d716594b13b05251d986c0b922f47336ca875928eecb6df40c3473026243eeee18d3dc1b3276de6f64eb1529c3f697771f755f8531233eed3')
 
 build() {
   cd $pkgname-$pkgver
