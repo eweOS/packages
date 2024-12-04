@@ -1,0 +1,43 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgname=python-jaraco.collections
+_name="${pkgname#python-}"
+pkgver=5.0.1
+pkgrel=1
+pkgdesc="Models and classes to supplement the stdlib 'collections' module."
+arch=('any')
+url='https://github.com/jaraco/jaraco.collections'
+license=('MIT')
+depends=('python' 'python-jaraco.text')
+makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
+checkdepends=('python-pytest')
+conflicts=('python-jaraco')
+replaces=('python-jaraco')
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=('b41aa4ed1544e35def2f882b3257bc5dcbb5163d8e3d4496a33b04aac0a854a503a959bccb397fdebf98471bf4525990728e8851a59b07458427c9d0c5aa72ef')
+
+build() {
+python -m pip install setuptools-scm
+  cd "$_name"-$pkgver
+  SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver python -m build --wheel --no-isolation
+}
+
+_no_check() {
+  local pytest_options=(
+    -vv
+  )
+
+  cd "$_name"-$pkgver
+  python -m pytest "${pytest_options[@]}"
+}
+
+package() {
+  cd "$_name"-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # Symlink license file
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "$pkgdir"/usr/share/licenses/$pkgname
+  ln -s "$site_packages"/"$_name"-$pkgver.dist-info/LICENSE \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}
