@@ -2,7 +2,7 @@
 
 pkgname=archversion
 pkgver=2013.12.17
-pkgrel=1
+pkgrel=2
 pkgdesc='Archlinux Version Controller'
 arch=('any')
 url='https://github.com/seblu/archversion'
