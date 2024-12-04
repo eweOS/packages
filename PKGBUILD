@@ -3,7 +3,7 @@
 pkgname=python-smartypants
 _pkgname=smartypants
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python with the SmartyPants"
 url="https://github.com/leohemsted/smartypants.py"
 license=('BSD-2-Clause')
