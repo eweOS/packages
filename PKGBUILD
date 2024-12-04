@@ -3,7 +3,7 @@
 pkgname=python-requests
 _pyname=${pkgname#*-}
 pkgver=2.32.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An elegant and simple HTTP library for Python, built for human beings.'
 url='https://requests.readthedocs.io'
 arch=(any)
