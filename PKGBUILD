@@ -2,7 +2,7 @@
 
 pkgname=python-decorator
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Decorators for Humans.'
 url='https://github.com/micheles/decorator'
 arch=(any)
