@@ -1,7 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
+
 pkgname=gtklock
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GTK-based lockscreen for Wayland"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/jovanlanik/gtklock"
@@ -15,6 +16,7 @@ sha256sums=('db20bf27bd5dd01901ea1753c89c170777dd7cf8fca19130cf90f5f4e3fb9633'
 
 prepare() {
   _patch_ "$pkgname-$pkgver"
+  sed -i 's/login/system-local-login/' "$pkgname-$pkgver/pam/gtklock"
 }
 
 build() {
