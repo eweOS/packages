@@ -3,7 +3,7 @@
 pkgbase=capstone
 pkgname=(capstone python-capstone)
 pkgver=5.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight multi-platform, multi-architecture disassembly framework'
 url='https://www.capstone-engine.org/index.html'
 arch=(x86_64 aarch64 riscv64 loongarch64)
