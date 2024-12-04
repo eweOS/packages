@@ -3,7 +3,7 @@
 pkgname=python-jaraco.text
 # https://github.com/jaraco/jaraco.text/blob/main/NEWS.rst
 pkgver=4.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Module for text manipulation'
 arch=('any')
 url='https://github.com/jaraco/jaraco.text'
