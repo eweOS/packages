@@ -2,7 +2,7 @@
 
 pkgname=python-dateutil
 pkgver=2.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides powerful extensions to the standard datetime module"
 arch=(any)
 license=(BSD-3-Clause Apache-2.0)
