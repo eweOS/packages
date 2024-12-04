@@ -3,8 +3,8 @@
 _name=gitpython
 pkgdesc="A python library used to interact with Git repositories"
 pkgname=python-gitpython
-pkgver=3.1.42
-pkgrel=2
+pkgver=3.1.43
+pkgrel=1
 url="https://github.com/gitpython-developers/gitpython"
 license=(BSD-3-Clause)
 arch=(any)
@@ -25,7 +25,7 @@ checkdepends=(
   python-pytest-mock
 )
 source=("git+$url.git#tag=$pkgver")
-sha512sums=('dc54bb0d60eb1e0467fef52d9cc9927c7406b006c597ac750a473cd9d45cbeefdc545d3309158ca6fa394beaa4512aba1e7984b09dfe98c5d36271ac9bf717c9')
+sha512sums=('2204c41158630d501fa330f02474b57fd113d82ee5da972f95ab6fe69ae6c9bc477211ee751959d545c6eac9433bf50dbf81992d851af5b9904db3ca526cd742')
 
 build() {
   cd $_name
@@ -56,8 +56,17 @@ check() {
 
   cd $_name
   export TRAVIS="VERY CONVENIENT"
+
+  # Use a fake HOME directory to avoid messing up your Git config
+  mkdir -p "$srcdir/testdata"
+  export HOME="$srcdir/testdata"
+
   git config --global user.name "Test User"
   git config --global user.email "test@user.org"
+
+  # Some tests assume the default name
+  git config --global init.defaultbranch master
+
   ./init-tests-after-clone.sh
   PYTHONDONTWRITEBYTECODE=1 pytest -vv -c /dev/null "${deselected[@]}"
 }
