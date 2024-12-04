@@ -2,7 +2,7 @@
 
 pkgname=python-pluggy
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin and hook calling mechanisms for python"
 arch=('any')
 url="https://github.com/pytest-dev/pluggy"
