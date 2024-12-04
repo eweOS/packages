@@ -5,8 +5,8 @@ pkgname=(gstreamer gstreamer-devel gstreamer-vaapi
 	 gst-plugins-base gst-plugins-good gst-plugins-bad
 	 gst-plugin-gtk gst-plugin-qml6 gst-plugin-qsv gst-plugin-va
 	 gst-libav gst-rtsp-server gst-editing-services gst-python)
-pkgver=1.24.9
-pkgrel=3
+pkgver=1.24.10
+pkgrel=1
 pkgdesc='GStreamer multimedia framework'
 url='https://gstreamer.freedesktop.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -28,7 +28,7 @@ source=(
   "https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/$pkgver/gstreamer-$pkgver.tar.gz"
   "no-x11.patch::https://github.com/GStreamer/gstreamer/commit/577df3a02f7f26283b2749c58ae7738bbdf4be4c.patch"
 )
-sha256sums=('ec9483e7ecc59306923d797c0824e859013901ed520975cbbad5f46c9413a748'
+sha256sums=('e8a26daad0db625fa617ab2602ab7681e081c8e2a0c8484c143fe0ad9bfcda53'
             'abf65ce99b01e9ca47e2555e2176099cc9402c8b1ca02cd3491add931eb31bea')
 
 prepare () {
