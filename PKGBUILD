@@ -2,7 +2,7 @@
 
 pkgname=python-scripttest
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities to help with testing command line scripts"
 url="https://github.com/pypa/scripttest"
 license=('MIT')
