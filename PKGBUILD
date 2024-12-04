@@ -2,7 +2,7 @@
 
 pkgname=python-stevedore
 pkgver=5.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Manage dynamic plugins for Python applications.'
 url="https://github.com/openstack/stevedore"
 arch=(any)
