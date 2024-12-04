@@ -3,7 +3,7 @@
 _pkgname=build
 pkgname=python-build
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, correct Python build frontend'
 arch=('any')
 url='https://github.com/pypa/build'
