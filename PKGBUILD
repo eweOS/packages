@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-execnet
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="Rapid multi-Python deployment"
 arch=('any')
 license=('MIT')
@@ -20,7 +20,7 @@ checkdepends=(
   'python-pytest-timeout'
 )
 source=("git+https://github.com/pytest-dev/execnet.git#tag=v$pkgver")
-sha512sums=('d6971ebdb31e70c4a1fb6f554f30376f3e9bf91c083be0e222299d22a13b2e8ca821795e44123863ee5dad9c98ca45c8cac1f38be478a7d46a2310aa0d2be5c7')
+sha512sums=('5886ff851fe868337a259988b55029f6becdae8a5282d636f647180dd3aedc23d134352e6081b5c28abf2cd26fa2a2ead68de49608d5bff50b2d3d80b1bcdb04')
 
 build() {
   cd execnet
