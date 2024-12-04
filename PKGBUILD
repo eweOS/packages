@@ -3,7 +3,7 @@
 _pkgname=u-msgpack-python
 pkgname='python-u-msgpack'
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/vsergeev/${_pkgname}"
 license=('MIT')
