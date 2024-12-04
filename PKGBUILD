@@ -2,7 +2,7 @@
 
 pkgname=python-portend
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Use portend to monitor TCP ports for bound or unbound states.'
 url='https://github.com/jaraco/portend'
 arch=(any)
