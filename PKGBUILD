@@ -3,7 +3,7 @@
 pkgname=python-platformdirs
 _name="${pkgname#python-}"
 pkgver=4.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A library to determine platform-specific system directories'
 arch=('any')
 url='https://github.com/platformdirs/platformdirs'
