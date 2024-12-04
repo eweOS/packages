@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=python-certifi
-pkgver=2024.07.04
-pkgrel=2
+pkgver=2024.08.30
+pkgrel=1
 pkgdesc='Python SSL Certificates.'
 url='https://github.com/certifi/python-certifi'
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python ca-certificates)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=("https://github.com/certifi/python-certifi/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('72c602546773d75e1f7aa9cc03f58d43265393d6cc07aa90580fe3608c4b00be')
+sha256sums=('6417a0cf35dcd5b0175974f279de9fe9a015175dcccbac938dea35737edb2070')
 
 build () {
 	cd $pkgname-$pkgver
