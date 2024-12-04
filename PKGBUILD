@@ -3,7 +3,7 @@
 pkgname=python-beautifulsoup4
 _pkgname="${pkgname#python-}"
 pkgver=4.12.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A Python HTML/XML parser designed for quick turnaround projects like screen-scraping'
 arch=('any')
 url='https://www.crummy.com/software/BeautifulSoup/'
@@ -33,8 +33,9 @@ build() {
 }
 
 check() {
+  # https://bugs.gentoo.org/show_bug.cgi?format=multiple&id=944926
   cd "$_pkgname-$pkgver"
-  pytest -v
+  pytest -v --deselect "bs4/tests/test_css.py::TestCSSSelectors::test_unsupported_pseudoclass"
 }
 
 package() {
