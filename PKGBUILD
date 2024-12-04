@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-enabler
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Enable installed pytest plugins'
 arch=('any')
 license=('MIT')
