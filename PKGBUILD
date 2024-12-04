@@ -2,7 +2,7 @@
 
 pkgname=python-certifi
 pkgver=2024.07.04
-pkgrel=1
+pkgrel=2
 pkgdesc='Python SSL Certificates.'
 url='https://github.com/certifi/python-certifi'
 arch=(any)
