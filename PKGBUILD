@@ -2,8 +2,8 @@
 
 pkgname=python-pytest
 _name=${pkgname#python-}
-pkgver=8.3.3
-pkgrel=2
+pkgver=8.3.4
+pkgrel=1
 pkgdesc="Simple powerful testing with Python"
 arch=('any')
 license=('MIT')
@@ -37,7 +37,7 @@ makedepends=(
 #  'python-twisted'
 #)
 source=("git+https://github.com/$_name-dev/$_name.git#tag=$pkgver")
-sha256sums=('ee5c3073528e0793a9f46375b113f6b3714ad96da8041389cc091a8bed801ed7')
+sha256sums=('c19a5d8554bc4eeb9b5bd741d3387cb1d7caf1fabd27e790a5eebd431c8b3b30')
 
 build() {
   cd "$_name"
