@@ -2,7 +2,7 @@
 
 pkgname=nwg-hello
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK3-based greeter for greetd written in python"
 url="https://github.com/nwg-piotr/nwg-hello"
 arch=('any')
