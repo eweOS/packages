@@ -3,7 +3,7 @@
 pkgname=python-tzlocal
 _name=${pkgname#python-}
 pkgver=5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Tzinfo object for the local timezone"
 arch=('any')
 url=https://github.com/regebro/tzlocal
