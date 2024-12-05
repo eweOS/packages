@@ -1,0 +1,2 @@
+d /etc/ssh/ssh_config.d
+d /etc/ssh/sshd_config.d
