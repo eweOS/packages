@@ -6,7 +6,7 @@ pkgname=(gstreamer gstreamer-devel gstreamer-vaapi
 	 gst-plugin-gtk gst-plugin-qml6 gst-plugin-qsv gst-plugin-va
 	 gst-libav gst-rtsp-server gst-editing-services gst-python)
 pkgver=1.24.10
-pkgrel=1
+pkgrel=2
 pkgdesc='GStreamer multimedia framework'
 url='https://gstreamer.freedesktop.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
