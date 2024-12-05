@@ -2,12 +2,12 @@
 
 pkgname=mold
 pkgver=2.34.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A Modern Linker'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/rui314/mold'
 license=('MIT')
-depends=('musl' 'mimalloc' 'openssl' 'zlib' 'cmake')
+depends=('musl' 'mimalloc' 'openssl' 'zlib' 'cmake' 'tbb')
 makedepends=('python' 'linux-headers')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('a8cf638045b4a4b2697d0bcc77fd96eae93d54d57ad3021bf03b0333a727a59d')
@@ -24,8 +24,10 @@ build()
     -D CMAKE_INSTALL_LIBEXECDIR='lib' \
     -D CMAKE_INSTALL_LIBDIR='lib' \
     -D MOLD_USE_SYSTEM_MIMALLOC=ON \
+    -D MOLD_USE_SYSTEM_TBB=ON \
     -D MOLD_USE_MIMALLOC=0 \
-    -D MOLD_USE_MOLD=ON
+    -D MOLD_USE_MOLD=ON \
+    -D MOLD_LTO=ON
   cmake --build build
 }
 
