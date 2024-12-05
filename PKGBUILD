@@ -1,0 +1,37 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgname=xfce4-diskperf-plugin
+pkgver=2.7.0
+pkgrel=1
+pkgdesc="Displays instant disk/partition performance in the Xfce4 panel"
+arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
+license=('BSD-2-Clause')
+url="https://docs.xfce.org/panel-plugins/xfce4-diskperf-plugin/start"
+groups=('xfce4-goodies')
+depends=('xfce4-panel')
+makedepends=('git' 'intltool' 'xfce4-dev-tools')
+source=("git+https://gitlab.xfce.org/panel-plugins/xfce4-diskperf-plugin.git#tag=$pkgname-$pkgver")
+sha256sums=('eeaa0d90c5289c6719f4a6e754899b908ea940be67d1087c12c3f2f8137f4ff6')
+
+prepare() {
+  cd $pkgname
+  NOCONFIGURE=1 ./autogen.sh
+}
+
+build() {
+  cd $pkgname
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --disable-static \
+    --disable-debug
+  make
+}
+
+package() {
+  cd $pkgname
+  make DESTDIR="$pkgdir" install
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
