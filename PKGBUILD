@@ -2,7 +2,7 @@
 
 pkgname=onetbb
 pkgver=2022.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='High level abstract threading library (oneAPI Threading Building Blocks)'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://uxlfoundation.github.io/oneTBB/'
@@ -20,12 +20,6 @@ prepare() {
   _patch_ "oneTBB-$pkgver"
   
   cd "oneTBB-$pkgver"
-
-  # enable-resumable.patch not reliable on loongarch64
-  case "$CARCH" in
-    loongarch64) patch -R -p1 < "$srcdir"/enable-resumable.patch;;
-  esac
-
   sed -e "s@#define MALLOC_UNIXLIKE_OVERLOAD_ENABLED __linux__@@"  \
     -i src/tbbmalloc_proxy/proxy.h
 }
@@ -33,6 +27,7 @@ prepare() {
 build() {
   cmake -B build -S oneTBB-$pkgver -GNinja \
           -DTBB4PY_BUILD=ON \
+	  -DTBB_TEST=OFF \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DTBB_STRICT=OFF \
           -DTBB4PY_BUILD=ON \
