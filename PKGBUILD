@@ -2,7 +2,7 @@
 
 pkgname=dvisvgm
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast DVI, EPS, and PDF to SVG converter'
 arch=(x86_64 aarch64 riscv64)
 url='https://dvisvgm.de/'
