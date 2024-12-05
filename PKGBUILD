@@ -2,7 +2,7 @@
 
 pkgname=vnstat
 pkgver=2.12
-pkgrel=2
+pkgrel=3
 pkgdesc="A console-based network traffic monitor"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://humdi.net/vnstat/"
