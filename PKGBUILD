@@ -2,7 +2,7 @@
 
 pkgname=wf-recorder
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Screen recorder for wlroots-based compositors such as sway"
 arch=("x86_64" "aarch64" "riscv64")
 url="https://github.com/ammen99/wf-recorder"
@@ -21,8 +21,16 @@ makedepends=(
 optdepends=(
   'slurp: Select a region to record'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ammen99/wf-recorder/archive/v$pkgver.tar.gz")
-sha256sums=('b9168bfdf41995bce2cfed5487e3ca8f2e75a5661b92cebea086a3468d20d87c')
+source=(
+  "$pkgname-$pkgver.tar.gz::https://github.com/ammen99/wf-recorder/archive/v$pkgver.tar.gz"
+  "ffmpeg.patch::https://github.com/ammen99/wf-recorder/commit/560bb92d3ddaeb31d7af77d22d01b0050b45bebe.patch"
+)
+sha256sums=('b9168bfdf41995bce2cfed5487e3ca8f2e75a5661b92cebea086a3468d20d87c'
+            'abc443ae02a2d74bcdc19ce9bbbafc99ff984b4ba512e620ddddf7f159d7454b')
+
+prepare() {
+  _patch_ "$pkgname-$pkgver"
+}
 
 build() {
   ewe-meson -Dpulse=enabled "$pkgname-$pkgver" build
