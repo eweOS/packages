@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=firefox
-pkgver=132.0.2
-pkgrel=2
+pkgver=133.0
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64 aarch64 riscv64)
@@ -38,7 +38,7 @@ source=(
   distribution.ini
   visibility.patch
 )
-sha256sums=('329e1764f4b4e13f11dcf1fd7b3c6d8f80e512e8b7ed5bf65fbe44749c2610e9'
+sha256sums=('492b2c9a3b6d215e38ce490624e8b2b9473419accdeaddb24ba00bc6adc3cc60'
             '7307e32b1b553d43a3f739d5e684d9a32c45f5d7db017860c568984a420f5bb1'
             'b26bb318afbfe42325d81e1c7323541c2558bb151a647c015e72a8d50f0e9bba'
             '18a0f1df76834ac3d4ddb150aa857785df641b54f9fbf0cfb6ffcec64dad72d4'
@@ -64,7 +64,6 @@ build() {
   echo "ac_add_options --host=$CARCH-unknown-linux-musl" >> .mozconfig
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
-  export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
   export MOZ_NOSPAM=1
   export CXXSTDLIB=c++
