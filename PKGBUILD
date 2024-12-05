@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg
 pkgver=7.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://ffmpeg.org/
