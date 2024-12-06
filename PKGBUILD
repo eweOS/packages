@@ -2,7 +2,7 @@
 
 pkgname=mold
 pkgver=2.34.1
-pkgrel=3
+pkgrel=5
 pkgdesc='A Modern Linker'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/rui314/mold'
@@ -16,6 +16,12 @@ build()
 {
   export LDFLAGS="$LDFLAGS -Wl,-z,stack-size=$((1024 * 1024))"
 
+  if check_option lto y; then
+    _MOLD_LTO=ON
+  else
+    _MOLD_LTO=OFF
+  fi
+
   cmake \
     -S "$pkgname-$pkgver" \
     -B build \
@@ -27,7 +33,7 @@ build()
     -D MOLD_USE_SYSTEM_TBB=ON \
     -D MOLD_USE_MIMALLOC=0 \
     -D MOLD_USE_MOLD=ON \
-    -D MOLD_LTO=ON
+    -D MOLD_LTO=${_MOLD_LTO}
   cmake --build build
 }
 
