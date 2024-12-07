@@ -2,10 +2,10 @@
 
 pkgname=pavucontrol
 pkgver=6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="PulseAudio Volume Control"
 url="https://freedesktop.org/software/pulseaudio/pavucontrol/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-or-later)
 depends=(
   glib2
