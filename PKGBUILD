@@ -2,9 +2,9 @@
 
 pkgname=dmidecode
 pkgver=3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop Management Interface table related utilities"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.nongnu.org/dmidecode"
 license=('GPL')
 source=("https://sources.archlinux.org/other/${pkgname}/${pkgname}-${pkgver}.tar.xz")
