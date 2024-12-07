@@ -4,10 +4,10 @@
 pkgname=cataclysm-dda
 pkgver=0.G
 _pkgver=0.G
-pkgrel=1
+pkgrel=2
 pkgdesc="A post-apocalyptic roguelike. (TUI version)"
 url="https://cataclysmdda.org/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=("CCPL:by-sa")
 depends=('llvm-libs' 'ncurses' 'gettext')
 makedepends=('astyle')
