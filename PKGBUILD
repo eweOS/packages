@@ -6,13 +6,13 @@
 
 pkgname=nethack
 pkgver=3.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A single player dungeon exploration game'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.nethack.org/index.html"
 license=('custom')
 depends=('ncurses')
-makedepends=('bison')
+makedepends=('bison' 'linux-headers')
 source=(
   "https://www.nethack.org/download/${pkgver}/${pkgname}-${pkgver//./}-src.tgz"
   "${pkgname}.tmpfiles"
