@@ -2,9 +2,9 @@
 
 pkgname=cmark
 pkgver=0.31.1
-pkgrel=1
+pkgrel=2
 pkgdesc='CommonMark parsing and rendering library and program in C'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/commonmark/cmark'
 license=('custom:BSD2')
 makedepends=(cmake python)
