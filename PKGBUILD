@@ -2,9 +2,9 @@
 
 pkgname=waycheck
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple GUI that displays the protocols implemented by a Wayland compositor"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gitlab.freedesktop.org/serebit/$pkgname"
 license=("Apache-2.0")
 depends=("hicolor-icon-theme" "qt6-base" "qt6-wayland" "wayland")
