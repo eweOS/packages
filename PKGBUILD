@@ -2,10 +2,10 @@
 
 pkgname=libplacebo
 pkgver=7.349.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives'
 url='https://github.com/haasn/libplacebo'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('LGPL-2.1-or-later')
 depends=('vulkan-icd-loader' 'glslang' 'lcms2' 'shaderc' 'xxhash')
 makedepends=(
