@@ -6,10 +6,10 @@
 
 pkgname=lazygit
 pkgver=0.44.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple terminal UI for git commands'
 url='https://github.com/jesseduffield/lazygit'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('MIT')
 depends=('git' 'musl')
 makedepends=('go')
