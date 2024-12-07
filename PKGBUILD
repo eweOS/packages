@@ -2,9 +2,9 @@
 
 pkgname=mpv
 pkgver=0.39.0
-pkgrel=2
+pkgrel=3
 pkgdesc='a free, open source, and cross-platform media player'
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL3')
 url='https://mpv.io/'
 depends=(
