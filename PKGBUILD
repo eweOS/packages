@@ -2,9 +2,9 @@
 
 pkgname=fcgiwrap
 pkgver=1.1.0
-pkgrel=7
+pkgrel=8
 pkgdesc='A simple server for running CGI applications over FastCGI.'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('MIT')
 url='https://www.nginx.com/resources/wiki/start/topics/examples/fcgiwrap/'
 depends=('fcgi')
