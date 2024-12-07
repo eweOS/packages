@@ -6,10 +6,10 @@ pkgname=(
   gcr-3-docs
 )
 pkgver=3.41.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for bits of crypto UI and parsing"
 url="https://gitlab.gnome.org/GNOME/gcr"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-2.1-or-later)
 depends=(
   cairo
