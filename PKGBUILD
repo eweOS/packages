@@ -3,9 +3,9 @@
 pkgbase=fcgi2
 pkgname=fcgi
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A language independent, high performant extension to CGI"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('custom')
 url='http://www.fastcgi.com/'
 source=("https://github.com/FastCGI-Archives/$pkgbase/archive/refs/tags/$pkgver.tar.gz")
