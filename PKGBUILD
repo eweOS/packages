@@ -2,10 +2,10 @@
 
 pkgname=appstream-glib
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Objects and methods for reading and writing AppStream metadata"
 url="https://people.freedesktop.org/~hughsient/appstream-glib/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-2.1-or-later)
 depends=(
   cairo
