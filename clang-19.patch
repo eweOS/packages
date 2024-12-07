@@ -1,0 +1,48 @@
+From 1400b1018ff37196bd24ba4365bd50beb571ac14 Mon Sep 17 00:00:00 2001
+From: avaliente-bc <56400759+avaliente-bc@users.noreply.github.com>
+Date: Wed, 6 Apr 2022 21:27:37 +0200
+Subject: [PATCH] stl_emulation span::count_ is not const anymore
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In C++ we cannot have both assignment operator and const member. Since
+span::operator= is defined, span::count_ constness must be removed.
+
+cherry-picked from upstream
+google/flatbuffers@20aad0c41e1252b04c72111c3eb221280a9c2009.
+
+fixes:
+
+	In file included from ../src/third-party/flatbuffers/util.h:25,
+			 from ../src/third-party/flatbuffers/flexbuffers.h:26,
+			 from ../src/flexbuffer_json.h:9,
+			 from ../src/json.h:1623,
+			 from ../src/units.h:17,
+			 from ../src/damage.h:18,
+			 from ../src/bodypart.h:15,
+			 from ../src/avatar.h:16,
+			 from ../tests/battery_mod_test.cpp:9:
+	../src/third-party/flatbuffers/stl_emulation.h: In member function ‘constexpr flatbuffers::span<T, Extent>& flatbuffers::span<T, Extent>::operator=(const flatbuffers::span<T, Extent>&)’:
+	../src/third-party/flatbuffers/stl_emulation.h:550:12: error: assignment of read-only member ‘flatbuffers::span<T, Extent>::count_’
+	  550 |     count_ = other.count_;
+	      |     ~~~~~~~^~~~~~~~~~~~~~
+
+under gcc 14.
+---
+ src/third-party/flatbuffers/stl_emulation.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/third-party/flatbuffers/stl_emulation.h b/src/third-party/flatbuffers/stl_emulation.h
+index a64c5bcb8efa2..975de21377466 100644
+--- a/src/third-party/flatbuffers/stl_emulation.h
++++ b/src/third-party/flatbuffers/stl_emulation.h
+@@ -626,7 +626,7 @@ class span FLATBUFFERS_FINAL_CLASS {
+  private:
+   // This is a naive implementation with 'count_' member even if (Extent != dynamic_extent).
+   pointer const data_;
+-  const size_type count_;
++  size_type count_;
+ };
+ 
+  #if !defined(FLATBUFFERS_SPAN_MINIMAL)
