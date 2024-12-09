@@ -2,9 +2,9 @@
 
 pkgname=fswatch
 pkgver=1.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform file change monitor with multiple backends"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://emcrisostomo.github.io/fswatch/"
 license=('GPL')
 depends=('llvm-libs')
