@@ -2,10 +2,10 @@
 
 pkgname=gtkmm
 pkgver=4.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ bindings for GTK 4"
 url="https://www.gtkmm.org/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-2.1-or-later)
 depends=(
   gtk4
