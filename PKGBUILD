@@ -2,10 +2,10 @@
 
 pkgname=libvterm
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator.'
 url='https://www.leonerd.org.uk/code/libvterm/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 depends=(musl)
 makedepends=(libtool)
