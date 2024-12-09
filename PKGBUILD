@@ -4,10 +4,10 @@
 pkgname=libisoburn
 pkgver=1.5.6
 _pkgver=${pkgver/.pl01/}
-pkgrel=2
+pkgrel=3
 pkgdesc="frontend for libraries libburn and libisofs"
 url="https://dev.lovelyhq.com/libburnia"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL2')
 depends=('libburn' 'libisofs' 'readline')
 optdepends=('tk: xorriso-tcltk frontend'
