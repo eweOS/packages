@@ -2,10 +2,10 @@
 
 pkgname=seahorse
 pkgver=47.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME application for managing PGP keys."
 url="https://wiki.gnome.org/Apps/Seahorse"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL-2.0-or-later AND LGPL-2.1-or-later AND CC-BY-SA-3.0')
 depends=(
   dconf
