@@ -2,9 +2,9 @@
 
 pkgname=lensfun
 pkgver=0.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Database of photographic lenses and a library that allows advanced access to the database'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://lensfun.github.io/'
 license=(LGPL3)
 depends=(glib2)
