@@ -6,11 +6,11 @@ pkgname=(
   libshumate-docs
 )
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Map widget for GTK 4"
 url="https://wiki.gnome.org/Projects/libshumate"
 license=(LGPL-2.1-or-later)
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=(
   cairo
   gdk-pixbuf2
