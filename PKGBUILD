@@ -3,8 +3,8 @@
 pkgname=glfw
 pkgdesc="A free, open source, portable framework for graphical application development"
 pkgver=3.4
-pkgrel=1
-arch=('x86_64' 'aarch64' 'riscv64')
+pkgrel=2
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.glfw.org/"
 license=('custom:ZLIB')
 depends=('libgl' 'libxkbcommon' 'wayland')
