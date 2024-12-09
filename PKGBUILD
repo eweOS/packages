@@ -2,9 +2,9 @@
 
 pkgname=libime
 pkgver=1.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A library to support generic input method implementation"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/fcitx/libime"
 license=('LGPL-2.1-or-later')
 depends=('boost-libs' 'fcitx5')
