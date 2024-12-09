@@ -2,10 +2,10 @@
 
 pkgname=libsrtp
 pkgver=2.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for SRTP (Secure Realtime Transport Protocol)'
 url='https://github.com/cisco/libsrtp'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD-3-Clause)
 depends=(musl nss libpcap)
 makedepends=(meson samurai)
