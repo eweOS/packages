@@ -7,10 +7,10 @@ pkgname=(
   libnma-gtk4
 )
 pkgver=1.10.6
-pkgrel=1
+pkgrel=2
 pkgdesc="NetworkManager GUI client library"
 url="https://gitlab.gnome.org/GNOME/libnma"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(
   GPL-2.0-or-later
   LGPL-2.1-or-later
@@ -26,6 +26,7 @@ makedepends=(
   iso-codes
   libnm
   libudev
+  linux-headers
   meson
   mobile-broadband-provider-info
   vala
