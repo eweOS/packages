@@ -2,9 +2,9 @@
 
 pkgname=hyprpicker
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A wlroots-compatible Wayland color picker that does not suck."
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/hyprwm/hyprpicker"
 license=('BSD-3-Clause')
 depends=('cairo' 'libxkbcommon' 'wayland' 'hyprutils')
