@@ -2,9 +2,9 @@
 
 pkgname=kdenlive
 pkgver=24.08.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A non-linear video editor for Linux using the MLT video framework'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://apps.kde.org/kdenlive/'
 license=(GPL-2.0-or-later)
 depends=(frei0r-plugins
