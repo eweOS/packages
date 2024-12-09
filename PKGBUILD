@@ -2,10 +2,10 @@
 
 pkgname=neovim
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc='hyperextensible Vim-based text editor'
 url='https://neovim.io'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0 Vim)
 depends=(lua51
 	 gettext
