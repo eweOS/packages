@@ -2,10 +2,10 @@
 
 pkgname=smartmontools
 pkgver=7.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Programs to control and monitor storage systems using S.M.A.R.T.'
 url='https://www.smartmontools.org/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-or-later)
 depends=(musl)
 makedepends=(gnupg linux-headers)
