@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 41b08ed..062ec61 100644
+--- a/Makefile
++++ b/Makefile
+@@ -70,7 +70,7 @@ src/encoding.lo: $(INCFILES)
+ 
+ bin/%: bin/%.c $(LIBRARY)
+ 	@echo CC $<
+-	@$(LIBTOOL) --mode=link --tag=CC $(CC) $(CFLAGS) -o $@ $< -lvterm $(LDFLAGS)
++	@$(LIBTOOL) --mode=link --tag=CC $(CC) $(CFLAGS) -o $@ $< libvterm.la $(LDFLAGS)
+ 
+ t/harness.lo: t/harness.c $(HFILES)
+ 	@echo CC $<
