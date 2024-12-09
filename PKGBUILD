@@ -5,9 +5,9 @@
 
 pkgname=libtermkey
 pkgver=0.22
-pkgrel=4
+pkgrel=5
 pkgdesc='Library for easy processing of keyboard entry from terminal-based programs'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.leonerd.org.uk/code/libtermkey'
 license=('MIT')
 depends=('unibilium' 'libunibilium.so')
