@@ -2,9 +2,9 @@
 
 pkgname=waylyrics
 pkgver=0.3.20
-pkgrel=1
+pkgrel=2
 pkgdesc="the furry way to show desktop lyrics"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://waylyrics.github.io/waylyrics/waylyrics/"
 license=("MIT")
 depends=(
