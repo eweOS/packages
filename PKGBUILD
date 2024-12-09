@@ -2,10 +2,10 @@
 
 pkgname=libmypaint
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for making brushstrokes which is used by MyPaint and other projects'
 url='http://mypaint.org/'
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('ISC')
 depends=('json-c' 'gegl' 'glib2' 'json-glib' 'babl')
 makedepends=('intltool' 'python' 'gobject-introspection' 'autoconf')
@@ -24,6 +24,7 @@ prepare() {
 
 build() {
   cd ${pkgname}-${pkgver}
+  MAKEFLAGS="CC=cc CXX=c++ -j$JOBS"
   ./configure \
     --prefix=/usr \
     --enable-gegl
@@ -32,11 +33,13 @@ build() {
 
 check() {
   cd ${pkgname}-${pkgver}
+  MAKEFLAGS="CC=cc CXX=c++ -j$JOBS"
   make check
 }
 
 package() {
   cd ${pkgname}-${pkgver}
+  MAKEFLAGS="CC=cc CXX=c++ -j$JOBS"
   make DESTDIR="${pkgdir}" install
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
