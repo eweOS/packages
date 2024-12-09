@@ -2,9 +2,9 @@
 
 pkgname=vnstat
 pkgver=2.12
-pkgrel=3
+pkgrel=4
 pkgdesc="A console-based network traffic monitor"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://humdi.net/vnstat/"
 license=('GPL')
 depends=('bash' 'sqlite')
