@@ -2,9 +2,9 @@
 
 pkgname=cups-filters
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenPrinting CUPS Filters"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://wiki.linuxfoundation.org/openprinting/cups-filters"
 license=('custom')
 depends=('libcups'
