@@ -5,13 +5,13 @@
 pkgname=cmocka
 epoch=2
 pkgver=1.1.5.r203.g109645a
-pkgrel=2
+pkgrel=3
 pkgdesc='Elegant unit testing framework for C with support for mock objects'
 url='https://cmocka.org/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('Apache')
 depends=('musl')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 source=("git+https://gitlab.com/cmocka/cmocka.git")
 sha512sums=('SKIP')
 
