@@ -7,9 +7,9 @@
 
 pkgname=gflags
 pkgver=2.2.2
-pkgrel=4
+pkgrel=5
 pkgdesc='C++ Library for commandline flag processing'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/schuhschuh/gflags'
 license=('BSD')
 depends=('llvm-libs')
