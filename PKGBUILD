@@ -2,12 +2,12 @@
 
 pkgname=sdl12-compat
 pkgver=1.2.68
-pkgrel=1
+pkgrel=2
 pkgdesc="SDL 1.2 runtime compatibility library using SDL 2.0"
 url="https://github.com/libsdl-org/sdl12-compat"
 depends=('sdl2' 'glu')
 makedepends=('cmake')
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 provides=('sdl1')
 license=('MIT')
 source=("https://github.com/libsdl-org/sdl12-compat/archive/refs/tags/release-${pkgver}.tar.gz")
