@@ -2,9 +2,9 @@
 
 pkgname=libppd
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenPrinting - the legacy support library for PPD files"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/OpenPrinting/libppd"
 license=('APACHE')
 depends=('libcups' 'libcupsfilters')
