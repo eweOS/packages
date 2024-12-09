@@ -3,10 +3,10 @@
 pkgbase=lua-lpeg
 pkgname=(lua51-lpeg lua54-lpeg)
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pattern-matching library for Lua'
 url='http://www.inf.puc-rio.br/~roberto/lpeg'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 makedepends=(lua51 lua54)
 license=(MIT)
 source=("http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-$pkgver.tar.gz")
