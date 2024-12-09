@@ -2,9 +2,9 @@
 
 pkgname=fcitx5-gtk
 pkgver=5.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Fcitx5 gtk im module and glib based dbus client library"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/fcitx/fcitx5-gtk"
 license=('GPL')
 groups=('fcitx5-im')
