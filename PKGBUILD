@@ -2,9 +2,9 @@
 
 pkgname=proj
 pkgver=9.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cartographic Projections and Coordinate Transformations Library"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://proj.org/"
 license=(MIT)
 depends=(curl libtiff sqlite)
