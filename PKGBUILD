@@ -2,9 +2,9 @@
 
 pkgname=hidapi
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple library for communicating with USB and Bluetooth HID devices'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/libusb/hidapi'
 license=('GPL3' 'BSD' 'custom')
 optdepends=('libusb: for hidapi-libusb')
