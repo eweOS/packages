@@ -2,9 +2,9 @@
 
 pkgname=p7zip
 pkgver=17.05
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line file archiver with high compression ratio"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/p7zip-project/p7zip"
 license=('LGPL' 'custom:unRAR')
 depends=('sh' 'musl')
