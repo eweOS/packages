@@ -2,11 +2,11 @@
 
 pkgname=re2
 _re2ver=2024-05-01
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgver=${_re2ver//-/}
 pkgdesc="Fast, safe, thread-friendly regular expression engine"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/google/re2"
 license=('BSD')
 depends=('llvm-libs' 'abseil-cpp')
