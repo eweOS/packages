@@ -2,9 +2,9 @@
 
 pkgname=(llvm llvm-tools llvm-devel llvm-libs llvm-lto lldb openmp lld clang flang mlir wasi-libc++ wasi-libc++abi wasi-compiler-rt)
 _realpkgname=llvm-project
-pkgver=19.1.3
+pkgver=19.1.5
 _binutilsver=2.42
-pkgrel=2
+pkgrel=1
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='htps://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -38,7 +38,7 @@ source=(
   try-llvm-libunwind.patch
   check-before-using-glibc-f128-funcs.patch
 )
-sha256sums=('324d483ff0b714c8ce7819a1b679dd9e4706cf91c6caf7336dc4ac0c1d3bf636'
+sha256sums=('bd8445f554aae33d50d3212a15e993a667c0ad1b694ac1977f3463db3338e542'
             'f6e4d41fd5fc778b06b7891457b3620da5ecea1006c6a4a41ae998109f85a800'
             '5e58f02fe01ea22ea0406e4250ad89a053d517ef103a1dacfade4ecd98a7f2bc'
             'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94'
