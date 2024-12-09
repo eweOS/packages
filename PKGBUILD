@@ -3,10 +3,10 @@
 pkgbase=lua-mpack
 pkgname=(lua51-mpack lua54-mpack)
 pkgver=1.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc='libmpack lua binding'
 url='https://github.com/libmpack/libmpack-lua'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=(libmpack)
 makedepends=(libmpack lua51 lua54 luarocks51 luarocks54)
 source=("https://github.com/libmpack/libmpack-lua/releases/download/$pkgver/libmpack-lua-$pkgver.tar.gz"
