@@ -2,13 +2,13 @@
 
 pkgname=fbterm
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Framebuffer terminal emulator'
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/izmntuk/fbterm'
 license=('GPL2')
 depends=(freetype2 fontconfig ncurses)
-makedepends=(autoconf patch)
+makedepends=(autoconf patch linux-headers)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz"
     '0001-Fix-build-with-gcc-6.patch' 'fix_ftbfs_crosscompile.patch'
     'fbconfig.patch' 'color_palette.patch' 'fbterm.patch' 'fix-musl.patch' 
