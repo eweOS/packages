@@ -2,9 +2,9 @@
 
 pkgname=sfwbar
 pkgver=1.0_beta15
-pkgrel=1
+pkgrel=2
 pkgdesc='S* Floating Window taskBar'
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/LBCrion/sfwbar'
 license=('GPL-3.0-or-later')
 depends=(
