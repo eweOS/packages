@@ -2,10 +2,10 @@
 
 pkgname=sdbus-cpp
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a high-level C++ D-Bus library designed to provide expressive, easy-to-use API'
 url="https://github.com/Kistler-Group/$pkgname"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-2.1-only LicenseRef-sdbus-c++-LGPL-Exception-1.0)
 depends=(expat basu)
 makedepends=(cmake)
