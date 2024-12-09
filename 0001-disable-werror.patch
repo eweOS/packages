@@ -1,0 +1,13 @@
+diff --git a/meson.build b/meson.build
+index b95b0b9..031a938 100644
+--- a/meson.build
++++ b/meson.build
+@@ -4,7 +4,7 @@ project(
+ 	version: '0.7.1',
+ 	license: 'MIT',
+ 	meson_version: '>=0.58.0',
+-	default_options: ['c_std=c11', 'warning_level=2', 'werror=true'],
++	default_options: ['c_std=c11', 'warning_level=2'],
+ )
+ 
+ cc = meson.get_compiler('c')
