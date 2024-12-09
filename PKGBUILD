@@ -2,9 +2,9 @@
 
 pkgname=libmng
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of routines used to create and manipulate MNG format graphics files"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.libmng.com/'
 license=(LicenseRef-libmng)
 depends=(lcms2
