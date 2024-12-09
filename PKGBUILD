@@ -3,10 +3,10 @@
 pkgname=libserialport
 pkgver=0.1.2
 _path=$pkgname-$pkgname-$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc='A minimal, cross-platform serial port library.'
 url='https://sigrok.org/wiki/Libserialport'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-3.0-or-later)
 depends=(musl)
 makedepends=(linux-headers)
