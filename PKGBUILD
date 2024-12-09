@@ -2,10 +2,10 @@
 
 pkgname=tftp-hpa
 pkgver=5.2
-pkgrel=3
+pkgrel=4
 pkgdesc='TFTP server ported to Linux'
 url='https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD-3-Clause)
 depends=(musl readline)
 backup=(etc/conf.d/tftpd.conf)
