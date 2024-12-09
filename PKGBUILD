@@ -3,13 +3,13 @@
 pkgname=rapidcheck
 _commit=ff6af6fc683159deb51c543b065eba14dfcf329b
 pkgver=20231214."${_commit:0:7}"
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++ framework for property based testing inspired by QuickCheck'
 url='https://github.com/emil-e/rapidcheck'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD-2-Clause)
 depends=(musl)
-makedepends=(cmake)
+makedepends=(cmake git)
 provides=(librapidcheck.so)
 source=("git+https://github.com/emil-e/rapidcheck.git#commit=$_commit")
 sha256sums=('f12e4e1d2b57b290780dbb9f05c75d3e42b9a71ee27b0eb55e71a7bdfd0b5f1e')
