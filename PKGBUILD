@@ -3,10 +3,10 @@
 
 pkgname=libgit2
 pkgver=1.8.4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A linkable library for Git"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/libgit2/libgit2"
 license=(GPL-2.0-only-with-linking-exception)
 depends=(musl http-parser openssl pcre zlib)
