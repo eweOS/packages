@@ -2,9 +2,9 @@
 
 pkgname=openttd
 pkgver=14.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Engine for running Transport Tycoon Deluxe'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.openttd.org'
 license=(GPL)
 depends=(fluidsynth fontconfig hicolor-icon-theme)
