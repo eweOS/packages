@@ -2,10 +2,10 @@
 
 pkgname=eww
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A standalone widget system for wayland made in Rust"
 url='https://github.com/elkowar/eww'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 makedepends=(rust git)
 depends=(gtk3 gtk-layer-shell libdbusmenu-glib libdbusmenu-gtk3)
