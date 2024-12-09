@@ -2,9 +2,9 @@
 
 pkgname=fcitx5-lua
 pkgver=5.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Lua support for Fcitx 5"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/fcitx/fcitx5-lua"
 license=('GPL')
 depends=('fcitx5' 'lua')
