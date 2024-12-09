@@ -2,10 +2,10 @@
 
 pkgname=avrdude
 pkgver=8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A utility to program AVR microcontrollers.'
 url='https://github.com/avrdudes/avrdude'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-or-later)
 depends=(libelf libusb libhidapi libftdi readline libserialport)
 makedepends=(flex bison cmake linux-headers)
