@@ -2,9 +2,9 @@
 
 pkgname=libpwquality
 pkgver=1.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for password quality checking and generating random passwords'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/libpwquality/libpwquality'
 license=('BSD-3-Clause OR GPL-2.0-or-later')
 depends=(cracklib pam)
