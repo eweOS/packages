@@ -2,9 +2,9 @@
 
 pkgname=vapoursynth
 pkgver=R70
-pkgrel=2
+pkgrel=3
 pkgdesc='A video processing framework with the future in mind'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url=http://www.vapoursynth.com/
 license=(
   LGPL2.1
