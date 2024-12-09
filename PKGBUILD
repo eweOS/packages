@@ -2,10 +2,10 @@
 
 pkgname=telegram-desktop
 pkgver=5.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Telegram Desktop client'
 url='https://desktop.telegram.org/'
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 loongarch64)
 license=(GPL-3.0-or-later)
 depends=(qt6-base qt6-svg qt6-imageformats qt6-wayland openh264 abseil-cpp
 	 ffmpeg openssl libopus libvpx glib glibmm libdispatch hunspell
