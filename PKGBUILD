@@ -2,9 +2,9 @@
 
 pkgname=gavl
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Low level library, upon which multimedia APIs can be built'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://gmerlin.sourceforge.net/'
 license=(GPL-2.0-or-later)
 source=("https://downloads.sourceforge.net/gmerlin/$pkgname-$pkgver.tar.gz")
