@@ -2,10 +2,10 @@
 
 pkgname=tl-expected
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='C++11/14/17 std::expected with functional-style extensions.'
 url='https://tl.tartanllama.xyz'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(CC0-1.0)
 depends=(musl)
 makedepends=(cmake samurai)
