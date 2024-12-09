@@ -4,9 +4,9 @@
 
 pkgname=http-parser
 pkgver=2.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Parser for HTTP Request/Response written in C"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/nodejs/http-parser"
 license=('MIT')
 depends=('musl')
