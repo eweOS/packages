@@ -2,9 +2,9 @@
 
 pkgname=python-numpy
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('custom')
 url="https://www.numpy.org/"
 depends=('cblas' 'lapack' 'python')
