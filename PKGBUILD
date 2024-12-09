@@ -2,10 +2,10 @@
 
 pkgname=wf-shell
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GTK3-based panel for the Wayfire compositor'
 url=https://wayfire.org
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 depends=(wf-config gtkmm3 gtk-layer-shell libdbusmenu-gtk3 libpulse alsa-lib)
 makedepends=(wayland wayfire wlroots0.17-devel wayland-protocols meson ninja git gobject-introspection glib2 glm)
