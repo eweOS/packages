@@ -2,10 +2,10 @@
 
 pkgname=kirigami-addons
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Add-ons for the Kirigami framework'
 url='https://invent.kde.org/libraries/kirigami-addons'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-or-later
          LGPL-2.1-or-later)
 depends=(kconfig
