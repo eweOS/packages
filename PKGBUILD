@@ -2,13 +2,13 @@
 
 pkgname=libhidapi
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Simple cross-platform library for communicating with HID devices.'
 url='https://libusb.info/hidapi'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD-3-Clause)
 depends=(libudev libusb)
-makedepends=(cmake)
+makedepends=(cmake linux-headers)
 provides=(libhidapi-hidraw.so libhidapi-libusb.so)
 source=("https://github.com/libusb/hidapi/archive/refs/tags/hidapi-$pkgver.tar.gz")
 sha256sums=('a5714234abe6e1f53647dd8cba7d69f65f71c558b7896ed218864ffcf405bcbd')
