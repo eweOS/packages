@@ -5,10 +5,10 @@
 _name=pmix
 pkgname=openpmix
 pkgver=5.0.4
-pkgrel=1
+pkgrel=2
 oac_commit=dfff67569fb72dbf8d73a1dcf74d091dad93f71b
 pkgdesc="Extended version of the PMI standard"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/openpmix/openpmix"
 license=(BSD)
 depends=(curl hwloc jansson libevent zlib curl)
