@@ -3,12 +3,12 @@
 pkgname=libdecor
 pkgdesc='Client-side decorations library for Wayland clients'
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 url="https://gitlab.freedesktop.org/libdecor/libdecor"
 license=('MIT')
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('wayland' 'pango' 'dbus')
-makedepends=('cmake' 'ninja' 'meson' 'wayland-protocols' 'gtk3')
+makedepends=('cmake' 'ninja' 'meson' 'wayland-protocols' 'gtk3' 'linux-headers')
 optdepends=('gtk3: gtk3 support')
 source=("https://gitlab.freedesktop.org/libdecor/libdecor/-/archive/${pkgver}/libdecor-${pkgver}.tar.gz")
 sha512sums=('ddaaa75f1dc983e6d59e168896f8044cf6ac761675db6af410c6d2186bdc66942c98f36eb7a6e2836ce02dbb98189a80db30b7cef3dbaf49c7aae47c3eee22cc')
