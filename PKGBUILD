@@ -2,9 +2,9 @@
 
 pkgname=konversation
 pkgver=24.08.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A user-friendly and fully-featured IRC client'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://apps.kde.org/konversation/'
 license=(GPL-2.0-or-later)
 depends=(karchive
