@@ -5,9 +5,9 @@
 
 pkgname=bottom
 pkgver=0.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A graphical process/system monitor"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/ClementTsang/bottom"
 license=('MIT')
 makedepends=('rust')
