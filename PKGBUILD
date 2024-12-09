@@ -2,9 +2,9 @@
 
 pkgname=glu
 pkgver=9.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Mesa OpenGL utility library"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gitlab.freedesktop.org/mesa/glu"
 license=('LGPL')
 depends=('libglvnd')
