@@ -2,10 +2,10 @@
 
 pkgname=verilator
 pkgver=5.030
-pkgrel=1
+pkgrel=2
 pkgdesc='Verilog/SystemVerilog simulator.'
 url='https://www.veripool.org/verilator/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-3.0-or-later)
 depends=(zlib-ng perl)
 makedepends=(cmake samurai python help2man)
