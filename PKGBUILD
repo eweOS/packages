@@ -2,9 +2,9 @@
 
 pkgname=mpc
 pkgver=0.35
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalist command line interface to MPD"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.musicpd.org/clients/mpc/"
 license=(GPL-2.0-or-later)
 makedepends=(
