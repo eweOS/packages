@@ -2,10 +2,10 @@
 
 pkgname=gtksourceview5
 pkgver=5.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A text widget adding syntax highlighting and more to GNOME"
 url="https://wiki.gnome.org/Projects/GtkSourceView"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-2.1-or-later)
 provides=(gtksourceview libgtksourceview-5.so)
 conflicts=(gtksourceview)
