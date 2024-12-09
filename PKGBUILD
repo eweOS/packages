@@ -2,10 +2,10 @@
 
 pkgname=glade
 pkgver=3.40.0
-pkgrel=1
+pkgrel=2
 pkgdesc="User Interface Builder for GTK+ applications"
 url="https://glade.gnome.org/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL LGPL)
 depends=(gtk3 libxml2)
 makedepends=(gobject-introspection itstool docbook-xsl git meson)
