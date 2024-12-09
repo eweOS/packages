@@ -4,12 +4,13 @@
 
 pkgname=keyutils
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Key Management Utilities'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.kernel.org/'
 license=('GPL2' 'LGPL2.1')
 depends=('musl')
+makedepends=('linux-headers')
 provides=('libkeyutils.so')
 backup=('etc/request-key.conf')
 source=("https://people.redhat.com/~dhowells/keyutils/keyutils-${pkgver}.tar.bz2")
