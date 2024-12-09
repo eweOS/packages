@@ -2,9 +2,9 @@
 
 pkgname=libraw
 pkgver=0.21.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A library for reading RAW files obtained from digital photo cameras (CRW/CR2, NEF, RAF, DNG, and others)'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.libraw.org/'
 license=(CDDL LGPL)
 depends=(lcms2
