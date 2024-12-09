@@ -2,10 +2,10 @@
 
 pkgname=yaml-cpp
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="YAML parser and emitter in C++, written around the YAML 1.2 spec"
 url="https://github.com/jbeder/yaml-cpp"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('MIT')
 provides=('libyaml-cpp.so')
 makedepends=('cmake' 'ninja')
