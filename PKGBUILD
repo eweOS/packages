@@ -2,9 +2,9 @@
 
 pkgname=grim
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Screenshot utility for Wayland'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://git.sr.ht/~emersion/grim'
 license=(MIT)
 depends=(cairo libjpeg wayland)
