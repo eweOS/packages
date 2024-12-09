@@ -2,9 +2,9 @@
 
 pkgname=xcur2png
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert X cursors to PNG images'
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/eworm-de/xcur2png'
 license=('GPL')
 depends=('libpng' 'libxcurcommon-compat')
