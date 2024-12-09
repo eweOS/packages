@@ -2,10 +2,10 @@
 
 pkgname=libgexiv2
 pkgver=0.14.3
-pkgrel=2
+pkgrel=3
 pkgdesc="GObject-based wrapper around the Exiv2 library"
 url="https://gitlab.gnome.org/GNOME/gexiv2"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-or-later)
 depends=(
   exiv2
