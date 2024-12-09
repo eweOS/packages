@@ -2,9 +2,9 @@
 
 pkgname=swaybg
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Wallpaper tool for Wayland compositors'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/swaywm/swaybg'
 license=(MIT)
 makedepends=(meson ninja wayland-protocols)
