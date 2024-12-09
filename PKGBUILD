@@ -2,9 +2,9 @@
 
 pkgname=wofi
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='launcher for wlroots-based wayland compositors'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://hg.sr.ht/~scoopta/wofi'
 license=('GPL-3.0-or-later')
 depends=(
