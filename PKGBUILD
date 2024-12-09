@@ -3,8 +3,8 @@
 pkgbase=libqaccessibilityclient
 pkgname=(libqaccessibilityclient-qt6)
 pkgver=0.6.0
-pkgrel=1
-arch=(x86_64 aarch64 riscv64)
+pkgrel=2
+arch=(x86_64 aarch64 riscv64 loongarch64)
 pkgdesc='Helper library to make writing accessibility tools easier'
 url='https://www.kde.org'
 license=(LGPL2.1)
