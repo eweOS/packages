@@ -2,10 +2,10 @@
 
 pkgname=fim
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A universal image viewer inspired by GNU/Linux concepts.'
 url='https://www.nongnu.org/fbi-improved/'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-or-later)
 depends=(musl libexif)
 makedepends=(linux-headers sdl2 gtk3)
