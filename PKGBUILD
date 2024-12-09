@@ -2,10 +2,10 @@
 
 pkgname=fcitx5-configtool
 pkgver=5.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Configuration tool for fcitx5'
 url='https://github.com/fcitx/fcitx5-configtool'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-or-later)
 depends=(fcitx5 fcitx5-qt qt6-base qt6-svg kwidgetsaddons kitemviews iso-codes)
 makedepends=(cmake extra-cmake-modules linux-headers)
