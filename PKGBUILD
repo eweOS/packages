@@ -2,10 +2,10 @@
 
 pkgname=xdg-dbus-proxy
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Filtering proxy for D-Bus connections"
 url="https://github.com/flatpak/xdg-dbus-proxy"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL)
 depends=(
   dbus
