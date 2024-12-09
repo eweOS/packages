@@ -2,9 +2,9 @@
 
 pkgname=xdg-utils-cxx
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Implementation of the FreeDesktop specifications to be used in C++ projects'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/azubieta/xdg-utils-cxx'
 license=(MIT)
 makedepends=(cmake git)
