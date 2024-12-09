@@ -5,9 +5,9 @@
 
 pkgname=robotfindskitten
 pkgver=2.8284271.702
-pkgrel=1
+pkgrel=2
 pkgdesc='Yet another Zen simulation'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://robotfindskitten.org/' # no https available
 license=(GPL2)
 depends=(ncurses)
