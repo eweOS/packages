@@ -2,9 +2,9 @@
 
 pkgname=mpvpaper
 pkgver=1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="video wallpaper program for wlroots based wayland compositors"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/GhostNaN/$pkgname"
 license=('GPL3')
 depends=('mpv' 'wayland')
