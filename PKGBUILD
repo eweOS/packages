@@ -2,10 +2,10 @@
 
 pkgname=wmenu
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='dmenu substitution on Wayland'
 url='https://codeberg.org/adnano/wmenu'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 depends=(cairo pango wayland wayland-protocols libxkbcommon)
 makedepends=(meson samurai scdoc)
