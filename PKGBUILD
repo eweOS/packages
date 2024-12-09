@@ -2,10 +2,10 @@
 
 pkgname=swappy
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='A Wayland native snapshot editing tool'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/jtheoof/swappy'
 depends=('cairo' 'gtk3' 'pango')
 optdepends=('wl-clipboard: for persistent clipboard'
