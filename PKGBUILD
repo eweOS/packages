@@ -2,9 +2,9 @@
 
 pkgname=wf-recorder
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Screen recorder for wlroots-based compositors such as sway"
-arch=("x86_64" "aarch64" "riscv64")
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/ammen99/wf-recorder"
 license=('MIT')
 depends=(
