@@ -3,12 +3,12 @@
 
 pkgname=libraw1394
 pkgver=2.1.2
-pkgrel=4
-arch=(x86_64 aarch64 riscv64)
+pkgrel=5
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('LGPL2.1')
 pkgdesc="Provides an API to the Linux IEEE1394 (FireWire) driver"
 depends=('musl')
-makedepends=('pkgconf' 'autoconf')
+makedepends=('pkgconf' 'autoconf' 'linux-headers')
 url="https://ieee1394.wiki.kernel.org/index.php/Main_Page"
 source=(https://www.kernel.org/pub/linux/libs/ieee1394/${pkgname}-${pkgver}.tar.xz)
 validpgpkeys=('955C0098E5C46EF9A152481479F36FB2545D79D0')
