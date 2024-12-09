@@ -3,10 +3,10 @@
 pkgbase=librest
 pkgname=(librest librest-docs librest-demos)
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for accessing RESTful web services"
 url="https://gitlab.gnome.org/GNOME/librest"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL)
 depends=(glib2 libxml2 libsoup3 json-glib)
 makedepends=(gobject-introspection git meson gi-docgen vala libadwaita
