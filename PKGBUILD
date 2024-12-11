@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=shaderc
-pkgver=2024.3
+pkgver=2024.4
 pkgrel=1
 pkgdesc='Collection of tools, libraries and tests for shader compilation'
 url='https://github.com/google/shaderc'
@@ -11,7 +11,7 @@ provides=('libshaderc_shared.so')
 depends=('glslang' 'spirv-tools')
 makedepends=('cmake' 'ninja' 'python' 'spirv-headers')
 source=(https://github.com/google/shaderc/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('ba990054b3e50bd1c3e7decaca80b80dfade0f15505f6e89c455b7a114b8507931dff2c570ca81fd38882472e7d7014c417ca8f4c1117fc0e6825ea9f669222a')
+sha512sums=('d313af65e76664640020c964cbd7021e3b6f12ea839a58ef67f6052d9af684fc7fd237a687737e6483f24b89d5c85b3e0c0fafeec66b3646f77031cb0d6c9587')
 
 prepare() {
   cd ${pkgname}-${pkgver}
