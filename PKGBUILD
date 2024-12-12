@@ -5,8 +5,8 @@ pkgname=(
   json-glib
   json-glib-docs
 )
-pkgver=1.10.0
-pkgrel=3
+pkgver=1.10.6
+pkgrel=1
 pkgdesc="JSON library built on GLib"
 url="https://wiki.gnome.org/Projects/JsonGlib"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -21,7 +21,7 @@ makedepends=(
   python-docutils
 )
 source=("https://gitlab.gnome.org/GNOME/$pkgbase/-/archive/$pkgver/$pkgbase-$pkgver.tar.gz")
-sha256sums=('447890f9de2a04c312871768208f6c8aeec4069392af7605bc77e61165dcb374')
+sha256sums=('d23cbd4094a32cc05cf22cd87a83da1f799e182e286133b49fde3c9241a32006')
 
 build()
 {
