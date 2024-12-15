@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=exo
-pkgver=4.19.1
+pkgver=4.20.0
 pkgrel=1
 pkgdesc="Application library for the Xfce desktop environment"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -13,7 +13,7 @@ makedepends=('git' 'intltool' 'xfce4-dev-tools')
 source=(
   "git+https://gitlab.xfce.org/xfce/exo.git#tag=$pkgname-$pkgver"
 )
-sha256sums=('5c7cac778d6d74c2313fdafe10f05cfa98959115e5a81a90c01ba8b734c03b60')
+sha256sums=('71b1baa8208541b994378dbad80abfaf371a7585b59b1f1e1975fab3fab9c7a2')
 
 prepare() {
   _patch_ $pkgname
