@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=xfconf
-pkgver=4.19.4
+pkgver=4.20.0
 pkgrel=1
 pkgdesc='D-Bus-based configuration storage system'
 url='https://docs.xfce.org/xfce/xfconf/start'
@@ -12,7 +12,7 @@ makedepends=(xfce4-dev-tools perl gtk-doc)
 checkdepends=(dbus)
 source=("https://gitlab.xfce.org/xfce/xfconf/-/archive/xfconf-$pkgver/xfconf-xfconf-$pkgver.tar.gz"
 	"fix-abicheck.patch")
-sha256sums=('3630809d0100af9b921c0ca5245d60230a361548a3b1d370eaecc5d37198dceb'
+sha256sums=('a432495a0f1e0aab7cd644373ed6dec7da0f974f4deee3d763b7d8553a0bfc3c'
             '69a947e576acf685cab5a31a572faa4a1483a0bc14e7afeef9e424413db33864')
 _dirname="$pkgname-$pkgname-$pkgver"
 
