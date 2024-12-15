@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xfce4-appfinder
-pkgver=4.19.3
+pkgver=4.20.0
 pkgrel=1
 pkgdesc="Application launcher and finder"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -11,7 +11,7 @@ groups=('xfce4')
 depends=('libxfce4ui' 'garcon' 'xfconf' 'hicolor-icon-theme')
 makedepends=('git' 'intltool' 'xfce4-dev-tools')
 source=("git+https://gitlab.xfce.org/xfce/xfce4-appfinder.git#tag=$pkgname-$pkgver")
-sha256sums=('36a9a4eeb0381a528306dc80d86d87e851bca7bc9435be4b0ae1ba674968be67')
+sha256sums=('50e5da3517eeb06012f88eb1b337ec8e6de4e4d29cfbe86fe3a3b869c0d7a75c')
 
 prepare() {
   cd $pkgname
