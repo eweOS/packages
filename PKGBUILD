@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=garcon
-pkgver=4.19.2
+pkgver=4.20.0
 pkgrel=1
 pkgdesc="Freedesktop.org compliant menu library"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -11,7 +11,7 @@ groups=('xfce4')
 depends=('libxfce4ui')
 makedepends=('git' 'intltool' 'python' 'gobject-introspection' 'xfce4-dev-tools')
 source=("git+https://gitlab.xfce.org/xfce/garcon.git#tag=$pkgname-$pkgver")
-sha256sums=('bd26b3dd53015ef46d5b8c448496c7a448ea7fc6291cc43f3ba36aa1debb7d67')
+sha256sums=('2febf44d472e9d597a722f5082458ad612e05b167f7a2f9a5b56d4633bdc99cc')
 
 prepare() {
   cd $pkgname
