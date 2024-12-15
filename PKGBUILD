@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=libxfce4util
-pkgver=4.19.4
-pkgrel=2
+pkgver=4.20.0
+pkgrel=1
 pkgdesc='Extension library for Xfce'
 url='https://developer.xfce.org/libxfce4util/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(musl gettext-tiny glib)
 makedepends=(xfce4-dev-tools gtk-doc gobject-introspection vala gobject-introspection)
 provides=(libxfce4util.so)
 source=("https://gitlab.xfce.org/xfce/libxfce4util/-/archive/libxfce4util-$pkgver/libxfce4util-libxfce4util-$pkgver.tar.gz")
-sha256sums=('07d64c5ed4ef44c14f13e5d0ae0232c646e86c29eaaf5722812465b2ef2fa66a')
+sha256sums=('4facb35a7af56f9230da67d0dff9d7d7bb87de3851ba5711edf900bc3e6fae06')
 _dirname="$pkgname-$pkgname-$pkgver"
 
 build() {
