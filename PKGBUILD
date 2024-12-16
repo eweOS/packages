@@ -1,0 +1,41 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgname=fontforge
+pkgver=20230101
+pkgrel=1
+pkgdesc='Outline and bitmap font editor'
+url='https://fontforge.github.io/'
+arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
+license=('BSD')
+makedepends=('cmake' 'git' 'python-setuptools')
+depends=('libtool' 'pango' 'giflib' 'libtiff' 'libxml2' 'libspiro' 'python'
+         'potrace' 'woff2' 'gtk3' 'libuninameslist')
+source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"
+        642d8a3db6d4bc0e70b429622fdf01ecb09c4c10.patch)
+sha256sums=('ca82ec4c060c4dda70ace5478a41b5e7b95eb035fe1c4cf85c48f996d35c60f8'
+            'ca4e15fca23c14851e74ad2a3551cf8426e46cf6b0c093aab43bea346a656236')
+
+prepare() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	patch -Np1 -i ../642d8a3db6d4bc0e70b429622fdf01ecb09c4c10.patch
+	mkdir build
+}
+
+build() {
+	cd "${srcdir}/${pkgname}-${pkgver}/build"
+
+	cmake \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DENABLE_MAINTAINER_TOOLS=TRUE \
+		-DENABLE_FONTFORGE_EXTRAS=TRUE \
+		-DUNIX=TRUE \
+		..
+	make
+}
+
+package() {
+	cd "${srcdir}/${pkgname}-${pkgver}/build"
+	make DESTDIR="${pkgdir}" install
+	install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
