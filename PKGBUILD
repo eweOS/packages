@@ -1,0 +1,32 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgname=librevenge
+pkgver=0.0.5
+pkgrel=1
+pkgdesc="library for REVerses ENGineered formats filters"
+arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
+url="https://sf.net/p/libwpd/librevenge/"
+# src/lib/RVNGOLEStream.{h,cpp} are BSD
+license=('LGPL-2.1-or-later OR MPL-2.0' 'BSD-3-Clause')
+depends=('zlib')
+makedepends=('boost' 'cppunit')
+source=(https://sourceforge.net/projects/libwpd/files/librevenge/$pkgname-$pkgver/$pkgname-$pkgver.tar.xz)
+sha256sums=('106d0c44bb6408b1348b9e0465666fa83b816177665a22cd017e886c1aaeeb34')
+
+build() {
+  cd $pkgname-$pkgver
+  ./configure --prefix=/usr --disable-werror
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+}
+
+check() {
+  cd $pkgname-$pkgver
+  make check
+}
+
+package() {
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir/" install
+  install -D -m644 COPYING.{LGPL,MPL} -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+}
