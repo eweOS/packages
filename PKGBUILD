@@ -1,0 +1,52 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgbase=podofo
+pkgname=(podofo{,-tools})
+pkgver=0.10.4
+pkgrel=1
+pkgdesc='A C++ library to work with the PDF file format'
+arch=(x86_64 aarch64 riscv64 loongarch64)
+url="http://$pkgname.sourceforge.net"
+_url="https://github.com/$pkgname/$pkgname"
+license=(LGPL-2.1-only)
+depends=(fontconfig
+         freetype2
+         libidn
+         libjpeg-turbo
+         libpng
+         libtiff
+         libxml2
+         lua
+         openssl
+         zlib)
+makedepends=(cmake)
+_archive="$pkgname-$pkgver"
+source=("$_url/archive/$pkgver/$_archive.tar.gz")
+sha256sums=('6b1b13cdfb2ba5e8bbc549df507023dd4873bc946211bc6942183b8496986904')
+
+build() {
+	cd "$_archive"
+	cmake -B build \
+		-D CMAKE_INSTALL_PREFIX=/usr \
+		-D PODOFO_BUILD_TOOLS=True \
+		-D PODOFO_HAVE_JPEG_LIB=True \
+		-D PODOFO_HAVE_PNG_LIB=True \
+		-D PODOFO_HAVE_TIFF_LIB=True
+	make -C build
+}
+
+package_podofo() {
+	provides=(libpodofo.so)
+	cd "$_archive"
+	make -C build DESTDIR="$pkgdir" install
+	local toolspkg="$pkgdir-tools"
+	mkdir -p "$toolspkg/usr/"
+	mv "$pkgdir/usr/bin" $toolspkg/usr
+}
+
+package_podofo-tools() {
+	license=(GPL2)
+	depends+=(libpodofo.so)
+	cd "$_archive"
+	install -Dm0644 -t "$pkgdir/usr/share/man/man1" man/*.1
+}
