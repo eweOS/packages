@@ -2,13 +2,13 @@
 
 pkgname=plymouth
 pkgver=24.004.60
-pkgrel=7
+pkgrel=8
 pkgdesc='Graphical boot splash screen'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.freedesktop.org/wiki/Software/Plymouth/'
 license=('GPL2')
 depends=('cairo' 'fontconfig' 'freetype2' 'libdrm' 'libevdev' 'libpng' 'libxkbcommon' 'pango' 'musl-rpmatch')
-makedepends=('meson' 'linux-headers')
+makedepends=('meson' 'linux-headers' 'librsvg')
 backup=('etc/plymouth/plymouthd.conf')
 source=(
   "https://www.freedesktop.org/software/$pkgname/releases/$pkgname-$pkgver.tar.xz"
@@ -32,8 +32,11 @@ prepare() {
 }
 
 build() {
-  ewe-meson build $pkgname-$pkgver -D gtk=disabled -D systemd-integration=false -D docs=false -D udev=disabled
+  ewe-meson build $pkgname-$pkgver -D gtk=disabled -D systemd-integration=false -D docs=false -D udev=disabled -D logo=/usr/share/pixmaps/eweos-logo.png
   meson compile -C build
+
+  # Convert logo for the spinner theme
+  rsvg-convert '/usr/share/pixmaps/eweos-logo-text-dark.svg' -o eweos-logo-text-dark.png
 }
 
 package() {
@@ -44,5 +47,8 @@ package() {
   _dinit_install_services_ plymouth-boot.service
   _dinit_enable_services_ plymouth-boot
   install -Dm 0755 plymouth-shutdown.sh $pkgdir/usr/lib/dinit/exec/shutdown/plymouth-shutdown
+
+  # Install logo for the spinner theme
+  install -Dm644 eweos-logo-text-dark.png "$pkgdir/usr/share/$pkgname/themes/spinner/watermark.png"
 }
 
