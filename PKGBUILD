@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kwindowsystem
-pkgver=6.6.0
-pkgrel=2
+pkgver=6.9.0
+pkgrel=1
 pkgdesc='Access to the windowing system'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -18,7 +18,7 @@ makedepends=(extra-cmake-modules
 optdepends=('qt6-declarative: QML bindings')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('2c771ebf1a297774305dfcf79423db0684da0662eacb99e5740b00f3ffe332e5')
+sha256sums=('9b0f96fb0073f7ba89788cd5a10fba6f960cea86eba2b03336fa6e309e5e875b')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
