@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kbookmarks
-pkgver=6.6.0
-pkgrel=2
+pkgver=6.9.0
+pkgrel=1
 pkgdesc='Support for bookmarks and the XBEL format'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -16,7 +16,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('32d0b4ca746db2b2bd2a4e5282f4acaba084b9ca104495a2b450b9ae2456b7d7')
+sha256sums=('932234bedbf5a5887f23c610010c8c70b36b5dce4f4c4c5d76f47a92ce8e577a')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
