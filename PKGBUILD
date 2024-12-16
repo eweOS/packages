@@ -1,0 +1,34 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgname=draco
+pkgver=1.5.6
+pkgrel=1
+pkgdesc="A library for compressing and decompressing 3D geometric meshes and point clouds"
+arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
+url="https://github.com/google/draco"
+license=('Apache')
+makedepends=('cmake' 'ninja')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('0280888e5b8e4c4fb93bf40e65e4e8a1ba316a0456f308164fb5c2b2b0c282d6')
+
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+
+    CXXFLAGS+=' -ffat-lto-objects'
+    cmake \
+        -Bbuild \
+        -GNinja \
+        -DCMAKE_UNITY_BUILD=ON \
+        -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBUILD_SHARED_LIBS=ON
+
+    ninja -C build
+}
+
+package() {
+    cd "$srcdir/$pkgname-$pkgver"
+
+    DESTDIR="$pkgdir" ninja -C build install
+}
