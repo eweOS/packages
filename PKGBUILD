@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ktextwidgets
-pkgver=6.6.0
-pkgrel=2
+pkgver=6.9.0
+pkgrel=1
 pkgdesc='Advanced text editing widgets'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -19,7 +19,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('805dff320b75a62316fe50aa33eedb355c1e2db36d00b58c39fc36ce6bfd8988')
+sha256sums=('da966c6e01cfb3125ec31a4d2149372a19d1481441869ece9fcef3b70bb3514d')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
