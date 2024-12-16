@@ -2,9 +2,9 @@
 
 pkgname=snappy
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast compressor/decompressor library'
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://github.com/google/snappy"
 license=('BSD-3-Clause')
 makedepends=(
