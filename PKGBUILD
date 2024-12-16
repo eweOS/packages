@@ -3,7 +3,7 @@
 
 pkgname=filesystem
 pkgver=1.0.0
-pkgrel=12
+pkgrel=13
 pkgdesc='The base directory structure and a few core files for the system.'
 arch=(any)
 url='https://os.ewe.moe'
@@ -27,6 +27,8 @@ source=(
   locale.sh
   eweos-logo.png
   eweos-logo.svg
+  eweos-logo-text.svg
+  eweos-logo-text-dark.svg
 )
 sha256sums=('e787b373a74594b33b77892a903647d7a6cf519d427a0b0790e11be4482696e0'
             '7a696fcfba89a55a6d73fa1a03c7f071fad2141340027b17a25db249e26b9be8'
@@ -42,8 +44,10 @@ sha256sums=('e787b373a74594b33b77892a903647d7a6cf519d427a0b0790e11be4482696e0'
             'b5e477832d662a3c243587fc7b280b7a0c2d962294204ff60153086067fe8c15'
             '9f02adee14824f78aa37a6911f8e00c5f42676ea8bb9fd6fa8bd24f2578858e0'
             'adb040b79a9b89757f46b2cfdcbcbc5c73cb8d96c55aabf0ef003b438eab5777'
-            'e131d584a0cad9f1c1a64d291515b3de6f2ac36578466735122d991d54539424'
-            '7d27a061508ab64d1920406eab149eb573b87b1ca60f03ec135e7496ec80976d')
+            '4f2d6880ed7031671247b374688875308b1992bf9845071b8638580074c0028c'
+            'bc3268842f549f0dba9a374166ee5be140e6b827820d96e6c81c65655c051a13'
+            'a6af9cd0271acbb6a7219bbd73940723a0c0b48792ee068f76c4c8f9855c8dbc'
+            '7ee95564b4dede8283c2a0be4182e21e268cc9dbaac56bcad647d693b3df6858')
 
 backup=(
   etc/passwd
@@ -104,4 +108,5 @@ package()
   # logo
   install -d usr/share/pixmaps
   install -m0644 -t usr/share/pixmaps $srcdir/eweos-logo.{png,svg}
+  install -m0644 -t usr/share/pixmaps $srcdir/eweos-logo-text{,-dark}.svg
 }
