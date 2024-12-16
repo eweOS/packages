@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kio
-pkgver=6.6.0
-pkgrel=2
+pkgver=6.9.0
+pkgrel=1
 pkgdesc='Resource and network access abstraction'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -41,7 +41,7 @@ optdepends=('kded: proxy management and cookie storage'
             'switcheroo-control: hybrid GPU support')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('977f9f076eaf249ecdd961724334326c3f3a1e7d8cfcc6ca1370f390c76a2766')
+sha256sums=('5360962b0b9bc06d01f86888c896ca591ccd2d0bca79b7f5cc4367a6e31b368b')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
