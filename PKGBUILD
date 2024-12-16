@@ -1,0 +1,28 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgname=libuninameslist
+pkgver=20240910
+pkgrel=1
+pkgdesc='Large, sparse array mapping each unicode code point to the annotation data for it'
+url='https://github.com/fontforge/libuninameslist'
+license=('custom')
+arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
+source=("https://github.com/fontforge/${pkgname}/releases/download/${pkgver}/${pkgname}-dist-${pkgver}.tar.gz")
+sha256sums=('e59aab324ca0a3a713fe85c09a56c40c680a8458438d90624597920b3ef0be26')
+
+prepare() {
+  cd ${pkgname}-${pkgver}
+  autoreconf -i
+  automake --foreign -Wall
+}
+
+build() {
+  cd ${pkgname}-${pkgver}
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd ${pkgname}-${pkgver}
+  make DESTDIR="${pkgdir}" install
+}
