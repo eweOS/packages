@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kirigami
-pkgver=6.6.0
-pkgrel=2
+pkgver=6.9.0
+pkgrel=1
 pkgdesc='A QtQuick based components set'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -15,7 +15,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('9809cce703dfa8afe2c64e196f90c035850e2e432a9bd90ce32a40865368a7fe')
+sha256sums=('a3429c8bcf40e252d11b0a4c35a43c0433a9835ea1b333580707379b7b5c82c0')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
