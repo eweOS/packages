@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kcrash
-pkgver=6.6.0
-pkgrel=2
+pkgver=6.9.0
+pkgrel=1
 pkgdesc='Support for application crash analysis and bug report from apps'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -12,7 +12,7 @@ makedepends=(extra-cmake-modules qt6-tools)
 optdepends=('drkonqi: KDE crash handler application')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('fb4acaf670a8e1f61b7ab21fcc6cf1320d2f6645a0372a94623c60df7b0898de')
+sha256sums=('a9734e48ad425bb426294f2de6badef3b485ff5b9bb273ba51fe2cac7aa7a456')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
