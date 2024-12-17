@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=js128
-pkgver=128.5.1
+pkgver=128.5.2
 pkgrel=1
 pkgdesc="JavaScript interpreter and libraries - Version 128"
 url="https://spidermonkey.dev/"
@@ -22,18 +22,22 @@ makedepends=(
   zip
 )
 _relver=${pkgver}esr
+# 0001: downstream workaround, see https://bugzilla.mozilla.org/show_bug.cgi?id=1935621
 source=(
   https://archive.mozilla.org/pub/firefox/releases/$_relver/source/firefox-$_relver.source.tar.xz
   mozconfig
+  0001-fix-venv-activation.patch
 )
-sha256sums=('5fc6ac442b8817aab109a6afa9aeb997c50708cf897f7387c02399cda00794ab'
-            'a76d1f0802ec486c9212f45541cab02aa1027e05d10ccc3becb68eadd762cc3e')
+sha256sums=('25d633eb81499cbda44b8c64fa1c1a5879d55024b864ef495d4997154d68358f'
+            'a76d1f0802ec486c9212f45541cab02aa1027e05d10ccc3becb68eadd762cc3e'
+            '8f2d112e8e0e975174396f86ad675fd33da541130f5f1115e27a89322d361c63')
 
 # Make sure the duplication between bin and lib is found
 COMPRESSZST+=(--long)
 
 prepare() {
   mkdir mozbuild
+  _patch_ firefox-$pkgver
   cd firefox-$pkgver
 
   # fix for icu 76
