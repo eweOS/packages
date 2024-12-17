@@ -2,12 +2,13 @@
 
 pkgname=libmpd
 pkgver=11.8.17
-pkgrel=1
+pkgrel=2
 pkgdesc='Signal based wrapper around libmpdclient'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://gmpclient.org/'
 license=('GPL')
 depends=('glib2')
+makedepends=('autoconf')
 source=("https://download.sarine.nl/Programs/gmpc/${pkgver%.*}/${pkgname}-${pkgver}.tar.gz"
         '0001-fix-return-value.patch'
         '0002-include-config.h.patch'
@@ -22,6 +23,8 @@ prepare() {
   patch -Np1 < "${srcdir}"/0001-fix-return-value.patch
   patch -Np1 < "${srcdir}"/0002-include-config.h.patch
   patch -Np1 < "${srcdir}"/0003-fix-comparison.patch
+
+  autoreconf -fiv
 }
 
 build() {
