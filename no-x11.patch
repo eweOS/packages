@@ -223,9 +223,9 @@ index 805812e8a..e264f166d 100644
  
 +#include "../declarativeimports/core/config-x11.h"
 +
+ #include "dialogbackground_p.h"
  #include "dialogshadows_p.h"
- #include "private/dialogbackground_p.h"
- 
+
 @@ -13,7 +15,9 @@
  
  #include <KWindowEffects>
