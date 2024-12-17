@@ -1,0 +1,12 @@
+--- a/tools/rep.c
++++ b/tools/rep.c
+@@ -34,8 +34,7 @@
+ 
+ 
+ int
+-main(argc, argv)
+-char **argv;
++main(int argc, char **argv)
+ {
+     int count;
+     char *string;
