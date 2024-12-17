@@ -37,17 +37,22 @@ source=(
   firefox.desktop
   distribution.ini
   visibility.patch
+  fix-venv-activation.patch
+  remove-usage-of-pipes.patch
 )
 sha256sums=('329e1764f4b4e13f11dcf1fd7b3c6d8f80e512e8b7ed5bf65fbe44749c2610e9'
             '7307e32b1b553d43a3f739d5e684d9a32c45f5d7db017860c568984a420f5bb1'
             'b26bb318afbfe42325d81e1c7323541c2558bb151a647c015e72a8d50f0e9bba'
             '18a0f1df76834ac3d4ddb150aa857785df641b54f9fbf0cfb6ffcec64dad72d4'
             'a22ceb0bbf5830d3afbacd656e6893ff0ce455fae5f48c7daa5f836112291ba7'
-            '98527320399c5efe4dd0103fa0af3732470700abb515871d28e001edc3e49e7e')
+            '98527320399c5efe4dd0103fa0af3732470700abb515871d28e001edc3e49e7e'
+            '8f2d112e8e0e975174396f86ad675fd33da541130f5f1115e27a89322d361c63'
+            '9105f3fca96125c52231fc56aad63bf0826c93189392e9743414b2ee4b8db275')
 # FIXME: ADD MORE MEMORY!!!
 options=(!lto)
 
 prepare() {
+  # remove-usage-of-pipes.patch: https://hg.mozilla.org/mozilla-central/rev/7a8dbd4de3c70d6a6ac98469a9b92e4877019e0c
   _patch_ firefox-$pkgver
 
   mkdir mozbuild

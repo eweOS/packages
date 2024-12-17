@@ -1,0 +1,49 @@
+diff --git a/python/mozbuild/mozbuild/action/node.py b/python/mozbuild/mozbuild/action/node.py
+--- a/python/mozbuild/mozbuild/action/node.py
++++ b/python/mozbuild/mozbuild/action/node.py
+@@ -1,19 +1,20 @@
+ # This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+-import pipes
+ import subprocess
+ import sys
+ 
+ import buildconfig
+ import six
+ 
++from mozbuild.shellutil import quote as shell_quote
++
+ SCRIPT_ALLOWLIST = [buildconfig.topsrcdir + "/devtools/client/shared/build/build.js"]
+ 
+ ALLOWLIST_ERROR = """
+ %s is not
+ in SCRIPT_ALLOWLIST in python/mozbuild/mozbuild/action/node.py.
+ Using NodeJS from moz.build is currently in beta, and node
+ scripts to be executed need to be added to the allowlist and
+ reviewed by a build peer so that we can get a better sense of
+@@ -42,18 +43,17 @@ def execute_node_cmd(node_cmd_list):
+ 
+     The node script is expected to output lines for all of the dependencies
+     to stdout, each prefixed by the string "dep:".  These lines will make up
+     the returned set of dependencies.  Any line not so-prefixed will simply be
+     printed to stderr instead.
+     """
+ 
+     try:
+-        printable_cmd = " ".join(pipes.quote(arg) for arg in node_cmd_list)
+-        print('Executing "{}"'.format(printable_cmd), file=sys.stderr)
++        print('Executing "{}"'.format(shell_quote(*node_cmd_list)), file=sys.stderr)
+         sys.stderr.flush()
+ 
+         # We need to redirect stderr to a pipe because
+         # https://github.com/nodejs/node/issues/14752 causes issues with make.
+         proc = subprocess.Popen(
+             node_cmd_list, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+         )
+ 
+
+
+
+
