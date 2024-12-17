@@ -1,0 +1,54 @@
+--- a/shell/shell.cpp
++++ b/shell/shell.cpp
+@@ -28,10 +28,6 @@
+ #include <KRecentFilesAction>
+ #include <KSharedConfig>
+ #include <KStandardAction>
+-#if !defined(Q_OS_WIN) && !defined(Q_OS_OSX) && !defined(Q_OS_HAIKU)
+-#include <KStartupInfo>
+-#include <KWindowInfo>
+-#endif
+ #include <KToggleFullScreenAction>
+ #include <KToolBar>
+ #include <KUrlMimeData>
+@@ -451,13 +447,6 @@
+         return false;
+     }
+ 
+-#if !defined(Q_OS_WIN) && !defined(Q_OS_OSX) && !defined(Q_OS_HAIKU)
+-    const KWindowInfo winfo(window()->effectiveWinId(), NET::WMDesktop);
+-    if (winfo.desktop() != desktop) {
+-        return false;
+-    }
+-#endif
+-
+     return true;
+ }
+ 
+@@ -727,15 +716,9 @@
+ 
+ void Shell::tryRaise(const QString &startupId)
+ {
+-#if !defined(Q_OS_WIN) && !defined(Q_OS_OSX) && !defined(Q_OS_HAIKU)
+     if (KWindowSystem::isPlatformWayland()) {
+         KWindowSystem::setCurrentXdgActivationToken(startupId);
+-    } else if (KWindowSystem::isPlatformX11()) {
+-        KStartupInfo::setNewStartupId(window()->windowHandle(), startupId.toUtf8());
+     }
+-#else
+-    Q_UNUSED(startupId);
+-#endif
+ 
+     KWindowSystem::activateWindow(window()->windowHandle());
+ }
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -205,7 +205,7 @@
+         URL "https://invent.kde.org/plasma/plasma-activities"
+         PURPOSE "Required for Activities integration."
+     )
+-    set(HAVE_X11 TRUE)
++    set(HAVE_X11 FALSE)
+ else()
+     set(HAVE_X11 FALSE)
+ endif()
