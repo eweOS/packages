@@ -1,9 +1,9 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kdecoration
-pkgver=6.1.5
+pkgver=6.2.4
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=1
 pkgdesc='Plugin based library to create window decorations'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://kde.org/plasma-desktop/'
@@ -13,7 +13,7 @@ depends=(ki18n
 makedepends=(extra-cmake-modules)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz)
-sha256sums=('3ce16cea659d863f78eb93d567bf952b3f66440becd424b06d2041ff0679def7')
+sha256sums=('ac645b4d582d110258694a9e2ea2bf65fbbd4bd58e9de9f9354786397bc4f71a')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
