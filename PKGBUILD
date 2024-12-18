@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kdegraphics-mobipocket
-pkgver=24.08.1
-pkgrel=2
+pkgver=24.12.0
+pkgrel=1
 pkgdesc='A library to handle mobipocket files'
 url='https://invent.kde.org/graphics/kdegraphics-mobipocket'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(qt6-5compat
          qt6-base)
 makedepends=(extra-cmake-modules)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz)
-sha256sums=('0d94285fcd769043586700c332b82a972959efa63e1f74a8cea221658ffed032')
+sha256sums=('777e577f7d603aef7f00d584b3a0a1e2659194134f37c0315a026173181289f3')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
