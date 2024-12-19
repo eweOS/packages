@@ -2,7 +2,7 @@
 
 pkgname=(llvm llvm-tools llvm-devel llvm-libs llvm-lto lldb openmp lld clang flang mlir wasi-libc++ wasi-libc++abi wasi-compiler-rt)
 _realpkgname=llvm-project
-pkgver=19.1.5
+pkgver=19.1.6
 _binutilsver=2.42
 pkgrel=1
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -38,7 +38,7 @@ source=(
   try-llvm-libunwind.patch
   check-before-using-glibc-f128-funcs.patch
 )
-sha256sums=('bd8445f554aae33d50d3212a15e993a667c0ad1b694ac1977f3463db3338e542'
+sha256sums=('e3f79317adaa9196d2cfffe1c869d7c100b7540832bc44fe0d3f44a12861fa34'
             'f6e4d41fd5fc778b06b7891457b3620da5ecea1006c6a4a41ae998109f85a800'
             '5e58f02fe01ea22ea0406e4250ad89a053d517ef103a1dacfade4ecd98a7f2bc'
             'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94'
