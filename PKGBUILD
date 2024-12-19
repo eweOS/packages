@@ -2,7 +2,7 @@
 
 pkgname=libutempter
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Interface for terminal emulators such as screen and xterm to record user sessions to utmp and wtmp files"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="http://ftp.altlinux.org/pub/people/ldv/utempter"
@@ -25,5 +25,5 @@ build() {
 package() {
   cd $pkgname/$pkgname
   make DESTDIR="$pkgdir" install
-  echo 'z /usr/lib/utempter/utempter 2755 root utmp' | install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+  echo 'z /usr/lib/utempter/utempter 2755 root utmp -' | install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
