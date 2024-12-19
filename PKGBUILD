@@ -2,7 +2,7 @@
 
 pkgname=plymouth
 pkgver=24.004.60
-pkgrel=8
+pkgrel=9
 pkgdesc='Graphical boot splash screen'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.freedesktop.org/wiki/Software/Plymouth/'
@@ -14,12 +14,12 @@ source=(
   "https://www.freedesktop.org/software/$pkgname/releases/$pkgname-$pkgver.tar.xz"
   0_musl.patch
   plymouth-boot.service
-  plymouth-shutdown.sh
+  plymouth-boot.sh
 )
 sha256sums=('f3f7841358c98f5e7b06a9eedbdd5e6882fd9f38bbd14a767fb083e3b55b1c34'
             'fc984b17fbb89d2bb2692a05257544a3b0add6db073c94fa4471a4f8982b5df2'
-            'e5af9bf2af7d1825d5239d34afbd51d4d791169d0d2e336113a2988346fece22'
-            '417fb39bd5ddc2967209e0d4d1d7ea48e40cff910ecb6de28a55c149a81b5c3c')
+            '9a3db95a56128a5bcdb9d29b59c577e44b6e4bb753c4f1a96719099450556bf2'
+            '8c1132272108339674569eb115db29c83cc8ca1cb284a8e9773ef7810ada3035')
 
 prepare() {
   _patch_ $pkgname-$pkgver
@@ -46,7 +46,7 @@ package() {
   rm $pkgdir/usr/lib/plymouth/plymouth-generate-initrd
   _dinit_install_services_ plymouth-boot.service
   _dinit_enable_services_ plymouth-boot
-  install -Dm 0755 plymouth-shutdown.sh $pkgdir/usr/lib/dinit/exec/shutdown/plymouth-shutdown
+  install -Dm 0755 plymouth-boot.sh $pkgdir/usr/lib/dinit/exec/plymouth-boot
 
   # Install logo for the spinner theme
   install -Dm644 eweos-logo-text-dark.png "$pkgdir/usr/share/$pkgname/themes/spinner/watermark.png"
