@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -363,7 +363,7 @@
+ 
+     if(NOT CMAKE_VERSION VERSION_LESS "3.10")
+       FIND_PACKAGE(OpenGL REQUIRED COMPONENTS OpenGL)
+-      LIST(APPEND LIBS OpenGL::GL)
++      LIST(APPEND LIBS OpenGL::OpenGL)
+     else()
+       FIND_PACKAGE(OpenGL REQUIRED)
+       LIST(APPEND LIBS ${OPENGL_gl_LIBRARY})
