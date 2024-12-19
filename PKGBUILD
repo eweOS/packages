@@ -1,0 +1,23 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgbase=pyopengl
+pkgname=('python-opengl')
+pkgver=3.1.7
+pkgrel=1
+pkgdesc="The cross platform Python binding to OpenGL and related APIs"
+url="http://pyopengl.sourceforge.net/"
+license=('BSD')
+arch=('any')
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://pypi.python.org/packages/source/P/PyOpenGL/PyOpenGL-${pkgver}.tar.gz"
+        'LICENSE')
+sha512sums=('add1b4d02e7297f00f82a9c9249d6665029073fe620a1650491af9102a76a16e9320b5f227275b0c273ff5a616c284fd9f25f0f425848676c37cab9f3c22ae2e'
+            '84e8b6e984aa53ffdce33df2f4ee8993887bdb8752617d7f66b2ff5641ca16f9c3a13b383a9bb3236192b3af9518a3f3de1e7ac9f1496c8704911bb4238d091d')
+
+package_python-opengl() {
+    cd PyOpenGL-${pkgver}
+ 	python setup.py install --root="${pkgdir}" --optimize=1
+	install -Dm644 "${srcdir}/LICENSE" \
+		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
