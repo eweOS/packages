@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ostree
-pkgver=2024.9
+pkgver=2024.10
 pkgrel=1
 pkgdesc="Operating system and container binary deployment and upgrades"
 url="https://ostreedev.github.io/ostree/"
@@ -37,7 +37,7 @@ source=(
   git+https://gitlab.gnome.org/GNOME/libglnx.git
   $pkgname-2023.1-use_fuse3.patch
 )
-sha256sums=('94285c19f077eaa93ce27c532d7289b482dd4348be9c6d9b57daf7b2395af28c'
+sha256sums=('f7ee924a59cc9b57988eab71fec44e558eb5acc102a64df5ae7532f791ad2598'
             'SKIP'
             'SKIP'
             '6cc1e10db1f8c744eec5d128ad7bcd5aa92a8da167784f6727d832c9a4c545bb')
