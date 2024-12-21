@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=libwebp
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc='A library to encode and decode images in WebP format.'
 url='https://chromium.googlesource.com/webm/libwebp'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -32,4 +32,4 @@ package() {
 	install -Dm 644 COPYING $pkgdir/usr/share/licenses/libwebp/COPYING
 }
 
-sha256sums=('12af50c45530f0a292d39a88d952637e43fb2d4ab1883c44ae729840f7273381')
+sha256sums=('668c9aba45565e24c27e17f7aaf7060a399f7f31dba6c97a044e1feacb930f37')
