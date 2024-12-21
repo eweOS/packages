@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=waycheck
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Simple GUI that displays the protocols implemented by a Wayland compositor"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gitlab.freedesktop.org/serebit/$pkgname"
@@ -11,7 +11,7 @@ depends=("hicolor-icon-theme" "qt6-base" "qt6-wayland" "wayland")
 makedepends=("meson")
 checkdepends=("appstream")
 source=("$url/-/archive/v$pkgver/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('8203bb8bbe2ccc7348e3e53764e4cd906f0dd862f2fa955ef945983da9e83994')
+sha256sums=('d25fd53df57b2ff5d14deb3c44070ec14fc1b08e622cd32033a49f0d16bac6bd')
 
 build() {
   ewe-meson "$pkgname-v$pkgver" build
