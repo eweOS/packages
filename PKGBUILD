@@ -3,12 +3,13 @@
 
 pkgname=dinit
 pkgver=0.19.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Service monitoring / "init" system'
 url='https://github.com/davmac314/dinit'
 source=(
   $pkgname-$pkgver.tar.gz::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
   "path-transition.patch"
+  "0001-Add-support-for-services-with-an-argument.patch"
 )
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache)
@@ -17,7 +18,8 @@ depends=(busybox)
 optdepends=('dinit-services: dinit service files')
 options=(emptydirs)
 sha256sums=('d5e390bc0450b93b0b1b3826de5d46acc19b227b0f93077ea5a6ac8a9c7e2ca5'
-            'a792613ec687eace3aac2073875dd6ff55aba78b2ac97a4858579c410a63dfc5')
+            'a792613ec687eace3aac2073875dd6ff55aba78b2ac97a4858579c410a63dfc5'
+            '787ca59e6d171671c6ea17685c22ba79933be94dc710f773880590d38aeaffac')
 
 prepare()
 {
