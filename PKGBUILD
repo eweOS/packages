@@ -2,7 +2,7 @@
 
 pkgname=git
 pkgver=2.47.1
-pkgrel=1
+pkgrel=2
 pkgdesc='the fast distributed version control system'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://git-scm.com/'
@@ -10,6 +10,9 @@ license=('GPL2')
 depends=('curl' 'expat' 'perl' 'perl-error'
   'openssl' 'pcre2' 'zlib')
 makedepends=('python' 'asciidoc' 'xmlto')
+optdepends=('perl-mailtools: git send-email support'
+	    'perl-authen-sasl: TLS support for git send-email'
+	    'perl-io-socket-ssl: TLS support for git send-email')
 source=("https://www.kernel.org/pub/software/scm/git/git-${pkgver}.tar.xz")
 sha256sums=('f3d8f9bb23ae392374e91cd9d395970dabc5b9c5ee72f39884613cd84a6ed310')
 
