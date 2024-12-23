@@ -3,7 +3,7 @@
 pkgname=tinyramfs
 _pkgver=0.1.0
 pkgver=0.1.0
-pkgrel=16
+pkgrel=17
 pkgdesc="Tiny initramfs generator written in POSIX shell"
 arch=('any')
 url="https://github.com/illiliti/tinyramfs"
@@ -12,14 +12,12 @@ license=('GPL3')
 depends=('sh')
 makedepends=('git')
 _refcommit="de2d6aea4dfe1b284ed0d485f0acd16303ff253b"
-_commit="e8d410e42113e5a76039c66ff1f34e0686c6ea72"
+_commit="465b1fc2f010cb7125a7f8e178faf62f499a255c"
+options=(emptydirs)
 source=(
   "git+$_url.git#commit=$_commit"
-  "config"
 )
-backup=("etc/$pkgname/config")
-sha512sums=('e1820496ea7feb64eba316f36feb6f0afca5ede8a71df6a9fae4f34a32d9ff4ce9ec52a6efc3b43fd7b9c7437525a52990d1c4adc01d81135ca6a6de2cf8eb4b'
-            'd0f0afe7b8f2f32ff6b6a49d11ef58dc4976b609748781799d0209cea9ef43c423267007252c16168eeb8f295a99caa287519348348597885891d47da8f2a946')
+sha512sums=('046cf651fdf22d8f6e610c6d86d788c794f1f96dae130b6a03fab54fe21f9d4e6ea26428630853dca6ff3eb96eab648aaf6ff08b8a8332bdb1ae22a86c94da9a')
 
 pkgver()
 {
@@ -38,6 +36,13 @@ package()
 {
   cd $pkgname
   make PREFIX=/usr DESTDIR=$pkgdir install
-  install -d $pkgdir/etc/$pkgname
-  install -D $srcdir/config $pkgdir/etc/$pkgname/config
+  
+  # config
+  install -d $pkgdir/etc/$pkgname $pkgdir/usr/share/$pkgname
+  install -D config.example.conf $pkgdir/usr/share/$pkgname/config.example.conf
+
+  # doc
+  install -d $pkgdir/usr/share/man/{man5,man8}
+  install -D doc/tinyramfs.5 $pkgdir/usr/share/man/man5/
+  install -D doc/tinyramfs.8 $pkgdir/usr/share/man/man8/
 }
