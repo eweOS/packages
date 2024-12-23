@@ -1,8 +1,10 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xdg-desktop-portal
+# 1.19.1 failed
+# https://github.com/flatpak/xdg-desktop-portal/issues/1547
 pkgver=1.19.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://flatpak.github.io/xdg-desktop-portal/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,6 +17,7 @@ depends=(
   fuse3
   gdk-pixbuf
   bubblewrap
+  gstreamer-devel
 )
 makedepends=(
   docbook-xsl
@@ -44,6 +47,7 @@ build() {
   meson compile -C build
 }
 
+# missing umockdev, requires gudev
 #check() {
 #  meson test -C build --print-errorlogs
 #}
