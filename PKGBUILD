@@ -8,8 +8,8 @@ pkgname=(
   libportal-gtk4
   libportal-qt6
 )
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="GIO-style async APIs for most Flatpak portals"
 url="https://github.com/flatpak/libportal"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -33,15 +33,8 @@ checkdepends=(
   weston
   qt6-wayland
 )
-source=(
-  "git+https://github.com/flatpak/libportal#tag=$pkgver"
-  fix-test.patch::https://github.com/whot/libportal/commit/e506491f4af54cf883b07da6126f1f85e2d496ac.patch)
-sha256sums=('e454ea4e6459b4862e16b43602daf5c1842b630d4078fd130e319a7ffd7eea3f'
-            'd29d21665d12e78e21dcb43471dd57918be14146203804a713c12adb416d1408')
-
-prepare() {
-  _patch_ libportal
-}
+source=("git+https://github.com/flatpak/libportal#tag=$pkgver")
+sha256sums=('3b04e318200bf1ff54b9bc4632fd6884468d285d385b4e7a08fc282b8c1fa07f')
 
 build() {
   ewe-meson libportal build -D backend-qt5=disabled
