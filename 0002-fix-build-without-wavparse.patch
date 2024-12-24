@@ -1,0 +1,53 @@
+diff --git a/meson.build b/meson.build
+index 26da8a4..0bd86ec 100644
+--- a/meson.build
++++ b/meson.build
+@@ -144,6 +144,9 @@ if gst_inspect.found()
+ else
+   have_wav_parse = false
+ endif
++if have_wav_parse
++  config_h.set('HAVE_WAV_PARSE', 1)
++endif
+ 
+ bwrap = find_program('bwrap', required: get_option('sandboxed-image-validation').allowed() or get_option('sandboxed-sound-validation').allowed())
+ 
+diff --git a/tests/meson.build b/tests/meson.build
+index bbda185..5825850 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -101,6 +101,7 @@ if have_libportal
+     'email.c',
+     'filechooser.c',
+     'inhibit.c',
++    'notification.c',
+     'openuri.c',
+     'print.c',
+     'screenshot.c',
+@@ -110,12 +111,6 @@ if have_libportal
+   )
+ endif
+ 
+-if have_wav_parse
+-  portals_test_sources += files(
+-    'notification.c',
+-  )
+-endif
+-
+ test_portals = executable(
+   'test-portals',
+   'test-portals.c',
+diff --git a/tests/test-portals.c b/tests/test-portals.c
+index bf56ea9..a057513 100644
+--- a/tests/test-portals.c
++++ b/tests/test-portals.c
+@@ -589,7 +589,9 @@ main (int argc, char **argv)
+   g_test_add_func ("/portal/notification/bad-priority", test_notification_bad_priority);
+   g_test_add_func ("/portal/notification/bad-button", test_notification_bad_button);
+   g_test_add_func ("/portal/notification/icon", test_notification_icon);
++#ifdef HAVE_WAV_PARSE
+   g_test_add_func ("/portal/notification/sound", test_notification_sound);
++#endif
+   g_test_add_func ("/portal/notification/display-hint", test_notification_display_hint);
+   g_test_add_func ("/portal/notification/category", test_notification_category);
+   g_test_add_func ("/portal/notification/supported-properties", test_notification_supported_properties);
