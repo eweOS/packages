@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=lxqt-session
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="The LXQt session manager"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
@@ -19,7 +19,7 @@ source=(
 	"https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
     no-x11.patch
 )
-sha256sums=('b745ef14afec4bed788aeb2d448861fbc0c6f738c1ce956f4a6450f6c745270b'
+sha256sums=('312b0cd4106d0bca6812c7100750edee012e93e9fefc2b171731a782bc9bc819'
             '660e7d9b0a71eb25de9e94643427db4beba73691aeaa1433c67aadf033e9d354')
 
 prepare() {
