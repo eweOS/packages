@@ -2,12 +2,13 @@
 
 pkgname=supertux
 pkgver=0.6.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A classic 2D jump'n'run sidescroller game in a style similar to the original SuperMario games"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/supertux/supertux"
 license=('GPL')
-depends=('sdl2_image' 'curl' 'openal' 'libvorbis' 'physfs' 'freetype2' 'boost-libs' 'hicolor-icon-theme')
+depends=('sdl2-image' 'curl' 'openal' 'libvorbis' 'physfs' 'freetype2'
+         'boost-libs' 'hicolor-icon-theme')
 makedepends=('cmake' 'boost' 'mesa' 'optipng' 'glm')
 source=(
   "https://github.com/SuperTux/supertux/releases/download/v${pkgver}/SuperTux-v${pkgver}-Source.tar.gz"
