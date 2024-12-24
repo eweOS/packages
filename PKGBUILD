@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libical
-pkgver=3.0.18
-pkgrel=3
+pkgver=3.0.19
+pkgrel=1
 pkgdesc="Implementation of iCalendar protocols and data formats"
 url="https://github.com/libical/libical"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -23,21 +23,8 @@ makedepends=(
 checkdepends=(python-gobject tzdata )
 source=(
   "git+$url#tag=v$pkgver"
-  0001-Fix-build-with-ICU-75.patch
-  0002-HACK-Disable-failing-test.patch
 )
-sha256sums=('b869d0befba0518c7b16378804bbe77ba7db27a8aa0c4309bd8c8b222164933f'
-            '711ec494bc41fe3081deb3fc23172e0d31b1023e3c65d49532918fae0bf59a3e'
-            '3485aa9cadb0e93407641bf4db28c372cb8da989140981d8774ff31c097dbbea')
-
-prepare() {
-  cd $pkgname
-
-  # ICU 75 compatibility
-  # https://github.com/libical/libical/issues/684
-  git apply -3 ../0001-Fix-build-with-ICU-75.patch
-  git apply -3 ../0002-HACK-Disable-failing-test.patch
-}
+sha256sums=('80968154f35148fc0f0caa0b643399ada62f3494416199dfa9dfc177dd89a482')
 
 build() {
   local cmake_options=(
