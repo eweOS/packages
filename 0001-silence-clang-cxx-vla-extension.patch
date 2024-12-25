@@ -1,0 +1,24 @@
+diff --git a/media_driver/cmake/linux/media_compile_flags_linux.cmake b/media_driver/cmake/linux/media_compile_flags_linux.cmake
+index 397e8c5..398aca4 100755
+--- a/media_driver/cmake/linux/media_compile_flags_linux.cmake
++++ b/media_driver/cmake/linux/media_compile_flags_linux.cmake
+@@ -37,6 +37,7 @@ set(MEDIA_COMPILER_FLAGS_COMMON
+     -Werror=non-virtual-dtor
+     -Werror=return-type
+     -Wno-overloaded-virtual
++    -Wno-vla-cxx-extension
+ 
+     # General optimization options
+     -finline-functions
+diff --git a/media_softlet/cmake/linux/media_compile_flags_linux.cmake b/media_softlet/cmake/linux/media_compile_flags_linux.cmake
+index 2c36efe..9a35afd 100644
+--- a/media_softlet/cmake/linux/media_compile_flags_linux.cmake
++++ b/media_softlet/cmake/linux/media_compile_flags_linux.cmake
+@@ -37,6 +37,7 @@ set(MEDIA_COMPILER_FLAGS_COMMON
+     -Werror=non-virtual-dtor
+     -Werror=return-type
+     -Wno-overloaded-virtual
++    -Wno-vla-cxx-extension
+ 
+     # General optimization options
+     -finline-functions
