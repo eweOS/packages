@@ -2,7 +2,7 @@
 
 pkgname=libime
 pkgver=1.1.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A library to support generic input method implementation"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/fcitx/libime"
