@@ -2,7 +2,7 @@
 
 pkgname=samurai
 pkgver=1.2
-pkgrel=5
+pkgrel=6
 pkgdesc='a ninja-compatible build tool written in C99'
 url='https://github.com/michaelforney/samurai/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -17,11 +17,7 @@ build () {
 }
 
 package() {
-  provides+=(ninja)
-  conflicts+=(ninja)
-
   cd samurai-$pkgver
   make install DESTDIR=${pkgdir} PREFIX=/usr
-  ln -s samu $pkgdir/usr/bin/ninja
   _install_license_ LICENSE
 }
