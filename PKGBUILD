@@ -1,12 +1,12 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=limine
-pkgver=8.6.0
+pkgver=8.6.1
 pkgrel=1
 pkgdesc="An advanced, portable, multiprotocol bootloader"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://limine-bootloader.org/"
-license=('BSD')
+license=('BSD-2-Clause')
 makedepends=('nasm' 'lld' 'mtools')
 optdepends=('efibootmgr: efi entries managing for limine-install')
 source=(
@@ -15,12 +15,20 @@ source=(
   limine.defaults
   limine.conf
   limine-install
+  0001-protos-Keep-linux-protocol-disabled-on-loong64-as-it.patch
 )
-sha256sums=('e1b159ea7c4d72b253421909e52d4a5343c9378caef4b8be4339c5e48c691821'
+sha256sums=('4fae32769633dbdf521c3118d0bd2039be31c11a4e4241aff1122397d8ffe44c'
             '7952ba8555a3b82725cd8f7255a91f8cf363e8cfd99d86aa7438638252239665'
             'b1d39bd3cc56b4d033f2ffe3c6f1eda8cbb0eb4788626e5041fcb56fa961ea86'
             'f722aacb1e5865489483c14b950900998241fe6558e58875b1119579ef91a5e0'
-            '996416f738c981e2d04af00407adb7bc1e95a5acc5b11f65595d202cd6420290')
+            '996416f738c981e2d04af00407adb7bc1e95a5acc5b11f65595d202cd6420290'
+            'd397e862240edd3d457a8ea82c2dbb0854f2f647349809a17e3d32ab6d041813')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  # enable loongarch64 linux protocol support
+  patch -R -p1 < "$srcdir/0001-protos-Keep-linux-protocol-disabled-on-loong64-as-it.patch"
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
