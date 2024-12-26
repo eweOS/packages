@@ -3,7 +3,7 @@
 _pkgbase=elfutils
 pkgname=(libelf elfutils)
 pkgver=0.192
-pkgrel=1
+pkgrel=2
 pkgdesc="libelf is a free ELF object file access library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://sourceware.org/elfutils/"
@@ -24,13 +24,14 @@ prepare()
 FLIST_elfutils=(
   "usr/bin/eu-*"
   "usr/share/locale"
-  "usr/share/man1/eu-*"
-  "usr/share/man3/elf_*"
+  "usr/share/man/*/eu-*"
 )
 
 FLIST_libelf=(
   "usr/include"
   "usr/lib"
+  "usr/share/man/*/elf*"
+  "usr/share/man/*/libelf*"
 )
 
 build()
@@ -65,4 +66,3 @@ package_libelf()
   provides=(libasm libdebuginfod libdw libelf)
   mv "$srcdir/pkgs/libelf/usr" $pkgdir/usr
 }
-
