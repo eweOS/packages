@@ -14,8 +14,16 @@ depends=(bzip2
 makedepends=(boost python linux-headers)
 optdepends=('boost-libs: for the botan executable'
             'python: for using botan2.py')
-source=(https://botan.randombit.net/releases/Botan-${pkgver}.tar.xz)
-sha256sums=('7cb8575d88d232c77174769d7f9e24bb44444160585986eebd66e749cb9a9089')
+# 0001: fix build with boost 1.87
+# https://github.com/randombit/botan/pull/4477
+source=("https://botan.randombit.net/releases/Botan-$pkgver.tar.xz"
+	"0001-fix-build-with-boost.1.87.patch::https://github.com/randombit/botan/pull/4477.patch")
+sha256sums=('7cb8575d88d232c77174769d7f9e24bb44444160585986eebd66e749cb9a9089'
+            '6eae04e44bfab9a24ff997a3569229fcf14173733b32f764ca5962a0d773eac9')
+
+prepare() {
+  _patch_ ${pkgname^}-$pkgver
+}
 
 build() {
   cd ${pkgname^}-$pkgver
