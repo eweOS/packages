@@ -3,7 +3,7 @@
 pkgname=perl
 pkgver=5.40.0
 _baseversion="${pkgver%.*}"
-pkgrel=2
+pkgrel=3
 pkgdesc="A highly capable, feature-rich programming language"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.perl.org'
@@ -22,13 +22,15 @@ build()
     -des -Dprefix=/usr \
     -Dcc="cc -D_GNU_SOURCE" \
     -Dvendorprefix=/usr \
-    -Dprivlib="/usr/lib/perl5/${pkgver}" \
-    -Darchlib="/usr/lib/perl5/${pkgver}/$(arch)-linux" \
-    -Dsitelib="/usr/lib/perl5/site_perl/${pkgver}" \
-    -Dvendorlib="/usr/lib/perl5/vendor_perl/${pkgver}" \
-    -Dvendorarch="/usr/lib/perl5/vendor_perl/${pkgver}/$(arch)-linux" \
+    -Dprivlib=/usr/share/perl5/core_perl \
+    -Darchlib=/usr/lib/perl5/$_baseversion/core_perl \
+    -Dsitelib=/usr/share/perl5/site_perl \
+    -Dsitearch=/usr/lib/perl5/$_baseversion/site_perl \
+    -Dvendorlib=/usr/share/perl5/vendor_perl \
+    -Dvendorarch=/usr/lib/perl5/$_baseversion/vendor_perl \
     -Dman1dir=/usr/share/man/man1 \
     -Dman3dir=/usr/share/man/man3 \
+    -Dinc_version_list=none \
     -Dpager="/bin/less -I" \
     -Dusethreads \
     -Duseshrplib
@@ -39,4 +41,12 @@ package()
 {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="$pkgdir" install
+
+  # Set CPAN default config to use the site directories.
+  sed -e '/(makepl_arg =>/   s/""/"INSTALLDIRS=site"/' \
+      -e '/(mbuildpl_arg =>/ s/""/"installdirs=site"/' \
+      -i "${pkgdir}/usr/share/perl5/core_perl/CPAN/FirstTime.pm"
+
+  find "$pkgdir" -name perllocal.pod -delete
+  find "$pkgdir" -name .packlist -delete
 }
