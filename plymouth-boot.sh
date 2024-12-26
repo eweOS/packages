@@ -12,7 +12,11 @@ case "$1" in
   ;;
 
   start)
-    /usr/bin/plymouth quit
+    if [ -f /run/plymouth/pid ]; then
+      /usr/bin/plymouth quit || :
+      # ensure pid file is removed
+      rm -f /run/plymouth/pid
+    fi
   ;;
 
   *) exit 1 ;;
