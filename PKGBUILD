@@ -3,15 +3,15 @@
 # Contributor: Federico Quagliata (quaqo) <quaqo@despammed.com>
 
 pkgname=cracklib
-pkgver=2.10.2
-pkgrel=2
+pkgver=2.10.3
+pkgrel=1
 pkgdesc="Password Checking Library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL')
 url="https://github.com/cracklib/cracklib"
 depends=('musl' 'zlib')
 source=(https://github.com/cracklib/cracklib/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('2689cd4a3a8df2bbe033aba56bedd1becfa82235505109ca45b4d2a5f652aef6')
+sha256sums=('877b823198eb29aa1778b16a70cad05f7b54b164b3bf7ab656fc326c393f4c85')
 
 build()
 {
