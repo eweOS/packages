@@ -1,0 +1,30 @@
+From c73505f13b5128470c16f370cfd2a6d4425cfa8d Mon Sep 17 00:00:00 2001
+From: mintsuki <mintsuki@protonmail.com>
+Date: Thu, 26 Dec 2024 07:16:44 +0100
+Subject: [PATCH] protos: Keep linux protocol disabled on loong64 as it is not
+ confirmed working
+
+---
+ common/menu.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/common/menu.c b/common/menu.c
+index fd623691..95ddc2fa 100644
+--- a/common/menu.c
++++ b/common/menu.c
+@@ -1194,7 +1194,12 @@ noreturn void boot(char *config) {
+     if (!strcmp(proto, "limine")) {
+         limine_load(config, cmdline);
+     } else if (!strcmp(proto, "linux")) {
++#if defined (__loongarch64)
++        quiet = false;
++        print("TODO: Linux is not available on LoongArch64.\n\n");
++#else
+         linux_load(config, cmdline);
++#endif
+     } else if (!strcmp(proto, "multiboot1") || !strcmp(proto, "multiboot")) {
+ #if defined (__x86_64__) || defined (__i386__)
+         multiboot1_load(config, cmdline);
+-- 
+2.47.1
+
