@@ -2,10 +2,11 @@
 
 pkgname=intel-gmmlib
 pkgver=22.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel Graphics Memory Management Library'
 url='https://github.com/intel/gmmlib/'
-arch=(x86_64 aarch64 riscv64 loongarch64)
+# TODO: make it portable
+arch=(x86_64)
 license=(MIT)
 depends=(musl)
 makedepends=(cmake)
