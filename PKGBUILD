@@ -2,10 +2,10 @@
 
 pkgname=firefox
 pkgver=133.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MPL-2.0)
 depends=(
   dbus
