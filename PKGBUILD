@@ -3,7 +3,7 @@
 pkgname=perl-net-ssleay
 _perlname=Net-SSLeay
 pkgver=1.94
-pkgrel=2
+pkgrel=3
 pkgdesc='Perl bindings for OpenSSL and LibreSSL'
 url='https://metacpan.org/pod/Net::SSLeay'
 arch=(x86_64 aarch64 riscv64 loongarch64)
