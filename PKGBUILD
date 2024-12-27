@@ -3,7 +3,7 @@
 pkgname=perl-authen-sasl
 _perlname=Authen-SASL
 pkgver=2.1700
-pkgrel=1
+pkgrel=2
 pkgdesc='SASL Authentication framework'
 url='https://metacpan.org/dist/Authen-SASL'
 arch=(any)
