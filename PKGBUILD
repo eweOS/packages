@@ -2,7 +2,7 @@
 
 pkgname=perl-test-deep
 pkgver=1.204
-pkgrel=2
+pkgrel=3
 pkgdesc='Extremely flexible deep comparison'
 arch=('any')
 url='https://metacpan.org/dist/Test-Simple'
