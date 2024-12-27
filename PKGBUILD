@@ -3,7 +3,7 @@
 pkgname=perl-mailtools
 _perlname=MailTools
 pkgver=2.22
-pkgrel=1
+pkgrel=2
 pkgdesc='Mail related Perl modules'
 url='https://metacpan.org/dist/MailTools'
 arch=(any)
