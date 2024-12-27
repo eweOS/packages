@@ -2,7 +2,7 @@
 
 pkgname=nginx
 pkgver=1.27.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://nginx.org'
