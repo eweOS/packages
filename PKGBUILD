@@ -2,7 +2,7 @@
 
 pkgname=perl-b-cow
 pkgver=0.007
-pkgrel=2
+pkgrel=3
 pkgdesc='B::COW additional B helpers to check COW status'
 url='https://metacpan.org/dist/B-COW'
 arch=(any)
