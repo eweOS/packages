@@ -2,7 +2,7 @@
 
 pkgname=perl-xml-sax
 pkgver=1.02
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple API for XML"
 arch=('any')
 url="https://search.cpan.org/dist/XML-SAX"
