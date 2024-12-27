@@ -3,7 +3,7 @@
 pkgname=perl-io-socket-ssl
 _perlname=IO-Socket-SSL
 pkgver=2.089
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl module providing SSL sockets with IO::Socket interface'
 url='https://metacpan.org/dist/IO-Socket-SSL'
 arch=(any)
