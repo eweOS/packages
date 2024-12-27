@@ -3,7 +3,7 @@
 pkgname=perl-io-socket-inet6
 _perlname=IO-Socket-INET6
 pkgver=2.73
-pkgrel=1
+pkgrel=2
 pkgdesc='Object interface for AF_INET/AF_INET6 domain sockets'
 url='https://metacpan.org/dist/IO-Socket-INET6'
 arch=(any)
