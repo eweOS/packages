@@ -27,18 +27,26 @@ source=(
   https://archive.mozilla.org/pub/firefox/releases/$_relver/source/firefox-$_relver.source.tar.xz
   mozconfig
   0001-fix-venv-activation.patch
+  libc-loongarch64-support.patch
 )
 sha256sums=('25d633eb81499cbda44b8c64fa1c1a5879d55024b864ef495d4997154d68358f'
             'a76d1f0802ec486c9212f45541cab02aa1027e05d10ccc3becb68eadd762cc3e'
-            '8f2d112e8e0e975174396f86ad675fd33da541130f5f1115e27a89322d361c63')
+            '8f2d112e8e0e975174396f86ad675fd33da541130f5f1115e27a89322d361c63'
+            'f321316c393fb6327c306d19a6638e01a114dbe14ea8f8e6bd23184f4c5247cd')
 
 # Make sure the duplication between bin and lib is found
 COMPRESSZST+=(--long)
 
+_clear_vendor_checksums() {
+	sed -i 's/\("files":{\)[^}]*/\1/' third_party/rust/$1/.cargo-checksum.json
+}
+
 prepare() {
   mkdir mozbuild
   _patch_ firefox-$pkgver
+
   cd firefox-$pkgver
+  _clear_vendor_checksums libc
 
   # fix for icu 76
   sed -i 's/icu-i18n/icu-uc &/' js/moz.configure
