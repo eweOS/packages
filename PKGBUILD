@@ -4,7 +4,7 @@
 
 pkgname=perl-json
 pkgver=4.10
-pkgrel=2
+pkgrel=3
 pkgdesc="JSON (JavaScript Object Notation) encoder/decoder"
 arch=('any')
 url="https://search.cpan.org/dist/JSON"
