@@ -3,7 +3,7 @@
 pkgname=perl-socket6
 _perlname=Socket6
 pkgver=0.29
-pkgrel=2
+pkgrel=3
 pkgdesc='Perl module providing IPv6 related part of the C socket.h defines and structure manipulators'
 url='https://metacpan.org/dist/Socket6'
 arch=(x86_64 aarch64 riscv64 loongarch64)
