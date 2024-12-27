@@ -3,7 +3,7 @@
 
 pkgname=perl-try-tiny
 pkgver=0.32
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal try/catch with proper localization of \$@"
 arch=('any')
 url="https://search.cpan.org/dist/Try-Tiny"
