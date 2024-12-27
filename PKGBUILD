@@ -2,15 +2,25 @@
 
 pkgname=libpng
 pkgver=1.6.44
-pkgrel=3
+pkgrel=4
 pkgdesc="A collection of routines used to create PNG format graphics files"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://www.libpng.org/pub/png/libpng.html"
 license=('custom')
 depends=('zlib' 'sh')
 provides=('libpng16.so')
-source=("https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('60c4da1d5b7f0aa8d158da48e8f8afa9773c1c8baa5d21974df61f1886b8ce8e')
+source=(
+  "https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.xz"
+  apng.patch.gz::https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.6.43-apng.patch.gz
+)
+sha256sums=('60c4da1d5b7f0aa8d158da48e8f8afa9773c1c8baa5d21974df61f1886b8ce8e'
+            'd107579e90d55386d00e6086ea750942f22a04b9ab476bba0c660770cefafe22')
+
+prepare()
+{
+  cd $pkgname-$pkgver
+  patch -p1 < $srcdir/*.patch
+}
 
 build()
 {
