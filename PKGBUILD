@@ -2,7 +2,7 @@
 
 pkgname=graphviz
 pkgver=12.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source graph visualization software.'
 url='https://graphviz.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
