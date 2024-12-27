@@ -1,0 +1,32 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgname=python-iso8601
+_libname=iso8601
+pkgver=2.1.0
+pkgrel=1
+pkgdesc="Simple module to parse ISO 8601 dates"
+arch=(any)
+url="https://pyiso8601.readthedocs.io/en/latest/"
+license=('MIT')
+depends=(python)
+makedepends=(python-poetry-core python-setuptools python-wheel python-build python-installer)
+checkdepends=(python-pytest python-hypothesis python-pytz)
+source=(https://files.pythonhosted.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.tar.gz)
+sha256sums=('6b1d3829ee8921c4301998c909f7829fa9ed3cbdac0d3b16af2d743aed1ba8df')
+
+build() {
+    cd "$srcdir"/iso8601-$pkgver
+    python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "$srcdir"/iso8601-$pkgver
+    python -m pytest .
+}
+
+package() {
+    cd "$srcdir"/iso8601-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -m0644 -D "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    find "$pkgdir" -type f -name test_iso8601.py -delete
+}
