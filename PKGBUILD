@@ -1,10 +1,9 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
-# Contributor: Tom Gundersen <teg@jklm.no>
-# Contributor: Judd <jvinet@zeroflux.org>
 
 pkgname=libevent
 pkgver=2.1.12
-pkgrel=5
+pkgrel=6
 pkgdesc="Event notification library"
 url="https://libevent.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,8 +12,20 @@ depends=(openssl)
 makedepends=(cmake ninja python zlib)
 optdepends=('python: event_rpcgen.py')
 provides=(libevent{,_core,_extra,_openssl,_pthreads}-2.1.so)
-source=("https://github.com/libevent/libevent/releases/download/release-$pkgver-stable/libevent-$pkgver-stable.tar.gz")
-sha256sums=('92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb')
+# EVENT__SIZEOF_TIME_T.patch: Fix Firefox build
+# libevent-2.1.12-openssl-compat.patch: Fix build with OpenSSL 3.0
+source=(
+  "https://github.com/libevent/libevent/releases/download/release-$pkgver-stable/libevent-$pkgver-stable.tar.gz"
+  EVENT__SIZEOF_TIME_T.patch
+  libevent-2.1.12-openssl-compat.patch
+)
+sha256sums=('92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb'
+            '945fc885b15692721bc7ae52f5774ef4fab8cc0f6108baa8860ab368de8675cf'
+            'e41527c55f6dacc6453b13eeeea2664798496896b796abcd2a5c8304c9eb2bae')
+
+prepare(){
+  _patch_ libevent-$pkgver-stable
+}
 
 build()
 {
