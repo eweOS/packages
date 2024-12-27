@@ -2,7 +2,7 @@
 
 pkgname=perl-test-warn
 pkgver=0.37
-pkgrel=2
+pkgrel=3
 pkgdesc='Perl extension to test methods for warnings'
 url='https://metacpan.org/dist/Test-Warn'
 arch=(any)
