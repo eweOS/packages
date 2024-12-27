@@ -2,7 +2,7 @@
 
 pkgname=perl-test-differences
 pkgver=0.71
-pkgrel=2
+pkgrel=3
 pkgdesc='Test strings and data structures and show differences if not ok'
 url='https://metacpan.org/dist/Test-Differences'
 arch=(any)
