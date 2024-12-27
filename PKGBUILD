@@ -2,7 +2,7 @@
 
 pkgname=perl-algorithm-diff
 pkgver=1.201
-pkgrel=2
+pkgrel=3
 pkgdesc="Compute 'intelligent' differences between two files / lists"
 url='https://metacpan.org/dist/Algorithm-Diff'
 arch=(any)
