@@ -5,7 +5,7 @@
 pkgname=perl-extutils-config
 _pkgname=ExtUtils-Config
 pkgver=0.010
-pkgrel=1
+pkgrel=2
 pkgdesc="ExtUtils::Config - A wrapper for perl's configuration"
 arch=('any')
 license=('PerlArtistic' 'GPL')
