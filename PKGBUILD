@@ -3,7 +3,7 @@
 pkgname=perl-digest-hmac
 _perlname=Digest-HMAC
 pkgver=1.05
-pkgrel=1
+pkgrel=2
 pkgdesc='Keyed-Hashing for Message Authentication'
 url='https://metacpan.org/dist/Digest-HMAC'
 arch=(any)
