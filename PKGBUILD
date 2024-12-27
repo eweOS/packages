@@ -2,7 +2,7 @@
 
 pkgname=perl-digest-sha
 pkgver=6.04
-pkgrel=2
+pkgrel=3
 pkgdesc='Perl extension for SHA-1/224/256/384/512.'
 url='https://metacpan.org/pod/Digest::SHA'
 arch=(x86_64 aarch64 riscv64 loongarch64)
