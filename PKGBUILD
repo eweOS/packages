@@ -3,12 +3,15 @@
 _pkgbase=libjpeg-turbo
 pkgbase=libjpeg
 pkgname=libjpeg
-pkgver=3.0.3
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="JPEG image codec with accelerated baseline compression and decompression"
 url="https://libjpeg-turbo.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
-license=(BSD)
+license=(
+  BSD-3-Clause
+  IJG
+)
 provides=(
   libjpeg
   libjpeg.so
@@ -17,7 +20,7 @@ provides=(
 )
 makedepends=(cmake ninja nasm)
 source=(https://github.com/libjpeg-turbo/${_pkgbase}/releases/download/$pkgver/${_pkgbase}-$pkgver.tar.gz)
-sha256sums=('343e789069fc7afbcdfe44dbba7dbbf45afa98a15150e079a38e60e44578865d')
+sha256sums=('9564c72b1dfd1d6fe6274c5f95a8d989b59854575d4bbee44ade7bc17aa9bc93')
 
 build() {
   cmake -S ${_pkgbase}-$pkgver -B build -G Ninja \
@@ -39,5 +42,11 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build -v
-  install -vDm 644 ${_pkgbase}-$pkgver/LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
+
+  # header required by some dependents
+  # https://bugs.archlinux.org/task/24787
+  install -vDm 644 ${_pkgbase}-$pkgver/src/jpegint.h "$pkgdir/usr/include"
+
+  install -vDm 644 ${_pkgbase}-$pkgver/LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -vDm 644 ${_pkgbase}-$pkgver/README.ijg -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
