@@ -3,7 +3,7 @@
 pkgname=python-sphinxcontrib-serializinghtml
 _name=${pkgname#python-}
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sphinx extension which outputs "serialized" HTML files (json and pickle)'
 arch=(any)
 url=https://github.com/sphinx-doc/sphinxcontrib-serializinghtml
@@ -15,10 +15,10 @@ makedepends=(
   python-flit-core
   python-installer
 )
-#checkdepends=(
-#  python-pytest
-#  python-sphinx
-#)
+checkdepends=(
+  python-pytest
+  python-sphinx
+)
 source=("git+$url.git#tag=$pkgver")
 sha256sums=('c3cd51605fc8cc32cdc2b2f91a9c339475c8872370cc1a3f1c490e56b91dda0b')
 
@@ -29,7 +29,7 @@ build() {
 
 check() {
   cd "$_name"
-#  pytest
+  pytest
 }
 
 package() {
