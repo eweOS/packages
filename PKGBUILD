@@ -3,7 +3,7 @@
 pkgname=python-sphinxcontrib-qthelp
 _name=${pkgname#python-}
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sphinx extension which outputs QtHelp document'
 arch=(any)
 url=https://github.com/sphinx-doc/sphinxcontrib-qthelp
@@ -15,11 +15,11 @@ makedepends=(
   python-flit-core
   python-installer
 )
-#checkdepends=(
-#  python-defusedxml
-#  python-pytest
-#  python-sphinx
-#)
+checkdepends=(
+  python-defusedxml
+  python-pytest
+  python-sphinx
+)
 source=("git+$url.git#tag=$pkgver")
 sha256sums=('69dd88a9b06583cb5aeeaa9bd3697870f876e2fbc3c7d4e977bb9b0e012d712d')
 
@@ -28,10 +28,10 @@ build() {
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-#check() {
-#  cd "$_name"
-#  pytest
-#}
+check() {
+  cd "$_name"
+  pytest
+}
 
 package() {
   cd "$_name"
