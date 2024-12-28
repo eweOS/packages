@@ -1,0 +1,36 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgname=python-defusedxml
+_name=${pkgname#python-}
+pkgver=0.7.1
+pkgrel=1
+pkgdesc="XML bomb protection for Python stdlib modules"
+arch=('any')
+url='https://github.com/tiran/defusedxml'
+license=('PSF-2.0')
+depends=('python')
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+source=("git+$url.git#tag=v$pkgver")
+sha512sums=('87f14f17f1e73d3337ae21e6c73711a399be7145264d60bb49752950044856aca36570744e5f2a0ebfdb28ca40504eed5a88a78f027f95ab73b85b775fde4b03')
+
+build() {
+  cd "$_name"
+  python -m build --wheel --skip-dependency-check --no-isolation
+}
+
+package() {
+  cd "$_name"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # Symlink license file
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "$pkgdir"/usr/share/licenses/$pkgname
+  ln -s "$site_packages"/"$_name"-$pkgver.dist-info/LICENSE \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}
