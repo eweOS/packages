@@ -2,7 +2,7 @@
 
 pkgname=imagemagick
 pkgver=7.1.1.43
-pkgrel=2
+pkgrel=3
 _relname=ImageMagick-${pkgver%%.*}
 _tarname=ImageMagick-${pkgver%.*}-${pkgver##*.}
 pkgdesc='An image viewing/manipulation program'
@@ -21,6 +21,7 @@ depends=(bzip2
          libpng
          libraqm
          libxml2
+         libzip
          xz
          zlib)
 optdepends=('ghostscript: PS/PDF support'
@@ -34,7 +35,6 @@ optdepends=('ghostscript: PS/PDF support'
             'libultrahdr: UHDR support'
             'libwebp: WEBP support'
             'libwmf: WMF support'
-            'libzip: OpenRaster support'
             'ocl-icd: OpenCL support'
             'openexr: OpenEXR support'
             'openjpeg2: JPEG2000 support'
@@ -57,7 +57,6 @@ makedepends=(chrpath
              librsvg
              libwebp
              libwmf
-             libzip
              opencl-headers
              openexr
              openjpeg2)
