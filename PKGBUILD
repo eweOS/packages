@@ -3,7 +3,7 @@
 pkgname=python-sphinxcontrib-applehelp
 _name=${pkgname#python-}
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sphinx extension which outputs Apple help books'
 arch=(any)
 url=https://github.com/sphinx-doc/sphinxcontrib-applehelp
@@ -15,10 +15,10 @@ makedepends=(
   python-flit-core
   python-installer
 )
-#checkdepends=(
-#  python-pytest
-#  python-sphinx
-#)
+checkdepends=(
+  python-pytest
+  python-sphinx
+)
 source=("git+$url.git#tag=$pkgver")
 sha256sums=('bc59644a9e451fe52122e18f5428a375eb0a310328d29ae918496bea578f5a2f')
 
@@ -29,7 +29,7 @@ build() {
 
 check() {
   cd "$_name"
-#  pytest
+  pytest
 }
 
 package() {
