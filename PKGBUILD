@@ -3,14 +3,14 @@
 _name=sphinxcontrib-jsmath
 pkgname=python-sphinxcontrib-jsmath
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Sphinx extension which renders display math in HTML via JavaScript'
 arch=('any')
 url=https://github.com/sphinx-doc/sphinxcontrib-jsmath
 license=('BSD')
 makedepends=('python-build' 'python-installer' 'python-setuptools'
              'python-wheel')
-#checkdepends=('python-pytest' 'python-sphinx')
+checkdepends=('python-pytest' 'python-sphinx')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         'jsmath-read_text.patch::https://github.com/sphinx-doc/sphinxcontrib-jsmath/commit/3297b27177ab4862d1b2408a2db66235397fe212.patch')
 sha256sums=('a9925e4a4587247ed2191a22df5f6970656cb8ca2bd6284309578f2153e0c4b8'
@@ -29,7 +29,7 @@ build() {
 
 check() {
   cd $_name-$pkgver
-#  pytest
+  pytest
 }
 
 package() {
