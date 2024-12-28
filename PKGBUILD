@@ -3,7 +3,7 @@
 pkgname=python-sphinxcontrib-htmlhelp
 _name=${pkgname#python-}
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sphinx extension which renders HTML help files'
 arch=(any)
 url=https://github.com/sphinx-doc/sphinxcontrib-htmlhelp
@@ -15,11 +15,11 @@ makedepends=(
   python-flit-core
   python-installer
 )
-#checkdepends=(
-#  python-html5lib
-#  python-pytest
-#  python-sphinx
-#)
+checkdepends=(
+  python-html5lib
+  python-pytest
+  python-sphinx
+)
 source=("git+$url.git#tag=$pkgver")
 sha256sums=('df84d318ff5236516dbbb0c96e02b6dad271b5259c6d5447c4c841dabbc50309')
 
@@ -30,7 +30,7 @@ build() {
 
 check() {
   cd "$_name"
-#  pytest
+  pytest
 }
 
 package() {
