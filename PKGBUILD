@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-dbusmock
-pkgver=0.32.2
+pkgver=0.34.2
 pkgrel=1
 pkgdesc="Mock D-Bus objects for tests"
 url="https://github.com/martinpitt/python-dbusmock"
@@ -20,7 +20,7 @@ makedepends=(
   python-wheel
 )
 source=("git+https://github.com/martinpitt/python-dbusmock#tag=$pkgver")
-sha256sums=('7b012f959550cba461f6c62f84b85414727eed0312b07112329cf52efa18f2ea')
+sha256sums=('cc8b1a3f1f7eeb8ce89d4f095e8462a23983d18d05f9000e3a56dd0034cced07')
 
 build() {
   cd $pkgname
