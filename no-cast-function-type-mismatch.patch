@@ -1,0 +1,15 @@
+--- warzone2100/CMakeLists.txt
++++ warzone2100-new/CMakeLists.txt
+@@ -646,6 +646,12 @@
+ 			check_compiler_flags_output("-Werror -Wno-shadow-field-in-constructor -Wno-error=cpp" COMPILER_TYPE CXX OUTPUT_FLAGS "-Wno-shadow-field-in-constructor" OUTPUT_VARIABLE _supported_cxx_compiler_flags APPEND)
+ 		endif()
+ 
++		check_compiler_flags_output("-Werror -Wshadow -Wno-error=cpp" COMPILER_TYPE C   OUTPUT_FLAGS "-Wshadow" OUTPUT_VARIABLE _supported_c_compiler_flags APPEND)
++
++		# -Wno-cast-function-type-mismatch
++		check_compiler_flags_output("-Werror -Wno-cast-function-type-mismatch -Wno-error=cpp" COMPILER_TYPE C   OUTPUT_FLAGS "-Wno-cast-function-type-mismatch" OUTPUT_VARIABLE _supported_c_compiler_flags APPEND)
++		check_compiler_flags_output("-Werror -Wno-cast-function-type-mismatch -Wno-error=cpp" COMPILER_TYPE CXX OUTPUT_FLAGS "-Wno-cast-function-type-mismatch" OUTPUT_VARIABLE _supported_cxx_compiler_flags APPEND)
++
+ #		# FUTURE-TODO: Enable -Wuseless-cast (large number of warnings to fix)
+ #		# -Wuseless-cast			(GCC 4.8+)
+ #		check_compiler_flags_output("-Werror -Wuseless-cast -Wno-error=cpp" COMPILER_TYPE C   OUTPUT_FLAGS "-Wuseless-cast" OUTPUT_VARIABLE _supported_c_compiler_flags APPEND)
