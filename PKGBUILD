@@ -2,7 +2,7 @@
 
 pkgname=imagemagick
 pkgver=7.1.1.43
-pkgrel=3
+pkgrel=4
 _relname=ImageMagick-${pkgver%%.*}
 _tarname=ImageMagick-${pkgver%.*}-${pkgver##*.}
 pkgdesc='An image viewing/manipulation program'
@@ -100,21 +100,26 @@ build() {
     --without-gcc-arch \
     --without-gvc
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  MAKEFLAGS="CC=cc CXX=c++ -j$JOBS"
   make
 }
 
 check() (
   cd $_tarname
   ulimit -n 4096
+  MAKEFLAGS="CC=cc CXX=c++ -j$JOBS"
   make check
 )
 
 package() {
   cd $_tarname
+  # do not use slibtools since it removes libtool .la files
+  MAKEFLAGS="CC=cc CXX=c++ -j$JOBS"
   make DESTDIR="$pkgdir" install
 
   find "$pkgdir/usr/lib/perl5" -name '*.so' -exec chrpath -d {} +
   rm "$pkgdir"/etc/$_relname/type-{apple,urw-base35,windows}.xml
+  rm "$pkgdir"/usr/lib/*.la
 
   install -Dm644 LICENSE NOTICE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
