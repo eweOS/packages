@@ -3,9 +3,9 @@
 pkgbase=cryptopp
 pkgname=crypto++
 pkgver=8.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A free C++ class library of cryptographic schemes'
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://www.cryptopp.com/
 license=(custom)
 makedepends=(git)
