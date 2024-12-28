@@ -3,7 +3,7 @@
 pkgname=python-sphinxcontrib-devhelp
 _name=${pkgname#python-}
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sphinx extension which outputs Devhelp document'
 arch=(any)
 url=https://github.com/sphinx-doc/sphinxcontrib-devhelp
@@ -15,10 +15,10 @@ makedepends=(
   python-flit-core
   python-installer
 )
-#checkdepends=(
-#  python-pytest
-#  python-sphinx
-#)
+checkdepends=(
+  python-pytest
+  python-sphinx
+)
 source=("git+$url.git#tag=$pkgver")
 sha256sums=('9959f8f68824e675389fc68c7b87fe7c390ce4da141fa3b860dad4f5593f869b')
 
@@ -29,7 +29,7 @@ build() {
 
 check() {
   cd "$_name"
-#  PYTHONPATH="sphinxcontrib/devhelp:$PYTHONPATH" pytest
+  PYTHONPATH="sphinxcontrib/devhelp:$PYTHONPATH" pytest
 }
 
 package() {
