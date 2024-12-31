@@ -1,0 +1,5 @@
+type = process
+command = /usr/bin/luantiserver --config /etc/luanti/$1.conf --map-dir /var/lib/luanti/$1/
+restart = false
+depends-on = network.target
+run-as = luanti
