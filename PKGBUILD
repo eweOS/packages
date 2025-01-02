@@ -2,7 +2,7 @@
 
 pkgname=gtksourceview4
 pkgver=4.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A text editor widget for code editing'
 url='https://wiki.gnome.org/Projects/GtkSourceView/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
