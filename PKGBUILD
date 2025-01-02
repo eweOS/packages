@@ -3,7 +3,8 @@
 pkgname=(linux linux-headers linux-devel linux-docs)
 _basename=linux
 pkgver=6.12.7
-pkgrel=1
+pkgrel=2
+pkgdesc='Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
 license=(GPL-2.0-only)
@@ -23,7 +24,7 @@ sha256sums=('f785fb648a0e0b66a943bb3228a4b6ed62c90b985cd1ebf69da5d38e589da0cf'
 prepare()
 {
   _patch_ "$_basename-$pkgver"
-  cd ${_basename}-${pkgver}
+  cd $_basename-$pkgver
   sed -i \
     -e '/^CC/s@gcc@cc@g' \
     -e '/^HOSTCC/s@gcc@cc@g' Makefile
@@ -37,7 +38,7 @@ build()
 	 cat $conf >> $srcdir/kernelconfig
   done
 
-  cd $srcdir/${_basename}-${pkgver}
+  cd $srcdir/$_basename-$pkgver
   case $CARCH in
     x86_64)
       export build_arch=x86_64
@@ -56,10 +57,10 @@ build()
       export dev_arch=loongarch
       ;;
   esac
-  make LLVM=1 LLVM_IAS=1 ARCH=${build_arch} defconfig
+  make LLVM=1 LLVM_IAS=1 ARCH=$build_arch defconfig
   scripts/kconfig/merge_config.sh -m .config $srcdir/kernelconfig
-  make LLVM=1 LLVM_IAS=1 ARCH=${build_arch} olddefconfig
-  make LLVM=1 LLVM_IAS=1 ARCH=${build_arch}
+  make LLVM=1 LLVM_IAS=1 ARCH=$build_arch olddefconfig
+  make LLVM=1 LLVM_IAS=1 ARCH=$build_arch
 
   export kernelrelease="$(make -s kernelrelease)"
 }
@@ -68,15 +69,21 @@ package_linux()
 {
   pkgdesc="The $pkgdesc kernel and modules"
 
-  cd ${_basename}-${pkgver}
+  cd $_basename-$pkgver
 
-  make LLVM=1 LLVM_IAS=1 ARCH=${build_arch} \
+  make LLVM=1 LLVM_IAS=1 ARCH=$build_arch \
     INSTALL_MOD_PATH="$pkgdir/usr" \
     INSTALL_MOD_STRIP=1 \
     modules_install
 
+  if [ -d "arch/$build_arch/boot/dts" ]; then
+    make LLVM=1 LLVM_IAS=1 \
+      INSTALL_DTBS_PATH="$pkgdir/usr/share/dtbs/$kernelrelease" \
+      dtbs_install
+  fi
+
   install -Dm644 \
-    "$(make -s image_name ARCH=${build_arch} | sed 's/.gz$//')" \
+    "$(make -s image_name ARCH=$build_arch | sed 's/.gz$//')" \
     "$pkgdir/usr/lib/modules/$kernelrelease/vmlinuz"
 
   # Used by tinyramfs to name the kernel
@@ -90,23 +97,23 @@ package_linux-headers()
 {
   pkgdesc="Kernel headers sanitized for use in userspace"
 
-  cd ${_basename}-${pkgver}
+  cd $_basename-$pkgver
 
-  make LLVM=1 LLVM_IAS=1 ARCH=${build_arch} INSTALL_HDR_PATH=$pkgdir/usr headers_install
+  make LLVM=1 LLVM_IAS=1 ARCH=$build_arch INSTALL_HDR_PATH=$pkgdir/usr headers_install
 }
 
 package_linux-devel()
 {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
 
-  cd ${_basename}-${pkgver}
+  cd $_basename-$pkgver
  
   local builddir="$pkgdir/usr/src/$pkgbase"
 
   echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
-  install -Dt "$builddir/arch/${dev_arch}" -m644 arch/${dev_arch}/Makefile
+  install -Dt "$builddir/arch/$dev_arch" -m644 arch/$dev_arch/Makefile
   cp -t "$builddir" -a scripts
 
   # required when STACK_VALIDATION is enabled
@@ -115,9 +122,9 @@ package_linux-devel()
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
-  cp -t "$builddir/arch/${dev_arch}" -a arch/${dev_arch}/include
-  [ -f arch/${dev_arch}/kernel/asm-offsets.s ] && \
-    install -Dt "$builddir/arch/${dev_arch}/kernel" -m644 arch/${dev_arch}/kernel/asm-offsets.s
+  cp -t "$builddir/arch/$dev_arch" -a arch/$dev_arch/include
+  [ -f arch/$dev_arch/kernel/asm-offsets.s ] && \
+    install -Dt "$builddir/arch/$dev_arch/kernel" -m644 arch/$dev_arch/kernel/asm-offsets.s
 
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
@@ -179,7 +186,7 @@ package_linux-devel()
 package_linux-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel"
 
-  cd ${_basename}-${pkgver}
+  cd $_basename-$pkgver
 
   local builddir="$pkgdir/usr/src/$pkgbase"
 
