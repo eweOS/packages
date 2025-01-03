@@ -3,7 +3,7 @@
 pkgname=(linux linux-headers linux-devel linux-docs)
 _basename=linux
 pkgver=6.12.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
