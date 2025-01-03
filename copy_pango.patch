@@ -1,0 +1,15 @@
+diff --git a/scripts/plymouth-populate-initrd.in b/scripts/plymouth-populate-initrd.in
+index 20614a22..af2f15e3 100755
+--- a/scripts/plymouth-populate-initrd.in
++++ b/scripts/plymouth-populate-initrd.in
+@@ -609,6 +609,10 @@ if [ -f "${PLYMOUTH_PLUGIN_PATH}/label-freetype.so" ]; then
+      [ ! -z "$DEFAULT_MONOSPACE_FONT" ] && ln -s "$DEFAULT_MONOSPACE_FONT" $INITRDDIR/usr/share/fonts/Plymouth-monospace.ttf
+ fi
+ 
++if [ -f "${PLYMOUTH_PLUGIN_PATH}/label-pango.so" ]; then
++     inst ${PLYMOUTH_PLUGIN_PATH}/label-pango.so $INITRDDIR
++fi
++
+ if [ -L ${PLYMOUTH_SYSROOT}${PLYMOUTH_DATADIR}/plymouth/themes/default.plymouth ]; then
+     cp -a ${PLYMOUTH_SYSROOT}${PLYMOUTH_DATADIR}/plymouth/themes/default.plymouth $INITRDDIR${PLYMOUTH_DATADIR}/plymouth/themes
+ fi
