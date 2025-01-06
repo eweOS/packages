@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=slibtool
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="Skinny libtool implementation, written in C"
 url='http://git.midipix.org/cgit.cgi/slibtool'
 license=('MIT')
@@ -14,7 +14,7 @@ source=(
   depcomp libtoolize ltargz.m4 ltmain.sh ltoptions.m4 ltversion.m4
   config.guess config.sub
 )
-sha256sums=('10b0a12c074b10fa1fec6fe74937b4812c3a7b37f7cc45d0dca68495c2b45e6a'
+sha256sums=('61b07f9f371ca05dc5b1259b27e73d8d7a2ef15e2a6adc9bac9816c5a4beacc4'
             'a8e92a6becc767713e58a5e381b121dca25bb40224c4f956e7330e985bddcff5'
             'd7c113e5484fce8b48f9a34a7a91e385ec279247d415b0b7d749bd56ad8ee8a2'
             '94ebc155f41e96e5cb8762a2661e0d39426274e1b2b930bfb6d99c680a041c58'
@@ -42,6 +42,7 @@ package()
 {
   cd "$srcdir"/slibtool-$pkgver
   make DESTDIR="$pkgdir" install
+  install -Dm644 -t "$pkgdir/usr/share/licenses/slibtool/" COPYING*
 
   ln -s slibtool "$pkgdir"/usr/bin/libtool
 
