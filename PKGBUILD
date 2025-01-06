@@ -2,8 +2,8 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=e2fsprogs
-pkgver=1.47.1
-pkgrel=2
+pkgver=1.47.2
+pkgrel=1
 pkgdesc='Ext2/3/4 filesystem utilities'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL' 'LGPL' 'MIT')
@@ -18,7 +18,7 @@ provides=('libcom_err.so'
   'libext2fs.so'
   'libss.so')
 source=("https://www.kernel.org/pub/linux/kernel/people/tytso/${pkgname}/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('5a33dc047fd47284bca4bb10c13cfe7896377ae3d01cb81a05d406025d99e0d1')
+sha256sums=('08242e64ca0e8194d9c1caad49762b19209a06318199b63ce74ae4ef2d74e63c')
 
 build()
 {
