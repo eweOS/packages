@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=composefs
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="A file system for mounting container images"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -17,7 +17,7 @@ depends=(musl openssl)
 makedepends=(fuse3 linux-headers meson ninja)
 checkdepends=(python)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ecab22e4bc00e1a3260765db8df45d2b68f796f8a265c4386be31cd308d17a75')
+sha256sums=('2b2b11f9a25744c82e9e12b098eefd0ab42d56ae6322634c15f966b3a64926ef')
 
 build() {
   ewe-meson "$pkgname-$pkgver" build \
