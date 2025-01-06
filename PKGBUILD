@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=dvisvgm
-pkgver=3.4.2
-pkgrel=3
+pkgver=3.4.3
+pkgrel=1
 pkgdesc='A fast DVI, EPS, and PDF to SVG converter'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://dvisvgm.de/'
@@ -20,7 +20,7 @@ makedepends=(autoconf-archive
              git
              python)
 source=(git+https://github.com/mgieseki/dvisvgm#tag=$pkgver)
-sha256sums=('2b72004e2eba2eba8de893ad90d504ef13604c59e4a5d97dc3bb0509b2e1c51f')
+sha256sums=('433ac290fe866fe4b0d2f4b61d8cb11caf382120a1c1c3ca3a92b17b36855997')
 
 prepare() {
   cd $pkgname
