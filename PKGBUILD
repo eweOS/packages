@@ -6,8 +6,8 @@ pkgname=(
   vte3
   vte4
 )
-pkgver=0.76.4
-pkgrel=5
+pkgver=0.78.2
+pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget"
 url="https://wiki.gnome.org/Apps/Terminal/VTE"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -32,6 +32,7 @@ depends=(
 )
 makedepends=(
   at-spi2-core
+  fast_float
   git
   gobject-introspection
   gperf
@@ -46,12 +47,19 @@ source=(
   fix-W_EXITCODE.patch
   no-gnutls-warning.patch
 )
-sha256sums=('628e9202b3578a825e6a135508c711a0ea0c236579f4ec1afe5d11f3feecce90'
+sha256sums=('ee407119c0fba400916f30818eba4f705cdf6d1764a6e5f639aff5ace4066748'
             '7dbcba99d14b7c3c67a594beb62dfcd993cc895d5e1ac788187fc4be8a37f898'
             '0a53c59a27c7e5d9170a83da2f1db1df73b69355ab9e8557a4404b13fc7900b0')
 
 prepare() {
   _patch_ vte
+
+  cd vte
+  git cherry-pick -n \
+    f6095fca4d1baf950817e7010e6f1e7c313b9e2e  \
+    6c2761f51a0400772f443f12ea23a75576e195d3  \
+    d09330585e648b5c9991dffab4a06d1f127bf916  \
+    b262c4432b805c47bc5e1f48f996609b8b8e6ad3
 }
 
 build() {
