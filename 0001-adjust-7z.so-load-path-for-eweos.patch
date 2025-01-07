@@ -1,0 +1,13 @@
+diff --git a/CPP/7zip/UI/Console/Main.cpp b/CPP/7zip/UI/Console/Main.cpp
+index 5094452..ab4ba3c 100755
+--- a/CPP/7zip/UI/Console/Main.cpp
++++ b/CPP/7zip/UI/Console/Main.cpp
+@@ -852,7 +852,7 @@ int Main2(
+   #else
+   {
+     if (numArgs > 0)
+-      Set_ModuleDirPrefix_From_ProgArg0(args[0]);
++      Set_ModuleDirPrefix_From_ProgArg0("/usr/lib/7zip/7z");
+ 
+     for (int i = 0; i < numArgs; i++)
+     {
