@@ -3,8 +3,8 @@
 _name=gitdb
 pkgdesc="A pure-Python git object database"
 pkgname=python-gitdb
-pkgver=4.0.11
-pkgrel=2
+pkgver=4.0.12
+pkgrel=1
 url="https://github.com/gitpython-developers/gitdb"
 license=(BSD-3-Clause)
 arch=(any)
@@ -24,7 +24,7 @@ checkdepends=(
   python-pytest
 )
 source=("git+$url#tag=$pkgver")
-sha512sums=('1358b271896c26fcf526cbede86e41c2bccae7a184a2a2e48943afafc715ebfe68ef7e0c1a001a6253320aaa30041c42e6e299809dd62ee032b64058ee0e73c3')
+sha512sums=('43e940278a5825368bd33618a196496df75e73c2e79dc152f51c2783d08f22891d19707ebe1a15acf62c1e2cfa4e32b2f884ed9819f85908596b5889c7e477c1')
 
 build() {
   cd $_name
