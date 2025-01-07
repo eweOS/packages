@@ -3,7 +3,7 @@
 _name=gitpython
 pkgdesc="A python library used to interact with Git repositories"
 pkgname=python-gitpython
-pkgver=3.1.43
+pkgver=3.1.44
 pkgrel=1
 url="https://github.com/gitpython-developers/gitpython"
 license=(BSD-3-Clause)
@@ -25,7 +25,7 @@ checkdepends=(
   python-pytest-mock
 )
 source=("git+$url.git#tag=$pkgver")
-sha512sums=('2204c41158630d501fa330f02474b57fd113d82ee5da972f95ab6fe69ae6c9bc477211ee751959d545c6eac9433bf50dbf81992d851af5b9904db3ca526cd742')
+sha512sums=('53bf6b7ceaf5a174d79b4e504e6ba4dd327951df64f8d7e9806204313eaed2d12e9198a871263a0a94792fd544157e897f136ab59e9bbc997ece8f512ff217c1')
 
 build() {
   cd $_name
@@ -53,6 +53,10 @@ check() {
     # https://github.com/gitpython-developers/GitPython/issues/1797
     --ignore test/test_index.py
   )
+
+  # failed when running under root
+  [ "$UID" = 0 ] && \
+    deselected+=(--deselect test/test_util.py::TestRmtree::test_does_not_wrap_perm_error_unless_enabled)
 
   cd $_name
   export TRAVIS="VERY CONVENIENT"
