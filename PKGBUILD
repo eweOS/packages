@@ -2,7 +2,7 @@
 
 pkgname=('luanti' 'luanti-server' 'luanti-common')
 pkgver=5.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An open source voxel game-creation platform with easy modding and game creation'
 url='https://www.minetest.net/'
 arch=(x86_64 aarch64)	# limited by LuaJIT
@@ -85,7 +85,7 @@ package_luanti() {
   depends=('luanti-common' 'curl' 'libvorbis' 'sqlite'
            'openal' 'hicolor-icon-theme' 'desktop-file-utils' 'xdg-utils'
            'freetype2' 'luajit' 'spatialindex' 'jsoncpp'
-           'libgl' 'libjpeg-turbo') # irrlichtmt
+           'libgl' 'libjpeg-turbo' 'sdl2' 'gmp') # irrlichtmt
   conflicts=('minetest')
   replaces=('minetest')
 
@@ -99,7 +99,7 @@ package_luanti() {
 package_luanti-server() {
   pkgdesc='Server of infinite-world block sandbox game'
   depends=('luanti-common' 'curl' 'sqlite' 'luajit'
-           'spatialindex' 'jsoncpp')
+           'spatialindex' 'jsoncpp' 'gmp')
   conflicts=('minetest-server')
   replaces=('minetest-server')
 
