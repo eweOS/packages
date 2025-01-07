@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=js128
-pkgver=128.5.2
-pkgrel=2
+pkgver=128.6.0
+pkgrel=1
 pkgdesc="JavaScript interpreter and libraries - Version 128"
 url="https://spidermonkey.dev/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -29,7 +29,7 @@ source=(
   0001-fix-venv-activation.patch
   libc-loongarch64-support.patch
 )
-sha256sums=('25d633eb81499cbda44b8c64fa1c1a5879d55024b864ef495d4997154d68358f'
+sha256sums=('b7a39d3ce12d05021dd34a5e449cdd4bb53d3dc24f0ae9201eaaa85c71868508'
             'a76d1f0802ec486c9212f45541cab02aa1027e05d10ccc3becb68eadd762cc3e'
             '8f2d112e8e0e975174396f86ad675fd33da541130f5f1115e27a89322d361c63'
             'f321316c393fb6327c306d19a6638e01a114dbe14ea8f8e6bd23184f4c5247cd')
