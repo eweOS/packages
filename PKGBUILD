@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=iniparser
-pkgver=4.2.4
+pkgver=4.2.5
 pkgrel=1
 pkgdesc='A free stand-alone ini file parsing library written in portable ANSI C'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -10,8 +10,8 @@ license=('MIT')
 provides=('libiniparser.so')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ndevilla/iniparser/archive/v${pkgver}.tar.gz")
-md5sums=('2b4b70171712895cb5afdf1247a8889f')
-sha256sums=('c05bb41df87f31a029516943ebb7f38ca1f0e38ff36f3836f1163a9a529857df')
+md5sums=('c45250cab6d628da3adf97c047bf2939')
+sha256sums=('b388af84fa33a4515715a22e59d24b284b0bf895398b5e52a4a4e6fd9f76cdf8')
 
 build() {
   mkdir build
