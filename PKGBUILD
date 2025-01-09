@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=minizip-ng
-pkgver=4.0.7
-pkgrel=2
+pkgver=4.0.8
+pkgrel=1
 pkgdesc='Fork of the popular zip manipulation library found in the zlib distribution'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/zlib-ng/minizip-ng'
@@ -18,7 +18,7 @@ provides=(minizip)
 conflicts=(minizip)
 replaces=(minizip)
 source=(git+https://github.com/zlib-ng/minizip-ng#tag=$pkgver)
-sha256sums=('f4c388042d4911e625f02ac6a7bef0bf5b2fca2227c6ed7ec64c65ade98e33d0')
+sha256sums=('bf23a5d4a49f5321b13c9fdb88a8410cadb099726322516c50eb82fc6ad72000')
 
 build() {
   cmake -B build -S $pkgname \
