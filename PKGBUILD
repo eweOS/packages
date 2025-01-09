@@ -9,8 +9,8 @@ pkgname=(blas
          cblas64
          lapack64
          lapacke64)
-pkgver=3.12.0
-pkgrel=2
+pkgver=3.12.1
+pkgrel=1
 url='https://www.netlib.org/lapack'
 pkgdesc='Linear Algebra PACKage'
 makedepends=(cmake
@@ -19,7 +19,7 @@ makedepends=(cmake
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(custom)
 source=(https://github.com/Reference-LAPACK/lapack/archive/v$pkgver/$pkgbase-$pkgver.tar.gz)
-sha256sums=('eac9570f8e0ad6f30ce4b963f4f033f0f643e7c3912fc9ee6cd99120675ad48b')
+sha256sums=('2ca6407a001a474d4d4d35f3a61550156050c48016d949f0da0529c0aa052422')
 
 build() {
   cmake -B build -S $pkgbase-$pkgver \
