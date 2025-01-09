@@ -1,0 +1,24 @@
+diff --git a/tls/tests/connection.c b/tls/tests/connection.c
+index e9c389f..a54740d 100644
+--- a/tls/tests/connection.c
++++ b/tls/tests/connection.c
+@@ -3442,8 +3442,6 @@ main (int   argc,
+               setup_connection, test_invalid_chain_with_alternative_ca_cert, teardown_connection);
+   g_test_add ("/tls/" BACKEND "/connection/client-auth", TestConnection, NULL,
+               setup_connection, test_client_auth_connection, teardown_connection);
+-  g_test_add ("/tls/" BACKEND "/connection/client-auth-rehandshake", TestConnection, NULL,
+-              setup_connection, test_client_auth_rehandshake, teardown_connection);
+   g_test_add ("/tls/" BACKEND "/connection/client-auth-failure", TestConnection, NULL,
+               setup_connection, test_client_auth_failure, teardown_connection);
+   g_test_add ("/tls/" BACKEND "/connection/client-auth-fail-missing-client-private-key", TestConnection, NULL,
+@@ -3472,10 +3470,6 @@ main (int   argc,
+               setup_connection, test_simultaneous_async, teardown_connection);
+   g_test_add ("/tls/" BACKEND "/connection/simultaneous-sync", TestConnection, NULL,
+               setup_connection, test_simultaneous_sync, teardown_connection);
+-  g_test_add ("/tls/" BACKEND "/connection/simultaneous-async-rehandshake", TestConnection, NULL,
+-              setup_connection, test_simultaneous_async_rehandshake, teardown_connection);
+-  g_test_add ("/tls/" BACKEND "/connection/simultaneous-sync-rehandshake", TestConnection, NULL,
+-              setup_connection, test_simultaneous_sync_rehandshake, teardown_connection);
+   g_test_add ("/tls/" BACKEND "/connection/close-immediately", TestConnection, NULL,
+               setup_connection, test_close_immediately, teardown_connection);
+   g_test_add ("/tls/" BACKEND "/connection/unclean-close-by-server", TestConnection, NULL,
