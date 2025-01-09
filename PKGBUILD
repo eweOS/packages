@@ -4,8 +4,8 @@ pkgbase=opencv
 pkgname=(opencv
          opencv-samples
          python-opencv)
-pkgver=4.10.0
-pkgrel=6
+pkgver=4.11.0
+pkgrel=1
 pkgdesc='Open Source Computer Vision Library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0)
@@ -50,8 +50,8 @@ optdepends=('opencv-samples: samples'
             'java-runtime: Java interface')
 source=(opencv.tar.gz::https://github.com/opencv/opencv/archive/refs/tags/$pkgver.tar.gz
         opencv_contrib.tar.gz::https://github.com/opencv/opencv_contrib/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('b2171af5be6b26f7a06b1229948bbb2bdaa74fcf5cd097e0af6378fce50a6eb9'
-            '65597f8fb8dc2b876c1b45b928bbcc5f772ddbaf97539bf1b737623d0604cba1')
+sha256sums=('9a7c11f924eff5f8d8070e297b322ee68b9227e003fd600d4b8122198091665f'
+            '2dfc5957201de2aa785064711125af6abb2e80a64e2dc246aca4119b19687041')
 options=(!lto) # https://gitlab.archlinux.org/archlinux/packaging/packages/kdenlive/-/issues/8
 
 build() {
