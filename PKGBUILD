@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=python-pytest-asyncio
-pkgver=0.25.0
+pkgver=0.25.2
 pkgrel=1
 pkgdesc='Async io support for pytest'
 url='https://github.com/pytest-dev/pytest-asyncio'
@@ -12,7 +12,7 @@ makedepends=(python-wheel python-build python-installer python-setuptools
 	     python-setuptools-scm git)
 checkdepends=(python-hypothesis)
 source=("git+https://github.com/pytest-dev/pytest-asyncio.git#tag=v$pkgver")
-sha256sums=('2af7f2d45f709ab5645483903cacbcef4584e7fbd4f15a4082bf68274cd35627')
+sha256sums=('314c2cdeafc2e54b69357ff77921f235ad9d7a5b58ef59c40d208d96e523dc7e')
 
 build () {
 	cd pytest-asyncio
