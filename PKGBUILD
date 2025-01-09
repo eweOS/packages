@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=protobuf
-pkgver=29.2
+pkgver=29.3
 pkgrel=1
 pkgdesc="Google's data interchange format"
 url='https://github.com/protocolbuffers/protobuf/'
@@ -12,7 +12,7 @@ makedepends=(cmake)
 checkdepends=(googletest)
 provides=(libprotobuf.so libprotobuf-lite.so libprotoc.so)
 source=("https://github.com/protocolbuffers/protobuf/releases/download/v$pkgver/protobuf-$pkgver.tar.gz")
-sha256sums=('63150aba23f7a90fd7d87bdf514e459dd5fe7023fdde01b56ac53335df64d4bd')
+sha256sums=('008a11cc56f9b96679b4c285fd05f46d317d685be3ab524b2a310be0fbad987e')
 
 build () {
 	cmake -B build protobuf-$pkgver \
