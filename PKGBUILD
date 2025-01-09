@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=alex
-pkgver=3.5.1.0
+pkgver=3.5.2.0
 pkgrel=1
 pkgdesc='A tool for generating lexical analysers in Haskell'
 url='https://hackage.haskell.org/package/alex'
@@ -10,7 +10,7 @@ license=(BSD-3-Clause)
 depends=(libffi gmp zlib-ng)
 makedepends=(cabal ghc)
 source=("https://hackage.haskell.org/package/alex-$pkgver/alex-$pkgver.tar.gz")
-sha256sums=('c92efe86f8eb959ee03be6c04ee57ebc7e4abc75a6c4b26551215d7443e92a07')
+sha256sums=('913602f0464827470ecd9ed7590ddbbc5abab045a2b45059c46f80d17f0dc008')
 
 build () {
 	cd "$pkgname-$pkgver"
