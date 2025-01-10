@@ -4,7 +4,7 @@ pkgbase=linux-lts
 _basename=linux
 pkgdesc='LTS Linux'
 pkgname=(linux-lts linux-lts-headers linux-lts-devel linux-lts-docs)
-pkgver=6.6.70
+pkgver=6.6.71
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
@@ -16,7 +16,7 @@ source=(
   busybox-find-compat.patch
 )
 options=(!strip)
-sha256sums=('84d23ee07fb26febbcb6d1295ba15efdc67ac382b4137b2c8853146c10fd2f97'
+sha256sums=('219715ba2dcfa6539fba09ad3f9212772f3507189eb60d77f8e89b06c32e724e'
             'SKIP'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
 
