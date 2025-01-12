@@ -1,0 +1,13 @@
+diff --git a/bindings/python/Makefile.am b/bindings/python/Makefile.am
+index 2ae8ac8..c9b2b4b 100644
+--- a/bindings/python/Makefile.am
++++ b/bindings/python/Makefile.am
+@@ -36,7 +36,7 @@ clean-local:
+ all-local: python-tests
+ 	CFLAGS="-I$(abs_top_srcdir)/include/ -I$(abs_top_srcdir)/tests/gpiosim \
+ 	-L$(abs_top_builddir)/lib/.libs/ -L$(abs_top_builddir)/tests/gpiosim/.libs/" \
+-	$(PYTHON) -m build
++	$(PYTHON) -m build --no-isolation
+ 
+ install-exec-local:
+ 	$(PYTHON) -m pip install dist/*.whl \
