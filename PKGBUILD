@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=limine
-pkgver=8.6.1
+pkgver=8.7.0
 pkgrel=1
 pkgdesc="An advanced, portable, multiprotocol bootloader"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,20 +15,12 @@ source=(
   limine.defaults
   limine.conf
   limine-install
-  0001-protos-Keep-linux-protocol-disabled-on-loong64-as-it.patch
 )
-sha256sums=('4fae32769633dbdf521c3118d0bd2039be31c11a4e4241aff1122397d8ffe44c'
-            '7952ba8555a3b82725cd8f7255a91f8cf363e8cfd99d86aa7438638252239665'
+sha256sums=('a70a11f69b4ca5d85d11efca6f273eb26bfda0d22ab49f4bd0a15d7fafe0d047'
+            'b3a9bbf701bf641d5354a0611011ed1e161c01e57fd5c97f1de116cfdfaf35b7'
             'b1d39bd3cc56b4d033f2ffe3c6f1eda8cbb0eb4788626e5041fcb56fa961ea86'
             'f722aacb1e5865489483c14b950900998241fe6558e58875b1119579ef91a5e0'
-            '996416f738c981e2d04af00407adb7bc1e95a5acc5b11f65595d202cd6420290'
-            'd397e862240edd3d457a8ea82c2dbb0854f2f647349809a17e3d32ab6d041813')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  # enable loongarch64 linux protocol support
-  patch -R -p1 < "$srcdir/0001-protos-Keep-linux-protocol-disabled-on-loong64-as-it.patch"
-}
+            '996416f738c981e2d04af00407adb7bc1e95a5acc5b11f65595d202cd6420290')
 
 build() {
   cd "${pkgname}-${pkgver}"
