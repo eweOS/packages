@@ -58,8 +58,8 @@ EOF
     cat <<EOF >> $CFGOUT
     comment: ${PRETTY_NAME} ${BUILD_ID} ($MENUTITLE)
     protocol: linux
-    kernel_path: boot():/vmlinuz-${pkgbase}
-    kernel_cmdline: $LIMINE_KERNEL_CMDLINE_COMMON $CMDLINE
+    path: boot():/vmlinuz-${pkgbase}
+    cmdline: $LIMINE_KERNEL_CMDLINE_COMMON $CMDLINE
     module_path: boot():/initramfs-${pkgbase}.img
 EOF
   fi
