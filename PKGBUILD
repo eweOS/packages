@@ -1,15 +1,15 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=kirc
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.3.3
+pkgrel=1
 pkgdesc="A tiny IRC client written in POSIX C99"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/mcpcpc/kirc"
 license=('MIT')
 depends=('musl')
 source=("https://github.com/mcpcpc/kirc/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('a45172198873fb34c64150262be4515a7be268a5c00566c79f03a8ea2dd7900e')
+sha256sums=('c76e545efc400486401f387ef266260d4508f9b6265df7f61c0d5b002fec164b')
 
 prepare()
 {
