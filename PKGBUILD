@@ -3,15 +3,15 @@
 # Contributor: Andreas Wagner <Andreas dot Wagner at em dot uni-frankfurt dot de>
 
 pkgname=oniguruma
-pkgver=6.9.9
-pkgrel=3
+pkgver=6.9.10
+pkgrel=1
 pkgdesc="a regular expressions library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/kkos/oniguruma"
 license=('BSD')
 makedepends=('autoconf')
 source=("https://github.com/kkos/oniguruma/releases/download/v$pkgver/onig-${pkgver/_/-}.tar.gz")
-sha256sums=('60162bd3b9fc6f4886d4c7a07925ffd374167732f55dce8c491bfd9cd818a6cf')
+sha256sums=('2a5cfc5ae259e4e97f86b68dfffc152cdaffe94e2060b770cb827238d769fc05')
 
 prepare()
 {
