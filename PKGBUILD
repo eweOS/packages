@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=firefox
-pkgver=133.0.3
-pkgrel=3
+pkgver=134.0.1
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -50,7 +50,7 @@ source=(
   loong0003-Define-HWCAP_LOONGARCH_LSX_and_LASX.patch
   loong0005-Fix-libyuv-build-with-LSX-LASX.patch
 )
-sha256sums=('f134a5420200bb03ab460f9d2867507c0edb222ce73faf4064cdbea02a0aca1b'
+sha256sums=('e3a1853ce70f0fc0007a40a5000d8c9ca7ddd42a4de7d1eb52b0b22fcc2265e5'
             '5efe32a0f0d8c7219cd9f58e5fc9aa9f388457dff4e4bfdd372b13456cce3f2b'
             'b26bb318afbfe42325d81e1c7323541c2558bb151a647c015e72a8d50f0e9bba'
             '18a0f1df76834ac3d4ddb150aa857785df641b54f9fbf0cfb6ffcec64dad72d4'
