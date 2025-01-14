@@ -2,8 +2,9 @@
 
 pkgbase=poppler
 pkgname=('poppler' 'poppler-glib' 'poppler-qt6')
-pkgver=24.12.0
+pkgver=25.01.0
 pkgrel=1
+pkgdesc='A PDF rendering library based on the xpdf-3.0 code base'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL-2.0-only'
          'GPL-3.0-or-later'
@@ -21,7 +22,7 @@ url="https://poppler.freedesktop.org/"
 source=(https://poppler.freedesktop.org/${pkgbase}-${pkgver}.tar.xz
         test::git+https://gitlab.freedesktop.org/poppler/test.git#commit=ff3133cdb6cb496ee1d2c3231bfa35006a5e8410
 )
-sha256sums=('1cf374c3146f3f685d9257701bf0c2866c61d6c202c14d1f5c01a1f3a089028a'
+sha256sums=('7eefc122207bbbd72a303c5e0743f4941e8ae861e24dcf0501e18ce1d1414112'
             '0efc9bd1797f0f0dfa514d4109e82c99d7e98c3e95587c70945508493074fcdf')
 
 build() {
@@ -30,8 +31,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
     -DENABLE_GTK_DOC=ON \
-    -DENABLE_QT5=OFF \
-    -DENABLE_LIBOPENJPEG=unmaintained
+    -DENABLE_QT5=OFF
   cmake --build build
 }
 
