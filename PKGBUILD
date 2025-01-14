@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xdg-desktop-portal-gtk
-pkgver=1.15.1
-pkgrel=2
+pkgver=1.15.2
+pkgrel=1
 pkgdesc="A backend implementation for xdg-desktop-portal using GTK"
 url="https://github.com/flatpak/xdg-desktop-portal-gtk"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -24,7 +24,7 @@ makedepends=(
 optdepends=("evince: Print preview")
 provides=(xdg-desktop-portal-impl)
 source=("git+$url#tag=$pkgver")
-sha256sums=('2c6133f11fecfbdf853c60c6f40644491eb415105532bd9f04193b713e66da5d')
+sha256sums=('ae1ad3dad10e2828293ace5713a33982cd39bec06207793c25eb5235193c9a1b')
 
 build() {
   local meson_options=(
