@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=prismlauncher
-pkgver=9.1
+pkgver=9.2
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -13,7 +13,7 @@ optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
             'visualvm: Profiling support')
 source=("https://github.com/PrismLauncher/PrismLauncher/releases/download/${pkgver}/PrismLauncher-${pkgver}.tar.gz")
-sha256sums=('0aac56ec6b039e28f0605e7d86ebf602ee28dd9e4c7a16915ca974104954e832')
+sha256sums=('8702b40393b44a364633f1bab2a5c29abc634b5d053541fd8f85c4d1aaf50e83')
 
 prepare() {
   cd "PrismLauncher-${pkgver}"
