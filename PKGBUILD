@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=bird
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ source=(
   bird.service
   bird.tmpfiles
 )
-sha256sums=('8130440a2e273ba6456df2fb3acb43da7cb4d566f94a294a3a52a1b118f2512a'
+sha256sums=('8868403caa84e2554bb6e60adbe7c657e7bb7c4ac41910e398f35e236ba90fa1'
             '34c2bb0f9f89315914cfaf94e23c91ca7e72db42cd4f3d1a456f5541a3da5868'
             '93ccf34aa61e513f27b5287437b68a4f176dfdca9b05a05de6a15aa0dcdd6205')
 
