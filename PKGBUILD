@@ -5,8 +5,8 @@ pkgname=(
   flatpak
   flatpak-docs
 )
-pkgver=1.15.12
-pkgrel=3
+pkgver=1.16.0
+pkgrel=1
 pkgdesc="Linux application sandboxing and distribution framework (formerly xdg-app)"
 url="https://flatpak.org"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -48,7 +48,7 @@ source=(
   https://dl.flathub.org/repo/flathub.flatpakrepo
   flatpak-bindir.sh
 )
-sha256sums=('c9b5bc6e0612896a1d63180be8e799ab26930932d8a142451d066b53dc71ee42'
+sha256sums=('f1fec03114938630dcccf3359a24ca6c69de42e137958ae2b2c7fcc11d2a33da'
             '3371dd250e61d9e1633630073fefda153cd4426f72f4afa0c3373ae2e8fea03a'
             '1824cb4eb1cc88702cb2b9f1c55b6dfdf20fca5eab83f6e8e532099281328745')
 
