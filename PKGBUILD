@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sqlite
-_srcver=3470200
-pkgver=3.47.2
+_srcver=3480000
+pkgver=3.48.0
 pkgrel=1
 pkgdesc="A C library that implements an SQL database engine"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,8 +12,8 @@ makedepends=('readline' 'zlib')
 depends=('readline' 'zlib')
 provides=('sqlite3' 'libsqlite3.so')
 options=('!emptydirs')
-source=("https://sqlite.org/2024/sqlite-autoconf-${_srcver}.tar.gz")
-sha256sums=('f1b2ee412c28d7472bc95ba996368d6f0cdcf00362affdadb27ed286c179540b')
+source=("https://sqlite.org/2025/sqlite-autoconf-${_srcver}.tar.gz")
+sha256sums=('ac992f7fca3989de7ed1fe99c16363f848794c8c32a158dafd4eb927a2e02fd5')
 
 build()
 {
