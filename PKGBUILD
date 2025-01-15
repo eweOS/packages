@@ -5,8 +5,8 @@ pkgname=(
   libsecret
   libsecret-docs
 )
-pkgver=0.21.4
-pkgrel=2
+pkgver=0.21.5
+pkgrel=1
 pkgdesc="Library for storing and retrieving passwords and other secrets"
 url="https://gnome.pages.gitlab.gnome.org/libsecret/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -29,7 +29,7 @@ checkdepends=(
   python-gobject
 )
 source=("git+https://gitlab.gnome.org/GNOME/libsecret.git#tag=$pkgver")
-sha256sums=('f6f75217a81ab16cf371d05eebd8955a2cfce40f317d8fe50e9ec8670804b4e7')
+sha256sums=('096081dd6186d6ba944a9f0b83f5d4e650def046528464ad5840fc5eec211c88')
 
 prepare() {
   cd $pkgbase
