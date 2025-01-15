@@ -1,10 +1,10 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=niri
-pkgver=0.1.10.1
+pkgver=25.01
 pkgrel=1
 pkgdesc="A scrollable-tiling Wayland compositor"
-arch=(x86_64 aarch64 riscv64)
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/YaLTeR/niri"
 license=(GPL-3.0-or-later)
 depends=(
@@ -38,7 +38,7 @@ optdepends=(
 # NOTE: linking issues with LTO enabled
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('ba816350bad30debcb961d6c516c96a0a732621e78e08f7f04bbf3bee46cb463318a59acf532660288022a247cfcd636d59159b66fd01c1c702d58f8ddf44e6a')
+sha512sums=('5c555f4410659a4301151a58938cc9880a9a244af138157c0be0fb38f0e82d20e6fccccad7e47ef515d3aaa0f7ddeef5088adad3f8d0be1a99a89f822c8b7a66')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -56,6 +56,8 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
+  export XDG_RUNTIME_DIR=$srcdir/.xrd
+  mkdir -p $srcdir/.xrd
   cargo test --all --exclude niri-visual-tests --frozen --no-default-features --features "dbus,dinit,xdp-gnome-screencast"
 }
 
