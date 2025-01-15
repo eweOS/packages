@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-wrapt
-pkgver=1.17.0
+pkgver=1.17.2
 pkgrel=1
 pkgdesc="A Python module for decorators, wrappers and monkey patching"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 source=("https://github.com/GrahamDumpleton/wrapt/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('b552676a9c41c2feadf9eeab78c011bcc068f6b160d5d91aa6afc8b880abaaf8f170071e8eb03811959d3510cb19cb8fcc0db41a3c4e7eb6c92cf04882d9c0d2')
+sha512sums=('12a6e610f180ce34a7edad39225b54f62d58d487e8b3379321e00e0d0c1b265a5a570de15ec5e5a6b38748052617dbb486f802ae924ab48b51b3ccd40d1170bf')
 
 build() {
   cd wrapt-$pkgver
