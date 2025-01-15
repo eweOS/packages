@@ -4,7 +4,7 @@
 
 pkgbase=libxcrypt
 pkgname=(libxcrypt libxcrypt-compat)
-pkgver=4.4.37
+pkgver=4.4.38
 pkgrel=1
 pkgdesc='Modern library for one-way hashing of passwords'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ depends=('musl' 'libucontext')
 makedepends=('linux-headers')
 provides=('libcrypt.so')
 source=("${url}/releases/download/v${pkgver}/${pkgbase}-${pkgver}.tar.xz")
-sha512sums=('e144259e5a91bd203853e9c2a0d6aa9229df220f5f039f950cdf5403e952523ee848fcc3a78b73ead291e87537f2f8667a15e2f44038e8f30a486f615e650246')
+sha512sums=('66c6f7e69d64ec6d9cca5c240bcd056c4f2802aab84325bef5c3aff189a0f81bc0944f473cbde8fdcb12cad8a9d35599afb045a5bc4be577e1c67066555bc116')
 
 build()
 {
