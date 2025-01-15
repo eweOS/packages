@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=python-tempora
-pkgver=5.7.0
-pkgrel=4
+pkgver=5.8.0
+pkgrel=1
 pkgdesc='Objects and routines pertaining to date and time (tempora).'
 url='https://github.com/jaraco/tempora'
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(python-build python-wheel python-installer python-setuptools
 	     python-setuptools-scm git)
 # checkdepends=(python-freezegun python-pytest python-pytest-freezegun)
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('5af1563b7b32d5cd5689f999745b84223f65bc1ec6f91ffd28b8c75737dda481')
+sha256sums=('6cd75331757dcfa85efe444fe8666866a39fc6a45aea08af00b188818560c20c')
 
 build () {
 	cd tempora
