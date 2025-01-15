@@ -1,10 +1,10 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=spirv-tools
-_pkgver=2024.3
-_headerver=1.3.290.0
+_pkgver=2024.4.rc2
+_headerver=1.4.304
 pkgver=${_pkgver}+${_headerver}
-pkgrel=2
+pkgrel=1
 pkgdesc="API and commands for processing SPIR-V modules"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.khronos.org/vulkan/"
@@ -13,7 +13,7 @@ depends=('llvm-libs')
 makedepends=('cmake' 'python' 'ninja' 'spirv-headers')
 source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v${_pkgver}.tar.gz")
 #source=("https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/sdk-${_headerver}.tar.gz")
-sha256sums=('3961edff3410599112a50bfcda2d4a828f7cb12e8294ee0f6169976ef0532b83')
+sha256sums=('b63b0ceda2350a4d097f41d52e929eddeadb8cae05b979989da364f1012727b0')
 
 build()
 {
