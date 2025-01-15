@@ -2,7 +2,7 @@
 
 pkgname=vulkan-tools
 pkgver=1.4.304
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulkan Development Tools'
 url='https://github.com/KhronosGroup/Vulkan-Tools/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -41,6 +41,5 @@ build () {
 package() {
 	DESTDIR="$pkgdir" cmake --install build
 
-	rm "$pkgdir/usr/bin/vkcube-wayland"
 	ln -s vkcube "$pkgdir/usr/bin/vkcube-wayland"
 }
