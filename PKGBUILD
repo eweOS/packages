@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-pygments
-pkgver=2.18.0
-pkgrel=2
+pkgver=2.19.1
+pkgrel=1
 pkgdesc="Python syntax highlighter"
 arch=('any')
 url="https://pygments.org/"
@@ -14,7 +14,7 @@ makedepends=('python-setuptools' 'python-wcag-contrast-ratio'
 # FIXME: missing dependency
 #checkdepends=('python-pytest' 'python-lxml')
 source=(https://pypi.org/packages/source/p/pygments/pygments-$pkgver.tar.gz)
-sha256sums=('786ff802f32e91311bff3889f6e9a86e81505fe99f2735bb6d60ae0c5004f199')
+sha256sums=('61c16d2a8576dc0649d9f39e089b5f02bcd27fba10d8fb4dcc28173f7a45151f')
 
 build() {
   cd pygments-$pkgver
