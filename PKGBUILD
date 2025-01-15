@@ -2,8 +2,8 @@
 
 _name=inflect
 pkgname=python-inflect
-pkgver=7.4.0
-pkgrel=2
+pkgver=7.5.0
+pkgrel=1
 pkgdesc="Correctly generate plurals, singular nouns, ordinals, indefinite articles"
 arch=(any)
 url="https://github.com/jaraco/inflect"
@@ -26,7 +26,7 @@ checkdepends=(
   python-pytest-enabler
 )
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('4b5979894678907d4933ef6fa314cd279e93b2efb198360de968e68bd9bd22086beae106ea386bf9f44ef9ad21e6de82da84ee52b5e6af949cea4b3da44b2ddb')
+sha512sums=('139ddfc73ce2f62e781eb2eefe1dc56d51e2af8380b23af1f542f63ec125921ce6cdacfcaf26b0221776ff83d9e4bea728df2dd58e3a2f25e32c6a5f0cc07d25')
 
 build() {
   cd $_name-$pkgver
