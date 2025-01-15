@@ -2,7 +2,7 @@
 
 pkgname=busybox
 pkgver=1.37.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.busybox.net"
@@ -40,11 +40,11 @@ sha256sums=('3311dff32e746499f4df0d5df04d7eb396382d7e108bb9250e7b519b837043a4'
             'a54856a9825e3aeb161a19c0665fa6f98695a4cf15ca66d864a8dbed0f6268fe'
             '69e028725a63763e21684fb0ce941f6a34a4b72bb328a0cab43b4d39d6d767dc'
             'd090013b1537d43c3925bf69cb6bcd8ca304b91774ceb1b944ae6edd8714ad1f'
-            '9c6d96a3e0d044d0ebb39e00bcad0eceb98001146c807eea98b0685076ed1945'
+            '8fd346df4a87aee80fc959d4b817239c7cfeebe3a514ffd7dbe276eab401000b'
             'ff1cd59bf41a658916459636b93bc98d8bfaf0482c5c879095c31116c88b0a00'
             '622d0a1743a127bab1fc15e5057034db52c7fa475298b8d085cfc7c046ae5537'
             '3557692ba310fc114459819f690fdf76047d67c8146dddbb4cc9ad7b8d931b64'
-            'b73dae2cc94111a28f235116bbee5f3c59e1b7075bfb593b622c5cfb1b016efb'
+            'f79b25408a7071563cf0dee19a75bc35d56b1b8a724d3c8a871c59462f14cb89'
             'f157359b7992e9d08da728b2c48c10f338e149e44856f3cb9665164c35f6e232'
             'f641a4d722dfaeb70e43ee87d8b1ce6ecadc0aec4ee21bdc28bbe4564dd743f4'
             '32c89049dfcb5de3b2591b1039b25aa8ad83f0af9b6782ef460ed4dde7a8493d'
