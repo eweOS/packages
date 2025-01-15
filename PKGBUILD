@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=opencl-headers
-pkgver=2024.05.08
+pkgver=2024.10.24
 pkgrel=1
 pkgdesc='OpenCL (Open Computing Language) header files'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://www.khronos.org/registry/cl/'
 license=('Apache-2.0')
 makedepends=(cmake python)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/OpenCL-Headers/archive/v${pkgver}.tar.gz")
-sha256sums=('3c3dd236d35f4960028f4f58ce8d963fb63f3d50251d1e9854b76f1caab9a309')
+sha256sums=('159f2a550592bae49859fee83d372acd152328fdf95c0dcd8b9409f8fad5db93')
 optdepends=('opencl-clhpp: C++ support')
 
 build() {
