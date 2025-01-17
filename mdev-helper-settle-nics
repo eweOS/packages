@@ -78,9 +78,6 @@ esac
 
 trap 'status="$?"; rm -f "${lockfile}"; test -f "${tmpfile}" && rm -f "${tmpfile}"; exit "${status}"' INT TERM EXIT
 
-# iwlwifi bug: must wait for several seconds for setting real MAC address
-sleep 3
-
 # If we do have configured nics but the configured names are already used by something else, rename it to temp name.
 # I wish nameif or ifrename could be smart enough to do it itself...
 inconf_nics=""
