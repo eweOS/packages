@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ostree
-pkgver=2024.10
+pkgver=2025.1
 pkgrel=1
 pkgdesc="Operating system and container binary deployment and upgrades"
 url="https://ostreedev.github.io/ostree/"
@@ -31,25 +31,32 @@ makedepends=(
   xz
 )
 provides=(libostree-1.so)
+# 0001: Downstream patch, we use fusermount3 instead of fusemount in tests
+# 0002: Fix definition conflicts when including both sys/prctl.h and
+#	linux/prctl.h on musl
 source=(
   git+https://github.com/ostreedev/ostree#tag=v$pkgver
   git+https://github.com/mendsley/bsdiff
   git+https://gitlab.gnome.org/GNOME/libglnx.git
-  $pkgname-2023.1-use_fuse3.patch
+  0001-$pkgname-2023.1-use_fuse3.patch
+  0002-libotutil-Remove-redundant-import-of-prctl-h.patch::https://github.com/ostreedev/ostree/commit/e82bb38adfc9edfacfe7118592eb4b4357cc687b.patch
 )
-sha256sums=('f7ee924a59cc9b57988eab71fec44e558eb5acc102a64df5ae7532f791ad2598'
+sha256sums=('4eb938cf9d086cfbddb1b67d01803c560b4f83cf75c680b510bc2bcd345013ec'
             'SKIP'
             'SKIP'
-            '6cc1e10db1f8c744eec5d128ad7bcd5aa92a8da167784f6727d832c9a4c545bb')
+            '6cc1e10db1f8c744eec5d128ad7bcd5aa92a8da167784f6727d832c9a4c545bb'
+            'fba4c919a8e0a30c8f3f2d74c4cf0bc4b9c3dd8a980f9053565aa5dd47deee42')
 
 prepare() {
+  _patch_ $pkgname
+
   cd $pkgname
 
   # Use CC instead of GCC
   sed -i 's/CC=gcc/CC=cc/' Makefile-libostree.am
 
   # use fusemount3 (fuse3)
-  git apply -3 ../$pkgname-2023.1-use_fuse3.patch
+  # git apply -3 ../$pkgname-2023.1-use_fuse3.patch
 
   git submodule init
   git submodule set-url bsdiff "$srcdir/bsdiff"
@@ -75,8 +82,6 @@ build() {
 
   cd $pkgname
   ./configure "${configure_options[@]}"
-  # prevent overlinking due to libtool
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
@@ -90,4 +95,3 @@ package() {
 
   make DESTDIR="$pkgdir" install -C $pkgname
 }
-
