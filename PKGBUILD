@@ -2,7 +2,7 @@
 
 pkgname=ncnn
 pkgver=20240820
-pkgrel=1
+pkgrel=2
 pkgdesc='High-performance neural network inference framework optimized for the mobile platform'
 url='https://github.com/Tencent/ncnn'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
