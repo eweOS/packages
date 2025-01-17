@@ -5,7 +5,7 @@ pkgname=(opencv
          opencv-samples
          python-opencv)
 pkgver=4.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Source Computer Vision Library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0)
