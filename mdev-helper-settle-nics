@@ -39,16 +39,44 @@ if [ -n "${USER}" ] && [ "${USER}" != 'root' ]; then
 	exit 1
 fi
 
+command_exists() {
+	command -v "${1}" >/dev/null 2>&1
+}
+
 in_comma_list() {
 	# Check whatever $1 is in the comma separated list $2.
-        local x
-        local check_for="$1"
+	local x
+	local check_for="$1"
 	case ",$2," in
-                *,"${check_for}",*)
-                        return 0
-                ;;
-        esac
-        return 1
+		*,"${check_for}",*)
+			return 0
+		;;
+	esac
+	return 1
+}
+
+get_nic_macaddr() {
+	# Try to get real mac address from nic $1.
+	local nic="$1"
+	local macaddr
+	if command_exists ethtool; then
+		macaddr="$(ethtool -P ${nic} 2>/dev/null)"
+		macaddr="${macaddr##*: }"
+		if [ -n "${macaddr}" ] && [ "${macaddr}" != 'not set' ]; then
+			echo "${macaddr}"
+			return 0
+		fi
+	fi
+	if command_exists ip; then
+		macaddr="$(ip link show dev ${nic} |grep permaddr)"
+		macaddr="${macaddr##*permaddr }"
+		if [ -n "${macaddr}" ]; then
+			echo "${macaddr}"
+			return 0
+		fi
+	fi
+	# Fallback to get mac address from sysfs.
+	cat "/sys/class/net/${nic}/address"
 }
 
 lockfile='/etc/mactab.settle-nics_lockfile'
@@ -91,7 +119,7 @@ if [ -f '/etc/mactab' ]; then
 				inconf_nics="${inconf_nics},${nic}"
 				inconf_macs="${inconf_macs},${macaddr}"
 				if [ -e "/sys/class/net/${nic}" ]; then
-					curr_macaddr="$(cat /sys/class/net/${nic}/address)"
+					curr_macaddr="$(get_nic_macaddr ${nic})"
 					if [ "${curr_macaddr}" != "${macaddr}" ]; then
 						# Okey, so kernel added another NIC with name which we preserved for other NIC.
 						echo "Looks like '${nic}' is preserved. renaming current '${nic}' to '${nic}_tmp' ..." >&2
@@ -104,7 +132,7 @@ if [ -f '/etc/mactab' ]; then
 fi
 
 # Run nameif so all interfaces will be renamed to specified names.
-if command -v nameif >/dev/null 2>&1 && test -f /etc/mactab; then
+if command_exists nameif && test -f /etc/mactab; then
 	nameif
 fi
 
@@ -142,7 +170,7 @@ for i in /sys/class/net/*; do
 		*_tmp)
 		;;
 		eth[0-9]*|wlan[0-9]*|ath[0-9]*|wifi[0-9]*|ra[0-9]*)
-			macaddr="$(cat /sys/class/net/${device}/address 2>/dev/null)"
+			macaddr="$(get_nic_macaddr ${device} 2>/dev/null)"
 			if [ -n "${macaddr}" ] && ! in_comma_list "${macaddr}" "${inconf_macs}" && ! in_comma_list "${device}" "${inconf_nics}"; then
 				detected_nics="${detected_nics},${device}"
 				detected_macs="${detected_macs},${macaddr}"
