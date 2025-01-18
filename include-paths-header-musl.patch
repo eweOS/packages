@@ -1,0 +1,10 @@
+--- emacs-29.4/src/filelock.c
++++ emacs-29.4-patched/src/filelock.c
+@@ -56,6 +56,7 @@
+ #ifndef MSDOS
+ 
+ #ifdef HAVE_UTMP_H
++#include <paths.h>
+ #include <utmp.h>
+ #endif
+ 
