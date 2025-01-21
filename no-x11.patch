@@ -1,5 +1,5 @@
 diff --git a/dialog.cpp b/dialog.cpp
-index f922aa7..720b476 100644
+index a7d34c7..80baff6 100644
 --- a/dialog.cpp
 +++ b/dialog.cpp
 @@ -55,7 +55,6 @@
@@ -10,7 +10,7 @@ index f922aa7..720b476 100644
  
  #include <LayerShellQt/Shell>
  #include <LayerShellQt/Window>
-@@ -246,11 +245,6 @@ void Dialog::showEvent(QShowEvent *event)
+@@ -252,11 +251,6 @@ void Dialog::showEvent(QShowEvent *event)
              }
          }
      }
@@ -22,17 +22,20 @@ index f922aa7..720b476 100644
      QDialog::showEvent(event);
  }
  
-@@ -261,8 +255,6 @@ void Dialog::showEvent(QShowEvent *event)
+@@ -267,11 +261,6 @@ void Dialog::showEvent(QShowEvent *event)
  void Dialog::hideEvent(QHideEvent *event)
  {
      QDialog::hideEvent(event);
--    disconnect(KX11Extras::self(), &KX11Extras::currentDesktopChanged, this, &Dialog::onCurrentDesktopChanged);
--    disconnect(KX11Extras::self(), &KX11Extras::activeWindowChanged, this, &Dialog::onActiveWindowChanged);
+-    if (QGuiApplication::platformName() == QSL("xcb"))
+-    {
+-        disconnect(KX11Extras::self(), &KX11Extras::currentDesktopChanged, this, &Dialog::onCurrentDesktopChanged);
+-        disconnect(KX11Extras::self(), &KX11Extras::activeWindowChanged, this, &Dialog::onActiveWindowChanged);
+-    }
  }
  
  
-@@ -405,7 +397,7 @@ void Dialog::showHide()
- {
+@@ -419,7 +408,7 @@ void Dialog::showHide()
+ 
      // Using KWindowSystem to detect the active window since
      // QWidget::isActiveWindow is not working reliably.
 -    if (isVisible() && (KX11Extras::activeWindow() == winId()))
@@ -40,7 +43,7 @@ index f922aa7..720b476 100644
      {
          hide();
      }
-@@ -413,7 +405,6 @@ void Dialog::showHide()
+@@ -427,7 +416,6 @@ void Dialog::showHide()
      {
          realign();
          show();
@@ -48,7 +51,7 @@ index f922aa7..720b476 100644
          ui->commandEd->setFocus();
          ui->commandEd->selectAll();
      }
-@@ -434,7 +425,7 @@ void Dialog::realign()
+@@ -449,7 +437,7 @@ void Dialog::realign()
          screenNumber = screen ? screens.indexOf(screen) : 0;
      }
  
@@ -57,7 +60,7 @@ index f922aa7..720b476 100644
  
      QRect rect = this->geometry();
      rect.moveCenter(desktop.center());
-@@ -508,7 +499,6 @@ void Dialog::onActiveWindowChanged(WId id)
+@@ -524,7 +512,6 @@ void Dialog::onActiveWindowChanged(WId id)
          if (mDesktopChanged)
          {
              mDesktopChanged = false;
@@ -65,7 +68,7 @@ index f922aa7..720b476 100644
          } else
          {
              hide();
-@@ -524,8 +514,6 @@ void Dialog::onCurrentDesktopChanged(int screen)
+@@ -541,8 +528,6 @@ void Dialog::onCurrentDesktopChanged(int screen)
  {
      if (isVisible())
      {
