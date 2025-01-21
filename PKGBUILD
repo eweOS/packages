@@ -3,7 +3,7 @@
 pkgname=tinyramfs
 _pkgver=0.1.0
 pkgver=0.1.0
-pkgrel=17
+pkgrel=18
 pkgdesc="Tiny initramfs generator written in POSIX shell"
 arch=('any')
 url="https://github.com/illiliti/tinyramfs"
@@ -12,13 +12,13 @@ license=('GPL3')
 depends=('sh')
 makedepends=('git')
 _refcommit="de2d6aea4dfe1b284ed0d485f0acd16303ff253b"
-_commit="465b1fc2f010cb7125a7f8e178faf62f499a255c"
+_commit="55753b162f9784802f03fc118ebba258fbfe0b6b"
 options=(emptydirs)
 backup=("etc/$pkgname/config")
 source=(
   "git+$_url.git#commit=$_commit"
 )
-sha512sums=('046cf651fdf22d8f6e610c6d86d788c794f1f96dae130b6a03fab54fe21f9d4e6ea26428630853dca6ff3eb96eab648aaf6ff08b8a8332bdb1ae22a86c94da9a')
+sha512sums=('91449c73dc7a05627372a7b2d9d597df614d86220cd4f57d100b7c1131dd705eb32a2a2b11fd3c075207303814209ed5194cf1667241c5ce49f2bd4345384743')
 
 pkgver()
 {
