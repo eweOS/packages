@@ -4,8 +4,8 @@
 # Contributor: Tobias Kieslich <tobias@justdreams.de>
 
 pkgname=libexif
-pkgver=0.6.24
-pkgrel=2
+pkgver=0.6.25
+pkgrel=1
 pkgdesc='Library to parse an EXIF file and read the data from those tags'
 url='https://github.com/libexif/libexif'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ license=('LGPL')
 depends=('musl')
 provides=('libexif.so')
 source=(${url}/archive/${pkgname}-${pkgver//./_}-release.tar.gz)
-sha256sums=('d3fb7c47829ec4d2def39aa38f4c35a0891763448a05dbf216a329a12bf198f9')
+sha256sums=('ee0795432c20d2fdb2a8a579dd6fc0e19d402e36f14f42c03ab60d2345950f09')
 
 prepare()
 {
