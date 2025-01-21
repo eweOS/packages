@@ -1,16 +1,16 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libgee
-pkgver=0.20.6
-pkgrel=2
+pkgver=0.20.8
+pkgrel=1
 pkgdesc="A collection library providing GObject-based interfaces and classes for commonly used data structures"
 url="https://gitlab.gnome.org/GNOME/libgee"
-license=(LGPL2.1)
+license=(LGPL-2.1-or-later)
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=(glib2)
 makedepends=(gobject-introspection vala autoconf-archive git)
 source=("git+https://gitlab.gnome.org/GNOME/libgee.git#tag=$pkgver")
-sha256sums=('46689f4659c4a92785189f75d2868417f12a79df48ae841aa055fb3c1b7013c6')
+sha256sums=('59025d6e55bf8fa566d0733a85e8ecb61391619f4504e752521da88d9df210af')
 
 prepare() {
   cd libgee
