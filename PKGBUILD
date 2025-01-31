@@ -3,7 +3,7 @@
 
 pkgname=(util-linux util-linux-libs)
 pkgver=2.40.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Miscellaneous system utilities for Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://github.com/karelzak/util-linux
@@ -41,7 +41,7 @@ build() {
 }
 
 package_util-linux() {
-  depends=('util-linux-libs')
+  depends=('util-linux-libs' 'libudev')
   cd "${pkgbase}-${pkgver}"
 
   make DESTDIR="${pkgdir}" usrsbin_execdir=/usr/bin install
