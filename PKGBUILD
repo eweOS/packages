@@ -3,14 +3,14 @@
 pkgname=python-ptyprocess
 _pyname=${pkgname#*-}
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Run a subprocess in a pseudo terminal'
 url='https://ptyprocess.readthedocs.io/en/latest/'
 arch=(any)
 license=(ISC)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel
-	     python-flit-core)
+	     python-flit-core git)
 checkdepends=(python-pytest)
 source=("git+https://github.com/pexpect/ptyprocess.git#tag=$pkgver")
 sha256sums=('db96aeacae892c53c745c7b8e670664d8d1ed71fcc9e9e533b61a5bd8668d675')
