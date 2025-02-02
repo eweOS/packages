@@ -1,0 +1,34 @@
+From 60df5bd43180593d499167e1f86f2ce2fe71857b Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Wed, 12 Mar 2025 09:57:21 +0000
+Subject: [PATCH] tests: Workaround busybox tail
+
+Busybox tail doesn't recognize "--pid" option, causing the testsuite
+failing to run. Emulate tail --pid with background job and kill -0.
+
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ tests/regression | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/tests/regression b/tests/regression
+index c08a328..2b5faa5 100755
+--- a/tests/regression
++++ b/tests/regression
+@@ -994,7 +994,12 @@ function tail_log() {
+ 	local pid=$2
+ 
+ 	# dump the output
+-	tail -n +0 --pid=$pid -f $log
++	# tail -n +0 --pid=$pid -f $log
++	tail -n +0 -F $log &
++	while kill -0 $pid 2>/dev/null; do
++		sleep 0.5s
++	done
++	kill %%
+ 
+ 	# accumulate the stats
+ 	local stats=$(echo $log | sed 's/\.log$/.stats/')
+-- 
+2.48.1
+
