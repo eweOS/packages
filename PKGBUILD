@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fcitx5
-pkgver=5.1.11
-pkgrel=2
+pkgver=5.1.12
+pkgrel=1
 pkgdesc="Next generation of fcitx"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/fcitx/fcitx5"
@@ -12,8 +12,15 @@ provides=('fcitx')
 depends=('cairo' 'dbus' 'iso-codes' 'libuv' 'libxkbcommon' 'pango' 'wayland' 'gdk-pixbuf' 'json-c')
 makedepends=('ninja' 'wayland-protocols' 'fmt' 'extra-cmake-modules' 'zstd'
 	     'linux-headers')
-source=("https://download.fcitx-im.org/fcitx5/fcitx5/fcitx5-${pkgver}_dict.tar.zst")
-sha512sums=('d2fee4b931175d67ed29058af5dc644c6918829ca336e88566781ffaf5ccbe942281e9a41459b5ad8ad37756bed24b999127f8b17d8925bb923a9eb10d1081fb')
+# 0001: Upstream
+source=("https://download.fcitx-im.org/fcitx5/fcitx5/fcitx5-${pkgver}_dict.tar.zst"
+	"0001-ui-classic-include-xcb-xcb-h-only-when-X11.patch::https://github.com/fcitx/fcitx5/pull/1259.patch")
+sha512sums=('82943f6c2e809e8d9049d457f59e52bc202daf922abec032efc589eefad77b4db4398fbaea92c019eaeaa40ccf51585a8a80676a7909433a8576dc63fb639645'
+            'd244c3fe94f8d0c4eb8fe89786eea422e4b886cdcac5c4fcd3e893571cbff5958439637008827de1f71a6703cc86d4ab3ee7f55a2eefae1cac58392ad2f99ffb')
+
+prepare() {
+  _patch_ $pkgname-$pkgver
+}
 
 build() {
   cd $pkgname-$pkgver
