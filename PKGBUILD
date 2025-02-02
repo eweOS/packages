@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libseccomp
-pkgver=2.5.5
-pkgrel=6
+pkgver=2.6.0
+pkgrel=1
 pkgdesc='Enhanced seccomp library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('LGPL-2.1-or-later')
@@ -17,7 +17,7 @@ source=(
   0001-loongarch64-support.patch::https://github.com/matoro/libseccomp/compare/v2.5.5..loongarch-r1.patch
   0002-add-fstat-syscallnum-on-loongarch64.patch
 )
-sha256sums=('248a2c8a4d9b9858aa6baf52712c34afefcf9c9e94b76dce02c1c9aa25fb3375'
+sha256sums=('83b6085232d1588c379dc9b9cae47bb37407cf262e6e74993c61ba72d2a784dc'
             '0251a01a0ab047a9d9625003de12e95ca8fb9949887bf47987468478f599b4ee'
             '5fc53929e09070a9677b389d836c55cf60fe3db3b7cdbcb22d88eab5ad970a74')
 
