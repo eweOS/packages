@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fcitx5-chinese-addons
-pkgver=5.1.7
-pkgrel=3
+pkgver=5.1.8
+pkgrel=1
 pkgdesc="Addons related to Chinese, including IME previous bundled inside fcitx4"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/fcitx/fcitx5-chinese-addons"
@@ -11,7 +11,7 @@ depends=('boost' 'curl' 'fcitx5-qt' 'libime' 'opencc')
 makedepends=('extra-cmake-modules' 'fcitx5-lua' 'fmt' 'ninja' 'zstd')
 optdepends=('fcitx5-lua: Lua and imeapi support from pinyin')
 source=("https://download.fcitx-im.org/fcitx5/$pkgname/$pkgname-${pkgver}_dict.tar.zst")
-sha512sums=('fe04699672f034bde328049a19f23b9dbea75a980e706fcaf95138294b8aaaee54eb9ec5c696c343d5e4ce4788216821ad3eb45cd669d94d2f3b67551ae7360f')
+sha512sums=('0fc8d3daf608781b573bfb5239988ae07f251558fc1d963f99962eb33a35d374f4a3e146f5c7bec1c403fa268495075cb3805f6478788fa79220377c72a98ea9')
 
 build() {
   cd $pkgname-$pkgver
