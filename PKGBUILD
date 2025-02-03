@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gparted
-pkgver=1.6.0
-pkgrel=3
+pkgver=1.7.0
+pkgrel=1
 pkgdesc='A Partition Magic clone, frontend to GNU Parted'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://gparted.org/'
@@ -23,7 +23,7 @@ optdepends=('dosfstools: for FAT16 and FAT32 partitions'
             'gpart: for recovering corrupt partition tables'
             'mtools: utilities to access MS-DOS disks')
 source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('9b9f51b3ce494ddcb59a55e1ae6679c09436604e331dbf5a536d60ded6c6ea5b')
+sha256sums=('84ae3b9973e443a2175f07aa0dc2aceeadb1501e0f8953cec83b0ec3347b7d52')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
