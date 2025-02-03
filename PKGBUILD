@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libpng
-pkgver=1.6.44
-pkgrel=4
+pkgver=1.6.46
+pkgrel=1
 pkgdesc="A collection of routines used to create PNG format graphics files"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://www.libpng.org/pub/png/libpng.html"
@@ -13,7 +13,7 @@ source=(
   "https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.xz"
   apng.patch.gz::https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.6.43-apng.patch.gz
 )
-sha256sums=('60c4da1d5b7f0aa8d158da48e8f8afa9773c1c8baa5d21974df61f1886b8ce8e'
+sha256sums=('f3aa8b7003998ab92a4e9906c18d19853e999f9d3bca9bd1668f54fa81707cb1'
             'd107579e90d55386d00e6086ea750942f22a04b9ab476bba0c660770cefafe22')
 
 prepare()
