@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=diffutils
-pkgver=3.10
-pkgrel=2
+pkgver=3.11
+pkgrel=1
 pkgdesc='A package of several programs related to finding differences between files.'
 url='https://www.gnu.org/software/diffutils/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -28,4 +28,4 @@ package() {
 	make install DESTDIR=${pkgdir}
 }
 
-sha256sums=('90e5e93cc724e4ebe12ede80df1634063c7a855692685919bfe60b556c9bd09e')
+sha256sums=('a73ef05fe37dd585f7d87068e4a0639760419f810138bd75c61ddaa1f9e2131e')
