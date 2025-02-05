@@ -4,21 +4,23 @@ pkgbase=linux-lts
 _basename=linux
 pkgdesc='LTS Linux'
 pkgname=(linux-lts linux-lts-headers linux-lts-devel linux-lts-docs)
-pkgver=6.6.71
+pkgver=6.12.12
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
-license=(GPL2)
+license=(GPL-2.0-only)
 makedepends=(bison flex perl python libelf linux-headers rsync lld git)
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
   "kernel-config::git+https://github.com/eweOS/kernel-config.git"
   busybox-find-compat.patch
+  0001-amdgpu-dml2-Increase-max-stack-size.patch
 )
 options=(!strip)
-sha256sums=('219715ba2dcfa6539fba09ad3f9212772f3507189eb60d77f8e89b06c32e724e'
+sha256sums=('e98942d17ef7063b3f2d6d7692bf24899e2e021cf832d19b55308ec8e8e08eff'
             'SKIP'
-            'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
+            'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd'
+            '881a82cdf13ffcc0baa85e9cbde17595c5460646614b313a3c2d46915cb0c45b')
 
 prepare()
 {
