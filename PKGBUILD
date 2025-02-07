@@ -1,22 +1,16 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=protobuf-c
-pkgver=1.5.0
-pkgrel=6
+pkgver=1.5.1
+pkgrel=1
 pkgdesc='Protocol Buffers implementation in C'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/protobuf-c/protobuf-c'
 license=('BSD')
 depends=('protobuf')
 provides=('libprotobuf-c.so')
-source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
-         protobuf-26.patch)
-sha256sums=('7b404c63361ed35b3667aec75cc37b54298d56dd2bcf369de3373212cc06fd98'
-            '6bbc0c031283fdd3bc4052e2e67b6706d0f298b9e4cada3b8baecb1766d9464c')
-
-prepare() {
-  _patch_ $pkgname-$pkgver
-}
+source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('20d1dc257da96f8ddff8be4dd9779215bbd0a6069ed53bbe9de38fa7629be06b')
 
 build() {
   cd "$pkgname-$pkgver"
