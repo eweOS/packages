@@ -2,7 +2,7 @@
 
 pkgbase=papirus-icon-theme
 pkgname=('papirus-icon-theme' 'epapirus-icon-theme')
-pkgver=20240501
+pkgver=20250201
 pkgrel=1
 pkgdesc="Papirus icon theme"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme"
 license=("GPL3")
 depends=('gtk-update-icon-cache')
 source=("$url/archive/$pkgver/$pkgbase-$pkgver.tar.gz")
-sha512sums=('3b2529d593ffd468c4cf609e421c02cffa55d29bb5a94de990b9924d7ee4df36ec1ead627fc3d35118a368443aa7c102739980dc42f3a3000c91c9d93b88b261')
+sha512sums=('390bd47cb3069f74fc364a4100c60c5ab87eca6c7796e925464988c360e0b8ca19d61447f496cbc37e26aeb3aa013988a533cb0259846106f78ed55bc9c76f74')
 options+=(!strip)
 
 package_papirus-icon-theme() {
