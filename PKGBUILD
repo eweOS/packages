@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=hyprpicker
-pkgver=0.4.1
-pkgrel=4
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="A wlroots-compatible Wayland color picker that does not suck."
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/hyprwm/hyprpicker"
@@ -40,5 +40,5 @@ package() {
 	install -Dm644 doc/hyprpicker.1 "${pkgdir}/usr/share/man/man1/hyprpicker.1"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/$pkgname/README.md"
 }
-sha256sums=('e14d881f9645fd633b29370875ec4e98e24ad3455c522f7bcd68c3d17eda338a'
+sha256sums=('60c1472357be2653f9413016b277276456cfe670b79039aaa10860df3023d9c6'
             '719224fe78eb6a38a85f475f4ecf77e2ea1167011d8f271d060a1d07423cc8f7')
