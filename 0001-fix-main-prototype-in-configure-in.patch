@@ -1,0 +1,106 @@
+diff --git a/configure.in b/configure.in
+index aa6fd6e..e915294 100755
+--- a/configure.in
++++ b/configure.in
+@@ -469,7 +469,7 @@ memcpy(s1,s2,0);
+ AC_MSG_CHECKING([if WNOHANG requires _POSIX_SOURCE])
+ AC_TRY_RUN([
+ #include <sys/wait.h>
+-main() {
++int main() {
+ #ifndef WNOHANG
+ 	return 0;
+ #else
+@@ -489,7 +489,7 @@ rm -rf wnohang
+ AC_TRY_RUN([
+ #include <stdio.h>
+ #include <sys/wait.h>
+-main() {
++int main() {
+ #ifdef WNOHANG
+ 	FILE *fp = fopen("wnohang","w");
+ 	fprintf(fp,"%d",WNOHANG);
+@@ -536,6 +536,7 @@ dnl AC_HEADER_EGREP([(void|sighandler_t).*signal], signal.h, retsigtype=void,AC_
+ AC_MSG_CHECKING([if signals need to be re-armed])
+ AC_TRY_RUN([
+ #include <signal.h>
++#include <stdlib.h>
+ #define RETSIGTYPE $retsigtype
+ 
+ int signal_rearms = 0;
+@@ -553,7 +554,7 @@ int n;
+ signal_rearms++;
+ }
+ 
+-main()
++int main()
+ {
+ 	signal(SIGINT,parent_sigint_handler);
+ 
+@@ -714,7 +715,7 @@ fi
+ AC_MSG_CHECKING([for struct sgttyb])
+ AC_TRY_RUN([
+ #include <sgtty.h>
+-main()
++int main()
+ {
+   struct sgttyb tmp;
+   exit(0);
+@@ -738,7 +739,7 @@ if test $mach -eq 0 ; then
+   # pty_termios.c is set up to handle pty_termio.
+   AC_MSG_CHECKING([for struct termio])
+   AC_TRY_RUN([#include <termio.h>
+-  main()
++  int main()
+   {
+     struct termio tmp;
+     exit(0);
+@@ -760,7 +761,8 @@ if test $mach -eq 0 ; then
+ #  include <inttypes.h>
+ #  endif
+ #  include <termios.h>
+-  main()
++#  include <stdlib.h>
++  int main()
+   {
+     struct termios tmp;
+     exit(0);
+@@ -782,7 +784,7 @@ AC_TRY_RUN([
+ #include <inttypes.h>
+ #endif
+ #include <termios.h>
+-main() {
++int main() {
+ #if defined(TCGETS) || defined(TCGETA)
+ 	return 0;
+ #else
+@@ -804,7 +806,7 @@ AC_TRY_RUN([
+ #include <inttypes.h>
+ #endif
+ #include <termios.h>
+-main() {
++int main() {
+ #ifdef TIOCGWINSZ
+ 	return 0;
+ #else
+@@ -823,7 +825,7 @@ main() {
+ AC_MSG_CHECKING([for Cray-style ptys])
+ SETUID=":"
+ AC_TRY_RUN([
+-main(){
++int main(){
+ #ifdef CRAY
+ 	return 0;
+ #else
+@@ -876,9 +878,10 @@ AC_FUNC_SETPGRP
+ #
+ AC_MSG_CHECKING([for SV-style timezone])
+ AC_TRY_RUN([
++#include <stdlib.h>
+ extern char *tzname[2];
+ extern int daylight;
+-main()
++int main()
+ {
+   int *x = &daylight;
+   char **y = tzname;
