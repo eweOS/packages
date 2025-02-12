@@ -2,7 +2,7 @@
 
 pkgbase=gpgme
 pkgname=gpgme
-pkgver=1.24.1
+pkgver=1.24.2
 pkgrel=1
 pkgdesc='A C wrapper library for GnuPG'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ makedepends=(
   'libgpg-error'
 )
 source=("https://www.gnupg.org/ftp/gcrypt/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2" lfs64.patch)
-sha256sums=('ea05d0258e71061d61716584ec34cef59330a91340571edc46b78374973ba85f'
+sha256sums=('e11b1a0e361777e9e55f48a03d89096e2abf08c63d84b7017cfe1dce06639581'
             '12bebd3d827910a58d4348cd107e0698ed4bb89a2a704cae950548f10b1a0b78')
 
 prepare() {
