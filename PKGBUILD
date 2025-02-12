@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-tomli-w
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A lil' TOML writer"
 url=https://github.com/hukkin/tomli-w
@@ -19,7 +19,7 @@ checkdepends=(
   python-tomli
 )
 source=(git+https://github.com/hukkin/tomli-w.git#tag=$pkgver)
-sha256sums=('96f841bb4ccb37ba5d1b0c6654be454b42ad2381ace5f574ee83e91b048024c4')
+sha256sums=('712e541fa7ee40b95989eb84313e1b8dc6b731cd8f4f8cf75ee9287829739434')
 
 build() {
   cd tomli-w
