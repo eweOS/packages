@@ -1,17 +1,15 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
-# Contributor: AndyRTR <andyrtr@archlinux.org>
-# Contributor: Jan de Groot <jgc@archlinux.org>
-# Contributor: judd <jvinet@zeroflux.org>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libtasn1
-pkgver=4.19.0
-pkgrel=3
+pkgver=4.20.0
+pkgrel=1
 pkgdesc="The ASN.1 library used in GNUTLS"
 arch=(x86_64 aarch64 riscv64 loongarch64)
-license=('GPL3' 'LGPL')
+license=('GPL-3.0-or-later' 'LGPL-2.1-or-later' 'GFDL-1.3-or-later')
 url="https://www.gnu.org/software/libtasn1/"
 source=("https://ftp.gnu.org/gnu/libtasn1/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('1613f0ac1cf484d6ec0ce3b8c06d56263cc7242f1c23b30d82d23de345a63f7a')
+sha256sums=('92e0e3bd4c02d4aeee76036b2ddd83f0c732ba4cda5cb71d583272b23587a76c')
 
 build()
 {
@@ -31,4 +29,5 @@ package()
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
   #make -C doc/reference DESTDIR="${pkgdir}" install-data-local
+  _install_license_ COPYING
 }
