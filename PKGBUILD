@@ -3,7 +3,7 @@
 
 pkgname=(go go-doc)
 epoch=2
-pkgver=1.23.5
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,12 +13,9 @@ makedepends=(go git)
 replaces=(go-pie)
 provides=(go-pie)
 options=(!strip staticlibs)
-# UPSTREAM: 0001: fix test compatibility with Git 2.47.1 or higher
 source=("https://go.dev/dl/go${pkgver}.src.tar.gz"
-	"0001-cmd-go-internal-modfetch-do-not-trust-server-to.patch::https://github.com/golang/go/commit/bd80d8956f3062d2b2bff2d7da6b879dfa909f12.patch"
 	"remove-use-gold.patch")
-sha256sums=('a6f3f4bbd3e6bdd626f79b668f212fbb5649daf75084fb79b678a0ae4d97423b'
-            'd0c034795b6454652082b7e2d5dedb2150a0a6c7ae4aaef5a3bbedb78ba8962c'
+sha256sums=('d14120614acb29d12bcab72bd689f257eb4be9e0b6f88a8fb7e41ac65f8556e5'
             'dce8539658ba86658c20e4bc039af403e4f7a4c3ef44838fbe0e92a33a9e03ae')
 
 prepare()
