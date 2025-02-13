@@ -1,0 +1,31 @@
+diff --git a/include/SDL2/SDL_config_unix.h b/include/SDL2/SDL_config_unix.h
+index cbca3aa..e3388c4 100644
+--- a/include/SDL2/SDL_config_unix.h
++++ b/include/SDL2/SDL_config_unix.h
+@@ -220,7 +220,6 @@
+ #define SDL_LOADSO_DLOPEN 1
+ #define SDL_THREAD_PTHREAD 1
+ #define SDL_TIMER_UNIX 1
+-#define SDL_VIDEO_DRIVER_X11 1
+ 
+ #if defined(__LINUX__)
+ /* glvis wants this */
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 03f86f5..da649ce 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -114,14 +114,8 @@ if(APPLE)
+   set(TESTNATIVE_EXTRA "testnativecocoa.m")
+ elseif(WIN32)
+   set(TESTNATIVE_EXTRA "testnativew32.c")
+-elseif(UNIX AND NOT ANDROID)
+-  find_package(X11 REQUIRED)
+-  set(TESTNATIVE_EXTRA "testnativex11.c")
+ endif()
+ test_program(testnative SRC "testnative.c" "testutils.c" "${TESTNATIVE_EXTRA}")
+-if(UNIX AND NOT ANDROID AND NOT APPLE)
+-  target_link_libraries(testnative PRIVATE X11)
+-endif()
+ test_program(testoverlay2 SRC "testoverlay2.c" "testutils.c" "testyuv_cvt.c")
+ test_program(testplatform NONINTERACTIVE SRC "testplatform.c")
+ test_program(testpower NONINTERACTIVE SRC "testpower.c")
