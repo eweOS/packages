@@ -1,12 +1,12 @@
 # Maintainer: Ziyao <ziyao@disroot.org>
 
 pkgname=('flac' 'libflac')
-pkgver=1.4.3
-pkgrel=3
+pkgver=1.5.0
+pkgrel=1
 url='https://www.xiph.org/flac/'
 depends=('musl')
 source=("https://ftp.osuosl.org/pub/xiph/releases/flac/flac-${pkgver}.tar.xz")
-sha256sums=('6c58e69cd22348f441b861092b825e591d0b822e106de6eb0ee4d05d27205b70')
+sha256sums=('f2c1c76592a82ffff8413ba3c4a1299b6c7ab06c734dee03fd88630485c2b920')
 arch=(x86_64 aarch64 riscv64 loongarch64)
 
 prepare()
