@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-aiounittest
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.4.3
+pkgrel=1
 pkgdesc="Test asyncio code more easily"
 url="https://github.com/kwarunek/aiounittest"
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('python-wrapt')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("https://github.com/kwarunek/aiounittest/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('358b7c412f90eb7afc7ed7058e8e2d4426a6c57379d341d997658859ba6054a9a1337d0b05e63a825e28023f02550bd72d65bdb3feab4503c763c98f8c0d19c6')
+sha512sums=('398fcf071660bfc38cb68dc01bed83c6d2320a8a1b8e8ade921a7616f7fe70534203b28630532a287da98cbbefcc8b6cf8c97d5a35fe5c63e7e143f8c619c1bb')
 
 build() {
   cd aiounittest-$pkgver
