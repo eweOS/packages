@@ -5,8 +5,8 @@ pkgname=(
   gcr-4
   gcr-4-docs
 )
-pkgver=4.3.0
-pkgrel=2
+pkgver=4.3.1
+pkgrel=1
 pkgdesc="A library for bits of crypto UI and parsing"
 url="https://gitlab.gnome.org/GNOME/gcr"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -28,7 +28,7 @@ makedepends=(
 )
 checkdepends=(dbus)
 source=("git+https://gitlab.gnome.org/GNOME/gcr.git#tag=$pkgver")
-sha256sums=('7d16cdcdee1803026de1e1264db20499fc1da1d6c7f2aef465d7a56d72a98ffe')
+sha256sums=('b77dd3a5bee9352c54333fc7b45906988b34898cac3eb72743acf394d6c41e5d')
 
 build() {
   local meson_options=(
