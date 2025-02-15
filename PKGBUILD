@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-lxml
-pkgver=5.3.0
-pkgrel=3
+pkgver=5.3.1
+pkgrel=1
 pkgdesc="Python3 binding for the libxml2 and libxslt libraries"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('BSD' 'custom')
@@ -15,12 +15,8 @@ optdepends=('python-beautifulsoup4: support for beautifulsoup parser to parse no
 makedepends=('python-setuptools' 'python-pygments' 'cython')
 # FIXME: missing dependencies
 #checkdepends=('python-cssselect' 'python-html5lib' 'python-beautifulsoup4')
-source=(
-  "https://github.com/lxml/lxml/archive/lxml-$pkgver.tar.gz"
-  "tests-fix-encoding-name.patch"
-)
-sha512sums=('514477bf4c865541233d73f20de816b51d265dbd75c56a0d13779e14527c73e85ca890718d06c08728da228d410459016e9cb8abdad4d03b44a81a04a198fb54'
-            'ef5ba4064166443e07040db315173a4d0cb0d83eb3cd49623f210253a25433ec1c408d6d8e538f93498a211bc1695fdaa3e39f8ac75f36a3319c38bd96ba73eb')
+source=("https://github.com/lxml/lxml/archive/lxml-$pkgver.tar.gz")
+sha512sums=('e89ada765791b67e4e83a9151c500f2e8d924c05d421a46bece1183666fc566d545d2e6b62987075e82cbafb8cd4b1f48f6f94e9ebcc0bbd7227d687b2282794')
 
 prepare() {
   mv lxml-lxml-$pkgver lxml-$pkgver
@@ -38,8 +34,7 @@ check() {
   # TODO: Find a sane way to skip inplace build
 
   cd lxml-$pkgver
-  # FIXME: Symbol not found: xmlReadMemory
-  make PYTHON=python test || :
+  make PYTHON=python test
 }
 
 package() {
