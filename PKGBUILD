@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-numpy
-pkgver=2.2.1
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Scientific tools for Python"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ optdepends=('blas-openblas: faster linear algebra')
 makedepends=('python-build' 'python-installer' 'meson-python' 'cmake' 'flang' 'cython')
 checkdepends=('python-pytest' 'python-hypothesis')
 source=("https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
-sha512sums=('15876635bd2b26a0f511472c447ff95102f3016eea02e5117d7f5a1ae4782cd656c10706e8b2e00adee0920a7673f216056fb842700d634fbb5630b672f26ddf')
+sha512sums=('78c876d8ecc13aa0f802460f6c1462b53162dfdf85c658e32f1cf9823eeef829b6f1af8285a6c0c75719f5a2e05ff8b987dab88a416df6a8371c16fd032f5e6a')
 
 prepare() {
   cd numpy-$pkgver
