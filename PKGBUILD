@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=('luanti' 'luanti-server' 'luanti-common')
-pkgver=5.10.0
-pkgrel=3
+pkgver=5.11.0
+pkgrel=1
 pkgdesc='An open source voxel game-creation platform with easy modding and game creation'
 url='https://www.minetest.net/'
 arch=(x86_64 aarch64)	# limited by LuaJIT
@@ -20,7 +20,7 @@ source=(
   luanti.sysusers
   luanti.tmpfiles
 )
-sha256sums=('2a3161c04e7389608006f01280eda30507f8bacfa1d6b64c2af1b820a62d2677'
+sha256sums=('70e531d0776988ce6e579ea5490fdf6be3e349a4ade5281f5111aa4fdd8ee510'
             '8ca438d65bc4557d9ab6e16752d55fe41582c2aedd0fcbdd97effa5fd114601c'
             '294283b0686c4d73d816168544ab2f813a7a0ca63fc49da59563a329dd329eed'
             'c9a0c78a49461f56381e5615045d036cd594b741c910129eccf43e475c40cca1')
