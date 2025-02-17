@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=('luanti' 'luanti-server' 'luanti-common')
-pkgver=5.10.0
-pkgrel=3
+pkgver=5.11.0
+pkgrel=1
 pkgdesc='An open source voxel game-creation platform with easy modding and game creation'
 url='https://www.minetest.net/'
 arch=(x86_64 aarch64)	# limited by LuaJIT
@@ -15,12 +15,12 @@ makedepends=(
   cmake ninja
 )
 source=(
-  "https://github.com/minetest/minetest/archive/refs/tags/$pkgver.tar.gz"
+  "https://github.com/luanti-org/luanti/archive/refs/tags/$pkgver.tar.gz"
   luanti.service
   luanti.sysusers
   luanti.tmpfiles
 )
-sha256sums=('2a3161c04e7389608006f01280eda30507f8bacfa1d6b64c2af1b820a62d2677'
+sha256sums=('70e531d0776988ce6e579ea5490fdf6be3e349a4ade5281f5111aa4fdd8ee510'
             '8ca438d65bc4557d9ab6e16752d55fe41582c2aedd0fcbdd97effa5fd114601c'
             '294283b0686c4d73d816168544ab2f813a7a0ca63fc49da59563a329dd329eed'
             'c9a0c78a49461f56381e5615045d036cd594b741c910129eccf43e475c40cca1')
@@ -32,7 +32,7 @@ prepare() {
 build () {
 	# disabled features:
 	#	various db-based map backend
-	# 	OpenGL (not ES) support
+	# 	OpenGL (not ES) support (for client only)
 
   _cmake_options=(
     -DCMAKE_BUILD_TYPE=RelWithDebInfo
@@ -58,26 +58,24 @@ build () {
     -DENABLE_LEVELDB=OFF
     -DENABLE_UPDATE_CHECKER=FALSE
     -DRUN_IN_PLACE=FALSE
-    -DENABLE_GLES2=ON
-    -DENABLE_OPENGL=OFF
     -DINSTALL_DEVTEST=FALSE
   )
 
-  cd build-client
-  cmake -G Ninja ../minetest-${pkgver} \
+  cmake -G Ninja -S "luanti-$pkgver" -B build-client \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_CLIENT=ON \
     -DENABLE_GETTEXT=ON \
-    ${_cmake_options[@]}
-  ninja
+    ${_cmake_options[@]} \
+    -DENABLE_GLES2=ON \
+    -DENABLE_OPENGL=OFF
+  cmake --build build-client
 
-  cd ../build-server
-  cmake -G Ninja ../minetest-${pkgver} \
+  cmake -G Ninja -S "luanti-$pkgver" -B build-server \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_CLIENT=OFF \
     -DBUILD_SERVER=ON \
     ${_cmake_options[@]}
-  ninja
+  cmake --build build-server
 }
 
 package_luanti() {
@@ -89,11 +87,10 @@ package_luanti() {
   conflicts=('minetest')
   replaces=('minetest')
 
-  cd build-client
-  DESTDIR="${pkgdir}" ninja install
+  DESTDIR="$pkgdir" cmake --install build-client
 
-  rm -rf "${pkgdir}"/usr/share/{luanti,doc}
-  rm "${pkgdir}"/usr/share/man/man6/luantiserver.6
+  rm -rf "$pkgdir"/usr/share/{luanti,doc}
+  rm "$pkgdir"/usr/share/man/man6/luantiserver.6
 }
 
 package_luanti-server() {
@@ -103,16 +100,15 @@ package_luanti-server() {
   conflicts=('minetest-server')
   replaces=('minetest-server')
 
-  cd build-server
-  DESTDIR="${pkgdir}" ninja install
-  install -d  "${pkgdir}"/etc/luanti
+  DESTDIR="$pkgdir" cmake --install build-server
+  install -d  "$pkgdir"/etc/luanti
 
-  rm -rf "${pkgdir}"/usr/share/{luanti,metainfo,appdata,applications,icons,doc}
-  mv "${pkgdir}"/usr/share/man/man6/luanti.6 "${pkgdir}"/usr/share/man/man6/luantiserver.6
+  rm -rf "$pkgdir"/usr/share/{luanti,metainfo,appdata,applications,icons,doc}
+  mv "$pkgdir"/usr/share/man/man6/luanti.6 "$pkgdir"/usr/share/man/man6/luantiserver.6
 
-  _dinit_install_services_ "${srcdir}"/luanti.service
-  _install_tmpfiles_ "${srcdir}"/luanti.tmpfiles
-  _install_sysusers_ "${srcdir}"/luanti.sysusers
+  _dinit_install_services_ "$srcdir"/luanti.service
+  _install_tmpfiles_ "$srcdir"/luanti.tmpfiles
+  _install_sysusers_ "$srcdir"/luanti.sysusers
 }
 
 package_luanti-common() {
@@ -121,15 +117,15 @@ package_luanti-common() {
   conflicts=('minetest-common')
   replaces=('minetest-common')
 
-  cd minetest-${pkgver}
-  install -d "${pkgdir}"/usr/share/luanti
+  cd "luanti-$pkgver"
+  install -d "$pkgdir"/usr/share/luanti
 
-  cp -r builtin client fonts textures "${pkgdir}"/usr/share/luanti/
-  cp -r "${srcdir}"/build-client/locale "${pkgdir}"/usr/share/luanti/
+  cp -r builtin client fonts textures "$pkgdir"/usr/share/luanti/
+  cp -r "$srcdir"/build-client/locale "$pkgdir"/usr/share/luanti/
 
   for file in doc/{fst_api,lua_api,menu_lua_api,protocol,world_format}.*; do
-    install -Dm644 $file "${pkgdir}"/usr/share/luanti/doc/$(basename $file)
+    install -Dm644 $file "$pkgdir"/usr/share/luanti/doc/$(basename $file)
   done
 
-  install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.txt
+  _install_license_ LICENSE.txt
 }
