@@ -3,7 +3,7 @@
 
 pkgname=ranger
 pkgver=1.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple, vim-like file manager'
 arch=('any')
 url='https://ranger.github.io'
