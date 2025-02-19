@@ -2,7 +2,7 @@
 name: Request to Remove Package(s)
 about: Request to remove existing package(s)
 title: "[RemovePkg] PKGNAME1, PKGNAME2, ..."
-labels: 'removepkg'
+labels: 'issue-action: removepkg'
 assignees: ''
 
 ---

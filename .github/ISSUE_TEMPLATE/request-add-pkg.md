@@ -2,7 +2,7 @@
 name: Request to Add Package(s)
 about: Request to create a empty branch for new package(s)
 title: "[AddPkg] PKGNAME1, PKGNAME2, ..."
-labels: 'addpkg'
+labels: 'issue-action: addpkg'
 assignees: ''
 
 ---
