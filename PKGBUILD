@@ -6,7 +6,7 @@ pkgname=(
   libxml2-docs
 )
 pkgver=2.13.5
-pkgrel=3
+pkgrel=4
 pkgdesc="XML parsing library, version 2"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('MIT')
@@ -24,6 +24,9 @@ build()
     --prefix=/usr \
     --sysconfdir=/etc \
     --with-threads \
+    --with-zlib \
+    --with-lzma \
+    --with-http \
     --with-history \
     --with-python=/usr/bin/python
   make
