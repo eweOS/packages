@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=mutt
-pkgver=2.2.13
-pkgrel=2
+pkgver=2.2.14
+pkgrel=1
 pkgdesc='The Mutt E-mail Client.'
 url='http://www.mutt.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=(GPL-2.0-or-later)
 depends=(ncurses sqlite zlib-ng openssl libsasl gdbm libidn2 gpgme
 	 libgpg-error)
 source=("http://ftp.mutt.org/pub/mutt/mutt-$pkgver.tar.gz")
-sha256sums=('eb23faddc1cc97d867693f3a4a9f30949ad93765ad5b6fdae2797a4001c58efb')
+sha256sums=('d162fb6d491e3af43d6f62f949b7e687bb0c7c2584da52c99a99354a25de14ef')
 
 build () {
 	cd mutt-$pkgver
