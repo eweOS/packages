@@ -5,8 +5,8 @@ pkgname=(
   libnotify
   libnotify-docs
 )
-pkgver=0.8.3
-pkgrel=2
+pkgver=0.8.4
+pkgrel=1
 pkgdesc="Library for sending desktop notifications"
 url="https://gitlab.gnome.org/GNOME/libnotify"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -22,7 +22,7 @@ makedepends=(
   xmlto
 )
 source=("git+$url.git#tag=$pkgver")
-sha256sums=('ce885c07ea001bfe7fac59770f3b784c36619c23ff7900f0df2c6445863e8017')
+sha256sums=('7ae610f80e6f70322a3fcbae469e44071dc9d634c92bab02b96f2b37b7c4abed')
 
 build() {
   ewe-meson $pkgname build
