@@ -1,15 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libgeotiff
-pkgver=1.7.3
-pkgrel=2
+pkgver=1.7.4
+pkgrel=1
 pkgdesc="A TIFF based interchange format for georeferenced raster imagery"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/OSGeo/libgeotiff"
 license=(custom)
 depends=(libtiff proj libjpeg-turbo zlib)
 source=(https://github.com/OSGeo/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('ba23a3a35980ed3de916e125c739251f8e3266be07540200125a307d7cf5a704')
+sha256sums=('c598d04fdf2ba25c4352844dafa81dde3f7fd968daa7ad131228cd91e9d3dc47')
 
 prepare() {
   cd $pkgname-$pkgver
