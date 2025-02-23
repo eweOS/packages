@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=niri
-pkgver=25.01
+pkgver=25.02
 pkgrel=1
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -38,7 +38,7 @@ optdepends=(
 # NOTE: linking issues with LTO enabled
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('5c555f4410659a4301151a58938cc9880a9a244af138157c0be0fb38f0e82d20e6fccccad7e47ef515d3aaa0f7ddeef5088adad3f8d0be1a99a89f822c8b7a66')
+sha512sums=('1ed4061cf6267c32a035604314f6c324f3002891ef14bbec5bfdb8b980cab5d2ef94b856cd651d7ebb99e249158be5849c66f661ab731ac6f0c25f2eda8a3745')
 
 prepare() {
   cd "$pkgname-$pkgver"
