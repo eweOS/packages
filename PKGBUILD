@@ -3,7 +3,7 @@
 
 pkgname=busybox
 pkgver=1.37.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.busybox.net"
@@ -31,6 +31,7 @@ source=(
   "mdev-helper-dev-bus-usb"
   "acpid.service"
   "sha-ni.patch"
+  "sha256-aarch64-hwaccel.patch::https://github.com/ziyao233/busybox/commit/47c7f6291f10ad4a07f884d6baf22396885ec9a1.patch"
 )
 sha256sums=('3311dff32e746499f4df0d5df04d7eb396382d7e108bb9250e7b519b837043a4'
             '707335044325bc225a124c694e00eb7a187de00906a75cc1fb025f482d2a254f'
@@ -50,13 +51,14 @@ sha256sums=('3311dff32e746499f4df0d5df04d7eb396382d7e108bb9250e7b519b837043a4'
             'f641a4d722dfaeb70e43ee87d8b1ce6ecadc0aec4ee21bdc28bbe4564dd743f4'
             '32c89049dfcb5de3b2591b1039b25aa8ad83f0af9b6782ef460ed4dde7a8493d'
             'db93d29f439b25a174216898915f92fc6e092042d27a07e0bdf58ea277e80085'
-            'e44e31f3beea7cc4cce72ad93834b9491da35ccce01fe6d16e321692bdeb988e')
+            'e44e31f3beea7cc4cce72ad93834b9491da35ccce01fe6d16e321692bdeb988e'
+            'b0145503b290f160debee4dd2f0dc74d5fcbea8ef804a4c9475b075bbe454624')
 
 prepare() {
-  # remove_empty_dir: Fix eweOS/bugs/#2  
+  # remove_empty_dir: Fix eweOS/bugs/#2
   # sha-ni: Fix missing sha-NI guard
   _patch_ $pkgname-$pkgver
-      
+
   cd "$srcdir/$pkgname-$pkgver"
   sed "/CONFIG_PREFIX/s@=.*@=\"${pkgdir}/usr/\"@" \
     "${srcdir}/config" > .config
