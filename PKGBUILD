@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=exiv2
-pkgver=0.28.4
+pkgver=0.28.5
 pkgrel=1
 pkgdesc="Exif, Iptc and XMP metadata manipulation library and tools"
 url="https://exiv2.org"
@@ -18,7 +18,7 @@ makedepends=('cmake' 'gtest' 'ninja')
 checkdepends=('python')
 provides=('libexiv2.so')
 source=(https://github.com/Exiv2/exiv2/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('2a10a25bd2a6226ecb1faee4fb02bcc9c91143bec73fe9ca5439ce2ed5fe66e68bb407a080916e8902de35efccc904af9eaf83a31a69cfab816adb91fdc0f2a9')
+sha512sums=('43c1d68255ee8df124b3093e1f4101d2f55fd8d6105bb6f20b148fe7d59472b895f0cba914e59f6d1581e84eee9d7033572821b80c16507e92abcb9a738daadc')
 
 build() {
   cd ${pkgname}-${pkgver}
