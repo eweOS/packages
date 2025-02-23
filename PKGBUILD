@@ -2,7 +2,7 @@
 
 pkgbase=poppler
 pkgname=('poppler' 'poppler-glib' 'poppler-qt6')
-pkgver=25.01.0
+pkgver=25.02.0
 pkgrel=1
 pkgdesc='A PDF rendering library based on the xpdf-3.0 code base'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -22,7 +22,7 @@ url="https://poppler.freedesktop.org/"
 source=(https://poppler.freedesktop.org/${pkgbase}-${pkgver}.tar.xz
         test::git+https://gitlab.freedesktop.org/poppler/test.git#commit=ff3133cdb6cb496ee1d2c3231bfa35006a5e8410
 )
-sha256sums=('7eefc122207bbbd72a303c5e0743f4941e8ae861e24dcf0501e18ce1d1414112'
+sha256sums=('21234cb2a9647d73c752ce4031e65a79d11a511a835f2798284c2497b8701dee'
             '0efc9bd1797f0f0dfa514d4109e82c99d7e98c3e95587c70945508493074fcdf')
 
 build() {
