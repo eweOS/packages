@@ -2,7 +2,7 @@
 
 pkgname=firefox
 pkgver=135.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -45,7 +45,6 @@ source=(
   firefox.desktop
   distribution.ini
   visibility.patch
-  fix-venv-activation.patch
   loong0004-Fix-ycbcr-chromium_types-warning.patch
   loong0003-Define-HWCAP_LOONGARCH_LSX_and_LASX.patch
   loong0005-Fix-libyuv-build-with-LSX-LASX.patch
@@ -56,7 +55,6 @@ sha256sums=('74fbdfddce3be390f3f03194a4e398b30d0a69754e1542a59d7f2b38bac37906'
             '18a0f1df76834ac3d4ddb150aa857785df641b54f9fbf0cfb6ffcec64dad72d4'
             'a22ceb0bbf5830d3afbacd656e6893ff0ce455fae5f48c7daa5f836112291ba7'
             '98527320399c5efe4dd0103fa0af3732470700abb515871d28e001edc3e49e7e'
-            '8f2d112e8e0e975174396f86ad675fd33da541130f5f1115e27a89322d361c63'
             '2024c8ce2c6daac80c241358c3b069f57cdedf1b285595dabab30c6e9b95e56b'
             'b31320038fdaf5b97984ac7cb52323e3cf3dc6287a5988063339747fac9db3d3'
             '69731637b7fceebe9f578aeda48791f36f9b69d86608d91c74491d36edb221ac')
