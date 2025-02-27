@@ -3,8 +3,8 @@
 
 pkgbase=kmod
 pkgname=(kmod libkmod)
-pkgver=33
-pkgrel=2
+pkgver=34
+pkgrel=1
 pkgdesc="Linux kernel module management"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
@@ -20,7 +20,7 @@ source=(
   depmod.hook
   depmod.script
 )
-sha256sums=('dc768b3155172091f56dc69430b5481f2d76ecd9ccb54ead8c2540dbcf5ea9bc'
+sha256sums=('12e7884484151fbd432b6a520170ea185c159f4393c7a2c2a886ab820313149a'
             '6a780f666ffe25facc5dc0d8c7c422b006de009c92543d663dcc66f4f1e3ac54'
             '540e07c6c5623d7b519a6f9bb18e151c2f764c1d77c22c842d09f2d3daafb844'
             '1a92bfeae870f61ce814577e69d2a147a9c0caf6aed1131243e4179241fcc4a8'
