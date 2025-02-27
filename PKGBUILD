@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=labwc
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc='stacking wayland compositor with look and feel from openbox'
 url="https://github.com/labwc/labwc"
@@ -13,7 +13,7 @@ makedepends=('meson' 'scdoc' 'wayland-protocols' 'wlroots0.18-devel'
 	     'linux-headers')
 optdepends=("bemenu: default launcher via Alt+F3")
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/labwc/labwc/archive/${pkgver}.tar.gz")
-sha256sums=('1adba1c87ec26f2f00409b47a0b79ccfd68bd160e1abc41822fb01f0a76ee947')
+sha256sums=('746be2ff2d0c0c0b795c97fa24c7058f75586685c88a1194c243b6a846f938a5')
 
 build() {
   ewe-meson -Dman-pages=enabled -Dxwayland=disabled "$pkgname-$pkgver" build
