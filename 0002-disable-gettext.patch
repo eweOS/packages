@@ -1,0 +1,44 @@
+diff --git a/Makefile.am b/Makefile.am
+index 2f2aeb9..7e77977 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,7 +1,7 @@
+ 
+ EXTRA_DIST = config.rpath FILE_ID.DIZ minicom.spec autogen.sh
+ 
+-SUBDIRS = doc extras man po lib src
++SUBDIRS = doc extras man lib src
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
+diff --git a/configure.ac b/configure.ac
+index 41c2119..2fac9a7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -114,8 +114,6 @@ dnl Set of available languages.
+ ALL_LINGUAS="cs da de es fr fi hu id ja ka ko nb pl pt_BR ro ru rw sr sv vi zh_CN zh_TW"
+ 
+ dnl Checks for programs.
+-AM_GNU_GETTEXT([external])
+-AM_GNU_GETTEXT_VERSION([0.21])
+ 
+ dnl This is a hacky workaround as the m4 scripts for iconv seem to set
+ dnl LIBICONV to '-liconv' despite that this lib is not available if iconv
+diff --git a/src/Makefile.am b/src/Makefile.am
+index ba92f71..e5368c2 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -29,9 +29,9 @@ confdir = @MINICOM_CONFDIR@
+ AM_CPPFLAGS = @CPPFLAGS@ -I$(top_srcdir)/lib -DCONFDIR=\"$(confdir)\" \
+               -DLOCALEDIR=\"$(datadir)/locale\"
+ 
+-ascii_xfr_LDADD = @LIBINTL@
+-minicom_LDADD = @LIBINTL@ $(LIBICONV) $(MINICOM_LIBPORT) $(LOCKDEV_LIBS)
+-minicom_keyserv_LDADD = @LIBINTL@ $(MINICOM_LIBPORT)
+-runscript_LDADD = @LIBINTL@ $(MINICOM_LIBPORT)
++ascii_xfr_LDADD =
++minicom_LDADD = $(LIBICONV) $(MINICOM_LIBPORT) $(LOCKDEV_LIBS)
++minicom_keyserv_LDADD = $(MINICOM_LIBPORT)
++runscript_LDADD = $(MINICOM_LIBPORT)
+ 
+ EXTRA_DIST = functions.c
