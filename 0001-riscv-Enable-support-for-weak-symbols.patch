@@ -1,0 +1,37 @@
+From 6dbd49bcd04c42b0b4893d824b856563ae901b33 Mon Sep 17 00:00:00 2001
+From: Adenilson Cavalcanti <cavalcantii@chromium.org>
+Date: Tue, 6 Aug 2024 16:55:32 -0700
+Subject: [PATCH] [riscv] Enable support for weak symbols
+
+Both gcc and clang support weak symbols on RISC-V, therefore
+let's enable it.
+
+This should fix issue #4069.
+---
+ lib/common/zstd_trace.h | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/lib/common/zstd_trace.h b/lib/common/zstd_trace.h
+index da20534e..173d63fb 100644
+--- a/lib/common/zstd_trace.h
++++ b/lib/common/zstd_trace.h
+@@ -21,13 +21,14 @@ extern "C" {
+  * For now, enable conservatively:
+  * - Only GNUC
+  * - Only ELF
+- * - Only x86-64, i386 and aarch64
++ * - Only x86-64, i386, aarch64 and risc-v.
+  * Also, explicitly disable on platforms known not to work so they aren't
+  * forgotten in the future.
+  */
+ #if !defined(ZSTD_HAVE_WEAK_SYMBOLS) && \
+     defined(__GNUC__) && defined(__ELF__) && \
+-    (defined(__x86_64__) || defined(_M_X64) || defined(__i386__) || defined(_M_IX86) || defined(__aarch64__)) && \
++    (defined(__x86_64__) || defined(_M_X64) || defined(__i386__) || \
++     defined(_M_IX86) || defined(__aarch64__) || defined(__riscv)) && \
+     !defined(__APPLE__) && !defined(_WIN32) && !defined(__MINGW32__) && \
+     !defined(__CYGWIN__) && !defined(_AIX)
+ #  define ZSTD_HAVE_WEAK_SYMBOLS 1
+-- 
+2.48.1
+
