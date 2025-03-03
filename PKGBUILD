@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xfmpc
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='A graphical GTK+ MPD client focusing on low footprint'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -10,7 +10,7 @@ license=('GPL-2.0-or-later')
 depends=('libxfce4ui' 'libmpd')
 makedepends=('git' 'vala' 'xfce4-dev-tools' 'intltool')
 source=("git+https://gitlab.xfce.org/apps/xfmpc.git#tag=$pkgname-$pkgver")
-sha256sums=('27cd3edefa3299f726d0e11a1dc0a972c9ab75627b99522d1e0c6cede40da808')
+sha256sums=('41714239b537e0e7e890005226fc44220ef2e55031297ae8e625968304b11eb9')
 
 prepare() {
   cd $pkgname
