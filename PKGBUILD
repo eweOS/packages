@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xfce4-notifyd
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="Notification daemon for the Xfce desktop"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -13,7 +13,7 @@ depends=('libxfce4ui' 'libxfce4util' 'libnotify' 'xfconf' 'sqlite' 'libcanberra'
 makedepends=('git' 'intltool' 'xfce4-panel' 'xfce4-dev-tools')
 provides=('notification-daemon')
 source=("git+https://gitlab.xfce.org/apps/xfce4-notifyd.git#tag=$pkgname-$pkgver")
-sha256sums=('9b2923742de76258844073d9787b4b99769aac89b939029150e49ef5ac09f402')
+sha256sums=('76dec9b137b06860402badfb820bccf6d2c7e6b00925e2cbb4d06c2674811d8f')
 
 prepare() {
   cd $pkgname
