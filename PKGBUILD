@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xfdesktop
-pkgver=4.20.0
+pkgver=4.20.1
 pkgrel=1
 pkgdesc="Xfce's desktop manager"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -11,7 +11,7 @@ groups=('xfce4')
 depends=('libxfce4ui' 'exo' 'thunar' 'garcon' 'hicolor-icon-theme' 'libxfce4windowing' 'gtk-layer-shell' 'libyaml')
 makedepends=('git' 'intltool' 'xfce4-dev-tools')
 source=("git+https://gitlab.xfce.org/xfce/xfdesktop.git#tag=$pkgname-$pkgver")
-sha256sums=('773b31c89fa822944979379c45724db50c167cd3110736a0cf4f12fb9b230c00')
+sha256sums=('f19dca4adf0c82975b3c8ae58e8745e8d07b0328c603413ebf199e1e0ad37b99')
 
 prepare() {
   cd $pkgname
