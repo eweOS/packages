@@ -1,7 +1,7 @@
 # Maintainer: Yukari CHiba <i@0x7f.cc>
 
 pkgname=xfce4-whiskermenu-plugin
-pkgver=2.8.3
+pkgver=2.9.2
 pkgrel=1
 pkgdesc='Menu for Xfce4'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -11,7 +11,7 @@ groups=('xfce4-goodies')
 depends=('garcon' 'gtk3' 'gtk-layer-shell' 'xfce4-panel')
 makedepends=('cmake' 'git' 'ninja')
 source=("git+https://gitlab.xfce.org/panel-plugins/xfce4-whiskermenu-plugin.git#tag=v${pkgver}")
-sha256sums=('cdd4e512be94fc83fdf30578826075adfc1f3c96aea520121d0741665965f7df')
+sha256sums=('c81107cb2d6a3358da225ce62771f5f8d7400d2c896accfbd92846098a09de15')
 
 build() {
   cmake -B build -S "${pkgname}" \
