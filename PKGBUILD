@@ -5,7 +5,7 @@ pkgname=(
   emacs
   emacs-nogui
 )
-pkgver=29.4
+pkgver=30.1
 pkgrel=1
 url='https://www.gnu.org/software/emacs/emacs.html'
 pkgdesc='Extensible, customizable, self-documenting free/libre text editor'
@@ -45,16 +45,13 @@ makedepends=(
 )
 source=(
   "https://ftp.gnu.org/gnu/emacs/emacs-${pkgver}.tar.gz"
-  include-paths-header-musl.patch
 )
 sha256sums=(
-  '1adb1b9a2c6cdb316609b3e86b0ba1ceb523f8de540cfdda2aec95b6a5343abf'
-  '6712f6f6be590670c7c03c9f07bca5c55768b6b87503b39af38b1f3a4cfa3332'
+  '54404782ea5de37e8fcc4391fa9d4a41359a4ba9689b541f6bc97dd1ac283f6c'
 )
 
 prepare() {
-  _patch_ "emacs-${pkgver}"
-
+  # duplicate package to build the nogui version from the same source
   # cp in busybox has no --reflink option to perform CoW
   cp -ar "emacs-${pkgver}" "emacs-nogui-${pkgver}"
 }
