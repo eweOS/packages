@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xfce4-indicator-plugin
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="Plugin to display information from applications in the Xfce4 panel"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -11,12 +11,12 @@ depends=('hicolor-icon-theme' 'libayatana-indicator' 'xfce4-panel' 'xdg-utils')
 groups=('xfce4-goodies')
 makedepends=('git' 'intltool' 'xfce4-dev-tools')
 source=("git+https://gitlab.xfce.org/panel-plugins/xfce4-indicator-plugin.git#tag=$pkgname-$pkgver")
-sha256sums=('a04ee0baccea7c4873b1a5cc1842c6dc25836cc614a6657b378206f0302a8427')
+sha256sums=('f76960361a996613b8e841b768199ea6370f73a8afd5b22212b59d54b5eb2e7d')
 
 prepare() {
   cd $pkgname
-  sed -i '/X11/d' configure.ac.in
-  NOCONFIGURE=1 ./autogen.sh
+  sed -i '/X11/d' configure.ac
+  autoreconf -fiv
 }
 
 build() {
