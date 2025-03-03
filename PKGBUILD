@@ -2,7 +2,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xfce4-panel
-pkgver=4.20.0
+pkgver=4.20.3
 pkgrel=1
 pkgdesc="Panel for the Xfce desktop environment"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -16,7 +16,7 @@ source=(
   "git+https://gitlab.xfce.org/xfce/xfce4-panel.git#tag=$pkgname-$pkgver"
   fix-abicheck.patch
 )
-sha256sums=('ca75fc229f2fdf6baef4b5e452643a3291d6dd1904ee14a4c567e55922644dbc'
+sha256sums=('a99b4dd5ff67a8c1bbb32ca8f099920ace5046f919c0715be827474ba9c52725'
             '5160ae513aa0d712e825f7f0d229db64a04bd345419a63d4bca921b7194e6bd2')
 
 prepare() {
