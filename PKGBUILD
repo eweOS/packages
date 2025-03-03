@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xfce4-cpugraph-plugin
-pkgver=1.2.10
+pkgver=1.2.11
 pkgrel=1
 pkgdesc="Graphical representation of the CPU load"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -11,7 +11,7 @@ groups=('xfce4-goodies')
 depends=('xfce4-panel' 'xfconf')
 makedepends=('git' 'intltool' 'xfce4-dev-tools')
 source=("git+https://gitlab.xfce.org/panel-plugins/xfce4-cpugraph-plugin.git#tag=$pkgname-$pkgver")
-sha256sums=('ae4c21fe73f1c9060a95312be49bd0100cc444c83f91fe253b7f3ced5e6720eb')
+sha256sums=('da1bebfcf43dfb89a0ca847eb8a78c221b9328436e322f45d589a2af1af0f6e7')
 
 prepare() {
   cd $pkgname
