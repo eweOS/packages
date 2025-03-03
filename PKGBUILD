@@ -3,7 +3,7 @@
 
 pkgname=zstd
 pkgver=1.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Zstandard - Fast real-time compression algorithm'
 url='https://facebook.github.io/zstd/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,8 +11,11 @@ license=(BSD GPL2)
 depends=(zlib xz lz4)
 makedepends=(cmake ninja)
 provides=(libzstd.so)
-source=(https://github.com/facebook/zstd/releases/download/v${pkgver}/zstd-${pkgver}.tar.gz)
-sha256sums=('eb33e51f49a15e023950cd7825ca74a4a2b43db8354825ac24fc1b7ee09e6fa3')
+# 0001: Revert, workaround deadloop on riscv64
+source=("https://github.com/facebook/zstd/releases/download/v${pkgver}/zstd-${pkgver}.tar.gz"
+	"0001-riscv-Enable-support-for-weak-symbols.patch")
+sha256sums=('eb33e51f49a15e023950cd7825ca74a4a2b43db8354825ac24fc1b7ee09e6fa3'
+            '2e72f640936d738adffe2c9dc4b136cd8ebea6b0ba7a41b922f3c5580cbd30c0')
 
 prepare()
 {
@@ -20,6 +23,7 @@ prepare()
   # avoid error on tests without static libs, we use LD_LIBRARY_PATH
   sed '/build static library to build tests/d' -i build/cmake/CMakeLists.txt
   sed 's/libzstd_static/libzstd_shared/g' -i build/cmake/tests/CMakeLists.txt
+  patch -Rp1 < "$srcdir/0001-riscv-Enable-support-for-weak-symbols.patch"
 }
 
 build()
