@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=thunar-archive-plugin
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Adds archive operations to the Thunar file context menus"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -12,7 +12,7 @@ depends=('thunar' 'hicolor-icon-theme')
 makedepends=('git' 'intltool' 'xfce4-dev-tools')
 optdepends=('file-roller' 'engrampa' 'ark' 'xarchiver')
 source=("git+https://gitlab.xfce.org/thunar-plugins/thunar-archive-plugin.git#tag=$pkgname-$pkgver")
-sha256sums=('147372fe3b114d8abb4549ae054094c4354247c4495c1927b9e6771f6f3bc1e1')
+sha256sums=('5b74a059e7cd9a7f64667ab48a5dbe5a18188c5d0b97bf5d278c49d0df4d4239')
 
 prepare() {
   cd $pkgname
