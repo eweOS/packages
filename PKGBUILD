@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=thunar-vcs-plugin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="SVN and GIT integration for Thunar"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -11,7 +11,7 @@ depends=('thunar' 'git')
 makedepends=('intltool' 'xfce4-dev-tools')
 groups=('xfce4-goodies')
 source=("git+https://gitlab.xfce.org/thunar-plugins/thunar-vcs-plugin.git#tag=$pkgname-$pkgver")
-sha256sums=('86511d7433eade7f4f9867b37bd57d7d2133f05d678b48b78f71a40dc45014d7')
+sha256sums=('70ebd459dabd5ff8c48b5b71f6fa2886d68c354bea769a5f8c7705a71d04e688')
 
 prepare() {
   cd $pkgname
