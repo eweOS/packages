@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=thunar
-pkgver=4.20.0
+pkgver=4.20.2
 pkgrel=1
 pkgdesc="Modern, fast and easy-to-use file manager for Xfce"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -18,7 +18,7 @@ optdepends=('catfish: file searching'
             'thunar-archive-plugin: archive creation and extraction'
             'thunar-media-tags-plugin: view/edit ID3/OGG tags')
 source=("git+https://gitlab.xfce.org/xfce/thunar.git#tag=$pkgname-$pkgver" no-x11-fix-flag.patch)
-sha256sums=('b5e97ca9f601ad591c4524f616eea8359291ce17eeb530153af3c8bf9416690e'
+sha256sums=('75088d1107882ee2b4fb3d945717b5920072ddad4e6e55ec4c052c4a2f7514e7'
             'd5251e52a71948f4f4d4f743025560157785ec1508c0e38e4d35aae62ff229cc')
 
 prepare() {
