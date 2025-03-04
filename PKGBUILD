@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ffmpeg
-pkgver=7.1
-pkgrel=4
+pkgver=7.1.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://ffmpeg.org/
@@ -58,7 +58,7 @@ provides=(
   libswscale.so
 )
 source=(https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n$pkgver.tar.gz)
-sha256sums=('7ddad2d992bd250a6c56053c26029f7e728bebf0f37f80cf3f8a0e6ec706431a')
+sha256sums=('f117507dc501f2a6c11f9241d8d0c3213846cfad91764361af37befd6b6c523d')
 
 prepare() {
   _patch_ FFmpeg-n$pkgver
