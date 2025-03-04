@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=dbus
-pkgver=1.16.0
+pkgver=1.16.2
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
@@ -22,7 +22,7 @@ provides=(
   libdbus
   libdbus-1.so
 )
-sha256sums=('d2ca9d958c830e762ba70aea8e6b5c29fa7b58d0fee8ddd9bb5a00f35106ab57'
+sha256sums=('d77cc71acd93e85f2bd2a6fe3a40e5bd023519e3e9fa9b5361e7109f42b74060'
             '5d134f6d22600337e0b577c53213d6dc9dddd83de8dcd17f8c56f632f76ed654'
             '16d5a4e3025b8c24f82ca37fa97b066b18efa872b84718e9a6c674da5d1a164e'
             'da9ac8ffa3d3e063bce04332b58215e3741f4be4040307d0317a3ba775d3d68a'
