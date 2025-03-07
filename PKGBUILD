@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libheif
-pkgver=1.19.5
-pkgrel=3
+pkgver=1.19.7
+pkgrel=1
 pkgdesc='An HEIF and AVIF file format decoder and encoder'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/strukturag/libheif'
@@ -29,7 +29,7 @@ optdepends=('libjpeg-turbo: for heif-convert and heif-enc'
 source=(
   https://github.com/strukturag/libheif/releases/download/v$pkgver/libheif-$pkgver.tar.gz
 )
-sha256sums=('d3cf0a76076115a070f9bc87cf5259b333a1f05806500045338798486d0afbaf')
+sha256sums=('161c042d2102665fcee3ded851c78a0eb5f2d4bfe39fba48ba6e588fd6e964f3')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
