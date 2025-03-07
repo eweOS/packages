@@ -1,15 +1,12 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=svt-av1
-pkgver=2.3.0
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='Scalable Video Technology AV1 encoder and decoder'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://gitlab.com/AOMediaCodec/SVT-AV1
-license=(
-  BSD
-  'custom: Alliance for Open Media Patent License 1.0'
-)
+license=(BSD-3-Clause-Clear BSD-2-Clause)
 makedepends=(
   cmake
   git
@@ -17,7 +14,7 @@ makedepends=(
   ninja
 )
 source=("git+https://gitlab.com/AOMediaCodec/SVT-AV1.git#tag=v${pkgver}")
-sha256sums=('f13c9f2602c8775882d6338c41582cf632218174b37482f39fc0a6ac5001072f')
+sha256sums=('34fd354d8b2c2849f803124b6b23c436087724901832d668336eacf939126cf7')
 
 prepare() {
   sed '/CMAKE_BUILD_TYPE Release/d' -i SVT-AV1/CMakeLists.txt
