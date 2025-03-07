@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=intel-gmmlib
-pkgver=22.6.0
+pkgver=22.7.0
 pkgrel=1
 pkgdesc='Intel Graphics Memory Management Library'
 url='https://github.com/intel/gmmlib/'
@@ -12,7 +12,7 @@ depends=(musl)
 makedepends=(cmake)
 provides=(libigdgmm.so)
 source=("https://github.com/intel/gmmlib/archive/refs/tags/intel-gmmlib-$pkgver.tar.gz")
-sha256sums=('2be3de25e45ed6b32d6ea173510b9e4ce141c22f9d6ed18dd5b574b33f34748c')
+sha256sums=('05852b59e7e0757cc85e79842fefc5d63c75d51b26fd388732ca0b4d3af93584')
 _dirname="gmmlib-intel-gmmlib-$pkgver"
 
 build() {
