@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=dropbear
-pkgver=2024.86
-pkgrel=2
+pkgver=2025.87
+pkgrel=1
 pkgdesc='Lightweight SSH server'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/mkj/dropbear'
@@ -15,7 +15,7 @@ source=(
   https://github.com/mkj/${pkgname}/archive/refs/tags/DROPBEAR_${pkgver}.tar.gz
   dropbear.service
 )
-sha256sums=('d16285f0233a2400a84affa0235e34a71c660908079c639fdef889c2e90c9f5f'
+sha256sums=('ca32b32280546dfafe474d3976fc80f337cc91f529f05772ea27eafe43a74051'
             '145096d0d66a61b42c656cc555bc256ebae0a71f4558278d4054911e59f57c87')
 
 build()
