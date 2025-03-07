@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=abseil-cpp
-pkgver=20240722.0
-pkgrel=2
+pkgver=20250127.0
+pkgrel=1
 pkgdesc='Abseil Common Libraries (C++).'
 url='https://abseil.io'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=(Apache-2.0)
 depends=(musl googletest)
 makedepends=(cmake linux-headers)
 source=("https://github.com/abseil/abseil-cpp/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('f50e5ac311a81382da7fa75b97310e4b9006474f9560ac46f54a9967f07d4ae3')
+sha256sums=('16242f394245627e508ec6bb296b433c90f8d914f73b9c026fddb905e27276e8')
 
 build () {
 	cmake abseil-cpp-$pkgver -B build \
