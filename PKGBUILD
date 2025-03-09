@@ -1,15 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=tinyxml2
-pkgver=10.0.0
-pkgrel=2
+pkgver=10.1.0
+pkgrel=1
 pkgdesc='Simple XML parser made for easy integration'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/leethomason/tinyxml2'
-license=('custom:zlib')
+license=(Zlib)
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('3bdf15128ba16686e69bce256cc468e76c7b94ff2c7f391cc5ec09e40bff3839')
+sha256sums=('9da7e1aebbf180ef6f39044b9740a4e96fa69e54a01318488512ae92ca97a685')
 
 build() {
   cmake \
