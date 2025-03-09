@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=neatvnc
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='Fast and neat VNC server library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -25,7 +25,7 @@ makedepends=(
 )
 provides=(libneatvnc.so)
 source=(git+https://github.com/any1/neatvnc.git#tag=v$pkgver)
-sha256sums=('9e040003eae850c63c018fbebaae681ca53f192d6935118a37941d024683dca2')
+sha256sums=('42084cb22b2c4838fd204f00c5dd0316c905ed7b2d574dc8a31d227b4f1694dd')
 
 build() {
   ewe-meson neatvnc build -D tls=disabled
