@@ -10,6 +10,82 @@ index cbca3aa..e3388c4 100644
  
  #if defined(__LINUX__)
  /* glvis wants this */
+diff --git a/src/sdl2_compat.c b/src/sdl2_compat.c
+index e5902bf..d5fb4bc 100644
+--- a/src/sdl2_compat.c
++++ b/src/sdl2_compat.c
+@@ -9356,24 +9356,6 @@ SDL_SetWindowsMessageHook(SDL2_WindowsMessageHook callback, void *userdata)
+ }
+ #endif /* SDL_PLATFORM_WINDOWS */
+ 
+-#if defined(SDL_PLATFORM_UNIX) && !defined(SDL_PLATFORM_ANDROID)
+-static bool SDLCALL SDL2COMPAT_X11EventHook(void *userdata, XEvent *xevent)
+-{
+-    SDL2_Event event;
+-
+-    SDL2_SysWMmsg wmmsg;
+-    SDL_GetVersion(&wmmsg.version);
+-    wmmsg.subsystem = SDL2_SYSWM_X11;
+-    wmmsg.msg.x11.event = *xevent;
+-
+-    SDL3_zero(event);
+-    event.type = SDL2_SYSWMEVENT;
+-    event.syswm.msg = &wmmsg;
+-    SDL_PushEvent(&event);
+-    return true;
+-}
+-#endif /* SDL_PLATFORM_UNIX */
+-
+ /* SDL3 split this into getter/setter functions. */
+ SDL_DECLSPEC Uint8 SDLCALL
+ SDL_EventState(Uint32 type, int state)
+@@ -9383,9 +9365,6 @@ SDL_EventState(Uint32 type, int state)
+         if (type == SDL2_SYSWMEVENT) {
+ #ifdef SDL_PLATFORM_WINDOWS
+             SDL3_SetWindowsMessageHook(SDL3to2_WindowsMessageHook, NULL);
+-#endif
+-#if defined(SDL_PLATFORM_UNIX) && !defined(SDL_PLATFORM_ANDROID)
+-            SDL3_SetX11EventHook(SDL2COMPAT_X11EventHook, NULL);
+ #endif
+         }
+         SDL3_SetEventEnabled(type, true);
+@@ -9395,9 +9374,6 @@ SDL_EventState(Uint32 type, int state)
+             if (!g_WindowsMessageHook) {
+                 SDL_SetWindowsMessageHook(NULL, NULL);
+             }
+-#endif
+-#if defined(SDL_PLATFORM_UNIX) && !defined(SDL_PLATFORM_ANDROID)
+-            SDL3_SetX11EventHook(NULL, NULL);
+ #endif
+         }
+         SDL3_SetEventEnabled(type, false);
+diff --git a/src/sdl2_compat.h b/src/sdl2_compat.h
+index 2aad6c2..578f889 100644
+--- a/src/sdl2_compat.h
++++ b/src/sdl2_compat.h
+@@ -1275,10 +1275,6 @@ typedef struct _NSWindow NSWindow;
+ typedef struct _UIWindow UIWindow;
+ #endif
+ 
+-#if defined(SDL_PLATFORM_UNIX) && !defined(SDL_PLATFORM_ANDROID)
+-#include <X11/Xlib.h>
+-#endif
+-
+ typedef struct SDL2_SysWMmsg
+ {
+     SDL2_version version;
+@@ -1292,11 +1288,6 @@ typedef struct SDL2_SysWMmsg
+             WPARAM wParam;              /**< WORD message parameter */
+             LPARAM lParam;              /**< LONG message parameter */
+         } win;
+-#endif
+-#if defined(SDL_PLATFORM_UNIX) && !defined(SDL_PLATFORM_ANDROID)
+-        struct {
+-            XEvent event;
+-        } x11;
+ #endif
+         /* Can't have an empty union */
+         int dummy;
 diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
 index 03f86f5..da649ce 100644
 --- a/test/CMakeLists.txt
