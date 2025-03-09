@@ -5,18 +5,18 @@ pkgname=(
   cairo
   cairo-docs
 )
-pkgver=1.18.2
-pkgrel=3
+pkgver=1.18.4
+pkgrel=1
 pkgdesc="2D graphics library with support for multiple output devices"
 url="https://cairographics.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
-license=(LGPL MPL)
+license=(LGPL-2.1 MPL-1.1)
 source=(
   "https://gitlab.freedesktop.org/cairo/${pkgname}/-/archive/${pkgver}/${pkgbase}-${pkgver}.tar.gz"
 )
-depends=(libpng fontconfig pixman glib)
+depends=(libpng fontconfig lzo pixman glib)
 makedepends=(meson gtk-doc)
-sha256sums=('7bbfb469b89b1f60584b4f39a1366789b7625a5796905870e108b6c0e8ca8216')
+sha256sums=('2f3e6e665dbbb420809102b71ad7d0f7ce870a0b1bf8b34c073f06aefb511fc6')
 
 build()
 {
