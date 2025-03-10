@@ -4,8 +4,8 @@ pkgbase=linux-lts
 _basename=linux
 pkgdesc='LTS Linux'
 pkgname=(linux-lts linux-lts-headers linux-lts-devel linux-lts-docs)
-pkgver=6.12.12
-pkgrel=2
+pkgver=6.12.18
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
 license=(GPL-2.0-only)
@@ -17,7 +17,7 @@ source=(
   0001-amdgpu-dml2-Increase-max-stack-size.patch
 )
 options=(!strip)
-sha256sums=('e98942d17ef7063b3f2d6d7692bf24899e2e021cf832d19b55308ec8e8e08eff'
+sha256sums=('beb902a5f69d9e57710112203db38111dad6d30556ea8ce389284c8077fe944d'
             'SKIP'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd'
             '881a82cdf13ffcc0baa85e9cbde17595c5460646614b313a3c2d46915cb0c45b')
