@@ -2,7 +2,7 @@
 
 pkgname=gi-docgen
 pkgver=2025.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Documentation generator for GObject-based libraries"
 url="https://gnome.pages.gitlab.gnome.org/gi-docgen/"
 arch=(any)
@@ -24,12 +24,18 @@ makedepends=(
   python-setuptools
   python-wheel
 )
+checkdepends=(python-pytest)
 source=("git+https://gitlab.gnome.org/GNOME/gi-docgen.git#tag=$pkgver")
 sha256sums=('db0157e43e87ea64358d35f6133f4931c8347fb7192ca74162fb9eaceb8804d6')
 
 build() {
   cd $pkgname
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd $pkgname
+  pytest -v
 }
 
 package() {
