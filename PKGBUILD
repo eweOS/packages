@@ -3,7 +3,7 @@
 pkgname=python-jinja
 _name="${pkgname#python-}"
 pkgver=3.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple pythonic template language written in Python"
 arch=('any')
 url="https://palletsprojects.com/p/jinja/"
@@ -11,7 +11,7 @@ license=('BSD-3-Clause')
 depends=('python' 'python-markupsafe')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-flit-core')
 optdepends=('python-babel: for i18n support')
-#checkdepends=('python-pytest' 'python-trio')
+checkdepends=('python-pytest' 'python-trio')
 source=($_name-$pkgver.tar.gz::https://github.com/pallets/jinja/archive/refs/tags/$pkgver.tar.gz)
 sha256sums=('2074b22a72caa65474902234b320d73463d6d4c223ee49f4b433495758356337')
 
@@ -22,8 +22,7 @@ build() {
 
 check() {
   cd $_name-$pkgver
-  #FIXME: missing dependency python-trio
-  #PYTHONPATH=src pytest
+  PYTHONPATH=src pytest
 }
 
 package() {
