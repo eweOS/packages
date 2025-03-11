@@ -1,17 +1,17 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=htop
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.4.0
+pkgrel=1
 pkgdesc='Interactive process viewer'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://htop.dev/'
-license=('GPL')
-depends=('ncurses')
-makedepends=(autoconf)
+license=(GPL-2.0-or-later)
+depends=(musl ncurses)
+makedepends=(linux-headers)
 options=('!emptydirs')
 source=("https://github.com/htop-dev/htop/releases/download/${pkgver}/htop-${pkgver}.tar.xz")
-sha256sums=('a69acf9b42ff592c4861010fce7d8006805f0d6ef0e8ee647a6ee6e59b743d5c')
+sha256sums=('feaabd2d31ca27c09c367a3b1b547ea9f96105fc41f4dfa799e2f49daad5de29')
 
 prepare()
 {
