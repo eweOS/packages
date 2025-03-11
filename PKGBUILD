@@ -2,7 +2,7 @@
 
 pkgname=bird
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://bird.network.cz/'
@@ -16,7 +16,7 @@ source=(
   bird.tmpfiles
 )
 sha256sums=('8868403caa84e2554bb6e60adbe7c657e7bb7c4ac41910e398f35e236ba90fa1'
-            '34c2bb0f9f89315914cfaf94e23c91ca7e72db42cd4f3d1a456f5541a3da5868'
+            '781cb34f987728bf078d9b44a97f39e62a653c1024c8bbc9e96e059ec449ddbe'
             '93ccf34aa61e513f27b5287437b68a4f176dfdca9b05a05de6a15aa0dcdd6205')
 
 prepare()
@@ -42,6 +42,6 @@ package()
 {
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
-  install -D "${srcdir}/bird.service" "$pkgdir/etc/dinit.d/bird"
+  _dinit_install_services_ "$srcdir/bird.service"
   install -D "${srcdir}/bird.tmpfiles" "$pkgdir/etc/tmpfiles.d/bird.conf"
 }
