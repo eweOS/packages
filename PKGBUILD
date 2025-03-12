@@ -2,7 +2,7 @@
 
 pkgname=libplacebo
 pkgver=7.349.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives'
 url='https://github.com/haasn/libplacebo'
 arch=(x86_64 aarch64 riscv64 loongarch64)
