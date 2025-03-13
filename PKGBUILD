@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-scripttest
-pkgver=1.3.0
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 pkgdesc="Utilities to help with testing command line scripts"
 url="https://github.com/pypa/scripttest"
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pypa/scripttest/archive/$pkgver.tar.gz")
-sha512sums=('038bfb1726bff85b6e3675be51db829d3519b47665266f6ae1d3c5c6f4f06e7b16742262ca1ba240544e9bd39ae96c1be0bd5e8583736f72bb04241a1bb8acf6')
+sha512sums=('c3a2ccb1856c11a377287829683e63f3c8b4653ee778596a606195712bb8c01dcfb6e98408ac1012bfb3d0b45853f3076301f6a42e1f03bebf1df8a06e9d15f9')
 
 build() {
   cd "$srcdir"/scripttest-$pkgver
