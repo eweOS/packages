@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fast_float
-pkgver=8.0.1
+pkgver=8.0.2
 pkgrel=1
 pkgdesc='Fast and exact implementation of the C++ from_chars functions for float and double types'
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/fastfloat/$pkgname"
 license=('Apache-2.0' 'BSL-1.0' 'MIT')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('18f868f0117b359351f2886be669ce9cda9ea281e6bf0bcc020226c981cc3280')
+sha256sums=('e14a33089712b681d74d94e2a11362643bd7d769ae8f7e7caefe955f57f7eacd')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
