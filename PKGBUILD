@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=glibmm
-pkgver=2.82.0
-pkgrel=2
+pkgver=2.84.0
+pkgrel=1
 pkgdesc="C++ bindings for glib"
 url="https://www.gtkmm.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(pango glib cairomm)
 makedepends=(meson mm-common libsigc++3 perl-xml-parser)
 options=(!emptydirs)
 source=("https://gitlab.gnome.org/GNOME/glibmm/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('19bd10aedabada384bda06cfd859a659aeeb6abff3f5784e33f6d2f03ffdfe11')
+sha256sums=('0a8eef5ad6c0b54f1bf7a23e57364586a4a8135013cd9a7a03e0020ed22b3df2')
 
 build() {
   ewe-meson $pkgname-$pkgver build \
