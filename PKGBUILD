@@ -2,8 +2,8 @@
 
 pkgname=python-tzlocal
 _name=${pkgname#python-}
-pkgver=5.2
-pkgrel=3
+pkgver=5.3.1
+pkgrel=1
 pkgdesc="Tzinfo object for the local timezone"
 arch=('any')
 url=https://github.com/regebro/tzlocal
@@ -18,7 +18,7 @@ makedepends=(
 )
 checkdepends=('python-pytest' 'python-pytest-mock' 'tzdata')
 source=("git+$url.git#tag=$pkgver")
-sha256sums=('SKIP')
+sha256sums=('3350f7632ff42422eaef910cd3ac38c55f7d85f7531549ed0693cfb075369d34')
 
 prepare() {
   cd "$_name"
