@@ -2,7 +2,7 @@
 
 pkgname=(llvm llvm-tools llvm-devel llvm-libs llvm-lto lldb openmp lld clang flang mlir wasi-libc++ wasi-libc++abi wasi-compiler-rt)
 _realpkgname=llvm-project
-pkgver=19.1.7
+pkgver=20.1.0
 _binutilsver=2.42
 pkgrel=1
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -36,15 +36,13 @@ source=(
   llvm-install-prefix.patch
   0001-clang-force-libc-linked-with-no-as-needed-when-using.patch
   try-llvm-libunwind.patch
-  check-before-using-glibc-f128-funcs.patch
 )
-sha256sums=('82401fea7b79d0078043f7598b835284d6650a75b93e64b6f761ea7b63097501'
+sha256sums=('4579051e3c255fb4bb795d54324f5a7f3ef79bd9181e44293d7ee9a7f62aad9a'
             'f6e4d41fd5fc778b06b7891457b3620da5ecea1006c6a4a41ae998109f85a800'
             '5e58f02fe01ea22ea0406e4250ad89a053d517ef103a1dacfade4ecd98a7f2bc'
             'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94'
             '57808d224fd9218a936e6669bf4129eaf4aa04fbd45ab9f7fd5a20efc304e307'
-            '13a1c761d41324c7a790df55650a3a98a9ade0348d6e88f1e269b6b77ce5df55'
-            '0284b8f27f0d6d809291f2ad36b325b8fb12a6a0c6765735e48b8b0182fc3064')
+	    '13a1c761d41324c7a790df55650a3a98a9ade0348d6e88f1e269b6b77ce5df55')
 
 _basedir=$_realpkgname-$pkgver.src
 
