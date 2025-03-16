@@ -2,7 +2,7 @@
 
 pkgname=sdl2-mixer
 pkgver=2.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An audio mixer that supports various file formats for Simple Directmedia Layer'
 url='https://wiki.libsdl.org/SDL2_mixer/FrontPage'
 arch=(x86_64 aarch64 riscv64 loongarch64)
