@@ -3,7 +3,7 @@
 pkgname=libsndfile
 pkgdesc='Library for reading and writing files containing sampled sound'
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 url='https://libsndfile.github.io/libsndfile/'
 license=('LGPL')
 depends=('musl' 'libflac' 'libogg' 'libvorbis' 'libopus')
