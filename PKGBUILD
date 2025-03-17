@@ -2,7 +2,7 @@
 
 pkgname=libavif
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for encoding and decoding .avif files"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/AOMediaCodec/libavif"
