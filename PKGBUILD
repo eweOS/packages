@@ -5,8 +5,8 @@ pkgname=(gstreamer gstreamer-devel gstreamer-vaapi
 	 gst-plugins-base gst-plugins-good gst-plugins-bad
 	 gst-plugin-gtk gst-plugin-qml6 gst-plugin-qsv gst-plugin-va
 	 gst-libav gst-rtsp-server gst-editing-services gst-python)
-pkgver=1.24.12
-pkgrel=3
+pkgver=1.26.0
+pkgrel=1
 pkgdesc='GStreamer multimedia framework'
 url='https://gstreamer.freedesktop.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -22,12 +22,15 @@ makedepends=(meson samurai glib2 gobject-introspection libdrm python-gobject
 	     libaom libbz2 curl fluidsynth gsm libopus libsndfile libxml2
 	     libsrt libwebp x265 openal-soft openexr libjpeg librsvg
 	     vulkan-icd-loader libass lcms2 openjpeg2
-	     json-glib ffmpeg svt-av1 mpg123 taglib)
-
-source=(
-  "https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/$pkgver/gstreamer-$pkgver.tar.gz"
-)
-sha256sums=('e9394dc14d981891bd92d72a1d03c5c0ca5d04febcbb83b01fb62c67b21bc449')
+	     json-glib ffmpeg svt-av1 mpg123 taglib zxing-cpp)
+# During FD.o migration, temporarily switch to GitHub mirror
+# source=("https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/$pkgver/gstreamer-$pkgver.tar.gz")
+# 0001: Dirty, respect RUSTFLAGS in rust devtools to avoid LTO failures
+#	should be upstreamed
+source=("https://github.com/GStreamer/gstreamer/archive/refs/tags/$pkgver.tar.gz"
+	"0001-dots-viewer-respect-envvars.patch")
+sha256sums=('a469a8d2ea58b361bed29c585dbb1b834cbffb0e82c9c7e28dd75999297c579c'
+	    'b0203e26b33b6aaf0970511c16a91dbe294d02c97d9e8172f9f52acb6ee12e72')
 
 prepare () {
 	_patch_ $pkgname-$pkgver
@@ -38,6 +41,9 @@ _plugin_depends=(musl gstreamer="$pkgver-$pkgrel" gst-plugins-base-libs="$pkgver
 build () {
 	local plugins_base_opt=(
 		-Dgst-plugins-base:x11=disabled
+		-Dgst-plugins-base:xi=disabled
+		-Dgst-plugins-base:xshm=disabled
+		-Dgst-plugins-base:xvideo=disabled
 		-Dgst-plugins-base:cdparanoia=disabled	# missing cdparanoia
 		-Dgst-plugins-base:libvisual=disabled
 		-Dgst-plugins-base:theora=disabled
@@ -74,6 +80,7 @@ build () {
 		-Dgst-plugins-bad:applemedia=disabled
 		-Dgst-plugins-bad:asio=disabled
 		-Dgst-plugins-bad:bluez=disabled
+		-Dgst-plugins-bad:cuda-nvmm=disabled
 		-Dgst-plugins-bad:d3d11=disabled
 		-Dgst-plugins-bad:d3d12=disabled
 		-Dgst-plugins-bad:d3dvideosink=disabled
@@ -115,6 +122,8 @@ build () {
 		-Dgst-plugins-bad:isac=disabled
 		-Dgst-plugins-bad:ladspa=disabled
 		-Dgst-plugins-bad:lc3=disabled
+		-Dgst-plugins-bad:lcevcdecoder=disabled
+		-Dgst-plugins-bad:lcevcencoder=disabled
 		-Dgst-plugins-bad:ldac=disabled
 		-Dgst-plugins-bad:libde265=disabled
 		-Dgst-plugins-bad:lv2=disabled
@@ -124,6 +133,8 @@ build () {
 		-Dgst-plugins-bad:mplex=disabled
 		-Dgst-plugins-bad:musepack=disabled
 		-Dgst-plugins-bad:neon=disabled
+		-Dgst-plugins-bad:nvcomp=disabled
+		-Dgst-plugins-bad:nvdswrapper=disabled
 		-Dgst-plugins-bad:onnx=disabled
 		-Dgst-plugins-bad:openaptx=disabled
 		-Dgst-plugins-bad:opencv=disabled
@@ -142,6 +153,7 @@ build () {
 		-Dgst-plugins-bad:spandsp=disabled
 		-Dgst-plugins-bad:srtp=disabled		# missing libsrtp2
 		-Dgst-plugins-bad:svthevcenc=disabled	# missing SvtHevcEnc
+		-Dgst-plugins-bad:svtjpegxs=disabled
 		-Dgst-plugins-bad:teletext=disabled	# missing zsbi
 		-Dgst-plugins-bad:udev=disabled # gudev
 		-Dgst-plugins-bad:voaacenc=disabled
@@ -150,7 +162,6 @@ build () {
 		-Dgst-plugins-bad:webrtcdsp=disabled
 		-Dgst-plugins-bad:wildmidi=disabled
 		-Dgst-plugins-bad:zbar=disabled		# missing zbar
-		-Dgst-plugins-bad:zxing=disabled	# missing zxing
 	)
 
 	local devtools_opt=(
@@ -159,12 +170,25 @@ build () {
 		-Dgst-editing-services:validate=disabled
 	)
 
+	# This tool depends on single-instance 0.3.3, whose latest release is
+	# in 2021, depending on nix-rust 0.23.x that doesn't support
+	# loongarch64.
+	# TODO: Enable the viewer when single-instance is dropped/upgraded.
+	[ "$CARCH" = loongarch64 ] &&
+		devtools_opt+=(-Dgst-devtools:dots_viewer=disabled)
+
 	local vaapi_opt=(
 		-Dgstreamer-vaapi:x11=disabled
 		-Dgstreamer-vaapi:glx=disabled
 	)
 
+	if check_option lto y; then
+		export RUSTFLAGS="$RUSTFLAGS -Clinker-plugin-lto -Clink-arg=-flto"
+	fi
+
 	# missing hotdoc for documentation
+	# tests are disabled for now: figure out why missing soundtouch fails
+	# the testsuite
 	ewe-meson "$pkgname-$pkgver" build \
 		-Dexamples=disabled					\
 		-Dbase=enabled						\
@@ -184,7 +208,7 @@ build () {
 		-Dlibnice=disabled					\
 		-Doss_fuzz=disabled					\
 		-Dgpl=enabled						\
-		-Dtests=enabled						\
+		-Dtests=disabled					\
 		-Dtools=enabled						\
 		-Dintrospection=enabled					\
 		-Dnls=enabled						\
