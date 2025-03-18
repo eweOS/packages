@@ -3,7 +3,7 @@
 pkgbase=bluez
 pkgname=('bluez' 'bluez-utils' 'bluez-libs' 'bluez-cups' 'bluez-mesh'
          'bluez-obex')
-pkgver=5.79
+pkgver=5.80
 pkgrel=1
 pkgdesc='Userspace daemons, utils and libraries of Linux Bluetooth stack'
 url="http://www.bluez.org/"
@@ -22,7 +22,7 @@ source=(
   0005-grant-permission-to-bluetooth-group.patch
   0006-define-max-input-on-musl-for-gdbus.patch
 )
-sha256sums=('4164a5303a9f71c70f48c03ff60be34231b568d93a9ad5e79928d34e6aa0ea8a'
+sha256sums=('a4d0bca3299691f06d5bd9773b854638204a51a5026c42b0ad7f1c6cf16b459a'
             'ea87de0d8182404d7ef7139ebc6bb2e8d57224f9b8dfae3e438f95308277c801'
             '93fa6d201bb4546bb680f6d6f903ba5e767829ab275361323c14b0389fb6c803'
             '1a7e4c8b13ffc41304a06fa3d669cb6d252f0870c23c54fe84f5d861d5c964e1'
@@ -35,6 +35,7 @@ prepare() {
   _patch_ "${pkgname}"-${pkgver}
   cd "${pkgname}"-${pkgver}
   autoreconf -fiv
+  rm -rf ell
 }
 
 build() {
@@ -54,12 +55,13 @@ build() {
           --enable-library \
           --disable-udev \
           --disable-systemd \
-          --disable-deprecated
+          --disable-deprecated \
+	  --enable-external-ell
   make
 
   # fake installation to be seperated into packages
   make DESTDIR="${srcdir}/fakeinstall" install
-  
+
   # permission error
   chmod 777 ${srcdir}/fakeinstall/etc/bluetooth
 
@@ -68,9 +70,10 @@ build() {
     filename=$(basename $files)
     install -Dm755 "${srcdir}"/"${pkgbase}"-${pkgver}/tools/$filename "${srcdir}/fakeinstall"/usr/bin/$filename
   done
-  
+
   cd ${srcdir}/fakeinstall
-  
+
+  msg2 "Picking bluez"
   _pick_ bluez etc/bluetooth/main.conf
   _pick_ bluez etc/bluetooth/input.conf
   _pick_ bluez etc/bluetooth/network.conf
@@ -78,31 +81,44 @@ build() {
   _pick_ bluez usr/share/dbus-1/system-services/org.bluez.service
   _pick_ bluez usr/share/dbus-1/system.d/bluetooth.conf
   _pick_ bluez usr/share/man/man8/bluetoothd.8
-  
-  _pick_ bluez-utils usr/bin/{advtest,amptest,avinfo,avtest,bcmfw,bdaddr,bluemoon,bluetoothctl,bluetooth-player,bneptest,btattach,btconfig,btgatt-client,btgatt-server,btinfo,btiotest,btmgmt,btmon,btpclient,btpclientctl,btproxy,btsnoop,check-selftest,cltest,create-image,eddystone,gatt-service,hcieventmask,hcisecfilter,hex2hcd,hwdb,ibeacon,isotest,l2ping,l2test,mcaptest,mpris-proxy,nokfw,oobtest,rctest,rtlfw,scotest,seq2bseq,test-runner}
+
+  msg2 "Picking bluez-utils"
+  install -Dm755 "$srcdir/bluez-$pkgver/tools/.libs/"{advtest,avinfo,avtest,bcmfw,bdaddr,bluemoon,bluetooth-player,bneptest,btattach,btconfig,btgatt-client,btgatt-server,btinfo,btiotest,btmgmt,btpclient,btpclientctl,btproxy,btsnoop,check-selftest,cltest,create-image,eddystone,gatt-service,hcieventmask,hcisecfilter,hex2hcd,hwdb,ibeacon,isotest,l2ping,l2test,mcaptest,mpris-proxy,nokfw,oobtest,rctest,rtlfw,scotest,seq2bseq,test-runner} \
+     -t "$srcdir"/pkgs/bluez-utils/usr/bin
+  rm usr/bin/{advtest,avinfo,avtest,bcmfw,bdaddr,bluemoon,bluetooth-player,bneptest,btattach,btconfig,btgatt-client,btgatt-server,btinfo,btiotest,btmgmt,btpclient,btpclientctl,btproxy,btsnoop,check-selftest,cltest,create-image,eddystone,gatt-service,hcieventmask,hcisecfilter,hex2hcd,hwdb,ibeacon,isotest,l2ping,l2test,mcaptest,mpris-proxy,nokfw,oobtest,rctest,rtlfw,scotest,seq2bseq,test-runner}
+  _pick_ bluez-utils usr/bin/{bluetoothctl,btmon}
   _pick_ bluez-utils usr/share/man/man1/bluetoothctl*.1
   _pick_ bluez-utils usr/share/man/man1/{btattach,btmgmt,btmon,isotest,l2ping,rctest}.1
   _pick_ bluez-utils usr/share/man/man5/org.bluez.{A,B,D,G,I,L,M,N,P}*.5
   _pick_ bluez-utils usr/share/man/man7/{l2cap,hci}.7
   _pick_ bluez-utils usr/share/zsh/site-functions/_bluetoothctl
-  
+
+  msg2 "Picking bluez-libs"
   _pick_ bluez-libs usr/include/bluetooth/*
   _pick_ bluez-libs usr/lib/libbluetooth.so*
   _pick_ bluez-libs usr/lib/pkgconfig/*
-  
+
+  msg2 "Picking bluez-cups"
   _pick_ bluez-cups usr/lib/cups/backend/bluetooth
-  
+
+  msg2 "Picking bluez-mesh"
+  install -Dm755 "$srcdir/bluez-$pkgver/tools/.libs/"{mesh-cfgclient,mesh-cfgtest} \
+    -t "$srcdir"/pkgs/bluez-mesh/usr/bin
+  rm usr/bin/{mesh-cfgclient,mesh-cfgtest}
   _pick_ bluez-mesh etc/bluetooth/mesh-main.conf
-  _pick_ bluez-mesh usr/bin/{mesh-cfgclient,mesh-cfgtest}
   _pick_ bluez-mesh usr/lib/bluetooth/bluetooth-meshd
   _pick_ bluez-mesh usr/share/dbus-1/system-services/org.bluez.mesh.service
   _pick_ bluez-mesh usr/share/dbus-1/system.d/bluetooth-mesh.conf
   _pick_ bluez-mesh usr/share/man/man8/bluetooth-meshd.8
-  
-  _pick_ bluez-obex usr/bin/{obexctl,obex-client-tool,obex-server-tool}
+
+  msg2 "Picking bluez-obex"
+  install -Dm755 "$srcdir/bluez-$pkgver/tools/.libs/"{obexctl,obex-client-tool,obex-server-tool} \
+    -t "$srcdir"/pkgs/bluez-obex/usr/bin
+  rm usr/bin/{obexctl,obex-client-tool,obex-server-tool}
   _pick_ bluez-obex usr/lib/bluetooth/obexd
   _pick_ bluez-obex usr/share/dbus-1/services/org.bluez.obex.service
-  _pick_ bluez-obex usr/share/man/man5/org.bluez.obex*.5  
+  _pick_ bluez-obex usr/share/man/man5/org.bluez.obex*.5
+  _pick_ bluez-obex usr/share/dbus-1/system.d/obex.conf
 }
 
 check() {
@@ -121,7 +137,7 @@ package_bluez() {
 
   # bluetooth.service wants ConfigurationDirectoryMode=0555
   chmod -v 555 "${pkgdir}"/etc/bluetooth
-  
+
   _dinit_install_services_ $srcdir/bluetoothd.service
 
   # add basic documention
@@ -133,7 +149,7 @@ package_bluez-utils() {
   pkgdesc="Development and debugging utilities for the bluetooth protocol stack"
   depends=('dbus' 'glib2' 'readline')
   optdepends=('ell: for btpclient')
-  
+
   cp -r $srcdir/pkgs/$pkgname/* $pkgdir/
 }
 
@@ -141,14 +157,14 @@ package_bluez-libs() {
   pkgdesc="Deprecated libraries for the bluetooth protocol stack"
   provides=('libbluetooth.so')
   license=('LGPL-2.1-only')
-  
+
   cp -r $srcdir/pkgs/$pkgname/* $pkgdir/
 }
 
 package_bluez-cups() {
   pkgdesc="CUPS printer backend for Bluetooth printers"
   depends=('cups' 'glib2' 'dbus')
-  
+
   cp -r $srcdir/pkgs/$pkgname/* $pkgdir/
 }
 
@@ -156,7 +172,7 @@ package_bluez-mesh() {
   pkgdesc="Services for bluetooth mesh"
   depends=('json-c' 'readline')
   backup=('etc/bluetooth/mesh-main.conf')
-  
+
   cp -r $srcdir/pkgs/$pkgname/* $pkgdir/
 
   # bluetooth.service wants ConfigurationDirectoryMode=0555
@@ -166,7 +182,7 @@ package_bluez-mesh() {
 package_bluez-obex() {
   pkgdesc="Object Exchange daemon for sharing content"
   depends=('glib2' 'libical' 'dbus' 'readline')
-  
+
   cp -r $srcdir/pkgs/$pkgname/* $pkgdir/
 
   # make sure there are no files left to install
