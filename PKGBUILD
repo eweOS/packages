@@ -3,12 +3,12 @@
 pkgname=(linux linux-headers linux-devel linux-docs)
 _basename=linux
 pkgver=6.13.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
 license=(GPL-2.0-only)
-makedepends=(bison flex perl python libelf linux-headers rsync lld git)
+makedepends=(bison flex perl python libelf linux-headers rsync lld git pahole)
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
   "kernel-config::git+https://github.com/eweOS/kernel-config.git"
@@ -61,6 +61,7 @@ build()
   scripts/kconfig/merge_config.sh -m .config $srcdir/kernelconfig
   make LLVM=1 LLVM_IAS=1 ARCH=$build_arch olddefconfig
   make LLVM=1 LLVM_IAS=1 ARCH=$build_arch
+  make LLVM=1 LLVM_IAS=1 ARCH=$build_arch -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1 feature-llvm=1
 
   export kernelrelease="$(make -s kernelrelease)"
 }
@@ -111,7 +112,7 @@ package_linux-devel()
   local builddir="$pkgdir/usr/src/$pkgbase"
 
   echo "Installing build files..."
-  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map vmlinux
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map vmlinux tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/$dev_arch" -m644 arch/$dev_arch/Makefile
   cp -t "$builddir" -a scripts
