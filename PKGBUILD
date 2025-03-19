@@ -2,12 +2,12 @@
 
 pkgname=python-pytest-mock
 pkgver=3.14.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Thin-wrapper around the mock package for easier use with pytest.'
 url='https://github.com/pytest-dev/pytest-mock'
 arch=(any)
 license=(MIT)
-depends=(python-pytest python-mock)
+depends=(python-pytest)
 makedepends=(python-build python-installer python-setuptools
 	     python-setuptools-scm python-wheel git)
 checkdepends=(python-pytest-asyncio)
