@@ -3,7 +3,7 @@
 pkgbase=gdal
 pkgname=(gdal python-gdal)
 pkgver=3.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A translator library for raster and vector geospatial data formats"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gdal.org/"
