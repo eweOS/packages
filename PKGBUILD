@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libxkbcommon
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='Keymap handling library for toolkits and window systems'
 url='https://xkbcommon.org/'
@@ -18,7 +18,7 @@ provides=(libxkbcommon.so libxkbregistry.so)
 depends=(libxml2 xkeyboard-config)
 checkdepends=(weston)
 source=("https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-${pkgver}.tar.gz")
-sha256sums=('025c53032776ed850fbfb92683a703048cd70256df4ac1a1ec41ed3455d5d39c')
+sha256sums=('c65c668810db305c4454ba26a10b6d84a96b5469719fe3c729e1c6542b8d0d87')
 
 build()
 {
