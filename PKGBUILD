@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ostree
-pkgver=2025.1
+pkgver=2025.2
 pkgrel=1
 pkgdesc="Operating system and container binary deployment and upgrades"
 url="https://ostreedev.github.io/ostree/"
@@ -32,20 +32,16 @@ makedepends=(
 )
 provides=(libostree-1.so)
 # 0001: Downstream patch, we use fusermount3 instead of fusemount in tests
-# 0002: Fix definition conflicts when including both sys/prctl.h and
-#	linux/prctl.h on musl
 source=(
   git+https://github.com/ostreedev/ostree#tag=v$pkgver
   git+https://github.com/mendsley/bsdiff
   git+https://gitlab.gnome.org/GNOME/libglnx.git
   0001-$pkgname-2023.1-use_fuse3.patch
-  0002-libotutil-Remove-redundant-import-of-prctl-h.patch::https://github.com/ostreedev/ostree/commit/e82bb38adfc9edfacfe7118592eb4b4357cc687b.patch
 )
-sha256sums=('4eb938cf9d086cfbddb1b67d01803c560b4f83cf75c680b510bc2bcd345013ec'
+sha256sums=('11a9218523f1ffa230dd387a0289f9998418d3129fe5ad296adba231d21b78e2'
             'SKIP'
             'SKIP'
-            '6cc1e10db1f8c744eec5d128ad7bcd5aa92a8da167784f6727d832c9a4c545bb'
-            'fba4c919a8e0a30c8f3f2d74c4cf0bc4b9c3dd8a980f9053565aa5dd47deee42')
+            '6cc1e10db1f8c744eec5d128ad7bcd5aa92a8da167784f6727d832c9a4c545bb')
 
 prepare() {
   _patch_ $pkgname
@@ -62,6 +58,9 @@ prepare() {
   git submodule set-url bsdiff "$srcdir/bsdiff"
   git submodule set-url libglnx "$srcdir/libglnx"
   git -c protocol.file.allow=always submodule update
+
+  # https://github.com/ostreedev/ostree/issues/3399
+  git cherry-pick -n bd2a9753e5227c97bda737e00a00451d361449f3
 
   NOCONFIGURE=1 ./autogen.sh
 }
