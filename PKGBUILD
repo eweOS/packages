@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ostree
-pkgver=2025.1
+pkgver=2025.2
 pkgrel=1
 pkgdesc="Operating system and container binary deployment and upgrades"
 url="https://ostreedev.github.io/ostree/"
@@ -41,7 +41,7 @@ source=(
   0001-$pkgname-2023.1-use_fuse3.patch
   0002-libotutil-Remove-redundant-import-of-prctl-h.patch::https://github.com/ostreedev/ostree/commit/e82bb38adfc9edfacfe7118592eb4b4357cc687b.patch
 )
-sha256sums=('4eb938cf9d086cfbddb1b67d01803c560b4f83cf75c680b510bc2bcd345013ec'
+sha256sums=('11a9218523f1ffa230dd387a0289f9998418d3129fe5ad296adba231d21b78e2'
             'SKIP'
             'SKIP'
             '6cc1e10db1f8c744eec5d128ad7bcd5aa92a8da167784f6727d832c9a4c545bb'
