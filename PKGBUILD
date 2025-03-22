@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gnome-keyring
-pkgver=46.2
-pkgrel=2
+pkgver=48.0
+pkgrel=1
 pkgdesc="Stores passwords and encryption keys"
 url="https://gitlab.gnome.org/GNOME/gnome-keyring"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -30,7 +30,7 @@ groups=(gnome)
 source=(
   "git+$url.git#tag=$pkgver"
 )
-sha256sums=('a5ee83246ad2b06d0c6138c4a0b5d1d59489765019de5de814ca42c7e0990a23')
+sha256sums=('90d69126e24b30980fbebad7a2dc73fd7e4e808960ff92e7602fb7dfe8a86509')
         
 
 prepare() {
