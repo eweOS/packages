@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libical
-pkgver=3.0.19
+pkgver=3.0.20
 pkgrel=1
 pkgdesc="Implementation of iCalendar protocols and data formats"
 url="https://github.com/libical/libical"
@@ -24,7 +24,7 @@ checkdepends=(python-gobject tzdata )
 source=(
   "git+$url#tag=v$pkgver"
 )
-sha256sums=('80968154f35148fc0f0caa0b643399ada62f3494416199dfa9dfc177dd89a482')
+sha256sums=('225aa158fdf782f1c80c74b060f2e9ad8b30c27af0f4482c744bf0a5b2e753f4')
 
 build() {
   local cmake_options=(
