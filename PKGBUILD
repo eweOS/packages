@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=libsrtp
-pkgver=2.6.0
-pkgrel=3
+pkgver=2.7.0
+pkgrel=1
 pkgdesc='Library for SRTP (Secure Realtime Transport Protocol)'
 url='https://github.com/cisco/libsrtp'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(musl nss libpcap)
 makedepends=(meson samurai)
 provides=(libsrtp2.so)
 source=("https://github.com/cisco/libsrtp/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bf641aa654861be10570bfc137d1441283822418e9757dc71ebb69a6cf84ea6b')
+sha256sums=('54facb1727a557c2a76b91194dcb2d0a453aaf8e2d0cbbf1e3c2848c323e28ad')
 
 build () {
 	ewe-meson "$pkgname-$pkgver" build \
