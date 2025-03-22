@@ -1,0 +1,13 @@
+diff --git a/font/Makefile b/font/Makefile
+index fa52451..4b49458 100644
+--- a/font/Makefile
++++ b/font/Makefile
+@@ -214,7 +214,7 @@ compiled: $(HANGUL) $(UNIFILES) $(COMBINING) $(UPPER_FILES) $(UPPER_COMBINING)
+ PSF = psf
+ # PSF =
+ # compiled-files: pcf $(PSF) $(GRAPHICS) opentype truetype bigpic coverage
+-compiled-files: pcf $(PSF) $(GRAPHICS) opentype bigpic thumbnails coverage
++compiled-files: opentype truetype
+ 	sed -e 's/<a /<a target="blank" /g' index.html | \
+ 	   sed -e 's/png/$(GRAPHICS)/g' > $(COMPILED_DIR)/index.html
+ 	cat $(COMBINING_FILES) \
