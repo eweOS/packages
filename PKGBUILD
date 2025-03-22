@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=toml11
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc='TOML for Modern C++'
 url='https://toruniina.github.io/toml11/'
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(musl)
 makedepends=(cmake)
 source=("https://github.com/ToruNiina/toml11/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('af95dab1bbb9b05a597e73d529a7269e13f1869e9ca9bd4779906c5cd96e282b')
+sha256sums=('815bfe6792aa11a13a133b86e7f0f45edc5d71eb78f5fb6686c49c7f792b9049')
 
 build () {
 	cmake -S "$pkgname-$pkgver" -B build \
