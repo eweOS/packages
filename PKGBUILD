@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gtksourceview5
-pkgver=5.14.2
-pkgrel=3
+pkgver=5.16.0
+pkgrel=1
 pkgdesc="A text widget adding syntax highlighting and more to GNOME"
 url="https://wiki.gnome.org/Projects/GtkSourceView"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -30,7 +30,7 @@ makedepends=(
 )
 checkdepends=(weston)
 source=("https://gitlab.gnome.org/GNOME/gtksourceview/-/archive/$pkgver/gtksourceview-$pkgver.tar.gz")
-sha256sums=('4b9afe0a72a75082de9e7d00a0e176696653ce23da0a5f2e9b9eafcfb4edfc00')
+sha256sums=('8aa8ba5f76e4c11a08eaebf1ea8216504b727148bd2f9f5e3022febd89a1a8f3')
 
 build() {
   ewe-meson gtksourceview-$pkgver build
