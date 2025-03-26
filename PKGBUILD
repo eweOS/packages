@@ -2,7 +2,7 @@
 
 pkgname=('luanti' 'luanti-server' 'luanti-common')
 pkgver=5.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source voxel game-creation platform with easy modding and game creation'
 url='https://www.minetest.net/'
 arch=(x86_64 aarch64)	# limited by LuaJIT
