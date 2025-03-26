@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=mpv
-pkgver=0.39.0
-pkgrel=3
+pkgver=0.40.0
+pkgrel=1
 pkgdesc='a free, open source, and cross-platform media player'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL3')
@@ -10,11 +10,11 @@ url='https://mpv.io/'
 depends=(
   'alsa-lib' 'wayland' 'zlib' 'ffmpeg' 'libass' 'lcms2' 'libarchive'
   'sdl2' 'zimg' 'zlib' 'alsa-lib' 'pipewire' 'libpulse' 'libplacebo'
-  'libdrm' 'libjpeg' 'libxkbcommon'
-  'mesa' 'libglvnd' 'libva' 'vulkan-icd-loader') 
+  'libdrm' 'libjpeg' 'libxkbcommon' 'libdisplay-info'
+  'mesa' 'libglvnd' 'libva' 'vulkan-icd-loader')
 makedepends=('git' 'meson' 'wayland-protocols' 'linux-headers' 'vulkan-headers')
 source=("https://github.com/mpv-player/mpv/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2ca92437affb62c2b559b4419ea4785c70d023590500e8a52e95ea3ab4554683')
+sha256sums=('10a0f4654f62140a6dd4d380dcf0bbdbdcf6e697556863dc499c296182f081a3')
 
 build() {
   local _audioout_features=(
@@ -27,7 +27,7 @@ build() {
     -D oss-audio=disabled
     -D sdl2-audio=disabled
     -D sndio=disabled
-    -D wasapi=disabled  
+    -D wasapi=disabled
   )
   local _videoout_features=(
     -D caca=disabled
@@ -54,7 +54,7 @@ build() {
     -D vaapi-win32=disabled
     -D vaapi-x11=disabled
     -D x11=disabled
-    -D xv=disabled  
+    -D xv=disabled
   )
   local _hwaccel_features=(
     -D android-media-ndk=disabled
@@ -115,6 +115,6 @@ check() {
 
 package() {
   meson install -C build --destdir "${pkgdir}"
-  # delete private entries only required for static linking 
+  # delete private entries only required for static linking
   sed -i -e '/Requires.private/d' -e '/Libs.private/d' "${pkgdir}"/usr/lib/pkgconfig/mpv.pc
 }
