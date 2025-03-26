@@ -10,20 +10,21 @@ Server = https://os-repo-auto.ewe.moe/eweos/$repo/os/$arch
 ### Community Mirrors
 
 ## Asia
-Server = https://mirrors.nju.edu.cn/eweos/$repo/os/$arch
-Server = https://mirrors.wsyu.edu.cn/eweos/$repo/os/$arch
-Server = https://mirrors.sdust.edu.cn/eweos/$repo/os/$arch
+#Server = https://mirrors.nju.edu.cn/eweos/$repo/os/$arch
+#Server = https://mirrors.wsyu.edu.cn/eweos/$repo/os/$arch
+#Server = https://mirrors.sdust.edu.cn/eweos/$repo/os/$arch
 
 ### Official Mirrors
 
 ## United States
-Server = https://os-repo-us.ewe.moe/eweos/$repo/os/$arch
+#Server = https://os-repo-us-stl.ewe.moe/eweos/$repo/os/$arch
+#Server = https://os-repo-us-las.ewe.moe/eweos/$repo/os/$arch
 
 ## Europe
-Server = https://os-repo-nl.ewe.moe/eweos/$repo/os/$arch
+#Server = https://os-repo-nl.ewe.moe/eweos/$repo/os/$arch
 
 ## Asia (proxied)
-Server = https://os-repo-cn.ewe.moe/eweos/$repo/os/$arch
+#Server = https://os-repo-cn.ewe.moe/eweos/$repo/os/$arch
 
 ### Special Mirrors
 
