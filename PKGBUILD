@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=mpv
-pkgver=0.39.0
-pkgrel=3
+pkgver=0.40.0
+pkgrel=1
 pkgdesc='a free, open source, and cross-platform media player'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL3')
@@ -14,7 +14,7 @@ depends=(
   'mesa' 'libglvnd' 'libva' 'vulkan-icd-loader') 
 makedepends=('git' 'meson' 'wayland-protocols' 'linux-headers' 'vulkan-headers')
 source=("https://github.com/mpv-player/mpv/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2ca92437affb62c2b559b4419ea4785c70d023590500e8a52e95ea3ab4554683')
+sha256sums=('10a0f4654f62140a6dd4d380dcf0bbdbdcf6e697556863dc499c296182f081a3')
 
 build() {
   local _audioout_features=(
