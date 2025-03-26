@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gnome-keyring
-pkgver=46.2
-pkgrel=2
+pkgver=48.0
+pkgrel=1
 pkgdesc="Stores passwords and encryption keys"
 url="https://gitlab.gnome.org/GNOME/gnome-keyring"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -22,6 +22,7 @@ makedepends=(
   docbook-xsl
   git
   glib2
+  meson
   p11-kit
   python
 )
@@ -30,39 +31,21 @@ groups=(gnome)
 source=(
   "git+$url.git#tag=$pkgver"
 )
-sha256sums=('a5ee83246ad2b06d0c6138c4a0b5d1d59489765019de5de814ca42c7e0990a23')
+sha256sums=('90d69126e24b30980fbebad7a2dc73fd7e4e808960ff92e7602fb7dfe8a86509')
         
-
-prepare() {
-  cd $pkgname
-  NOCONFIGURE=1 ./autogen.sh
-}
-
 build() {
-  local configure_options=(
-    --prefix=/usr
-    --sysconfdir=/etc
-    --localstatedir=/var
-    --libexecdir=/usr/lib
-    --with-pam-dir=/usr/lib/security
-    --without-libcap-ng
-    --disable-static
-    --disable-schemas-compile
+  local meson_options=(
+    -D selinux=disabled
+    -D systemd=disabled
   )
-
-  cd $pkgname
-  ./configure "${configure_options[@]}"
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  ewe-meson $pkgname build "${meson_options[@]}"
 }
 
 check() {
-  cd $pkgname
   # Secure memory tests fail
-  dbus-run-session make -k check || :
+  dbus-run-session meson test -C build --print-errorlogs || :
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }
