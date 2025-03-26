@@ -4,8 +4,8 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=libusb
-pkgver=1.0.27
-pkgrel=2
+pkgver=1.0.28
+pkgrel=1
 pkgdesc="Library that provides generic access to USB devices"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://libusb.info/"
@@ -14,7 +14,7 @@ depends=(musl libudev)
 makedepends=(linux-headers)
 provides=(libusb-1.0.so)
 source=(https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2)
-sha512sums=('42abbbcf2564f86cc2f05826aeefa6beb03c9f89dc9fe05bdfa351caa3dbd07713ce193daadecf29557604dd3cbc770c8031a78e1ad0a8df3627c3f551d28ff0')
+sha512sums=('0f4efa6b54e6195d2e5446652c2dc07358583e205d63bf438c4409511b8637d1700a71268c40499755747827d23cc730d9122267386f847bf781993c045c519f')
 
 prepare()
 {
