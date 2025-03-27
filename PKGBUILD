@@ -5,10 +5,10 @@ pkgname=('jre23-openjdk' 'jdk23-openjdk' 'openjdk23-src' 'openjdk23-doc')
 # on a majorver change, don't forget to update the misc files that come along this PKGBUILD
 _majorver=23
 _minorver=0
-_securityver=1
-_updatever=11
+_securityver=2
+_updatever=7
 pkgver=$_majorver.$_minorver.$_securityver.u$_updatever
-pkgrel=2
+pkgrel=1
 _git_tag=jdk-$_majorver.$_minorver.$_securityver+$_updatever
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://openjdk.java.net/'
@@ -28,7 +28,7 @@ source=(
   no-gen-icon.patch
   install_openjdk.sh
 )
-sha256sums=('08c773325be3ce74605de24aa0adafda81814b116e8540afbb5c6d8e1e7b1fa0'
+sha256sums=('a5072191906781fc9b6d70e335ae8d23f008739ce58372b0198025b4ba2fbec6'
             '98309f82c93ead09dca98b17f88804b2367293b11e9ae77067d248f752b0d73a'
             '15fb0f86518858632003194cc1dca3e7d8536078809ba329b200a5674cb423a3'
             'd3aea3d38020af0e8a9d075988b27ff79bbd200842d77ffbfff828ffe245f14f'
