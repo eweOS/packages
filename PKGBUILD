@@ -8,7 +8,7 @@ pkgname=(
   harfbuzz-utils
   harfbuzz-docs
 )
-pkgver=10.4.0
+pkgver=11.0.0
 pkgrel=1
 pkgdesc="OpenType text shaping engine"
 url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
@@ -32,7 +32,7 @@ checkdepends=(
 source=("https://github.com/harfbuzz/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
 provides=(libharfbuzz-subset.so libharfbuzz-cairo.so libharfbuzz.so
 	  libharfbuzz-icu.so libharfbuzz-gobject.so)
-sha256sums=('480b6d25014169300669aa1fc39fb356c142d5028324ea52b3a27648b9beaad8')
+sha256sums=('f16351bafe214725fe2c1d5b59f0d93e49905a4b247899fb90d70cff953a2b9b')
 
 prepare() {
   cd $pkgname-$pkgver
