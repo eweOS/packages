@@ -2,7 +2,7 @@
 
 pkgbase=fakeroot
 pkgname=(fakeroot fakeroot-tcp)
-pkgver=1.37.1
+pkgver=1.37.1.1
 pkgrel=1
 pkgdesc='Tool for simulating superuser privileges'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ makedepends=('libcap' 'git' 'linux-headers')
 source=("git+https://salsa.debian.org/clint/fakeroot.git#tag=upstream/$pkgver"
 	musl.patch
 	xstatjunk.patch)
-sha256sums=('569df5378c91ff5b2e360bccfa307ac6e33b3694570fdbe0f2f15115366f1842'
+sha256sums=('092a98669bdce20bbe72ba9cb737bb5ad6f638706fa9715328c3259fb0dc94cb'
             '9396e4cd666c9659f8eb2967183e32a0bc472cd89802103587e26832c054815a'
             '8680c89fe37a75b756585a505a077b26af8a089d05466cbf86522adc81d84e1b')
 
