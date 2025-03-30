@@ -10,6 +10,7 @@ license=('GPL2')
 depends=('musl' 'readline' 'ncurses' 'libssh2')
 makedepends=('bison' 'flex' 'linux-headers' 'autoconf')
 options=(!emptydirs)
+backup=(etc/bird.conf)
 source=(
   "https://bird.network.cz/download/$pkgname-$pkgver.tar.gz"
   bird.service
