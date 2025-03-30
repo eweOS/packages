@@ -2,7 +2,7 @@
 
 pkgdesc='A library to create panels and other desktop components for Wayland using the Layer Shell protocol and GTK4'
 pkgname=gtk4-layer-shell
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
@@ -19,7 +19,7 @@ makedepends=(
     "wayland-protocols"
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('98284281260a5eef5b4f63a55f16c4bf6a788a1020a6db037ecb0f71fa336988')
+sha256sums=('5db158d570e28f56625d5fb2022bc487c0f1b1b21a965702e461a5a5a049a439')
 
 build() {
     meson setup \
