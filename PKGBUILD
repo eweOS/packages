@@ -2,7 +2,7 @@
 
 pkgname=bird
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://bird.network.cz/'
@@ -10,6 +10,7 @@ license=('GPL2')
 depends=('musl' 'readline' 'ncurses' 'libssh2')
 makedepends=('bison' 'flex' 'linux-headers' 'autoconf')
 options=(!emptydirs)
+backup=(etc/bird.conf)
 source=(
   "https://bird.network.cz/download/$pkgname-$pkgver.tar.gz"
   bird.service
