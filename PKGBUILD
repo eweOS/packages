@@ -2,8 +2,8 @@
 
 _pyname=six
 pkgname=python-six
-pkgver=1.16.0
-pkgrel=2
+pkgver=1.17.0
+pkgrel=1
 pkgdesc="Python 2 and 3 compatibility utilities"
 arch=('any')
 url="https://pypi.python.org/pypi/$_pyname/"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://pypi.io/packages/source/s/$_pyname/$_pyname-$pkgver.tar.gz")
-sha512sums=('076fe31c8f03b0b52ff44346759c7dc8317da0972403b84dfe5898179f55acdba6c78827e0f8a53ff20afe8b76432c6fe0d655a75c24259d9acbaa4d9e8015c0')
+sha512sums=('fcfa58b03877ac3ac00a4f85b5fea4fecb2a010244451aa95013637a0aa21529f3dcfe25c0a07c72da46da1fa12bc0c16b6c641c40c6ab2133e5b5cbb5a71e4b')
 
 package() {
   cd $_pyname-$pkgver
