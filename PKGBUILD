@@ -2,7 +2,7 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=icu
-pkgver=76.1
+pkgver=77.1
 pkgrel=1
 pkgdesc="International Components for Unicode library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ provides=(libicu{data,i18n,io,test,tu,uc}.so)
 source=(
   https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/${pkgname}4c-${pkgver//./_}-src.tgz
 )
-sha512sums=('b702ab62fb37a1574d5f4a768326d0f8fa30d9db5b015605b5f8215b5d8547f83d84880c586d3dcc7b6c76f8d47ef34e04b0f51baa55908f737024dd79a42a6c')
+sha512sums=('a47d6d9c327d037a05ea43d1d1a06b2fd757cc02a94f7c1a238f35cfc3dfd4ab78d0612790f3a3cca0292c77412a9c2c15c8f24b718f79a857e007e66f07e7cd')
 
 prepare()
 {
