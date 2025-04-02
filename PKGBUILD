@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-pytz
-pkgver=2024.2
-pkgrel=2
+pkgver=2025.2
+pkgrel=1
 arch=('any')
 url="https://pypi.python.org/pypi/pytz"
 license=("MIT")
@@ -11,7 +11,7 @@ depends=('python' 'tzdata')
 makedepends=('python' 'python-setuptools')
 source=("https://pypi.io/packages/source/p/pytz/pytz-${pkgver}.tar.gz"
         "0001-Use-the-system-zoneinfo-from-the-tzdata-package.patch")
-sha512sums=('140a34f51044188420ac3bfbaa5ece91ea0fe4faf7a247c01312265b63b4aa8d2b389219234e173eca0343d0463aef9d6472ee803915ead989594896567c593e'
+sha512sums=('1ac84bd8d9a152b71b4de302a472e50619c901ad4c7747ddddbb780d8d3df07e5e18d3c68722eff08f8e8ff625d46133fe12bcf6f5210b69ce589051247cd4b6'
             '3cbd497313c3049a2ae04298118aefb6dfa9ec4626078c665c95c13a78ae944b33a68813aea0c53b02b0532b64221cca4a0cd2153bd91b3760916bc3c0f6df8f')
 
 prepare() {
