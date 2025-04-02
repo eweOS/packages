@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fcft
-pkgver=3.1.10
+pkgver=3.3.1
 pkgrel=1
 pkgdesc='Simple library for font loading and glyph rasterization'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,13 +15,15 @@ depends=(
   pixman
 )
 makedepends=(meson scdoc tllist git)
+checkdepends=(check ttf-noto-fonts-emoji ttf-unifont)
 source=("git+$url#tag=${pkgver}")
-sha256sums=('83599a022813978007e9193c38911d155df2983a5e7a52f748e39368be3428a0')
+sha256sums=('1045a276fd281a2e3494b2c5ee12f5263a707ae407765538b0568a76ac0e7d2c')
 
 build() {
   ewe-meson $pkgname build \
     -D grapheme-shaping=enabled \
-    -D run-shaping=enabled
+    -D run-shaping=enabled \
+    -D test-text-shaping=true
 }
 
 check() {
@@ -31,5 +33,5 @@ check() {
 package() {
   meson install -C build --destdir "$pkgdir"
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$pkgname/LICENSE"
-  install -Dm0644 "$pkgname/unicode/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.unicode"
+  install -Dm0644 "$pkgname/unicode/license.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.unicode"
 }
