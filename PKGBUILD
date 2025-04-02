@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=swig
-pkgver=4.2.1
-pkgrel=2
+pkgver=4.3.0
+pkgrel=1
 pkgdesc='Language binding tool for C/C++'
 url='https://www.swig.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
