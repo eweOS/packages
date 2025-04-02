@@ -2,7 +2,7 @@
 
 pkgbase=rust
 pkgname=(rust rust-src)
-pkgver=1.85.0
+pkgver=1.85.1
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +16,7 @@ source=(
   0002-disable-no-default-libraries.patch
   0003-drop-latomic-for-riscv-targets.patch
 )
-sha256sums=('2f4f3142ffb7c8402139cfa0796e24baaac8b9fd3f96b2deec3b94b4045c6a8a'
+sha256sums=('0f2995ca083598757a8d9a293939e569b035799e070f419a686b0996fb94238a'
             'd5879bb6d754707d75791c2c7fd80aeeffbac3e0ac8d79495b2cb5edb2a368b2'
             '35a15feca59b93afd27590ba91b657c0ac2ef21d9da8e3d6eb9bc7f04bad29f0'
             'f9340dde4ba5ed44b21f36de3605994fc32fbeaf24234a1036b162c1ee94b58d'
