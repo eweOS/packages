@@ -2,11 +2,11 @@
 
 pkgname=(llvm llvm-tools llvm-devel llvm-libs llvm-lto lldb openmp lld clang flang mlir wasi-libc++ wasi-libc++abi wasi-compiler-rt)
 _realpkgname=llvm-project
-pkgver=19.1.7
-_binutilsver=2.42
+pkgver=20.1.4
+_binutilsver=2.44
 pkgrel=1
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
-url='htps://llvm.org'
+url='https://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=(
   llvm-devel
@@ -23,30 +23,28 @@ makedepends=(
   spirv-llvm-translator
   python
 )
-# upstreamed:
-#  check-before-using-glibc-f128-funcs: https://github.com/llvm/llvm-project/pull/110651
-# under review:
+# Under review:
 #  try-llvm-libunwind
-# downstream:
+# Downstream:
 #  others
 source=(
-  "https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz"
+  "https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}.tar.gz"
   "https://mirrors.tuna.tsinghua.edu.cn/gnu/binutils/binutils-${_binutilsver}.tar.xz"
   wasi-toolchain.cmake::https://raw.githubusercontent.com/WebAssembly/wasi-sdk/fef66e3d2319d8360825dcba1cf23061f5313c11/wasi-sdk.cmake
   llvm-install-prefix.patch
-  0001-clang-force-libc-linked-with-no-as-needed-when-using.patch
   try-llvm-libunwind.patch
-  check-before-using-glibc-f128-funcs.patch
+  0001-clang-force-libc-linked-with-no-as-needed-when-using.patch
+  0002-sanitizer-common-fix-build-on-ppc64-musl.patch::https://github.com/llvm/llvm-project/commit/801b519dfd01.patch
 )
-sha256sums=('82401fea7b79d0078043f7598b835284d6650a75b93e64b6f761ea7b63097501'
-            'f6e4d41fd5fc778b06b7891457b3620da5ecea1006c6a4a41ae998109f85a800'
+sha256sums=('65e3a582c4c684fa707a56ff643427bce3633eceaceae3295d81c0e830f44b89'
+            'ce2017e059d63e67ddb9240e9d4ec49c2893605035cd60e92ad53177f4377237'
             '5e58f02fe01ea22ea0406e4250ad89a053d517ef103a1dacfade4ecd98a7f2bc'
             'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94'
-            '57808d224fd9218a936e6669bf4129eaf4aa04fbd45ab9f7fd5a20efc304e307'
             '13a1c761d41324c7a790df55650a3a98a9ade0348d6e88f1e269b6b77ce5df55'
-            '0284b8f27f0d6d809291f2ad36b325b8fb12a6a0c6765735e48b8b0182fc3064')
+            '57808d224fd9218a936e6669bf4129eaf4aa04fbd45ab9f7fd5a20efc304e307'
+            '8646868f27da3c179ec191d5dc218624563a71cc159f14a97a6272b61ceb0747')
 
-_basedir=$_realpkgname-$pkgver.src
+_basedir=llvm-project-llvmorg-$pkgver
 
 FLIST_llvm_devel=(
   "usr/include/llvm-c"
@@ -139,6 +137,8 @@ FLIST_flang=(
   "usr/bin/bbc"
   "usr/bin/f18-parse-demo"
   "usr/bin/fir-opt"
+  "usr/bin/flang"
+  "usr/bin/flang-20"
   "usr/bin/flang-new"
   "usr/bin/flang-to-external-fc"
   "usr/bin/tco"
@@ -166,12 +166,6 @@ prepare()
 {
   _patch_ $_basedir
   cd $_basedir
-  sed -i \
-    -e 's@strtoull_l@strtoull@g' \
-    -e '/strtoull/s@, _LIBCPP_GET_C_LOCALE@@' \
-    -e 's@strtoll_l@strtoll@g' \
-    -e '/strtoll/s@, _LIBCPP_GET_C_LOCALE@@' \
-    libcxx/include/locale
   sed -i "/dlfcn.h/s@\$@\n#include <sys/types.h>@" \
     compiler-rt/lib/fuzzer/FuzzerInterceptors.cpp
   mkdir -p cmake/Platform && echo "set(WASI 1)" > cmake/Platform/WASI.cmake
@@ -282,8 +276,8 @@ build()
 
   cmake -B build -G Ninja \
     "${CMARGS[@]}" \
-    -DLLVM_ENABLE_PROJECTS="clang;compiler-rt;flang;mlir;lld;lldb;openmp" \
-    -DLLVM_ENABLE_RUNTIMES="libunwind;libcxxabi;libcxx" \
+    -DLLVM_ENABLE_PROJECTS="clang;flang;mlir;lld;lldb;openmp" \
+    -DLLVM_ENABLE_RUNTIMES="compiler-rt;libunwind;libcxxabi;libcxx" \
     -S $_basedir/llvm
 
   # Ensure compiler-rt has been available before building other rt libraries
