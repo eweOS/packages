@@ -5,8 +5,8 @@ pkgname=(
   libxslt
   libxslt-docs
 )
-pkgver=1.1.42
-pkgrel=3
+pkgver=1.1.43
+pkgrel=1
 pkgdesc="XML stylesheet transformation library"
 url="https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -26,7 +26,7 @@ checkdepends=(
 source=(
   "git+https://gitlab.gnome.org/GNOME/libxslt.git#tag=v$pkgver"
 )
-sha256sums=('088acc3837fe1f995ddf35c8d68e84469ba06a88369af0f82e09c0e0e035514f')
+sha256sums=('19b21c75adfbb9c8b67f4ff99daf5710eb94c0bc7a843296c37f50c0948c8fe5')
 
 prepare() {
   cd libxslt
