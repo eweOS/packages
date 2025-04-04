@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=firefox
-pkgver=136.0.2
+pkgver=137.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/"
@@ -37,11 +37,9 @@ makedepends=(
   wasi-libc++
   wasi-libc++abi
 )
-# https://raw.githubusercontent.com/chimera-linux/cports/1c8c59ac6e9626d6a35cdee714ed0a2f75d0b8b6/contrib/firefox/patches/lolmalloc.patch
 source=(
   https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
   mozconfig
-  lolmalloc.patch
   firefox.desktop
   distribution.ini
   visibility.patch
@@ -49,9 +47,8 @@ source=(
   loong0003-Define-HWCAP_LOONGARCH_LSX_and_LASX.patch
   loong0005-Fix-libyuv-build-with-LSX-LASX.patch
 )
-sha256sums=('53187c9e84543f77836e557c2a29f95238b111e779154217df2ed9b50ddbf200'
+sha256sums=('1ec47e2f83ccb80c0133f171091b5669c7ffdf7b86051fc85c0f915b7bcba91d'
             '5efe32a0f0d8c7219cd9f58e5fc9aa9f388457dff4e4bfdd372b13456cce3f2b'
-            'b26bb318afbfe42325d81e1c7323541c2558bb151a647c015e72a8d50f0e9bba'
             '18a0f1df76834ac3d4ddb150aa857785df641b54f9fbf0cfb6ffcec64dad72d4'
             'a22ceb0bbf5830d3afbacd656e6893ff0ce455fae5f48c7daa5f836112291ba7'
             '98527320399c5efe4dd0103fa0af3732470700abb515871d28e001edc3e49e7e'
