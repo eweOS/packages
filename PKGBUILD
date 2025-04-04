@@ -3,7 +3,7 @@
 pkgbase=bluez
 pkgname=('bluez' 'bluez-utils' 'bluez-libs' 'bluez-cups' 'bluez-mesh'
          'bluez-obex')
-pkgver=5.80
+pkgver=5.82
 pkgrel=1
 pkgdesc='Userspace daemons, utils and libraries of Linux Bluetooth stack'
 url="http://www.bluez.org/"
@@ -22,7 +22,7 @@ source=(
   0005-grant-permission-to-bluetooth-group.patch
   0006-define-max-input-on-musl-for-gdbus.patch
 )
-sha256sums=('a4d0bca3299691f06d5bd9773b854638204a51a5026c42b0ad7f1c6cf16b459a'
+sha256sums=('0739fa608a837967ee6d5572b43fb89946a938d1c6c26127158aaefd743a790b'
             'ea87de0d8182404d7ef7139ebc6bb2e8d57224f9b8dfae3e438f95308277c801'
             '93fa6d201bb4546bb680f6d6f903ba5e767829ab275361323c14b0389fb6c803'
             '1a7e4c8b13ffc41304a06fa3d669cb6d252f0870c23c54fe84f5d861d5c964e1'
