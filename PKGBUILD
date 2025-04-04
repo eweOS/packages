@@ -3,7 +3,7 @@
 pkgbase=bluez
 pkgname=('bluez' 'bluez-utils' 'bluez-libs' 'bluez-cups' 'bluez-mesh'
          'bluez-obex')
-pkgver=5.80
+pkgver=5.82
 pkgrel=1
 pkgdesc='Userspace daemons, utils and libraries of Linux Bluetooth stack'
 url="http://www.bluez.org/"
@@ -20,21 +20,26 @@ source=(
   0003-allow-mesh-on-non-systemd-system.patch
   0004-allow-obexd-on-non-systemd-system.patch
   0005-grant-permission-to-bluetooth-group.patch
-  0006-define-max-input-on-musl-for-gdbus.patch
 )
-sha256sums=('a4d0bca3299691f06d5bd9773b854638204a51a5026c42b0ad7f1c6cf16b459a'
+sha256sums=('0739fa608a837967ee6d5572b43fb89946a938d1c6c26127158aaefd743a790b'
             'ea87de0d8182404d7ef7139ebc6bb2e8d57224f9b8dfae3e438f95308277c801'
             '93fa6d201bb4546bb680f6d6f903ba5e767829ab275361323c14b0389fb6c803'
             '1a7e4c8b13ffc41304a06fa3d669cb6d252f0870c23c54fe84f5d861d5c964e1'
             '417ea301f980e0e9ff38083aa73b3ac4e011f930a3f3338fdeb3e80a585e8c1f'
             '92f033e0e2f53cf4220bd26bbd52ad498144064a38f322c59fa4b0a3cdc2e3a4'
-            '8fb22853838ddf51774da01eb6a812ac4f03da99f792256c07d6fe2f715d5bdd'
-            '36e7484d997dc437f505e3e5066401534d5ff7c362aa170bc6c639397e9e7a7a')
+            '8fb22853838ddf51774da01eb6a812ac4f03da99f792256c07d6fe2f715d5bdd')
 
 prepare() {
   _patch_ "${pkgname}"-${pkgver}
+
   cd "${pkgname}"-${pkgver}
+
+  # test-vcp fails: https://github.com/bluez/bluez/issues/683
+  sed -e "s@unit_tests += unit/test-vcp@@" -i Makefile.am
+
   autoreconf -fiv
+
+  # Remove vendored ell source to prevent header resolution errors
   rm -rf ell
 }
 
@@ -97,6 +102,7 @@ build() {
   _pick_ bluez-libs usr/include/bluetooth/*
   _pick_ bluez-libs usr/lib/libbluetooth.so*
   _pick_ bluez-libs usr/lib/pkgconfig/*
+  _pick_ bluez-libs usr/share/man/man7/sco.7
 
   msg2 "Picking bluez-cups"
   _pick_ bluez-cups usr/lib/cups/backend/bluetooth
@@ -123,8 +129,7 @@ build() {
 
 check() {
   cd "$pkgname"-$pkgver
-  # fails test-vcp due to lto - https://github.com/bluez/bluez/issues/683
-  make check || /bin/true
+  make check
 }
 
 
