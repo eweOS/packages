@@ -2,7 +2,7 @@
 
 pkgname=fcft
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple library for font loading and glyph rasterization'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://codeberg.org/dnkl/${pkgname}
@@ -12,6 +12,7 @@ depends=(
   freetype2
   harfbuzz
   libutf8proc
+  nanosvg
   pixman
 )
 makedepends=(meson scdoc tllist git)
@@ -23,7 +24,8 @@ build() {
   ewe-meson $pkgname build \
     -D grapheme-shaping=enabled \
     -D run-shaping=enabled \
-    -D test-text-shaping=true
+    -D test-text-shaping=true \
+    -D system-nanosvg=enabled
 }
 
 check() {
