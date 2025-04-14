@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xfce4-terminal
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="A modern terminal emulator primarily for the Xfce desktop environment"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -11,7 +11,7 @@ groups=('xfce4')
 depends=('libxfce4ui' 'vte3' 'gtk-layer-shell' 'hicolor-icon-theme')
 makedepends=('git' 'intltool' 'xfce4-dev-tools')
 source=("git+https://gitlab.xfce.org/apps/xfce4-terminal.git#tag=$pkgname-$pkgver")
-sha256sums=('03750052629be5d9438f485cb85dad864291f1a1b29240fd8e61fa0061f0944a')
+sha256sums=('a0d9e0a808b9a394e25bd3697a56024376d09c8e21b99e2910807de12cf562d4')
 
 prepare() {
   cd $pkgname
