@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xfce4-pulseaudio-plugin
-pkgver=0.4.9
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Pulseaudio plugin for the Xfce4 panel"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -14,7 +14,7 @@ optdepends=('pavucontrol: default pulseaudio mixer')
 source=(
   "git+https://gitlab.xfce.org/panel-plugins/xfce4-pulseaudio-plugin.git#tag=$pkgname-$pkgver"
 )
-sha256sums=('b686b469b699c073e838e04382bab2282aff13cb1a2086065b38c8c5f673d934')
+sha256sums=('84deb7d89f8703da3df6a89880a455ed36ca0b1a899db4dee3c64dedcec41922')
 
 prepare() {
   cd $pkgname
