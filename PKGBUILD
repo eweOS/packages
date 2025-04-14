@@ -5,7 +5,7 @@ pkgname=(opencv
          opencv-samples
          python-opencv)
 pkgver=4.11.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Open Source Computer Vision Library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0)
@@ -48,11 +48,18 @@ optdepends=('opencv-samples: samples'
             'hdf5: for the HDF5 module'
             'opencl-icd-loader: For coding with OpenCL'
             'java-runtime: Java interface')
+# 0001: Under review, https://github.com/opencv/opencv/pull/27192
 source=(opencv.tar.gz::https://github.com/opencv/opencv/archive/refs/tags/$pkgver.tar.gz
-        opencv_contrib.tar.gz::https://github.com/opencv/opencv_contrib/archive/refs/tags/$pkgver.tar.gz)
+        opencv_contrib.tar.gz::https://github.com/opencv/opencv_contrib/archive/refs/tags/$pkgver.tar.gz
+	0001-Fix-configuring-with-CMake-4.patch)
 sha256sums=('9a7c11f924eff5f8d8070e297b322ee68b9227e003fd600d4b8122198091665f'
-            '2dfc5957201de2aa785064711125af6abb2e80a64e2dc246aca4119b19687041')
+            '2dfc5957201de2aa785064711125af6abb2e80a64e2dc246aca4119b19687041'
+            'c9ac48cbcde10146af6fd9ca22d05091d5a3a35943a723bdcf4d30d51bfbf4a4')
 options=(!lto) # https://gitlab.archlinux.org/archlinux/packaging/packages/kdenlive/-/issues/8
+
+prepare() {
+  _patch_ $pkgname-$pkgver
+}
 
 build() {
   # cmake's FindLAPACK doesn't add cblas to LAPACK_LIBRARIES, so we need to specify them manually
