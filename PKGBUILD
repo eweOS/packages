@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-attrs
-pkgver=25.1.0
+pkgver=25.3.0
 pkgrel=1
 pkgdesc="Attributes without boilerplate."
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('git' 'python-build' 'python-installer' 'python-hatchling' 'python-
 # FIXME: missing dependencies
 #checkdepends=('python-pytest' 'python-cloudpickle' 'python-hypothesis' 'python-zope-interface')
 source=("git+https://github.com/python-attrs/attrs.git#tag=$pkgver")
-sha512sums=('27c52de58756e94e1e59c193a2ed107f3162b64254db92a4575926916306f6469cee9b5ee500f1f8a36310c3ab28a2b96e45a20784e4bd4edee838f6cd14b6b2')
+sha512sums=('296e9262a12ccd10db8c7a540761ab387c9c884570a17d634906447feea6677fdd4e7d43d9d990487e66beeca245310e6e594e876cd6f45f687f106a0358d232')
 
 build() {
   cd attrs
