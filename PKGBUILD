@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-iniconfig
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="brain-dead simple config-ini parsing"
 url="https://github.com/RonnyPfannschmidt/iniconfig"
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('git' 'python-build' 'python-installer' 'python-hatchling' 'python-hatch-vcs')
 checkdepends=('python-pytest')
 source=("git+$url.git#tag=v$pkgver")
-sha512sums=('SKIP')
+sha512sums=('6680292c0883c39f02ff99c0c79b247bf7a7b61b43b9720da52ef3b94ff9404f95c86a4537e273cc716cb2bd165937f978d8eef92de447eb94f973f39f8d59ff')
 
 build() {
   cd iniconfig
