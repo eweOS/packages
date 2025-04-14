@@ -3,7 +3,7 @@
 _parent_name=flit
 _name=flit_core
 pkgname=python-flit-core
-pkgver=3.11.0
+pkgver=3.12.0
 pkgrel=1
 pkgdesc="A PEP 517 build backend for packages using Flit"
 arch=(any)
@@ -21,7 +21,7 @@ checkdepends=(
   python-testpath
 )
 source=($_parent_name-$pkgver.tar.gz::$_url/archive/refs/tags/$pkgver.tar.gz)
-sha512sums=('99ebec876ee9607b4fc8803719a5e62716bd48df3d2704f4d8cf99504421ec5068c4c59947a1b6f2d1e7e2a714e39e50b30385e04bb14c52c271e1dcadd8b6b5')
+sha512sums=('ff6df66dfdae6fdf7b277cc3fbb7c9a569103cbe82a3e3ce6f315ec6adec46be8692eba4549a66b3af537d128e6b57ed8f49316b705636466c25674198503643')
 
 build() {
   cd $_parent_name-$pkgver/$_name
