@@ -1,15 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgbase=linux-lts
-_basename=linux
-pkgdesc='LTS Linux'
 pkgname=(linux-lts linux-lts-headers linux-lts-devel linux-lts-docs)
-pkgver=6.12.18
+_basename=linux
+pkgver=6.12.23
 pkgrel=1
+pkgdesc='LTS Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
 license=(GPL-2.0-only)
-makedepends=(bison flex perl python libelf linux-headers rsync lld git)
+makedepends=(bison flex perl python libelf linux-headers rsync lld git pahole)
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
   "kernel-config::git+https://github.com/eweOS/kernel-config.git"
@@ -17,10 +17,10 @@ source=(
   0001-amdgpu-dml2-Increase-max-stack-size.patch
 )
 options=(!strip)
-sha256sums=('beb902a5f69d9e57710112203db38111dad6d30556ea8ce389284c8077fe944d'
+sha256sums=('d8d95404f8deeb7ff6992c0df855025062e9e8182bca6daa27ef2e9275d27749'
             'SKIP'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd'
-            '44faa454e418cd89bbcd4d35153424e487d7b7d9db9d32157299dc577b947d4d')
+            '6a41c19cc18e52258a3300a0a673b31babff78c5c206be697c4c82a84e9e201d')
 
 prepare()
 {
@@ -62,6 +62,7 @@ build()
   scripts/kconfig/merge_config.sh -m .config $srcdir/kernelconfig
   make LLVM=1 LLVM_IAS=1 ARCH=$build_arch olddefconfig
   make LLVM=1 LLVM_IAS=1 ARCH=$build_arch
+  make LLVM=1 LLVM_IAS=1 ARCH=$build_arch -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1 feature-llvm=1
 
   export kernelrelease="$(make -s kernelrelease)"
 }
@@ -112,7 +113,7 @@ package_linux-lts-devel()
   local builddir="$pkgdir/usr/src/$pkgbase"
 
   echo "Installing build files..."
-  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map vmlinux
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map vmlinux tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/$dev_arch" -m644 arch/$dev_arch/Makefile
   cp -t "$builddir" -a scripts
@@ -120,6 +121,9 @@ package_linux-lts-devel()
   # required when STACK_VALIDATION is enabled
   grep -q "STACK_VALIDATION=y" .config && \
     install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
