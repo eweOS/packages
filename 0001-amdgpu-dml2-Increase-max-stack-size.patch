@@ -22,7 +22,7 @@ diff --git a/drivers/gpu/drm/amd/display/dc/dml2/Makefile b/drivers/gpu/drm/amd/
 index 986a69c..d78aac1 100644
 --- a/drivers/gpu/drm/amd/display/dc/dml2/Makefile
 +++ b/drivers/gpu/drm/amd/display/dc/dml2/Makefile
-@@ -35,7 +35,7 @@ else
+@@ -35,7 +35,7 @@
  frame_warn_flag := -Wframe-larger-than=3072
  endif
  else
