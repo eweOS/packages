@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=acpica
-pkgver=20241212
+pkgver=20250404
 _ver_y=${pkgver:0:4}
 _ver_m=${pkgver:4:2}
 _ver_d=${pkgver:6:2}
@@ -13,7 +13,7 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-only)
 depends=(musl)
 source=("https://github.com/acpica/acpica/archive/refs/tags/$_ver.tar.gz")
-sha256sums=('adde693d2486d77940bef81acb45fec1ca285266ecbc4d10c5cd058bca19dc07')
+sha256sums=('9991ec103b3660d17715780406ee7409f705cf87ac55e9a32374affe1a6f275a')
 _dirname="acpica-$_ver"
 
 build() {
