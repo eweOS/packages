@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=btrfs-progs
-pkgver=6.13
+pkgver=6.14
 pkgrel=1
 pkgdesc='Btrfs filesystem utilities'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ url='https://btrfs.readthedocs.io'
 license=('GPL-2.0-only')
 source=("https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v$pkgver.tar.xz")
 options=(!staticlibs)
-sha256sums=('65b3f21117a594f80013b432620eecc6a7e2b0c05eab97136ff506c74d73ee9a')
+sha256sums=('df5ab804fcb36e291c42ad8361f801ad1e10241b43bd304fe50ce3df9e7e3da1')
 
 build() {
   cd $pkgname-v$pkgver
