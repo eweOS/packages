@@ -1,7 +1,7 @@
 # Maintainer: YukariChiba <i@0x7f.cc>
 
 pkgname=alsa-lib
-pkgver=1.2.13
+pkgver=1.2.14
 pkgrel=1
 pkgdesc="The Advanced Linux Sound Architecture (ALSA) - library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ provides=(
   libatopology.so
 )
 source=("$url/files/pub/lib/$pkgname-$pkgver.tar.bz2")
-sha256sums=('8c4ff37553cbe89618e187e4c779f71a9bb2a8b27b91f87ed40987cc9233d8f6')
+sha256sums=('be9c88a0b3604367dd74167a2b754a35e142f670292ae47a2fdef27a2ee97a32')
 
 prepare()
 {
