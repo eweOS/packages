@@ -22,14 +22,15 @@ diff --git a/drivers/gpu/drm/amd/display/dc/dml2/Makefile b/drivers/gpu/drm/amd/
 index 986a69c..d78aac1 100644
 --- a/drivers/gpu/drm/amd/display/dc/dml2/Makefile
 +++ b/drivers/gpu/drm/amd/display/dc/dml2/Makefile
-@@ -35,7 +35,7 @@ else
- frame_warn_flag := -Wframe-larger-than=3072
- endif
- else
--frame_warn_flag := -Wframe-larger-than=2048
-+frame_warn_flag := -Wframe-larger-than=3072
- endif
- endif
+@@ -35,7 +35,7 @@
+             frame_warn_limit := 3072
+         endif
+     else
+-        frame_warn_limit := 2048
++        frame_warn_limit := 3072
+     endif
+ 
+     ifeq ($(call test-lt, $(CONFIG_FRAME_WARN), $(frame_warn_limit)),y)
  
 -- 
 2.48.1
