@@ -1,7 +1,7 @@
  # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fluidsynth
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 pkgdesc="A real-time software synthesizer based on the SoundFont 2 specifications"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -25,7 +25,7 @@ provides=(
 )
 backup=(etc/conf.d/$pkgname)
 source=($pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz)
-sha512sums=('a380bd710c4b7fe83fc6799c56f51c9d4c3d21516b9366f8381c7fdb899c195472fe4bded9c25ab9de9c76fc95a4e727a8b0305ab92b5ede025fd03585036aa3')
+sha512sums=('cf41eb338fccaafaa6961b8ca9eec6e8f0e35d25ec8f1d6f621fc73bd4b43b301dfe027db4252424118d1772568b949542820777a74b651a3f32c5028a34ed61')
 
 build() {
   local cmake_options=(
