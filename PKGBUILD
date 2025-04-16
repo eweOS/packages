@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=intel-media-driver
-pkgver=25.1.4
+pkgver=25.2.0
 pkgrel=1
 pkgdesc='Intel Media Driver for VAAPI'
 url='https://github.com/intel/media-driver/'
@@ -10,10 +10,15 @@ arch=(x86_64)
 license=(BSD-3-Clause MIT)
 depends=(musl libva intel-gmmlib)
 makedepends=(cmake linux-headers)
+# 0001: Downstream, silent Clang warnings about usage of VLA, which is common
+#	in intel-media-driver
+# 0002: Under review, fix compatibility with CMake 4.0
 source=("https://github.com/intel/media-driver/archive/refs/tags/intel-media-$pkgver.tar.gz"
-	"0001-silence-clang-cxx-vla-extension.patch")
-sha256sums=('6339bba3168102f5a608f447076c9efb2a8194e847a9dac219fbc13324192a76'
-            '5daa5c7716935c7133e2e9beffff7d635571fa1efbca5b888b8c01f9bff3ddba')
+	"0001-silence-clang-cxx-vla-extension.patch"
+	"0002-fix-compatibility-with-cmake-4.0.patch::https://github.com/intel/media-driver/pull/1919.patch")
+sha256sums=('be7a1aa9341c637a6adb26164adffeffcad859980246fab4df04f3d7d8e2114b'
+            '5daa5c7716935c7133e2e9beffff7d635571fa1efbca5b888b8c01f9bff3ddba'
+            '03dfeb072533b20e79bdff83e38f6f729010c771e7896955c83c4dc0e35b8b83')
 _dirname="media-driver-intel-media-$pkgver"
 
 prepare() {
