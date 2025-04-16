@@ -2,7 +2,7 @@
 
 pkgname=(linux linux-headers linux-devel linux-docs)
 _basename=linux
-pkgver=6.13.9
+pkgver=6.14.2
 pkgrel=1
 pkgdesc='Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,10 +16,10 @@ source=(
   0001-amdgpu-dml2-Increase-max-stack-size.patch
 )
 options=(!strip)
-sha256sums=('53e7a3f028b6119ba499245bde0fa10275752817408a4a36b5a34ad74a4727b2'
+sha256sums=('c5c682a354ea3190139357a57d34a79e5c37221ace823a938e10116b577a2e1b'
             'SKIP'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd'
-            '44faa454e418cd89bbcd4d35153424e487d7b7d9db9d32157299dc577b947d4d')
+            'df14ba78f4519adf64c5e399e4aa8859346c3f6a4a61bd7c2268d95ed288bae9')
 
 prepare()
 {
@@ -120,6 +120,9 @@ package_linux-devel()
   # required when STACK_VALIDATION is enabled
   grep -q "STACK_VALIDATION=y" .config && \
     install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
