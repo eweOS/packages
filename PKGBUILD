@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-validate-pyproject
-pkgver=0.23
+pkgver=0.24.1
 pkgrel=1
 pkgdesc="Validation library and CLI tool for checking on 'pyproject.toml' files using JSON Schema"
 url="https://github.com/abravalheri/validate-pyproject"
@@ -14,7 +14,7 @@ checkdepends=('python-pytest')
 #	Fix tests failing due to missing partial-pdm-dockerize.json schema
 source=("git+https://github.com/abravalheri/validate-pyproject.git#tag=v$pkgver"
 	"0001-fix-tests-failing-due-to-missing.patch")
-sha512sums=('f4497c1da0bf9097d4daf69c406e0eee973d67b6803e1b8052ecb1e3d8f5a800d48db5999b97b652c9e3ce1fd2b201df87a1141c31399f22d6787b9b482eac94'
+sha512sums=('91b80c489819804d3b1cd01b481c71153c81ffacb9b15e92d9c5919596199fe5a579f4fd6722b93398a1fd02a53b14457473d766674a1130be6e9d56e80f6522'
             '4a562557695923a1ce451a0359173ac243a61cf7f2b770e20f7530d207cbe12705688046fe066d683478c555a2b090a6fd393b2291f2e16324f2dc379a33be12')
 
 prepare() {
