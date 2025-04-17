@@ -2,7 +2,7 @@
 
 _pypiname=wheel
 pkgname=python-wheel
-pkgver=0.45.1
+pkgver=0.46.1
 pkgrel=1
 pkgdesc="A built-package format for Python"
 arch=(any)
@@ -12,20 +12,11 @@ depends=('python-packaging')
 optdepends=('python-keyring: for wheel.signatures'
             'python-xdg: for wheel.signatures')
 makedepends=('python-build' 'python-flit-core' 'python-installer')
-#checkdepends=('python-jsonschema' 'python-pytest' 'python-keyring' 'python-keyrings-alt'
-#              'python-xdg' 'python-pytest-cov' 'python-setuptools')
+# Missing python-flit (soft dependency)
+checkdepends=('python-jsonschema' 'python-pytest' 'python-xdg'
+	      'python-pytest-cov' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pypa/wheel/archive/$pkgver.tar.gz")
-sha512sums=('d15299512d0b401214c866334dfa68b11810da02f9dd67925d66f546c7ca62eda37312fb37dec0e1a7d861b1f507131029ab4a42d63f5dd27aaca50c517e1d50')
-
-prepare() {
-  cd wheel-$pkgver
-  # https://github.com/pypa/wheel/pull/365 but why?
-  rm -r src/wheel/vendored
-  sed -i 's/from .vendored.packaging.requirements import Requirement/from packaging.requirements import Requirement/' src/wheel/metadata.py
-  sed -i 's/from .vendored.packaging import tags/from packaging import tags/' src/wheel/bdist_wheel.py src/wheel/_bdist_wheel.py
-  sed -i 's/from .vendored.packaging import version as _packaging_version/from packaging import version as _packaging_version/' src/wheel/bdist_wheel.py src/wheel/_bdist_wheel.py
-  sed -i 's/from wheel.vendored.packaging import tags/from packaging import tags/' tests/test_bdist_wheel.py
-}
+sha512sums=('b5785455ae2adb755921964b5c4f912496df27b2a3398ba5fe83af865b7990a0d90d3c777210912febb475b6e1cd7a7793133aaa0928ee46d3bcb08319234518')
 
 build() {
   cd wheel-$pkgver
@@ -34,15 +25,14 @@ build() {
 
 check() {
   # Hack entry points by installing it
-  # FIXME: missing dependency
   cd wheel-$pkgver
-  #python -m installer --destdir="$PWD/tmp_install" dist/*.whl
-  #local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  #PYTHONPATH="$PWD/tmp_install/$site_packages" pytest
+  python -m installer --destdir="$PWD/tmp_install" dist/*.whl
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  PYTHONPATH="$PWD/tmp_install/$site_packages" pytest -v
 }
 
 package() {
   cd wheel-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/$pkgname/
+  _install_license_ LICENSE.txt
 }
