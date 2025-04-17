@@ -2,8 +2,8 @@
 
 _name=setuptools_scm
 pkgname=python-setuptools-scm
-pkgver=8.1.0
-pkgrel=2
+pkgver=8.2.1
+pkgrel=1
 pkgdesc="Handles managing your python package versions in scm metadata"
 arch=('any')
 url="https://github.com/pypa/setuptools_scm"
@@ -12,7 +12,7 @@ depends=('python-packaging' 'python-setuptools' 'python-typing_extensions')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 # checkdepends=('mercurial' 'python-pytest' 'python-rich')
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('SKIP')
+sha256sums=('04739375540fafab1a598210635f35b812a7429146e7b29c989abb50f455f1e6')
 
 build() {
   cd $_name
