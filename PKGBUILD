@@ -2,7 +2,7 @@
 
 pkgname=js128
 pkgver=128.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="JavaScript interpreter and libraries - Version 128"
 url="https://spidermonkey.dev/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
