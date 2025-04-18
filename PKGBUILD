@@ -2,7 +2,7 @@
 
 pkgname=('boost' 'boost-libs')
 pkgver=1.87.0
-pkgrel=1
+pkgrel=2
 _srcname=boost_${pkgver//./_}
 pkgdesc="Free peer-reviewed portable C++ source libraries"
 arch=(x86_64 aarch64 riscv64 loongarch64)
