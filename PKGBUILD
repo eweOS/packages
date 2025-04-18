@@ -2,7 +2,7 @@
 
 pkgname=xerces-c
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A validating XML parser written in a portable subset of C++"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://xerces.apache.org/xerces-c/"
