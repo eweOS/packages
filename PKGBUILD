@@ -2,14 +2,14 @@
 
 pkgname=('boost' 'boost-libs')
 pkgver=1.87.0
-pkgrel=1
+pkgrel=2
 _srcname=boost_${pkgver//./_}
 pkgdesc="Free peer-reviewed portable C++ source libraries"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.boost.org/"
 license=('custom')
 makedepends=('icu' 'linux-headers' 'python' 'libbz2' 'zlib' 'zstd')
-source=(https://boostorg.jfrog.io/artifactory/main/release/$pkgver/source/$_srcname.tar.bz2
+source=(https://downloads.sourceforge.net/project/boost/boost/$pkgver/$_srcname.tar.bz2
         boost-1.81.0-phoenix-multiple-definitions.patch
 )
 sha256sums=('af57be25cb4c4f4b413ed692fe378affb4352ea50fbe294a11ef548f4d527d89'
