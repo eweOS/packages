@@ -2,8 +2,8 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=gdbm
-pkgver=1.24
-pkgrel=2
+pkgver=1.25
+pkgrel=1
 pkgdesc="GNU database library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.gnu.org/software/gdbm/gdbm.html"
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(readline)
 provides=(libgdbm_compat.so libgdbm.so)
 source=("https://ftp.gnu.org/gnu/gdbm/$pkgname-$pkgver.tar.gz")
-sha512sums=('401ff8c707079f21da1ac1d6f4714a87f224b6f41943078487dc891be49f51fd1ac7a32fd599aae0fad185f2c6ba7432616d328fd6aaab068eb54db9562ff7fa')
+sha512sums=('1785598665d7323eed052a55708903c6abaeafcfb66a9ceb69293f57c3fdbf49cd8a821ef23715a40bf7030d0067d1340d12279ed07afe040f912e53078e47f5')
 
 prepare()
 {
