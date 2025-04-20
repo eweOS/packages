@@ -2,19 +2,25 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=gdbm
-pkgver=1.24
-pkgrel=2
+pkgver=1.25
+pkgrel=1
 pkgdesc="GNU database library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.gnu.org/software/gdbm/gdbm.html"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(readline)
 provides=(libgdbm_compat.so libgdbm.so)
-source=("https://ftp.gnu.org/gnu/gdbm/$pkgname-$pkgver.tar.gz")
-sha512sums=('401ff8c707079f21da1ac1d6f4714a87f224b6f41943078487dc891be49f51fd1ac7a32fd599aae0fad185f2c6ba7432616d328fd6aaab068eb54db9562ff7fa')
+# 0001: Backport, add missing include to fix building error
+#	https://git.gnu.org.ua/gdbm.git/commit/?id=39ef0347f78ef691c9ad815360198f577043ce4c
+source=("https://ftp.gnu.org/gnu/gdbm/$pkgname-$pkgver.tar.gz"
+	"0001-Add-missing-include.patch")
+sha512sums=('1785598665d7323eed052a55708903c6abaeafcfb66a9ceb69293f57c3fdbf49cd8a821ef23715a40bf7030d0067d1340d12279ed07afe040f912e53078e47f5'
+            'f9dc5631b8556f91bb0d419079bb2babeb10c172b1de73136f459d46867ec301de71a92e85e8a45a02d6557772a84b5ef9b521213e7885503284423920b7e540')
 
 prepare()
 {
+  _patch_ $pkgname-$pkgver
+
   cd $pkgname-$pkgver
   autoreconf -fiv
 }
