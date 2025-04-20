@@ -1,8 +1,8 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libinih
-pkgver=58
-pkgrel=2
+pkgver=60
+pkgrel=1
 pkgdesc='A simple .INI file parser written in C'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://github.com/benhoyt/inih
@@ -11,7 +11,7 @@ depends=('llvm-libs' 'musl')
 makedepends=('meson')
 provides=('libinih.so' 'libINIReader.so')
 source=(https://github.com/benhoyt/inih/archive/refs/tags/r${pkgver}.tar.gz)
-sha512sums=('d69f488299c1896e87ddd3dd20cd9db5848da7afa4c6159b8a99ba9a5d33f35cadfdb9f65d6f2fe31decdbadb8b43bf610ff2699df475e1f9ff045e343ac26ae')
+sha512sums=('b58ac2395ed8e2b3fa25c3c41260ac5c6ee445d5a6520a79a4392741b417c0ea5ede12d5d89b92f8c4a9c555ff41745ea4f18b78ccbe5117eaa4c723de03b50a')
 
 build() {
   ewe-meson inih-r${pkgver} build \
