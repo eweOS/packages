@@ -1,68 +1,60 @@
-# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgbase=maturin
-pkgname=(
-  maturin
-  python-maturin
-)
-pkgver=1.8.0
+pkgname=(maturin python-maturin)
+pkgver=1.8.3
 pkgrel=1
-pkgdesc="Build and publish crates with pyo3, rust-cpython and cffi bindings"
-url="https://github.com/PyO3/maturin"
+pkgdesc='Tool for building and publishing Rust crates as Python packages'
+url='https://www.maturin.rs/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('Apache-2.0 OR MIT')
-makedepends=(
-  bzip2
-  git
-  python-build
-  python-installer
-  python-setuptools
-  python-setuptools-rust
-  python-wheel
-  rust
-)
-# disable LTO until ring can be built with it: https://github.com/briansmith/ring/issues/1444
-options=(!lto)
-source=($url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-sha512sums=('35756bb850204d4d2451d6a88e56d9519a359b00c3984c43bdde5013e2c4bd2598ed8fea234ecd99e84f4f5dcaf042d6783f11541403e6c41de15cd30930e3ab')
+makedepends=(python-build python-installer python-setuptools python-wheel
+	     python-setuptools-rust
+	     rust
+	     xz)
+source=("https://github.com/PyO3/maturin/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('c67ff594570270c75b6b123a0728aee5ef8871e34a2777ccf99cef10457649c0')
 
 prepare() {
-  cd $pkgbase-$pkgver
-  cargo fetch --locked --target "$RUSTHOST"
+	cd "$pkgbase-$pkgver"
+	cargo fetch --locked --target "$RUSTHOST"
 }
 
 build() {
-  cd $pkgbase-$pkgver
-  MATURIN_SETUP_ARGS="--all-features" python -m build --wheel --no-isolation
+	cd "$pkgbase-$pkgver"
+
+	check_option lto y && export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-flto"
+
+	MATURIN_SETUP_ARGS="--frozen --all-features" \
+		python -m build --wheel --no-isolation
+
+	python -m installer --destdir "$srcdir"/fakeinstall dist/*.whl
+
+	cd "$srcdir"/fakeinstall
+	# Program
+	_pick_ maturin usr/bin/maturin
+	# Python binding
+	_pick_ python-maturin usr/lib/python*/site-packages
+
+	cd "$srcdir"
+	# Make sure all files are picked
+	find fakeinstall -depth -print0 | xargs -0 rmdir
 }
 
 package_maturin() {
-  depends=(
-    bzip2
-    openssl
-    rust
-  )
+	depends=(musl llvm-libs openssl rust xz)
+	mv "$srcdir"/pkgs/$pkgname/* "$pkgdir"
 
-  cd $pkgbase-$pkgver
-  python -m installer --destdir="$pkgdir" dist/*.whl
-  install -vDm 644 {Changelog,README}.md -t "$pkgdir/usr/share/doc/$pkgname/"
-  install -vDm 644 license-mit -t "$pkgdir/usr/share/licenses/$pkgname/"
-
-  (
-    cd "$pkgdir"
-    _pick_ python-$pkgbase usr/lib
-  )
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+		"$srcdir/$pkgbase-$pkgver"/license-{apache,mit}
 }
 
 package_python-maturin() {
-  pkgdesc+=" - Python bindings"
-  groups=(python-build-backend)
-  depends=(
-    maturin=$pkgver
-    python
-  )
+	pkgdesc+=" (Python binding)"
+	depends=(python "maturin=$pkgver-$pkgrel" python-tomli)
+	arch=(any)
 
-  mv -v pkgs/$pkgname/* "$pkgdir"
-
-  install -vDm 644 $pkgbase-$pkgver/license-mit -t "$pkgdir/usr/share/licenses/$pkgname/"
+	mv "$srcdir"/pkgs/$pkgname/* "$pkgdir"
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+		"$srcdir/$pkgbase-$pkgver"/license-{apache,mit}
 }
