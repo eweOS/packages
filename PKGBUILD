@@ -2,7 +2,7 @@
 
 pkgname=grass
 pkgver=0.13.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A Sass compiler written purely in Rust'
 url='https://docs.rs/grass/latest/grass/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -18,6 +18,8 @@ export RUSTC_BOOTSTRAP=1
 
 prepare() {
 	cd "$pkgname-$pkgver"
+	# For loongarch64 support of libc
+	cargo update --precise 0.2.172 libc
 	cargo fetch --locked --target "$RUSTHOST"
 }
 
