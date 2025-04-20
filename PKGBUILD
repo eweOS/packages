@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=alsa-utils
-pkgver=1.2.13
+pkgver=1.2.14
 pkgrel=1
 pkgdesc="Advanced Linux Sound Architecturei (ALSA) - Utilities"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(alsa-lib ncurses)
 makedepends=(alsa-lib ncurses)
 options=(emptydirs)
 source=($url/files/pub/utils/$pkgname-$pkgver.tar.bz2)
-sha512sums=('0e2fb5b6e497b977badba2ebe2bddfc819654d24001622e0299e4034210caeeea2f3c2c2d1d260a48caefb6584e0b989fdb7036c6012108c8c38d89b3cb04c78')
+sha512sums=('dd470a2f5210822cc4d3ded094b84721a07904df5c32dd329e0cb4c052d39e3e6d7ddb511cde2d23b3f6824c71fba9dbdca369355d5c03b234e989dbbb9b7a95')
 
 prepare()
 {
