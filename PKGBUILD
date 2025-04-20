@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=mpd
-pkgver=0.24.1
-pkgrel=2
+pkgver=0.24.3
+pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.musicpd.org/"
@@ -38,6 +38,7 @@ makedepends=(
   libvorbis
   linux-headers
   meson
+  nlohmann-json
   openal
   pipewire
   sqlite
@@ -51,7 +52,7 @@ source=(
   $pkgname.service
   back_inserter.patch
 )
-sha512sums=('0eb42f960ac2642075c25a217698122fd81dff0cadd84a340b1e5ccd722ee74bfe3944c0f3a0c7e188ca017b624d85a9e0cae06c104c2c02e29b5482585ce764'
+sha512sums=('896e637cd662ee8f9c58a724d41546cf6659b2f7edc67a3380d3bd01ea59085c4032b4819f6f974285931fe1282be26c597ef3d83007beffe3b5dd5de1ce845e'
             '00be5ce1b167492946e049c66de472a482ff1e1c8939f6029626ff842f6370f1b7a046958a8ae58d56eb9eb192a05448fcb2ec072fe8614a836ee9e9df4dd027'
             '88ba2b6624e7dddd13a51e6fb9c7a65226d0c5b0645183901d6434c23fa0aca605989be0c600f2197c99c1b4c64396477aa15ab3c427087e86bb652977428aae'
             'f0ea57836f575dec93b12afb6c730c706b8745d25811152960dcd1f079760c2adda0b8af8e16e8329cc073c3b4e00edbbeea959ec6e1f5003ea77b0b6478262a'
@@ -64,10 +65,9 @@ prepare() {
 
 build() {
   local _disabled_comps=(
-    adplug shine tremor io_uring chromaprint yajl id3tag cdio_paranoia mms
-    qobuz iso9660 ao jack shout audiofile faad gme mad mikmod modplug
-    openmpt mpcdec mpg123 wavpack wildmidi sidplay twolame soundcloud
-    libmpdclient nfs
+    adplug shine tremor io_uring chromaprint id3tag cdio_paranoia mms qobuz
+    iso9660 ao jack shout audiofile faad gme mad mikmod modplug openmpt mpcdec
+    mpg123 wavpack wildmidi sidplay twolame libmpdclient nfs
   )
   
   # NOTE: sndio conflicts with alsa
