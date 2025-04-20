@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libtheora
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='Standard encoder and decoder library for the Theora video compression format'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.theora.org/'
@@ -10,7 +10,7 @@ license=('BSD-3-Clause')
 depends=('libogg')
 makedepends=('git' 'libpng' 'libvorbis' 'sdl1')
 source=("git+https://github.com/xiph/theora.git#tag=v$pkgver")
-sha256sums=('SKIP')
+sha256sums=('1fc615eb23f83bb9ab065d071c564793e4c3ac90cbb2ee3a9f818556ce7e11cc')
 
 prepare() {
   cd theora
