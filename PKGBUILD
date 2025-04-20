@@ -1,35 +1,28 @@
 # Maintainer:Yukari Chiba <i@0x7f.cc>
 
 pkgname=gperf
-pkgver=3.1
-pkgrel=3
+pkgver=3.2.1
+pkgrel=1
 pkgdesc="Perfect hash function generator"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.gnu.org/software/gperf/"
-license=('GPL3')
-depends=('llvm-libs')
-source=(
-	"https://ftp.gnu.org/pub/gnu/gperf/${pkgname}-${pkgver}.tar.gz"
-	"fix-cxx17.patch"
-)
-sha256sums=('588546b945bba4b70b6a3a616e80b4ab466e3f33024a352fc2198112cdbb3ae2'
-            '320321c3dcec75933c9d892e6e8952faf7fbca3ea7f8febd798c44d93ccfebff')
+license=(GPL-3.0-or-later)
+depends=(musl)
+source=("https://ftp.gnu.org/pub/gnu/gperf/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('ed5ad317858e0a9badbbada70df40194002e16e8834ac24491307c88f96f9702')
 
-prepare()
-{
-  cd ${pkgname}-${pkgver}
-  patch -p1 < ../fix-cxx17.patch
-}
-
-build()
-{
-  cd ${pkgname}-${pkgver}
+build() {
+  cd "$pkgname-$pkgver"
   ./configure --prefix=/usr
   make
 }
 
-package()
-{
-  cd ${pkgname}-${pkgver}
-  make DESTDIR="${pkgdir}" install
+check() {
+  cd "$pkgname-$pkgver"
+  make check
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
 }
