@@ -2,7 +2,7 @@
 
 pkgname=nspr
 pkgver=4.36
-pkgrel=1
+pkgrel=2
 pkgdesc="Netscape Portable Runtime"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSPR"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -24,6 +24,12 @@ prepare() {
 
 build() {
   cd nspr
+
+  # nspr doesn't detect musl-libc correctly, related-issues
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=700953
+  # Pass -D_PR_POLL_AVAILABLE to ensure poll(2), instead of select(2), is used.
+  # Usage of the latter violates the sandbox policy of FIrefox.
+  CFLAGS="$CFLAGS -D_PR_POLL_AVAILABLE" \
   ./configure \
       --prefix=/usr \
       --libdir=/usr/lib \
