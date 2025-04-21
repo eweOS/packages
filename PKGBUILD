@@ -3,9 +3,9 @@
 pkgname=python-isodate
 _pyname=${pkgname#*-}
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='ISO 8601 date/time parser for Python'
-url='%{url}'
+url='https://github.com/gweis/isodate/'
 arch=(any)
 license=(BSD-3-Clause)
 depends=(python python-six)
