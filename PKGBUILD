@@ -11,7 +11,7 @@ arch=(any)
 license=(MIT)
 depends=(python python-attrs python-rpds-py)
 makedepends=(python-build python-installer python-setuptools python-wheel
-	     python-hatchling python-hatch-vcs)
+	     python-hatchling python-hatch-vcs git)
 checkdepends=(python-pytest python-pytest-subtests)
 source=("https://github.com/python-jsonschema/referencing/archive/refs/tags/v$pkgver.tar.gz"
 	"git+https://github.com/python-jsonschema/referencing-suite.git#commit=$_referencingsuite_commit")
