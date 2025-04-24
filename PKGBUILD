@@ -2,21 +2,22 @@
 
 pkgbase=libffi
 pkgname=(libffi libffi-static)
-pkgver=3.4.6
-pkgrel=3
+pkgver=3.4.8
+pkgrel=1
 pkgdesc='A portable Foregin Function Interface library.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://sourceware.org/libffi/'
 license=(MIT)
 depends=(musl)
 makedepends=(linux-headers)
+checkdepends=(dejagnu)
 provides=(libffi.so)
 # 0001: Downstream, origin:
 # https://github.com/chimera-linux/cports/blob/fcd94a077374eb0ff4cf7096813cc2ff8319ce2e/main/libffi8/patches/riscv-fix-clang.patch
-source=("https://github.com/libffi/libffi/releases/download/v3.4.6/libffi-3.4.6.tar.gz"
+source=("https://github.com/libffi/libffi/releases/download/v$pkgver/libffi-$pkgver.tar.gz"
 	"0001-fix-float-atom-marshalling-on-clang.patch")
 
-sha256sums=('b0dea9df23c863a7a50e825440f3ebffabd65df1497108e5d437747843895a4e'
+sha256sums=('bc9842a18898bfacb0ed1252c4febcc7e78fa139fd27fdc7a3e30d9d9356119b'
             '7b4abcde4d75109a1066fa35bf4c8d761f6bf1b4c150d0d7264c5ee48e63d0d5')
 
 prepare() {
@@ -36,6 +37,11 @@ build() {
   cd "$pkgname-$pkgver"
   ./configure "${configure_options[@]}"
   make
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  make check
 }
 
 package_libffi() {
