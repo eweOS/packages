@@ -3,8 +3,8 @@
 # Contributor: Dave Reisner <d@falconindy.com>
 
 pkgname=jansson
-pkgver=2.14
-pkgrel=3
+pkgver=2.14.1
+pkgrel=1
 pkgdesc='C library for encoding, decoding and manipulating JSON data'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.digip.org/jansson/'
@@ -12,7 +12,7 @@ depends=('musl')
 license=('MIT')
 options=('staticlibs')
 source=("https://github.com/akheron/jansson/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('5798d010e41cf8d76b66236cfb2f2543c8d082181d16bc3085ab49538d4b9929')
+sha256sums=('2521cd51a9641d7a4e457f7215a4cd5bb176f690bc11715ddeec483e85d9e2b3')
 
 build()
 {
