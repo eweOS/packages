@@ -5,7 +5,7 @@ pkgname=(qemu-user-static
 	 qemu-user-static-{aarch64,alpha,arm,i386,loongarch64,m68k,mips,mips64}
 	 qemu-user-static-{mips64el,mipsel,ppc,ppc64,riscv32,riscv64,s390x}
 	 qemu-user-static-{sparc,sparc64,x86_64})
-pkgver=9.2.3
+pkgver=10.0.0
 pkgrel=1
 pkgdesc='QEMU user mode emulation (static build)'
 url='https://www.qemu.org/'
@@ -20,7 +20,7 @@ qemu_archs=(aarch64 alpha arm i386 loongarch64 m68k mips mips64 mips64el
 	    mipsel ppc ppc64 riscv32 riscv64 s390x sparc sparc64 x86_64)
 source=("https://download.qemu.org/qemu-$pkgver.tar.xz"
 	"binfmt-list")
-sha256sums=('baed494270c361bf69816acc84512e3efed71c7a23f76691642b80bc3de7693e'
+sha256sums=('22c075601fdcf8c7b2671a839ebdcef1d4f2973eb6735254fd2e1bd0f30b3896'
             '3ec211c95be104d45eee80911bbef64b51e7ac6da9c5ca04ec9fec5f5270ed96')
 
 user_targets=""
