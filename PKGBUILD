@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=python-pyelftools
-pkgver=0.31
-pkgrel=2
+pkgver=0.32
+pkgrel=1
 pkgdesc='Parsing ELF and DWARF in Python.'
 url='https://github.com/eliben/pyelftools'
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python)
 makedepends=(python-setuptools python-build python-installer python-wheel)
 checkdepends=(python-pytest)
 source=("https://github.com/eliben/pyelftools/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('24815cbfff9c5f68f5268983f55d969540a087bfdaa73c93f1a88e2a771f80f1')
+sha256sums=('82d0399bce74d162fba75b3568ad47bf48ed2c5e028b72026bdc2f678903de7d')
 
 build () {
 	cd pyelftools-$pkgver
