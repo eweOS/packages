@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-pyparsing
-pkgver=3.2.1
+pkgver=3.2.3
 pkgrel=1
 pkgdesc='General parsing module for Python'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-build' 'python-installer' 'python-flit-core')
 optdepends=('python-railroad-diagrams: for generating Railroad Diagrams'
             'python-jinja: for generating Railroad Diagrams')
 source=("https://github.com/pyparsing/pyparsing/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('26f031f2442e849f2a5a75a03699265af46c2a97ffeea067506dda24afb53877fc386ec14cdfaaf44f7dcf32e5bcf4eb33b4aa2973a334a4a2af93e897156593')
+sha512sums=('c44c566d3acca1f21b667c4594790ace1d8f4be8b1abc0e7b57f42dfe1f86340a8e62e320d33bde3275b44de438f9208f14a12ece58f1c78f15f8115f478b6a2')
 
 build() {
   cd pyparsing-$pkgver
