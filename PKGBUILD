@@ -2,8 +2,8 @@
 
 pkgbase=libffi
 pkgname=(libffi libffi-static)
-pkgver=3.4.6
-pkgrel=3
+pkgver=3.4.8
+pkgrel=1
 pkgdesc='A portable Foregin Function Interface library.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://sourceware.org/libffi/'
