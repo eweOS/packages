@@ -2,8 +2,8 @@
 
 pkgbase=jasper
 pkgname=(jasper)
-pkgver=4.2.4
-pkgrel=2
+pkgver=4.2.5
+pkgrel=1
 pkgdesc='Software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard'
 url='https://www.ece.uvic.ca/~frodo/jasper/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ makedepends=(
   libjpeg-turbo
 )
 source=(https://github.com/mdadams/jasper/archive/version-${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('4552e4823e08f7cb444d5835f30180ae1631b1784078769f0c1d51f40dd3bb6c8a1e960147d07312164dbb3b489561d06ee8f75112e76dbba8aacfd09c7d03e4')
+sha512sums=('379b992b694cde4ec084b1fcbdb71991be378ecf83640d954c623994f75431b7c701b4afb83e9d12e31bf228eb24c0704e5c40af64387eb74e77bd18414e6ae8')
 
 prepare() {
   cd ${pkgbase}-version-${pkgver}
