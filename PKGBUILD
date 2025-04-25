@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=shaderc
-pkgver=2024.4
+pkgver=2025.2
 pkgrel=1
 pkgdesc='Collection of tools, libraries and tests for shader compilation'
 url='https://github.com/google/shaderc'
@@ -10,8 +10,12 @@ license=('Apache')
 provides=('libshaderc_shared.so')
 depends=('glslang' 'spirv-tools')
 makedepends=('cmake' 'ninja' 'python' 'spirv-headers')
-source=(https://github.com/google/shaderc/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('d313af65e76664640020c964cbd7021e3b6f12ea839a58ef67f6052d9af684fc7fd237a687737e6483f24b89d5c85b3e0c0fafeec66b3646f77031cb0d6c9587')
+# 0001: Downstream fix (should be upstreamed), glslang 15.2.0 (although
+# accidentally) dropped the libSPIRV.so stub.
+source=(https://github.com/google/shaderc/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz
+	0001-Do-not-link-to-stub-libSPIRV.so.patch)
+sha512sums=('6761372591075944fddd926e9f7c2ea9447496566d2d549f523c6c529c3bd753d459b66d499f76d955bdcfb335016daddbeba49b087f4ecabf37d76a46ac14cd'
+            'b1fbdeadf3f75626297f70c59de37b86eaef9fdfb54b99b6be68d6581900a45d93ea6fc50183e82a037783fdc6a8433c09191e69271b7f6d98b15f0ff2aeb8a6')
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -27,6 +31,8 @@ EOF
 
   # fix missing PYTHON_EXECUTABLE
   sed -i 's@${PYTHON_EXECUTABLE}@python@' glslc/test/CMakeLists.txt
+
+  _patch_ ${pkgname}-${pkgver}
 }
 
 build() {
