@@ -6,7 +6,7 @@ pkgname=(
   flatpak-docs
 )
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux application sandboxing and distribution framework (formerly xdg-app)"
 url="https://flatpak.org"
 arch=(x86_64 aarch64 riscv64 loongarch64)
