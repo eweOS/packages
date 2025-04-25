@@ -2,7 +2,7 @@
 
 pkgname=xdg-desktop-portal
 pkgver=1.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://flatpak.github.io/xdg-desktop-portal/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
