@@ -16,7 +16,7 @@ pkgname=(qemu-common
 	 qemu-guest-agent
 	) # TODO: split firmwares
 pkgver=10.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A generic and open source machine emulator and virtualizer.'
 url='https://www.qemu.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
