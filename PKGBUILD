@@ -2,7 +2,7 @@
 
 pkgname=warzone2100
 pkgver=4.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc="3D realtime strategy game on a future Earth"
 url="https://wz2100.net/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -25,6 +25,10 @@ prepare() {
 build() {
   # 3rdparty/quickjs-wz/quickjs.h:993:34: error: cast-function-type-mismatch
   CXXFLAGS+=" -Wno-cast-function-type-mismatch"
+  # Workaround CMake 4.0 compatibility.
+  # TODO: this has been already fixed in the master branch and the workaround
+  # should be removed when upgrading
+  CMAKE_POLICY_VERSION_MINIMUM=3.5 \
   cmake -B build -S ${pkgname} \
     -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
