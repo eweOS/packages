@@ -3,7 +3,7 @@
 pkgbase=appstream
 pkgname=(appstream
          appstream-qt)
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='Provides a standard for creating app stores across distributions'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -33,7 +33,7 @@ makedepends=(gi-docgen
              xmlto)
 source=(https://www.freedesktop.org/software/appstream/releases/AppStream-$pkgver.tar.xz
         update-appstream-cache.hook)
-sha256sums=('2d218348067f98c4f34a3ffe2d8219ad9f504b1b2481f1872dec66c77bf37509'
+sha256sums=('ce0ed29e89abd5f0cf790ea87d792f1967c3413060beb30e63a979578d975121'
             'edc632e4a76ebe5efc76a56fe5f797e5c981cca6f2f0111c7ce0170d1330c788')
 
 build() {
