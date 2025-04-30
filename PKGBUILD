@@ -2,7 +2,7 @@
 
 pkgbase=glslang
 pkgname=(glslang glslang-static)
-pkgver=15.2.0
+pkgver=15.3.0
 pkgrel=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ depends=('spirv-tools')
 makedepends=('cmake' 'ninja' 'spirv-headers' 'python')
 options=('staticlibs')
 source=(${pkgbase}-${pkgver}.tar.gz::$url/archive/${pkgver}.tar.gz)
-sha256sums=('45e3920d264d5c2cc3bfaec0e5dbb66cffd549255e0aaaf38cd283918e35c8ba')
+sha256sums=('c6c21fe1873c37e639a6a9ac72d857ab63a5be6893a589f34e09a6c757174201')
 
 build() {
   cd ${pkgbase}-${pkgver}
