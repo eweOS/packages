@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=featherpad
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Lightweight Qt plain text editor'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('hicolor-icon-theme' 'hunspell' 'qt6-svg')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("https://github.com/tsujan/FeatherPad/releases/download/V$pkgver/FeatherPad-$pkgver.tar.xz")
-sha256sums=('fb2515f65b607cd659e67eb20bb348d81357bd3471ad4f6e887fa0c49be509ad')
+sha256sums=('0c6ad7687d933e48f5e64047dacb4d4611155210ef1557874fb708e805a50daa')
 
 build() {
   cmake -B build -S FeatherPad-$pkgver \
