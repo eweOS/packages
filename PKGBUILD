@@ -2,15 +2,15 @@
 
 pkgname=perl-authen-sasl
 _perlname=Authen-SASL
-pkgver=2.1700
-pkgrel=2
+pkgver=2.1800
+pkgrel=1
 pkgdesc='SASL Authentication framework'
 url='https://metacpan.org/dist/Authen-SASL'
 arch=(any)
 license=(GPL PerlArtistic)
 depends=(perl perl-digest-hmac)
 source=("https://cpan.metacpan.org/authors/id/E/EH/EHUELS/Authen-SASL-$pkgver.tar.gz")
-sha256sums=('b86d5a576b8d387aee24f39f47a54afd14bb66b09003db5065001f1de03a8ece')
+sha256sums=('0b03686bddbbf7d5c6548e468d079a4051c9b73851df740ae28cfd2db234e922')
 
 build () {
 	cd "$_perlname-$pkgver"
