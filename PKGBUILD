@@ -2,7 +2,7 @@
 
 pkgname=(linux linux-headers linux-devel linux-docs)
 _basename=linux
-pkgver=6.14.2
+pkgver=6.14.4
 pkgrel=1
 pkgdesc='Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +16,7 @@ source=(
   0001-amdgpu-dml2-Increase-max-stack-size.patch
 )
 options=(!strip)
-sha256sums=('c5c682a354ea3190139357a57d34a79e5c37221ace823a938e10116b577a2e1b'
+sha256sums=('9452f28d7a0051fba4886712395b484c4c7fcf9f85944a62fd3d97dc923f5339'
             'SKIP'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd'
             'df14ba78f4519adf64c5e399e4aa8859346c3f6a4a61bd7c2268d95ed288bae9')
