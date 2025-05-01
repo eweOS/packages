@@ -2,7 +2,7 @@
 
 pkgname=mold
 pkgver=2.38.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Modern Linker'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/rui314/mold'
@@ -31,7 +31,7 @@ build()
     -D CMAKE_INSTALL_LIBDIR='lib' \
     -D MOLD_USE_SYSTEM_MIMALLOC=ON \
     -D MOLD_USE_SYSTEM_TBB=ON \
-    -D MOLD_USE_MIMALLOC=0 \
+    -D MOLD_USE_MIMALLOC=ON \
     -D MOLD_USE_MOLD=ON \
     -D MOLD_LTO=${_MOLD_LTO}
   cmake --build build
