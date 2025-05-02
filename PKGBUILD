@@ -2,7 +2,7 @@
 
 pkgname=mercurial
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A scalable distributed SCM tool'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.mercurial-scm.org/"
@@ -35,7 +35,7 @@ check() {
 package() {
   cd $pkgname-$pkgver
   python -m installer --destdir "$pkgdir" dist/*.whl
-  make DESTDIR="${pkgdir}" PREFIX=/usr install
+  make DESTDIR="${pkgdir}" PREFIX=/usr install-doc
 
   make -C contrib/chg DESTDIR="$pkgdir" PREFIX=/usr install
   install -m755 contrib/hg-ssh "$pkgdir/usr/bin"
