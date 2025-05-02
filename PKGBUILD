@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=smartmontools
-pkgver=7.4
-pkgrel=3
+pkgver=7.5
+pkgrel=1
 pkgdesc='Programs to control and monitor storage systems using S.M.A.R.T.'
 url='https://www.smartmontools.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=(GPL-2.0-or-later)
 depends=(musl)
 makedepends=(gnupg linux-headers)
 source=("https://sourceforge.net/projects/smartmontools/files/smartmontools/$pkgver/smartmontools-$pkgver.tar.gz")
-sha256sums=('e9a61f641ff96ca95319edfb17948cd297d0cd3342736b2c49c99d4716fb993d')
+sha256sums=('690b83ca331378da9ea0d9d61008c4b22dde391387b9bbad7f29387f2595f76e')
 
 prepare() {
 	cd "smartmontools-$pkgver"
