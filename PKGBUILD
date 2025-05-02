@@ -1,12 +1,12 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=soundtouch
-pkgver=2.3.3
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='An audio processing library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://www.surina.net/soundtouch/
-license=(LGPL2.1)
+license=(LGPL-2.1-only)
 makedepends=(
   cmake
   git
@@ -16,7 +16,7 @@ source=(
   git+https://codeberg.org/soundtouch/soundtouch.git#tag=$pkgver
   soundtouch-cmake.patch
 )
-sha256sums=('60ed34e8efe81938e6782d78d5ef5ab347a08ff57b47395043853ebeb0eee3ab'
+sha256sums=('6ea20477dfd6ccf38abb9d917213315d0be2ad21eac1905f22069724c277ec17'
             '68c0d37b8b9ea329634d55211d1a8761650700e61cd9d4fc51fe6395f0288ce0')
 
 prepare() {
