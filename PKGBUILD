@@ -5,7 +5,7 @@
 pkgbase=pacman
 pkgname=(libalpm pacman repo-tools)
 pkgver=7.0.0
-pkgrel=8
+pkgrel=9
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
@@ -78,11 +78,19 @@ prepare(){
 
 build()
 {
-  makepkg_cflags="-Os -pipe -fno-plt"
+  # Temporarily workaround LLVM behaviour changes on -fno-plt
+  # https://github.com/eweOS/packages/issues/3594#issuecomment-2863596036
+  case $CARCH in
+    riscv64|loongarch64)
+      export CFLAGS="${CFLAGS/-fno-plt/}"
+      export LDFLAGS="${LDFLAGS/-fno-plt/}" ;;
+  esac
+
+  makepkg_cflags="-Os -pipe"
   # TODO: riscv64
   case $CARCH in
-    x86_64) makepkg_cflags+=" -march=x86-64 -fstack-clash-protection -fcf-protection" ;;
-    aarch64) makepkg_cflags+=" -march=armv8-a" ;;
+    x86_64) makepkg_cflags+=" -fno-plt -march=x86-64 -fstack-clash-protection -fcf-protection" ;;
+    aarch64) makepkg_cflags+=" -fno-plt -march=armv8-a" ;;
     riscv64) makepkg_cflags+=" -march=rv64gc" ;;
     loongarch64) makepkg_cflags+=" -march=la464" ;;
   esac
