@@ -1,4 +1,5 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Eric Long <i@hack3r.moe>
 
 pkgbase=networkmanager
 pkgname=(
@@ -8,7 +9,7 @@ pkgname=(
   networkmanager-docs
 )
 pkgver=1.52.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Network connection manager and user applications"
 url="https://networkmanager.dev/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -83,7 +84,7 @@ build() {
   for _false_comp in "${_false_comps[@]}"; do
     meson_options+=(-D ${_false_comp}=false)
   done
-  
+
   for _no_comp in "${_no_comps[@]}"; do
     meson_options+=(-D ${_no_comp}="no")
   done
@@ -113,7 +114,6 @@ package_networkmanager() {
     nspr
     nss
     readline
-    wpa_supplicant
   )
   optdepends=(
     'bluez: Bluetooth support'
@@ -129,6 +129,7 @@ package_networkmanager() {
     'pacrunner: PAC proxy support'
     'polkit: let non-root users control networking'
     'ppp: dialup connection support'
+    'wpa_supplicant: wireless connection support'
   )
   backup=(etc/NetworkManager/NetworkManager.conf)
 
@@ -169,7 +170,7 @@ END
 
   # Restore empty dir
   install -d usr/lib/NetworkManager/dispatcher.d/no-wait.d
-  
+
   _dinit_install_services_ $srcdir/networkmanager.service
 }
 
@@ -200,7 +201,7 @@ package_nm-cloud-setup() {
 }
 
 package_networkmanager-docs() {
-  pkgdesc+=" (API documentation)"
+  pkgdesc+=" - API documentation"
   depends=()
 
   mv pkgs/docs/* "$pkgdir"
