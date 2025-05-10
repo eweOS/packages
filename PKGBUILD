@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libclc
-pkgver=19.1.7
+pkgver=20.1.4
 pkgrel=1
 pkgdesc="Library requirements of the OpenCL C programming language"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('cmake' 'ninja' 'python' 'spirv-llvm-translator' 'llvm-devel')
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/libclc-$pkgver.src.tar.xz)
-sha256sums=('77e2d71f5cea1d0b1014ba88186299d1a0848eb3dc20948baae649db9e7641cb')
+sha256sums=('08d792747dd08aa0fb3378f5dd4275d7fcb4b286db54eb3f6f9ce3548e13397a')
 
 prepare() {
   cd $pkgname-$pkgver.src
