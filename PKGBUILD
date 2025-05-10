@@ -3,7 +3,7 @@
 pkgbase=rust
 pkgname=(rust rust-src)
 pkgver=1.86.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.rust-lang.org/'
@@ -63,7 +63,7 @@ package_rust()
   install -d $pkgdir/usr/share/bash-completion
   install -d $pkgdir/usr/share/licenses/rust
 
-  mv -t $pkgdir/usr/share/licenses/rust $pkgdir/usr/share/doc/rustc/LICENSE*
+  mv -t $pkgdir/usr/share/licenses/rust $pkgdir/usr/share/doc/rustc/COPYRIGHT*
 }
 
 package_rust-src() {
