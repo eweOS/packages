@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wine
-pkgver=10.2
+pkgver=10.7
 pkgrel=1
 _pkgbasever=${pkgver/rc/-rc}
 source=(
@@ -9,7 +9,7 @@ source=(
   llvm-unwind.patch
   rpath.patch
 )
-sha512sums=('893395e29d72898579850c4084838c76b8a53659b4a3917e47d853733fafaa0e57bfde31437862955cdfab94327622eb290488d6120d76eeb2a4fa70dff5ef67'
+sha512sums=('a358f43cf95b9e6ad5028b081e851abfff2351b59710cc9bcd72289bc48169a5b09ee0fb3b711b3969ca92113991a2556ff89f8ee2049eaade176214d8876f39'
             'e397c07e9c252a42679283af71ea5ad4627ba766ed594d7e88653648052520083299595c803123bd856fd8590c73453ea50bd464cd26d1b99b3b0dce98908cd4'
             '9881abfd0e7e4589cd5724291f9ec06ccb9d88b842c69abb5ea7865b6c27c778a060e60a9776c3620a030555cf61b8cceded55db9f04d5e45d9c627306763bff')
 pkgdesc="A compatibility layer for running Windows programs"
