@@ -2,14 +2,14 @@
 
 pkgname=pawprint
 pkgver=0.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A substitution of systemd-tmpfiles"
 url="https://github.com/eweOS/pawprint"
 license=(MIT)
 arch=(x86_64 aarch64 riscv64 loongarch64)
 makedepends=(git linux-headers)
 source=(
-  "$pkgname::git+$url.git#branch=main"
+  "$pkgname::git+$url.git#tag=v$pkgver"
   "$pkgname.service"
   pawprint-reload.hook
   pawprint-reload.script
