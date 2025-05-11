@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=menu-cache
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='Caching mechanism for freedesktop.org compliant menus'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 license=('GPL2')
@@ -12,7 +12,7 @@ depends=('libfm-extra')
 options=(lto)
 makedepends=('gtk-doc' 'autoconf' 'git')
 source=("git+https://github.com/lxde/$pkgname#tag=$pkgver")
-sha256sums=('c7192fc5e699f5cb1b1fb6a4be67f2add77077782c9d13eb4a4780c55da05720')
+sha256sums=('f4265cb487d0385385d415e3378580556c4a784cbcb872e36b61bfb9e0104b6c')
 
 prepare() {
   cd $pkgname
