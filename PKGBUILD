@@ -2,7 +2,7 @@
 
 pkgname=lxqt-runner
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The LXQt application launcher"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 groups=("lxqt")
@@ -15,7 +15,7 @@ source=(
     no-x11.patch
 )
 sha256sums=('e15caab4c9bc4e95b147095310ec4ed85553a906e1d4381067460b63a286e890'
-            'c90ba93e2b70fc35a203c13f6f46c4ce2e35ce2e437dd6deb4b70197bdc232d7')
+            '2f4ba7c2a0ae180499d1909c7a65937c0b8151b819de1ca486baff8b35e73b2e')
 
 prepare() {
   _patch_ $pkgname-$pkgver

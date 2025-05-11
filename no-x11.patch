@@ -1,5 +1,5 @@
 diff --git a/dialog.cpp b/dialog.cpp
-index a7d34c7..80baff6 100644
+index da8a1d9..337c337 100644
 --- a/dialog.cpp
 +++ b/dialog.cpp
 @@ -55,7 +55,6 @@
@@ -10,11 +10,11 @@ index a7d34c7..80baff6 100644
  
  #include <LayerShellQt/Shell>
  #include <LayerShellQt/Window>
-@@ -252,11 +251,6 @@ void Dialog::showEvent(QShowEvent *event)
+@@ -287,11 +286,6 @@ void Dialog::showEvent(QShowEvent *event)
              }
          }
      }
--    else
+-    else if (QGuiApplication::platformName() == QSL("xcb"))
 -    {
 -        connect(KX11Extras::self(), &KX11Extras::activeWindowChanged, this, &Dialog::onActiveWindowChanged);
 -        connect(KX11Extras::self(), &KX11Extras::currentDesktopChanged, this, &Dialog::onCurrentDesktopChanged);
@@ -22,7 +22,7 @@ index a7d34c7..80baff6 100644
      QDialog::showEvent(event);
  }
  
-@@ -267,11 +261,6 @@ void Dialog::showEvent(QShowEvent *event)
+@@ -302,11 +296,6 @@ void Dialog::showEvent(QShowEvent *event)
  void Dialog::hideEvent(QHideEvent *event)
  {
      QDialog::hideEvent(event);
@@ -34,7 +34,7 @@ index a7d34c7..80baff6 100644
  }
  
  
-@@ -419,7 +408,7 @@ void Dialog::showHide()
+@@ -462,7 +451,7 @@ void Dialog::showHide()
  
      // Using KWindowSystem to detect the active window since
      // QWidget::isActiveWindow is not working reliably.
@@ -43,7 +43,7 @@ index a7d34c7..80baff6 100644
      {
          hide();
      }
-@@ -427,7 +416,6 @@ void Dialog::showHide()
+@@ -470,7 +459,6 @@ void Dialog::showHide()
      {
          realign();
          show();
@@ -51,7 +51,7 @@ index a7d34c7..80baff6 100644
          ui->commandEd->setFocus();
          ui->commandEd->selectAll();
      }
-@@ -449,7 +437,7 @@ void Dialog::realign()
+@@ -492,7 +480,7 @@ void Dialog::realign()
          screenNumber = screen ? screens.indexOf(screen) : 0;
      }
  
@@ -60,7 +60,7 @@ index a7d34c7..80baff6 100644
  
      QRect rect = this->geometry();
      rect.moveCenter(desktop.center());
-@@ -524,7 +512,6 @@ void Dialog::onActiveWindowChanged(WId id)
+@@ -584,7 +572,6 @@ void Dialog::onActiveWindowChanged(WId id)
          if (mDesktopChanged)
          {
              mDesktopChanged = false;
@@ -68,7 +68,7 @@ index a7d34c7..80baff6 100644
          } else
          {
              hide();
-@@ -541,8 +528,6 @@ void Dialog::onCurrentDesktopChanged(int screen)
+@@ -601,8 +588,6 @@ void Dialog::onCurrentDesktopChanged(int screen)
  {
      if (isVisible())
      {
