@@ -2,7 +2,7 @@
 
 pkgname=qterminal
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight Qt-based terminal emulator"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 groups=("lxqt")
@@ -16,7 +16,7 @@ source=(
   no-x11.patch
 )
 sha256sums=('557f260fff85dd277ef340199f6db262bbe1af8e81c7d385ca056e76e71aea1b'
-            'ac90e7df26859a9c2a6610a8716fa6ec93bfccfe02619395f3427f1ca1ae8f7e')
+            'bb8ff91bf7d0cfd6ae41f2f8110a6657114a109167c58fcd4b18c1028d6bb30c')
 
 prepare() {
   _patch_ qterminal
