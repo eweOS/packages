@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=liblxqt
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Common base library for LXQt components"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
@@ -13,7 +13,7 @@ source=(
   "https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
   no-x11.patch
 )
-sha256sums=('10820b62f83c5f53439b8690c9d71deaad7aa31e6506f9ec53cb789d47b13ce0'
+sha256sums=('4a898b1bf059fb73102011bca79bb96d33c49c95f6d56135ef13a8e91d0a09c8'
             '78f1c2d6661f6ec3ce564767398a4cb4f5753721cfe145cad109f9ad1b60a1d1')
 
 prepare() {
