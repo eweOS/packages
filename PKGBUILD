@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=lxqt-themes
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="LXQt themes, graphics and icons."
 arch=("any")
@@ -15,7 +15,7 @@ replaces=("lxqt-common")
 source=(
 	"git+https://github.com/lxqt/$pkgname.git#tag=$pkgver"
 )
-sha256sums=('ec107d9d2ae5168e43cfa012c4459a6e8d20909b0fb24fe3d31ae2672dadcaca')
+sha256sums=('b9a1ab5cd1a3793a559106bce7453012381578c1bba2def29842bf78dcb3a446')
 
 build() {
 	mkdir -p build
