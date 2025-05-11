@@ -2,16 +2,16 @@
 
 pkgbase=libfm
 pkgname=(libfm libfm-extra libfm-gtk3)
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='Library for file management'
 url='https://lxde.org/'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 license=('GPL')
 depends=('gtk3' 'libexif' 'menu-cache')
 makedepends=('intltool' 'gtk-doc' 'vala')
-source=(https://downloads.sourceforge.net/pcmanfm/libfm-$pkgver.tar.xz)
-sha256sums=('a5042630304cf8e5d8cff9d565c6bd546f228b48c960153ed366a34e87cad1e5')
+source=(https://github.com/lxde/libfm/archive/$pkgver/$pkgbase-$pkgver.tar.gz)
+sha256sums=('7d7b616411992389a4b7f35796109d605f30bc2ceab84d4081d1665254ebbf82')
 
 prepare() {
   cd $pkgbase-$pkgver
