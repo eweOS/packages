@@ -8,7 +8,7 @@ index 3c47cc9b..a60c3a35 100644
  add_subdirectory(wayland)
 -add_subdirectory(xcb)
 diff --git a/panel/lxqtpanel.cpp b/panel/lxqtpanel.cpp
-index d5b99adb..ccdd805c 100644
+index 6da5a483..bc86f980 100644
 --- a/panel/lxqtpanel.cpp
 +++ b/panel/lxqtpanel.cpp
 @@ -50,8 +50,6 @@
@@ -18,9 +18,9 @@ index d5b99adb..ccdd805c 100644
 -#include <KX11Extras>
 -#include <NETWM>
  
- #include "backends/ilxqtabstractwmiface.h"
+ #include <algorithm>
  
-@@ -478,8 +476,6 @@ LXQtPanel::~LXQtPanel()
+@@ -546,8 +544,6 @@ LXQtPanel::~LXQtPanel()
  void LXQtPanel::show()
  {
      QWidget::show();
@@ -29,11 +29,10 @@ index d5b99adb..ccdd805c 100644
  }
  
  
-@@ -824,68 +820,7 @@ void LXQtPanel::updateWmStrut()
-     WId wid = effectiveWinId();
+@@ -904,67 +900,7 @@ void LXQtPanel::updateWmStrut()
      if(wid == 0 || !isVisible())
          return;
--
+ 
 -    if(qGuiApp->nativeInterface<QNativeInterface::QX11Application>())
 -    {
 -        if (mReserveSpace && QApplication::primaryScreen())
@@ -99,7 +98,7 @@ index d5b99adb..ccdd805c 100644
      {
          if (mReserveSpace
              // NOTE: For some reason, no space is reserved with a negative layer margin.
-@@ -1028,10 +963,6 @@ void LXQtPanel::showConfigDialog()
+@@ -1108,10 +1044,6 @@ void LXQtPanel::showConfigDialog()
      mConfigDialog->show();
      mConfigDialog->raise();
      mConfigDialog->activateWindow();
@@ -110,7 +109,7 @@ index d5b99adb..ccdd805c 100644
  }
  
  
-@@ -1048,10 +979,6 @@ void LXQtPanel::showAddPluginDialog()
+@@ -1128,10 +1060,6 @@ void LXQtPanel::showAddPluginDialog()
      mConfigDialog->show();
      mConfigDialog->raise();
      mConfigDialog->activateWindow();
@@ -121,7 +120,7 @@ index d5b99adb..ccdd805c 100644
  }
  
  
-@@ -1318,28 +1245,7 @@ bool LXQtPanel::event(QEvent *event)
+@@ -1414,28 +1342,7 @@ bool LXQtPanel::event(QEvent *event)
          break;
  
      case QEvent::WinIdChange:
@@ -151,7 +150,7 @@ index d5b99adb..ccdd805c 100644
          dynamic_cast<QDropEvent *>(event)->setDropAction(Qt::IgnoreAction);
          event->accept();
 diff --git a/panel/plugin.cpp b/panel/plugin.cpp
-index 4844bd52..47227b23 100644
+index 924950a6..e9ac127e 100644
 --- a/panel/plugin.cpp
 +++ b/panel/plugin.cpp
 @@ -31,8 +31,6 @@
@@ -163,17 +162,19 @@ index 4844bd52..47227b23 100644
  #include <QDebug>
  #include <QProcessEnvironment>
  #include <QStringList>
-@@ -530,8 +528,6 @@ void Plugin::showConfigureDialog()
+@@ -538,10 +536,6 @@ void Plugin::showConfigureDialog()
+     mConfigDialog->show();
+     mConfigDialog->raise();
      mConfigDialog->activateWindow();
- 
-     WId wid = mConfigDialog->windowHandle()->winId();
+-
+-    WId wid = mConfigDialog->windowHandle()->winId();
 -    KX11Extras::activateWindow(wid);
 -    KX11Extras::setOnDesktop(wid, KX11Extras::currentDesktop());
  }
  
  
 diff --git a/plugin-colorpicker/colorpicker.cpp b/plugin-colorpicker/colorpicker.cpp
-index e6f54158..2a9983ac 100644
+index c3baf785..2a9983ac 100644
 --- a/plugin-colorpicker/colorpicker.cpp
 +++ b/plugin-colorpicker/colorpicker.cpp
 @@ -36,10 +36,6 @@
@@ -198,7 +199,7 @@ index e6f54158..2a9983ac 100644
 -        QPixmap pixmap = qApp->primaryScreen()->grabWindow(id, point.x(), point.y(), 1, 1);
 -
 -        QImage img = pixmap.toImage();
--        col = QColor(img.pixel(0,0));
+-        col = QColor(img.pixel(0, 0));
 -    }
 -    else
 -    {

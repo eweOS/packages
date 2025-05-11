@@ -2,7 +2,7 @@
 
 pkgname=lxqt-panel
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The LXQt desktop panel"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 groups=("lxqt")
@@ -25,7 +25,7 @@ makedepends=(
 )
 source=("https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz" no-x11.patch)
 sha256sums=('e5011840140fe1c06cfe4deadbb1a88c0395b33d274c2a68d7e657b6622f1adb'
-            'ed92571784ec0b5ff91450657e1f200e1900487b2a8009cd19d97b6cee0a73bf')
+            'bbfcf634f3ea291f6cfadaba789e0c941c6e22c73b0fbaa3e5b3d435a3672847')
 
 prepare() {
   _patch_ $pkgname-$pkgver
