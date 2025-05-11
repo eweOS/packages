@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libdbusmenu-lxqt
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A library that provides a Qt implementation of the DBusMenu spec'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ depends=(qt6-base)
 makedepends=(cmake git)
 checkdepends=(dbus weston qt6-wayland)
 source=("git+https://github.com/lxqt/libdbusmenu-lxqt#tag=$pkgver")
-sha256sums=('74188f1dd665a1e9e0114ecee5d394518ceebd325c182f3c5b0eb4990fecc3c4')
+sha256sums=('1388f7f70455f0f81d10a1b6e122638d4ae9dc8300a678063a8d0c9e553f34f9')
 
 build() {
   cmake -B build -S libdbusmenu-lxqt \
