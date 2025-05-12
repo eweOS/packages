@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-3d
-_qtver=6.8.0
+_qtver=6.9.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -23,7 +23,7 @@ _pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
 )
-sha256sums=('3a11919e15437c351b742dbf4e0115ce51aa969cba844dd6388aae14810c7b7d')
+sha256sums=('521dd56d40873d37b2dd9ca95181037b833a07c48aed5db44efcba83a4716cc2')
 
 build() {
   export CMARGS=(
