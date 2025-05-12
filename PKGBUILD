@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-remoteobjects
-_qtver=6.8.0
+_qtver=6.9.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -20,7 +20,7 @@ _pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
 )
-sha256sums=('f1df570c6d9796e98374414f0f24f31bdd1e61f8063d6d9e2f407632559c7588')
+sha256sums=('f43a12f4fd78fda436b03f58f87b65f7f696866a8f51581a76aaf9e7239770dd')
 
 build() {
   export CMARGS=(
