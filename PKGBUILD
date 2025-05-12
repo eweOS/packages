@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-wayland
-_qtver=6.8.0
+_qtver=6.9.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ depends=(qt6-base qt6-declarative wayland)
 makedepends=(cmake git ninja wayland-protocols)
 groups=(qt6)
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz")
-sha256sums=('175758591638ebf1c6fbb66ac11c7fa0eb8d4ed52e9243cc59075d06a6a2060a')
+sha256sums=('503416fcb04db503bd130e6a49c45e3e546f091e83406f774a0c703130c91805')
 
 build() {
   CXXFLAGS+=" -D_LIBCPP_TYPEINFO_COMPARISON_IMPLEMENTATION=2"
