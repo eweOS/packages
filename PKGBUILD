@@ -2,7 +2,7 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=benchmark
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="A microbenchmark support library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ makedepends=('cmake' 'python')
 source=(
   "$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
 )
-sha256sums=('409075176168dc46bbb81b74c1b4b6900385b5d16bfc181d678afb060d928bd3')
+sha256sums=('b94263b018042007eb53f79639f21ae47800808c73cf1b7df85622b6e2b1aa32')
 
 build()
 {
