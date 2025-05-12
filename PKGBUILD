@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=nmap
-pkgver=7.95
-pkgrel=3
+pkgver=7.96
+pkgrel=1
 pkgdesc='Utility for network discovery and security auditing'
 url='https://nmap.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -20,7 +20,7 @@ makedepends=(linux-headers)
 source=(
   "https://nmap.org/dist/${pkgname}-${pkgver}.tar.bz2"
 )
-sha256sums=('e14ab530e47b5afd88f1c8a2bac7f89cd8fe6b478e22d255c5b9bddb7a1c5778')
+sha256sums=('98ae7a4f2fb66c1a3d482af8f00137283b917223446b46e7a20b06eabedf8c8a')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
