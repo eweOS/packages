@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-sensors
-pkgver=6.8.0
+pkgver=6.9.0
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
@@ -17,7 +17,7 @@ optdepends=('qt6-declarative: QML bindings'
 groups=(qt6)
 _pkgfn=${pkgname/6-/}
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver)
-sha256sums=('456608aa3935f797eafc74d6da5704e24c77ed31a6d5b6e0c3e9a9f298a94b47')
+sha256sums=('7976c03ca4655934795c67a92682494186490895e4dc0843b5dcc698eafe547f')
 
 build() {
   export CMARGS=(
