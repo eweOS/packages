@@ -1,20 +1,22 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Eric Long <i@hack3r.moe>
 
 pkgname=(linux linux-headers linux-devel linux-docs)
 _basename=linux
 pkgver=6.14.6
-pkgrel=1
-pkgdesc='Linux'
+pkgrel=2
+pkgdesc='Linux kernel'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
 license=(GPL-2.0-only)
 makedepends=(bison flex perl python libelf linux-headers rsync lld git pahole)
-source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
-        "kernel-config::git+https://github.com/eweOS/kernel-config.git"
-        busybox-find-compat.patch)
 options=(!strip)
+_kconfig_commit=449aebf016fed036db7ff49b6b8c5858aef8d5e2 # 2025-03-19
+source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
+        "git+https://github.com/eweOS/kernel-config.git#commit=$_kconfig_commit"
+        busybox-find-compat.patch)
 sha256sums=('21817f1998e2230f81f7e4f605fa6fdcb040e14fa27d99c27ddb16ce749797a9'
-            'SKIP'
+            '8c5bf5b5e7f6d6feabfd79423cb226273838e2052bf00e88942a68f7e6a8f63a'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
 
 case $CARCH in
@@ -38,33 +40,40 @@ esac
 
 prepare() {
   _patch_ "$_basename-$pkgver"
-  cd $_basename-$pkgver
+
+  touch kernelconfig
+  cd kernel-config
+  for _conf in *.config $CARCH/*.config; do
+    cat $_conf >> "$srcdir/kernelconfig"
+  done
+
+  cd "$srcdir/$_basename-$pkgver"
   sed -i \
     -e '/^CC/s@gcc@cc@g' \
     -e '/^HOSTCC/s@gcc@cc@g' Makefile
+  make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch defconfig
+  scripts/kconfig/merge_config.sh -m .config "$srcdir/kernelconfig"
+  make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch olddefconfig
+
+  scripts/config --set-str CONFIG_LOCALVERSION "-$pkgrel-ewe"
 }
 
 build() {
-  touch $srcdir/kernelconfig
-  cd kernel-config
-  for _conf in *.config $CARCH/*.config; do
-    cat $_conf >> $srcdir/kernelconfig
-  done
-
-  cd $srcdir/$_basename-$pkgver
-  make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch defconfig
-  scripts/kconfig/merge_config.sh -m .config $srcdir/kernelconfig
-  make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch olddefconfig
+  cd "$_basename-$pkgver"
   make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch
-  make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1 feature-llvm=1
+
+  # Generate vmlinux.h used in eBPF
+  make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch \
+    -C tools/bpf/bpftool vmlinux.h \
+    feature-clang-bpf-co-re=1 feature-llvm=1
 
   export _kernelrelease="$(make -s kernelrelease)"
 }
 
 package_linux() {
-  pkgdesc="The $pkgdesc kernel and modules"
+  pkgdesc="The $pkgdesc and modules"
 
-  cd $_basename-$pkgver
+  cd "$_basename-$pkgver"
 
   make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch \
     INSTALL_MOD_PATH="$pkgdir/usr" \
@@ -85,22 +94,20 @@ package_linux() {
   echo "$_basename" | install -Dm644 /dev/stdin \
     "$pkgdir/usr/lib/modules/$_kernelrelease/pkgbase"
 
-  rm -f $pkgdir/usr/lib/modules/$kernelrelease/{build,source}
+  rm -f "$pkgdir/usr/lib/modules/$_kernelrelease/"{build,source}
 }
 
 package_linux-headers() {
   pkgdesc="Kernel headers sanitized for use in userspace"
 
-  cd $_basename-$pkgver
-
-  make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch INSTALL_HDR_PATH=$pkgdir/usr headers_install
+  cd "$_basename-$pkgver"
+  make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch INSTALL_HDR_PATH="$pkgdir/usr" headers_install
 }
 
 package_linux-devel() {
-  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  pkgdesc="Headers and scripts for building modules for the $pkgdesc"
 
-  cd $_basename-$pkgver
-
+  cd "$_basename-$pkgver"
   local _builddir="$pkgdir/usr/src/$pkgbase"
 
   echo "Installing build files..."
@@ -180,15 +187,14 @@ package_linux-devel() {
 }
 
 package_linux-docs() {
-  pkgdesc="Documentation for the $pkgdesc kernel"
+  pkgdesc="Documentation for the $pkgdesc"
 
   cd $_basename-$pkgver
-
   local _builddir="$pkgdir/usr/src/$pkgbase"
 
   echo "Installing documentation..."
   local _src _dst
-  while read -rd '' src; do
+  while read -rd '' _src; do
     _dst="${_src#Documentation/}"
     _dst="$_builddir/Documentation/${_dst#output/}"
     install -Dm644 "$_src" "$_dst"
