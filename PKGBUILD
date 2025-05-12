@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-positioning
-_qtver=6.8.0
+_qtver=6.9.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -20,7 +20,7 @@ optdepends=('geoclue: geoclue2 plugin'
 groups=(qt6)
 _pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('ec81463e2b01475911131b11c96d312ffd7aa90d4482bbd6a9965b189e7eeb39')
+sha256sums=('c00b4c01d92bf99c5562910aab59f80146b976cdb1dcb7bd2f27833624605ed1')
 
 build() {
   export CMARGS=(
