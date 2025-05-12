@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-tools
-_qtver=6.8.0
+_qtver=6.9.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ depends=(qt6-base zstd)
 makedepends=(cmake git ninja python qt6-declarative llvm-devel)
 groups=(qt6)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz zstd-configure.patch)
-sha256sums=('403115d8268503c6cc6e43310c8ae28eb9e605072a5d04e4a2de8b6af39981f7'
+sha256sums=('fa645589cc3f939022401a926825972a44277dead8ec8607d9f2662e6529c9a4'
             '1366f49682e19c344bdd94ab70c66b29879b0c0a2bc20826d1accd8da88f53d1')
 
 prepare() {
