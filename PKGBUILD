@@ -2,7 +2,7 @@
 
 pkgname=telegram-desktop
 pkgver=5.13.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Official Telegram Desktop client'
 url='https://desktop.telegram.org/'
 arch=(x86_64 aarch64 loongarch64)
@@ -18,10 +18,12 @@ _apihash=d524b414d21f4d37f08684c1df41ac9c
 # 0002: upstream, https://github.com/desktop-app/lib_webview/pull/122
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v$pkgver/tdesktop-$pkgver-full.tar.gz"
 	"0001-use-lld.patch"
-	"0002-add-missing-includes.patch")
+	"0002-add-missing-includes.patch"
+        "0003-fix-qt-6.9.patch")
 sha256sums=('caa37bbf7d9fcdfecdb5f596f02a44becbe468ea5c6af7f3c670b61952744a80'
             '19cdd86b87ea3e756ea0f5872f2bad15efb3e458f335bd47a1c33b99017d8426'
-            '55aebfaf5a274d0c3dfb6324fbfdfb5eabcc3de72e290ff8c716fe5e4fcd4053')
+            '55aebfaf5a274d0c3dfb6324fbfdfb5eabcc3de72e290ff8c716fe5e4fcd4053'
+            'c262a8984cb4a01e2ac6b2ac332e34c9e7c01098c77f0c6b1b92404334e87c1b')
 
 prepare() {
 	_patch_ "tdesktop-$pkgver-full"
