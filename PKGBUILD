@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-connectivity
-_qtver=6.8.0
+_qtver=6.9.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -22,7 +22,7 @@ _pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
 )
-sha256sums=('bbbefb6cc07507fcc961362b3380553eba6400aa15480600126793ba3dc21788')
+sha256sums=('ff402f8dacb2b9f9308afcea67118ae1645ce6466f2d41a8d5c12fd2fa168598')
 
 build() {
   export CMARGS=(
