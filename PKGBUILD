@@ -1,0 +1,38 @@
+# Maintainer : Yukari Chiba <i@0x7f.cc>
+
+pkgname=rust-bindgen
+_pkgname=bindgen
+pkgver=0.71.1
+pkgrel=1
+pkgdesc='Automatically generates Rust FFI bindings to C (and some C++) libraries'
+url='https://github.com/rust-lang/rust-bindgen'
+makedepends=('cargo')
+arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
+license=('BSD')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rust-lang/rust-bindgen/archive/v$pkgver.tar.gz")
+sha512sums=('c900bd3780074c9f8df5dfb349cdfd59a8a71b5ac7fd63b18eb31c7fa3ab1fb5e656ff05bb7461ddc70c40a65ef73155007abea566c9d5deb41cda901a9fd57d')
+
+prepare() {
+  cd $pkgname-$pkgver
+  cargo fetch --locked --target "$RUSTHOST"
+  mkdir -p completions
+}
+
+build() {
+  cd $pkgname-$pkgver
+  cargo build --release --frozen
+  local _completion="target/release/$_pkgname --generate-shell-completions"
+  $_completion bash >"completions/$_pkgname"
+  $_completion fish >"completions/$_pkgname.fish"
+  $_completion zsh >"completions/_$_pkgname"
+}
+
+package() {
+  cd $pkgname-$pkgver
+  install -Dm755 "target/release/$_pkgname" "$pkgdir"/usr/bin/bindgen
+  install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm664 "completions/$_pkgname" -t "$pkgdir/usr/share/bash-completion/completions/"
+  install -Dm664 "completions/$_pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+  install -Dm664 "completions/_$_pkgname" -t "$pkgdir/usr/share/zsh/site-functions/"
+}
