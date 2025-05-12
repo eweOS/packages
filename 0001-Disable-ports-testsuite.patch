@@ -1,0 +1,26 @@
+From a3d6a588f7f89fad8c14790818e8e2f64d351ae2 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Mon, 12 May 2025 03:42:01 +0000
+Subject: [PATCH] Disable ports testsuite
+
+Clang fails to compile BSD ports source.
+---
+ tests/hwloc/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/hwloc/Makefile.am b/tests/hwloc/Makefile.am
+index 4f4ff56a6aed..af28cb41fd53 100644
+--- a/tests/hwloc/Makefile.am
++++ b/tests/hwloc/Makefile.am
+@@ -7,7 +7,7 @@ AM_CFLAGS = $(HWLOC_CFLAGS)
+ AM_CPPFLAGS = $(HWLOC_CPPFLAGS) -DXMLTESTDIR=\"$(abs_top_srcdir)/tests/hwloc/xml/\"
+ AM_LDFLAGS = $(HWLOC_LDFLAGS)
+ 
+-SUBDIRS = . ports xml
++SUBDIRS = . xml
+ DIST_SUBDIRS = ports xml linux x86 x86+linux rename
+ 
+ if HWLOC_HAVE_LINUX
+-- 
+2.49.0
+
