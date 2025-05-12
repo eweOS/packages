@@ -1,9 +1,9 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-quick3d
-_qtver=6.8.0
+_qtver=6.9.0
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3)
@@ -25,7 +25,7 @@ source=(
   fix-bezier-curve.patch
   fix-loongarch64.patch
 )
-sha256sums=('3e95044ee2da33db1a6fa3f834b09e71b2491c4899bac3a3bdf0c10b06f0223f'
+sha256sums=('a295268fdca5aeaab6bb4bb1a0a4d2720b19679ab5145c5185dac7ac3399e488'
             '15e8c0d30873abd3060eb02e9671861b56c43dfc9cc0432fd968e5f5ab109349'
             '5e9ee7be367a4cac9c882cef7f13331eaf25b2c21e269a07ce7720610892b36b')
 
