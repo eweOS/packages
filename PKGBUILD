@@ -9,18 +9,15 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
 license=(GPL-2.0-only)
 makedepends=(bison flex perl python libelf linux-headers rsync lld git pahole)
-source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
-  "kernel-config::git+https://github.com/eweOS/kernel-config.git"
-  busybox-find-compat.patch
-)
+source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
+        "kernel-config::git+https://github.com/eweOS/kernel-config.git"
+        busybox-find-compat.patch)
 options=(!strip)
 sha256sums=('21817f1998e2230f81f7e4f605fa6fdcb040e14fa27d99c27ddb16ce749797a9'
             'SKIP'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
 
-prepare()
-{
+prepare() {
   _patch_ "$_basename-$pkgver"
   cd $_basename-$pkgver
   sed -i \
@@ -28,32 +25,31 @@ prepare()
     -e '/^HOSTCC/s@gcc@cc@g' Makefile
 }
 
-build()
-{
+build() {
   touch $srcdir/kernelconfig
   cd kernel-config
   for conf in *.config $CARCH/*.config; do
-	 cat $conf >> $srcdir/kernelconfig
+    cat $conf >> $srcdir/kernelconfig
   done
 
   cd $srcdir/$_basename-$pkgver
   case $CARCH in
-    x86_64)
-      export build_arch=x86_64
-      export dev_arch=x86
-      ;;
-    aarch64)
-      export build_arch=arm64
-      export dev_arch=arm64
-      ;;
-    riscv64)
-      export build_arch=riscv
-      export dev_arch=riscv
-      ;;
-    loongarch64)
-      export build_arch=loongarch
-      export dev_arch=loongarch
-      ;;
+  x86_64)
+    export build_arch=x86_64
+    export dev_arch=x86
+    ;;
+  aarch64)
+    export build_arch=arm64
+    export dev_arch=arm64
+    ;;
+  riscv64)
+    export build_arch=riscv
+    export dev_arch=riscv
+    ;;
+  loongarch64)
+    export build_arch=loongarch
+    export dev_arch=loongarch
+    ;;
   esac
   make LLVM=1 LLVM_IAS=1 ARCH=$build_arch defconfig
   scripts/kconfig/merge_config.sh -m .config $srcdir/kernelconfig
@@ -64,8 +60,7 @@ build()
   export kernelrelease="$(make -s kernelrelease)"
 }
 
-package_linux()
-{
+package_linux() {
   pkgdesc="The $pkgdesc kernel and modules"
 
   cd $_basename-$pkgver
@@ -92,8 +87,7 @@ package_linux()
   rm -f $pkgdir/usr/lib/modules/$kernelrelease/{build,source}
 }
 
-package_linux-headers()
-{
+package_linux-headers() {
   pkgdesc="Kernel headers sanitized for use in userspace"
 
   cd $_basename-$pkgver
@@ -101,12 +95,11 @@ package_linux-headers()
   make LLVM=1 LLVM_IAS=1 ARCH=$build_arch INSTALL_HDR_PATH=$pkgdir/usr headers_install
 }
 
-package_linux-devel()
-{
+package_linux-devel() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
 
   cd $_basename-$pkgver
- 
+
   local builddir="$pkgdir/usr/src/$pkgbase"
 
   echo "Installing build files..."
@@ -116,7 +109,7 @@ package_linux-devel()
   cp -t "$builddir" -a scripts
 
   # required when STACK_VALIDATION is enabled
-  grep -q "STACK_VALIDATION=y" .config && \
+  grep -q "STACK_VALIDATION=y" .config &&
     install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
   # required when DEBUG_INFO_BTF_MODULES is enabled
@@ -125,7 +118,7 @@ package_linux-devel()
   echo "Installing headers..."
   cp -t "$builddir" -a include
   cp -t "$builddir/arch/$dev_arch" -a arch/$dev_arch/include
-  [ -f arch/$dev_arch/kernel/asm-offsets.s ] && \
+  [ -f arch/$dev_arch/kernel/asm-offsets.s ] &&
     install -Dt "$builddir/arch/$dev_arch/kernel" -m644 arch/$dev_arch/kernel/asm-offsets.s
 
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
@@ -166,14 +159,14 @@ package_linux-devel()
   local file
   while read -rd '' file; do
     case "$(file -Sib "$file")" in
-      application/x-sharedlib\;*)      # Libraries (.so)
-        strip $STRIP_SHARED "$file" ;;
-      application/x-archive\;*)        # Libraries (.a)
-        strip $STRIP_STATIC "$file" ;;
-      application/x-executable\;*)     # Binaries
-        strip $STRIP_BINARIES "$file" ;;
-      application/x-pie-executable\;*) # Relocatable binaries
-        strip $STRIP_SHARED "$file" ;;
+    application/x-sharedlib\;*) # Libraries (.so)
+      strip $STRIP_SHARED "$file" ;;
+    application/x-archive\;*) # Libraries (.a)
+      strip $STRIP_STATIC "$file" ;;
+    application/x-executable\;*) # Binaries
+      strip $STRIP_BINARIES "$file" ;;
+    application/x-pie-executable\;*) # Relocatable binaries
+      strip $STRIP_SHARED "$file" ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
