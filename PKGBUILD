@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-webchannel
-_qtver=6.8.0
+_qtver=6.9.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -21,7 +21,7 @@ _pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
 )
-sha256sums=('d6250d25bf8a8d2af608239d259ec72db6dc28f08aefc8895492ad09ebaf60c0')
+sha256sums=('10519a9cdde17a7d955f332480c6bcd1202e4b2c48fd94eb31efaa21d0fabfee')
 
 build() {
   export CMARGS=(
