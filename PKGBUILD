@@ -17,6 +17,25 @@ sha256sums=('21817f1998e2230f81f7e4f605fa6fdcb040e14fa27d99c27ddb16ce749797a9'
             'SKIP'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
 
+case $CARCH in
+x86_64)
+  _build_arch=x86_64
+  _dev_arch=x86
+  ;;
+aarch64)
+  _build_arch=arm64
+  _dev_arch=arm64
+  ;;
+riscv64)
+  _build_arch=riscv
+  _dev_arch=riscv
+  ;;
+loongarch64)
+  _build_arch=loongarch
+  _dev_arch=loongarch
+  ;;
+esac
+
 prepare() {
   _patch_ "$_basename-$pkgver"
   cd $_basename-$pkgver
@@ -28,36 +47,18 @@ prepare() {
 build() {
   touch $srcdir/kernelconfig
   cd kernel-config
-  for conf in *.config $CARCH/*.config; do
-    cat $conf >> $srcdir/kernelconfig
+  for _conf in *.config $CARCH/*.config; do
+    cat $_conf >> $srcdir/kernelconfig
   done
 
   cd $srcdir/$_basename-$pkgver
-  case $CARCH in
-  x86_64)
-    export build_arch=x86_64
-    export dev_arch=x86
-    ;;
-  aarch64)
-    export build_arch=arm64
-    export dev_arch=arm64
-    ;;
-  riscv64)
-    export build_arch=riscv
-    export dev_arch=riscv
-    ;;
-  loongarch64)
-    export build_arch=loongarch
-    export dev_arch=loongarch
-    ;;
-  esac
-  make LLVM=1 LLVM_IAS=1 ARCH=$build_arch defconfig
+  make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch defconfig
   scripts/kconfig/merge_config.sh -m .config $srcdir/kernelconfig
-  make LLVM=1 LLVM_IAS=1 ARCH=$build_arch olddefconfig
-  make LLVM=1 LLVM_IAS=1 ARCH=$build_arch
-  make LLVM=1 LLVM_IAS=1 ARCH=$build_arch -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1 feature-llvm=1
+  make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch olddefconfig
+  make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch
+  make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1 feature-llvm=1
 
-  export kernelrelease="$(make -s kernelrelease)"
+  export _kernelrelease="$(make -s kernelrelease)"
 }
 
 package_linux() {
@@ -65,24 +66,24 @@ package_linux() {
 
   cd $_basename-$pkgver
 
-  make LLVM=1 LLVM_IAS=1 ARCH=$build_arch \
+  make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch \
     INSTALL_MOD_PATH="$pkgdir/usr" \
     INSTALL_MOD_STRIP=1 \
     modules_install
 
-  if [ -d "arch/$build_arch/boot/dts" ]; then
+  if [ -d "arch/$_build_arch/boot/dts" ]; then
     make LLVM=1 LLVM_IAS=1 \
-      INSTALL_DTBS_PATH="$pkgdir/usr/share/dtbs/$kernelrelease" \
+      INSTALL_DTBS_PATH="$pkgdir/usr/share/dtbs/$_kernelrelease" \
       dtbs_install
   fi
 
   install -Dm644 \
-    "$(make -s image_name ARCH=$build_arch | sed 's/.gz$//')" \
-    "$pkgdir/usr/lib/modules/$kernelrelease/vmlinuz"
+    "$(make -s image_name ARCH=$_build_arch | sed 's/.gz$//')" \
+    "$pkgdir/usr/lib/modules/$_kernelrelease/vmlinuz"
 
   # Used by tinyramfs to name the kernel
   echo "$_basename" | install -Dm644 /dev/stdin \
-    "$pkgdir/usr/lib/modules/$kernelrelease/pkgbase"
+    "$pkgdir/usr/lib/modules/$_kernelrelease/pkgbase"
 
   rm -f $pkgdir/usr/lib/modules/$kernelrelease/{build,source}
 }
@@ -92,7 +93,7 @@ package_linux-headers() {
 
   cd $_basename-$pkgver
 
-  make LLVM=1 LLVM_IAS=1 ARCH=$build_arch INSTALL_HDR_PATH=$pkgdir/usr headers_install
+  make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch INSTALL_HDR_PATH=$pkgdir/usr headers_install
 }
 
 package_linux-devel() {
@@ -100,82 +101,82 @@ package_linux-devel() {
 
   cd $_basename-$pkgver
 
-  local builddir="$pkgdir/usr/src/$pkgbase"
+  local _builddir="$pkgdir/usr/src/$pkgbase"
 
   echo "Installing build files..."
-  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map vmlinux tools/bpf/bpftool/vmlinux.h
-  install -Dt "$builddir/kernel" -m644 kernel/Makefile
-  install -Dt "$builddir/arch/$dev_arch" -m644 arch/$dev_arch/Makefile
-  cp -t "$builddir" -a scripts
+  install -Dt "$_builddir" -m644 .config Makefile Module.symvers System.map vmlinux tools/bpf/bpftool/vmlinux.h
+  install -Dt "$_builddir/kernel" -m644 kernel/Makefile
+  install -Dt "$_builddir/arch/$_dev_arch" -m644 arch/$_dev_arch/Makefile
+  cp -t "$_builddir" -a scripts
 
   # required when STACK_VALIDATION is enabled
   grep -q "STACK_VALIDATION=y" .config &&
-    install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+    install -Dt "$_builddir/tools/objtool" tools/objtool/objtool
 
   # required when DEBUG_INFO_BTF_MODULES is enabled
-  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  install -Dt "$_builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
-  cp -t "$builddir" -a include
-  cp -t "$builddir/arch/$dev_arch" -a arch/$dev_arch/include
-  [ -f arch/$dev_arch/kernel/asm-offsets.s ] &&
-    install -Dt "$builddir/arch/$dev_arch/kernel" -m644 arch/$dev_arch/kernel/asm-offsets.s
+  cp -t "$_builddir" -a include
+  cp -t "$_builddir/arch/$_dev_arch" -a arch/$_dev_arch/include
+  [ -f arch/$_dev_arch/kernel/asm-offsets.s ] &&
+    install -Dt "$_builddir/arch/$_dev_arch/kernel" -m644 arch/$_dev_arch/kernel/asm-offsets.s
 
-  install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
-  install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
+  install -Dt "$_builddir/drivers/md" -m644 drivers/md/*.h
+  install -Dt "$_builddir/net/mac80211" -m644 net/mac80211/*.h
 
   # https://bugs.archlinux.org/task/13146
-  install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
+  install -Dt "$_builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
   # https://bugs.archlinux.org/task/20402
-  install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
-  install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
-  install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+  install -Dt "$_builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+  install -Dt "$_builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+  install -Dt "$_builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
   # https://bugs.archlinux.org/task/71392
-  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
+  install -Dt "$_builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
-  find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
+  find . -name 'Kconfig*' -exec install -Dm644 {} "$_builddir/{}" \;
 
   echo "Removing unneeded architectures..."
-  local arch
-  for arch in "$builddir"/arch/*/; do
-    [[ $arch = */$dev_arch/ ]] && continue
-    echo "Removing $(basename "$arch")"
-    rm -r "$arch"
+  local _arch
+  for _arch in "$_builddir"/arch/*/; do
+    [[ $_arch = */$dev_arch/ ]] && continue
+    echo "Removing $(basename "$_arch")"
+    rm -r "$_arch"
   done
 
   echo "Removing documentation..."
-  rm -r "$builddir/Documentation"
+  rm -r "$_builddir/Documentation"
 
   echo "Removing broken symlinks..."
-  find -L "$builddir" -type l | xargs -I @ bash -c "echo Removing @ && rm -f @"
+  find -L "$_builddir" -type l | xargs -I @ bash -c "echo Removing @ && rm -f @"
 
   echo "Removing loose objects..."
-  find "$builddir" -type f -name '*.o' | xargs -I @ bash -c "echo Removing @ && rm -f @"
+  find "$_builddir" -type f -name '*.o' | xargs -I @ bash -c "echo Removing @ && rm -f @"
 
   echo "Stripping build tools..."
-  local file
+  local _file
   while read -rd '' file; do
-    case "$(file -Sib "$file")" in
+    case "$(file -Sib "$_file")" in
     application/x-sharedlib\;*) # Libraries (.so)
-      strip $STRIP_SHARED "$file" ;;
+      strip $STRIP_SHARED "$_file" ;;
     application/x-archive\;*) # Libraries (.a)
-      strip $STRIP_STATIC "$file" ;;
+      strip $STRIP_STATIC "$_file" ;;
     application/x-executable\;*) # Binaries
-      strip $STRIP_BINARIES "$file" ;;
+      strip $STRIP_BINARIES "$_file" ;;
     application/x-pie-executable\;*) # Relocatable binaries
-      strip $STRIP_SHARED "$file" ;;
+      strip $STRIP_SHARED "$_file" ;;
     esac
-  done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+  done < <(find "$_builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
   echo "Stripping vmlinux..."
-  strip $STRIP_STATIC "$builddir/vmlinux"
+  strip $STRIP_STATIC "$_builddir/vmlinux"
 
   echo "Adding symlink..."
-  mkdir -p "$pkgdir/usr/lib/modules/$kernelrelease"
-  ln -s "../../../src/$pkgbase" "$pkgdir/usr/lib/modules/$kernelrelease/build"
+  mkdir -p "$pkgdir/usr/lib/modules/$_kernelrelease"
+  ln -s "../../../src/$pkgbase" "$pkgdir/usr/lib/modules/$_kernelrelease/build"
 }
 
 package_linux-docs() {
@@ -183,17 +184,17 @@ package_linux-docs() {
 
   cd $_basename-$pkgver
 
-  local builddir="$pkgdir/usr/src/$pkgbase"
+  local _builddir="$pkgdir/usr/src/$pkgbase"
 
   echo "Installing documentation..."
-  local src dst
+  local _src _dst
   while read -rd '' src; do
-    dst="${src#Documentation/}"
-    dst="$builddir/Documentation/${dst#output/}"
-    install -Dm644 "$src" "$dst"
+    _dst="${_src#Documentation/}"
+    _dst="$_builddir/Documentation/${_dst#output/}"
+    install -Dm644 "$_src" "$_dst"
   done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
 
   echo "Adding symlink..."
-  mkdir -p "$pkgdir/usr/lib/modules/$kernelrelease/build/Documentation"
-  ln -s "../../../share/doc/$pkgbase" "$pkgdir/usr/lib/modules/$kernelrelease/build/Documentation"
+  mkdir -p "$pkgdir/usr/lib/modules/$_kernelrelease/build/Documentation"
+  ln -s "../../../share/doc/$pkgbase" "$pkgdir/usr/lib/modules/$_kernelrelease/build/Documentation"
 }
