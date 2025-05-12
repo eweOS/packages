@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-speech
-_qtver=6.8.0
+_qtver=6.9.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -23,7 +23,7 @@ _pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
 )
-sha256sums=('75230a12bc37b8535f3858c11247bf68a502e2559265243eb3b44fc917166565')
+sha256sums=('a981b68c71743d77a3ce4437ad118d3851390f05a1ab26a859fb9b8c5938c971')
 
 build() {
   export CMARGS=(
