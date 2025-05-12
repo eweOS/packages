@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-svg
-_qtver=6.8.0
+_qtver=6.9.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ depends=(qt6-base)
 makedepends=(cmake git ninja)
 groups=(qt6)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('cf7a593d5e520f8177240610d9e55d5b75b0887fe5f385554ff64377f1646199')
+sha256sums=('ec359d930c95935ea48af58b100c2f5d0d275968ec8ca1e0e76629b7159215fc')
 
 build() {
   export CMARGS=(
