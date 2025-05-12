@@ -11,8 +11,8 @@ pkgname=(
   vulkan-mesa-layers
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
-pkgver=25.0.4
-pkgrel=2
+pkgver=25.1.0
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm' 'spirv-tools')
 makedepends=(
@@ -30,7 +30,7 @@ license=('custom')
 # mold may fails with lto enabled
 options=(!lto)
 source=(https://mesa.freedesktop.org/archive/$pkgbase-$pkgver.tar.xz)
-sha512sums=('562a97bd0374ff2a76f71c848df4fe542f1fc66c420a9101eb4bb1947d00eee4417d9c6f2d1be19638663753785c19384f8a6dc078c3187448ab79413d906152')
+sha512sums=('40298370727fa1ad6d59be8692dfef01c42e41780816e9b951a05f779c7acca127162d2d3cedfccb7bfe3834b9e917c2b9bc6cb76887488d919cb61741a1da1a')
 
 [ "$CARCH" = aarch64 ] && pkgname+=(vulkan-panfrost)
 
