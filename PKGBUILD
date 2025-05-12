@@ -1,9 +1,9 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-languageserver
-_qtver=6.8.0
+_qtver=6.9.0
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -13,7 +13,7 @@ depends=(qt6-base)
 makedepends=(cmake git ninja)
 groups=(qt6)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('fbf7152c8ca4d1dbdd30205e64a830f378d7ac5ac0b5f02eecab9d7501065cef')
+sha256sums=('eee65e036152eee36b63127013fb8e4f0cbbde66bae5f88864b56b70e357492e')
 
 build() {
   export CMARGS=(
