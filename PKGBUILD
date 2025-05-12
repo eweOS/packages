@@ -4,7 +4,7 @@ pkgname=(llvm llvm-tools llvm-devel llvm-libs llvm-lto lldb openmp lld clang fla
 _realpkgname=llvm-project
 pkgver=20.1.4
 _binutilsver=2.44
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -18,7 +18,6 @@ makedepends=(
   libedit
   linux-headers
   git
-  libxml2
   wasi-libc
   spirv-llvm-translator
   python
@@ -178,6 +177,8 @@ build()
   export CXXFLAGS="${CXXFLAGS//-fno-rtti/}"
 
   # https://os-wiki.ewe.moe/llvm
+  # libxml2 is disabled to simplify dependency group of base-devel. It's used
+  # for Microsoft Manifest support, which is unnecessary for eweOS.
   export CMARGS=(
     -G Ninja
     -DCMAKE_BUILD_TYPE=Release
@@ -198,6 +199,7 @@ build()
     -DLLVM_LINK_LLVM_DYLIB=ON
     -DLLVM_INCLUDE_BENCHMARKS=OFF
     -DLLVM_TARGETS_TO_BUILD="X86;AArch64;RISCV;LoongArch;WebAssembly;AMDGPU"
+    -DLLVM_ENABLE_LIBXML2=OFF
     -DLIBCXX_HAS_MUSL_LIBC=ON
     -DLIBCXX_USE_COMPILER_RT=ON
     -DLIBCXX_INCLUDE_TESTS=OFF
@@ -397,7 +399,7 @@ package_lld()
 {
   pkgdesc="a drop-in replacement for the GNU linkers by LLVM project."
   provides=("ld")
-  depends=('zlib' 'llvm-libs' 'libedit' 'ncurses' 'libxml2' 'xz')
+  depends=('zlib' 'llvm-libs' 'libedit' 'ncurses' 'xz')
 
   mv "$srcdir/pkgs/lld/usr" "${pkgdir}/usr"
 
@@ -449,7 +451,7 @@ package_llvm-tools()
 package_llvm()
 {
   pkgdesc="LLVM Compiler infrastructure and runtime library."
-  depends=('llvm-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2')
+  depends=('llvm-libs' 'zlib' 'libffi' 'libedit' 'ncurses')
 
   mv "${srcdir}/PKGDIR/usr" "${pkgdir}/usr"
 
