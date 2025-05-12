@@ -8,25 +8,21 @@ url="https://github.com/eweOS/pawprint"
 license=(MIT)
 arch=(x86_64 aarch64 riscv64 loongarch64)
 makedepends=(git linux-headers)
-source=(
-  "$pkgname::git+$url.git#tag=v$pkgver"
-  "$pkgname.service"
-  pawprint-reload.hook
-  pawprint-reload.script
-)
+source=("$pkgname::git+$url.git#tag=v$pkgver"
+        "$pkgname.service"
+        pawprint-reload.hook
+        pawprint-reload.script)
 sha256sums=('SKIP'
             'f93ee18de7c6f6426427a7ce7aa8632d85802fbc5a1178860f7ba26a262506eb'
             'a47a75887d912acc603434e0b93d8407a2410e75892cd0599f884721144c868a'
             '1a22a7add0b8e29932ba7d2ac0efeb78d95807b1194e2c40862d1d7b09ef6675')
 
-build()
-{
+build() {
   cd $pkgname
   cc -o $pkgname $pkgname.c -DARCH=$arch
 }
 
-package()
-{
+package() {
   cd $pkgname
   install -D $pkgname $pkgdir/usr/bin/$pkgname
   install -d $pkgdir/etc/tmpfiles.d
