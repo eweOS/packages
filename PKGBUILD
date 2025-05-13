@@ -4,7 +4,7 @@ pkgname=(llvm llvm-tools llvm-devel llvm-libs llvm-lto lldb openmp lld clang fla
 _realpkgname=llvm-project
 pkgver=20.1.4
 _binutilsver=2.44
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -14,6 +14,7 @@ makedepends=(
   ninja
   utmps
   zlib
+  zstd
   libffi
   libedit
   linux-headers
@@ -168,6 +169,10 @@ prepare()
   sed -i "/dlfcn.h/s@\$@\n#include <sys/types.h>@" \
     compiler-rt/lib/fuzzer/FuzzerInterceptors.cpp
   mkdir -p cmake/Platform && echo "set(WASI 1)" > cmake/Platform/WASI.cmake
+
+  # LLVM ships a Findzstd.cmake which may conflict with zstd-vendored one.
+  # Reference: https://github.com/llvm/llvm-project/issues/139666
+  rm llvm/cmake/modules/Findzstd.cmake
 }
 
 build()
@@ -345,7 +350,7 @@ package_llvm-devel()
 package_clang()
 {
   pkgdesc="C language family frontend for LLVM."
-  depends=("llvm")
+  depends=("musl" "llvm-libs" "llvm" "zstd")
 
   mv "$srcdir/pkgs/clang/usr" "${pkgdir}/usr"
   ln -s clang "${pkgdir}/usr/bin/cc"
@@ -359,7 +364,7 @@ package_clang()
 package_flang()
 {
   pkgdesc="ground-up implementation of a Fortran front end written in modern C++"
-  depends=("clang" "mlir")
+  depends=("musl" "llvm-libs" "clang" "mlir")
   mv "$srcdir/pkgs/flang/usr" "${pkgdir}/usr"
 
   _install_license_ $_basedir/flang/LICENSE.TXT
@@ -368,7 +373,7 @@ package_flang()
 package_mlir()
 {
   pkgdesc="Multi-Level IR Compiler Framework for LLVM"
-  depends=("llvm-libs")
+  depends=("musl" "llvm-libs" "zlib" "zstd")
   mv "$srcdir/pkgs/mlir/usr" "${pkgdir}/usr"
 
   _install_license_ $_basedir/mlir/LICENSE.TXT
@@ -377,7 +382,7 @@ package_mlir()
 package_lldb()
 {
   pkgdesc="Next generation, high-performance debugger from LLVM project."
-  depends=('llvm-libs' 'clang')
+  depends=('musl' 'llvm-libs' 'clang')
 
   mv "$srcdir/pkgs/lldb/usr" "${pkgdir}/usr"
 
@@ -387,7 +392,7 @@ package_lldb()
 package_openmp()
 {
   pkgdesc="LLVM OpenMP Runtime Library."
-  depends=('llvm-libs' 'libelf' 'libffi')
+  depends=('musl' 'llvm-libs' 'libelf' 'libffi')
 
   mv "$srcdir/pkgs/openmp/usr" "${pkgdir}/usr"
 
@@ -437,7 +442,7 @@ package_llvm-libs()
 package_llvm-tools()
 {
   pkgdesc="LLVM runtime tools."
-  depends=('llvm' 'llvm-libs')
+  depends=('musl' 'llvm' 'llvm-libs' 'zlib' 'zstd')
   provides=(binutils)
   conflicts=(binutils)
   replaces=(binutils)
@@ -451,7 +456,7 @@ package_llvm-tools()
 package_llvm()
 {
   pkgdesc="LLVM Compiler infrastructure and runtime library."
-  depends=('llvm-libs' 'zlib' 'libffi' 'libedit' 'ncurses')
+  depends=('musl' 'llvm-libs' 'zlib' 'zstd' 'libffi' 'libedit' 'ncurses')
 
   mv "${srcdir}/PKGDIR/usr" "${pkgdir}/usr"
 
