@@ -5,7 +5,7 @@ _realpkgname=llvm-project
 pkgver=20.1.4
 _binutilsver=2.44
 pkgrel=4
-arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
+arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=(
@@ -164,8 +164,8 @@ FLIST_mlir=(
 
 prepare()
 {
-  _patch_ $_basedir
-  cd $_basedir
+  _patch_ "$_basedir"
+  cd "$_basedir"
   sed -i "/dlfcn.h/s@\$@\n#include <sys/types.h>@" \
     compiler-rt/lib/fuzzer/FuzzerInterceptors.cpp
   mkdir -p cmake/Platform && echo "set(WASI 1)" > cmake/Platform/WASI.cmake
@@ -225,7 +225,7 @@ build()
     -DCOMPILER_RT_CRT_USE_EH_FRAME_REGISTRY=OFF
     -DLLVM_ENABLE_PER_TARGET_RUNTIME_DIR=OFF
     -DLLVM_LIBGCC_EXPLICIT_OPT_IN=ON
-    -DLLVM_BINUTILS_INCDIR=$srcdir/binutils-${_binutilsver}/include
+    -DLLVM_BINUTILS_INCDIR="$srcdir/binutils-${_binutilsver}/include"
     -DCLANG_CONFIG_FILE_SYSTEM_DIR=/etc/clang
   )
 
@@ -234,8 +234,8 @@ build()
     -DCMAKE_C_COMPILER_WORKS=ON
     -DCMAKE_CXX_COMPILER_WORKS=ON
     -DCMAKE_AR=/usr/bin/ar
-    -DCMAKE_MODULE_PATH="${srcdir}"/cmake
-    -DCMAKE_TOOLCHAIN_FILE="${srcdir}"/wasi-toolchain.cmake
+    -DCMAKE_MODULE_PATH="$srcdir"/cmake
+    -DCMAKE_TOOLCHAIN_FILE="$srcdir"/wasi-toolchain.cmake
     -DWASI_SDK_PREFIX=/usr
     -DUNIX=ON
   )
@@ -294,7 +294,7 @@ build()
 
   ninja -C build
 
-  export DESTDIR="${srcdir}/PKGDIR"
+  export DESTDIR="$srcdir/PKGDIR"
 
   ninja -C build install
   ninja -C build install-runtimes
@@ -339,138 +339,138 @@ build()
 package_llvm-devel()
 {
   pkgdesc="Development files for LLVM"
-  depends=("llvm" "llvm-libs" "mlir" "openmp")
+  depends=(llvm llvm-libs mlir openmp)
 
-  mv "$srcdir/pkgs/llvm-devel/usr" "${pkgdir}/usr"
+  mv "$srcdir/pkgs/llvm-devel/usr" "$pkgdir/usr"
 
-  _install_license_ $_basedir/llvm/LICENSE.TXT LICENSE
-  _install_license_ $_basedir/llvm/CREDITS.TXT CREDITS
+  _install_license_ "$_basedir/llvm/LICENSE.TXT" LICENSE
+  _install_license_ "$_basedir/llvm/CREDITS.TXT" CREDITS
 }
 
 package_clang()
 {
   pkgdesc="C language family frontend for LLVM."
-  depends=("musl" "llvm-libs" "llvm" "zstd")
+  depends=(musl llvm-libs llvm zstd)
 
-  mv "$srcdir/pkgs/clang/usr" "${pkgdir}/usr"
-  ln -s clang "${pkgdir}/usr/bin/cc"
-  ln -s clang++ "${pkgdir}/usr/bin/c++"
-  ln -s clang "${pkgdir}/usr/bin/c89"
-  ln -s clang "${pkgdir}/usr/bin/c99"
+  mv "$srcdir/pkgs/clang/usr" "$pkgdir/usr"
+  ln -s clang			"$pkgdir/usr/bin/cc"
+  ln -s clang++			"$pkgdir/usr/bin/c++"
+  ln -s clang			"$pkgdir/usr/bin/c89"
+  ln -s clang			"$pkgdir/usr/bin/c99"
 
-  _install_license_ $_basedir/clang/LICENSE.TXT
+  _install_license_ "$_basedir/clang/LICENSE.TXT"
 }
 
 package_flang()
 {
   pkgdesc="ground-up implementation of a Fortran front end written in modern C++"
-  depends=("musl" "llvm-libs" "clang" "mlir")
-  mv "$srcdir/pkgs/flang/usr" "${pkgdir}/usr"
+  depends=(musl llvm-libs clang mlir)
+  mv "$srcdir/pkgs/flang/usr" "$pkgdir/usr"
 
-  _install_license_ $_basedir/flang/LICENSE.TXT
+  _install_license_ "$_basedir/flang/LICENSE.TXT"
 }
 
 package_mlir()
 {
   pkgdesc="Multi-Level IR Compiler Framework for LLVM"
-  depends=("musl" "llvm-libs" "zlib" "zstd")
-  mv "$srcdir/pkgs/mlir/usr" "${pkgdir}/usr"
+  depends=(musl llvm-libs zlib zstd)
+  mv "$srcdir/pkgs/mlir/usr" "$pkgdir/usr"
 
-  _install_license_ $_basedir/mlir/LICENSE.TXT
+  _install_license_ "$_basedir/mlir/LICENSE.TXT"
 }
 
 package_lldb()
 {
-  pkgdesc="Next generation, high-performance debugger from LLVM project."
-  depends=('musl' 'llvm-libs' 'clang')
+  pkgdesc="Next generation, high-performance debugger from LLVM project"
+  depends=(musl llvm-libs clang)
 
-  mv "$srcdir/pkgs/lldb/usr" "${pkgdir}/usr"
+  mv "$srcdir/pkgs/lldb/usr" "$pkgdir/usr"
 
-  _install_license_ $_basedir/lldb/LICENSE.TXT
+  _install_license_ "$_basedir/lldb/LICENSE.TXT"
 }
 
 package_openmp()
 {
-  pkgdesc="LLVM OpenMP Runtime Library."
-  depends=('musl' 'llvm-libs' 'libelf' 'libffi')
+  pkgdesc="LLVM OpenMP Runtime Library"
+  depends=(musl llvm-libs libelf libffi)
 
   mv "$srcdir/pkgs/openmp/usr" "${pkgdir}/usr"
 
-  _install_license_ $_basedir/openmp/CREDITS.txt CREDITS
-  _install_license_ $_basedir/openmp/LICENSE.TXT LICENSE
+  _install_license_ "$_basedir/openmp/CREDITS.txt" CREDITS
+  _install_license_ "$_basedir/openmp/LICENSE.TXT" LICENSE
 }
 
 package_lld()
 {
   pkgdesc="a drop-in replacement for the GNU linkers by LLVM project."
-  provides=("ld")
-  depends=('zlib' 'llvm-libs' 'libedit' 'ncurses' 'xz')
+  provides=(ld)
+  depends=(zlib llvm-libs libedit ncurses xz)
 
-  mv "$srcdir/pkgs/lld/usr" "${pkgdir}/usr"
+  mv "$srcdir/pkgs/lld/usr" "$pkgdir/usr"
 
-  _install_license_ $_basedir/lld/LICENSE.TXT
+  _install_license_ "$_basedir/lld/LICENSE.TXT"
 }
 
 package_llvm-lto()
 {
   pkgdesc="lto library for LLVM."
 
-  mv "$srcdir/pkgs/llvm-lto/usr" "${pkgdir}/usr"
+  mv "$srcdir/pkgs/llvm-lto/usr" "$pkgdir/usr"
 
-  _install_license_ $_basedir/llvm/LICENSE.TXT LICENSE
-  _install_license_ $_basedir/llvm/CREDITS.TXT CREDITS
+  _install_license_ "$_basedir/llvm/LICENSE.TXT" LICENSE
+  _install_license_ "$_basedir/llvm/CREDITS.TXT" CREDITS
 }
 
 package_llvm-libs()
 {
   pkgdesc="LLVM runtime libraries for c++ and more."
 
-  mv "$srcdir/pkgs/llvm-libs/usr" "${pkgdir}/usr"
+  mv "$srcdir/pkgs/llvm-libs/usr" "$pkgdir/usr"
 
   # libgcc_s replacement
-  ln -s libunwind.so.1.0 $pkgdir/usr/lib/libgcc_s.so.1.0
-  ln -s libgcc_s.so.1.0 $pkgdir/usr/lib/libgcc_s.so.1
-  ln -s libgcc_s.so.1.0 $pkgdir/usr/lib/libgcc_s.so
+  ln -s libunwind.so.1.0	"$pkgdir/usr/lib/libgcc_s.so.1.0"
+  ln -s libgcc_s.so.1.0		"$pkgdir/usr/lib/libgcc_s.so.1"
+  ln -s libgcc_s.so.1.0 	"$pkgdir/usr/lib/libgcc_s.so"
 
   for comp_name in llvm libcxx libcxxabi compiler-rt; do
-    _install_license_ $_basedir/$comp_name/CREDITS.TXT CREDITS-$comp_name
-    _install_license_ $_basedir/$comp_name/LICENSE.TXT LICENSE-$comp_name
+    _install_license_ "$_basedir/$comp_name/CREDITS.TXT" "CREDITS-$comp_name"
+    _install_license_ "$_basedir/$comp_name/LICENSE.TXT" "LICENSE-$comp_name"
   done
-  _install_license_ $_basedir/libunwind/LICENSE.TXT LICENSE-libunwind
+  _install_license_ "$_basedir/libunwind/LICENSE.TXT" LICENSE-libunwind
 }
 
 package_llvm-tools()
 {
   pkgdesc="LLVM runtime tools."
-  depends=('musl' 'llvm' 'llvm-libs' 'zlib' 'zstd')
+  depends=(musl llvm llvm-libs zlib zstd)
   provides=(binutils)
   conflicts=(binutils)
   replaces=(binutils)
 
-  mv "$srcdir/pkgs/llvm-tools/usr" "${pkgdir}/usr"
+  mv "$srcdir/pkgs/llvm-tools/usr" "$pkgdir/usr"
 
-  _install_license_ $_basedir/llvm/CREDITS.TXT CREDITS
-  _install_license_ $_basedir/llvm/LICENSE.TXT LICENSE
+  _install_license_ "$_basedir/llvm/CREDITS.TXT" CREDITS
+  _install_license_ "$_basedir/llvm/LICENSE.TXT" LICENSE
 }
 
 package_llvm()
 {
   pkgdesc="LLVM Compiler infrastructure and runtime library."
-  depends=('musl' 'llvm-libs' 'zlib' 'zstd' 'libffi' 'libedit' 'ncurses')
+  depends=(musl llvm-libs zlib zstd libffi libedit ncurses)
 
-  mv "${srcdir}/PKGDIR/usr" "${pkgdir}/usr"
+  mv "$srcdir/PKGDIR/usr" "$pkgdir/usr"
 
-  _install_license_ $_basedir/llvm/CREDITS.TXT CREDITS
-  _install_license_ $_basedir/llvm/LICENSE.TXT LICENSE
+  _install_license_ "$_basedir/llvm/CREDITS.TXT" CREDITS
+  _install_license_ "$_basedir/llvm/LICENSE.TXT" LICENSE
 }
 
 package_wasi-compiler-rt() {
   pkgdesc='WASI LLVM compiler runtime'
 
-  DESTDIR="${pkgdir}" ninja -C build-wasi-crt install
+  DESTDIR="$pkgdir" ninja -C build-wasi-crt install
 
-  _install_license_ $_basedir/compiler-rt/CREDITS.TXT CREDITS
-  _install_license_ $_basedir/compiler-rt/LICENSE.TXT LICENSE
+  _install_license_ "$_basedir/compiler-rt/CREDITS.TXT" CREDITS
+  _install_license_ "$_basedir/compiler-rt/LICENSE.TXT" LICENSE
 }
 
 # Do not remove the space before the () or commitpkg will
@@ -478,17 +478,17 @@ package_wasi-compiler-rt() {
 package_wasi-libc++ () {
   pkgdesc='WASI LLVM C++ standard library'
 
-  DESTDIR="${pkgdir}" ninja -C build-wasi-cxx install-cxx
+  DESTDIR="$pkgdir" ninja -C build-wasi-cxx install-cxx
 
-  _install_license_ $_basedir/libcxx/CREDITS.TXT CREDITS
-  _install_license_ $_basedir/libcxx/LICENSE.TXT LICENSE
+  _install_license_ "$_basedir/libcxx/CREDITS.TXT" CREDITS
+  _install_license_ "$_basedir/libcxx/LICENSE.TXT" LICENSE
 }
 
 package_wasi-libc++abi() {
   pkgdesc='WASI Low level support for the LLVM C++ standard library'
 
-  DESTDIR="${pkgdir}" ninja -C build-wasi-cxx install-cxxabi
+  DESTDIR="$pkgdir" ninja -C build-wasi-cxx install-cxxabi
 
-  _install_license_ $_basedir/libcxxabi/CREDITS.TXT CREDITS
-  _install_license_ $_basedir/libcxxabi/LICENSE.TXT LICENSE
+  _install_license_ "$_basedir/libcxxabi/CREDITS.TXT" CREDITS
+  _install_license_ "$_basedir/libcxxabi/LICENSE.TXT" LICENSE
 }
