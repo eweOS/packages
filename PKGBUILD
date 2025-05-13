@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=m4
-pkgver=1.4.19
-pkgrel=3
+pkgver=1.4.20
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 pkgdesc="The GNU macro processor"
 url='http://www.gnu.org/software/m4/'
@@ -15,7 +15,7 @@ source=(
   stack-direction-add-loongarch.patch
 )
 
-sha256sums=('63aede5c6d33b6d9b13511cd0be2cac046f2e70fd0a07aa9573a04a82783af96'
+sha256sums=('e236ea3a1ccf5f6c270b1c4bb60726f371fa49459a8eaaebc90b216b328daf2b'
             '358c938ba8ad3b4cb36f0532026cc2c57f130fd290f20245594019875fb18d27')
 
 prepare()
