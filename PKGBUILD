@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=adw-gtk-theme
-pkgver=5.10
+pkgver=6.2
 pkgrel=1
 pkgdesc='Unofficial GTK 3 port of the libadwaita theme'
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(
   sassc
 )
 source=(git+https://github.com/lassekongo83/adw-gtk3.git#tag=v${pkgver})
-sha256sums=('e88cde50ca58cb512d3e9b8e4f63186bb1f2c75b84069554bb948316ad27aa39')
+sha256sums=('df7abe24ae30700a539e43bda25971b184f3d5e16a6079d4ec98b87ea2f0cd01')
 
 build() {
   ewe-meson adw-gtk3 build
