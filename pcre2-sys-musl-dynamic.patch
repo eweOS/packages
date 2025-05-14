@@ -1,0 +1,13 @@
+diff --git a/pcre2-sys/build.rs b/pcre2-sys/build.rs
+index 4a6fcad..c4d0dd8 100644
+--- a/pcre2-sys/build.rs
++++ b/pcre2-sys/build.rs
+@@ -29,7 +29,7 @@ fn main() {
+     let upstream = PathBuf::from("upstream");
+ 
+     // Don't link to a system library if we want a static build.
+-    let want_static = pcre2_sys_static().unwrap_or(target.contains("musl"));
++    let want_static = pcre2_sys_static().unwrap_or(false);
+     if !want_static && pkg_config::probe_library("libpcre2-8").is_ok() {
+         return;
+     }
