@@ -1,0 +1,22 @@
+bpf_jit_disasm requires libbfd from binutils, disable its building process.
+--- a/tools/bpf/Makefile
++++ b/tools/bpf/Makefile
+@@ -68,7 +68,7 @@
+ $(OUTPUT)%.lex.o: $(OUTPUT)%.lex.c
+ 	$(QUIET_CC)$(CC) $(CFLAGS) -c -o $@ $<
+ 
+-PROGS = $(OUTPUT)bpf_jit_disasm $(OUTPUT)bpf_dbg $(OUTPUT)bpf_asm
++PROGS = $(OUTPUT)bpf_dbg $(OUTPUT)bpf_asm
+ 
+ all: $(PROGS) bpftool runqslower
+ 
+@@ -95,9 +95,7 @@
+ 	$(Q)$(RM) -r -- $(OUTPUT)feature
+ 
+ install: $(PROGS) bpftool_install
+-	$(call QUIET_INSTALL, bpf_jit_disasm)
+ 	$(Q)$(INSTALL) -m 0755 -d $(DESTDIR)$(prefix)/bin
+-	$(Q)$(INSTALL) $(OUTPUT)bpf_jit_disasm $(DESTDIR)$(prefix)/bin/bpf_jit_disasm
+ 	$(call QUIET_INSTALL, bpf_dbg)
+ 	$(Q)$(INSTALL) $(OUTPUT)bpf_dbg $(DESTDIR)$(prefix)/bin/bpf_dbg
+ 	$(call QUIET_INSTALL, bpf_asm)

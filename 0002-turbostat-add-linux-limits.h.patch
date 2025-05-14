@@ -1,0 +1,11 @@
+Fix "undeclared identifier 'PATH_MAX'".
+--- a/tools/power/x86/turbostat/turbostat.c
++++ b/tools/power/x86/turbostat/turbostat.c
+@@ -67,6 +67,7 @@
+ #include <stdbool.h>
+ #include <assert.h>
+ #include <linux/kernel.h>
++#include <linux/limits.h>
+ 
+ #define UNUSED(x) (void)(x)
+ 
