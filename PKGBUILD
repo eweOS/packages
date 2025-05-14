@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=aquamarine
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='A very light linux rendering backend library'
 url='https://github.com/hyprwm/aquamarine'
@@ -11,7 +11,7 @@ depends=(libdrm libinput hyprutils pixman libdisplay-info wayland seatd mesa)
 makedepends=(cmake wayland-protocols hwdata hyprwayland-scanner linux-headers)
 provides=(libaquamarine.so)
 source=("https://github.com/hyprwm/aquamarine/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('822ce38345bc4c1b95966c79ee72ff18d753aa923c83e9aa64e9d82eebf55a38')
+sha256sums=('1c3570de268fff008c6dd76472d783710b7f62c545f76091580c9edd13ad23d5')
 
 build () {
 	cmake -S "$pkgname-$pkgver" -B build \
