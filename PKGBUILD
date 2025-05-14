@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=mlt
-pkgver=7.30.0
+pkgver=7.32.0
 pkgrel=1
 pkgdesc='An open source multimedia framework'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -51,7 +51,7 @@ makedepends=(cmake
              swig)
 source=(git+https://github.com/mltframework/mlt#tag=v$pkgver
         git+https://gitlab.com/mattbas/glaxnimate.git)
-sha256sums=('c56e36bb6311dace74f8051e3c6ee9a0b494ca4a8cffcf16a399312c4d23a1b1'
+sha256sums=('279dba94bd4a36607ea7facbad797a6dfd36277d99835a1e361d34d96d092eb4'
             'SKIP')
 
 prepare() {
