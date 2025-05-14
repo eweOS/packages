@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname="hyprcursor"
-pkgver=0.1.11
-pkgrel=2
+pkgver=0.1.12
+pkgrel=1
 pkgdesc="The hyprland cursor format, library and utilities"
 arch=(any)
 url="https://github.com/hyprwm/hyprcursor"
@@ -15,13 +15,11 @@ source=(
 	"$_archive.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 	"0001-Fix-includes.patch"
 )
-sha256sums=('17e4576b884e6bdb463b445cffff099ad16647b826a87a67b78d38b8cad4c39e'
+sha256sums=('3200a7a31e28884b9d046f8ec7b0aa67ede9ce0ab0d20193c2b61ee522d6b1f2'
             '56be1a27d4fe90b5256782fe6410b2ef8e5c31c76499b81505c2535166975637')
 
 prepare() {
 	_patch_ "$_archive"
-	# clang is not outdated any more
-	sed -i 's/Clang/ClangSKIP/' $_archive/CMakeLists.txt
 }
 
 build() {
