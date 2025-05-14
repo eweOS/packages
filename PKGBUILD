@@ -2,16 +2,16 @@
 
 pkgname=valgrind
 pkgver=3.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An instrumentation framework for building dynamic analysis tools.'
 url='https://valgrind.org/'
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 license=(GPL-2.0-or-later)
 depends=(musl)
 makedepends=(lld)
 options=(!strip)
 source=("https://sourceware.org/pub/valgrind/valgrind-$pkgver.tar.bz2"
-	"remove-libgcc.patch")
+        "remove-libgcc.patch")
 sha256sums=('295f60291d6b64c0d90c1ce645634bdc5361d39b0c50ecf9de6385ee77586ecc'
             'c2b346698755d9d2ea4f2b46c1a569bacf6ca82bdc14105f7057745150160a21')
 
