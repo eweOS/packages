@@ -1,0 +1,21 @@
+--- a/Makefile
++++ b/Makefile
+@@ -571,9 +571,6 @@
+ 	@if grep 'included file options/' $(OUTFILE); then \
+ 		echo "FATAL: man pages must not contain ^^^^ in $(OUTFILE)"; exit 1; \
+ 	fi
+-	@if $(MAN_L) $(OUTFILE)| $(GREP) -Pazoq '│\s+│\n\s+├─+┼─+┤\n\s+│\s+│'; then  \
+-		echo "FATAL: $< has a too-long table column; use 'man -l $(OUTFILE)' and look for empty table cells."; exit 1; \
+-	fi
+ 
+ .PHONY: docdir
+ docdir:
+@@ -965,7 +962,7 @@
+ install.docker:
+ 	install ${SELINUXOPT} -d -m 755 $(DESTDIR)$(BINDIR)
+ 	$(eval INTERPOLATED_DOCKER_SCRIPT := $(shell mktemp))
+-	env BINDIR=${BINDIR} ETCDIR=${ETCDIR} envsubst '$$BINDIR;$$ETCDIR' < docker/docker.in > ${INTERPOLATED_DOCKER_SCRIPT}
++	cat docker/docker.in | sed 's@$${BINDIR}@${BINDIR}@; s@$${ETCDIR}@${ETCDIR}@' > ${INTERPOLATED_DOCKER_SCRIPT}
+ 	install ${SELINUXOPT} -m 755 ${INTERPOLATED_DOCKER_SCRIPT} $(DESTDIR)$(BINDIR)/docker
+ 	rm ${INTERPOLATED_DOCKER_SCRIPT}
+ 	install ${SELINUXOPT} -m 755 -d $(DESTDIR)${SYSTEMDDIR}  $(DESTDIR)${USERSYSTEMDDIR} $(DESTDIR)${TMPFILESDIR} $(DESTDIR)${USERTMPFILESDIR}
