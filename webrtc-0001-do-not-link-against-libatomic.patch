@@ -1,0 +1,15 @@
+LLVM toolchain neither provides, nor need to link to, GNU's libatomic
+--- a/build/config/linux/BUILD.gn
++++ b/build/config/linux/BUILD.gn
+@@ -39,11 +39,6 @@
+   if (is_chromeos) {
+     defines = [ "OS_CHROMEOS" ]
+   }
+-
+-  if ((!is_chromeos || default_toolchain != "//build/toolchain/cros:target") &&
+-      (!use_custom_libcxx || current_cpu == "mipsel")) {
+-    libs = [ "atomic" ]
+-  }
+ }
+ 
+ config("libcap") {
