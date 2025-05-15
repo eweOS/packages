@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=purpose
-pkgver=6.9.0
+pkgver=6.14.0
 pkgrel=1
 pkgdesc='Framework for providing abstractions to get the developers purposes fulfilled'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -26,7 +26,7 @@ optdepends=('bluedevil: sharing via Bluetooth'
             'telegram-desktop: sharing via Telegram')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('1709a31d446e7be432179b7fcd2ee26e8e3b9fde0a39ab3557835643873ae558')
+sha256sums=('dd9f23baf4c4a44f1c71f7d3b0bfe7fbfbcdda2002d74d4b49cd84631ac899e9')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
