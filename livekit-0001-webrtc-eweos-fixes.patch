@@ -1,0 +1,24 @@
+Apply webrtc patches and some workaround
+diff --git a/webrtc-sys/libwebrtc/build_linux.sh b/webrtc-sys/libwebrtc/build_linux.sh
+index a27bbef..26d5df0 100755
+--- a/webrtc-sys/libwebrtc/build_linux.sh
++++ b/webrtc-sys/libwebrtc/build_linux.sh
+@@ -91,6 +91,8 @@ git apply "$COMMAND_DIR/patches/ssl_verify_callback_with_native_handle.patch" -v
+ git apply "$COMMAND_DIR/patches/add_deps.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
+ git apply "$COMMAND_DIR/patches/gn_use_system_python3.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
+ git apply "$COMMAND_DIR/patches/generate_licenses_use_system_gn.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
++git apply "$COMMAND_DIR/patches/webrtc-0001-do-not-link-against-libatomic.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
++git apply "$COMMAND_DIR/patches/webrtc-0002-fix-glibcisms.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
+ 
+ if [ "$arch" = "riscv64" ]; then
+   git apply "$COMMAND_DIR/patches/riscv-ffmpeg.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
+@@ -149,7 +151,8 @@ if [ "$toolchain" = "host" ]; then
+     custom_toolchain=\"//build/toolchain/linux/unbundle:default\" \
+     host_toolchain=\"//build/toolchain/linux/unbundle:default\" \
+     clang_use_chrome_plugins=false \
+-    use_sysroot=false";
++    use_sysroot=false \
++    clang_base_path=\"/usr\"";
+ fi
+ 
+ # generate ninja files

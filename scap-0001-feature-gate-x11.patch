@@ -1,0 +1,233 @@
+From e0614c28c9ae65cc6a8a527fa328553fbf8bb379 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?S=C3=A9bastien=20COUDREAU?= <sebastien.coudreau@gmail.com>
+Date: Tue, 15 Apr 2025 10:49:12 +0200
+Subject: [PATCH] New 'x11' feature to enable/disable all X11 specific code.
+
+Allow building without any X11 dependency on wayland-only linux targets.
+---
+ Cargo.toml                       |  6 ++--
+ src/capturer/engine/linux/mod.rs | 28 +++++++++++------
+ src/targets/linux/mod.rs         | 54 ++++++++++++++++++++++----------
+ src/targets/mod.rs               |  4 +--
+ 4 files changed, 61 insertions(+), 31 deletions(-)
+
+diff --git a/Cargo.toml b/Cargo.toml
+index f149255..f0b847e 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -16,7 +16,7 @@ keywords = ["screen", "recording", "video", "capture", "media"]
+ categories = ["graphics", "multimedia", "multimedia::video"]
+ 
+ [features]
+-default = ["wayland"]
++x11 = ["dep:xcb", "dep:x11"]
+ wayland = ["dep:pipewire", "dep:dbus"]
+ 
+ [dependencies]
+@@ -43,7 +43,7 @@ objc = "0.2.7"
+ 
+ [target.'cfg(any(target_os = "linux", target_os = "freebsd"))'.dependencies]
+ rand = "0.8.5"
+-xcb = { version = "1.4.0", features = ["randr", "xlib_xcb", "xfixes"] }
+-x11 = "2.21.0"
++xcb = { version = "1.4.0", features = ["randr", "xlib_xcb", "xfixes"], optional = true }
++x11 = { version ="2.21.0", optional = true }
+ pipewire = { version = "0.8.0", optional = true }
+ dbus = { version = "0.9.7", optional = true }
+diff --git a/src/capturer/engine/linux/mod.rs b/src/capturer/engine/linux/mod.rs
+index d79c221..41c875a 100644
+--- a/src/capturer/engine/linux/mod.rs
++++ b/src/capturer/engine/linux/mod.rs
+@@ -1,6 +1,11 @@
++#[cfg(not(any(feature = "wayland", feature = "x11")))]
++compile_error!("'wayland' or 'x11' feature must be enabled.");
++
+ use std::{env, sync::mpsc};
+ 
+ use anyhow::{anyhow, Result};
++
++#[cfg(feature = "x11")]
+ use x11::X11Capturer;
+ 
+ use crate::{capturer::Options, frame::Frame};
+@@ -9,6 +14,8 @@ mod error;
+ 
+ #[cfg(feature = "wayland")]
+ mod wayland;
++
++#[cfg(feature = "x11")]
+ mod x11;
+ 
+ #[cfg(feature = "wayland")]
+@@ -35,19 +42,22 @@ impl LinuxCapturer {
+             });
+         }
+ 
++        #[cfg(feature = "x11")]
+         if env::var("DISPLAY").is_ok() {
+             log::debug!("Creating new X11 screen capturer.");
+-            Ok(Self {
++            return Ok(Self {
+                 imp: Box::new(X11Capturer::new(options, tx)?),
+-            })
+-        } else {
+-            #[cfg(feature = "wayland")]
+-            let error_msg = "Unsupported platform. Could not detect Wayland or X11 displays";
+-            #[cfg(not(feature = "wayland"))]
+-            let error_msg = "Unsupported platform. Could not detect X11 display. Enable the 'wayland' feature for Wayland support.";
+-            
+-            Err(anyhow!(error_msg))
++            });
+         }
++
++        #[cfg(all(feature = "wayland", feature = "x11"))]
++        let error_msg = "Unsupported platform. Could not detect Wayland or X11 displays";
++        #[cfg(all(not(feature = "wayland"), feature = "x11"))]
++        let error_msg = "Unsupported platform. Could not detect X11 display. Enable the 'wayland' feature for Wayland support.";
++        #[cfg(all(feature = "wayland", not(feature = "x11")))]
++        let error_msg = "Unsupported platform. Could not detect wayland display. Enable the 'x11' feature for X11 support.";
++
++        Err(anyhow!(error_msg))
+     }
+ }
+ 
+diff --git a/src/targets/linux/mod.rs b/src/targets/linux/mod.rs
+index 12858c2..26c98a6 100644
+--- a/src/targets/linux/mod.rs
++++ b/src/targets/linux/mod.rs
+@@ -1,15 +1,25 @@
++#[cfg(not(any(feature = "wayland", feature = "x11")))]
++compile_error!("'wayland' or 'x11' feature must be enabled.");
++
++#[cfg(feature = "x11")]
+ use std::ffi::{c_char, CStr, CString, NulError};
+ 
+ use super::{Display, Target};
+ 
+-use anyhow::{anyhow, Context as _};
++use anyhow::anyhow;
++#[cfg(feature = "x11")]
++use anyhow::Context as _;
++
++#[cfg(feature = "x11")]
+ use x11::xlib::{XFreeStringList, XGetTextProperty, XTextProperty, XmbTextPropertyToTextList};
++#[cfg(feature = "x11")]
+ use xcb::{
+     randr::{GetCrtcInfo, GetOutputInfo, GetOutputPrimary, GetScreenResources},
+     x::{self, GetPropertyReply, Screen},
+     Xid,
+ };
+ 
++#[cfg(feature = "x11")]
+ fn get_atom(conn: &xcb::Connection, atom_name: &str) -> Result<x::Atom, xcb::Error> {
+     let cookie = conn.send_request(&x::InternAtom {
+         only_if_exists: true,
+@@ -18,6 +28,7 @@ fn get_atom(conn: &xcb::Connection, atom_name: &str) -> Result<x::Atom, xcb::Err
+     Ok(conn.wait_for_reply(cookie)?.atom())
+ }
+ 
++#[cfg(feature = "x11")]
+ fn get_property(
+     conn: &xcb::Connection,
+     win: x::Window,
+@@ -36,6 +47,7 @@ fn get_property(
+     Ok(conn.wait_for_reply(cookie)?)
+ }
+ 
++#[cfg(feature = "x11")]
+ fn decode_compound_text(
+     conn: &xcb::Connection,
+     value: &[u8],
+@@ -82,6 +94,7 @@ fn decode_compound_text(
+     }
+ }
+ 
++#[cfg(feature = "x11")]
+ fn get_x11_targets() -> Result<Vec<Target>, xcb::Error> {
+     let (conn, _screen_num) =
+         xcb::Connection::connect_with_xlib_display_and_extensions(&[xcb::Extension::RandR], &[])?;
+@@ -181,18 +194,22 @@ pub fn get_all_targets() -> anyhow::Result<Vec<Target>> {
+         return Ok(Vec::new());
+     }
+ 
++    #[cfg(feature = "x11")]
+     if std::env::var("DISPLAY").is_ok() {
+-        Ok(get_x11_targets()?)
+-    } else {
+-        #[cfg(feature = "wayland")]
+-        let error_msg = "Unsupported platform. Could not detect Wayland or X11 displays";
+-        #[cfg(not(feature = "wayland"))]
+-        let error_msg = "Unsupported platform. Could not detect X11 display. Enable the 'wayland' feature for Wayland support.";
+-
+-        Err(anyhow!(error_msg))
++        return Ok(get_x11_targets()?);
+     }
++
++    #[cfg(all(feature = "wayland", feature = "x11"))]
++    let error_msg = "Unsupported platform. Could not detect Wayland or X11 displays";
++    #[cfg(all(not(feature = "wayland"), feature = "x11"))]
++    let error_msg = "Unsupported platform. Could not detect X11 display. Enable the 'wayland' feature for Wayland support.";
++    #[cfg(all(feature = "wayland", not(feature = "x11")))]
++    let error_msg = "Unsupported platform. Could not detect Wayland display. Enable the 'x11' feature for X11 support.";
++
++    Err(anyhow!(error_msg))
+ }
+ 
++#[cfg(feature = "x11")]
+ pub(crate) fn get_default_x_display(
+     conn: &xcb::Connection,
+     screen: &Screen,
+@@ -231,20 +248,23 @@ pub fn get_main_display() -> anyhow::Result<Display> {
+         ));
+     }
+ 
++    #[cfg(feature = "x11")]
+     if std::env::var("DISPLAY").is_ok() {
+         let (conn, screen_num) =
+             xcb::Connection::connect_with_extensions(None, &[xcb::Extension::RandR], &[]).unwrap();
+         let setup = conn.get_setup();
+         let screen = setup.roots().nth(screen_num as usize).unwrap();
+-        get_default_x_display(&conn, screen).context("Failed to get main X11 display.")
+-    } else {
+-        #[cfg(feature = "wayland")]
+-        let error_msg = "Unsupported platform. Could not detect Wayland or X11 displays";
+-        #[cfg(not(feature = "wayland"))]
+-        let error_msg = "Unsupported platform. Could not detect X11 display. Enable the 'wayland' feature for Wayland support.";
+-
+-        Err(anyhow!(error_msg))
++        return get_default_x_display(&conn, screen).context("Failed to get main X11 display.");
+     }
++
++    #[cfg(all(feature = "wayland", feature = "x11"))]
++    let error_msg = "Unsupported platform. Could not detect Wayland or X11 displays";
++    #[cfg(all(not(feature = "wayland"), feature = "x11"))]
++    let error_msg = "Unsupported platform. Could not detect X11 display. Enable the 'wayland' feature for Wayland support.";
++    #[cfg(all(feature = "wayland", not(feature = "x11")))]
++    let error_msg = "Unsupported platform. Could not detect Wayland display. Enable the 'x11' feature for X11 support.";
++
++    Err(anyhow!(error_msg))
+ }
+ 
+ pub fn get_target_dimensions(target: &Target) -> (u64, u64) {
+diff --git a/src/targets/mod.rs b/src/targets/mod.rs
+index 929cc73..8cd0536 100644
+--- a/src/targets/mod.rs
++++ b/src/targets/mod.rs
+@@ -20,7 +20,7 @@ pub struct Window {
+     #[cfg(target_os = "macos")]
+     pub raw_handle: core_graphics_helmer_fork::window::CGWindowID,
+ 
+-    #[cfg(any(target_os = "linux", target_os = "freebsd"))]
++    #[cfg(all(any(target_os = "linux", target_os = "freebsd"), feature = "x11" ))]
+     pub raw_handle: xcb::x::Window,
+ }
+ 
+@@ -35,7 +35,7 @@ pub struct Display {
+     #[cfg(target_os = "macos")]
+     pub raw_handle: core_graphics_helmer_fork::display::CGDisplay,
+ 
+-    #[cfg(any(target_os = "linux", target_os = "freebsd"))]
++    #[cfg(all(any(target_os = "linux", target_os = "freebsd"), feature = "x11" ))]
+     pub raw_handle: xcb::x::Window,
+     #[cfg(any(target_os = "linux", target_os = "freebsd", target_os = "windows"))]
+     pub width: u16,

@@ -1,0 +1,60 @@
+Removes all X11 features. Can be rewritten with one big feature gate
+controlling all X11 features after scap's patch [1] is accepted.
+
+[1]: https://github.com/zed-industries/scap/pull/1
+diff --git a/crates/gpui/Cargo.toml b/crates/gpui/Cargo.toml
+index 81ae893143..df16157ed2 100644
+--- a/crates/gpui/Cargo.toml
++++ b/crates/gpui/Cargo.toml
+@@ -12,7 +12,7 @@ license = "Apache-2.0"
+ workspace = true
+ 
+ [features]
+-default = ["http_client", "font-kit", "wayland", "x11"]
++default = ["http_client", "font-kit", "wayland"]
+ test-support = [
+     "leak-detection",
+     "collections/test-support",
+@@ -165,7 +165,7 @@ cosmic-text = { version = "0.14.0", optional = true }
+ font-kit = { git = "https://github.com/zed-industries/font-kit", rev = "5474cfad4b719a72ec8ed2cb7327b2b01fd10568", features = [
+     "source-fontconfig-dlopen",
+ ], optional = true }
+-scap = { workspace = true, optional = true }
++scap = { workspace = true, optional = true, features = ["wayland"] }
+ 
+ calloop = { version = "0.13.0" }
+ filedescriptor = { version = "0.8.2", optional = true }
+@@ -201,7 +201,6 @@ x11rb = { version = "0.13.1", features = [
+ ], optional = true }
+ xkbcommon = { version = "0.8.0", features = [
+     "wayland",
+-    "x11",
+ ], optional = true }
+ xim = { git = "https://github.com/XDeme1/xim-rs", rev = "d50d461764c2213655cd9cf65a0ea94c70d3c4fd", features = [
+     "x11rb-xcb",
+diff --git a/crates/livekit_client/Cargo.toml b/crates/livekit_client/Cargo.toml
+index 6e7300e318..2c9a3d6837 100644
+--- a/crates/livekit_client/Cargo.toml
++++ b/crates/livekit_client/Cargo.toml
+@@ -25,7 +25,7 @@ async-trait.workspace = true
+ collections.workspace = true
+ cpal = "0.15"
+ futures.workspace = true
+-gpui = { workspace = true, features = ["x11", "wayland"] }
++gpui = { workspace = true, features = ["wayland"] }
+ gpui_tokio.workspace = true
+ http_client_tls.workspace = true
+ image.workspace = true
+diff --git a/crates/zed/Cargo.toml b/crates/zed/Cargo.toml
+index cc12c8d37b..804334ce32 100644
+--- a/crates/zed/Cargo.toml
++++ b/crates/zed/Cargo.toml
+@@ -60,7 +60,7 @@ git.workspace = true
+ git_hosting_providers.workspace = true
+ git_ui.workspace = true
+ go_to_line.workspace = true
+-gpui = { workspace = true, features = ["wayland", "x11", "font-kit"] }
++gpui = { workspace = true, features = ["wayland", "font-kit"] }
+ gpui_tokio.workspace = true
+ http_client.workspace = true
+ image_viewer.workspace = true
