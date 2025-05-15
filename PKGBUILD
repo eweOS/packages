@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=knotifyconfig
-pkgver=6.9.0
+pkgver=6.14.0
 pkgrel=1
 pkgdesc='Configuration system for KNotify'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +16,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('19b030477e609ff576d2d80886733af209b5d0d2384dd1d11877cb9dc380a489')
+sha256sums=('067eba5c9965ab05cdd3e8a57d6afa25e8a9e77905d4d01a327536c11d4cca8b')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
