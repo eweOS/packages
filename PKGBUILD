@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kjobwidgets
-pkgver=6.9.0
+pkgver=6.14.0
 pkgrel=1
 pkgdesc='Widgets for tracking KJob instances'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('81867978a3add5c2539e6ac4cfd1711ae44ceb50f4654f598c5dd0ab05553716')
+sha256sums=('8c47042afae57447945b43cc91d897fa353286237a63e35294be4eb4a4662abd')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
