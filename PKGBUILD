@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=krunner
-pkgver=6.9.0
+pkgver=6.14.0
 pkgrel=1
 pkgdesc='Framework for providing different actions given a string query'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +16,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('eb4a5ee730b8d53641d8b08bdeb8d4bb065b19b6de3fa2ae9250436822f00d8c')
+sha256sums=('138cfb98cd73392722f4499408d075a2c7705bdbf436ecc077360c3153db2fa6')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
