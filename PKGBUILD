@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kcolorscheme
-pkgver=6.9.0
+pkgver=6.14.0
 pkgrel=1
 pkgdesc='Classes to read and interact with KColorScheme'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ depends=(kconfig
 makedepends=(extra-cmake-modules qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('71beaae08b294b5ebf25c5174a1d55cacdce5e8991e9167d143a448b9574281a')
+sha256sums=('601b304dd5cc2fb065d8e658bdb0b87e1e37021000cf6a6f5b2ee8a5bfbaf5c9')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
