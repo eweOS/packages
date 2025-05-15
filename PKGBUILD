@@ -2,26 +2,28 @@
 
 pkgname=ripgrep
 pkgver=14.1.1
-pkgrel=1
+pkgrel=2
 _rust_pcre2_ver=0.2.9
 pkgdesc='Recursively searches directories for a regex pattern while respecting your gitignore'
 url=https://github.com/BurntSushi/ripgrep
 license=('MIT OR Unlicense')
 arch=(x86_64 aarch64 riscv64 loongarch64)
 makedepends=(git cargo rust)
-depends=(musl llvm-libs pcre2)
+depends=(musl mimalloc llvm-libs pcre2)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "git+https://github.com/BurntSushi/rust-pcre2.git#tag=$_rust_pcre2_ver"
-        pcre2-sys-musl-dynamic.patch)
+        pcre2-sys-musl-dynamic.patch
+        no-jemalloc.patch)
 sha256sums=('4dad02a2f9c8c3c8d89434e47337aa654cb0e2aa50e806589132f186bf5c2b66'
             '974611ff5d7be6d4a79695575ca07702126bd91012701f64b65c4be1d9c66a7d'
-            'e6f3050e4dcd81a17332a6826c157c4e33dc1fdf02b6fe71aaa891b79783bbf7')
+            'e6f3050e4dcd81a17332a6826c157c4e33dc1fdf02b6fe71aaa891b79783bbf7'
+            'bbb1571af97f046d17d7ece1b37f86cb0e491a343ba314e464895779747be582')
 
 prepare() {
-  cd rust-pcre2
-  patch -Np1 -i ../pcre2-sys-musl-dynamic.patch
+  patch -d rust-pcre2 -Np1 -i ../pcre2-sys-musl-dynamic.patch
 
-  cd "$srcdir"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
+  patch -Np1 -i ../no-jemalloc.patch
   echo -e '\n[patch.crates-io]\npcre2-sys = { path = "../rust-pcre2/pcre2-sys" }' >> Cargo.toml
   cargo update -p pcre2-sys
   cargo fetch --locked --target $RUSTHOST
@@ -29,13 +31,15 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  export RUSTFLAGS="-Clink-arg=-flto=auto"
+  export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-flto=auto"
+  export LDFLAGS="$LDFLAGS -lmimalloc"
   cargo build --frozen --release --all-features
 }
 
 check() {
   cd $pkgname-$pkgver
-  export RUSTFLAGS="-Clink-arg=-flto=auto"
+  export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-flto=auto"
+  export LDFLAGS="$LDFLAGS -lmimalloc"
   cargo test --frozen --all-features
 }
 
