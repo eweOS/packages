@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kpackage
-pkgver=6.9.0
+pkgver=6.14.0
 pkgrel=1
 pkgdesc='Framework that lets applications manage user installable packages of non-binary assets'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('62a76b896378b4b7a392528fbfb9ff8427f99f727ff27e2a5e06fe5cbef567a9')
+sha256sums=('fb2e260f7a2e2b4cfda4559881485899a77cf5fbc3b8ae05d06444bec82ed1ab')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
