@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=threadweaver
-pkgver=6.9.0
+pkgver=6.14.0
 pkgrel=1
 pkgdesc='High-level multithreading framework'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('d249181d21aa89ad6f5108db3b188c25c9415c9834110f8d15f6bab2df39c190')
+sha256sums=('a8f71f7e69751e36dbc7fce9581f55b66844bc68df6af2e8a94c22c8fe9870ae')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
