@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kdbusaddons
-pkgver=6.9.0
+pkgver=6.14.0
 pkgrel=1
 pkgdesc='Addons to QtDBus'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(qt6-base)
 makedepends=(extra-cmake-modules qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('30a0b18f702830ee3e9ae94f0d953b0bf835f3d9c836cb22366de48065a3a74c')
+sha256sums=('f673c9f295df5998948def94caf92d487d63886452802ffb97ad151315627ee4')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
