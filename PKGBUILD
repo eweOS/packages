@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pawprint
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A substitution of systemd-tmpfiles"
 url="https://github.com/eweOS/pawprint"
@@ -12,7 +12,7 @@ source=("$pkgname::git+$url.git#tag=v$pkgver"
         "$pkgname.service"
         pawprint-reload.hook
         pawprint-reload.script)
-sha256sums=('360f4aee8c7132a266a64750d3b9aad4bbb7fff077de50c60e3afb04beef26b0'
+sha256sums=('83960253358621ecf1132e0a22044e60010dbe49c9a4aca17c7c639e90024b03'
             'f93ee18de7c6f6426427a7ce7aa8632d85802fbc5a1178860f7ba26a262506eb'
             'a47a75887d912acc603434e0b93d8407a2410e75892cd0599f884721144c868a'
             '1a22a7add0b8e29932ba7d2ac0efeb78d95807b1194e2c40862d1d7b09ef6675')
