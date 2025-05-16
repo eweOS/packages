@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=zenity
-pkgver=4.0.3
-pkgrel=2
+pkgver=4.0.5
+pkgrel=1
 pkgdesc="Display graphical dialog boxes from shell scripts"
 url="https://gitlab.gnome.org/GNOME/zenity"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -23,7 +23,7 @@ makedepends=(
   yelp-tools
 )
 source=("git+$url.git#tag=$pkgver")
-sha256sums=('62ced0b048457bbf96c5bc6e37975e28679ca6654a9c580d40532ff67a4382ce')
+sha256sums=('ff25d51c9670bf4e152cde7fb321cf79726fc91af10c71d08d73cb9356c6db34')
 
 build() {
   ewe-meson zenity build
