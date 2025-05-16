@@ -1,6 +1,6 @@
-From 20693010f6fb4a18e5117a28099dd7e034d64448 Mon Sep 17 00:00:00 2001
+From 5790860531e2fe601bbffcdc6bc7a5f192e8f593 Mon Sep 17 00:00:00 2001
 From: Yao Zi <ziyao@disroot.org>
-Date: Sun, 13 Oct 2024 20:14:47 +0000
+Date: Wed, 21 May 2025 09:45:11 +0000
 Subject: [PATCH] drop -latomic for riscv targets
 
 Rustc doesn't recognize compiler-rt based Linux distro correctly and
@@ -9,32 +9,15 @@ manually.
 
 Signed-off-by: Yao Zi <ziyao@disroot.org>
 ---
- compiler/rustc_llvm/build.rs               | 18 +-----------------
+ compiler/rustc_llvm/build.rs               |  8 --------
  src/bootstrap/src/core/build_steps/llvm.rs | 19 -------------------
- 2 files changed, 1 insertion(+), 36 deletions(-)
+ 2 files changed, 27 deletions(-)
 
 diff --git a/compiler/rustc_llvm/build.rs b/compiler/rustc_llvm/build.rs
-index 4c1f78e..9da5723 100644
+index 6692ea735401..16f9738a4250 100644
 --- a/compiler/rustc_llvm/build.rs
 +++ b/compiler/rustc_llvm/build.rs
-@@ -230,15 +230,7 @@ fn main() {
-         println!("cargo:rustc-link-lib=kstat");
-     }
- 
--    if (target.starts_with("arm") && !target.contains("freebsd"))
--        || target.starts_with("mips-")
--        || target.starts_with("mipsel-")
--        || target.starts_with("powerpc-")
--        || target.starts_with("sparc-")
--    {
--        // 32-bit targets need to link libatomic.
--        println!("cargo:rustc-link-lib=atomic");
--    } else if target.contains("windows-gnu") {
-+    if target.contains("windows-gnu") {
-         println!("cargo:rustc-link-lib=shell32");
-         println!("cargo:rustc-link-lib=uuid");
-     } else if target.contains("haiku")
-@@ -348,14 +340,6 @@ fn main() {
+@@ -383,14 +383,6 @@ fn main() {
          "stdc++"
      };
  
@@ -50,10 +33,10 @@ index 4c1f78e..9da5723 100644
      if !target.contains("msvc") {
          if let Some(s) = llvm_static_stdcpp {
 diff --git a/src/bootstrap/src/core/build_steps/llvm.rs b/src/bootstrap/src/core/build_steps/llvm.rs
-index f234b08..1d07b98 100644
+index e21804fa3c07..884bf69459bf 100644
 --- a/src/bootstrap/src/core/build_steps/llvm.rs
 +++ b/src/bootstrap/src/core/build_steps/llvm.rs
-@@ -400,25 +400,6 @@ impl Step for Llvm {
+@@ -399,25 +399,6 @@ impl Step for Llvm {
              cfg.define("LLVM_LINK_LLVM_DYLIB", "ON");
          }
  
@@ -80,5 +63,5 @@ index f234b08..1d07b98 100644
              // LLVM wants 64-bit atomics, while mipsel is 32-bit only, so needs -latomic
              ldflags.exe.push(" -latomic");
 -- 
-2.47.0
+2.49.0
 
