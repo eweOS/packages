@@ -9,7 +9,7 @@ pkgdesc="Linux kernel module management"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
 license=(LGPL-2.1-or-later GPL-2.0-or-later)
-depends=(musl zlib openssl xz zstd llvm-libs)
+depends=(musl zlib openssl xz zstd) # shared between kmod and libkmod
 makedepends=(scdoc)
 checkdepends=(linux-devel libelf lld linux)
 source=("https://www.kernel.org/pub/linux/utils/kernel/$pkgname/$pkgname-$pkgver.tar.xz"
@@ -57,9 +57,9 @@ check() {
 }
 
 package_kmod() {
-  depends=("libkmod=${pkgver}")
   pkgdesc="$pkgdesc tool"
   license=(GPL-2.0-or-later)
+  # Does not depend on libkmod due to its static link to libkmod_internal
 
   # use libtool to avoid symlink failure
   export MAKEFLAGS="CC=cc CXX=c++ -j$JOBS"
@@ -81,8 +81,8 @@ package_kmod() {
 
 package_libkmod() {
   pkgdesc="$pkgdesc library"
-  provides=(libkmod.so)
   license=(LGPL-2.0-or-later)
+  provides=(libkmod.so)
 
   install -d $pkgdir/usr
   mv libkmod/* $pkgdir/usr
