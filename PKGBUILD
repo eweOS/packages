@@ -1,9 +1,10 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Julian Droske <juliandroske@outlook.com>
 
 pkgname=libudev
 _pkgname=libudev-zero
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 so_ver=1.6.3
 pkgdesc="Daemonless replacement for libudev "
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,10 +15,12 @@ makedepends=('musl' 'make' 'git' 'linux-headers')
 provides=('libudev-zero' 'libeudev' 'libudev')
 source=(
   "git+$url.git#commit=$_commit"
-  sound-initialized.patch
+  0000-sound-initialized.patch
+  0001-scan-net-devices.patch
 )
 sha256sums=('SKIP'
-            '934173ce6bb325d155116e2d023aea9cf004ae021b04d63ddde1e97ad1d61986')
+            '934173ce6bb325d155116e2d023aea9cf004ae021b04d63ddde1e97ad1d61986'
+            '4bcd4d05285fbfb01fc0986e6916d1c93f211b483f7b67d5cfe2eb2fd8806d4f')
 
 pkgver()
 {

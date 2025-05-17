@@ -1,0 +1,13 @@
+diff --git a/udev_enumerate.c b/udev_enumerate.c
+index d556ceb..bd67e87 100644
+--- a/udev_enumerate.c
++++ b/udev_enumerate.c
+@@ -280,7 +280,7 @@ static int scan_devices(struct udev_enumerate *udev_enumerate, const char *path)
+ 
+ int udev_enumerate_scan_devices(struct udev_enumerate *udev_enumerate)
+ {
+-    const char *path[] = { "/sys/dev/block", "/sys/dev/char", NULL };
++    const char *path[] = { "/sys/dev/block", "/sys/dev/char", "/sys/class/net", NULL };
+     int i;
+ 
+     if (!udev_enumerate) {
