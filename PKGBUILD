@@ -8,18 +8,16 @@ pkgrel=2
 pkgdesc="Linux kernel module management"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
-license=('LGPL-2.1-or-later' 'GPL-2.0-or-later')
-depends=('musl' 'zlib' 'openssl' 'xz' 'zstd' 'llvm-libs')
-makedepends=('scdoc')
-checkdepends=('linux-devel' 'libelf' 'lld' 'linux')
-source=(
-  "https://www.kernel.org/pub/linux/utils/kernel/$pkgname/$pkgname-$pkgver.tar.xz"
-  lfs64.patch
-  fix-test-ldflags.patch
-  depmod-search.conf
-  depmod.hook
-  depmod.script
-)
+license=(LGPL-2.1-or-later GPL-2.0-or-later)
+depends=(musl zlib openssl xz zstd llvm-libs)
+makedepends=(scdoc)
+checkdepends=(linux-devel libelf lld linux)
+source=("https://www.kernel.org/pub/linux/utils/kernel/$pkgname/$pkgname-$pkgver.tar.xz"
+        lfs64.patch
+        fix-test-ldflags.patch
+        depmod-search.conf
+        depmod.hook
+        depmod.script)
 sha256sums=('dc768b3155172091f56dc69430b5481f2d76ecd9ccb54ead8c2540dbcf5ea9bc'
             '6a780f666ffe25facc5dc0d8c7c422b006de009c92543d663dcc66f4f1e3ac54'
             '540e07c6c5623d7b519a6f9bb18e151c2f764c1d77c22c842d09f2d3daafb844'
@@ -27,13 +25,11 @@ sha256sums=('dc768b3155172091f56dc69430b5481f2d76ecd9ccb54ead8c2540dbcf5ea9bc'
             'c11c2a0f66ea405493e8617689ca10818dc81dd1dddc19bdb220c8b2917119c1'
             '60149f97cd139ef0f4962552d40e03b945aab8a69ffb3f9c6c7d502e11c4fe41')
 
-prepare()
-{
+prepare() {
   _patch_ "$pkgbase-$pkgver"
 }
 
-build()
-{
+build() {
   cd "$pkgbase-$pkgver"
   # use libtool to avoid symlink failure
   export MAKEFLAGS="CC=cc CXX=c++ -j$JOBS"
@@ -60,11 +56,10 @@ check() {
   make -C "$pkgname-$pkgver" check KDIR="$kdir" KVER="$kver" LLVM=1 LLVM_IAS=1 || :
 }
 
-package_kmod()
-{
+package_kmod() {
   depends=("libkmod=${pkgver}")
   pkgdesc="$pkgdesc tool"
-  license=('GPL2')
+  license=(GPL-2.0-or-later)
 
   # use libtool to avoid symlink failure
   export MAKEFLAGS="CC=cc CXX=c++ -j$JOBS"
@@ -84,11 +79,10 @@ package_kmod()
   install -Dm0755 "${srcdir}/depmod.script" "${pkgdir}/usr/share/libalpm/scripts/depmod"
 }
 
-package_libkmod()
-{
+package_libkmod() {
   pkgdesc="$pkgdesc library"
-  provides=('libkmod.so')
-  license=('LGPL2')
+  provides=(libkmod.so)
+  license=(LGPL-2.0-or-later)
 
   install -d $pkgdir/usr
   mv libkmod/* $pkgdir/usr
