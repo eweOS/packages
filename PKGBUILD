@@ -4,7 +4,7 @@ pkgbase=linux-tools
 pkgname=(bpftool tmon)
 groups=($pkgbase)
 pkgver=6.14.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux kernel tools'
 license=(GPL-2.0-only)
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -20,6 +20,13 @@ options=(!strip !lto)
 #   # tmon
 #   ncurses
 # )
+# HACK: list these dependencies here so that OBS can read them
+# Make sure to update both here and `makedepends=` comments above and below
+# when modifying dependencies
+# Note that OBS upstream currently only supports _x86_64 (and _i686) suffix,
+# though.
+makedepends=(linux-headers asciidoc xmlto readline zlib libcap libelf python-docutils ncurses)
+makedepends_x86_64=(libnl libcap)
 source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz
         0001-bpftool-disable-bpf_jit_disasm.patch  # downstream
         0002-turbostat-add-linux-limits.h.patch)   # will upstream
@@ -38,12 +45,6 @@ x86_64)
   # )
   ;;
 esac
-
-# HACK: list these dependencies here so that OBS can read them
-# Make sure to update both here and `makedepends=` comments above when
-# modifying dependencies
-makedepends=(linux-headers asciidoc xmlto readline zlib libcap libelf python-docutils ncurses)
-makedepends_x86_64=(libnl libcap)
 
 prepare() {
   _patch_ linux-$pkgver
