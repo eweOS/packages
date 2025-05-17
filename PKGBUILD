@@ -2,7 +2,7 @@
 
 pkgname=dbus
 pkgver=1.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -27,7 +27,7 @@ sha256sums=('d77cc71acd93e85f2bd2a6fe3a40e5bd023519e3e9fa9b5361e7109f42b74060'
             '16d5a4e3025b8c24f82ca37fa97b066b18efa872b84718e9a6c674da5d1a164e'
             'da9ac8ffa3d3e063bce04332b58215e3741f4be4040307d0317a3ba775d3d68a'
             'ea47f0e560b61a089a4b2eadd1bb27983694ee0ef9e5f1417658a2d56f1bd620'
-            '7d8d45af88ad4b4e512b4d6d42bcbe982a539418f6368b56fc4bf25950484f9b'
+            '9dc77d067c5980b0945150c648e89af7a0e23d520497712cc2e5be85eb5226c4'
             'fd03ccef383b40c60fa538481c276ea113709a161cc340c6db00adf99d9e7993')
 
 build()
