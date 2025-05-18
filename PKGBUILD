@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=go-md2man
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc='A markdown to manpage generator'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -9,7 +9,7 @@ url='https://github.com/cpuguy83/go-md2man'
 license=('MIT')
 makedepends=('go')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/cpuguy83/go-md2man/archive/v$pkgver.tar.gz")
-sha256sums=('5fa29154237bc840a10a06231c066f9ddbe06bb31d1c3372eab12e1ed977271f')
+sha256sums=('ca3a5b57e2c01759f5a00ad2a578d034c5370fae9aa7a6c3af5648b2fc802a92')
 
 build() {
   cd "$pkgname-$pkgver"
