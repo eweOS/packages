@@ -1,27 +1,25 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=libmarisa
-pkgver=0.2.6
-pkgrel=3
+pkgver=0.2.7
+pkgrel=1
 pkgdesc='Matching Algorithm with Recursively Implemented StorAge'
 url='https://github.com/s-yata/marisa-trie'
 arch=(x86_64 aarch64 riscv64 loongarch64)
-license=(BSD)
+license=(BSD-2-Clause)
 depends=(musl)
-makedepends=(autoconf automake libtool)
 provides=(libmarisa.so)
-source=("https://github.com/s-yata/marisa-trie/archive/refs/tags/v$pkgver.tar.gz"
-	"0001-Fix-detection-of-MARISA_WORD_SIZE.patch")
-sha256sums=('1063a27c789e75afa2ee6f1716cc6a5486631dcfcb7f4d56d6485d2462e566de'
-            '3df8a4e26b767a1cfde93c862c7d45d685b982d19fa4404c938258e31cba248d')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/s-yata/marisa-trie/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('d4e0097d3a78e2799dfc55c73420d1a43797a2986a4105facfe9a33f4b0ba3c2')
 
 prepare() {
-	_patch_ marisa-trie-$pkgver
+	cd marisa-trie-$pkgver
+	autoreconf -i
 }
 
 build () {
 	cd marisa-trie-$pkgver
-	autoreconf -i
+
 	./configure --prefix=/usr
 	make
 }
@@ -33,6 +31,8 @@ check() {
 
 package() {
 	cd marisa-trie-$pkgver
-	make install DESTDIR=${pkgdir}
+
+	make install DESTDIR="$pkgdir"
+	_install_license_ COPYING.md
 }
 
