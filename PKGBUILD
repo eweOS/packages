@@ -2,7 +2,7 @@
 
 pkgname=libmusicbrainz
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library That Provides Access to the MusicBrainz Server"
 url='https://musicbrainz.org/doc/libmusicbrainz'
 arch=(x86_64 aarch64 riscv64 loongarch64)
