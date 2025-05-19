@@ -6,7 +6,7 @@ pkgname=(
   emacs-nogui
 )
 pkgver=30.1
-pkgrel=1
+pkgrel=2
 url='https://www.gnu.org/software/emacs/emacs.html'
 pkgdesc='Extensible, customizable, self-documenting free/libre text editor'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -85,14 +85,6 @@ _postpackage() {
 }
 
 package_emacs() {
-  cd "${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
-
-  _postpackage
-}
-
-package_emacs-nogui() {
-  pkgdesc="${pkgdesc} - without GUI"
   depends+=(
     at-spi2-core
     libjpeg
@@ -110,6 +102,15 @@ package_emacs-nogui() {
     gdk-pixbuf
     alsa-lib
   )
+
+  cd "${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+
+  _postpackage
+}
+
+package_emacs-nogui() {
+  pkgdesc="${pkgdesc} - without GUI"
   provides+=(emacs-nox)
 
   cd "${pkgname}-${pkgver}"
