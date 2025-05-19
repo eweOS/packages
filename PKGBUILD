@@ -8,7 +8,7 @@
 
 pkgname=aria2
 pkgver=1.37.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://aria2.github.io/'
