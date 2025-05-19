@@ -3,7 +3,7 @@
 pkgname=at-spi2-core
 pkgver=2.54.0
 _gittag="AT_SPI2_CORE_${pkgver//./_}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Protocol definitions and daemon for D-Bus at-spi"
 url="https://gitlab.gnome.org/GNOME/at-spi2-core"
 arch=(x86_64 aarch64 riscv64 loongarch64)
