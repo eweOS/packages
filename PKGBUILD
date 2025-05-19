@@ -4,7 +4,7 @@ _vers=(4.{2..5})
 
 pkgname=docbook-xml
 pkgver=${_vers[-1]}
-pkgrel=1
+pkgrel=2
 pkgdesc="A widely used XML scheme for writing documentation and help"
 url="https://www.oasis-open.org/docbook/"
 arch=(any)
