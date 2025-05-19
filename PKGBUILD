@@ -3,7 +3,7 @@
 pkgbase=podofo
 pkgname=(podofo{,-tools})
 pkgver=0.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++ library to work with the PDF file format'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://$pkgname.sourceforge.net"
