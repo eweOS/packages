@@ -2,7 +2,7 @@
 
 pkgname=itstool
 pkgver=2.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="XML to PO and back again"
 arch=(any)
 url="http://itstool.org/"
