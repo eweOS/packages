@@ -2,7 +2,7 @@
 
 pkgname=gtksourceview5
 pkgver=5.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A text widget adding syntax highlighting and more to GNOME"
 url="https://wiki.gnome.org/Projects/GtkSourceView"
 arch=(x86_64 aarch64 riscv64 loongarch64)
