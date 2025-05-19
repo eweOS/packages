@@ -2,7 +2,7 @@
 
 pkgname=shared-mime-info
 pkgver=2.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Shared MIME Info"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL2')
