@@ -2,7 +2,7 @@
 
 pkgname=libmusicbrainz
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library That Provides Access to the MusicBrainz Server"
 url='https://musicbrainz.org/doc/libmusicbrainz'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -28,7 +28,8 @@ prepare() {
 build() {
   cmake -S libmusicbrainz-$pkgver -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_BUILD_TYPE=None     \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build
 }
 
