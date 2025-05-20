@@ -2,7 +2,7 @@
 
 pkgname=gnome-calculator
 pkgver=47.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Scientific calculator"
 url="https://apps.gnome.org/Calculator"
 arch=(x86_64 aarch64 riscv64 loongarch64)
