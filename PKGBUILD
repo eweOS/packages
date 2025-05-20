@@ -2,15 +2,12 @@
 
 pkgname=ebook-tools
 pkgver=0.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Tools for accessing and converting various ebook file formats'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://sourceforge.net/projects/ebook-tools/'
 license=(MIT)
-depends=(convertlit
-         libxml2
-         libzip
-         sh)
+depends=(convertlit libxml2 libzip musl sh)
 makedepends=(cmake)
 source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
         crash-fix.patch)
@@ -24,7 +21,8 @@ prepare() {
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr		\
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build
 }
 
