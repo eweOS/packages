@@ -6,11 +6,11 @@ pkgname=(
   flatpak-docs
 )
 pkgver=1.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux application sandboxing and distribution framework (formerly xdg-app)"
 url="https://flatpak.org"
 arch=(x86_64 aarch64 riscv64 loongarch64)
-license=(LGPL)
+license=(LGPL-2.1-or-later)
 depends=(
   appstream
   bubblewrap
@@ -22,11 +22,13 @@ depends=(
   json-glib
   libarchive
   libseccomp
+  libxml2
   python
   wayland
   ostree
   gpgme
   xdg-dbus-proxy
+  zstd
 )
 makedepends=(
   docbook-xsl
