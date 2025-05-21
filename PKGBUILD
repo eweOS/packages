@@ -1,15 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=optipng
-pkgver=0.7.8
-pkgrel=2
+pkgver=7.9.1
+pkgrel=1
 pkgdesc='Compresses PNG files to a smaller size, without losing any information.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://optipng.sourceforge.net/'
 license=('ZLIB')
 depends=('libpng' 'zlib')
 source=("https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('25a3bd68481f21502ccaa0f4c13f84dcf6b20338e4c4e8c51f2cefbd8513398c')
+sha256sums=('c2579be58c2c66dae9d63154edcb3d427fef64cb00ec0aff079c9d156ec46f29')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
