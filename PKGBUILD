@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libplacebo
-pkgver=7.349.0
-pkgrel=7
+pkgver=7.351.0
+pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives'
 url='https://github.com/haasn/libplacebo'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,11 +14,8 @@ makedepends=(
   'libglvnd' 'fast_float'
 )
 provides=('libplacebo.so')
-# 0001: BACKPORT: fix linking with glslang 15
-source=("https://code.videolan.org/videolan/libplacebo/-/archive/v${pkgver}/libplacebo-v${pkgver}.tar.gz"
-	"0001-meson-add-glslang-lib.patch::https://github.com/haasn/libplacebo/commit/056b852018db04aa2ebc0982e27713afcea8106b.patch")
-sha512sums=('94fb0ad4f6cdafc81a43f06a73e49ef8ed7f81e751ad2a028f6f91295a06d8c12f2959e2595bd654db946fc5aa89758ab9d37f985ebb82badbd517ed02f3ddca'
-            '90d2a9e873774e879ac5f3693590a5fee0a40a838f7088643bd28412c2bfc1794c2ec934dca7f152c2ab2fec9c680bce60c6a9e3f98ba41dc9b7e188a5c891dd')
+source=("https://code.videolan.org/videolan/libplacebo/-/archive/v${pkgver}/libplacebo-v${pkgver}.tar.gz")
+sha512sums=('325e14b783aafdd0120abc6125d3949d60e2336fba3cd8d9aefececf93005a8333e5e6c53d6e54bb4c19e4a29981c9014f303fb48b5b89383ca948f64e7e6449')
 
 prepare() {
   _patch_ "$pkgname-v$pkgver"
