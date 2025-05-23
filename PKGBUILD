@@ -2,9 +2,9 @@
 
 pkgname=(llvm llvm-tools llvm-devel llvm-libs llvm-lto lldb openmp lld clang flang mlir wasi-libc++ wasi-libc++abi wasi-compiler-rt)
 _realpkgname=llvm-project
-pkgver=20.1.4
+pkgver=20.1.5
 _binutilsver=2.44
-pkgrel=4
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -36,7 +36,7 @@ source=(
   0001-clang-force-libc-linked-with-no-as-needed-when-using.patch
   0002-sanitizer-common-fix-build-on-ppc64-musl.patch::https://github.com/llvm/llvm-project/commit/801b519dfd01.patch
 )
-sha256sums=('65e3a582c4c684fa707a56ff643427bce3633eceaceae3295d81c0e830f44b89'
+sha256sums=('205c436f93a7e185cf9d63ae57e645f23561a4d1bf854f2c5bd78995a43a5c05'
             'ce2017e059d63e67ddb9240e9d4ec49c2893605035cd60e92ad53177f4377237'
             '5e58f02fe01ea22ea0406e4250ad89a053d517ef103a1dacfade4ecd98a7f2bc'
             'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94'
