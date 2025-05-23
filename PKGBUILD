@@ -2,9 +2,9 @@
 
 pkgname=(llvm llvm-tools llvm-devel llvm-libs llvm-lto lldb openmp lld clang flang mlir wasi-libc++ wasi-libc++abi wasi-compiler-rt)
 _realpkgname=llvm-project
-pkgver=20.1.4
+pkgver=20.1.5
 _binutilsver=2.44
-pkgrel=4
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://llvm.org'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -34,15 +34,13 @@ source=(
   llvm-install-prefix.patch
   try-llvm-libunwind.patch
   0001-clang-force-libc-linked-with-no-as-needed-when-using.patch
-  0002-sanitizer-common-fix-build-on-ppc64-musl.patch::https://github.com/llvm/llvm-project/commit/801b519dfd01.patch
 )
-sha256sums=('65e3a582c4c684fa707a56ff643427bce3633eceaceae3295d81c0e830f44b89'
+sha256sums=('205c436f93a7e185cf9d63ae57e645f23561a4d1bf854f2c5bd78995a43a5c05'
             'ce2017e059d63e67ddb9240e9d4ec49c2893605035cd60e92ad53177f4377237'
             '5e58f02fe01ea22ea0406e4250ad89a053d517ef103a1dacfade4ecd98a7f2bc'
             'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94'
             '13a1c761d41324c7a790df55650a3a98a9ade0348d6e88f1e269b6b77ce5df55'
-            '57808d224fd9218a936e6669bf4129eaf4aa04fbd45ab9f7fd5a20efc304e307'
-            '8646868f27da3c179ec191d5dc218624563a71cc159f14a97a6272b61ceb0747')
+            '57808d224fd9218a936e6669bf4129eaf4aa04fbd45ab9f7fd5a20efc304e307')
 
 _basedir=llvm-project-llvmorg-$pkgver
 
