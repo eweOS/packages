@@ -16,28 +16,29 @@ depends=(
   fribidi
   gmp
   gsm
+  libass
   libdrm
-  libpulse
-  mesa
   libopus
+  libpulse
   libsrt
+  libva
   libvorbis
-  rav1e
-  sdl2
-  svt-av1
   libx264
   libx265
-  xz
-  zlib
-  libva
-  libass
+  libxml2
   librsvg
-  vulkan-icd-loader
-  zimg
   libwebp
   libvpx
-  soxr
+  mesa
   openssl
+  rav1e
+  sdl2
+  soxr
+  svt-av1
+  vulkan-icd-loader
+  xz
+  zimg
+  zlib
 )
 makedepends=(
   clang
