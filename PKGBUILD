@@ -2,7 +2,7 @@
 
 pkgname=micro
 pkgver=2.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern and intuitive terminal-based text editor'
 url='https://micro-editor.github.io'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -40,8 +40,8 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 assets/packaging/micro.1 "$pkgdir/usr/share/man/man1"
-  install -Dm644 assets/packaging/micro.desktop "$pkgdir/usr/share/applications"
+  install -Dm644 assets/packaging/micro.1 "$pkgdir/usr/share/man/man1/micro.1"
+  install -Dm644 assets/packaging/micro.desktop "$pkgdir/usr/share/applications/micro.desktop"
   install -Dm644 assets/micro-logo-mark.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE LICENSE-THIRD-PARTY
 }
