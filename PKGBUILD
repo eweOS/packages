@@ -4,7 +4,7 @@
 pkgname=(linux linux-headers linux-devel linux-docs)
 _basename=linux
 pkgver=6.14.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux kernel'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
@@ -149,7 +149,7 @@ package_linux-devel() {
   echo "Removing unneeded architectures..."
   local _arch
   for _arch in "$_builddir"/arch/*/; do
-    [[ $_arch = */$dev_arch/ ]] && continue
+    [[ $_arch = */$_dev_arch/ ]] && continue
     echo "Removing $(basename "$_arch")"
     rm -r "$_arch"
   done
