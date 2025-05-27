@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xfce4-places-plugin
-pkgver=1.8.4
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="A menu with quick access to folders, documents, and removable media"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -11,7 +11,7 @@ groups=('xfce4-goodies')
 depends=('libnotify' 'xfce4-panel')
 makedepends=('git' 'intltool' 'xfce4-dev-tools')
 source=("git+https://gitlab.xfce.org/panel-plugins/xfce4-places-plugin.git#tag=$pkgname-$pkgver")
-sha256sums=('3c8a2b772cba501fb68e9151a16bba75a82a35198cb41c4884206520ff862e71')
+sha256sums=('4d17dedc900a642cc5f53917140464abda7d362046e06415557b0b6f3a803f8e')
 
 prepare() {
   cd $pkgname
