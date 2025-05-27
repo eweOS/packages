@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xfce4-taskmanager
-pkgver=1.5.8
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Easy to use task manager"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -11,7 +11,7 @@ depends=('libxfce4ui' 'xfconf')
 makedepends=('git' 'intltool' 'xfce4-dev-tools')
 groups=('xfce4-goodies')
 source=("git+https://gitlab.xfce.org/apps/xfce4-taskmanager.git#tag=$pkgname-$pkgver")
-sha256sums=('48f9453b01e066c78bd3e9c3779fe972e3ea45984cd13bf81f99653ec3ed1b46')
+sha256sums=('2304041ba75c7153f96cbccf238769aaf3e4145874e7d8bef70511185460a68a')
 
 prepare() {
   cd $pkgname
