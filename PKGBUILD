@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xfce4-wavelan-plugin
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Plugin to monitor wifi connectivity for the Xfce4 panel"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -11,7 +11,7 @@ groups=('xfce4-goodies')
 depends=('xfce4-panel')
 makedepends=('git' 'intltool' 'xfce4-dev-tools' 'linux-headers')
 source=("git+https://gitlab.xfce.org/panel-plugins/xfce4-wavelan-plugin.git#tag=$pkgname-$pkgver")
-sha256sums=('3993a074d9e6dbba3f33827b7182dea181ba6d85741d9bbb2249f3863e043053')
+sha256sums=('ff9a131458759cbc45f1792b91eb24cc9c03a79797912e9011d0f9a9b3d24701')
 
 prepare() {
   cd $pkgname
