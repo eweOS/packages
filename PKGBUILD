@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wireguard-tools
-pkgver=1.0.20210914
-pkgrel=3
+pkgver=1.0.20250521
+pkgrel=1
 pkgdesc='next generation secure network tunnel - tools for configuration'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.wireguard.com/'
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('bash')
 makedepends=('linux-headers')
 source=("https://git.zx2c4.com/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('97ff31489217bb265b7ae850d3d0f335ab07d2652ba1feec88b734bc96bd05ac')
+sha256sums=('b6f2628b85b1b23cc06517ec9c74f82d52c4cdbd020f3dd2f00c972a1782950e')
 
 prepare()
 {
