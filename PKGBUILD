@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xfce4-diskperf-plugin
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Displays instant disk/partition performance in the Xfce4 panel"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -11,7 +11,7 @@ groups=('xfce4-goodies')
 depends=('xfce4-panel')
 makedepends=('git' 'intltool' 'xfce4-dev-tools')
 source=("git+https://gitlab.xfce.org/panel-plugins/xfce4-diskperf-plugin.git#tag=$pkgname-$pkgver")
-sha256sums=('43c82ab7a2c0df9c4c62bfb5d71e65773260e6f9d8af0a5d2e303f09c6eb7a89')
+sha256sums=('0f654c23de66d71ee764d732a98cd4b0e0ea89c3ccadfdf19fdddd4efe86d449')
 
 prepare() {
   cd $pkgname
