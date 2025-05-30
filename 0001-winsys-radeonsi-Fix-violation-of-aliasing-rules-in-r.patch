@@ -1,0 +1,59 @@
+From 2ab2ae7bb38403e66af2e4d7dafbc4e484c45031 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Fri, 30 May 2025 04:38:33 +0000
+Subject: [PATCH] winsys: radeonsi: Fix violation of aliasing rules in
+ radeon_ws_bo_reference
+
+Applications using Mesa built with LLVM 20.1.4 fail to start with
+strange segmentfaults/bus errors when radeonsi driver is used. The last
+piece of stacktrace looks like
+
+  - pipe_reference_described
+  - pipe_reference
+  - radeon_bo_reference
+  - radeon_ws_bo_reference
+  - radeon_lookup_or_add_real_buffer
+
+Coredump shows the pointer dst passed to pipe_reference_described() is
+either unaligned or even invalid, which is the reason of crashing. The
+crash goes away when Mesa is built without optimization.
+
+Looking through the related functions, it's found that
+radeon_ws_bo_reference() contains unsafe type cast from radeon_bo to
+pb_buffer_lean: though the former's first field is just the later, this
+violates strict aliasing rules as pb_buffer_lean isn't compatible with
+radeon_bo. Such violation ultimately results in miscompilation.
+
+Let's take the address of pb_buffer_lean field, avoiding the unsafe
+cast. It's still required to cast pb_buffer_lean back to radeon_bo since
+radeon_bo_reference may update the pointer, which is safe as radeon_bo
+contains a pb_buffer_lean member and C language permits access members
+through a pointer in type of the container.
+
+Fixes: 6d913a2bcc69 ("r300,r600,radeonsi: switch to pb_buffer_lean")
+Link: https://www.gnu.org/software/c-intro-and-ref/manual/html_node/Aliasing-Type-Rules.html
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ src/gallium/winsys/radeon/drm/radeon_drm_bo.h | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/gallium/winsys/radeon/drm/radeon_drm_bo.h b/src/gallium/winsys/radeon/drm/radeon_drm_bo.h
+index 7d257cad4037..5f4553edc420 100644
+--- a/src/gallium/winsys/radeon/drm/radeon_drm_bo.h
++++ b/src/gallium/winsys/radeon/drm/radeon_drm_bo.h
+@@ -70,7 +70,11 @@ static inline void
+ radeon_ws_bo_reference(struct radeon_winsys *rws, struct radeon_bo **dst,
+                        struct radeon_bo *src)
+ {
+-   radeon_bo_reference(rws, (struct pb_buffer_lean**)dst, (struct pb_buffer_lean*)src);
++   struct pb_buffer_lean *p_dst_base = &(*dst)->base;
++
++   radeon_bo_reference(rws, &p_dst_base, (struct pb_buffer_lean*)src);
++
++   *dst = (struct radeon_bo *)p_dst_base;
+ }
+ 
+ void *radeon_bo_do_map(struct radeon_bo *bo);
+-- 
+2.49.0
+
