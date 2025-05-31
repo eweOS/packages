@@ -1,0 +1,30 @@
+From cbd24ab80dc774f5d0546e99a5a78091c942e130 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Sun, 1 Jun 2025 03:09:20 +0000
+Subject: [PATCH] dwarf2: Correctly initialize dwarf2_line_info.errwarns
+
+Forgetting to this causes unexpected control flow transfers and even
+misoptimizations. When building with LLVM 20.1.4 and LTO enabled,
+misoptimizations will ultimately lead to segfaults in
+dwarf2_gen64_test.sh.
+
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ modules/dbgfmts/dwarf2/dwarf2-line.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/modules/dbgfmts/dwarf2/dwarf2-line.c b/modules/dbgfmts/dwarf2/dwarf2-line.c
+index 10bb2f290e13..8943c06758e2 100644
+--- a/modules/dbgfmts/dwarf2/dwarf2-line.c
++++ b/modules/dbgfmts/dwarf2/dwarf2-line.c
+@@ -709,6 +709,7 @@ yasm_dwarf2__generate_line(yasm_object *object, yasm_linemap *linemap,
+     info.dbgfmt_dwarf2 = dbgfmt_dwarf2;
+     info.debug_line = yasm_object_get_general(object, ".debug_line", 1, 0, 0,
+                                               &new, 0);
++    info.errwarns = errwarns;
+ 
+     /* header */
+     head = yasm_dwarf2__add_head(dbgfmt_dwarf2, info.debug_line, NULL, 0, 0);
+-- 
+2.49.0
+
