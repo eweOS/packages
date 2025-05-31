@@ -1,0 +1,27 @@
+From 4bd7d9e83a1892b4ff2aacceba63cfa38a2fb384 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Sat, 31 May 2025 15:23:04 +0000
+Subject: [PATCH] third_party: sqlite-vec: Include stdint.h for uintXX_t types
+
+---
+ third_party/sqlite3/ext/sqlite-vec/sqlite-vec.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/third_party/sqlite3/ext/sqlite-vec/sqlite-vec.c b/third_party/sqlite3/ext/sqlite-vec/sqlite-vec.c
+index 96612e26d385..f018c490a7ee 100644
+--- a/third_party/sqlite3/ext/sqlite-vec/sqlite-vec.c
++++ b/third_party/sqlite3/ext/sqlite-vec/sqlite-vec.c
+@@ -66,9 +66,7 @@ SQLITE_EXTENSION_INIT3
+ #ifndef __COSMOPOLITAN__
+ #ifndef __wasi__
+ #ifndef __sun__
+-typedef u_int8_t uint8_t;
+-typedef u_int16_t uint16_t;
+-typedef u_int64_t uint64_t;
++#include <stdint.h>
+ #endif
+ #endif
+ #endif
+-- 
+2.49.0
+
