@@ -3,15 +3,24 @@
 pkgbase=curl
 # Temporary add ca certs
 pkgname=(curl ca-certs)
-pkgver=8.13.0
+pkgver=8.14.0
 pkgrel=1
 pkgdesc='An URL retrieval utility and library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://curl.haxx.se'
 license=('MIT')
 depends=('openssl' 'zlib')
-source=("https://curl.haxx.se/download/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('718e3d70dbab8a62f506a90c608e57d541baac0ac5c2c4fae0a59fca4e4f31ef4f73f76f00a9ee0e339e7a9bd5dea9643090d3ab3ff5ca1631d1be0e2de15b31')
+# 0001: Backport, fix strange OOM errors when using multi interface
+#	https://github.com/curl/curl/issues/17473
+source=("https://curl.haxx.se/download/${pkgname}-${pkgver}.tar.gz"
+	"0001-multi-fix-add_handle-resizing.patch::https://github.com/curl/curl/commit/d16ccbd55de80c271fe822f4ba8b6271fd9166ff.patch")
+sha512sums=('05616987ef82abedc05f7446d06ce59c8c715152e205a78eb9613dd286bae767c166c56700cfe5329ff89dfdb243e49597bf7ef9481f863bd3283fcd8966a7ef'
+            'e66cd85f563d28e3c1eb1e2c799bbd1108ca25e6d446c94f56f117fb37b08ecf67d766e00f14ca4f823dd01b93ac5d7d65421d5ff76ec4b4d96b005f5dfe120e')
+
+prepare()
+{
+  _patch_ "$pkgbase-$pkgver"
+}
 
 build()
 {
