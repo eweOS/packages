@@ -5,10 +5,10 @@ _commit=f2f3c5f65a1163cb6c05c636a0fca54cf9355d19
 _libyuv_commit=ec6f15079ff373b7651698a68bba7244b3556981
 _crc32c_commit=02e65f4fd3065d27b2e29324800ca6d04df16126
 pkgver=r20250424.${_commit:0:7}
-pkgrel=2
+pkgrel=3
 pkgdesc="Telegram's fork of WebRTC"
 url='https://github.com/desktop-app/tg_owt'
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 loongarch64)
 license=(BSD-3-Clause)
 depends=(abseil-cpp ffmpeg libjpeg openssl openh264 libopus libpipewire libvpx
 	 libsrtp)
