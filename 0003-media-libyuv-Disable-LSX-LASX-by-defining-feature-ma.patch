@@ -1,0 +1,36 @@
+From 3c3fa921f023c5cc43aaee18e0b54138d07ddfd6 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Sun, 1 Jun 2025 16:58:38 +0000
+Subject: [PATCH] media/libyuv: Disable LSX/LASX by defining feature macros
+
+Clang-20 treats -march with higher priority than -mno-lsx, specifying
+-mno-lsx alone cannot prevent the definition of __loongarch_sx macro,
+which instructs libyuv to makes use of optimized rountines. As we don't
+really build LSX/LASX implementation, this causes linking failures.
+
+Let's disable LSX/LASX optimization by defining LIBYUV_* macros instead
+by forcing the compiler to disable the extension.
+
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ media/libyuv/libyuv/libyuv.gyp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/media/libyuv/libyuv/libyuv.gyp b/media/libyuv/libyuv/libyuv.gyp
+index 9d3621b..49207c8 100644
+--- a/media/libyuv/libyuv/libyuv.gyp
++++ b/media/libyuv/libyuv/libyuv.gyp
+@@ -90,6 +90,10 @@
+           ],
+         }],
+         ['build_lsx == 0', {
++	  'defines': [
++	    'LIBYUV_DISABLE_LSX',
++	    'LIBYUV_DISABLE_LASX',
++	  ],
+           'conditions': [
+             ['target_arch == "loongarch64"', {
+               'cflags_mozilla': [
+-- 
+2.49.0
+
