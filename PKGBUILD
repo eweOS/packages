@@ -1,12 +1,13 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=snappy
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 pkgdesc='A fast compressor/decompressor library'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://github.com/google/snappy"
 license=('BSD-3-Clause')
+depends=(musl llvm-libs)
 makedepends=(
   'clang'
   'cmake'
@@ -19,13 +20,11 @@ source=(
   snappy.pc.in
   cmake_add_pkgconfig.patch
   use_system_gtest.patch
-  reenable_rtti.patch::https://github.com/google/snappy/commit/516fdcca6606502e2d562d20c01b225c8d066739.patch
 )
-sha256sums=('736aeb64d86566d2236ddffa2865ee5d7a82d26c9016b36218fcc27ea4f09f86'
+sha256sums=('90f74bc1fbf78a6c56b3c4a082a05103b3a56bb17bca1a27e052ea11723292dc'
             '134f06ca0584a1026538d0fb972fc141c008390ecae1806184b721eca1abbc75'
             '2a204d7d35509ffc290d80c641fcb7e8488c67ca550aa1695493cff12c53156b'
-            '50b31b45511e8907f1319305c102f37631b0fbe509f862b612e70073383658e4'
-            '5c9a3be0cabfc58f091a6ba51b05a1627a39693695ab91a6260cecc982e9a6b5')
+            '50b31b45511e8907f1319305c102f37631b0fbe509f862b612e70073383658e4')
 
 prepare() {
   _patch_ "$pkgname-$pkgver"
