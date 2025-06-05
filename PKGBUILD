@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libdeflate
-pkgver=1.23
+pkgver=1.24
 pkgrel=1
 pkgdesc='Heavily optimized library for DEFLATE/zlib/gzip compression and decompression'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ makedepends=(
 )
 provides=(libdeflate.so)
 source=(git+https://github.com/ebiggers/libdeflate.git#tag=v$pkgver)
-sha256sums=('ffd1dfcab67409b0224305b0073d435138ffe6ad3b535d026de17e413d84fdef')
+sha256sums=('43a62bd1bb2cb4b16b199459e668f5fb273c758a5451c09d67a68d752dd0ad90')
 
 build() {
   cmake -S libdeflate -B build -G Ninja \
