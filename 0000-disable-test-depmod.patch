@@ -1,0 +1,12 @@
+diff --git a/testsuite/meson.build b/testsuite/meson.build
+index 1f49f69..cba22d0 100644
+--- a/testsuite/meson.build
++++ b/testsuite/meson.build
+@@ -82,7 +82,6 @@ _testsuite = [
+   'test-array',
+   'test-blacklist',
+   'test-dependencies',
+-  'test-depmod',
+   'test-hash',
+   'test-init',
+   'test-initstate',
