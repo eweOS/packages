@@ -32,16 +32,12 @@ url="https://www.mesa3d.org/"
 license=('custom')
 # mold may fails with lto enabled
 options=(!lto)
-# 0001: Fix radeonsi driver crashes, under review
-#	https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/35249
 source=(
   https://mesa.freedesktop.org/archive/$pkgbase-$pkgver.tar.xz
   gfxstream-lfs64.patch
-  0001-winsys-radeonsi-Fix-violation-of-aliasing-rules-in-r.patch
 )
 sha512sums=('8000fec61da3b7c0355b74458c52f8faeb562398a1882d68cd31a253848edd3333072521ec52f8c5c1a62d909afd6667803d43cb54027d0af3d944f1add27aae'
-            'bcb3389a8382ccec65e2f476f43db5eab45d47b66869644ebb489472281f99a9d0cc24f54803bf1eef2eb03993b3f83fb50d303c36858e6c07600fff3f2aca51'
-            'f3f54cb72afd60e57d3f88689cf0627e038aa76c518aea47573771f69425af859ed46b23131da01ecc2cd4ed06fea2c237c1691914d44041c110063f6cc19ab8')
+            'bcb3389a8382ccec65e2f476f43db5eab45d47b66869644ebb489472281f99a9d0cc24f54803bf1eef2eb03993b3f83fb50d303c36858e6c07600fff3f2aca51')
 
 [ "$CARCH" = x86_64 ] && pkgname+=(vulkan-dzn)
 [ "$CARCH" = aarch64 ] && pkgname+=(vulkan-panfrost)
