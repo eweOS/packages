@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libarchive
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc='Multi-format archive and compression library'
 url='https://libarchive.org/'
@@ -9,7 +9,7 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('BSD-2-Clause')
 depends=('acl' 'openssl' 'xz' 'zlib' 'libbz2' 'zstd')
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('67bfac3798a778143f4b1cadcdb3792b4269486f8e1b70ca5c0ee5841398bfdf')
+sha256sums=('19f917d42d530f98815ac824d90c7eaf648e9d9a50e4f309c812457ffa5496b5')
 
 build()
 {
