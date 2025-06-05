@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=squashfs-tools
-pkgver=4.6.1
-pkgrel=3
+pkgver=4.7
+pkgrel=1
 pkgdesc='Tools for squashfs, a highly compressed read-only filesystem for Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/plougher/squashfs-tools'
@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=(help2man)
 source=($url/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('94201754b36121a9f022a190c75f718441df15402df32c2b520ca331a107511c')
+sha256sums=('f1605ef720aa0b23939a49ef4491f6e734333ccc4bda4324d330da647e105328')
 
 build() {
   local make_options=(
