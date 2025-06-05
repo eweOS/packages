@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gegl
-pkgver=0.4.58
+pkgver=0.4.62
 pkgrel=1
 pkgdesc='Graph based image processing framework'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +16,7 @@ optdepends=('ffmpeg: FFmpeg Frame Loader and FFmpeg Frame Saver plugins'
             'graphviz: for gegl-introspect'
             'sdl2: SDL2 Display plugin')
 source=("git+https://gitlab.gnome.org/GNOME/gegl.git#tag=GEGL_${pkgver//./_}")
-sha256sums=('d123118bbd0aff1396a62d86e80307a1859e30025eed4ff77c6303cfe33cbce1')
+sha256sums=('0b69ef3f1daf85f235967521140051fac26cb0849afe1a602fa058ebf9ba8ab8')
 
 build() {
   mkdir -p build
