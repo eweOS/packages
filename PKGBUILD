@@ -5,8 +5,8 @@
 # Contributor: Kars Wang <jaklsy at gmail dot com>
 
 pkgname=jq
-pkgver=1.7.1
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc='Command-line JSON processor'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://stedolan.github.io/jq/'
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('musl' 'oniguruma')
 makedepends=('bison' 'flex' 'python')
 source=("https://github.com/stedolan/jq/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('464861fb2e0d6934b616f1dc7f8002d7dae727c8c0c07b385b813e7522ba1ada8ead4165e1d99c892e3ea76e238c55a15b718c738805419721920f88f8d8478c')
+sha512sums=('eaa991e43d3fc716dd57f6722a42d4119dcd8ba272eb2fcab882f83efb0b11c10a35c3dc8ad2067f30440dad988d34b5955601499eae1bb9e43db53db02bc4cf')
 
 prepare()
 {
