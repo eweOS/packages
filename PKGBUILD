@@ -1,38 +1,36 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=libmarisa
-pkgver=0.2.7
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Matching Algorithm with Recursively Implemented StorAge'
 url='https://github.com/s-yata/marisa-trie'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD-2-Clause)
 depends=(musl)
+makedepends=(cmake)
 provides=(libmarisa.so)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/s-yata/marisa-trie/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d4e0097d3a78e2799dfc55c73420d1a43797a2986a4105facfe9a33f4b0ba3c2')
-
-prepare() {
-	cd marisa-trie-$pkgver
-	autoreconf -i
-}
+sha256sums=('a3057d0c2da0a9a57f43eb8e07b73715bc5ff053467ee8349844d01da91b5efb')
 
 build () {
-	cd marisa-trie-$pkgver
-
-	./configure --prefix=/usr
-	make
+	cmake -S "marisa-trie-$pkgver" -B build 	\
+		-DCMAKE_BUILD_TYPE=Release		\
+		-DCMAKE_INSTALL_PREFIX=/usr		\
+		-DBUILD_SHARED_LIBS=ON			\
+		-DBUILD_TESTING=ON			\
+		-DENABLE_TOOLS=ON
+	cmake --build build
 }
 
 check() {
-	cd marisa-trie-$pkgver
-	make check
+	ctest --test-dir build
 }
 
 package() {
-	cd marisa-trie-$pkgver
+	DESTDIR="$pkgdir" cmake --install build
 
-	make install DESTDIR="$pkgdir"
+	cd "marisa-trie-$pkgver"
 	_install_license_ COPYING.md
 }
 
