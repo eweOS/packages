@@ -2,7 +2,7 @@
 
 pkgname=sqlite
 _srcver=3480000
-pkgver=3.49.2
+pkgver=3.50.0
 pkgrel=1
 pkgdesc="A C library that implements an SQL database engine"
 arch=(x86_64 aarch64 riscv64 loongarch64)
