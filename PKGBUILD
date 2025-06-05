@@ -1,31 +1,40 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=swww
-pkgver=0.9.5
-pkgrel=2
+pkgver=0.10.1
+pkgrel=1
 pkgdesc="Efficient animated wallpaper daemon for wayland, controlled at runtime"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/Horus645/swww"
-license=('GPL')
-depends=('lz4' 'libxkbcommon')
-makedepends=('rust' 'scdoc')
+license=('GPL-3.0-only')
+depends=('lz4')
+makedepends=('rust' 'scdoc' 'wayland' 'wayland-protocols')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Horus645/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('567e2ac76203ad47df5aaafab7d9d0e4e283a74e34690930a4730ecf0a667428')
+sha256sums=('ebfb174ce59340ff5c4a4c764dd035dd1b2bd8041c6d3c0e4733460c36286c52')
 options=(!lto)
 
 prepare() {
   cd "$pkgname-$pkgver"
   # busybox does not support --suffix in basename
   sed -i 's/--suffix/-s/g' ./doc/gen.sh
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$RUSTHOST"
 }
 
 build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo build --release 
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
   
   ./doc/gen.sh
   find ./doc/generated/*.1 | xargs -I @ gzip -f "@"
+}
+
+check() {
+  cd $pkgname-$pkgver
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --all-features
 }
 
 package() {
@@ -37,6 +46,7 @@ package() {
   install -Dm644 "completions/swww.bash" "$pkgdir/usr/share/bash-completion/completions/swww"
   install -Dm644 "completions/swww.fish" "$pkgdir/usr/share/fish/vendor_completions.d/swww.fish"
   install -Dm644 "completions/_swww" "$pkgdir/usr/share/zsh/site-functions/_swww"
+  install -vDm644 "completions/swww.elv" "$pkgdir/usr/share/elvish/lib/swww.elv"
   
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
