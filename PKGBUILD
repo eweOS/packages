@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-tornado
-pkgver=6.4.2
+pkgver=6.5.1
 pkgrel=1
 pkgdesc='open source version of the scalable, non-blocking web server and tools'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ optdepends=('python-pycurl: for tornado.curl_httpclient'
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 #checkdepends=('python-pycares' 'python-pycurl' 'python-twisted')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tornadoweb/tornado/archive/v$pkgver.tar.gz")
-sha512sums=('f4d60dd6957c98157d64d42af1495793ac20a771923c808d24b18de85330aa30fe15e81f4803b6f0b2f0163833bd3ed5babee15f3e7096d7298426dc88f6357a')
+sha512sums=('e9da04fefc9ae4f7cd7a6675ce820b420fab2ada7d58bd52c56f3d467e74bcb91fc75a2df3b3767abc36ac1e62199fb8c554fd3bf2708ecb58fe74c02b3949aa')
 
 export TORNADO_EXTENSION=1
 
