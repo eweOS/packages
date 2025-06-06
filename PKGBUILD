@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-hatch-vcs
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Hatch plugin for versioning with your preferred VCS"
 url="https://github.com/ofek/hatch-vcs"
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('python-hatchling' 'python-setuptools-scm')
 makedepends=('git' 'python-build' 'python-installer')
 checkdepends=('python-pytest')
 source=("git+https://github.com/ofek/hatch-vcs.git#tag=v$pkgver")
-sha256sums=('SKIP')
+sha256sums=('fb36884cededee69acaf3eab9129e38dfa5551aee97ae7414e45a33e283974f8')
 
 build() {
   cd hatch-vcs
