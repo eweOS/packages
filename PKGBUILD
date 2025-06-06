@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=automake
-pkgver=1.17
+pkgver=1.18
 pkgrel=1
 pkgdesc='A tool for automatically generating Makefile.in files.'
 arch=('any')
@@ -11,7 +11,7 @@ groups=('base-devel')
 depends=('perl' 'bash')
 makedepends=('autoconf')
 source=(ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz)
-md5sums=('7ab3a02318fee6f5bd42adfc369abf10')
+md5sums=('1320dd6a6aae0d97668daa089086c083')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
