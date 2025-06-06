@@ -2,7 +2,7 @@
 
 _name=charset_normalizer
 pkgname=python-charset-normalizer
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc='Encoding and language detection alternative to chardet'
 arch=(any)
@@ -20,7 +20,7 @@ checkdepends=(
   python-pytest
 )
 source=("git+$url.git#tag=$pkgver")
-sha256sums=('b8b865d2af041c3b08c2775ac0577563d6c43bb75fe3c18f4aef6a25d0f2fcb0')
+sha256sums=('5967770a865526ab961d3791f5db7c952f07e022a485027aaca5ab5de6a3376b')
 
 build() {
   cd $_name
