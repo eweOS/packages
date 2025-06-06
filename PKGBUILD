@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=python-dogpile.cache
-pkgver=1.3.4
+pkgver=1.4.0
 # fxxk obs
 # _ver=rel_${pkgver//./_}
 _ver=rel_1_3_4
