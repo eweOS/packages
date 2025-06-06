@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=spice-protocol
-pkgver=0.14.4
+pkgver=0.14.5
 pkgrel=1
 pkgdesc="Headers for SPICE protocol"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://spice-space.org"
 license=('BSD' 'LGPL2.1')
 makedepends=('meson')
 source=(https://gitlab.freedesktop.org/spice/spice-protocol/-/archive/v$pkgver/spice-protocol-v$pkgver.tar.gz)
-sha256sums=('9c31fa533ad531d1b816ffd0c24b4785d133e7bb397f72d35f7a6d59bcd7d53a')
+sha256sums=('1be179b3dfbb23946432275f4b7a4b59bb5e9acc25c3128bc930b8264a9f0a20')
 
 build() {
   mkdir build
