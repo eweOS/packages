@@ -1,0 +1,85 @@
+From 6f142cc06b7f128db54777fd0e81218da092703e Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Tue, 10 Jun 2025 02:58:35 +0000
+Subject: [PATCH] build: Build and link to libstemmer as a shared library
+
+Based on Alpine Linux's patch[1] and rebased to 3.x release. Snowball
+has a plan[2] to switch to a better buildsystem, which should ease
+building of shared library then.
+
+Link: https://git.alpinelinux.org/aports/tree/community/snowball/libstemmer-library.patch?id=28f9d9e192876c43fd96bc5856cd9d8a50dd49c0 # [1]
+Link: https://github.com/snowballstem/snowball/issues/225 # [2]
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ GNUmakefile           | 15 +++++++--------
+ libstemmer/symbol.map |  6 ++++++
+ 2 files changed, 13 insertions(+), 8 deletions(-)
+ create mode 100644 libstemmer/symbol.map
+
+diff --git a/GNUmakefile b/GNUmakefile
+index e1403be3c85b..c107cd0f3661 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -190,12 +190,11 @@ C_OTHER_OBJECTS = $(C_OTHER_SOURCES:.c=.o)
+ JAVA_CLASSES = $(JAVA_SOURCES:.java=.class)
+ JAVA_RUNTIME_CLASSES=$(JAVARUNTIME_SOURCES:.java=.class)
+ 
+-CFLAGS=-g -O2 -W -Wall -Wmissing-prototypes -Wmissing-declarations -Wshadow $(WERROR)
+-CPPFLAGS=
++CFLAGS=-fPIC -g -O2 -W -Wall -Wmissing-prototypes -Wmissing-declarations -Wshadow $(WERROR)
+ 
+ INCLUDES=-Iinclude
+ 
+-all: snowball$(EXEEXT) libstemmer.a stemwords$(EXEEXT) $(C_OTHER_SOURCES) $(C_OTHER_HEADERS) $(C_OTHER_OBJECTS)
++all: snowball$(EXEEXT) libstemmer.so.0 stemwords$(EXEEXT) $(C_OTHER_SOURCES) $(C_OTHER_HEADERS) $(C_OTHER_OBJECTS)
+ 
+ algorithms.mk: libstemmer/mkalgorithms.pl libstemmer/modules.txt
+ 	libstemmer/mkalgorithms.pl algorithms.mk libstemmer/modules.txt
+@@ -203,7 +202,7 @@ algorithms.mk: libstemmer/mkalgorithms.pl libstemmer/modules.txt
+ clean:
+ 	rm -f $(COMPILER_OBJECTS) $(RUNTIME_OBJECTS) \
+ 	      $(LIBSTEMMER_OBJECTS) $(LIBSTEMMER_UTF8_OBJECTS) $(STEMWORDS_OBJECTS) snowball$(EXEEXT) \
+-	      libstemmer.a stemwords$(EXEEXT) \
++	      libstemmer.so.0 stemwords$(EXEEXT) \
+               libstemmer/modules.h \
+               libstemmer/modules_utf8.h \
+ 	      $(C_LIB_SOURCES) $(C_LIB_HEADERS) $(C_LIB_OBJECTS) \
+@@ -254,19 +253,19 @@ libstemmer/modules_utf8.h libstemmer/mkinc_utf8.mak: libstemmer/mkmodules.pl lib
+ 
+ libstemmer/libstemmer.o: libstemmer/modules.h $(C_LIB_HEADERS)
+ 
+-libstemmer.a: libstemmer/libstemmer.o $(RUNTIME_OBJECTS) $(C_LIB_OBJECTS)
+-	$(AR) -cru $@ $^
++libstemmer.so.0: libstemmer/libstemmer.o $(RUNTIME_OBJECTS) $(C_LIB_OBJECTS)
++	$(CC) $(CFLAGS) -shared $(LDFLAGS) -Wl,-soname,$@,-version-script,libstemmer/symbol.map -o $@ $^
+ 
+ examples/%.o: examples/%.c
+ 	$(CC) $(CFLAGS) $(INCLUDES) $(CPPFLAGS) -c -o $@ $<
+ 
+-stemwords$(EXEEXT): $(STEMWORDS_OBJECTS) libstemmer.a
++stemwords$(EXEEXT): $(STEMWORDS_OBJECTS) libstemmer.so.0
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ tests/%.o: tests/%.c
+ 	$(CC) $(CFLAGS) $(INCLUDES) $(CPPFLAGS) -c -o $@ $<
+ 
+-stemtest$(EXEEXT): $(STEMTEST_OBJECTS) libstemmer.a
++stemtest$(EXEEXT): $(STEMTEST_OBJECTS) libstemmer.so.0
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ csharp_stemwords$(EXEEXT): $(CSHARP_STEMWORDS_SOURCES) $(CSHARP_RUNTIME_SOURCES) $(CSHARP_SOURCES)
+diff --git a/libstemmer/symbol.map b/libstemmer/symbol.map
+new file mode 100644
+index 000000000000..7a3d42356362
+--- /dev/null
++++ b/libstemmer/symbol.map
+@@ -0,0 +1,6 @@
++SB_STEMMER_0 {
++    global:
++        sb_stemmer_*;
++    local:
++        *;
++};
+-- 
+2.49.0
+
