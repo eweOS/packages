@@ -1,17 +1,17 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-pytest-timeout
-pkgver=2.3.1
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc='py.test plugin to abort hanging tests'
 arch=('any')
 license=('MIT')
 url='https://github.com/pytest-dev/pytest-timeout'
 depends=('python-pytest')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-#checkdepends=('python-pexpect' 'python-pytest-cov')
+checkdepends=('python-pexpect' 'python-pytest-cov')
 source=("https://github.com/pytest-dev/pytest-timeout/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('4209e6ae34145f1c7920ad2d7a98e55014e93145dd062ac5aab4d5ee6ab675dbceaaf8feb4a558f8648362dab75a3e76d41fffcada9685f7147ed549b2a82a9b')
+sha512sums=('b5c80a569f146e79a8dabfb093423635dee7c7c4c2a29f9a0b0f7b513c6c288c21c2cb744643453ba66032fdd150db36b3d26dc171c40aeb5fa0626082ce7f17')
 
 build() {
   cd pytest-timeout-$pkgver
@@ -19,17 +19,15 @@ build() {
 }
 
 check() {
-  # Hack entry points by installing it
-
   cd pytest-timeout-$pkgver
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  python -m installer -d tmp_install dist/*.whl
-  #FIXME: missing dependency
-  #PYTHONPATH="$PWD/tmp_install$site_packages:$PYTHONPATH" pytest
+
+  python -m venv testenv --system-site-packages
+  testenv/bin/python -m installer dist/*.whl
+  testenv/bin/python -m pytest -vv
 }
 
 package() {
   cd pytest-timeout-$pkgver
   python -m installer -d "$pkgdir" dist/*.whl
-  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+  _install_license_ LICENSE
 }
