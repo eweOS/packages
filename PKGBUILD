@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-packaging
-pkgver=24.2
+pkgver=25.0
 pkgrel=1
 pkgdesc="Core utilities for Python packages"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-flit-core')
 checkdepends=('python-pytest' 'python-pretend')
 source=("https://github.com/pypa/packaging/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('cab6be7284c6bc2abce7a5bbdc25a40e33378576c5590dad4aef9d835a2205af81ca24af7ae3603d0e4e32f8865d87a621187dae2f86df6ac613c9886d482804')
+sha512sums=('fb8419f81f0f817440c0b297fc6e963832e219e7a324bf4e0321f1e131a4822f17a19f2eb033a8d4adb622ccb16db59776ec44906a0c0b34f2877b59b9558c18')
 
 build() {
   cd packaging-$pkgver
