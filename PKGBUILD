@@ -6,8 +6,9 @@ pkgrel=1
 pkgdesc='Tools for squashfs, a highly compressed read-only filesystem for Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/plougher/squashfs-tools'
-license=(GPL2)
+license=(GPL-2.0-or-later)
 depends=(
+  musl
   lz4
   lzo
   xz
