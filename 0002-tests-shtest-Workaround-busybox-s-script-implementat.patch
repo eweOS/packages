@@ -1,0 +1,30 @@
+From 24bb6018d7aec669eef00a30bc9e5a88092628a4 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Mon, 9 Jun 2025 11:33:02 +0000
+Subject: [PATCH] tests/shtest: Workaround busybox's script implementation
+
+Command "script" in busybox doesn't support -e flag. Let's simply remove
+the flag to complete the testsuite, which is fine since rest part of the
+test still checks the output content.
+
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ tests/shtest | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/shtest b/tests/shtest
+index 88278a857dec..1ece068c5e59 100755
+--- a/tests/shtest
++++ b/tests/shtest
+@@ -615,7 +615,7 @@ $msys  && test_no_color=false
+ $mingw && test_no_color=false
+ if $test_no_color && command -v script >/dev/null 2>&1; then
+   if script -qc echo /dev/null >/dev/null 2>&1; then
+-    faketty() { script -qec "$*" /dev/null; }
++    faketty() { script -qc "$*" /dev/null; }
+   else # macOS
+     faketty() { script -q /dev/null "$@" /dev/null |
+       sed 's/^\x5E\x44\x08\x08//'; }
+-- 
+2.49.0
+
