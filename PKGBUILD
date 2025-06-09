@@ -3,12 +3,13 @@
 pkgname=python-pytest
 _name=${pkgname#python-}
 pkgver=8.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple powerful testing with Python"
 arch=('any')
 license=('MIT')
 url="https://pytest.org/"
-depends=('python' 'python-iniconfig' 'python-packaging' 'python-pluggy')
+depends=('python' 'python-iniconfig' 'python-packaging' 'python-pluggy'
+	 'python-pygments')
 makedepends=(
   'git'
   'python-build'
@@ -46,8 +47,13 @@ build() {
 
 check() {
   cd "$_name"
-  # https://github.com/pytest-dev/pytest/issues/10042
-  #PYTHONPATH="$PWD/src:$PYTHONPATH" pytest -o xfail_strict=False
+
+  # Currently some dependencies are missing, thus it's not possible to run the
+  # full testsuite. Run a simple command to make sure no runtime dependency is
+  # missing at least.
+  python -m venv testenv --system-site-packages
+  testenv/bin/python -m installer dist/*.whl
+  testenv/bin/python -m pytest --version
 }
 
 package() {
