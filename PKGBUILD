@@ -2,7 +2,7 @@
 
 pkgbase=snowball
 pkgname=(snowball libstemmer)
-pkgver=2.2.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="String processing language for creating stemming algorithms"
 url="https://snowballstem.org/"
@@ -11,7 +11,7 @@ license=(BSD)
 makedepends=(git)
 source=("git+https://github.com/snowballstem/snowball#tag=v$pkgver"
         dynamiclib.diff)
-sha256sums=('61fa16448a4260e85e713e9fd469b1847cdc75bad8b5a0e3691c0c1df5a95a7b'
+sha256sums=('24ba26d9cb8c673aa4e509a389f8fdb83ddf6f8f8cd32ac0d95f06b63e056b94'
             'c031da5a11bafa079df6c33b38b8795b65cf2c91cc6b452dcf2b10612288a3e6')
 
 prepare() {
