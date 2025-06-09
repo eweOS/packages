@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-pytest-benchmark
-pkgver=4.0.0
-pkgrel=2
+pkgver=5.1.0
+pkgrel=1
 pkgdesc='A py.test fixture for benchmarking code'
 arch=('any')
 license=('BSD-2-Clause')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 #              'python-pytest-xdist' 'python-elasticsearch' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ionelmc/pytest-benchmark/archive/v$pkgver.tar.gz"
         'pytest-benchmark-backport-232.patch::https://github.com/ionelmc/pytest-benchmark/pull/232.patch')
-sha512sums=('88636e44c184f5072ad081a89f08e8838a11397e6b88298d7f235b531f894792001b858fc5c810b1399d41ec55de5db9057552fb7544fb405a04c3ba5ffbe329'
+sha512sums=('92f3d99d92f52de9f1099b4b29f0fdbb246a0a4f9a95f6a7fe56b555a64482c718629d55f35e4ff1a18c6d453e6598d59c987eb0db6ff41a29d084166c134831'
             'f8a0ea70dd0a29b65b4755e491b3ffc201f4dcc15673d821f1c708ca9a376877a2931fddadbfacbe41f3503b25ad5099fe9bc04bb6fe7399f12ae2b4a6d07257')
 
 prepare() {
