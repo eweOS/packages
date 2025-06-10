@@ -1,37 +1,36 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-pystemmer
-pkgver=2.2.0.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Snowball stemming algorithms, for information retrieval"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
-license=('BSD' 'MIT')
+license=('BSD-3-Clause' 'MIT')
 url="http://snowball.tartarus.org"
 depends=('python' 'libstemmer')
-makedepends=('cython' 'python-setuptools')
-source=("https://pypi.io/packages/source/P/PyStemmer/PyStemmer-$pkgver.tar.gz")
-sha512sums=('6692381f57c8822d252fac3ae48102b03f63cfa6aba9e963204bc4755217d4697d533ed058d1c6f7155982a3c7d81e82d83578f00fbff3bb94cbb5e1bcc26fc8')
+makedepends=('cython' 'python-build' 'python-packaging' 'python-wheel'
+	     'python-installer' 'python-setuptools')
+checkdepends=('python-pytest')
+source=("https://github.com/snowballstem/pystemmer/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=('8bcb839df2c3964d410bddaa56599e5498152a81ff121b56490e5b4e42a4e52c74c9fc822a30283325e73f19219ac117ae3ac1a8e738b5a9c72ff0342b4991cf')
 
 export PYSTEMMER_SYSTEM_LIBSTEMMER=1
 
-prepare() {
-  cd PyStemmer-$pkgver
-  sed -e 's|Cython>=0.28.5,<1.0|Cython>=0.28.5|' -i setup.py
-}
-
 build() {
-  cd PyStemmer-$pkgver
-  python setup.py build
+  cd pystemmer-$pkgver
+  python -m build --no-isolation --wheel
 }
 
 check() {
-  cd PyStemmer-$pkgver
-  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$python_version" python runtests.py
+  cd pystemmer-$pkgver
+
+  python -m venv testenv --system-site-packages
+  testenv/bin/python -m installer dist/*.whl
+  testenv/bin/python -m pytest
 }
 
 package() {
-  cd PyStemmer-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd pystemmer-$pkgver
+  python -m installer --destdir "$pkgdir" dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
