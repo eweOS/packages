@@ -2,7 +2,7 @@
 
 pkgname=(llvm llvm-tools llvm-devel llvm-libs llvm-lto lldb openmp lld clang flang mlir wasi-libc++ wasi-libc++abi wasi-compiler-rt)
 _realpkgname=llvm-project
-pkgver=20.1.5
+pkgver=20.1.7
 _binutilsver=2.44
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -35,7 +35,7 @@ source=(
   try-llvm-libunwind.patch
   0001-clang-force-libc-linked-with-no-as-needed-when-using.patch
 )
-sha256sums=('205c436f93a7e185cf9d63ae57e645f23561a4d1bf854f2c5bd78995a43a5c05'
+sha256sums=('91865189d0ca30ca81b7f7af637aca745b6eeeba97c5dfb0ab7d79a1d9659289'
             'ce2017e059d63e67ddb9240e9d4ec49c2893605035cd60e92ad53177f4377237'
             '5e58f02fe01ea22ea0406e4250ad89a053d517ef103a1dacfade4ecd98a7f2bc'
             'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94'
