@@ -1,12 +1,10 @@
 #!/bin/env sh
 
-exec >/dev/stderr
-
 source /etc/os-release
 source /etc/limine.conf
 
 OPTSTRING=":o:b:"
-CFGOUT=/dev/stdout
+CFGOUT="&1"
 
 while getopts ${OPTSTRING} opt; do
   case ${opt} in
@@ -17,7 +15,7 @@ while getopts ${OPTSTRING} opt; do
       BUILD_ID=${OPTARG:-$BUILD_ID}
       ;;
     ?)
-      echo "err: Invalid option: -${OPTARG}"
+      >&2 echo "err: Invalid option: -${OPTARG}"
       exit 1
       ;;
   esac

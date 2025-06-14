@@ -1,0 +1,25 @@
+#!/bin/bash
+
+LIMINE_DEFAULT_PATH=/boot/limine/limine.conf
+
+LIMINE_CONF_PATHS=(
+	/boot/limine.conf
+	/boot/limine/limine.conf
+)
+
+. /etc/limine.conf
+
+for LIMINE_CONF_PATH in "${LIMINE_CONF_PATHS[@]}"; do
+	if [ -f $LIMINE_CONF_PATH ]; then
+		limine-mkconfig -o $LIMINE_CONF_PATH
+		exit 0
+	fi
+done
+
+if [ -d $(dirname $LIMINE_DEFAULT_PATH) ]; then
+	limine-mkconfig -o $LIMINE_DEFAULT_PATH
+	exit 0
+else
+	echo "error: limine default path $LIMINE_DEFAULT_PATH not exists"
+	exit 1
+fi
