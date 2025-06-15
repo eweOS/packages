@@ -3,7 +3,7 @@
 
 pkgname=(linux linux-headers linux-devel linux-docs)
 _basename=linux
-pkgver=6.15.1
+pkgver=6.15.2
 pkgrel=1
 pkgdesc='Linux kernel'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,12 +11,12 @@ url='http://www.kernel.org'
 license=(GPL-2.0-only)
 makedepends=(bison flex perl python libelf linux-headers rsync lld git pahole)
 options=(!strip)
-_kconfig_commit=449aebf016fed036db7ff49b6b8c5858aef8d5e2 # 2025-03-19
+_kconfig_commit=baabc57b80f86eb3e1df6f09550b905dafb50f80 # 2025-06-15
 source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         "git+https://github.com/eweOS/kernel-config.git#commit=$_kconfig_commit"
         busybox-find-compat.patch)
-sha256sums=('44f1bb84fe512e7bafe0e6dc85d38ec1c6c8fcbe97ccb51d8c19930b799f0d64'
-            '8c5bf5b5e7f6d6feabfd79423cb226273838e2052bf00e88942a68f7e6a8f63a'
+sha256sums=('3458cd6a6c508e161dbc5406e72b99d5dbdf929faf704a67db9ba46d07514858'
+            '0f8f6eea2be8dc23a53452257a97af1edcfe411733393e7a747ce9a657c9b08e'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
 
 case $CARCH in
