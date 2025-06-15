@@ -3,7 +3,7 @@
 pkgname=rust-analyzer
 pkgver=2025.06.09
 _pkgver=${pkgver//./-}
-pkgrel=2
+pkgrel=3
 pkgdesc='Rust compiler front-end for IDEs'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://rust-analyzer.github.io'
@@ -30,7 +30,7 @@ check() {
 
 package() {
   cd $pkgname-$_pkgver
-  install -Dt "$pkgdir"/usr/bin target/release/$pkgname{,-proc-macro-srv}
+  install -Dt "$pkgdir"/usr/bin target/release/$pkgname
   _install_license_ LICENSE-MIT{,}
   _install_license_ LICENSE-APACHE{,}
 }
