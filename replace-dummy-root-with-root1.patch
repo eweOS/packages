@@ -1,0 +1,131 @@
+Prevents tests from treating real /root as tests' dummy /root and failing, when
+building with root (even if it is in a container)
+
+diff --git a/crates/tinymist-project/src/entry.rs b/crates/tinymist-project/src/entry.rs
+index 8ca75c01..d2bd1dce 100644
+--- a/crates/tinymist-project/src/entry.rs
++++ b/crates/tinymist-project/src/entry.rs
+@@ -202,7 +202,7 @@ mod entry_tests {
+ 
+     #[test]
+     fn test_entry_resolution() {
+-        let root_path = Path::new(if cfg!(windows) { "C:\\root" } else { "/root" });
++        let root_path = Path::new(if cfg!(windows) { "C:\\root" } else { "/root1" });
+ 
+         let entry = EntryResolver {
+             root_path: Some(ImmutPath::from(root_path)),
+@@ -212,7 +212,7 @@ mod entry_tests {
+         let entry = entry.resolve(if cfg!(windows) {
+             Some(Path::new("C:\\root\\main.typ").into())
+         } else {
+-            Some(Path::new("/root/main.typ").into())
++            Some(Path::new("/root1/main.typ").into())
+         });
+ 
+         assert_eq!(entry.root(), Some(ImmutPath::from(root_path)));
+@@ -227,7 +227,7 @@ mod entry_tests {
+ 
+     #[test]
+     fn test_entry_resolution_multi_root() {
+-        let root_path = Path::new(if cfg!(windows) { "C:\\root" } else { "/root" });
++        let root_path = Path::new(if cfg!(windows) { "C:\\root" } else { "/root1" });
+         let root2_path = Path::new(if cfg!(windows) { "C:\\root2" } else { "/root2" });
+ 
+         let entry = EntryResolver {
+@@ -240,7 +240,7 @@ mod entry_tests {
+             let entry = entry.resolve(if cfg!(windows) {
+                 Some(Path::new("C:\\root\\main.typ").into())
+             } else {
+-                Some(Path::new("/root/main.typ").into())
++                Some(Path::new("/root1/main.typ").into())
+             });
+ 
+             assert_eq!(entry.root(), Some(ImmutPath::from(root_path)));
+@@ -273,7 +273,7 @@ mod entry_tests {
+ 
+     #[test]
+     fn test_entry_resolution_default_multi_root() {
+-        let root_path = Path::new(if cfg!(windows) { "C:\\root" } else { "/root" });
++        let root_path = Path::new(if cfg!(windows) { "C:\\root" } else { "/root1" });
+         let root2_path = Path::new(if cfg!(windows) { "C:\\root2" } else { "/root2" });
+ 
+         let mut entry = EntryResolver {
+@@ -286,7 +286,7 @@ mod entry_tests {
+             entry.entry = if cfg!(windows) {
+                 Some(Path::new("C:\\root\\main.typ").into())
+             } else {
+-                Some(Path::new("/root/main.typ").into())
++                Some(Path::new("/root1/main.typ").into())
+             };
+ 
+             let default_entry = entry.resolve_default();
+@@ -304,7 +304,7 @@ mod entry_tests {
+                 if cfg!(windows) {
+                     Some(Path::new("C:\\root\\main.typ").into())
+                 } else {
+-                    Some(Path::new("/root/main.typ").into())
++                    Some(Path::new("/root1/main.typ").into())
+                 }
+             );
+         }
+diff --git a/crates/tinymist-project/src/model.rs b/crates/tinymist-project/src/model.rs
+index 219f3dc2..8e03a277 100644
+--- a/crates/tinymist-project/src/model.rs
++++ b/crates/tinymist-project/src/model.rs
+@@ -154,7 +154,7 @@ mod tests {
+ 
+     #[test]
+     fn test_substitute_path() {
+-        let root = Path::new("/root");
++        let root = Path::new("/root1");
+         let entry =
+             EntryState::new_rooted(root.into(), Some(VirtualPath::new("/dir1/dir2/file.txt")));
+ 
+diff --git a/crates/tinymist-query/src/tests.rs b/crates/tinymist-query/src/tests.rs
+index 933f7c70..94fd3e7c 100644
+--- a/crates/tinymist-query/src/tests.rs
++++ b/crates/tinymist-query/src/tests.rs
+@@ -147,7 +147,7 @@ pub fn run_with_sources<T>(source: &str, f: impl FnOnce(&mut LspUniverse, PathBu
+     let root = if cfg!(windows) {
+         PathBuf::from("C:\\root")
+     } else {
+-        PathBuf::from("/root")
++        PathBuf::from("/root1")
+     };
+     let mut verse = LspUniverseBuilder::build(
+         EntryState::new_rooted(root.as_path().into(), None),
+@@ -484,7 +484,7 @@ pub(crate) fn file_path_(uri: &lsp_types::Url) -> String {
+     let root = if cfg!(windows) {
+         PathBuf::from("C:\\root")
+     } else {
+-        PathBuf::from("/root")
++        PathBuf::from("/root1")
+     };
+     let uri = uri.to_file_path().unwrap();
+     let abs_path = Path::new(&uri).strip_prefix(root).map(|p| p.to_owned());
+diff --git a/crates/tinymist-task/src/primitives.rs b/crates/tinymist-task/src/primitives.rs
+index e1ba2adb..e67ee7d0 100644
+--- a/crates/tinymist-task/src/primitives.rs
++++ b/crates/tinymist-task/src/primitives.rs
+@@ -364,7 +364,7 @@ mod tests {
+ 
+     #[test]
+     fn test_substitute_path() {
+-        let root = Path::new("/root");
++        let root = Path::new("/root1");
+         let entry =
+             EntryState::new_rooted(root.into(), Some(VirtualPath::new("/dir1/dir2/file.txt")));
+ 
+diff --git a/crates/tinymist/src/config.rs b/crates/tinymist/src/config.rs
+index 31fe9d10..88126c02 100644
+--- a/crates/tinymist/src/config.rs
++++ b/crates/tinymist/src/config.rs
+@@ -894,7 +894,7 @@ mod tests {
+     fn test_config_update() {
+         let mut config = Config::default();
+ 
+-        let root_path = Path::new(if cfg!(windows) { "C:\\root" } else { "/root" });
++        let root_path = Path::new(if cfg!(windows) { "C:\\root" } else { "/root1" });
+ 
+         let update = json!({
+             "outputPath": "out",
