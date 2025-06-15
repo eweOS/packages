@@ -2,7 +2,7 @@
 
 pkgname=tinymist
 pkgver=0.13.12
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 pkgdesc='An integrated language service for Typst'
 url='https://github.com/Myriad-Dreamin/tinymist'
@@ -24,18 +24,18 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   cargo fetch --locked --target $RUSTHOST
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   export OPENSSL_NO_VENDOR=true
   cargo build --frozen --release --all-features
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   export OPENSSL_NO_VENDOR=true
   # E2E test requires some setup done in scripts/e2e.sh, so run it separately
   cargo test --frozen --all-features -- --skip e2e
@@ -43,7 +43,7 @@ check() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   local _target=target/release/$pkgname
   install -Dm755 -t "$pkgdir"/usr/bin/ $_target
   install -Dm644 <($_target completion bash) "$pkgdir"/usr/share/bash-completion/completions/$pkgname
