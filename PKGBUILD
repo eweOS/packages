@@ -12,8 +12,8 @@ pkgname=(
   vulkan-mesa-layers
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
-pkgver=25.1.1
-pkgrel=2
+pkgver=25.1.3
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm' 'spirv-tools')
 makedepends=(
@@ -36,7 +36,7 @@ source=(
   https://mesa.freedesktop.org/archive/$pkgbase-$pkgver.tar.xz
   gfxstream-lfs64.patch
 )
-sha512sums=('8000fec61da3b7c0355b74458c52f8faeb562398a1882d68cd31a253848edd3333072521ec52f8c5c1a62d909afd6667803d43cb54027d0af3d944f1add27aae'
+sha512sums=('20b72ac4e39e559e36be07f003707cf5e25c5ebac22746d71438edecb9d911f5341373b1632ff08c00b57ac15fc880ce5a203ab9165e5e71057816be31344fd7'
             'bcb3389a8382ccec65e2f476f43db5eab45d47b66869644ebb489472281f99a9d0cc24f54803bf1eef2eb03993b3f83fb50d303c36858e6c07600fff3f2aca51')
 
 [ "$CARCH" = x86_64 ] && pkgname+=(vulkan-dzn)
