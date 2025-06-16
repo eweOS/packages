@@ -1,7 +1,7 @@
 # Maintainer: Eric Long <i@hack3r.moe>
 
 pkgname=zed
-pkgver=0.186.9
+pkgver=0.190.6
 pkgrel=1
 _livekit_commit=3119b6ac0ef5e705b3e92630c8e558648f0892ed
 _scap_commit=08f0a01417505cc0990b9931a37e5120db92e0d0
@@ -10,12 +10,11 @@ arch=(x86_64 aarch64 riscv64)
 url='https://zed.dev'
 license=(GPL-3.0-or-later AGPL-3.0-or-later Apache-2.0)
 depends=(alsa-lib curl dbus fontconfig llvm-libs libxkbcommon musl nodejs openssl
-  pipewire sqlite vulkan-driver vulkan-icd-loader wayland zlib zstd)
+         pipewire sqlite vulkan-driver vulkan-icd-loader wayland zlib zstd)
 makedepends=(rust clang lld cargo cargo-about cmake git gn ninja protobuf libpulse
-  python-httplib2 linux-headers bsd-compat-headers vulkan-headers)
-optdepends=('clang: improved C/C++ language support'
-            'eslint: improved Javascript language support'
-            'pyright: improved Python language support'
+             python-httplib2 linux-headers bsd-compat-headers vulkan-headers)
+optdepends=('npm: improved JSON language support (needed to run json-language-server)'
+            'clangd: improved C/C++ language support'
             'rust-analyzer: improved Rust language support'
             'org.freedesktop.secrets: to keep you logged into your Zed account')
 options=(!lto) # too much memory usage for such a big Rust project
@@ -27,7 +26,7 @@ source=("https://github.com/zed-industries/zed/archive/v$pkgver/$pkgname-$pkgver
         webrtc-0002-fix-glibcisms.patch                  # downstream, taken from Alpine
         scap-0001-feature-gate-x11.patch                 # upstreamed, https://github.com/zed-industries/scap/pull/1
         0001-disable-x11-everywhere.patch)               # could be rewritten and upstreamed
-sha256sums=('a766e0a463aebc6f54c063803901f9260507ad1f94570cbf5e1926fac99b0399'
+sha256sums=('0ca142e90bb7b0837ebb1a65fa439eda38d4f10204e58fa7af992435b595cba0'
             'df044bce7dc5af8adbc3ca29225a62f8cee7a71535d704988abc8b372ea600e7'
             'ae8f7f5512e9a90bf67f013b54c39240395a0ca71e8f9865522f4960bd63b1ea'
             '171fb143fd639da257b2921cba717bb4bf976d94f249b137e50451daceeaaf39'
