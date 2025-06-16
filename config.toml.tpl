@@ -14,7 +14,16 @@ rustc = "/usr/bin/rustc"
 rustfmt = "/usr/bin/rustfmt"
 locked-deps = true
 vendor = true
-tools = ["cargo", "rls", "clippy", "rustfmt", "rustdoc", "analysis", "src", "rust-demangler"]
+tools = [
+  "cargo",
+  "clippy",
+  "rustfmt",
+  "rustdoc",
+  "analysis",
+  "src",
+  "rust-demangler",
+  "rust-analyzer-proc-macro-srv",
+]
 sanitizers = false
 profiler = true
 # Generating docs fails with the wasm32-* targets
