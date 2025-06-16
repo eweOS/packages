@@ -1,6 +1,18 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=(llvm llvm-tools llvm-devel llvm-libs llvm-lto lldb openmp lld clang flang mlir wasi-libc++ wasi-libc++abi wasi-compiler-rt)
+# TODO:
+# - split lldb, openmp, flang, mlir into separate PKGBUILD
+# - split wasi-* into separate PKGBUILD and combine into llvm-wasi-libs (?)
+# - split clang-format, and other clang tools into clang-tools
+# - install manpages
+# Also note that currently compiler-rt is bundled in clang.
+pkgname=(
+  llvm llvm-tools llvm-devel llvm-libs llvm-lto
+  clang
+  lld
+  lldb openmp flang mlir
+  wasi-libc++ wasi-libc++abi wasi-compiler-rt
+)
 _realpkgname=llvm-project
 pkgver=20.1.7
 _binutilsver=2.44
