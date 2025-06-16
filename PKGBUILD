@@ -123,6 +123,7 @@ FLIST_llvm_libs=(
   "usr/include/*cxxabi*"
   "usr/include/c++"
   "usr/include/*unwind*"
+  "usr/share/libc++"
 )
 
 FLIST_flang=(
