@@ -11,19 +11,17 @@ url=https://www.archlinux.org/pacman/
 license=(GPL)
 makedepends=(meson libarchive openssl ninja acl curl xz gpgme)  # TODO: asciidoc doxygen
 checkdepends=(python)
-source=(
-  https://gitlab.archlinux.org/pacman/pacman/-/archive/v$pkgver/pacman-v$pkgver.tar.gz
-  fix-typo.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/c3aa1bc12367a8c29ddac310d8bb86ae10719bd2.patch
-  pacman.conf
-  makepkg.conf
-  function_patch.sh
-  function_dinit.sh
-  function_pick.sh
-  function_sysutils.sh
-  function_license.sh
-  script_warndirs.sh
-  script_noglibc.sh
-)
+source=(https://gitlab.archlinux.org/pacman/pacman/-/archive/v$pkgver/pacman-v$pkgver.tar.gz
+        fix-typo.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/c3aa1bc12367a8c29ddac310d8bb86ae10719bd2.patch
+        pacman.conf
+        makepkg.conf
+        function_patch.sh
+        function_dinit.sh
+        function_pick.sh
+        function_sysutils.sh
+        function_license.sh
+        script_warndirs.sh
+        script_noglibc.sh)
 sha256sums=('ef08f258cb3e0885c5884ad43fb6cff0e9c327ed33024d79d03555f99c583744'
             '553c3547b524f0169e7edfad508226037582c882b97f2660942513545dc7a8cf'
             '0865036ef04a06b00926640ac7db2275988b834f435101e8110eedf8a2e58b88'
@@ -76,8 +74,7 @@ prepare(){
   _patch_ "$pkgbase-v$pkgver"
 }
 
-build()
-{
+build() {
   makepkg_cflags="-Os -pipe"
   # Note: riscv64 and loongarch64 don't support -fno-plt.
   case $CARCH in
@@ -115,12 +112,10 @@ build()
   cd "$srcdir/PKGDIR"
   _pick_ libalpm ${FLIST_LIBALPM[@]}
   _pick_ pacman ${FLIST_PACMAN[@]}
-  _pick_ makepkg ${FLIST_MAKEPKG[@]}
   _pick_ repo-tools ${FLIST_REPO_TOOLS[@]}
 }
 
-package_libalpm()
-{
+package_libalpm() {
   pkgdesc="Arch Linux package management library"
   depends=(libarchive curl gettext gpgme)
   provides=(libalpm.so)
@@ -128,8 +123,7 @@ package_libalpm()
   mv "$srcdir"/pkgs/libalpm/* "$pkgdir"
 }
 
-package_pacman()
-{
+package_pacman() {
   pkgdesc="A library-based package manager with dependency support"
   depends=(bash "libalpm=$pkgver" fakeroot pacman-mirrorlist)
   provides+=(makepkg)
@@ -151,8 +145,7 @@ package_pacman()
   sed -i 's/lint_package_functions/#lint_package_functions/' $pkgdir/usr/share/makepkg/lint_package/build_references.sh
 }
 
-package_repo-tools()
-{
+package_repo-tools() {
   pkgdesc="Package database maintenance utilities for pacman"
   arch=(any)
   depends=(pacman)
