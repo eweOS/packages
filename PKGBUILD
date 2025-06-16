@@ -7,34 +7,19 @@ _binutilsver=2.44
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://llvm.org'
-license=('custom:Apache 2.0 with LLVM Exception')
-makedepends=(
-  llvm-devel
-  cmake
-  ninja
-  utmps
-  zlib
-  zstd
-  libffi
-  libedit
-  linux-headers
-  git
-  wasi-libc
-  spirv-llvm-translator
-  python
-)
+license=('Apache-2.0 WITH LLVM-exception')
+makedepends=(llvm-devel cmake ninja utmps zlib zstd libffi libedit linux-headers git
+             wasi-libc spirv-llvm-translator python)
 # Under review:
 #  try-llvm-libunwind
 # Downstream:
 #  others
-source=(
-  "https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}.tar.gz"
-  "https://mirrors.tuna.tsinghua.edu.cn/gnu/binutils/binutils-${_binutilsver}.tar.xz"
-  wasi-toolchain.cmake::https://raw.githubusercontent.com/WebAssembly/wasi-sdk/fef66e3d2319d8360825dcba1cf23061f5313c11/wasi-sdk.cmake
-  llvm-install-prefix.patch
-  try-llvm-libunwind.patch
-  0001-clang-force-libc-linked-with-no-as-needed-when-using.patch
-)
+source=("https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}.tar.gz"
+        "https://mirrors.tuna.tsinghua.edu.cn/gnu/binutils/binutils-${_binutilsver}.tar.xz"
+        wasi-toolchain.cmake::https://raw.githubusercontent.com/WebAssembly/wasi-sdk/fef66e3d2319d8360825dcba1cf23061f5313c11/wasi-sdk.cmake
+        llvm-install-prefix.patch
+        try-llvm-libunwind.patch
+        0001-clang-force-libc-linked-with-no-as-needed-when-using.patch)
 sha256sums=('91865189d0ca30ca81b7f7af637aca745b6eeeba97c5dfb0ab7d79a1d9659289'
             'ce2017e059d63e67ddb9240e9d4ec49c2893605035cd60e92ad53177f4377237'
             '5e58f02fe01ea22ea0406e4250ad89a053d517ef103a1dacfade4ecd98a7f2bc'
@@ -160,8 +145,7 @@ FLIST_mlir=(
   "usr/lib/libmlir*"
 )
 
-prepare()
-{
+prepare() {
   _patch_ "$_basedir"
   cd "$_basedir"
   sed -i "/dlfcn.h/s@\$@\n#include <sys/types.h>@" \
@@ -173,8 +157,7 @@ prepare()
   rm llvm/cmake/modules/Findzstd.cmake
 }
 
-build()
-{
+build() {
   # build RTTI but disable rtti in makepkg
   export CFLAGS="${CFLAGS//-fno-rtti/}"
   export CXXFLAGS="${CXXFLAGS//-fno-rtti/}"
@@ -334,8 +317,7 @@ build()
   _pick_ llvm-libs "${FLIST_llvm_libs[@]}"
 }
 
-package_llvm-devel()
-{
+package_llvm-devel() {
   pkgdesc="Development files for LLVM"
   depends=(llvm llvm-libs mlir openmp)
 
@@ -345,22 +327,20 @@ package_llvm-devel()
   _install_license_ "$_basedir/llvm/CREDITS.TXT" CREDITS
 }
 
-package_clang()
-{
-  pkgdesc="C language family frontend for LLVM."
+package_clang() {
+  pkgdesc="C language family frontend for LLVM"
   depends=(musl llvm-libs llvm zstd)
 
   mv "$srcdir/pkgs/clang/usr" "$pkgdir/usr"
-  ln -s clang			"$pkgdir/usr/bin/cc"
-  ln -s clang++			"$pkgdir/usr/bin/c++"
-  ln -s clang			"$pkgdir/usr/bin/c89"
-  ln -s clang			"$pkgdir/usr/bin/c99"
+  ln -s clang "$pkgdir/usr/bin/cc"
+  ln -s clang++ "$pkgdir/usr/bin/c++"
+  ln -s clang "$pkgdir/usr/bin/c89"
+  ln -s clang "$pkgdir/usr/bin/c99"
 
   _install_license_ "$_basedir/clang/LICENSE.TXT"
 }
 
-package_flang()
-{
+package_flang() {
   pkgdesc="ground-up implementation of a Fortran front end written in modern C++"
   depends=(musl llvm-libs clang mlir)
   mv "$srcdir/pkgs/flang/usr" "$pkgdir/usr"
@@ -368,8 +348,7 @@ package_flang()
   _install_license_ "$_basedir/flang/LICENSE.TXT"
 }
 
-package_mlir()
-{
+package_mlir() {
   pkgdesc="Multi-Level IR Compiler Framework for LLVM"
   depends=(musl llvm-libs zlib zstd)
   mv "$srcdir/pkgs/mlir/usr" "$pkgdir/usr"
@@ -377,8 +356,7 @@ package_mlir()
   _install_license_ "$_basedir/mlir/LICENSE.TXT"
 }
 
-package_lldb()
-{
+package_lldb() {
   pkgdesc="Next generation, high-performance debugger from LLVM project"
   depends=(musl llvm-libs clang)
 
@@ -387,8 +365,7 @@ package_lldb()
   _install_license_ "$_basedir/lldb/LICENSE.TXT"
 }
 
-package_openmp()
-{
+package_openmp() {
   pkgdesc="LLVM OpenMP Runtime Library"
   depends=(musl llvm-libs libelf libffi)
 
@@ -398,9 +375,8 @@ package_openmp()
   _install_license_ "$_basedir/openmp/LICENSE.TXT" LICENSE
 }
 
-package_lld()
-{
-  pkgdesc="a drop-in replacement for the GNU linkers by LLVM project."
+package_lld() {
+  pkgdesc="A drop-in replacement for the GNU linkers by LLVM project"
   provides=(ld)
   depends=(zlib llvm-libs libedit ncurses xz)
 
@@ -409,9 +385,8 @@ package_lld()
   _install_license_ "$_basedir/lld/LICENSE.TXT"
 }
 
-package_llvm-lto()
-{
-  pkgdesc="lto library for LLVM."
+package_llvm-lto() {
+  pkgdesc="LTO library for LLVM"
 
   mv "$srcdir/pkgs/llvm-lto/usr" "$pkgdir/usr"
 
@@ -419,16 +394,15 @@ package_llvm-lto()
   _install_license_ "$_basedir/llvm/CREDITS.TXT" CREDITS
 }
 
-package_llvm-libs()
-{
-  pkgdesc="LLVM runtime libraries for c++ and more."
+package_llvm-libs() {
+  pkgdesc="LLVM runtime libraries"
 
   mv "$srcdir/pkgs/llvm-libs/usr" "$pkgdir/usr"
 
   # libgcc_s replacement
-  ln -s libunwind.so.1.0	"$pkgdir/usr/lib/libgcc_s.so.1.0"
-  ln -s libgcc_s.so.1.0		"$pkgdir/usr/lib/libgcc_s.so.1"
-  ln -s libgcc_s.so.1.0 	"$pkgdir/usr/lib/libgcc_s.so"
+  ln -s libunwind.so.1.0 "$pkgdir/usr/lib/libgcc_s.so.1.0"
+  ln -s libgcc_s.so.1.0 "$pkgdir/usr/lib/libgcc_s.so.1"
+  ln -s libgcc_s.so.1.0 "$pkgdir/usr/lib/libgcc_s.so"
 
   for comp_name in llvm libcxx libcxxabi compiler-rt; do
     _install_license_ "$_basedir/$comp_name/CREDITS.TXT" "CREDITS-$comp_name"
@@ -437,9 +411,8 @@ package_llvm-libs()
   _install_license_ "$_basedir/libunwind/LICENSE.TXT" LICENSE-libunwind
 }
 
-package_llvm-tools()
-{
-  pkgdesc="LLVM runtime tools."
+package_llvm-tools() {
+  pkgdesc="LLVM binary and object tools"
   depends=(musl llvm llvm-libs zlib zstd)
   provides=(binutils)
   conflicts=(binutils)
@@ -451,9 +424,8 @@ package_llvm-tools()
   _install_license_ "$_basedir/llvm/LICENSE.TXT" LICENSE
 }
 
-package_llvm()
-{
-  pkgdesc="LLVM Compiler infrastructure and runtime library."
+package_llvm() {
+  pkgdesc="Compiler infrastructure"
   depends=(musl llvm-libs zlib zstd libffi libedit ncurses)
 
   mv "$srcdir/PKGDIR/usr" "$pkgdir/usr"
