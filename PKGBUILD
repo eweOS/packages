@@ -15,7 +15,7 @@ makedepends=(llvm-devel cmake ninja utmps zlib zstd libffi libedit linux-headers
 # Downstream:
 #  others
 source=("https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}.tar.gz"
-        "https://mirrors.tuna.tsinghua.edu.cn/gnu/binutils/binutils-${_binutilsver}.tar.xz"
+        "https://ftp.gnu.org/gnu/binutils/binutils-${_binutilsver}.tar.xz"
         wasi-toolchain.cmake::https://raw.githubusercontent.com/WebAssembly/wasi-sdk/fef66e3d2319d8360825dcba1cf23061f5313c11/wasi-sdk.cmake
         llvm-install-prefix.patch
         try-llvm-libunwind.patch
