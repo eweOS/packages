@@ -1,0 +1,9 @@
+post_install() {
+  echo 'To start using ble.sh, you can run "source /usr/share/blesh/ble.sh"'
+  echo 'To load ble.sh by default in interactive sessions reliably,'
+  echo 'Add this line at the top of your .bashrc:'
+  echo '    [[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach'
+  echo 'Add this line at the bottom of your .bashrc:'
+  echo '    [[ ${BLE_VERSION-} ]] && ble-attach'
+  echo 'Documentation available at: https://github.com/akinomyoga/ble.sh/wiki'
+}
