@@ -5,7 +5,7 @@
 pkgbase=pacman
 pkgname=(libalpm pacman repo-tools)
 pkgver=7.0.0
-pkgrel=10
+pkgrel=11
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
@@ -13,6 +13,7 @@ makedepends=(meson libarchive openssl ninja acl curl xz gpgme)  # TODO: asciidoc
 checkdepends=(python)
 source=(https://gitlab.archlinux.org/pacman/pacman/-/archive/v$pkgver/pacman-v$pkgver.tar.gz
         fix-typo.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/c3aa1bc12367a8c29ddac310d8bb86ae10719bd2.patch
+        0001-rust-ltoflags.patch  # new feature, to be upstreamed
         pacman.conf
         makepkg.conf
         function_patch.sh
@@ -24,8 +25,9 @@ source=(https://gitlab.archlinux.org/pacman/pacman/-/archive/v$pkgver/pacman-v$p
         script_noglibc.sh)
 sha256sums=('ef08f258cb3e0885c5884ad43fb6cff0e9c327ed33024d79d03555f99c583744'
             '553c3547b524f0169e7edfad508226037582c882b97f2660942513545dc7a8cf'
+            'de0902f0e3a4607bfcbac2df8ab0707f63f0b39ea3f0ec7c306f2af1fff447b5'
             '0865036ef04a06b00926640ac7db2275988b834f435101e8110eedf8a2e58b88'
-            '433de4a7108998434338ea199ee312e825e7d6215ee51aa0bf2cfbfe45540ca5'
+            'c7963770edff710ddd87246269a0edbf44b4a4a906ffae7d025546fff3f61ef0'
             '738432ead6dae6c63a5cbd33e110f8a5e34f5143d125e183cf77dc3dbe87fe92'
             '9b1e4d7076137fb8ebb609068403024dc66d6d3c3b53b718401d4c79c8437d8f'
             '7d2ad28bef8f9f77f33929d2050244a6f29941de6ad0793b6820caee3dbd84e3'

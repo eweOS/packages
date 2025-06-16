@@ -1,0 +1,13 @@
+--- a/scripts/libmakepkg/buildenv/rust.sh.in
++++ b/scripts/libmakepkg/buildenv/rust.sh.in
+@@ -34,4 +34,8 @@ buildenv_rust() {
+ 		append_once DEBUG_RUSTFLAGS "--remap-path-prefix=$srcdir=${DBGSRCDIR:-/usr/src/debug}/${pkgbase}"
+ 		append_once RUSTFLAGS "$DEBUG_RUSTFLAGS"
+ 	fi
+-}
+\ No newline at end of file
++
++	if check_option "lto" "y" && ! check_option "buildflags" "n"; then
++		append_once RUSTFLAGS "${RUST_LTOFLAGS:--Clink-arg=-flto}"
++	fi
++}
