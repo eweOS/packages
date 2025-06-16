@@ -3,20 +3,20 @@
 # TODO:
 # - split lldb, openmp, flang, mlir into separate PKGBUILD
 # - split wasi-* into separate PKGBUILD and combine into llvm-wasi-libs (?)
-# - split clang-format, and other clang tools into clang-tools
 # - install manpages
 # Also note that currently compiler-rt is bundled in clang.
 pkgname=(
   llvm llvm-tools llvm-devel llvm-libs llvm-lto
-  clang
+  clang clang-tools
   lld
   lldb openmp flang mlir
   wasi-libc++ wasi-libc++abi wasi-compiler-rt
 )
 _realpkgname=llvm-project
 pkgver=20.1.7
+pkgrel=2
 _binutilsver=2.44
-pkgrel=1
+_majorver="${pkgver%%.*}"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://llvm.org'
 license=('Apache-2.0 WITH LLVM-exception')
@@ -41,35 +41,74 @@ sha256sums=('91865189d0ca30ca81b7f7af637aca745b6eeeba97c5dfb0ab7d79a1d9659289'
 
 _basedir=llvm-project-llvmorg-$pkgver
 
-FLIST_llvm_devel=(
-  "usr/include/llvm-c"
-  "usr/include/llvm"
-  "usr/lib/cmake/llvm"
-  "usr/lib/libLLVM*.a"
+# FLIST_* below should follow the order of _pick_
+
+FLIST_clang_tools_1=(
+  "usr/share/clang/clang-format*"
 )
 
 FLIST_clang=(
-  "usr/bin/*clang*"
-  "usr/bin/c-index-test"
   "usr/bin/cc"
   "usr/bin/c++"
+  "usr/bin/clang"{,-$_majorver}
+  "usr/bin/clang++"{,-$_majorver}
+  "usr/bin/clang-cpp"
   "usr/lib/cmake/clang"
   "usr/share/clang"
-  "usr/include/clang-c"
   "usr/include/clang"
-  "usr/lib/libclang*.so"
-  "usr/lib/libclang*.a"
-  "usr/bin/analyze-build"
-  "usr/bin/intercept-build"
-  "usr/bin/scan-*"
+  "usr/include/clang-c"
   "usr/lib/clang"
-  "usr/lib/diagtool"
-  "usr/lib/libear"
-  "usr/lib/libscanbuild"
-  "usr/share/scan-*"
-  "usr/share/man/man1/scan-build.1"
+  "usr/lib/libclang*."{so,a}
   "usr/lib/libclang.so.*"
   "usr/lib/libclang-cpp.so.*"
+)
+
+FLIST_clang_tools_2=(
+  "usr/bin/clangd"
+
+  "usr/bin/clang-tidy"
+  "usr/bin/run-clang-tidy"
+  "usr/share/clang/clang-tidy-diff.py"
+  "usr/include/clang-tidy"
+
+  "usr/bin/clang-format"
+  "usr/bin/git-clang-format"
+
+  "usr/bin/clang-*"
+  "usr/bin/"{sancov,modularize,c-index-test,find-all-symbols,diagtool,hmaptool,pp-trace,amdgpu-arch,nvptx-arch}
+  "usr/bin/"{scan,analyze,intercept}"-*"
+  "usr/bin/*-analyzer"
+  "usr/share/scan-"{view,build}
+  "usr/share/man/man1/scan-build.1"
+  "usr/lib/"{libear,libscanbuild}
+)
+
+FLIST_flang=(
+  "usr/bin/bbc"
+  "usr/bin/f18-parse-demo"
+  "usr/bin/fir-opt"
+  "usr/bin/flang"{,-$_majorver}
+  "usr/bin/flang-new"
+  "usr/bin/flang-to-external-fc"
+  "usr/bin/tco"
+  "usr/include/flang"
+  "usr/lib/cmake/flang"
+  "usr/lib/libFIR*"
+  "usr/lib/libHLFIR*"
+  "usr/lib/libFortran*"
+  "usr/lib/libflang*"
+)
+
+FLIST_mlir=(
+  "usr/bin/mlir-*"
+  "usr/bin/tblgen-lsp-server"
+  "usr/bin/tblgen-to-irdl"
+  "usr/lib/objects-Release/obj.MLIR*"
+  "usr/include/mlir"
+  "usr/include/mlir-c"
+  "usr/lib/cmake/mlir"
+  "usr/lib/libMLIR*"
+  "usr/lib/libmlir*"
 )
 
 FLIST_lldb=(
@@ -107,6 +146,13 @@ FLIST_llvm_lto=(
   "usr/lib/LLVMgold.so*"
 )
 
+FLIST_llvm_devel=(
+  "usr/include/llvm-c"
+  "usr/include/llvm"
+  "usr/lib/cmake/llvm"
+  "usr/lib/libLLVM*.a"
+)
+
 FLIST_llvm_tools=(
   "usr/bin/*"
 )
@@ -123,36 +169,8 @@ FLIST_llvm_libs=(
   "usr/include/*cxxabi*"
   "usr/include/c++"
   "usr/include/*unwind*"
+  "usr/include/mach-o"
   "usr/share/libc++"
-)
-
-FLIST_flang=(
-  "usr/bin/bbc"
-  "usr/bin/f18-parse-demo"
-  "usr/bin/fir-opt"
-  "usr/bin/flang"
-  "usr/bin/flang-20"
-  "usr/bin/flang-new"
-  "usr/bin/flang-to-external-fc"
-  "usr/bin/tco"
-  "usr/include/flang"
-  "usr/lib/cmake/flang"
-  "usr/lib/libFIR*"
-  "usr/lib/libHLFIR*"
-  "usr/lib/libFortran*"
-  "usr/lib/libflang*"
-)
-
-FLIST_mlir=(
-  "usr/bin/mlir-*"
-  "usr/bin/tblgen-lsp-server"
-  "usr/bin/tblgen-to-irdl"
-  "usr/lib/objects-Release/obj.MLIR*"
-  "usr/include/mlir"
-  "usr/include/mlir-c"
-  "usr/lib/cmake/mlir"
-  "usr/lib/libMLIR*"
-  "usr/lib/libmlir*"
 )
 
 prepare() {
@@ -274,7 +292,7 @@ build() {
 
   cmake -B build -G Ninja \
     "${CMARGS[@]}" \
-    -DLLVM_ENABLE_PROJECTS="compiler-rt;clang;flang;mlir;lld;lldb;openmp" \
+    -DLLVM_ENABLE_PROJECTS="compiler-rt;clang;clang-tools-extra;flang;mlir;lld;lldb;openmp" \
     -DLLVM_ENABLE_RUNTIMES="libunwind;libcxxabi;libcxx" \
     -S $_basedir/llvm
 
@@ -314,8 +332,10 @@ build() {
 
   ninja -C build-wasi-crt
 
-  cd $srcdir/PKGDIR
+  cd "$srcdir"/PKGDIR
+  _pick_ clang-tools "${FLIST_clang_tools_1[@]}"
   _pick_ clang "${FLIST_clang[@]}"
+  _pick_ clang-tools "${FLIST_clang_tools_2[@]}"
   _pick_ flang "${FLIST_flang[@]}"
   _pick_ mlir "${FLIST_mlir[@]}"
   _pick_ lldb "${FLIST_lldb[@]}"
@@ -347,6 +367,15 @@ package_clang() {
   ln -s clang "$pkgdir/usr/bin/c89"
   ln -s clang "$pkgdir/usr/bin/c99"
 
+  _install_license_ "$_basedir/clang/LICENSE.TXT"
+}
+
+package_clang-tools() {
+  pkgdesc="clang-based tools"
+  depends=(musl llvm-libs llvm clang)
+  provides=(clangd clang-tidy clang-format)
+
+  mv "$srcdir/pkgs/clang-tools/usr" "$pkgdir/usr"
   _install_license_ "$_basedir/clang/LICENSE.TXT"
 }
 
