@@ -3,7 +3,7 @@
 pkgname=nodejs
 pkgver=23.11.0
 pkgrel=1
-pkgdesc='Evented I/O for V8 javascript'
+pkgdesc='JavaScript runtime'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://nodejs.org/'
 license=('MIT')
