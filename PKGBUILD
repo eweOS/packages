@@ -7,8 +7,9 @@ pkgdesc='JavaScript runtime'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://nodejs.org/'
 license=('MIT')
-depends=('brotli' 'openssl' 'zlib' 'icu' 'libuv' 'libnghttp2' 'c-ares')
+depends=('musl' 'llvm-libs' 'brotli' 'openssl' 'zlib' 'icu' 'libuv' 'libnghttp2' 'c-ares')
 makedepends=('git' 'python' 'linux-headers')
+optdepends=('npm: package manager')
 source=("https://nodejs.org/dist/v${pkgver}/node-v${pkgver}.tar.xz"
         "0001-no-libatomic.patch"
         "0002-riscv-fix-trap-handler.patch")
