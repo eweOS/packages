@@ -2,7 +2,7 @@
 
 pkgbase=libffi
 pkgname=(libffi libffi-static)
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc='A portable Foregin Function Interface library.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -17,7 +17,7 @@ provides=(libffi.so)
 source=("https://github.com/libffi/libffi/releases/download/v$pkgver/libffi-$pkgver.tar.gz"
 	"0001-fix-float-atom-marshalling-on-clang.patch")
 
-sha256sums=('8c72678628a5dd8782f08ad421d5a441e42c1c5c1b33e0bc211cbfcf1f3b3978'
+sha256sums=('f99eb68a67c7d54866b7706af245e87ba060d419a062474b456d3bc8d4abdbd1'
             '7b4abcde4d75109a1066fa35bf4c8d761f6bf1b4c150d0d7264c5ee48e63d0d5')
 
 prepare() {
