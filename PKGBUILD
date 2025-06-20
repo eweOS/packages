@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=mm-common
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Common build files of the C++ bindings"
 url="https://www.gtkmm.org/"
@@ -12,8 +12,8 @@ source=(
   "https://gitlab.gnome.org/GNOME/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2"
   "https://gcc.gnu.org/onlinedocs/libstdc++/latest-doxygen/libstdc++.tag"
 )
-sha256sums=('aa9d0b00ac5b673babf699309a88f9e100762c074a1a47eda010869f4d92e44a'
-            'dfb6521cb807fc827c34bcd47dbcf2f7564b2fc1b6014ebb13bed349ddf55af0')
+sha256sums=('7238b7f5333bc94285153784570c516ddf8fe46ff0cb5fd7493fa631f4929d64'
+            'cb01f8aebdb7b9874b100d13a006fb688ee25d2e93e02ff294e6c2483606c7a3')
 
 prepare()
 {
