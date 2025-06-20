@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sdl2-compat
-pkgver=2.32.54
+pkgver=2.32.56
 pkgrel=1
 pkgdesc="An SDL2 compatibility layer that uses SDL3 behind the scenes"
 url="https://github.com/libsdl-org/sdl2-compat"
@@ -16,7 +16,7 @@ source=(
   "https://github.com/libsdl-org/sdl2-compat/releases/download/release-${pkgver}/sdl2-compat-${pkgver}.tar.gz"
   no-x11.patch
 )
-sha256sums=('c680c004db48604348ec8a1527b998aa653b8103f2589e5a52e26d5e35f1de66'
+sha256sums=('27e845b1b7dc0a91a85f1a1f18892ed205adb38caf767741eb258008d8264de0'
             '06ea21937df9dcdc1f6d828061d2e2d35470edfdc2eae63698baba708bde70d1')
 
 prepare() {
