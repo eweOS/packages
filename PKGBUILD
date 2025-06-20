@@ -1,16 +1,19 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wlopm
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Wayland output power management.'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://sr.ht/~leon_plickat/wlopm'
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('wayland' 'wayland-protocols')
-source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~leon_plickat/$pkgname/archive/v$pkgver.tar.gz" strict-prototype.patch)
-sha256sums=('f9a7ec03a412e602420ab11d0eea872f6d30dfe5cfee93cd3d0289e4fbbb3aa1'
-            '7f4160f520308fa2f148dcd7d3e25a7a9cea535931f366e18f2feafe578bed82')
+# 0001: Backport, fix ENOENT errors when installing bash completion
+#	https://git.sr.ht/~leon_plickat/wlopm/commit/41bc6618376cb2a87b154612e0b132761d4f4bd3
+source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~leon_plickat/$pkgname/archive/v$pkgver.tar.gz"
+	"0001-Fix-bash-completion-installation.patch")
+sha256sums=('15f31bbd855131943397dded3a26003f2f5056e4c6a1a93d35ff7697b3f1e439'
+            '194e9bd5fdfac88926fb0aad6467e5e83920056e6d7d7d412457383a712352f5')
 
 prepare() {
   _patch_ "$pkgname-v$pkgver"
