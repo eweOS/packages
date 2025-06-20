@@ -14,7 +14,7 @@ pkgname=(
 )
 _realpkgname=llvm-project
 pkgver=20.1.7
-pkgrel=2
+pkgrel=3
 _binutilsver=2.44
 _majorver="${pkgver%%.*}"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -42,6 +42,10 @@ sha256sums=('91865189d0ca30ca81b7f7af637aca745b6eeeba97c5dfb0ab7d79a1d9659289'
 _basedir=llvm-project-llvmorg-$pkgver
 
 # FLIST_* below should follow the order of _pick_
+
+FLIST_llvm_tools_1=(
+  "usr/bin/llvm-*"
+)
 
 FLIST_clang_tools_1=(
   "usr/share/clang/clang-format*"
@@ -153,7 +157,7 @@ FLIST_llvm_devel=(
   "usr/lib/libLLVM*.a"
 )
 
-FLIST_llvm_tools=(
+FLIST_llvm_tools_2=(
   "usr/bin/*"
 )
 
@@ -333,6 +337,7 @@ build() {
   ninja -C build-wasi-crt
 
   cd "$srcdir"/PKGDIR
+  _pick_ llvm-tools "${FLIST_llvm_tools_1[@]}"
   _pick_ clang-tools "${FLIST_clang_tools_1[@]}"
   _pick_ clang "${FLIST_clang[@]}"
   _pick_ clang-tools "${FLIST_clang_tools_2[@]}"
@@ -343,13 +348,13 @@ build() {
   _pick_ lld "${FLIST_lld[@]}"
   _pick_ llvm-lto "${FLIST_llvm_lto[@]}"
   _pick_ llvm-devel "${FLIST_llvm_devel[@]}"
-  _pick_ llvm-tools "${FLIST_llvm_tools[@]}" # remaining usr/bin/*
+  _pick_ llvm-tools "${FLIST_llvm_tools_2[@]}" # remaining usr/bin/*
   _pick_ llvm-libs "${FLIST_llvm_libs[@]}"
 }
 
 package_llvm-devel() {
   pkgdesc="Development files for LLVM"
-  depends=(llvm llvm-libs mlir openmp)
+  depends=(llvm llvm-libs llvm-tools mlir openmp)
 
   mv "$srcdir/pkgs/llvm-devel/usr" "$pkgdir/usr"
 
