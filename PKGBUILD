@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=nwg-hello
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="GTK3-based greeter for greetd written in python"
 url="https://github.com/nwg-piotr/nwg-hello"
@@ -13,7 +13,7 @@ optdepends=('sway: Wayland compositor nwg-hello has been made for'
             'hyprland: Wayland compositor nwg-hello has been made for')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.tmpfiles")
-sha256sums=('4dcc624d4a54f3136b9802d85cbcc26d61d6d176cc97fe3d74bb791a88699404'
+sha256sums=('c7c7bdabd3e6d06f8f33702eb946fe78cdf119c27ece7f1d47ae272a400b297f'
             '15216838ac4137f3591ae09231fcb450d1dd886af085d5d48452e2299caf917a')
 
 build() {
