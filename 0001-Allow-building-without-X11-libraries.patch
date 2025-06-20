@@ -1,5 +1,18 @@
+From 4387ef1e371ffbc13378b61e70f9ac04583d0650 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Sun, 22 Jun 2025 11:34:35 +0000
+Subject: [PATCH] Allow building without X11 libraries
+
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ include/SDL2/SDL_config_unix.h |  1 -
+ src/sdl2_compat.c              | 24 ------------------------
+ src/sdl2_compat.h              |  9 ---------
+ test/CMakeLists.txt            |  6 ------
+ 4 files changed, 40 deletions(-)
+
 diff --git a/include/SDL2/SDL_config_unix.h b/include/SDL2/SDL_config_unix.h
-index cbca3aa..e3388c4 100644
+index cbca3aab4bec..e3388c43531f 100644
 --- a/include/SDL2/SDL_config_unix.h
 +++ b/include/SDL2/SDL_config_unix.h
 @@ -220,7 +220,6 @@
@@ -11,14 +24,14 @@ index cbca3aa..e3388c4 100644
  #if defined(__LINUX__)
  /* glvis wants this */
 diff --git a/src/sdl2_compat.c b/src/sdl2_compat.c
-index e5902bf..d5fb4bc 100644
+index 4ce380aad29e..2d97cf8e9eea 100644
 --- a/src/sdl2_compat.c
 +++ b/src/sdl2_compat.c
-@@ -9356,24 +9356,6 @@ SDL_SetWindowsMessageHook(SDL2_WindowsMessageHook callback, void *userdata)
+@@ -10192,24 +10192,6 @@ SDL_SetWindowsMessageHook(SDL2_WindowsMessageHook callback, void *userdata)
  }
  #endif /* SDL_PLATFORM_WINDOWS */
  
--#if defined(SDL_PLATFORM_UNIX) && !defined(SDL_PLATFORM_ANDROID)
+-#ifdef SDL2COMPAT_HAVE_X11
 -static bool SDLCALL SDL2COMPAT_X11EventHook(void *userdata, XEvent *xevent)
 -{
 -    SDL2_Event event;
@@ -34,36 +47,36 @@ index e5902bf..d5fb4bc 100644
 -    SDL_PushEvent(&event);
 -    return true;
 -}
--#endif /* SDL_PLATFORM_UNIX */
+-#endif /* SDL2COMPAT_HAVE_X11 */
 -
  /* SDL3 split this into getter/setter functions. */
  SDL_DECLSPEC Uint8 SDLCALL
  SDL_EventState(Uint32 type, int state)
-@@ -9383,9 +9365,6 @@ SDL_EventState(Uint32 type, int state)
+@@ -10219,9 +10201,6 @@ SDL_EventState(Uint32 type, int state)
          if (type == SDL2_SYSWMEVENT) {
  #ifdef SDL_PLATFORM_WINDOWS
              SDL3_SetWindowsMessageHook(SDL3to2_WindowsMessageHook, NULL);
 -#endif
--#if defined(SDL_PLATFORM_UNIX) && !defined(SDL_PLATFORM_ANDROID)
+-#ifdef SDL2COMPAT_HAVE_X11
 -            SDL3_SetX11EventHook(SDL2COMPAT_X11EventHook, NULL);
  #endif
          }
          SDL3_SetEventEnabled(type, true);
-@@ -9395,9 +9374,6 @@ SDL_EventState(Uint32 type, int state)
+@@ -10231,9 +10210,6 @@ SDL_EventState(Uint32 type, int state)
              if (!g_WindowsMessageHook) {
                  SDL_SetWindowsMessageHook(NULL, NULL);
              }
 -#endif
--#if defined(SDL_PLATFORM_UNIX) && !defined(SDL_PLATFORM_ANDROID)
+-#ifdef SDL2COMPAT_HAVE_X11
 -            SDL3_SetX11EventHook(NULL, NULL);
  #endif
          }
          SDL3_SetEventEnabled(type, false);
 diff --git a/src/sdl2_compat.h b/src/sdl2_compat.h
-index 2aad6c2..578f889 100644
+index 13391353e0bf..08c12fc1b902 100644
 --- a/src/sdl2_compat.h
 +++ b/src/sdl2_compat.h
-@@ -1275,10 +1275,6 @@ typedef struct _NSWindow NSWindow;
+@@ -1285,10 +1285,6 @@ typedef struct _NSWindow NSWindow;
  typedef struct _UIWindow UIWindow;
  #endif
  
@@ -74,7 +87,7 @@ index 2aad6c2..578f889 100644
  typedef struct SDL2_SysWMmsg
  {
      SDL2_version version;
-@@ -1292,11 +1288,6 @@ typedef struct SDL2_SysWMmsg
+@@ -1302,11 +1298,6 @@ typedef struct SDL2_SysWMmsg
              WPARAM wParam;              /**< WORD message parameter */
              LPARAM lParam;              /**< LONG message parameter */
          } win;
@@ -87,7 +100,7 @@ index 2aad6c2..578f889 100644
          /* Can't have an empty union */
          int dummy;
 diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
-index 03f86f5..da649ce 100644
+index 03f86f52b108..da649ce1a38f 100644
 --- a/test/CMakeLists.txt
 +++ b/test/CMakeLists.txt
 @@ -114,14 +114,8 @@ if(APPLE)
@@ -105,3 +118,6 @@ index 03f86f5..da649ce 100644
  test_program(testoverlay2 SRC "testoverlay2.c" "testutils.c" "testyuv_cvt.c")
  test_program(testplatform NONINTERACTIVE SRC "testplatform.c")
  test_program(testpower NONINTERACTIVE SRC "testpower.c")
+-- 
+2.49.0
+
