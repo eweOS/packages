@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fcitx5
-pkgver=5.1.12
+pkgver=5.1.13
 pkgrel=1
 pkgdesc="Next generation of fcitx"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ makedepends=('ninja' 'wayland-protocols' 'fmt' 'extra-cmake-modules' 'zstd'
 # 0001: Upstream
 source=("https://download.fcitx-im.org/fcitx5/fcitx5/fcitx5-${pkgver}_dict.tar.zst"
 	"0001-ui-classic-include-xcb-xcb-h-only-when-X11.patch::https://github.com/fcitx/fcitx5/pull/1259.patch")
-sha512sums=('82943f6c2e809e8d9049d457f59e52bc202daf922abec032efc589eefad77b4db4398fbaea92c019eaeaa40ccf51585a8a80676a7909433a8576dc63fb639645'
+sha512sums=('474629c8951c7e1f7f8714fd7dcf3b1b59203815ee37c30a2e65bda77b4acbe4dd0a020024bea2e5a3183a3b73107cee69793a2e4719454cf3d6a70e2096a71f'
             'd244c3fe94f8d0c4eb8fe89786eea422e4b886cdcac5c4fcd3e893571cbff5958439637008827de1f71a6703cc86d4ab3ee7f55a2eefae1cac58392ad2f99ffb')
 
 prepare() {
