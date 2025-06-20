@@ -1,15 +1,17 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libvoikko
-pkgver=4.3.2
-pkgrel=3
+pkgver=4.3.3
+pkgrel=1
 pkgdesc="A spelling and grammar checker, hyphenator and collection of related linguistic data for Finnish language"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://voikko.sourceforge.net"
-license=(GPL2)
-makedepends=(python)
+license=('GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later')
+# TODO: Split the python binding
+depends=(musl llvm-libs python)
+provides=(libvoikko.so)
 source=(https://www.puimula.org/voikko-sources/libvoikko/$pkgname-$pkgver.tar.gz)
-sha512sums=('d510a9344501f86b2f644c1237faf8709f02b5d17bca76f7934c8422495aeee307f12c60dde47df15a39c24c3311253d3dea2d0648050fc3a056a22497de695c')
+sha512sums=('8b6a8d52a43414c5acbc4582dbee4ba4687c204fdf59f097b202f80138bbe079d1feedcc9e13819078b7366de9a629d81c491e782435b64634e5ff38701038f5')
 
 build() {
   cd $pkgname-$pkgver
@@ -27,4 +29,6 @@ package() {
   make DESTDIR="$pkgdir" install
   mkdir -p "$pkgdir"/usr/lib/"python${python_version}"/site-packages
   cp python/libvoikko.py "$pkgdir"/usr/lib/"python${python_version}"/site-packages/libvoikko.py
+  _install_license_ LICENSE.CORE LICENSE.CORE
+  _install_license_ COPYING COPYING
 }
