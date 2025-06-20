@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ncnn
-pkgver=20240820
-pkgrel=4
+pkgver=20250503
+pkgrel=1
 pkgdesc='High-performance neural network inference framework optimized for the mobile platform'
 url='https://github.com/Tencent/ncnn'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -11,7 +11,7 @@ depends=('vulkan-icd-loader')
 makedepends=('git' 'cmake' 'glslang' 'ninja' 'protobuf' 'vulkan-headers')
 optdepends=('protobuf: for onnx2ncnn')
 source=("git+https://github.com/Tencent/ncnn.git#tag=$pkgver")
-sha256sums=('22002d9f6b90b9e7f38ed989bb0df1bd790022d435534156dcd3e9ffed45c1c4')
+sha256sums=('4cdc3f0a30c5eb569ebc4a7a45a2f28e10a1a8bfb8984d25e812c8e0486e3bb2')
 
 build() {
     if check_option lto y; then
