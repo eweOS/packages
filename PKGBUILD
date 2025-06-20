@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pam
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="PAM (Pluggable Authentication Modules) library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ source=(
   "disable-i18n.patch::https://github.com/linux-pam/linux-pam/commit/900c9c82e0c703fee1f5c55fb4a0913a7fc95306.patch"
   "$pkgname.tmpfiles"
 )
-sha256sums=('66ba7e8d6f8d1b985432a07180280e5bbc8c84bfc43fab7b1e071c26a04e2bde'
+sha256sums=('6bf3e4a7889ae34c09336f0bae019a420e04aafc1616a71299c4e71e4cd679e5'
             '62acdad6764a44b8a10c40e012087814f30faa5b0931ad35bb1f8127f620ed47'
             '5631f224e90c4f0459361c2a5b250112e3a91ba849754bb6f67d69d683a2e5ac')
 options=('!emptydirs')
