@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=containers-common
-pkgver=0.62.3
+pkgver=0.63.1
 pkgrel=1
 _image_pkgver=5.34.3
 _podman_pkgver=5.4.1
@@ -36,7 +36,7 @@ source=(
   tmpfiles.conf
   $pkgname-0.48.0-init_path.patch
 )
-sha512sums=('9b866e0ba10a6d37f37423794930b5cc13bb37d08bfa487d6d4f1903f7aa339eb35b3cfa52a6171069e316574f8413331c719bea8468d276a1f95ee3755e2e17'
+sha512sums=('fc513752a33b0fb5a99893bf940b8a31fd411d3c5fd7984da6e2134c4c5136b5d304d81243793bd2b6d4b16ce26e66c20a5c58c19d68e8cc165843f67cea940e'
             '33e56d7105ed4ef37e7f508b6f86cf9be625d03107f23580f6d5172e1bc1e5e1eae72b73db0597eb47cbe114bee39d575ae3493572e282c3cee1216fb78edced'
             '7cbe02c4fdfce83e8becd5c167768d25eab621794e736e7741ca8d4d1384e7db550c59b2f45356aaabd49d9d236bae65bad7f60dc2392a0903ceec812fa5d1c2'
             '7d56d78b4e0299c187eb2ea46a2d6ac41a4ad30848e9f5fe43285af74c5207f6fc4ee98c15bd5114de7a660e52846f75c26632ae1aa3ccf656b504798a6b1d56'
