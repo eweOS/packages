@@ -2,8 +2,8 @@
 
 _name=backends
 pkgname=sane
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Scanner Access Now Easy"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gitlab.com/sane-project/backends"
@@ -36,7 +36,7 @@ source=(
   $url/-/archive/$pkgver/$_name-$pkgver.tar.gz
   sane.sysusers
 )
-sha512sums=('2b6e0ffe64386aa5856a7e4f2b1c536ad9a6376fbf10c954dcc714c1792566a2a8a85a33a947b148ef3d23c1fbfeb5d114e5a99febe0e316ff78e3ab17a4beaf'
+sha512sums=('69adc9e4a7c7252ff677c510c4112096c3c4b00525113795d5d2ecd0efe8716a556c6c403df685d0e360eae72546ad55ff9dd27b3fde5c5b1b9d13dbcd735465'
             'd8cd194b57eff2249df2b8d540a892e518aa3e3bba6387211ed21230dc235e98c49b71f262f0b1007e8c859c59776410840376244e0aec1f06363881b2c81fd8')
 
 prepare() {
