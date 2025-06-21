@@ -1,28 +1,21 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=yelp-xsl
-pkgver=42.1
+pkgver=42.4
 pkgrel=1
 pkgdesc="Document transformations from Yelp"
 url="https://gitlab.gnome.org/GNOME/yelp-xsl"
 arch=(any)
 license=(GPL)
-makedepends=(itstool git)
+makedepends=(libxml2 libxslt itstool meson ninja git)
 source=("git+https://gitlab.gnome.org/GNOME/yelp-xsl.git#tag=$pkgver")
-sha256sums=('c30d71413363a5ed91d96ef0bb667f2e22ef805c161961a61b77e7c10e1b77ad')
-
-prepare() {
-  cd yelp-xsl
-  NOCONFIGURE=1 ./autogen.sh
-}
+sha256sums=('2df20fce55630fe403946f67c67c4b712ffd810fde0d7ca39c2c7e21297b6d15')
 
 build() {
-  cd yelp-xsl
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
-  make
+  ewe-meson build yelp-xsl
+  meson compile -C build
 }
 
 package() {
-  cd yelp-xsl
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }
