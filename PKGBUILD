@@ -9,7 +9,7 @@ _srcver="$(printf "3%02d%02d00" "$_minorver" "$_patchver")"
 pkgrel=1
 pkgdesc="A C library that implements an SQL database engine"
 arch=(x86_64 aarch64 riscv64 loongarch64)
-license=('custom:Public Domain')
+license=('blessing')
 url="https://www.sqlite.org/"
 depends=('musl' 'readline' 'zlib')
 provides=('sqlite3' 'libsqlite3.so')
@@ -36,4 +36,6 @@ package()
 {
   cd sqlite-autoconf-$_srcver
   make DESTDIR="${pkgdir}" install
+  sed -n -e 93,100p sqlite3.c > blessing
+  _install_license_ blessing
 }
