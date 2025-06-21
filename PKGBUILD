@@ -22,6 +22,11 @@ build() {
   make
 }
 
+check() {
+  cd $pkgname-$pkgver
+  make check
+}
+
 package() {
   cd $pkgname-$pkgver
   local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
