@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=thunar-media-tags-plugin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Adds special features for media files to the Thunar File Manager"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -11,7 +11,7 @@ groups=('xfce4-goodies')
 depends=('taglib' 'thunar')
 makedepends=('git' 'intltool' 'xfce4-dev-tools')
 source=("git+https://gitlab.xfce.org/thunar-plugins/thunar-media-tags-plugin.git#tag=$pkgname-$pkgver")
-sha256sums=('cb218d2ae845f61b043fed6e260b582e676dcad3980f5414ac6c430cae1fee6e')
+sha256sums=('12fada2ddbf2d0614db5b53f9f9e8e065df559b7be7daef685e5a1c53f7611e4')
 
 prepare() {
   cd $pkgname
