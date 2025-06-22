@@ -40,19 +40,16 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname"
-	cmake -B build \
+	cmake -B build -S "$pkgname" \
 		-D CMAKE_INSTALL_PREFIX=/usr \
 		-D PODOFO_HAVE_JPEG_LIB=True \
 		-D PODOFO_HAVE_PNG_LIB=True \
 		-D PODOFO_HAVE_TIFF_LIB=True
-	make -C build
+	cmake --build build
 }
 
 # TODO: Enable tests (some of them currently fail)
 
 package() {
-	cd "$pkgname"
-
-	make -C build DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" cmake --install build
 }
