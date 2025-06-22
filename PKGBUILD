@@ -14,6 +14,7 @@ depends=(
   python
 )
 makedepends=(
+  git
   gobject-introspection
   meson
   python-cairo
