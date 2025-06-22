@@ -8,7 +8,9 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://$pkgname.sourceforge.net"
 _url="https://github.com/$pkgname/$pkgname"
 license=(LGPL-2.1-only)
-depends=(fontconfig
+depends=(musl
+	 llvm-libs
+	 fontconfig
          freetype2
          libidn
          libjpeg-turbo
