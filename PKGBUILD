@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-declarative
-_qtver=6.9.0
+_qtver=6.9.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ depends=(qt6-base)
 makedepends=(cmake git ninja python qt6-languageserver qt6-shadertools)
 groups=(qt6)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('a3175fa510847a136734f989e2bfea7f7bbb9dc9acc98b40b544d26f5ba20d3d')
+sha256sums=('ccb94665df0199d7ee387b965b29677c8b89cfb1782bb6f01239b1d1524cec97')
 
 build() {
   export CMARGS=(
