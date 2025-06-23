@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-shadertools
-_qtver=6.9.0
+_qtver=6.9.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ depends=(qt6-base)
 makedepends=(cmake git ninja)
 groups=(qt6)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('916c40281ac3dee23b163f6ca73fb5bdeee344838b9a922b6f36269642d6f4bb')
+sha256sums=('4e1ed24cce0887fb4b6c7be4f150239853a29c330c9717f6bacfb6376f3b4b74')
 
 build() {
   export CMARGS=(
