@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=hyprgraphics
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Hyprland graphics / resource utilities"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=('BSD-3-Clause')
 depends=('pixman' 'cairo' 'hyprutils' 'libjpeg' 'libjxl' 'libwebp' 'file' 'libspng')
 makedepends=('git' 'cmake')
 source=("git+https://github.com/hyprwm/hyprgraphics.git#tag=v$pkgver")
-sha256sums=('81872d1d77485aa1ecfa75ff71265929957ffbf0329969819bc90c27ae8d6bef')
+sha256sums=('0778bd20d6ed70d8454b46284852a9a4cec1a724c8740bfaf2331822511c6014')
 
 prepare() {
   cd "$srcdir/$pkgname"
