@@ -4,7 +4,7 @@ pkgbase=qt6-multimedia
 pkgname=(qt6-multimedia
          qt6-multimedia-ffmpeg
          qt6-multimedia-gstreamer)
-_qtver=6.9.0
+_qtver=6.9.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -29,7 +29,7 @@ makedepends=(cmake
 groups=(qt6)
 _pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('995c3b194f3de3e1929280639642f7661d94aa57523c459dbbf2f71dbdcaa18c')
+sha256sums=('955e36459518ee55f8e2bb79defc6e44aa94dc1edf5ac58a22d7734b2e07391d')
 
 build() {
   export CMARGS=(
