@@ -1,9 +1,9 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-tools
-_qtver=6.9.0
+_qtver=6.9.1
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -13,7 +13,7 @@ depends=(qt6-base zstd)
 makedepends=(cmake git ninja python qt6-declarative llvm-devel)
 groups=(qt6)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('fa645589cc3f939022401a926825972a44277dead8ec8607d9f2662e6529c9a4')
+sha256sums=('90c4a562f4ccfd043fd99f34c600853e0b5ba9babc6ec616c0f306f2ce3f4b4c')
 
 build() {
   export CMARGS=(
