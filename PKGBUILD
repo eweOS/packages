@@ -1,9 +1,9 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-base
-_qtver=6.9.0
+_qtver=6.9.1
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL-3.0-only
@@ -30,9 +30,9 @@ optdepends=('freetds: MS SQL driver'
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
         qt6-base-cflags.patch
 	qt6-base-nostrip.patch)
-sha256sums=('c1800c2ea835801af04a05d4a32321d79a93954ee3ae2172bbeacf13d1f0598c'
+sha256sums=('40caedbf83cc9a1959610830563565889878bc95f115868bbf545d1914acf28e'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
-	    '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
+            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
 
 prepare() {
   _patch_ $_pkgfn
