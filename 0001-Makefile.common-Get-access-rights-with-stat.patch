@@ -1,0 +1,26 @@
+From 625a44b98056fca67f6d8ae07221ab48840cebc5 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Fri, 27 Jun 2025 02:28:31 +0000
+Subject: [PATCH] Makefile.common: Get access rights with stat
+
+Busybox chmod doesn't support --reference parameter. Manully get access
+rights of the reference file through stat command to workaround it.
+
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ Makefile.common | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.common b/Makefile.common
+index f06c6c4b6d38..02423c3508ac 100644
+--- a/Makefile.common
++++ b/Makefile.common
+@@ -43,4 +43,4 @@ V_GEN_SED_1 =
+ 	    -e 's|[@]libdir[@]|$(libdir)|g' \
+ 	    -e 's|[@]includedir[@]|$(includedir)|g' \
+ 	    <$< >$@ && \
+-	chmod --reference=$< $@;
++	chmod $(shell stat -L -c '0%a' $<) $@;
+-- 
+2.50.0
+

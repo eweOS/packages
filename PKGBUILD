@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kbd
-pkgver=2.6.4
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Keytable files and keyboard utilities"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -9,17 +9,23 @@ url="http://www.kbd-project.org"
 license=('GPL-2.0-or-later')
 depends=(pam)
 makedepends=(check git linux-headers)
+# TODO: valgrind isn't available on loongarch64
+# checkdepends=(valgrind)
 source=(
   git+https://git.kernel.org/pub/scm/linux/kernel/git/legion/kbd.git#tag=v$pkgver
   fix-euro2.patch
+  0001-Makefile.common-Get-access-rights-with-stat.patch
   'config.rpath::https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=blob_plain;f=build-aux/config.rpath;hb=HEAD'
 )
 backup=('etc/pam.d/vlock')
-sha256sums=('eb0b2768ab0f577ce91367fb1935c7fc831123c36cd42a4067da80833bb483d5'
+sha256sums=('8bcfc5888ff1f2eafc6b5dd87c36c0f7b167fbdaba066cec59762e5c6f9bdb72'
             'a5e0167b6a82a9eb4d581d56baab930c2d80f5541dc34630460b73e1115384b8'
-            '46e05ef0ed1805729438662c040e85b0abdeba5fbedd448c4d79a3f0f3af6250')
+            'ad121d6b04304580719db552b1d729465c70f37a2c6aa20703f172efb2a179a0'
+            '772c44d89098cbcc95b12cee420fd2f1833ac2da0338df99c5e590d1c1672234')
 
 prepare() {
+  _patch_ "${pkgname}"
+
   cd "${pkgname}"
   cp $srcdir/config.rpath config/
   # rename keymap files with the same names
@@ -32,7 +38,6 @@ prepare() {
   mv data/keymaps/i386/fgGIod/trf{,-fgGIod}.map
   mv data/keymaps/i386/colemak/{en-latin9,colemak}.map
   # fix euro2 #28213
-  patch -Np1 -i ../fix-euro2.patch
   autoreconf -if
 }
 
@@ -42,14 +47,12 @@ build() {
   make KEYCODES_PROGS=yes RESIZECONS_PROGS=yes
 }
 
-check() {
-  cd "${pkgname}"
-
-# This test is expected to fail since kbd-fix-loadkmap-compat.patch modifies the binary format
-  sed -e 's|dumpkeys-bkeymap ||' -i tests/Makefile
-
-  make check
-}
+# Require valgrind to run
+# check() {
+#  cd "${pkgname}"
+#
+#  make check
+# }
 
 package() {
   cd "${pkgname}"
