@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kbd
-pkgver=2.6.4
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Keytable files and keyboard utilities"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -15,9 +15,9 @@ source=(
   'config.rpath::https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=blob_plain;f=build-aux/config.rpath;hb=HEAD'
 )
 backup=('etc/pam.d/vlock')
-sha256sums=('eb0b2768ab0f577ce91367fb1935c7fc831123c36cd42a4067da80833bb483d5'
+sha256sums=('8bcfc5888ff1f2eafc6b5dd87c36c0f7b167fbdaba066cec59762e5c6f9bdb72'
             'a5e0167b6a82a9eb4d581d56baab930c2d80f5541dc34630460b73e1115384b8'
-            '46e05ef0ed1805729438662c040e85b0abdeba5fbedd448c4d79a3f0f3af6250')
+            '772c44d89098cbcc95b12cee420fd2f1833ac2da0338df99c5e590d1c1672234')
 
 prepare() {
   cd "${pkgname}"
