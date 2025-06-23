@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=qt6-imageformats
-_qtver=6.9.0
+_qtver=6.9.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ _pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
 depends=(qt6-base libtiff libwebp zlib-ng)
 makedepends=(cmake samurai)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('2047c6242a57bf97cf40079fa9f91752c137cd9ae84760faa9a2e5e8a440606f')
+sha256sums=('ebe9f238daaf9bb752c7233edadf4af33fc4fa30d914936812b6410d3af1577c')
 
 build() {
 	cmake -B build $_pkgfn -G Ninja \
