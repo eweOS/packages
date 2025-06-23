@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=openexr
-pkgver=3.3.3
+pkgver=3.3.4
 pkgrel=1
 pkgdesc='A high dynamic-range image file format library'
 url='https://www.openexr.com/'
@@ -10,7 +10,7 @@ license=(BSD-3-Clause)
 depends=(imath libdeflate)
 makedepends=(cmake)
 source=(https://github.com/openexr/openexr/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('0ffbd842a7ee2128d44affdea30f42294b4061293cde3aa75b61a53573413d1e')
+sha256sums=('63abac7c52f280e3e16fc868ac40e06449733bb19179008248ae7e34e4f19824')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
