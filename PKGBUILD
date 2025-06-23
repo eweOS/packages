@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qt6-websockets
-_qtver=6.9.0
+_qtver=6.9.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -22,7 +22,7 @@ _pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
 )
-sha256sums=('6b3add7cacf3a4e0b448d5e69d9dac42795fef63309038af1dc5a454ce514940')
+sha256sums=('98be8c863b7f02cc98eedc0b6eac07544c10a9d2fa11c685fd61f6b243f748f5')
 
 build() {
   export CMARGS=(
