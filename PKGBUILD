@@ -2,7 +2,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=(util-linux util-linux-libs)
-pkgver=2.41
+pkgver=2.41.1
 pkgrel=1
 pkgdesc='Miscellaneous system utilities for Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ url=https://github.com/karelzak/util-linux
 license=(GPL)
 makedepends=('bison' 'gettext' 'libtool' 'sqlite' 'linux-headers')
 source=("util-linux-${pkgver}.tar.gz::https://github.com/karelzak/util-linux/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('277407acf21815006eb4bb2ee9c2fa2ea6f4f84bfc57486c460c6bc8c77a4445')
+sha256sums=('61a9785cbf04091286ec2bbfb78e87c35e6380f084f38115a4677b90b9ad4437')
 
 _command_needed=(
   'addpart' 'agetty' 'cfdisk' 'chcpu' 'chmem' 'choom' 'col' 'colcrt' 'colrm' 'column'
