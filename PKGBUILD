@@ -2,7 +2,7 @@
 
 pkgbase=python
 pkgname=(python python-tests)
-pkgver=3.13.3
+pkgver=3.13.5
 pkgrel=1
 _pybasever=${pkgver%.*}
 pkgdesc='The Python programming language'
@@ -23,7 +23,7 @@ source=(
   "https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
   musl-find_library.patch
 )
-sha256sums=('40f868bcbdeb8149a3149580bb9bfd407b3321cd48f0be631af955ac92c0e041'
+sha256sums=('93e583f243454e6e9e4588ca2c2662206ad961659863277afcdb96801647d640'
             '055a00bef64a9c22d746be5e9072d09b303e21cf0865daed1d7a67210207fb4f')
 
 prepare()
