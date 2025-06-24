@@ -2,7 +2,7 @@
 
 pkgname=rrdtool
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for logging and graphing various system status"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.rrdtool.org"
@@ -21,7 +21,7 @@ prepare() {
   cd ${pkgname}-${pkgver}
 
   # https://github.com/oetiker/rrdtool-1.x/issues/1135
-  autoreconf -vi
+  autoreconf -fvi
 }
 
 build() {
