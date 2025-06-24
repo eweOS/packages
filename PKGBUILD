@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kconfigwidgets
-pkgver=6.14.0
+pkgver=6.15.0
 pkgrel=1
 pkgdesc='Widgets for KConfig'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -18,7 +18,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('02fee668592d52bb39294f999af67797d7977e3f1c61bb9c77c086730594319f')
+sha256sums=('f006a2fcf68d24f7b72b768e05ee5b9a61f2c5ddeee87a6fc9a022c83ad3f0b2')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
