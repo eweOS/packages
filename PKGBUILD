@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kcodecs
-pkgver=6.14.0
+pkgver=6.15.0
 pkgrel=1
 pkgdesc='Provide a collection of methods to manipulate strings using various encodings'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(qt6-base)
 makedepends=(extra-cmake-modules gperf qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('008f5912162d394498022d0e955c860c77c33867e8fa448e99448f3a364d6914')
+sha256sums=('bdf57733f2d641cb0cb749ced5f6f67e42c8e9d17db3f6c2e6a2054c86636ec1')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
