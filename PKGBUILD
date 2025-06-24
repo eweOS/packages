@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kirigami-addons
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.8.1
+pkgrel=1
 pkgdesc='Add-ons for the Kirigami framework'
 url='https://invent.kde.org/libraries/kirigami-addons'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -22,7 +22,7 @@ depends=(kconfig
          sonnet)
 makedepends=(extra-cmake-modules)
 source=(https://download.kde.org/stable/$pkgname/$pkgname-$pkgver.tar.xz)
-sha256sums=('f9dfd191022b633ea3348f84730d7158a159dfe49668dba0a9e9bd678ac44e54')
+sha256sums=('00028ae4df99e250518345ea28d9cdf49d700e9acac482734bb51384da11f945')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
