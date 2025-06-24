@@ -14,7 +14,7 @@ pkgname=(
 )
 _realpkgname=llvm-project
 pkgver=20.1.7
-pkgrel=3
+pkgrel=4
 _binutilsver=2.44
 _majorver="${pkgver%%.*}"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -79,7 +79,7 @@ FLIST_clang_tools_2=(
   "usr/bin/git-clang-format"
 
   "usr/bin/clang-*"
-  "usr/bin/"{sancov,modularize,c-index-test,find-all-symbols,diagtool,hmaptool,pp-trace,amdgpu-arch,nvptx-arch}
+  "usr/bin/"{modularize,c-index-test,find-all-symbols,diagtool,hmaptool,pp-trace,amdgpu-arch,nvptx-arch}
   "usr/bin/"{scan,analyze,intercept}"-*"
   "usr/bin/*-analyzer"
   "usr/share/scan-"{view,build}
@@ -354,7 +354,7 @@ build() {
 
 package_llvm-devel() {
   pkgdesc="Development files for LLVM"
-  depends=(llvm llvm-libs llvm-tools mlir openmp)
+  depends=(llvm llvm-libs llvm-tools mlir openmp clang-tools)
 
   mv "$srcdir/pkgs/llvm-devel/usr" "$pkgdir/usr"
 
