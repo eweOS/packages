@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kitemviews
-pkgver=6.14.0
+pkgver=6.15.0
 pkgrel=1
 pkgdesc='Widget addons for Qt Model/View'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(qt6-base)
 makedepends=(extra-cmake-modules qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('997167402dbaa7885ae2aaa4cf8b5f409f57d50bce06a3b56c577e93a975ba4a')
+sha256sums=('0f27d189147bb992b94e1a6a55ced62e2aaf5c5b3d83e41f26d6b0e269765780')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
