@@ -1,11 +1,11 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gtk-layer-shell
-pkgdesc="A library to create panels and other desktop components for Wayland using the Layer Shell protocol"
-pkgver=0.9.1
+pkgdesc="Library to create Wayland desktop components using the Layer Shell protocol"
+pkgver=0.9.2
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
-license=(GPL3 LGPL3 MIT)
+license=(LGPL-3.0-or-later)
 url="https://github.com/wmww/gtk-layer-shell"
 depends=(
   "gtk3"
@@ -15,9 +15,10 @@ makedepends=(
   "gobject-introspection"
   "meson"
   "ninja"
+  "wayland-protocols"
 )
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
-sha256sums=('43e2165cf1a9aa8a317b081c2a583648e02389162f1fbbd33836ba27f9ca19fa')
+sha256sums=('526dd95c083e2a73eafd8baa1f5d676a36cb80fc8e7b304cbe3efebd62f0600c')
 
 build()
 {
