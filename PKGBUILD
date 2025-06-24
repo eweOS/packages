@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kdeclarative
-pkgver=6.14.0
+pkgver=6.15.0
 pkgrel=1
 pkgdesc='Provides integration of QML and KDE Frameworks'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -18,7 +18,7 @@ depends=(kconfig
 makedepends=(extra-cmake-modules qt6-shadertools qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('ed0aa62653fe5a09bc44f584faaa633cb386f7a106cf9b5c930122ae86c0a1d0')
+sha256sums=('3727480f3c3e36c88241ccbcae8ac4078ff01e669114095afcad9ee14baa009d')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
