@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=frameworkintegration
-pkgver=6.14.0
+pkgver=6.15.0
 pkgrel=1
 pkgdesc='Framework providing components to allow applications to integrate with a KDE Workspace'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +16,7 @@ depends=(kcolorscheme
 makedepends=(extra-cmake-modules)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('ea263722de4b37c8742a70ab057da062e5b71d0e08e986456a3dc44e20f003b7')
+sha256sums=('6e64870e5d3dcee2a7f7d0a509b5236667fa11f78dd38cd8923911f1ca7ba786')
 
 build() {
   # BUILD_KPACKAGE_INSTALL_HANDLERS=OFF: packagekit requires polkit
