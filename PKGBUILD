@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=firefox
-pkgver=139.0.1
-pkgrel=2
+pkgver=140.0
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -71,7 +71,7 @@ source=(
   0005-Bug-1961587-Handle-dirty-lhs-of-branch32.patch
   0006-third_party-webrtc-Build-Wayland-Screen-Capturer-on-.patch
 )
-sha256sums=('5b716ee9e6339a0de8e42f81c1d7dadca5c03e91ee9b2fa8e78357a631b499b0'
+sha256sums=('ee1253b49b21241abc5d490df60be1d9f1d3914cdc1a4e3482a8158913f9fd1f'
             '5efe32a0f0d8c7219cd9f58e5fc9aa9f388457dff4e4bfdd372b13456cce3f2b'
             '18a0f1df76834ac3d4ddb150aa857785df641b54f9fbf0cfb6ffcec64dad72d4'
             'a22ceb0bbf5830d3afbacd656e6893ff0ce455fae5f48c7daa5f836112291ba7'
