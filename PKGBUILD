@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=('boost' 'boost-libs')
-pkgver=1.87.0
-pkgrel=2
+pkgver=1.88.0
+pkgrel=1
 _srcname=boost_${pkgver//./_}
 pkgdesc="Free peer-reviewed portable C++ source libraries"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ makedepends=('icu' 'linux-headers' 'python' 'libbz2' 'zlib' 'zstd')
 source=(https://downloads.sourceforge.net/project/boost/boost/$pkgver/$_srcname.tar.bz2
         boost-1.81.0-phoenix-multiple-definitions.patch
 )
-sha256sums=('af57be25cb4c4f4b413ed692fe378affb4352ea50fbe294a11ef548f4d527d89'
+sha256sums=('46d9d2c06637b219270877c9e16155cbd015b6dc84349af064c088e9b5b12f7b'
             '5c83b5b30a5c53282fc55f7adabcb6b65a0f6291d1f1ebfc556408a3eba0640b')
 
 prepare() {
