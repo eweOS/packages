@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=waybar
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,6 +14,7 @@ depends=(
   'gtk-layer-shell'
   'libevdev'
   'libinput'
+  'libmpdclient'
   'libnl'
   'libxkbcommon'
   'jsoncpp'
@@ -32,7 +33,7 @@ makedepends=(
   'python-packaging'
 )
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('80454a0778176f575c112bdef9107f272621b578aa629bcc257ad9844a6c7165')
+sha256sums=('5148c802ecdcb459f0dbcb20b43a30f5751e9c1b2c9ed7bb893aa87f37212307')
 
 build() {
   local features=(
@@ -42,10 +43,10 @@ build() {
     -D dbusmenu-gtk=disabled
     -D upower_glib=disabled
     -D mpris=disabled
-    -D mpd=disabled
     -D sndio=disabled
     -D systemd=disabled
-    -D wireplumber=disabled
+    -D gps=disabled
+    -D niri=true
   )
 
   ewe-meson "Waybar-$pkgver" build --wrap-mode=nodownload \
