@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=firefox
-pkgver=139.0.1
-pkgrel=2
+pkgver=140.0
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -39,23 +39,11 @@ makedepends=(
 )
 # 0001: Downstream, enable usage of -fvisibility=hidden and
 #	-visibility-inlines-hidden with Clang
-# 0002: Should be upstreamed for third-party library, fix missing types on musl
-#	refer to https://github.com/asg017/sqlite-vec/issues/156
-#	Another fix: https://github.com/asg017/sqlite-vec/pull/219
-#	Firefox upstream reports:
-#		https://bugzilla.mozilla.org/show_bug.cgi?id=1962061
-#		https://bugzilla.mozilla.org/show_bug.cgi?id=1964446
-# 0003: Should be upstreamed, workaround libyuv link failures caused by
+# 0002: Should be upstreamed, workaround libyuv link failures caused by
 #	Clang-20's different behavior when both -mno-lsx and -march=la464 are
 #	specified
 #	https://github.com/loongson-community/discussions/issues/95
-# 0004, 0005: Backport, fix JIT crash on platforms where ABI requires narrower
-#	arguments to be sign-extended.
-#	https://phabricator.services.mozilla.com/D248134
-#	https://phabricator.services.mozilla.com/D248862
-#	Ref: https://github.com/loongson-community/discussions/issues/93
-#	Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=1961587
-# 0006: Should be upstreamed, fix WebRTC linking failures when X11 is disabled
+# 0003: Should be upstreamed, fix WebRTC linking failures when X11 is disabled
 #	on loongarch64
 #	TODO: RISC-V has similar issues in buildscript and should be fixed as
 #	as well.
@@ -65,21 +53,15 @@ source=(
   firefox.desktop
   distribution.ini
   0001-enable-visibility-hidden-for-clang.patch
-  0002-third_party-sqlite-vec-Include-stdint.h-for-uintXX_t.patch
-  0003-media-libyuv-Disable-LSX-LASX-by-defining-feature-ma.patch
-  0004-Bug-1964806-Support-sign-extension-in-MacroAssembler.patch
-  0005-Bug-1961587-Handle-dirty-lhs-of-branch32.patch
-  0006-third_party-webrtc-Build-Wayland-Screen-Capturer-on-.patch
+  0002-media-libyuv-Disable-LSX-LASX-by-defining-feature-ma.patch
+  0003-third_party-webrtc-Build-Wayland-Screen-Capturer-on-.patch
 )
-sha256sums=('5b716ee9e6339a0de8e42f81c1d7dadca5c03e91ee9b2fa8e78357a631b499b0'
+sha256sums=('ee1253b49b21241abc5d490df60be1d9f1d3914cdc1a4e3482a8158913f9fd1f'
             '5efe32a0f0d8c7219cd9f58e5fc9aa9f388457dff4e4bfdd372b13456cce3f2b'
             '18a0f1df76834ac3d4ddb150aa857785df641b54f9fbf0cfb6ffcec64dad72d4'
             'a22ceb0bbf5830d3afbacd656e6893ff0ce455fae5f48c7daa5f836112291ba7'
             '98527320399c5efe4dd0103fa0af3732470700abb515871d28e001edc3e49e7e'
-            '80384c7900b5c877f34406c334b697208471a2a59e85d230ca28b4154d29bcbc'
             '1f1d66aaaea3ebab5cb28c914dfa13dc8323fb5ba774c1bec059e4d073ae9374'
-            '2f4116f0823f4e04a00e56f5154e57dc9125b12190b034e492dfa1dd151e51ba'
-            '9052394fcdbf81aa0b78b53e7c7968a589440cc1fe410a6f14a48a927fca7969'
             '5a535cb838af85677ff6e0623e6611b6c1de4ad9b0aeb22e0b17cb8721ee159b')
 # FIXME: ADD MORE MEMORY!!!
 options=(!lto)
