@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libgexiv2
-pkgver=0.14.3
-pkgrel=3
+pkgver=0.14.5
+pkgrel=1
 pkgdesc="GObject-based wrapper around the Exiv2 library"
 url="https://gitlab.gnome.org/GNOME/gexiv2"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -21,7 +21,7 @@ makedepends=(
   vala
 )
 source=("git+$url.git#tag=gexiv2-$pkgver")
-sha256sums=('6fcc550b572829da397cab03ceb26f2030fc41955a65cf6de2ac2fc3333eb33c')
+sha256sums=('b7b8d468b3ca4e6268a912a8c1fd1f31dd864b085ed5503c9652744321b962f7')
 
 build() {
   local meson_options=(
