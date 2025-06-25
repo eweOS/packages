@@ -2,7 +2,7 @@
 
 pkgname=kwidgetsaddons
 pkgver=6.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Addons to QtWidgets'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -16,7 +16,8 @@ sha256sums=('23557e83da5d49bf1722aad07846015a1fcecc10a70342ac9cb54b7acff88435')
 build() {
   cmake -B build -S $pkgname-$pkgver \
     -DBUILD_TESTING=OFF \
-    -DCMAKE_INSTALL_LIBDIR=lib
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_PYTHON_BINDINGS=OFF
   cmake --build build
 }
 
