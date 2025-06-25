@@ -16,6 +16,10 @@ build() {
   meson compile -C build
 }
 
+check() {
+  meson test -C build
+}
+
 package() {
   meson install -C build --destdir "$pkgdir"
 
