@@ -2,7 +2,7 @@
 
 pkgname=knotifications
 pkgver=6.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Abstraction for system notifications'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -21,7 +21,8 @@ sha256sums=('97bf87eb57883ab3ae483c4720688a1ca539770b99179b64610a802bb95aedee')
 build() {
   cmake -B build -S $pkgname-$pkgver \
     -DBUILD_TESTING=OFF \
-    -DBUILD_QCH=OFF
+    -DBUILD_QCH=OFF \
+    -DBUILD_PYTHON_BINDINGS=OFF
   cmake --build build
 }
 
