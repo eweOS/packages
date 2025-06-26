@@ -2,7 +2,7 @@
 
 pkgname=kstatusnotifieritem
 pkgver=6.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Implementation of Status Notifier Items'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -19,7 +19,8 @@ build() {
   cmake -B build -S $pkgname-$pkgver \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=OFF \
-    -DWITHOUT_X11=ON
+    -DWITHOUT_X11=ON \
+    -DBUILD_PYTHON_BINDINGS=OFF
   cmake --build build
 }
 
