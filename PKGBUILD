@@ -2,7 +2,7 @@
 
 pkgname=kirigami-addons
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Add-ons for the Kirigami framework'
 url='https://invent.kde.org/libraries/kirigami-addons'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -20,7 +20,7 @@ depends=(kconfig
          qt6-declarative
          qt6-multimedia
          sonnet)
-makedepends=(extra-cmake-modules)
+makedepends=(extra-cmake-modules qt6-tools)
 source=(https://download.kde.org/stable/$pkgname/$pkgname-$pkgver.tar.xz)
 sha256sums=('00028ae4df99e250518345ea28d9cdf49d700e9acac482734bb51384da11f945')
 
