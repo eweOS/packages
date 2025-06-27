@@ -2,7 +2,7 @@
 
 pkgname=kjobwidgets
 pkgver=6.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Widgets for tracking KJob instances'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -21,7 +21,8 @@ build() {
   cmake -B build -S $pkgname-$pkgver \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=OFF \
-    -DWITH_X11=OFF
+    -DWITH_X11=OFF \
+    -DBUILD_PYTHON_BINDINGS=OFF
   cmake --build build
 }
 
