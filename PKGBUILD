@@ -28,10 +28,10 @@ sha256sums=('8bcfc5888ff1f2eafc6b5dd87c36c0f7b167fbdaba066cec59762e5c6f9bdb72'
             'a5e0167b6a82a9eb4d581d56baab930c2d80f5541dc34630460b73e1115384b8')
 
 prepare() {
-  _patch_ "${pkgname}"
+  _patch_ "$pkgname"
 
-  cd "${pkgname}"
-  cp $srcdir/config.rpath config/
+  cd "$pkgname"
+  cp "$srcdir"/config.rpath config/
   # rename keymap files with the same names
   # this is needed because when only name of keymap is specified
   # loadkeys loads the first keymap it can find, which is bad (see FS#13837)
@@ -45,24 +45,28 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname}"
-  ./configure --prefix=/usr --sysconfdir=/etc --datadir=/usr/share/kbd --mandir=/usr/share/man --enable-optional-progs
+  cd "$pkgname"
+  ./configure --prefix=/usr \
+    --sysconfdir=/etc  \
+    --datadir=/usr/share/kbd  \
+    --mandir=/usr/share/man  \
+    --enable-optional-progs
   make KEYCODES_PROGS=yes RESIZECONS_PROGS=yes
 }
 
 # Require valgrind to run
 # check() {
-#  cd "${pkgname}"
+#  cd "$pkgname"
 #
 #  make check
 # }
 
 package() {
-  cd "${pkgname}"
-  make KEYCODES_PROGS=yes RESIZECONS_PROGS=yes DESTDIR="${pkgdir}" install
+  cd "$pkgname"
+  make KEYCODES_PROGS=yes RESIZECONS_PROGS=yes DESTDIR="$pkgdir" install
 
-  # remove busybox commands
+  # remove commands provided by busybox
   for exe in chvt deallocvt fgconsole kbd_mode openvt setfont setkeycodes setlogcons showkey vlock; do
-    rm $pkgdir/usr/bin/$exe
+    rm "$pkgdir"/usr/bin/$exe
   done
 }
