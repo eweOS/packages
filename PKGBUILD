@@ -2,7 +2,7 @@
 
 pkgname=purpose
 pkgver=6.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Framework for providing abstractions to get the developers purposes fulfilled'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -18,6 +18,7 @@ depends=(kcmutils
          qt6-base
          qt6-declarative)
 makedepends=(extra-cmake-modules
+             qt6-tools     
              intltool)
 optdepends=('bluedevil: sharing via Bluetooth'
             'kdeclarative: Nextcloud and YouTube plugins'
