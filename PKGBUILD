@@ -2,7 +2,7 @@
 
 pkgname=kxmlgui
 pkgver=6.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='User configurable main windows'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -28,7 +28,8 @@ build() {
   cmake -B build -S $pkgname-$pkgver \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF \
-    -DBUILD_QCH=OFF
+    -DBUILD_QCH=OFF \
+    -DBUILD_PYTHON_BINDINGS=OFF
   cmake --build build
 }
 
