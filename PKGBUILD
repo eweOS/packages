@@ -11,17 +11,21 @@ depends=(pam)
 makedepends=(check git linux-headers)
 # TODO: valgrind isn't available on loongarch64
 # checkdepends=(valgrind)
+# 0001: Downstream, fixes Makefile.coomon compatibility with busybox chmod
+# 0002: Maybe should be upstreamed, fixes Euro symbol is mapped incorrectly
+#	with de-latin1 keymap.
+#	Unconfirmed bug, originally reported in https://bugs.archlinux.org/task/28213
 source=(
   git+https://git.kernel.org/pub/scm/linux/kernel/git/legion/kbd.git#tag=v$pkgver
-  fix-euro2.patch
-  0001-Makefile.common-Get-access-rights-with-stat.patch
   'config.rpath::https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=blob_plain;f=build-aux/config.rpath;hb=HEAD'
+  0001-Makefile.common-Get-access-rights-with-stat.patch
+  0002-fix-euro2-mapping.patch
 )
 backup=('etc/pam.d/vlock')
 sha256sums=('8bcfc5888ff1f2eafc6b5dd87c36c0f7b167fbdaba066cec59762e5c6f9bdb72'
-            'a5e0167b6a82a9eb4d581d56baab930c2d80f5541dc34630460b73e1115384b8'
+            '772c44d89098cbcc95b12cee420fd2f1833ac2da0338df99c5e590d1c1672234'
             'ad121d6b04304580719db552b1d729465c70f37a2c6aa20703f172efb2a179a0'
-            '772c44d89098cbcc95b12cee420fd2f1833ac2da0338df99c5e590d1c1672234')
+            'a5e0167b6a82a9eb4d581d56baab930c2d80f5541dc34630460b73e1115384b8')
 
 prepare() {
   _patch_ "${pkgname}"
@@ -37,7 +41,6 @@ prepare() {
   mv data/keymaps/i386/olpc/pt{,-olpc}.map
   mv data/keymaps/i386/fgGIod/trf{,-fgGIod}.map
   mv data/keymaps/i386/colemak/{en-latin9,colemak}.map
-  # fix euro2 #28213
   autoreconf -if
 }
 
