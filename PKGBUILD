@@ -10,13 +10,10 @@ url="https://github.com/google/benchmark"
 license=('Apache')
 depends=('llvm-libs')
 makedepends=('cmake' 'python')
-source=(
-  "$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
-)
+source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('b334658edd35efcf06a99d9be21e4e93e092bd5f95074c1673d5c8705d95c104')
 
-build()
-{
+build() {
   cd $pkgname-$pkgver
 
   # build type Release won't ignore unused variables
@@ -35,14 +32,12 @@ build()
   cmake --build .
 }
 
-check()
-{
+check() {
   cd $pkgname-$pkgver
   ctest
 }
 
-package()
-{
+package() {
   cd $pkgname-$pkgver
-  cmake --install . --prefix $pkgdir/usr
+  cmake --install . --prefix "$pkgdir"/usr
 }
