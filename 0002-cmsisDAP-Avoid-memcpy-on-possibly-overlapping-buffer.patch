@@ -1,0 +1,49 @@
+From a1ea0c98fce9113a656323fe41280c872b8a5fa4 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Sat, 28 Jun 2025 11:40:45 +0000
+Subject: [PATCH] cmsisDAP: Avoid memcpy() on possibly overlapping buffer
+
+I observed strange cmsisDAP behavior when building openFPGALoader with
+Clang/musl in release mode: CmsisDAP:display_info() shows the correct
+hardware capability that supports JTAG,
+
+	...
+	firmware version : 0254
+	hardware capabilities : 13
+	SWO trace buffer size : NA
+	...
+
+but the detection of JTAG fails in the constructor with a strange
+response sequence,
+
+	Hardware cap 00 01 00
+	JTAG init failed with: JTAG is not supported by the probe
+
+With some digging, it's found that the CmsisDAP::xfer() method without
+an instruction parameter may be called by the constructor with a rx_buff
+pointer overlapping with _ll_buffer, for which memmove() instead of
+memcpy() should be used. The behavior of memcpy() is undefined when dst
+and src overlap.
+
+Fixes: 53c5d35da6ca ("add cmsis dap (hid) support")
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ src/cmsisDAP.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/cmsisDAP.cpp b/src/cmsisDAP.cpp
+index 92a464c188c3..50ced2e84f23 100644
+--- a/src/cmsisDAP.cpp
++++ b/src/cmsisDAP.cpp
+@@ -561,7 +561,7 @@ int CmsisDAP::xfer(int tx_len, uint8_t *rx_buff, int rx_len)
+ 		return ret;
+ 	}
+ 	if (rx_len)
+-		memcpy(rx_buff, _ll_buffer, rx_len);
++		memmove(rx_buff, _ll_buffer, rx_len);
+ 
+ 
+ 	return ret;
+-- 
+2.50.0
+
