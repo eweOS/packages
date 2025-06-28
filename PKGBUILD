@@ -7,9 +7,10 @@ pkgrel=1
 pkgdesc="A microbenchmark support library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/google/benchmark"
-license=('Apache')
-depends=('llvm-libs')
+license=('Apache-2.0')
+depends=('musl' 'llvm-libs')
 makedepends=('cmake' 'python')
+provides=('libbenchmark.so' 'libbenchmark_main.so')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('b334658edd35efcf06a99d9be21e4e93e092bd5f95074c1673d5c8705d95c104')
 
@@ -40,4 +41,5 @@ check() {
 package() {
   cd $pkgname-$pkgver
   cmake --install . --prefix "$pkgdir"/usr
+  _install_license_ LICENSE
 }
