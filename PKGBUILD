@@ -4,7 +4,7 @@
 pkgname=(linux linux-headers linux-devel linux-docs)
 _basename=linux
 pkgver=6.15.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux kernel'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
@@ -106,6 +106,8 @@ package_linux-headers() {
 
 package_linux-devel() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc"
+  # Required if BTF is enabled
+  depends=(pahole)
 
   cd "$_basename-$pkgver"
   local _builddir="$pkgdir/usr/src/$pkgbase"
