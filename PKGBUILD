@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gimp
-pkgver=3.0.4
+pkgver=3.1.2
 pkgrel=1
 pkgdesc='GNU Image Manipulation Program'
 url='https://www.gimp.org/'
@@ -81,7 +81,7 @@ source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${pkgname}-${pkgver}.t
         'docs_dont_fail_on_warn.patch'
 	'fix-crash-max-samples.patch'
         'linux.gpl')
-sha256sums=('8caa2ec275bf09326575654ac276afc083f8491e7cca45d19cf29e696aecab25'
+sha256sums=('330b1634bec07dc34bec4e7e4109765b7b864a39a3702f6899de4738f2e38c2a'
             'c39d1551bb3be45f661c80892a0d6abc49e18dca6cf3fcdfcd0b8ba13f680382'
             '31eaca307583fed9763996ebf41a0aa953a8315d183037c7438d27c34496583c'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
