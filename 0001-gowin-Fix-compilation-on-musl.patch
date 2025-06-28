@@ -1,0 +1,25 @@
+From 6dbde4c3685ac890e06dd4b720f22ebd2bff2770 Mon Sep 17 00:00:00 2001
+From: Marcus Comstedt <marcus.comstedt@requtech.se>
+Date: Fri, 7 Mar 2025 15:38:14 +0100
+Subject: [PATCH] gowin: Fix compilation on musl
+
+---
+ src/gowin.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/gowin.cpp b/src/gowin.cpp
+index d819a88c4ad1..c14cbe223b37 100644
+--- a/src/gowin.cpp
++++ b/src/gowin.cpp
+@@ -252,6 +252,8 @@ bool Gowin::send_command(uint8_t cmd)
+ 			#define le32toh(x) (x)
+ 		#endif
+ 	#endif
++#else
++#include <endian.h>
+ #endif
+ 
+ uint32_t Gowin::readReg32(uint8_t cmd)
+-- 
+2.50.0
+
