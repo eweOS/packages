@@ -1,0 +1,13 @@
+diff --git a/kernel/driver.cc b/kernel/driver.cc
+index 9acc58dc42fb..c96c3c1b7e91 100644
+--- a/kernel/driver.cc
++++ b/kernel/driver.cc
+@@ -20,7 +20,7 @@
+ #include "kernel/yosys.h"
+ #include "kernel/hashlib.h"
+ #include "libs/sha1/sha1.h"
+-#include "libs/cxxopts/include/cxxopts.hpp"
++#include "cxxopts.hpp"
+ #include <iostream>
+ 
+ #ifdef YOSYS_ENABLE_READLINE

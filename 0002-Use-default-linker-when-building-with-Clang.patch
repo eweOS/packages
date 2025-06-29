@@ -1,0 +1,14 @@
+diff --git a/Makefile b/Makefile
+index 0b81181c19de..df12aff42658 100644
+--- a/Makefile
++++ b/Makefile
+@@ -237,9 +237,6 @@ LTOFLAGS := $(GCC_LTO)
+ ifeq ($(CONFIG),clang)
+ CXX = clang++
+ CXXFLAGS += -std=$(CXXSTD) $(OPT_LEVEL)
+-ifeq ($(ENABLE_LTO),1)
+-LINKFLAGS += -fuse-ld=lld
+-endif
+ ABCMKARGS += ARCHFLAGS="-DABC_USE_STDINT_H $(ABC_ARCHFLAGS)"
+ LTOFLAGS := $(CLANG_LTO)
+ 
