@@ -1,0 +1,32 @@
+From 28fe854ab5b6da9f4af5995b4d0e8f2653450230 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Sun, 29 Jun 2025 09:06:31 +0000
+Subject: [PATCH] Makefile: Respect LDFLAGS when linking shared library
+
+LDFLAGS is taken into account when linking the executable, but not the
+shared library, which is inconsistent and may cause issues if customized
+settings are passed through LDFLAGS (for example, LTO). Let's include
+LDFLAGS in the linking command.
+
+Fixes: b9dfb992c78e ("(1) Makefile: added a shared library target, (2) no longer compile the main function as part of libabc.a")
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 50cff2d1704a..4ff51c7ebb72 100644
+--- a/Makefile
++++ b/Makefile
+@@ -231,7 +231,7 @@ lib$(PROG).a: $(LIBOBJ)
+ 
+ lib$(PROG).so: $(LIBOBJ)
+ 	@echo "$(MSG_PREFIX)\`\` Linking:" $(notdir $@)
+-	$(VERBOSE)$(CXX) -shared -o $@ $^ $(LIBS)
++	$(VERBOSE)$(CXX) -shared -o $@ $^ $(LDFLAGS) $(LIBS)
+ 
+ docs:
+ 	@echo "$(MSG_PREFIX)\`\` Building documentation." $(notdir $@)
+-- 
+2.50.0
+
