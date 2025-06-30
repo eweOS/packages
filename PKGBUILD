@@ -9,7 +9,7 @@ url='https://prjtrellis.readthedocs.io/en/latest/index.html'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 depends=(musl llvm-libs boost-libs python)
-makedepends=(cmake boost)
+makedepends=(cmake boost git)
 provides=(libtrellis.so)
 source=("git+https://github.com/YosysHQ/prjtrellis.git#tag=$pkgver"
 	"git+https://github.com/YosysHQ/prjtrellis-db.git#commit=$_dbcommit")
