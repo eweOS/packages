@@ -6,7 +6,7 @@ pkgrel=7
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://ffmpeg.org/
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(
   alsa-lib
   aom
