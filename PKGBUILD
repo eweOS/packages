@@ -71,9 +71,6 @@ sha256sums=('f117507dc501f2a6c11f9241d8d0c3213846cfad91764361af37befd6b6c523d'
 prepare() {
   _patch_ FFmpeg-n$pkgver
   cd FFmpeg-n$pkgver
-  sed -i 's@cc_default="gcc"@cc_default="clang"@g' ./configure
-  sed -i 's@cxx_default="g++"@cxx_default="clang++"@g' ./configure
-  sed -i 's@host_cc_default="gcc"@host_cc_default="clang"@g' ./configure
 
   if [ "$CARCH" == "riscv64" ]; then
     sed -i '1i #include <asm/unistd.h>' libavutil/riscv/cpu.c
@@ -84,6 +81,8 @@ build() {
   cd FFmpeg-n$pkgver
   ./configure \
     --prefix=/usr \
+    --cc=clang \
+    --cxx=clang++ \
     --disable-debug \
     --disable-static \
     --disable-stripping \
