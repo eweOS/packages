@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg
 pkgver=7.1.1
-pkgrel=6
+pkgrel=7
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://ffmpeg.org/
@@ -16,11 +16,14 @@ depends=(
   fribidi
   gmp
   gsm
+  lame
   libass
   libdrm
+  libjxl
   libopus
   libpulse
   libsrt
+  libtheora
   libva
   libvorbis
   libx264
@@ -30,6 +33,7 @@ depends=(
   libwebp
   libvpx
   mesa
+  openjpeg2
   openssl
   rav1e
   sdl2
@@ -103,13 +107,13 @@ build() {
     --enable-libgsm \
     --disable-libiec61883 \
     --disable-libjack \
-    --disable-libjxl \
+    --enable-libjxl \
     --disable-libmfx \
     --disable-libmodplug \
-    --disable-libmp3lame \
+    --enable-libmp3lame \
     --disable-libopencore_amrnb \
     --disable-libopencore_amrwb \
-    --disable-libopenjpeg \
+    --enable-libopenjpeg \
     --disable-libopenmpt \
     --enable-libopus \
     --enable-libpulse \
@@ -120,7 +124,7 @@ build() {
     --enable-libsrt \
     --disable-libssh \
     --enable-libsvtav1 \
-    --disable-libtheora \
+    --enable-libtheora \
     --disable-libv4l2 \
     --disable-libvidstab \
     --disable-libvmaf \
