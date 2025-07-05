@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=nodejs
-pkgver=24.2.0
-pkgrel=2
+pkgver=24.3.0
+pkgrel=1
 pkgdesc='JavaScript runtime'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://nodejs.org/'
@@ -26,7 +26,7 @@ source=("https://nodejs.org/dist/v${pkgver}/node-v${pkgver}.tar.xz"
         "0003-v8-riscv-fix-trampoline.patch"
         "0004-v8-riscv-fix-trampoline-release.patch"
         "0005-tools-Compile-maglev-files-for-v8_compiler-only-when.patch")
-sha512sums=('39569e668e6f98d0bdb76eae857e884d0765a25cf05cae58da0d5d0e2a96ad0100dcebac97b91ab9693a0e3403746a67222ec5ead8be1a6f0b7c83888d40b466'
+sha512sums=('5ab1f04ae18f379b34e2eb3df80c19ba276404ce39e9491c55fa5ea7dab49e8daaa037efc5e3088840358eacbc31bc7b569c1469660a8cbcf088a2bb41710ab4'
             '2c51251e303d64980deb8f00dfadf5928c31fb66ec2bbe94790868ffd6c7a4b2dba0584fe5bd53f70feb33b6a735a8e78dc7fa0d746645408e072eef3bed9d9f'
             'de07b0d9c3481036ee97a22941ff444fee86c78abbc26afef36f17508bb479ce3ab83ca160109fbf4f0b9b3266dcce30860873dc8ffbcac1a70e98d17638ca55'
             '625507d38eb6c14e9a502aa85d6a265bf14444987b6a62da40cf63cdbb027ef530adafbae55e89266f2077715a3c94f77f32037c793340dd2b192c99ebd5abed'
