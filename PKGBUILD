@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=readline
-pkgver=8.2
-pkgrel=4
+pkgver=8.3
+pkgrel=1
 pkgdesc='GNU readline library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL')
@@ -17,7 +17,7 @@ source=(
   inputrc
 )
 
-sha256sums=('3feb7171f16a84ee82ca18a36d7b9be109a52c04f492a053331d7d1095007c35'
+sha256sums=('fe5383204467828cd495ee8d1d3c037a7eba1389c22bc6a041f627976f9061cc'
             '36e9611f935ee108d161587b0615f9c390192ef4bbff6dc59b58671261029901')
 
 build()
