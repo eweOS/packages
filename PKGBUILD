@@ -24,8 +24,7 @@ _features=(
   --with-all-insults
 )
 
-build()
-{
+build() {
   cd "$srcdir/$pkgname-$_pkgver"
   ./configure \
     --prefix=/usr \
@@ -39,8 +38,7 @@ build()
   make
 }
 
-package()
-{
+package() {
   cd "$srcdir/$pkgname-$_pkgver"
   make DESTDIR="$pkgdir" install
   _install_license_ LICENSE.md
