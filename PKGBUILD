@@ -1,7 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sudo
-pkgver=1.9.17
+pkgver=1.9.17.p1
+_pkgver=${pkgver/.p/p}
 pkgrel=1
 pkgdesc='Tool for delegating authority to users and groups.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,8 +14,8 @@ options=(emptydirs)
 backup=('etc/sudo.conf'
         'etc/sudo_logsrvd.conf'
         'etc/sudoers')
-source=("http://www.sudo.ws/sudo/dist/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('3f212c69d534d5822b492d099abb02a593f91ca99f5afde5cb9bd3e1dcdad069')
+source=("http://www.sudo.ws/sudo/dist/${pkgname}-${_pkgver}.tar.gz")
+sha256sums=('ff607ea717072197738a78f778692cd6df9a7e3e404565f51de063ca27455d32')
 
 _features=(
   --enable-static=false
@@ -25,7 +26,7 @@ _features=(
 
 build()
 {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$_pkgver"
   ./configure \
     --prefix=/usr \
     --libexecdir=/usr/lib/sudo \
@@ -40,6 +41,6 @@ build()
 
 package()
 {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$_pkgver"
   make DESTDIR="$pkgdir" install
 }
