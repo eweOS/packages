@@ -4,8 +4,8 @@ pkgbase=opencv
 pkgname=(opencv
          opencv-samples
          python-opencv)
-pkgver=4.11.0
-pkgrel=7
+pkgver=4.12.0
+pkgrel=1
 pkgdesc='Open Source Computer Vision Library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0)
@@ -48,18 +48,14 @@ optdepends=('opencv-samples: samples'
             'hdf5: for the HDF5 module'
             'opencl-icd-loader: For coding with OpenCL'
             'java-runtime: Java interface')
-# 0001: Backport, https://github.com/opencv/opencv/pull/27192
-#	fix CMake 4.0 compatibility
-# 0002: Workaround, fix compatibility with Qt 6.9
+# 0001: Workaround, fix compatibility with Qt 6.9
 #	https://github.com/opencv/opencv/issues/27223#issuecomment-2797750952
 #	https://bugreports.qt.io/browse/QTBUG-134774
 source=(opencv.tar.gz::https://github.com/opencv/opencv/archive/refs/tags/$pkgver.tar.gz
         opencv_contrib.tar.gz::https://github.com/opencv/opencv_contrib/archive/refs/tags/$pkgver.tar.gz
-	0001-Fix-configuring-with-CMake-4.patch
-	0002-workaround-qt-6-9-compatibility-prblem.patch)
-sha256sums=('9a7c11f924eff5f8d8070e297b322ee68b9227e003fd600d4b8122198091665f'
-            '2dfc5957201de2aa785064711125af6abb2e80a64e2dc246aca4119b19687041'
-            'c9ac48cbcde10146af6fd9ca22d05091d5a3a35943a723bdcf4d30d51bfbf4a4'
+	0001-workaround-qt-6-9-compatibility-prblem.patch)
+sha256sums=('44c106d5bb47efec04e531fd93008b3fcd1d27138985c5baf4eafac0e1ec9e9d'
+            '4197722b4c5ed42b476d42e29beb29a52b6b25c34ec7b4d589c3ae5145fee98e'
             '6dfa9c685fe73587ec20c2c47740ad5df9184c7102b959da9d229269a09b2dee')
 options=(!lto) # https://gitlab.archlinux.org/archlinux/packaging/packages/kdenlive/-/issues/8
 
