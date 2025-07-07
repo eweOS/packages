@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Tool for delegating authority to users and groups.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.sudo.ws/'
-license=(BSD)
+license=(ISC)
 depends=(openssl zlib)
 makedepends=(utmps)
 options=(emptydirs)
@@ -43,4 +43,5 @@ package()
 {
   cd "$srcdir/$pkgname-$_pkgver"
   make DESTDIR="$pkgdir" install
+  _install_license_ LICENSE.md
 }
