@@ -2,7 +2,7 @@
 
 pkgname=mlt
 pkgver=7.32.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source multimedia framework'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.mltframework.org'
