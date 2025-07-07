@@ -6,7 +6,7 @@ pkgname=(
   libadwaita-demos
   libadwaita-docs
 )
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="Building blocks for modern adaptive GNOME applications"
 url="https://gnome.pages.gitlab.gnome.org/libadwaita/"
@@ -30,7 +30,7 @@ makedepends=(
 )
 checkdepends=(weston)
 source=("git+https://gitlab.gnome.org/GNOME/libadwaita.git#tag=$pkgver")
-sha256sums=('ff47562ff511fc1bdee88f41daa0ed0b9ab26068933a2ee80cd0a98cb023a489')
+sha256sums=('0b2d5ebfd76e99fa82e2a34c07c8bec2fd03841b03a6a8a4dc593ffcec50b33c')
 
 build() {
   local meson_options=(
