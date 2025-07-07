@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=shaderc
-pkgver=2025.2
+pkgver=2025.3
 pkgrel=1
 pkgdesc='Collection of tools, libraries and tests for shader compilation'
 url='https://github.com/google/shaderc'
@@ -14,7 +14,7 @@ makedepends=('cmake' 'ninja' 'python' 'spirv-headers')
 # accidentally) dropped the libSPIRV.so stub.
 source=(https://github.com/google/shaderc/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz
 	0001-Do-not-link-to-stub-libSPIRV.so.patch)
-sha512sums=('6761372591075944fddd926e9f7c2ea9447496566d2d549f523c6c529c3bd753d459b66d499f76d955bdcfb335016daddbeba49b087f4ecabf37d76a46ac14cd'
+sha512sums=('4d4f0d7c37d3224e6fb38b320f1ab52e4feb2e5a1c630973c1f00171d90d8d66bef3e44faf996ec67e1568fafc7f767e147fa130d5919b05aad55a78fca7f101'
             'b1fbdeadf3f75626297f70c59de37b86eaef9fdfb54b99b6be68d6581900a45d93ea6fc50183e82a037783fdc6a8433c09191e69271b7f6d98b15f0ff2aeb8a6')
 
 prepare() {
