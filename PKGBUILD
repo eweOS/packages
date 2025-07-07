@@ -5,7 +5,7 @@ pkgname=(
   libproxy
   libproxy-docs
 )
-pkgver=0.5.9
+pkgver=0.5.10
 pkgrel=1
 pkgdesc="Automatic proxy configuration management library"
 url="https://libproxy.github.io/libproxy/"
@@ -27,7 +27,7 @@ makedepends=(
 source=(
   "git+https://github.com/libproxy/libproxy#tag=$pkgver"
 )
-sha256sums=('03c852bd020bddcc6318a088d158b2d7c3ef36c3f55d7967ad184a355a0c58b6')
+sha256sums=('d6059873ca95f46b9c06dd31f49710087e9bdd1e1db90ca365a6fe144ac30b87')
 
 build() {
   local meson_options=(
