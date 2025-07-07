@@ -2,8 +2,8 @@
 
 pkgbase=mtr
 pkgname=(mtr mtr-gtk)
-pkgver=0.95
-pkgrel=5
+pkgver=0.96
+pkgrel=1
 pkgdesc='Combines the functionality of traceroute and ping into one tool'
 url='https://www.bitwizard.nl/mtr/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ source=(
   https://github.com/traviscross/mtr/archive/v${pkgver}/${pkgbase}-${pkgver}.tar.gz
   mtr.install
 )
-sha256sums=('12490fb660ba5fb34df8c06a0f62b4f9cbd11a584fc3f6eceda0a99124e8596f'
+sha256sums=('73e6aef3fb6c8b482acb5b5e2b8fa7794045c4f2420276f035ce76c5beae632d'
             '881705988d847a51d80464ba8575420da19a97c8272e7d59349c40e623f25e65')
 install=mtr.install
 
