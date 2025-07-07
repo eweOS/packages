@@ -1,7 +1,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=nettle
-pkgver=3.10.1
+pkgver=3.10.2
 pkgrel=1
 pkgdesc="A low-level cryptographic library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('gmp')
 provides=('libnettle.so' 'libhogweed.so')
 source=("https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('b0fcdd7fc0cdea6e80dcf1dd85ba794af0d5b4a57e26397eee3bc193272d9132')
+sha256sums=('fe9ff51cb1f2abb5e65a6b8c10a92da0ab5ab6eaf26e7fc2b675c45f1fb519b5')
 
 prepare()
 {
