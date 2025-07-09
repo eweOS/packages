@@ -3,7 +3,7 @@
 pkgbase=python
 pkgname=(python python-tests)
 pkgver=3.13.5
-pkgrel=1
+pkgrel=2
 _pybasever=${pkgver%.*}
 pkgdesc='The Python programming language'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -56,6 +56,7 @@ build()
     --without-static-libpython \
     --with-system-libmpdec \
     --enable-loadable-sqlite-extensions \
+    --without-ensurepip \
     ax_cv_c_float_words_bigendian=no
 
   make
