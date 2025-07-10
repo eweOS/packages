@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gi-docgen
-pkgver=2025.3
-pkgrel=2
+pkgver=2025.4
+pkgrel=1
 pkgdesc="Documentation generator for GObject-based libraries"
 url="https://gnome.pages.gitlab.gnome.org/gi-docgen/"
 arch=(any)
@@ -26,7 +26,7 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=("git+https://gitlab.gnome.org/GNOME/gi-docgen.git#tag=$pkgver")
-sha256sums=('db0157e43e87ea64358d35f6133f4931c8347fb7192ca74162fb9eaceb8804d6')
+sha256sums=('c127caaeeacbc36cf11a010c44084dab8071471988ad16574cb89d00d03dc9a1')
 
 build() {
   cd $pkgname
