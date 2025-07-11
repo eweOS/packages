@@ -5,23 +5,24 @@
 # Contributor: Kars Wang <jaklsy at gmail dot com>
 
 pkgname=jq
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='Command-line JSON processor'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://stedolan.github.io/jq/'
 license=('MIT')
 depends=('musl' 'oniguruma')
-makedepends=('python')
-# 0001: Backport, workaround GNU-specific numeric escaping sequences which
-#	aren't supported by busybox sed.
-# 0002: Downstream, workaround -e flag that isn't supported by busybox "script"
+# tzdata is required for timezone-related formatting tests
+makedepends=('python' 'tzdata')
+# 0001: Downstream, workaround -e flag that isn't supported by busybox "script"
+# 0002: Backport, drop non-portable %F flags to fix testsuite on musl
+#	3c5ceac ("jq.test: drop non-portable %F test")
 source=("https://github.com/stedolan/jq/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
-	"0001-Fix-build-on-old-Macs.patch::https://github.com/jqlang/jq/commit/023f274ee9d14738ab06d674a9d6fe7725441949.patch"
-	"0002-tests-shtest-Workaround-busybox-s-script-implementat.patch")
-sha512sums=('eaa991e43d3fc716dd57f6722a42d4119dcd8ba272eb2fcab882f83efb0b11c10a35c3dc8ad2067f30440dad988d34b5955601499eae1bb9e43db53db02bc4cf'
-            '37ce482fcca1e24b01aba44108bad732038920206b7c903f9858e7b78fe05c50b1bdbbadcdb0a1b9155582cd042ccc7282bf082d243f0c743b89c78b1daba6e3'
-            '144d2309bfcd5191c9621e6c69d16b71f2016cac09ee1375005cd20273324863143fd132740be387873c01ad6cd1865d9e90d5e8e430b25c045fce16f68a4951')
+	"0001-tests-shtest-Workaround-busybox-s-script-implementat.patch"
+	"0002-jq-test-drop-non-portable-F-test.patch")
+sha512sums=('b09d48dbeaac7b552397b75692ed7833afa72186de80d977fb1b887a14ac66c02f677acdd79f9a2736db1fd738b7ce57a39725e34846bfa21ed3728cd7adc187'
+            '144d2309bfcd5191c9621e6c69d16b71f2016cac09ee1375005cd20273324863143fd132740be387873c01ad6cd1865d9e90d5e8e430b25c045fce16f68a4951'
+            '0cc1f912b4b0cdf5ed72f5632b8279f44da58a92e58d99f38321f7aaab16f04f344b657d9b844255ee9a5c89fc784772e41a94139178b0e1cc3c7bb06f34f1ec')
 
 prepare() {
   _patch_ "$pkgname-$pkgver"
