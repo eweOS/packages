@@ -2,7 +2,7 @@
 
 pkgname=supertux
 pkgver=0.6.3
-pkgrel=6
+pkgrel=7
 pkgdesc="A classic 2D jump'n'run sidescroller game in a style similar to the original SuperMario games"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/supertux/supertux"
@@ -24,6 +24,7 @@ prepare() {
 build() {
   cd "SuperTux-v${pkgver}-Source"
 
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake \
       -DENABLE_DISCORD=ON \
       -DCMAKE_INSTALL_PREFIX=/usr \
