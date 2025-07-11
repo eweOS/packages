@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=swayimg
-pkgver=4.3
+pkgver=4.5
 pkgrel=1
 pkgdesc='A lightweight image viewer for Wayland display servers'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -20,6 +20,7 @@ depends=(
     'glib'
     'hicolor-icon-theme'
     'libavif'
+    'libdrm'
     'libexif.so'
     'libheif'
     'libjpeg.so'
@@ -32,11 +33,12 @@ depends=(
     'libwebp'
     'libxkbcommon'
     'libsixel'
+    'linux-headers'
     'openexr'
 )
 url='https://github.com/artemsen/swayimg'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/artemsen/swayimg/archive/v$pkgver.tar.gz")
-sha256sums=('5213a9627421eb8907cfff5b3f6d91d53597281b42e4871cebf83fc7dfc1d2a6')
+sha256sums=('4f0c491f873e37b85342a92d9b0ecc570a059bb971040c23075d4c3ab401680b')
 
 build() {
     ewe-meson build ${pkgname}-${pkgver} \
