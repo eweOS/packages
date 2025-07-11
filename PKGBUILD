@@ -9,7 +9,7 @@ url='https://github.com/YosysHQ/nextpnr'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(ISC)
 depends=(musl llvm-libs prjtrellis python boost-libs tcl)
-makedepends=(cmake boost eigen linux-headers)
+makedepends=(cmake boost eigen linux-headers git)
 source=("git+https://github.com/YosysHQ/nextpnr.git#tag=nextpnr-$pkgver"
 	"git+https://github.com/YosysHQ/nextpnr-tests#commit=$_testcommit")
 sha256sums=('e2d943c025e1dac2d9dbb5bf4eeeb9b6ed47c93940fa4055fe72ccb2b5ab29b0'
