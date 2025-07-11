@@ -3,7 +3,7 @@
 pkgname=prjtrellis
 pkgver=1.4
 _dbcommit=4dda149b9e4f1753ebc8b011ece2fe794be1281a # 2023.09.28
-pkgrel=1
+pkgrel=2
 pkgdesc='Libraries and utilities for open-source toolchain of Lattice ECP5/MachXO2 series FPGAs'
 url='https://prjtrellis.readthedocs.io/en/latest/index.html'
 arch=(x86_64 aarch64 riscv64 loongarch64)
