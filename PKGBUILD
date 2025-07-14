@@ -2,8 +2,8 @@
 
 pkgbase=gdal
 pkgname=(gdal python-gdal)
-pkgver=3.10.2
-pkgrel=2
+pkgver=3.11.3
+pkgrel=1
 pkgdesc="A translator library for raster and vector geospatial data formats"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gdal.org/"
@@ -17,7 +17,7 @@ makedepends=(cmake python-setuptools python-numpy
 # armadillo basisu brunsli lerc libkml qb3 rasterlite2 sfcgal tiledb
 # ogdi mariadb-libs netcdf
 source=(https://download.osgeo.org/${pkgbase}/${pkgver}/${pkgbase}-${pkgver}.tar.xz)
-sha256sums=('67b4e08acd1cc4b6bd67b97d580be5a8118b586ad6a426b09d5853898deeada5')
+sha256sums=('ba0807729fa681eed55bb6d5588bb9e4bde2b691c46e8d6d375ff5eaf789b16a')
 
 build() {
   cmake -B build -S "$pkgbase-$pkgver" \
