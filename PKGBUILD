@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=graphviz
-pkgver=13.0.1
+pkgver=13.1.0
 pkgrel=1
 pkgdesc='Open source graph visualization software.'
 url='https://graphviz.org/'
@@ -13,7 +13,7 @@ makedepends=(lua54 swig)
 install=install
 source=("https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/$pkgver/graphviz-$pkgver.tar.gz"
 	"graphviz-update-config.hook")
-sha256sums=('0d3948da20755238398427301fd9dae55b52aee51af77729557fa9886a276f9b'
+sha256sums=('ae8014dbc78454764bcda8068ed884a399b76e967477385407fde9e8ea1715cc'
             '0bcd6093bb981eb85df76fe2b34237782cf4f54ad24def4b0feb8ad1e1263bcd')
 
 prepare () {
