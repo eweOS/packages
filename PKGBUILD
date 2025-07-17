@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=djvulibre
-pkgver=3.5.28
+pkgver=3.5.29
 pkgrel=1
 pkgdesc='Library and utilities to create, manipulate and view DjVu (déjà vu) documents'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -25,7 +25,7 @@ source=(
   djvulibre-CVE-2021-46310.patch
   djvulibre-CVE-2021-46312.patch
 )
-sha256sums=('1a792f9fc9146678736855f6f9cd41b93b376c8d7dba1b3f3d4576b2daa6fccb'
+sha256sums=('43366ee78f5fa696a3ef5b1283fe329d807d9cbf1ee04faed0258d150f0a3864'
             '5cd3bdedc9ba82af541e1fc0bb6fabdc77c7fc43ee6bd15f9c7cca9d39d53c82'
             '9e6d8b94d922ba382702ec4f878c06293eb546827e40a7de5221cb21c52d3d23'
             'd938cb05ac37b2f3f9602de6d148307e4164ee8a6f89fb6d81d5ed100fbc368b'
