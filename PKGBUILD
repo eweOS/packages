@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gigolo
-pkgver=0.5.4
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Remote filesystem management frontend"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -11,7 +11,7 @@ depends=('gtk3' 'gvfs')
 group=('xfce4-goodies')
 makedepends=('git' 'xfce4-dev-tools' 'intltool')
 source=("git+https://gitlab.xfce.org/apps/gigolo.git#tag=$pkgname-$pkgver")
-sha256sums=('1bd8ea7d475ca3a7a10310716c0efd4128d616051106f82ba8de8359ef8a5cc5')
+sha256sums=('47e7aa9e55f6d6825e6300b6fe01387ae61793f1217926cd93dcee683db620b8')
 
 prepare() {
   cd $pkgname
