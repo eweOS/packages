@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=ctags
-pkgver=6.2.20250615.0
+pkgver=6.2.20250713.0
 pkgrel=1
 pkgdesc=' A maintained ctags implementation.'
 url='https://github.com/universal-c1tags/ctags'
@@ -9,7 +9,7 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-or-later)
 depends=(libseccomp jansson libyaml libxml2)
 source=("https://github.com/universal-ctags/ctags/archive/refs/tags/p$pkgver.tar.gz")
-sha256sums=('34a5ab1a05353de2712dd8479d959cd4ec21b0f39c400731e53ecd192d2770fc')
+sha256sums=('d0054c365c35c0cea853df39c050776923cd1896cc561ee16190919a461ffb0f')
 
 build () {
 	cd ctags-p$pkgver
