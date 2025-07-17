@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=ada-url
-pkgver=3.2.4
+pkgver=3.2.5
 pkgrel=1
 pkgdesc='WHATWG-compliant and fast URL parser written in modern C++'
 url='https://ada-url.com'
@@ -11,7 +11,7 @@ depends=(musl)
 makedepends=(cmake python)
 provides=(libada.so)
 source=("https://github.com/ada-url/ada/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ce79b8fb0f6be6af3762a16c5488cbcd38c31d0655313a7030972a7eb2bda9e5')
+sha256sums=('cfda162be4b4e30f368e404e8df6704cdb18f0f26c901bb2f0290150c91e04b5')
 
 build () {
 	cmake -S "ada-$pkgver" -B build \
