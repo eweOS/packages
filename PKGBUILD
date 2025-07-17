@@ -2,7 +2,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=ninja
-pkgver=1.13.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc='a small build system with a focus on speed'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ url='https://github.com/ninja-build/ninja'
 license=(Apache)
 depends=(python llvm-libs)
 source=("$url/archive/v${pkgver}.tar.gz")
-sha256sums=('f08641d00099a9e40d44ec0146f841c472ae58b7e6dd517bee3945cfd923cedf')
+sha256sums=('f0055ad0369bf2e372955ba55128d000cfcc21777057806015b45e4accbebf23')
 
 build()
 {
