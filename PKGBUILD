@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=mpg123
-pkgver=1.32.10
+pkgver=1.33.0
 pkgrel=1
 pkgdesc='Console based real time MPEG Audio Player for Layer 1, 2 and 3'
 url='https://mpg123.de/'
@@ -16,7 +16,7 @@ optdepends=(
 )
 provides=(lib{mpg,out,syn}123.so)
 source=(https://downloads.sourceforge.net/sourceforge/mpg123/mpg123-${pkgver}.tar.bz2)
-sha512sums=('4df3e76cafe642b1df8befaff3d3530150c13446ca7f07b8d527af5b6522e4d2dedd025a3f095f23a51e2318d17e1395de6e55c70e3a90f80017ea0955fe8c1f')
+sha512sums=('c2c6a3536f18334e310337dc2cc7d4af141c1f7fffb02fc079d645f46113581d457587c562cf353d39375d721af6716cb4db6a964ef83284e390b597744c52ea')
 
 build() {
   cd mpg123-${pkgver}
