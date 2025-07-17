@@ -2,7 +2,7 @@
 
 pkgbase=curl
 pkgname=(curl ca-certs)
-pkgver=8.14.1
+pkgver=8.15.0
 pkgrel=1
 pkgdesc='An URL retrieval utility and library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ url='https://curl.haxx.se'
 license=('MIT')
 depends=('musl' 'openssl' 'zlib' 'zstd')
 source=("https://curl.haxx.se/download/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('22307bd41d5ded22e7e53e2412b3218763db9b7c32b1254df26172e6cf00d1650c66874dfc03037da89a5bd72ffbca1eeb83784be62a38d5779484376f3a53c7')
+sha512sums=('382b8480e3cc89170370334c03f8b72a64e29630f8ee8d4390b01f99f63c5519fda53dc4103eb774051c8c5a673c177c6afa3c179d60de7a6a76ff1de37706ac')
 
 prepare() {
   _patch_ "$pkgbase-$pkgver"
