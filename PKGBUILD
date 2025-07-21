@@ -5,7 +5,7 @@ pkgname=(
   libxml2
   libxml2-docs
 )
-pkgver=2.14.4
+pkgver=2.14.5
 pkgrel=1
 pkgdesc="XML parsing library, version 2"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ depends=('zlib' 'ncurses' 'xz')
 makedepends=('python')
 url="http://www.xmlsoft.org/"
 source=(https://download.gnome.org/sources/${pkgbase}/${pkgver%.*}/${pkgbase}-${pkgver}.tar.xz)
-sha256sums=('24175ec30a97cfa86bdf9befb7ccf4613f8f4b2713c5103e0dd0bc9c711a2773')
+sha256sums=('03d006f3537616833c16c53addcdc32a0eb20e55443cba4038307e3fa7d8d44b')
 
 build()
 {
