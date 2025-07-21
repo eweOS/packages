@@ -1,7 +1,7 @@
 # Maintainer: Eric Long <i@hack3r.moe>
 
 pkgname=atuin
-pkgver=18.6.1
+pkgver=18.7.1
 pkgrel=1
 pkgdesc="Magical shell history"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(musl llvm-libs)
 makedepends=(rust)
 optdepends=('blesh: bash integration')
 source=("https://github.com/atuinsh/atuin/archive/v$pkgver/atuin-$pkgver.tar.gz")
-sha256sums=('aba26698471ef7ad2757416d01fcc327d3bd800c58cc3fcae638e625524e1b40')
+sha256sums=('8a3e9e80390a996688590e27c245d5ad5dccfc2a1aedd53bd1e50e24a776e8d0')
 
 prepare() {
   cd $pkgname-$pkgver
