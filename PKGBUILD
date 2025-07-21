@@ -8,8 +8,8 @@ pkgname=(
   nm-cloud-setup
   networkmanager-docs
 )
-pkgver=1.52.0
-pkgrel=2
+pkgver=1.52.1
+pkgrel=1
 pkgdesc="Network connection manager and user applications"
 url="https://networkmanager.dev/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -39,14 +39,25 @@ makedepends=(
 checkdepends=(
   python-dbus
 )
+# 0001: Downstream, unconditionally treat all netdev as already initialized by
+#	platform. This is necessary since libudev-zero cannot communicate with
+#	devd and easily get the information about devices' settle status.
+#	Refer to these PRs for more details,
+#	https://github.com/eweOS/packages/pull/2983
+#	https://github.com/eweOS/packages/pull/2995
+# 0002: Backport, fix compatibility with python-gobject 3.52 or later for
+#	document-generating scripts.
+#	https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/commit/12eff9a7fdfeabab12ce56e5f7d515a13a3d704c
 source=(
   "NetworkManager-$pkgver::https://github.com/NetworkManager/NetworkManager/archive/refs/tags/$pkgver.tar.gz"
   networkmanager.service
-  force-platform-init.patch
+  0001-force-platform-init.patch
+  0002-meson-Fix-docs-generation-with-PyGObject-3.52.patch
 )
-sha256sums=('2ebe60a1497a9650d58336b73413d838189b04543365b3dbc22e1eb8023d205f'
+sha256sums=('a19bc229040b6e10b18da18021a69fb2f2eff44fc5a09ea6ecadf81d695d4e52'
             '0d6284910b53312082c7624dde57ad88d8ff9c46faaeb4d7540276dc44176723'
-            '412487dc91184526523915a5399dd78feadd146462c790ec0fa47151c4b963a4')
+            '412487dc91184526523915a5399dd78feadd146462c790ec0fa47151c4b963a4'
+            '2e943e679dc382ec8f9e14cf3d045b1b7c30fd30d54edd9a0d068d94df314727')
 
 prepare() {
   _patch_ NetworkManager-$pkgver
