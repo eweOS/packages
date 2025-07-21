@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=libmarisa
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Matching Algorithm with Recursively Implemented StorAge'
 url='https://github.com/s-yata/marisa-trie'
@@ -11,7 +11,7 @@ depends=(musl)
 makedepends=(cmake)
 provides=(libmarisa.so)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/s-yata/marisa-trie/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a3057d0c2da0a9a57f43eb8e07b73715bc5ff053467ee8349844d01da91b5efb')
+sha256sums=('986ed5e2967435e3a3932a8c95980993ae5a196111e377721f0849cad4e807f3')
 
 build () {
 	cmake -S "marisa-trie-$pkgver" -B build 	\
