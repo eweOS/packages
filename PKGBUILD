@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fontconfig
-pkgver=2.16.2
+pkgver=2.17.1
 pkgrel=1
 pkgdesc="Library for configuring and customizing font access"
 url=https://www.freedesktop.org/wiki/Software/fontconfig/
@@ -15,7 +15,7 @@ source=(
   "https://gitlab.freedesktop.org/fontconfig/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
 )
 install=fontconfig.install
-sha256sums=('8b9368ae99d9faf2fe26491645fbeebf0272d911cacc5d3e9cf954c2157c151e')
+sha256sums=('82e73b26adad651b236e5f5d4b3074daf8ff0910188808496326bd3449e5261d')
 
 build()
 {
