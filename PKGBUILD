@@ -57,6 +57,7 @@ sha256sums=('e407c227e4371956e24eb5e10d6234ffe5011aa298c3c719f3a9ea54d7e80be6')
 
 prepare() {
   sed -i '/xcb.h/d' $pkgname/src/xwayland/Dnd.hpp
+  sed -i '/xfixes.h/d; /xproto.h/d' $pkgname/src/xwayland/XWM.cpp
 }
 
 build() {
