@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=hyprgraphics
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Hyprland graphics / resource utilities"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,12 +10,10 @@ license=('BSD-3-Clause')
 depends=('pixman' 'cairo' 'hyprutils' 'libjpeg' 'libjxl' 'libwebp' 'file' 'libspng')
 makedepends=('git' 'cmake')
 source=("git+https://github.com/hyprwm/hyprgraphics.git#tag=v$pkgver")
-sha256sums=('0778bd20d6ed70d8454b46284852a9a4cec1a724c8740bfaf2331822511c6014')
+sha256sums=('930e51094b8d9a4037b94aeb3204110f36fbd5f9c8b324fabf0b846c52cf9654')
 
 prepare() {
   cd "$srcdir/$pkgname"
-  # std::min
-  #sed -i '1i #include <algorithm>' src/color/Color.cpp
 }
 
 build() {
