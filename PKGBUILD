@@ -2,7 +2,7 @@
 
 pkgname=(luarocks51 luarocks54)
 pkgver=3.11.1
-pkgrel=2
+pkgrel=3
 pkgdesc='The package manager for Lua modules.'
 url='https://luarocks.org'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -40,7 +40,7 @@ _package() {
 	make install DESTDIR=${pkgdir}
 	for file in ${pkgdir}/usr/bin/*
 	do
-		mv $file $file-5$1
+		mv $file $file-5.$1
 	done
 	cat <<"---" >> $pkgdir/etc/luarocks/config-5.$1.lua
 variables["CC"] = "clang"
