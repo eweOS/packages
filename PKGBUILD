@@ -12,8 +12,10 @@ depends=(
   hicolor-icon-theme
   libjpeg-turbo
   libtiff
+  llvm-libs
+  musl
 )
-makedepends=(git autoconf)
+makedepends=(git)
 source=("$pkgname::git+https://git.code.sf.net/p/djvu/djvulibre-git#tag=release.$pkgver")
 sha256sums=('43366ee78f5fa696a3ef5b1283fe329d807d9cbf1ee04faed0258d150f0a3864')
 
