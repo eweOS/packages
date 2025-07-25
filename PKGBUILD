@@ -6,11 +6,11 @@ pkgrel=1
 pkgdesc="Library for configuring and customizing font access"
 url=https://www.freedesktop.org/wiki/Software/fontconfig/
 arch=(x86_64 aarch64 riscv64 loongarch64)
-license=(custom)
-depends=(expat freetype2 gperf)
+license=(MIT)
+depends=(expat freetype2 musl)
 backup=(etc/fonts/fonts.conf)
 provides=(libfontconfig.so)
-makedepends=(meson symlinks)
+makedepends=(gperf meson symlinks)
 # 0001: Backport, fix testsuite build on musl-libc
 #	https://gitlab.freedesktop.org/fontconfig/fontconfig/-/commit/75cc3e6ef0e451f42d3464ed4d639304ad9a4f58
 source=("https://gitlab.freedesktop.org/fontconfig/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
@@ -23,8 +23,7 @@ prepare() {
   _patch_ ${pkgname}-${pkgver}
 }
 
-build()
-{
+build() {
   ewe-meson ${pkgname}-${pkgver} build \
     -D doc=disabled
   meson compile -C build
@@ -34,9 +33,7 @@ check() {
   meson test -C build --print-errorlogs
 }
 
-package()
-{
+package() {
   meson install -C build --destdir "$pkgdir"
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 ${pkgname}-${pkgver}/COPYING
   _install_license_ $pkgname-$pkgver/COPYING
 }
