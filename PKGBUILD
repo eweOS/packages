@@ -2,7 +2,7 @@
 
 pkgbase=poppler
 pkgname=('poppler' 'poppler-glib' 'poppler-qt6')
-pkgver=25.06.0
+pkgver=25.07.0
 # 2025.05.07
 _testdata_commit=c79c6839e859dbee6b73ac260788fa2de8618ba4
 pkgrel=1
@@ -24,7 +24,7 @@ url="https://poppler.freedesktop.org/"
 source=(https://poppler.freedesktop.org/${pkgbase}-${pkgver}.tar.xz
         test::git+https://gitlab.freedesktop.org/poppler/test.git#commit=$_testdata_commit
 )
-sha256sums=('8199532d38984fab46dbd0020ec9c40f20e928e33e9b4cc6043572603a821d83'
+sha256sums=('c504a9066dbdfebe377ad53cec641fd971ee96c4e1e8ca74e6c9c03d46d817ae'
             'b33c91e6f5ae8539f55b79a5b0ce27a51702fa45957c0a3a4dd695f7dcc497d7')
 
 build() {
