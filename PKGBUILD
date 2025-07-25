@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pixman
-pkgver=0.46.2
+pkgver=0.46.4
 pkgrel=1
 pkgdesc="The pixel-manipulation library for X and cairo"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=('musl')
 makedepends=('meson' 'libpng')
 provides=('libpixman-1.so')
 source=(https://xorg.freedesktop.org/releases/individual/lib/${pkgname}-${pkgver}.tar.xz)
-sha512sums=('9419e5a23f4b709e075c5dd33c46bb375d2407b6e90623fe3410a03171f4c5e0a511e8b4414557a39b68d46a4c1ac64f2ef0c9c6eab0b42a2be75d5d52a367fd')
+sha512sums=('83b133e7969ba34f883f4e08dcc5d388c4397f43ce836c191c05945fe77c16ff501d531600780c12678a0d08105828a6bdeff2156b63f9c1a84087bc7f40ae9f')
 
 _arglist=(
     -Dloongson-mmi=disabled
