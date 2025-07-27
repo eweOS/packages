@@ -6,7 +6,7 @@ pkgname=(
   gst-plugin-pipewire
 )
 pkgver=1.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,6 +14,7 @@ license=(MIT)
 makedepends=(
   'alsa-lib'
   'dbus'
+  'ffmpeg'
   'glib'
   'gstreamer-devel'
   'libebur128'
@@ -63,7 +64,6 @@ build()
     -D jack=disabled
     -D v4l2=disabled
     -D libcamera=disabled
-    -D videoconvert=disabled
     -D videotestsrc=disabled
     -D volume=disabled
     -D sdl2=disabled
@@ -108,6 +108,7 @@ package_pipewire()
     "libpipewire=$epoch:$pkgver-$pkgrel"
     'alsa-lib'
     'dbus'
+    'ffmpeg'
     'glib'
     'libebur128'
     'libpulse'
