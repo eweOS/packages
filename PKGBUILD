@@ -3,7 +3,7 @@
 pkgbase=suitesparse
 pkgname=(suitesparse
          suitesparse-graphblas)
-pkgver=7.10.3
+pkgver=7.11.0
 pkgrel=1
 pkgdesc='A collection of sparse matrix libraries'
 url='http://faculty.cse.tamu.edu/davis/suitesparse.html'
@@ -18,7 +18,7 @@ makedepends=(cmake
              git)
 license=(GPL)
 source=(git+https://github.com/DrTimothyAldenDavis/SuiteSparse#tag=v$pkgver)
-sha256sums=('cb8d60532e42afbac1ffbcd7de73ebe3f4c370cf69889052d41571053dd64449')
+sha256sums=('416a86622c35f8f50779c8070d42535ce8a54e23c6e6ff26e92ab3b6abfe3612')
 
 build() {
   cd SuiteSparse
