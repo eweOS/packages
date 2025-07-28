@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=tl-expected
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='C++11/14/17 std::expected with functional-style extensions.'
 url='https://tl.tartanllama.xyz'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=(CC0-1.0)
 depends=(musl)
 makedepends=(cmake samurai)
 source=("https://github.com/TartanLlama/expected/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1db357f46dd2b24447156aaf970c4c40a793ef12a8a9c2ad9e096d9801368df6')
+sha256sums=('f5424f5fc74e79157b9981ba2578a28e0285ac6ec2a8f075e86c41226fe33386')
 
 build () {
 	# No tests, need network
