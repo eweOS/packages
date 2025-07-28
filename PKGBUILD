@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wdisplays
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="GUI display configurator for wlroots compositors"
 url="https://github.com/artizirk/wdisplays"
 license=(GPL3)
@@ -17,7 +17,7 @@ makedepends=(meson)
 source=(
   $pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz
 )
-sha512sums=('46923592e9fbb5c06c3549c198aedbafd8e0b5a6a82bc11d9d0b4cb0860070000cce18e0aa109932a4e4bee34d9f235660d2ea9d485a8fce146a2755ef62f81d')
+sha512sums=('7260deddb5871359ae9b0133cc9fa2f0b43e43664ff84cd37ad10385c4c2618a3b3303536be060097b982c7d2ab3890392ba9775e01b44281c1b3419256398a8')
 
 build() {
   cd "$pkgname-$pkgver"
