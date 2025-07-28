@@ -1,7 +1,7 @@
 # Maintainer: Eric Long <i@hack3r.moe>
 
 pkgname=zed
-pkgver=0.191.6
+pkgver=0.196.6
 pkgrel=1
 _livekit_commit=3119b6ac0ef5e705b3e92630c8e558648f0892ed
 _scap_commit=08f0a01417505cc0990b9931a37e5120db92e0d0
@@ -26,7 +26,7 @@ source=("https://github.com/zed-industries/zed/archive/v$pkgver/$pkgname-$pkgver
         webrtc-0002-fix-glibcisms.patch                  # downstream, taken from Alpine
         scap-0001-feature-gate-x11.patch                 # upstreamed, https://github.com/zed-industries/scap/pull/1
         0001-disable-x11-everywhere.patch)               # could be rewritten and upstreamed
-sha256sums=('0251a96be6709b7cc0c6ba9dbfa257ebb7de4488bfbdf0d89b72240bdb67dace'
+sha256sums=('d0fc759fe79cb927f8775b37e461ca493735cb83b61ac838827adcdfc8ec9884'
             'df044bce7dc5af8adbc3ca29225a62f8cee7a71535d704988abc8b372ea600e7'
             'ae8f7f5512e9a90bf67f013b54c39240395a0ca71e8f9865522f4960bd63b1ea'
             '171fb143fd639da257b2921cba717bb4bf976d94f249b137e50451daceeaaf39'
