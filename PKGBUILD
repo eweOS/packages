@@ -1,7 +1,7 @@
 # Maintainer : Yukari Chiba <i@0x7f.cc>
 
 pkgname=connman
-pkgver=1.44
+pkgver=1.45
 pkgrel=1
 pkgdesc="Intel's modular network connection manager"
 url="https://01.org/connman"
@@ -16,7 +16,7 @@ source=(
   connman.service
   0001-remove-no-undefined-from-plugins-LDFLAGS.patch
 )
-sha256sums=('2be2b00321632b775f9eff713acd04ef21e31fbf388f6ebf45512ff4289574ff'
+sha256sums=('77128cce80865455c4f106b5901a575e2dfdb35a7d2e2e2996f16e85cba10913'
             '9b006bcf19c461d298d61ee8015263063197c7480c0bf629b9c7ad34bcffbb53'
             'f6476589934bec28a1697dc9a6265d4fc2d0462fd8866ae31bbc6478c087a037'
             '89f3540f68c91c94a77a450abfd2d6570d5cca44425f75da815b1b6ac04a0346')
