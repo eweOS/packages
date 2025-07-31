@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=flashrom
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='A utility for detecting, reading, writing, verifying and erasing flash chips'
 url='https://review.coreboot.org/admin/repos/flashrom,general'
@@ -13,7 +13,7 @@ depends=(musl libusb libftdi)
 makedepends=(meson ninja linux-headers)
 # checkdepends=(cmocka)
 source=("https://github.com/flashrom/flashrom/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3f4dc7878e962e165b7eba73104d4e61231f9d4e838eb47df6ca3d87060a2aa5')
+sha256sums=('735c077ee8ac08e236ef7b7db894ab22d5f4b75f10156a4732bd818a1e21fcc5')
 
 build() {
 	# silence warnings:
