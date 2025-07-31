@@ -1,8 +1,8 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=havoc
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='minimal terminal emulator for Wayland on Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/ii8/havoc'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('wayland')
 makedepends=('wayland-protocols' 'libxkbcommon')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/ii8/havoc/archive/${pkgver}.tar.gz)
-sha256sums=('3f6538eb8a2b5846459f38c283eef2c8152886a4ed079e1038b02d0c31a3247c')
+sha256sums=('b4f819bfc3b0f8ea967018948dbf3a71f174a02886d00ee16121739fcd140d6f')
 
 
 build() {
