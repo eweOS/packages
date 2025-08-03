@@ -3,7 +3,7 @@
 pkgbase=python
 pkgname=(python python-tests)
 pkgver=3.13.5
-pkgrel=2
+pkgrel=3
 _pybasever=${pkgver%.*}
 pkgdesc='The Python programming language'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -22,9 +22,11 @@ makedepends=(
 source=(
   "https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
   musl-find_library.patch
+  EXTERNALLY-MANAGED
 )
 sha256sums=('93e583f243454e6e9e4588ca2c2662206ad961659863277afcdb96801647d640'
-            '055a00bef64a9c22d746be5e9072d09b303e21cf0865daed1d7a67210207fb4f')
+            '055a00bef64a9c22d746be5e9072d09b303e21cf0865daed1d7a67210207fb4f'
+            'eb165082097dfc3bde16b25d861093ae4dcadaf1cf102e45e5e2e630fbb58de8')
 
 prepare()
 {
@@ -93,6 +95,9 @@ package_python()
   install -dm755 "${pkgdir}"/usr/lib/python${_pybasever}/Tools/{i18n,scripts}
   install -m755 Tools/i18n/{msgfmt,pygettext}.py "${pkgdir}"/usr/lib/python${_pybasever}/Tools/i18n/
   install -m755 Tools/scripts/{README,*py} "${pkgdir}"/usr/lib/python${_pybasever}/Tools/scripts/
+
+  # PEP668
+  install -Dm644 "$srcdir"/EXTERNALLY-MANAGED -t "${pkgdir}/usr/lib/python${_pybasever}/"
 
   # Split tests
   cd "$pkgdir"/usr/lib/python*/
