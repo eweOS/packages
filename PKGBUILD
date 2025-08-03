@@ -2,7 +2,7 @@
 
 pkgname=sdl2-compat
 pkgver=2.32.56
-pkgrel=1
+pkgrel=2
 pkgdesc="An SDL2 compatibility layer that uses SDL3 behind the scenes"
 url="https://github.com/libsdl-org/sdl2-compat"
 depends=('musl' 'sdl3')
@@ -25,6 +25,10 @@ prepare() {
 }
 
 build() {
+  # sdl2-compat contains static libraries, thus we should enable
+  # -ffat-lto-objects to ensure linking works even without -flto supplied at
+  # linktime.
+  check_option lto y && export CFLAGS="$CFLAGS -ffat-lto-objects"
   cmake -S sdl2-compat-$pkgver \
     -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
