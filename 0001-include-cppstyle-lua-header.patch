@@ -1,0 +1,43 @@
+diff --git a/src/lua/wrapper_lauxlib.h b/src/lua/wrapper_lauxlib.h
+index d5abe19..e36734e 100644
+--- a/src/lua/wrapper_lauxlib.h
++++ b/src/lua/wrapper_lauxlib.h
+@@ -9,7 +9,9 @@
+ #endif
+ 
+ #if defined(HAVE_SYSTEM_LUA)
+-    #include "lauxlib.h"
++extern "C" {
++    #include "lauxlib.h"
++};
+ #else
+     #include "modules/lua/lauxlib.h"
+ #endif
+diff --git a/src/lua/wrapper_lua.h b/src/lua/wrapper_lua.h
+index 948cfd9..90a9c8d 100644
+--- a/src/lua/wrapper_lua.h
++++ b/src/lua/wrapper_lua.h
+@@ -7,7 +7,7 @@
+ #endif
+ 
+ #if defined(HAVE_SYSTEM_LUA)
+-    #include "lua.h"
++    #include "lua.hpp"
+ #else
+     #include "modules/lua/lua.h"
+ #endif
+diff --git a/src/lua/wrapper_lualib.h b/src/lua/wrapper_lualib.h
+index 6aae8b1..c39d44f 100644
+--- a/src/lua/wrapper_lualib.h
++++ b/src/lua/wrapper_lualib.h
+@@ -7,7 +7,9 @@
+ #endif
+ 
+ #if defined(HAVE_SYSTEM_LUA)
+-    #include "lualib.h"
++extern "C" {
++    #include "lualib.h"
++};
+ #else
+     #include "modules/lua/lualib.h"
+ #endif
