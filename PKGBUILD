@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=shellcheck
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='A static analysis tool for shell scripts'
 url='https://www.shellcheck.net/'
@@ -11,7 +11,7 @@ depends=(musl libffi gmp)
 makedepends=(cabal ghc)
 source=("https://github.com/koalaman/shellcheck/archive/refs/tags/v$pkgver.tar.gz"
 	"cabal.project.freeze")
-sha256sums=('149ef8f90c0ccb8a5a9e64d2b8cdd079ac29f7d2f5a263ba64087093e9135050'
+sha256sums=('8b07554f92e4fbfc33f1539a1f475f21c6503ceae8f806efcc518b1f529f7102'
             '066e30623d9293794fd637e3a3a7dfdc631ece2dcb5cab94f4697d56dff30533')
 
 prepare() {
