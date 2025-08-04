@@ -5,7 +5,7 @@
 pkgbase=pacman
 pkgname=(libalpm pacman repo-tools)
 pkgver=7.0.0
-pkgrel=11
+pkgrel=12
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
@@ -83,7 +83,7 @@ build() {
     x86_64) makepkg_cflags+=" -fno-plt -march=x86-64 -fstack-clash-protection -fcf-protection" ;;
     aarch64) makepkg_cflags+=" -fno-plt -march=armv8-a" ;;
     riscv64) makepkg_cflags+=" -march=rv64gc" ;;
-    loongarch64) makepkg_cflags+=" -march=la464" ;;
+    loongarch64) makepkg_cflags+=" -march=la64v1.0" ;;
   esac
   case $CARCH in
     riscv64) makepkg_rustarch="riscv64gc" ;;
