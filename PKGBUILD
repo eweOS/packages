@@ -2,7 +2,7 @@
 
 pkgname=('boost' 'boost-libs')
 pkgver=1.88.0
-pkgrel=1
+pkgrel=2
 _srcname=boost_${pkgver//./_}
 pkgdesc="Free peer-reviewed portable C++ source libraries"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -66,7 +66,7 @@ package_boost() {
     python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
 
   pkgdesc+=' (development headers)'
-  depends=("boost-libs=$pkgver")
+  depends=("boost-libs=$pkgver" "linux-headers")
   optdepends=('python: for python bindings')
   options=('staticlibs')
 
