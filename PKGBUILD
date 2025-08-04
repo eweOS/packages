@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=perl-test-differences
-pkgver=0.71
-pkgrel=3
+pkgver=0.72
+pkgrel=1
 pkgdesc='Test strings and data structures and show differences if not ok'
 url='https://metacpan.org/dist/Test-Differences'
 arch=(any)
@@ -10,7 +10,7 @@ license=(PerlArtistic GPL)
 options=(!emptydirs)
 depends=(perl perl-test-simple perl-text-diff perl-capture-tiny)
 source=("https://cpan.metacpan.org/authors/id/D/DC/DCANTRELL/Test-Differences-$pkgver.tar.gz")
-sha256sums=('cac16a56cd843b0809e5b49199d60d75a8dbad7ca9a08380dbf3f5cc3aaa38d9')
+sha256sums=('648844b9dcb7dae6f9b5a15c9359d0f09de247a624b65c4620ebff249558f913')
 
 build () {
 	cd Test-Differences-$pkgver
