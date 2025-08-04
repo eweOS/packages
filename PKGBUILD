@@ -2,8 +2,8 @@
 
 pkgname=pinentry
 pkgdesc='The standard pinentry collection.'
-pkgver=1.3.1
-pkgrel=3
+pkgver=1.3.2
+pkgrel=1
 url='https://gnupg.org/ftp/gcrypt/pinentry/'
 license=('GPL2')
 depends=('musl' 'libassuan' 'libgpg-error' 'ncurses')
@@ -12,7 +12,7 @@ optdepends=(
   'qt6-base: Qt6 backend'
 )
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('bc72ee27c7239007ab1896c3c2fae53b076e2c9bd2483dc2769a16902bce8c04')
+sha256sums=('8e986ed88561b4da6e9efe0c54fa4ca8923035c99264df0b0464497c5fb94e9e')
 arch=(x86_64 aarch64 riscv64 loongarch64)
 
 build() {
