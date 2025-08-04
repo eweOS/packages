@@ -2,7 +2,7 @@
 
 pkgbase=podman
 pkgname=(podman podman-docker)
-pkgver=5.4.2
+pkgver=5.5.2
 pkgrel=1
 pkgdesc='Tool and library for running OCI-based containers in pods'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -26,7 +26,7 @@ source=(
   busybox-grep.patch
   no-systemd.patch
 )
-sha256sums=('267e8dff0b38b526af191ad748489045bad4b090fb603dbbde758349693f2134'
+sha256sums=('a55ab001bfe0020dbff13a0401e6d1ab9dfe900a19a6282154aa9f71b61492d9'
             '222f4428ec0446d52ec96925f79d1baef4fb318a308232d14f8fb4c82ad49ed7'
             'f2bdb1af3cf665f63176e5101999ce2d37fd34906e57e6634b090e1624493069')
 
