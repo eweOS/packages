@@ -8,7 +8,7 @@ pkgname=(
   nm-cloud-setup
   networkmanager-docs
 )
-pkgver=1.52.1
+pkgver=1.54.0
 pkgrel=1
 pkgdesc="Network connection manager and user applications"
 url="https://networkmanager.dev/"
@@ -54,7 +54,7 @@ source=(
   0001-force-platform-init.patch
   0002-meson-Fix-docs-generation-with-PyGObject-3.52.patch
 )
-sha256sums=('a19bc229040b6e10b18da18021a69fb2f2eff44fc5a09ea6ecadf81d695d4e52'
+sha256sums=('c5356e5a86b351dc79d23c8685d02b91917d1f107628c97d370c6441a8322a93'
             '0d6284910b53312082c7624dde57ad88d8ff9c46faaeb4d7540276dc44176723'
             '412487dc91184526523915a5399dd78feadd146462c790ec0fa47151c4b963a4'
             '2e943e679dc382ec8f9e14cf3d045b1b7c30fd30d54edd9a0d068d94df314727')
