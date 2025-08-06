@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sdl3
-pkgver=3.2.18
+pkgver=3.2.20
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3)"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -19,7 +19,7 @@ optdepends=(
   'libdecor: Wayland client decorations'
 )
 source=("https://github.com/libsdl-org/SDL/releases/download/release-${pkgver}/SDL3-${pkgver}.tar.gz")
-sha256sums=('1a775bde924397a8e0c08bfda198926c17be859d0288ad0dec1dea1b2ee04f8f')
+sha256sums=('467600ae090dd28616fa37369faf4e3143198ff1da37729b552137e47f751a67')
 
 build() {
   cmake -S SDL3-${pkgver} -B build -G Ninja \
