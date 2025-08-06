@@ -1,15 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libutempter
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.2.3
+pkgrel=1
 pkgdesc="Interface for terminal emulators such as screen and xterm to record user sessions to utmp and wtmp files"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="http://ftp.altlinux.org/pub/people/ldv/utempter"
 license=('LGPL')
 makedepends=('git')
 source=(git+https://github.com/altlinux/libutempter.git#tag=${pkgver}-alt1)
-sha512sums=('bccc24f5ad32f10038941907159eb27e711e1228e57765cb5ced97003117779371b364f5b9a7b4cc20086281858109f9725a543c64525b3f3120c4082fc7b432')
+sha512sums=('71519006a2e9ae81953c07c62d05e6bc9a0a8ab6ccb39c218e9b80bb2a7a86d2ed05bf32c4775cd240a2c145bc40e9e71dd9e00161bdfaeee41b808d66a26532')
 
 prepare() {
   cd $pkgname/$pkgname
