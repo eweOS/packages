@@ -1,0 +1,11 @@
+diff -ruN a/c/clearcache.c b/c/clearcache.c
+--- a/c/clearcache.c	2025-05-07 02:15:34.000000000 +0800
++++ b/c/clearcache.c	2025-08-06 09:55:59.506135795 +0800
+@@ -45,6 +45,7 @@
+ #ifdef S_TARGET_OS_IPHONE
+   sys_icache_invalidate((void *)start, (char *)end-(char *)start);
+ #else
++  extern void __clear_cache(void*, void*);
+   __clear_cache((char *)start, (char *)end);
+ # if defined(__clang__) && defined(__aarch64__) && !defined(__APPLE__)
+   /* Seem to need an extra combination of barriers here to make up for
