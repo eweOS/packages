@@ -3,7 +3,7 @@
 pkgname=chez-scheme
 pkgver=10.2.0
 pkgrel=1
-pkgdesc="Compiler and runtime for R6RS release of Scheme."
+pkgdesc="Compiler and runtime for R6RS release of Scheme"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://github.com/cisco/ChezScheme"
 license=('Apache-2.0')
