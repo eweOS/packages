@@ -2,7 +2,7 @@
 
 pkgname=esbuild
 pkgver=0.25.8
-pkgrel=1
+pkgrel=2
 pkgdesc="An extremely fast JavaScript and CSS bundler and minifier."
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://esbuild.github.io/"
