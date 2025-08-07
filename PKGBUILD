@@ -2,7 +2,7 @@
 
 pkgname=micro
 pkgver=2.0.14
-pkgrel=2
+pkgrel=3
 pkgdesc='A modern and intuitive terminal-based text editor'
 url='https://micro-editor.github.io'
 arch=(x86_64 aarch64 riscv64 loongarch64)
