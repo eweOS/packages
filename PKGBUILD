@@ -2,7 +2,7 @@
 
 pkgname=go-md2man
 pkgver=2.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A markdown to manpage generator'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://github.com/cpuguy83/go-md2man'
