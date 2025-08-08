@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=tdb
-pkgver=1.4.13
+pkgver=1.4.14
 pkgrel=1
 pkgdesc='Trivial Database similar to GDBM but allows simultaneous commits'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ makedepends=('python' 'libxslt' 'docbook-xsl')
 optdepends=('python: for python bindings')
 provides=(libtdb.so)
 source=(https://samba.org/ftp/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('5ee276e7644d713e19e4b6adc00b440afb5851ff21e65821ffaed89e15a5e167')
+sha256sums=('144f407d42ed7a0ec1470a40ef17ad41133fe910bce865dd9fe084d49c907526')
 
 build() {
    cd ${pkgname}-${pkgver}
