@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gtk3
-pkgver=3.24.49
+pkgver=3.24.50
 pkgrel=1
 pkgdesc="Multi-platform toolkit for creating graphical user interfaces"
 url="https://www.gtk.org/"
@@ -36,7 +36,7 @@ source=(
   "https://gitlab.gnome.org/GNOME/gtk/-/archive/${pkgver}/gtk-${pkgver}.tar.gz"
   gtk-query-immodules-3.0.hook
 )
-sha256sums=('a2958d82986c81794e953a3762335fa7c78948706d23cced421f7245ca544cbc'
+sha256sums=('2d957b23ae917b9c6244c8027bfb2cf0f665086f0c4350ab0babc05728c4b176'
             '554a03b0b36b0e69b74cdc917c3ed1a36d31f68c3fe36c7dab787e5dd6c3a5d0')
 
 build()
