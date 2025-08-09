@@ -2,7 +2,7 @@
 
 pkgbase=fuse
 pkgname=(fuse-common fuse3)
-pkgver=3.17.2
+pkgver=3.17.3
 pkgrel=1
 pkgdesc='Interface for userspace programs to export a filesystem to the Linux kernel'
 url='https://github.com/libfuse/libfuse'
@@ -11,7 +11,7 @@ license=('GPL2')
 makedepends=('pkgconf' 'meson' 'git' 'linux-headers')
 options=('!emptydirs')
 source=("$pkgbase::git+$url#tag=fuse-$pkgver")
-sha256sums=('4e8cbddaedf246f5721ffd1984ec693a7ba3a0cbce90c2bb64337e44ebc9c3c9')
+sha256sums=('d89209000b31e82cc27246885c12f504567920b228071da62f900b47d34f59ab')
 
 build() {
   ewe-meson $pkgbase build -D examples=false
