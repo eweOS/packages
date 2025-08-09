@@ -2,7 +2,7 @@
 
 pkgbase=rust
 pkgname=(rust rust-src)
-pkgver=1.88.0
+pkgver=1.89.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -23,7 +23,7 @@ source=(https://static.rust-lang.org/dist/rustc-$pkgver-src.tar.gz
         0002-disable-no-default-libraries.patch
         0003-drop-latomic-for-riscv-targets.patch
         0004-bootstrap-Change-libexec-dir.patch)  # install rust-analyzer-proc-macro-srv in /usr/lib rather than /usr/libexec
-sha256sums=('3a97544434848ae3d193d1d6bc83d6f24cb85c261ad95f955fde47ec64cfcfbe'
+sha256sums=('2576f9f440dd99b0151bd28f59aa0ac6102d5c4f3ed4ef8a810c8dd05057250d'
             '97703a9e3c3277647dfc8e2081b05aa95bff0765ab44b4182d8ff0db35fd9e65'
             '6d0a6a0ed7793ea75b2f8449fd2bbafd3647c4117d681e1f4cfc219ef9280249'
             '9947368a7ea6c4f1a3dd055558b326ebcc97496cc7239ce88be23ef88f3b71a6'
