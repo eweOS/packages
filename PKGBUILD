@@ -2,8 +2,8 @@
 
 pkgbase=librest
 pkgname=(librest librest-docs librest-demos)
-pkgver=0.9.1
-pkgrel=3
+pkgver=0.10.2
+pkgrel=1
 pkgdesc="Library for accessing RESTful web services"
 url="https://gitlab.gnome.org/GNOME/librest"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ makedepends=(gobject-introspection git meson gi-docgen vala libadwaita
              gtksourceview5)
 source=("git+https://gitlab.gnome.org/GNOME/librest.git#tag=$pkgver"
         30.patch)
-sha256sums=('50243b25c1b2197d4b787f5700db8959a00b590f719d22afa4c8e5a5f80a5142'
+sha256sums=('c8753c147aa5d813ba0d2ce210afc5c2d564699085749064988f3b7b018dfb88'
             'eb6cda2602b5d54eec6e3eb924a795f63e0b099b6c8452a393c4829747ae746f')
 
 prepare() {
