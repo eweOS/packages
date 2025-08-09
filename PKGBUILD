@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=intel-media-driver
-pkgver=25.3.0
+pkgver=25.3.1
 pkgrel=1
 pkgdesc='Intel Media Driver for VAAPI'
 url='https://github.com/intel/media-driver/'
@@ -16,7 +16,7 @@ makedepends=(cmake linux-headers)
 source=("https://github.com/intel/media-driver/archive/refs/tags/intel-media-$pkgver.tar.gz"
 	"0001-silence-clang-cxx-vla-extension.patch"
 	"0002-fix-compatibility-with-cmake-4.0.patch::https://github.com/intel/media-driver/pull/1919.patch")
-sha256sums=('be269f4c4edfbb5291b97073966e6b51291a9cbc8be710231586f8845851a06a'
+sha256sums=('ea515121a4c758373aa4641cafef91ebd5efa947cfb7a284544263ab7e90d6df'
             '5daa5c7716935c7133e2e9beffff7d635571fa1efbca5b888b8c01f9bff3ddba'
             '03dfeb072533b20e79bdff83e38f6f729010c771e7896955c83c4dc0e35b8b83')
 _dirname="media-driver-intel-media-$pkgver"
