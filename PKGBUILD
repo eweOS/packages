@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=ghc
-pkgver=9.4.8
-pkgrel=3
+pkgver=9.6.7
+pkgrel=1
 pkgdesc='Glasgow Haskell Compiler.'
 url='https://ghc.haskell.org/'
 arch=(x86_64 aarch64)		# NOTICE: we use NCG only
