@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=ghc
-pkgver=9.4.8
-pkgrel=3
+pkgver=9.6.7
+pkgrel=1
 pkgdesc='Glasgow Haskell Compiler.'
 url='https://ghc.haskell.org/'
 arch=(x86_64 aarch64)		# NOTICE: we use NCG only
@@ -11,9 +11,9 @@ depends=(musl libffi gmp ncurses lld)
 # missing python-sphinx
 makedepends=(python ghc cabal alex happy)
 options=(!strip)
-source=("https://downloads.haskell.org/~ghc/9.4.8/ghc-9.4.8-src.tar.xz"
+source=("https://downloads.haskell.org/~ghc/$pkgver/ghc-$pkgver-src.tar.xz"
 	"fix-llvm-target-musl.patch")
-sha256sums=('0bf407eb67fe3e3c24b0f4c8dea8cb63e07f63ca0f76cf2058565143507ab85e'
+sha256sums=('d053bf6ce1d588a75cfe8c9316269486e9d8fb89dcdf6fd92836fa2e3df61305'
             'dd5f98dee96308fd8af621a3c782dea7541f196da0deded6b3866cc339bb9e38')
 
 prepare() {
