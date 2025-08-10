@@ -3,7 +3,7 @@
 
 pkgname=filesystem
 pkgver=1.0.0
-pkgrel=13
+pkgrel=14
 pkgdesc='The base directory structure and a few core files for the system.'
 arch=(any)
 url='https://os.ewe.moe'
@@ -90,11 +90,6 @@ package()
   ln -s "bin" usr/sbin
     # mtab
   ln -s "../proc/mounts" "etc/mtab"
-
-  [[ $CARCH = 'x86_64' ]] && {
-    ln -s usr/lib lib64
-    ln -s lib usr/lib64
-  }
 
   # files in /etc
   for user in {passwd,shadow,group,profile,shells,services,protocols,os-release,hosts,motd,fstab,issue,resolv.conf}; do
