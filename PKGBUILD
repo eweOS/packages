@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=cabal
-pkgver=3.8.1.0
-pkgrel=3
+pkgver=3.10.3.0
+pkgrel=1
 pkgdesc='a system for building and packaging Haskell libraries and programs.'
 url='https://haskell.org/cabal'
 arch=(x86_64 aarch64)
@@ -10,15 +10,11 @@ license=(BSD-3-Cluase)
 depends=(libffi gmp zlib-ng)
 makedepends=(cabal ghc)
 source=("https://downloads.haskell.org/~cabal/cabal-install-$pkgver/cabal-install-$pkgver.tar.gz"
-	"fix-version.patch"
 	"cabal.project.freeze")
-sha256sums=('61ce436f2e14e12bf07ea1c81402362f46275014cd841a76566f0766d0ea67e6'
-            '9fdfe704e873d469f94199621fe78d1b97583da47202cc4403012ce1796994b6'
-            '2e3831b53296e7cce2a85bc280b73306aff6c5af676c8ef9b820cbe8a74d4038')
+sha256sums=('a8e706f0cf30cd91e006ae8b38137aecf65983346f44d0cba4d7a60bbfa3da9e'
+            'b99b7911e47b6e07413ce63b27c80267a32009bfaf20fd7750421504fe5e1ac3')
 
 prepare() {
-	_patch_ cabal-install-"$pkgver"
-
 	_cabal_home="$srcdir/dist"
 	cd cabal-install-"$pkgver"
 	HOME="$_cabal_home" cabal v2-update
