@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xfce4-session
-pkgver=4.20.2
+pkgver=4.20.3
 pkgrel=1
 pkgdesc="Xfce's session manager"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -14,7 +14,7 @@ optdepends=('gnome-keyring: for keyring support when GNOME compatibility is enab
             'xfce4-screensaver: for locking screen with xflock4'
             'light-locker: for locking screen with xflock4')
 source=("git+https://gitlab.xfce.org/xfce/xfce4-session.git#tag=$pkgname-$pkgver" no-x11.patch)
-sha256sums=('f7c6c41a2e58c6faf69e6c7f7e2872ea2bf48f9d9c0b62b2be65d6c2cae24813'
+sha256sums=('02276e99def85723bf2f73c344b4df93eeaf52da18d5f8360028ded6256b820f'
             '8f3465168556341c499a1f17db2a00d573ec2a29feeca6d625a52f9a9a57f4ec')
 
 prepare() {
