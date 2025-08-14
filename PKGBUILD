@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=crun
-pkgver=1.23
+pkgver=1.23.1
 pkgrel=1
 pkgdesc="A fast and lightweight fully featured OCI runtime and C library for running containers"
 url="https://github.com/containers/crun"
@@ -11,7 +11,7 @@ provides=('oci-runtime')
 depends=('yajl' 'libcap' 'libseccomp' 'libuargp')
 makedepends=('python' 'go-md2man' 'git')
 source=("git+https://github.com/containers/crun.git#tag=$pkgver")
-sha256sums=('b957fdba8136d217582d312944e55be7e6edb8e965ccd2040b14974e50bf5217')
+sha256sums=('616cc7fdff3c6aa0429a9f2ab017a9b234ff8bda401250727879c9b4a9e35a76')
 
 build() {
     export MAKEFLAGS="CC=cc CXX=c++ -j$JOBS"
