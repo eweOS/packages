@@ -6,7 +6,7 @@ pkgname=(
   'ttf-nerd-fonts-symbols-common'
 )
 pkgbase=font-nerd-symbols
-pkgver=3.2.1
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="High number of extra glyphs from popular 'iconic fonts'"
 arch=('any')
@@ -18,9 +18,9 @@ source=(
   "10-nerd-font-symbols-$pkgver.conf::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v$pkgver/10-nerd-font-symbols.conf"
   "Nerd_Fonts-$pkgver-LICENSE::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v$pkgver/LICENSE"
 )
-sha256sums=('4bc091384cbc8d12b333fb1fcecce8b4701149dbce1f1271ab74374abb7ba906'
-            '6f7e339af33bde250a4d7360a3176ab1ffe4e99c00eef0d71b4c322364c595f3'
-            '6601e431c5c43d80dfce375147b297df0b36bb4d465948f8f2178c1da89ace76'
+sha256sums=('71db104aa66567d0efe0b98758f9dfc1895573a453fe85fb53d1c38544a55106'
+            'f0f624d9b474bea1662cf7e862d44aebe1ae1f6c7f9cb7a0ca5d0e5ac9561c60'
+            '83b70b7f706aced1dced5d0aec67e0b6ef7a7fee9fcb37135717eb7687868cd3'
             '1f6ad4edae6479aaace3112ede5279a23284ae54b2a34db66357aef5f64df160')
 
 _package() {
