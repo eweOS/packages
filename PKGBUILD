@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-typeguard
-pkgver=4.4.3
+pkgver=4.4.4
 pkgrel=1
 pkgdesc="Run-time type checker for Python"
 url="https://github.com/agronholm/typeguard"
@@ -11,7 +11,7 @@ depends=('python-typing_extensions')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 checkdepends=('python-pytest')
 source=("git+https://github.com/agronholm/typeguard.git#tag=$pkgver")
-sha256sums=('8753a1c95f015c286ba63158a16d1e28bf951884161455bea86f5b677cf233e9')
+sha256sums=('8f61f36cd87812c6823cf066308f47574bbf4c2b30733ffda9abbfa38d1ad97a')
 
 build() {
   cd typeguard
