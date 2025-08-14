@@ -11,8 +11,14 @@ depends=('python')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('python-yaml: parse Python in YAML metadata')
 checkdepends=('python-yaml')
-source=("$pkgname::git+https://github.com/Python-Markdown/markdown#tag=$pkgver")
-sha256sums=('f99b5f3dc65e02d1a7dbdbe986180ded64fdc82fafbe0c5f4a15a035b3bd2c2f')
+# backport: fix-failing.patch: https://github.com/Python-Markdown/markdown/pull/1548
+source=("$pkgname::git+https://github.com/Python-Markdown/markdown#tag=$pkgver" fix-failing.patch)
+sha256sums=('f99b5f3dc65e02d1a7dbdbe986180ded64fdc82fafbe0c5f4a15a035b3bd2c2f'
+            '5454e782e6276af69be77c72d7dc3e7751a5ac9a656174eac93ac24f3b2c9e00')
+
+prepare() {
+  _patch_ "$pkgname"
+}
 
 build() {
   cd "$pkgname"

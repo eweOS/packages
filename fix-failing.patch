@@ -1,0 +1,54 @@
+From 15346cd3a73f108bf11c57907b32737f8365d6bd Mon Sep 17 00:00:00 2001
+From: facelessuser <faceless.shop@gmail.com>
+Date: Mon, 21 Jul 2025 08:56:43 -0600
+Subject: [PATCH] Fix failing cases for Python 3.14
+
+New change requires us to monkey patch `locatetagend` to prevent
+capturing incomplete tags in code spans.
+---
+ docs/changelog.md      |  6 ++++++
+ markdown/htmlparser.py | 14 ++++++++++++++
+ 2 files changed, 20 insertions(+)
+
+diff --git a/docs/changelog.md b/docs/changelog.md
+index d81e66ae..3d54e6e2 100644
+--- a/docs/changelog.md
++++ b/docs/changelog.md
+@@ -10,6 +10,12 @@ and this project adheres to the
+ [Python Version Specification](https://packaging.python.org/en/latest/specifications/version-specifiers/).
+ See the [Contributing Guide](contributing.md) for details.
+ 
++## [Unreleased]
++
++### Fixed
++
++* Fix handling of incomplete HTML tags in code spans in Python 3.14.
++
+ ## [3.8.2] - 2025-06-19
+ 
+ ### Fixed
+diff --git a/markdown/htmlparser.py b/markdown/htmlparser.py
+index 478e7021..63e5df31 100644
+--- a/markdown/htmlparser.py
++++ b/markdown/htmlparser.py
+@@ -69,6 +69,20 @@
+    )?
+   \s*                                 # trailing whitespace
+ """, re.VERBOSE)
++htmlparser.locatetagend = re.compile(r"""
++  [a-zA-Z][^`\t\n\r\f />]*           # tag name
++  [\t\n\r\f /]*                     # optional whitespace before attribute name
++  (?:(?<=['"\t\n\r\f /])[^`\t\n\r\f />][^\t\n\r\f /=>]*  # attribute name
++    (?:=                            # value indicator
++      (?:'[^']*'                    # LITA-enclosed value
++        |"[^"]*"                    # LIT-enclosed value
++        |(?!['"])[^>\t\n\r\f ]*     # bare value
++       )
++     )?
++    [\t\n\r\f /]*                   # possibly followed by a space
++   )*
++   >?
++""", re.VERBOSE)
+ 
+ # Match a blank line at the start of a block of text (two newlines).
+ # The newlines may be preceded by additional whitespace.
