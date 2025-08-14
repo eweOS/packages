@@ -2,8 +2,8 @@
 
 pkgbase=python
 pkgname=(python python-tests)
-pkgver=3.13.5
-pkgrel=4
+pkgver=3.13.6
+pkgrel=1
 _pybasever=${pkgver%.*}
 pkgdesc='The Python programming language'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -24,7 +24,7 @@ source=(
   musl-find_library.patch
   EXTERNALLY-MANAGED
 )
-sha256sums=('93e583f243454e6e9e4588ca2c2662206ad961659863277afcdb96801647d640'
+sha256sums=('17ba5508819d8736a14fbfc47d36e184946a877851b2e9c4b6c43acb44a3b104'
             '055a00bef64a9c22d746be5e9072d09b303e21cf0865daed1d7a67210207fb4f'
             'eb165082097dfc3bde16b25d861093ae4dcadaf1cf102e45e5e2e630fbb58de8')
 
