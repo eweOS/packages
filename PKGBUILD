@@ -2,8 +2,8 @@
 
 pkgname=glfw
 pkgdesc="A free, open source, portable framework for graphical application development"
-pkgver=3.4
-pkgrel=2
+pkgver=3.5.0
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.glfw.org/"
 license=('custom:ZLIB')
@@ -11,7 +11,7 @@ depends=('libgl' 'libxkbcommon' 'wayland')
 makedepends=('mesa' 'cmake' 'vulkan-headers' 'vulkan-icd-loader' 'extra-cmake-modules'
              'wayland-protocols' 'linux-headers')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/glfw/glfw/archive/${pkgver}.tar.gz")
-sha512sums=('39ad7a4521267fbebc35d2ff0c389a56236ead5fa4bdff33db113bd302f70f5f2869ff4e6db1979512e1542813292dff5a482e94dfce231750f0746c301ae9ed')
+sha512sums=('5d8a8da76c7554cbf56c484ca3d8b6dc81ca2a8ac80ba6920a182209ee589edbe57ee2ef4ad6624871ce2ec754b581f227f4da42e9f5d338f3609fc29306f99d')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
