@@ -1,21 +1,17 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-msgpack
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='MessagePack serializer implementation for Python'
 url='https://github.com/msgpack/msgpack-python'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('Apache-2.0')
-depends=('python')
+depends=('musl' 'python')
 makedepends=('cython' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
 source=(msgpack-python-$pkgver.tar.gz::https://github.com/msgpack/msgpack-python/archive/v$pkgver.tar.gz)
-sha512sums=('d3ab6d91804ef55f744d8df5017e41eb84149c2379c0de7a8ed31353c112ca9511ed091ce5e1919b260ba60fc307832096dc5a0fae49a18cb30215bc35d89198')
-
-prepare() {
-  sed -i 's/~=/>=/' msgpack-python-$pkgver/pyproject.toml
-}
+sha512sums=('0cd5569b0e70d568557d58d5fdf0dbaceaa2dd94a1242ef4dbc079a513fd51eb35ecab85708b09a7958c81c5cb49664622be5eba602296547faa11713e8edc06')
 
 build() {
   cd msgpack-python-$pkgver
