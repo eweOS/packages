@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=python-pbr
-pkgver=6.1.1
+pkgver=7.0.0
 pkgrel=1
 pkgdesc='A library for managing setuptools packaging needs in a consistent manner.'
 url='https://docs.openstack.org/pbr/latest/'
