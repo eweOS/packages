@@ -3,7 +3,7 @@
 _name=gitpython
 pkgdesc="A python library used to interact with Git repositories"
 pkgname=python-gitpython
-pkgver=3.1.44
+pkgver=3.1.45
 pkgrel=1
 url="https://github.com/gitpython-developers/gitpython"
 license=(BSD-3-Clause)
@@ -25,7 +25,7 @@ checkdepends=(
   python-pytest-mock
 )
 source=("git+$url.git#tag=$pkgver")
-sha512sums=('53bf6b7ceaf5a174d79b4e504e6ba4dd327951df64f8d7e9806204313eaed2d12e9198a871263a0a94792fd544157e897f136ab59e9bbc997ece8f512ff217c1')
+sha512sums=('02e1d0fecd66263257b88ecb986e381424e8d3642ca41b39ac2cce0cefd5a60a262338b047f5d3e40286d97fe8958ae35de0ac5a05d2153e1f9d8188ccd4f0a5')
 
 build() {
   cd $_name
