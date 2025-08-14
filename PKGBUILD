@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-jaraco.functools
-pkgver=4.1.0
-pkgrel=2
+pkgver=4.2.1
+pkgrel=1
 pkgdesc='Functools like those found in stdlib'
 arch=('any')
 url='https://github.com/jaraco/jaraco.functools'
@@ -13,7 +13,7 @@ checkdepends=('python-pytest' 'python-jaraco.classes')
 conflicts=('python-jaraco')
 replaces=('python-jaraco')
 source=("git+https://github.com/jaraco/jaraco.functools#tag=v$pkgver")
-sha512sums=('a607327042760c23abc26f2213fc6c39abb6f9bbce1d58b0c8ac24c0cfda38cb954b1abdd43deb6535092e35325730d7d75b48047cc06be588f29335e93b4372')
+sha512sums=('579b0b70ac00bab73d0a1ed19b15aab30d731abeb231d409fd67552acff3cee4cb6c843f5a0a47a79a2d547b078c35badb82ddef0613c5a5d5cfb373e0356d9c')
 
 build() {
   cd jaraco.functools
