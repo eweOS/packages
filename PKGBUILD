@@ -3,7 +3,7 @@
 pkgbase=qca
 pkgname=(qca-qt6)
 pkgver=2.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt Cryptographic Architecture'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://userbase.kde.org/QCA'
