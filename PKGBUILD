@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-license-expression
-pkgver=30.4.1
+pkgver=30.4.4
 pkgrel=1
 pkgdesc='Utility to parse, normalize and compare license expressions'
 arch=('any')
@@ -23,7 +23,7 @@ checkdepends=(
   'python-pytest-xdist'
 )
 source=("$pkgname::git+$url#tag=v$pkgver")
-sha512sums=('b4d383e30cd6b3bb731b3dc5402f298b0cacb7f9d8bdc75034654e05ffbea78b2c617a176f620300b87cb5787f955b00c01fd63f9e61487320a6a3ef310920e6')
+sha512sums=('39fe4a92372d6c28e933b2e4031c7921ee506918528525479dbc1d941180d17833137b878addafa7c7b1a1b78689a51ea84ee74e3fea28d24ae0de39c7334b94')
 
 prepare() {
   cd "$pkgname"
