@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-lxml
-pkgver=5.3.2
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Python3 binding for the libxml2 and libxslt libraries"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,16 +15,11 @@ optdepends=('python-beautifulsoup4: support for beautifulsoup parser to parse no
 makedepends=('python-setuptools' 'python-pygments' 'cython')
 # FIXME: missing dependencies
 #checkdepends=('python-cssselect' 'python-html5lib' 'python-beautifulsoup4')
-# 0001: Backport, fix compatibility with newer Cython
-#	Reference: https://github.com/cython/cython/issues/6561
-source=("https://github.com/lxml/lxml/archive/lxml-$pkgver.tar.gz"
-	"0001-Avoid-custom-tp_new-call.patch::https://github.com/lxml/lxml/commit/6d5d6aed2e38e1abc625f29c0b3e97fc8c60ae3b.patch")
-sha512sums=('d128f7d6dd2a08286f8478508cb2693c7749c5f3822acfcd10877b92bec24e82c3da624b3a1872f95f72d310247083c84f76a42eadfc910b8180749d85b32d8b'
-            'b129f5b78ecfd21264dd5b03c7d9cffb130f3cb19ee131d48e87118e68a17e890686716e83915688b9b9de42b1533bda20002af7565607e63aa5b60936a3b16a')
+source=("https://github.com/lxml/lxml/archive/lxml-$pkgver.tar.gz")
+sha512sums=('05519e03067de5d85be76994070c0a25f35eb52c2df5fc540aa6d2661af09636021c9b6b60d102c687cd9b8f800ecffdb9f2407d7d0f5bbbc43c4c0b38a3b18e')
 
 prepare() {
   mv lxml-lxml-$pkgver lxml-$pkgver
-  _patch_ lxml-$pkgver
   # Setting LC_CTYPE to workaround encoding issue
   export LC_CTYPE=en_US.UTF-8
 }
