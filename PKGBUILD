@@ -23,9 +23,11 @@ makedepends=(
   "lxqt-build-tools" "liblxqt" "libpulse" "libstatgrab" "libsysstat"
   "alsa-lib" "linux-headers"
 )
-source=("https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz" no-x11.patch)
+# backport: fix-std-function-argument-type.patch: https://github.com/lxqt/lxqt-panel/pull/2305
+source=("https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz" no-x11.patch fix-std-function-argument-type.patch)
 sha256sums=('5d150e7a4e8818715b8f4eec7f4bb26c98f740cd56f972199b35fc7c81da1969'
-            'bbfcf634f3ea291f6cfadaba789e0c941c6e22c73b0fbaa3e5b3d435a3672847')
+            'bbfcf634f3ea291f6cfadaba789e0c941c6e22c73b0fbaa3e5b3d435a3672847'
+            '58f72b6bbc9bd89703fccf5795b700dd98cc96d0348b587b8022b918c7df3bd6')
 
 prepare() {
   _patch_ $pkgname-$pkgver
