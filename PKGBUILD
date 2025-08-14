@@ -2,8 +2,8 @@
 
 pkgname=python-docutils
 _pyname=${pkgname#*-}
-pkgver=0.21.2
-pkgrel=2
+pkgver=0.22
+pkgrel=1
 pkgdesc='An open-source text processing system for processing plaintext documentation into useful formats'
 url='https://docutils.sourceforge.io/'
 arch=(any)
@@ -12,8 +12,8 @@ depends=(python)
 optdepends=('python-pygments: for syntax highlighting')
 makedepends=(python-build python-installer python-setuptools python-flit-core)
 checkdepends=(python-pytest)
-source=("https://sourceforge.net/projects/docutils/files/docutils/$pkgver/docutils-$pkgver.tar.gz")
-sha256sums=('3a6b18732edf182daa3cd12775bbb338cf5691468f91eeeb109deff6ebfa986f')
+source=("https://files.pythonhosted.org/packages/source/d/docutils/docutils-$pkgver.tar.gz")
+sha256sums=('ba9d57750e92331ebe7c08a1bbf7a7f8143b86c476acd51528b042216a6aad0f')
 
 build () {
 	cd $_pyname-$pkgver
@@ -29,5 +29,5 @@ build () {
 package() {
 	cd $_pyname-$pkgver
 	python -m installer --destdir $pkgdir dist/*.whl
-	_install_license_ COPYING.txt
+	_install_license_ COPYING.rst
 }
