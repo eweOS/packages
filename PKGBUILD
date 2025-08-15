@@ -1,7 +1,7 @@
 # Maintainer: Deepak Meena <notwho53@gmail.com>
 
 pkgname=lxc
-pkgver=6.0.4
+pkgver=6.0.5
 pkgrel=1
 pkgdesc="The Linux Containers tool set for kernel-level isolation"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ license=('LGPL-2.0-or-later')
 backup=('etc/lxc/default.conf'
 	'etc/default/lxc')
 source=("https://linuxcontainers.org/downloads/lxc/$pkgname-${pkgver}.tar.gz")
-sha256sums=('872d26ce8512b9f993d194816e336bf9f3ad8326f22dc24ef0f01f85599fa8b9')
+sha256sums=('2e540c60b9dd49e7ee1a4efa5e9c743b05df911b81b375ed5043d9dd7ee0b48a')
 
 
 build() {
