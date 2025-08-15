@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=solid
-pkgver=6.15.0
+pkgver=6.17.0
 pkgrel=1
 pkgdesc='Hardware integration and detection'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +16,7 @@ makedepends=(extra-cmake-modules
 optdepends=('qt5-declarative: QML bindings')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('608b2d3ad987369718a2fe8a5fa7b71c75faa51a20eaff5ba6b0edf0e5ebbb4a')
+sha256sums=('17f0510ef134b66e647ee217b64870532d757c721c815f20c49567b979c9c725')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
