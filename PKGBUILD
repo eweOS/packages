@@ -5,8 +5,8 @@ pkgname=(
   emacs
   emacs-nogui
 )
-pkgver=30.1
-pkgrel=2
+pkgver=30.2
+pkgrel=1
 url='https://www.gnu.org/software/emacs/emacs.html'
 pkgdesc='Extensible, customizable, self-documenting free/libre text editor'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -46,9 +46,7 @@ makedepends=(
 source=(
   "https://ftp.gnu.org/gnu/emacs/emacs-${pkgver}.tar.gz"
 )
-sha256sums=(
-  '54404782ea5de37e8fcc4391fa9d4a41359a4ba9689b541f6bc97dd1ac283f6c'
-)
+sha256sums=('1d79a4ba4d6596f302a7146843fe59cf5caec798190bcc07c907e7ba244b076d')
 
 prepare() {
   # duplicate package to build the nogui version from the same source
