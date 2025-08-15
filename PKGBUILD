@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fastfetch
-pkgver=2.50.0
+pkgver=2.50.1
 pkgrel=1
 pkgdesc="Like Neofetch, but much faster because written in C"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -31,7 +31,7 @@ optdepends=(
   'libdrm: Displays detection'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b6ce2341b3953efd4b08fbd193b325c9187ddc0437ab01372c142e6075bb757a')
+sha256sums=('947e070edcf906bfe88ccc219f65226c75c509612b127aba28e3b62ab30f50da')
 
 build() {
   cmake -B build -S "${pkgname}-${pkgver}" \
