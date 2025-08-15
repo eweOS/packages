@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kcoreaddons
-pkgver=6.15.0
-pkgrel=2
+pkgver=6.17.0
+pkgrel=1
 pkgdesc='Addons to QtCore'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -15,7 +15,7 @@ makedepends=(linux-headers
 optdepends=('qt6-declarative: QML bindings')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('978c3b0d8b11b681ff07bbd6a6953d54ce1ca27e7bc53d93472dd96b942328d7')
+sha256sums=('0303d6d1e9e76cf9ec06a41acd1a52088a40df3a2805e97e1c327baf607842aa')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
