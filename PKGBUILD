@@ -9,7 +9,7 @@ pkgname=(
   libportal-qt6
 )
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GIO-style async APIs for most Flatpak portals"
 url="https://github.com/flatpak/libportal"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -95,7 +95,7 @@ package_libportal-gtk3() {
   pkgdesc+=" - GTK 3 backend"
   depends=(
     glib2
-    libg{d,t}k-3.so
+    gtk3
     libportal
   )
   provides=(libportal-gtk3.so)
@@ -107,7 +107,7 @@ package_libportal-gtk4() {
   pkgdesc+=" - GTK 4 backend"
   depends=(
     glib2
-    libgtk-4.so
+    gtk4
     libportal
   )
   provides=(libportal-gtk4.so)
