@@ -36,6 +36,13 @@ checkdepends=(
 source=("git+https://github.com/flatpak/libportal#tag=$pkgver")
 sha256sums=('6055da27b6198bf3e3854ed696f782dca2d14fee91cf9cfc6c3f3a0bf2a9eb27')
 
+prepare() {
+  cd libportal
+
+  # Fix build against Qt 6.9
+  git cherry-pick -n 796053d2eebe4532aad6bd3fd80cdf3b197806ec
+}
+
 build() {
   ewe-meson libportal build -D backend-qt5=disabled
   meson compile -C build
