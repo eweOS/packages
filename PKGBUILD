@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=karchive
-pkgver=6.15.0
+pkgver=6.17.0
 pkgrel=1
 pkgdesc='Qt addon providing access to numerous types of archives'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ depends=(libbz2
 makedepends=(extra-cmake-modules qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('ed74208722e08dd606f3d6d73007fafc1a00cc89c2e29e31975602fef45a0f18')
+sha256sums=('60647c24646a43f67deaf37e20246df9d379fa3f7513fe8536a1dfa330865b40')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
