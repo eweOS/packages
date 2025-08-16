@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gnome-calculator
-pkgver=47.0
-pkgrel=2
+pkgver=48.1
+pkgrel=1
 pkgdesc="GNOME Scientific calculator"
 url="https://apps.gnome.org/Calculator"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -33,7 +33,7 @@ provides=(
 )
 groups=(gnome)
 source=("git+https://gitlab.gnome.org/GNOME/gnome-calculator.git#tag=${pkgver/[a-z]/.&}")
-sha256sums=('SKIP')
+sha256sums=('75a6ef944d39ce5554a184b8cb93bf856836e97e5518f9e31c648718c1958eea')
 
 build() {
   ewe-meson $pkgname build
