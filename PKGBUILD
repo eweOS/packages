@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kcompletion
-pkgver=6.15.0
+pkgver=6.17.0
 pkgrel=1
 pkgdesc='Text completion helpers and widgets'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('938cad318dcaa2fca8b8b8d4853fa3f7abd833dcf03b51e19a174e6195ccc27d')
+sha256sums=('f22e4c6facec812bde4ab8d56a05b38a243dd9362c8deb4f1367efb1b6e64663')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
