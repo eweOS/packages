@@ -2,7 +2,7 @@
 
 pkgname=kfilemetadata
 pkgver=6.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A library for extracting file metadata'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -15,6 +15,7 @@ depends=(ebook-tools
          kconfig
          kcoreaddons
          ki18n
+	 poppler-qt6
          qt6-base
          taglib)
 optdepends=('catdoc: Extract text from Office 98 files'
