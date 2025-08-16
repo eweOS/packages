@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-filelock
-pkgver=3.19.0
+pkgver=3.19.1
 pkgrel=1
 pkgdesc="A platform independent file lock"
 url="https://github.com/benediktschmitt/py-filelock"
@@ -17,7 +17,7 @@ makedepends=('git' 'python-build' 'python-installer' 'python-hatchling' 'python-
 #  'python-virtualenv'
 #)
 source=("git+https://github.com/benediktschmitt/py-filelock.git#tag=$pkgver")
-sha512sums=('30ff39f7db8821835096bac5f6347373c48842387e115f67c49f78958a53e3937530c3a41c7b9b1d9ea9a65608fafaec0cf23f2557eb74dae2b5870cd964d29e')
+sha512sums=('788a099534497035f6033e976c42e7b022fca9693e40902a8d0d55be685f5bf1c48d68a9047628f539b461c146e0c49860623deb0b8ae30d982c7bb02af6b636')
 
 build() {
   cd py-filelock
