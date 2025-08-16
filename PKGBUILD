@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kiconthemes
-pkgver=6.15.0
+pkgver=6.17.0
 pkgrel=1
 pkgdesc='Support for icon themes'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -21,7 +21,7 @@ makedepends=(extra-cmake-modules
 optdepends=('qt6-declarative: QML bindings')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('8842703899722f9ab6b4aec0b45c38bee9896e32daccb3eb17ef014404c9606b')
+sha256sums=('5cf0b20628d300447770c4ab00edb225ecc85561792923ec0083f9bc9e0b4247')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
