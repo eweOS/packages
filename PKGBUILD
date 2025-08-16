@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kparts
-pkgver=6.15.0
+pkgver=6.17.0
 pkgrel=1
 pkgdesc='Document centric plugin system'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -18,7 +18,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('334abf8c2ac598c57115ce9b872adc5a1fb50e8899bced416e39fd332e3c4742')
+sha256sums=('1e64d426ce47501a8ff1bac8c2366f0cd153e6cd4d440e827eb0015d9e38c3e9')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
