@@ -2,7 +2,7 @@
 
 pkgname=pacman-contrib
 pkgver=1.10.6
-pkgrel=5
+pkgrel=6
 pkgdesc='Contributed scripts and tools for pacman systems'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gitlab.archlinux.org/pacman/pacman-contrib"
@@ -17,10 +17,15 @@ optdepends=(
   'sudo: privilege elevation for several scripts'
   'vim: default merge program for pacdiff'
 )
-source=("git+$url.git#tag=v$pkgver")
-sha256sums=('SKIP')
+source=(
+  "git+$url.git#tag=v$pkgver"
+  eweos-archs.patch
+)
+sha256sums=('73d360e3d08c73cc2c1a75e7cec6b8101bb359ad7c991388c410d75dee704fd2'
+            '5c5ccd1d8d2a3e75cb314167abd0bf830e2ca35f23dd9e282281732c3b695fcf')
 
 prepare() {
+  _patch_ "$pkgname"
   cd "$pkgname"
   ./autogen.sh
 }
