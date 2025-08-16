@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kwallet
-pkgver=6.15.0
+pkgver=6.17.0
 pkgrel=1
 pkgdesc='Secure and unified container for user passwords'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -22,13 +22,14 @@ depends=(gpgme
          qca-qt6
          qt6-base)
 makedepends=(extra-cmake-modules
+	     kdoctools
              kservice
              qt6-tools)
 optdepends=('kwalletmanager: Configuration GUI')
 provides=(org.freedesktop.secrets)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('fdbac44c2525b12e24b3ba5971912a2ffd91fdfea79c3a124bce89621735893c')
+sha256sums=('44caf691f47ba246f2efb13f9c8f7123c7e6745d4281560228b8158cc8b93d7d')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
