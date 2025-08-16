@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gnome-terminal
-pkgver=3.56.0
+pkgver=3.56.2
 pkgrel=1
 pkgdesc="The GNOME Terminal Emulator"
 url="https://wiki.gnome.org/Apps/Terminal"
@@ -40,7 +40,7 @@ optdepends=(
 )
 groups=(gnome-extra)
 source=("git+https://gitlab.gnome.org/GNOME/gnome-terminal.git#tag=$pkgver" fix-W_EXITCODE.patch)
-sha256sums=('2d5dac8618beb728c532aa6158c88d4c742e30c116059c48669c16ecd164a947'
+sha256sums=('ff8468ba446a024b14ca1ab7e77d89197dbeac1db5e4e2c2183c17127d4db8eb'
             '534cd9e39421732e13b198c02734b433c7d2d35e41109b6deea8516bacf0e636')
 
 prepare() {
