@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=libxfce4ui
-pkgver=4.20.1
+pkgver=4.20.2
 pkgrel=1
 pkgdesc='Widgets library for the Xfce desktop environment'
 url='https://docs.xfce.org/xfce/libxfce4ui/start'
@@ -12,7 +12,7 @@ makedepends=(xfce4-dev-tools vala gobject-introspection)
 provides=(libxfceui-2.so)
 source=("https://gitlab.xfce.org/xfce/libxfce4ui/-/archive/libxfce4ui-$pkgver/libxfce4ui-libxfce4ui-$pkgver.tar.gz"
 	"fix-abicheck.patch")
-sha256sums=('d7366093c7e974b0094abdb8e23d33e25fc9d3cff89eaa30f13fd5add8a0cc51'
+sha256sums=('13110bd74994a2bf4379455785c479ee3cf43f6e61a4a7832f45625c8c0eab5d'
             '0a64df0b3c0ee2f17ead98f76c355ebda95726e1853e68808235a445086c041a')
 _dirname="$pkgname-$pkgname-$pkgver"
 
