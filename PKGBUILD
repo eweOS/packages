@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ksvg
-pkgver=6.15.0
+pkgver=6.17.0
 pkgrel=1
 pkgdesc='Components for handling SVGs'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -22,7 +22,7 @@ optdepends=('kirigami: QML bindings'
             'qt6-declarative: QML bindings')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('955c5ceb28879d10106cb807f4f259810c705bbbbddaf170af0d563fbd580197')
+sha256sums=('3728da966932f20f190a545a7f42edea2f9bdbe6d727a5bc1b557ef5155b7f94')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
