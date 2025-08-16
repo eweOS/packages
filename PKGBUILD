@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kxmlgui
-pkgver=6.15.0
-pkgrel=2
+pkgver=6.17.0
+pkgrel=1
 pkgdesc='User configurable main windows'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -22,7 +22,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('40ce8d472d171a819806af0d5a68c3f91d596b5ae8b4b29c46592a0978d7c305')
+sha256sums=('a1807169ca2c386a8d3e25cb2b066554e49663a6e3f632f1a1968ef5476430e3')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
