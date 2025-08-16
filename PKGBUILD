@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libxfce4windowing
-pkgver=4.20.3
+pkgver=4.20.4
 pkgrel=1
 pkgdesc="Windowing concept abstraction library for Wayland"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -10,7 +10,7 @@ license=('LGPL-2.1-only')
 depends=('gdk-pixbuf2' 'glib2' 'gtk3' 'wayland')
 makedepends=('gobject-introspection' 'gtk-doc' 'wayland-protocols' 'xfce4-dev-tools')
 source=(https://archive.xfce.org/src/xfce/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2)
-sha256sums=('df2419a6bd960c0bfac3307eff593050857524642597eb35a26fb4f8261a017b')
+sha256sums=('db467f9ac4bac8f1c4e82667902841fc0957af835c29603d6659a57440b6f8cb')
 
 build() {
   cd $pkgname-$pkgver
