@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kpty
-pkgver=6.15.0
+pkgver=6.17.0
 pkgrel=1
 pkgdesc='Pty abstraction'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('d2a69c8c9cc6d696c4c717357bb6d6581f5ddf64aad83e9ae98903b1f2e0a8b1')
+sha256sums=('96a71687a8de0becc34a8157572d2440ba8d4b976fd5d0813331dfd86b92aabb')
 
 prepare() {
   cd $pkgname-$pkgver
