@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kstatusnotifieritem
-pkgver=6.15.0
-pkgrel=2
+pkgver=6.17.0
+pkgrel=1
 pkgdesc='Implementation of Status Notifier Items'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -13,7 +13,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('24132cc967570478b54e44eef1063c193217801260dc51860e0881fa0d90bd0d')
+sha256sums=('678a9bfc870066d5413bbcfa09a56b82b0affd2bc222ce5701d02a8b129edd91')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
