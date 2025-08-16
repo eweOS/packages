@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=syndication
-pkgver=6.15.0
+pkgver=6.17.0
 pkgrel=1
 pkgdesc='RSS/Atom parser library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('8d6ade8812295a9d3978ac1b2cd46cc0fb1819c598001562582851d9442ee01a')
+sha256sums=('d5a714b09ef6a50b67f55d58f8c6eefa1bba552527ded1145848b5466330ea93')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
