@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kdoctools
-pkgver=6.15.0
+pkgver=6.17.0
 pkgrel=1
 pkgdesc='Documentation generation from docbook'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -18,7 +18,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('430be5905b0bf6dfb4b7e0e2c0aeb75986eef0a30f13320d9d4cab907fd6bef7')
+sha256sums=('27b0ecb023227837103e3fa6ade3de0aa4d5f56f4f6c97a996fe6ee74be89d2f')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
