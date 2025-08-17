@@ -103,12 +103,13 @@ case "$_target" in
   *-efi)
     install -D "$_efi_src" "$_efi_dst"
     if [ -z $_no_nvram ] && [ -z $_removable ]; then
-      command -v efibootmgr &> /dev/null || (echo "error: efibootmgr not found" && exit 1)
+      if ! command -v efibootmgr &> /dev/null; then echo "error: efibootmgr not found"; exit 1; fi
 
       efibootmgr --create \
         --disk $_device --part 1 \
         --loader "$_loader_path" --label "$_bootloader_id" \
 	--unicode
+      [ $? -eq 0 ] || exit 1
     fi
     ;;
   *)
