@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=plasma-activities
-pkgver=6.4.1
+pkgver=6.4.4
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Core components for KDE Activities'
@@ -20,7 +20,7 @@ conflicts=(kactivities)
 replaces=(kactivities)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz)
-sha256sums=('0ec0692b5dcb05fc82d1e7f7285ab82da2269ddb7d0318b8f4a61038da44d963')
+sha256sums=('ab810aa594ed3386f6a8564705ea2a46cc62ec367de2039625e030f6af955fe8')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
