@@ -2,7 +2,6 @@
 
 # TODO:
 # - split lldb, openmp, flang, mlir into separate PKGBUILD
-# - split wasi-* into separate PKGBUILD and combine into llvm-wasi-libs (?)
 # - install manpages
 # Also note that currently compiler-rt is bundled in clang.
 pkgname=(
@@ -10,31 +9,28 @@ pkgname=(
   clang clang-tools
   lld
   lldb openmp flang mlir
-  wasi-libc++ wasi-libc++abi wasi-compiler-rt
 )
 _realpkgname=llvm-project
 pkgver=20.1.8
-pkgrel=1
+pkgrel=2
 _binutilsver=2.44
 _majorver="${pkgver%%.*}"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://llvm.org'
 license=('Apache-2.0 WITH LLVM-exception')
 makedepends=(llvm-devel cmake ninja utmps zlib zstd libffi libedit linux-headers git
-             wasi-libc spirv-llvm-translator python)
+             spirv-llvm-translator python)
 # Under review:
 #  try-llvm-libunwind
 # Downstream:
 #  others
 source=("https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}.tar.gz"
         "https://ftp.gnu.org/gnu/binutils/binutils-${_binutilsver}.tar.xz"
-        wasi-toolchain.cmake::https://raw.githubusercontent.com/WebAssembly/wasi-sdk/fef66e3d2319d8360825dcba1cf23061f5313c11/wasi-sdk.cmake
         llvm-install-prefix.patch
         try-llvm-libunwind.patch
         0001-clang-force-libc-linked-with-no-as-needed-when-using.patch)
 sha256sums=('a6cbad9b2243b17e87795817cfff2107d113543a12486586f8a055a2bb044963'
             'ce2017e059d63e67ddb9240e9d4ec49c2893605035cd60e92ad53177f4377237'
-            '5e58f02fe01ea22ea0406e4250ad89a053d517ef103a1dacfade4ecd98a7f2bc'
             'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94'
             '13a1c761d41324c7a790df55650a3a98a9ade0348d6e88f1e269b6b77ce5df55'
             '57808d224fd9218a936e6669bf4129eaf4aa04fbd45ab9f7fd5a20efc304e307')
@@ -242,49 +238,6 @@ build() {
     -DCLANG_CONFIG_FILE_SYSTEM_DIR=/etc/clang
   )
 
-  export WASI_COMMON_ARGS=(
-    -DCMAKE_BUILD_TYPE=Release
-    -DCMAKE_C_COMPILER_WORKS=ON
-    -DCMAKE_CXX_COMPILER_WORKS=ON
-    -DCMAKE_AR=/usr/bin/ar
-    -DCMAKE_MODULE_PATH="$srcdir"/cmake
-    -DCMAKE_TOOLCHAIN_FILE="$srcdir"/wasi-toolchain.cmake
-    -DWASI_SDK_PREFIX=/usr
-    -DUNIX=ON
-  )
-
-  export WASI_RUNTIME_ARGS=(
-    -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi"
-    -DCMAKE_STAGING_PREFIX=/usr/share/wasi-sysroot
-    -DCMAKE_SYSROOT=/usr/share/wasi-sysroot
-    -DLIBCXX_ABI_VERSION=2
-    -DLIBCXX_CXX_ABI=libcxxabi
-    -DLIBCXX_ENABLE_THREADS=OFF
-    -DLIBCXXABI_ENABLE_THREADS=OFF
-    -DLIBCXX_HAS_PTHREAD_API=OFF
-    -DLIBCXXABI_HAS_PTHREAD_API=OFF
-    -DLIBCXX_ENABLE_EXCEPTIONS=OFF
-    -DLIBCXXABI_ENABLE_EXCEPTIONS=OFF
-    -DLIBCXX_ENABLE_FILESYSTEM=OFF
-    -DLIBCXX_ENABLE_SHARED=OFF
-    -DLIBCXXABI_ENABLE_SHARED=OFF
-    -DLIBCXX_HAS_WIN32_THREAD_API=OFF
-    -DLIBCXXABI_HAS_WIN32_THREAD_API=OFF
-    -DLIBCXX_HAS_MUSL_LIBC=ON
-    -DLIBCXX_HAS_EXTERNAL_THREAD_API=OFF
-    -DLIBCXXABI_HAS_EXTERNAL_THREAD_API=OFF
-    -DLIBCXXABI_USE_LLVM_UNWINDER=OFF
-  )
-
-  export WASI_CRT_ARGS=(
-    -DCOMPILER_RT_BAREMETAL_BUILD=ON
-    -DCOMPILER_RT_INCLUDE_TESTS=OFF
-    -DCOMPILER_RT_HAS_FPIC_FLAG=OFF
-    -DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON
-    -DCOMPILER_RT_OS_DIR=wasi
-    -DCMAKE_INSTALL_PREFIX=/usr/lib/clang/$pkgver/
-  )
-
   case $CARCH in
     x86_64)
       CMARGS+=("-DCOMPILER_RT_BUILD_SANITIZERS=OFF")
@@ -311,30 +264,6 @@ build() {
 
   ninja -C build install
   ninja -C build install-runtimes
-
-  export CFLAGS="$(echo $CFLAGS | sed "s/-mtune=generic//; s/-march=\S*//")"
-  export CXXFLAGS="$(echo $CXXFLAGS | sed "s/-mtune=generic//; s/-march=\S*//")"
-
-  case $CARCH in
-    x86_64)
-      export CFLAGS="$(echo $CFLAGS | sed "s/-fstack-clash-protection//; s/-fcf-protection//; s/-fexceptions//")"
-      export CXXFLAGS="$(echo $CXXFLAGS | sed "s/-fstack-clash-protection//; s/-fcf-protection//; s/-fexceptions//")"
-      ;;
-  esac
-
-  cmake -B build-wasi-cxx -G Ninja \
-    "${WASI_COMMON_ARGS[@]}" \
-    "${WASI_RUNTIME_ARGS[@]}" \
-    -S $_basedir/runtimes
-
-  ninja -C build-wasi-cxx
-
-  cmake -B build-wasi-crt -G Ninja \
-    "${WASI_COMMON_ARGS[@]}" \
-    "${WASI_CRT_ARGS[@]}" \
-    -S $_basedir/compiler-rt/lib/builtins
-
-  ninja -C build-wasi-crt
 
   cd "$srcdir"/PKGDIR
   _pick_ llvm-tools "${FLIST_llvm_tools_1[@]}"
@@ -476,33 +405,4 @@ package_llvm() {
 
   _install_license_ "$_basedir/llvm/CREDITS.TXT" CREDITS
   _install_license_ "$_basedir/llvm/LICENSE.TXT" LICENSE
-}
-
-package_wasi-compiler-rt() {
-  pkgdesc='WASI LLVM compiler runtime'
-
-  DESTDIR="$pkgdir" ninja -C build-wasi-crt install
-
-  _install_license_ "$_basedir/compiler-rt/CREDITS.TXT" CREDITS
-  _install_license_ "$_basedir/compiler-rt/LICENSE.TXT" LICENSE
-}
-
-# Do not remove the space before the () or commitpkg will
-# accidentally to run this function on the system (!!!)
-package_wasi-libc++ () {
-  pkgdesc='WASI LLVM C++ standard library'
-
-  DESTDIR="$pkgdir" ninja -C build-wasi-cxx install-cxx
-
-  _install_license_ "$_basedir/libcxx/CREDITS.TXT" CREDITS
-  _install_license_ "$_basedir/libcxx/LICENSE.TXT" LICENSE
-}
-
-package_wasi-libc++abi() {
-  pkgdesc='WASI Low level support for the LLVM C++ standard library'
-
-  DESTDIR="$pkgdir" ninja -C build-wasi-cxx install-cxxabi
-
-  _install_license_ "$_basedir/libcxxabi/CREDITS.TXT" CREDITS
-  _install_license_ "$_basedir/libcxxabi/LICENSE.TXT" LICENSE
 }
