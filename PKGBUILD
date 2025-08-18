@@ -2,13 +2,13 @@
 
 pkgname=alex
 pkgver=3.5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for generating lexical analysers in Haskell'
 url='https://hackage.haskell.org/package/alex'
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 riscv64)
 license=(BSD-3-Clause)
-depends=(libffi gmp zlib-ng)
-makedepends=(cabal ghc)
+depends=(libffi gmp libnuma zlib-ng)
+makedepends=(ghc)
 source=("https://hackage.haskell.org/package/alex-$pkgver/alex-$pkgver.tar.gz")
 sha256sums=('913602f0464827470ecd9ed7590ddbbc5abab045a2b45059c46f80d17f0dc008')
 
