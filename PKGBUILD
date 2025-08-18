@@ -3,7 +3,7 @@
 pkgbase=font-noto
 pkgname=(ttf-noto-fonts ttf-noto-fonts-extra)
 pkgver=2025.05.01
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Noto TTF fonts'
 arch=(any)
 url='https://fonts.google.com/noto'
@@ -23,14 +23,14 @@ sha256sums=('98c9dfe46cd30427efe5d981fd0c3b86b745823d5e1e75e65bc635e7baea1ea5'
 package_ttf-noto-fonts() {
   optdepends=('ttf-noto-fonts-cjk: CJK characters' 'ttf-noto-fonts-emoji: Emoji characters'
               'ttf-noto-fonts-extra: additional variants (condensed, semi-bold, extra-light)')
-  provides=(ttf-font)
+  provides=(font-noto)
 
   cd notofonts.github.io-noto-monthly-release-$pkgver
-  install -Dm644 fonts/*/hinted/ttf/*.tt[fc] -t "$pkgdir"/usr/share/fonts/noto
+  install -Dm644 fonts/*/hinted/ttf/*.tt[fc] -t "$pkgdir"/usr/share/fonts/TTF
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 
   # Move to ttf-noto-extra
-  rm -f "$pkgdir"/usr/share/fonts/noto/Noto*{-Condensed,-Semi,-Extra}*.ttf
+  rm -f "$pkgdir"/usr/share/fonts/TTF/Noto*{-Condensed,-Semi,-Extra}*.ttf
 
   # Install fontconfig files
   install -Dm644 "$srcdir"/*.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
@@ -39,9 +39,10 @@ package_ttf-noto-fonts() {
 }
 
 package_ttf-noto-fonts-extra() {
+  provides=(font-noto-extra)
   pkgdesc+=' - additional variants'
   depends=(ttf-noto-fonts)
   
   cd notofonts.github.io-noto-monthly-release-$pkgver
-  install -Dm644 fonts/*/hinted/ttf/*{-Condensed,-Semi,-Extra}*.tt[fc] -t "$pkgdir"/usr/share/fonts/noto
+  install -Dm644 fonts/*/hinted/ttf/*{-Condensed,-Semi,-Extra}*.tt[fc] -t "$pkgdir"/usr/share/fonts/TTF
 }
