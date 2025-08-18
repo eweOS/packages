@@ -3,9 +3,9 @@
 pkgbase=font-urw-base35
 _name=urw-base35-fonts
 pkgname=otf-urw-base35
-provides=(gsfonts)
+provides=(gsfonts font-urw-base35 font-gsfonts)
 pkgver=20200910
-pkgrel=1
+pkgrel=2
 pkgdesc="(URW)++ base 35 font set"
 url="https://github.com/ArtifexSoftware/urw-base35-fonts"
 arch=(any)
@@ -17,7 +17,7 @@ package() {
   local _config _config_path
   cd $_name-$pkgver
 
-  install -vDm 644 fonts/*.otf -t "$pkgdir/usr/share/fonts/gsfonts/"
+  install -vDm 644 fonts/*.otf -t "$pkgdir/usr/share/fonts/OTF/"
   install -vDm 644 appstream/*.xml -t "$pkgdir/usr/share/metainfo"
 
   install -vdm 755 "$pkgdir/usr/share/fontconfig/conf.default/"
