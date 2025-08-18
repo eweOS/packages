@@ -4,7 +4,7 @@ _pkgbase=wqy-microhei
 pkgbase=font-wqy-microhei
 pkgname=ttf-wqy-microhei
 pkgver=0.2.0_beta
-pkgrel=1
+pkgrel=2
 pkgdesc="A Sans-Serif style high quality CJK outline font"
 arch=('any')
 license=('GPL3' 'APACHE' 'custom:"font embedding exception"')
@@ -20,9 +20,10 @@ build() {
 }
 
 package() {
+  provides=($pkgbase)
   install -d "$pkgdir"/usr/share/fontconfig/conf.default
   install -Dm644 "$srcdir"/44-wqy-microhei.conf "$pkgdir"/usr/share/fontconfig/conf.avail/44-wqy-microhei.conf
-  install -Dm644 "$srcdir"/${_pkgbase}/wqy-microhei.ttc "$pkgdir"/usr/share/fonts/wenquanyi/${_pkgbase}/wqy-microhei.ttc
+  install -Dm644 "$srcdir"/${_pkgbase}/wqy-microhei.ttc "$pkgdir"/usr/share/fonts/TTF/wqy-microhei.ttc
   install -Dm644 "$srcdir"/${_pkgbase}/FONTEXCEPTION "$pkgdir"/usr/share/licenses/$pkgname/FONTEXCEPTION
   ln -s ../conf.avail/44-wqy-microhei.conf "$pkgdir"/usr/share/fontconfig/conf.default/44-wqy-microhei.conf
 }
