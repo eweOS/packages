@@ -2,7 +2,7 @@
 
 pkgname=wf-shell
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='GTK3-based panel for the Wayfire compositor'
 url=https://wayfire.org
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -18,7 +18,6 @@ build () {
 }
 
 package () {
-  depends+=('ttf-font')
   meson install -C build --destdir "$pkgdir"
   cd "${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
