@@ -7,7 +7,7 @@ pkgname=(
 pkgbase=font-noto-cjk
 pkgver=20230817
 _commit=4efc595762d1f4b4fa504bccfe8e59de91fda063
-pkgrel=2
+pkgrel=3
 pkgdesc='Google Noto CJK fonts'
 arch=(any)
 url='https://www.google.com/get/noto/'
@@ -19,8 +19,9 @@ sha256sums=('SKIP'
             '2417ac0e6720fe8da55ee59f16e36cfe96737bc21432460a322bb0f395e3a521')
 
 package_otf-noto-cjk() {
+  provides=(font-cjk)
   cd noto-cjk
-  install -Dm644 ./{Sans,Serif}/OTC/*.ttc -t "$pkgdir"/usr/share/fonts/noto-cjk
+  install -Dm644 ./{Sans,Serif}/OTC/*.ttc -t "$pkgdir"/usr/share/fonts/OTF/
   install -Dm644 ./Sans/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
   install -Dm644 $srcdir/70-noto-cjk.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail
   install -d "$pkgdir"/usr/share/fontconfig/conf.default
@@ -29,10 +30,10 @@ package_otf-noto-cjk() {
 
 package_otf-noto-cjk-variable() {
   pkgdesc+=" - variable font"
-  provides=(otf-noto-cjk)
+  provides=(otf-noto-cjk font-cjk)
   conflicts=(otf-noto-cjk)
   cd noto-cjk
-  install -Dm644 ./{Sans,Serif}/Variable/OTC/*.ttc -t "$pkgdir"/usr/share/fonts/noto-cjk
+  install -Dm644 ./{Sans,Serif}/Variable/OTC/*.ttc -t "$pkgdir"/usr/share/fonts/OTF/
   install -Dm644 ./Sans/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
   install -Dm644 $srcdir/70-noto-cjk.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail
   install -d "$pkgdir"/usr/share/fontconfig/conf.default
