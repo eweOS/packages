@@ -2,7 +2,7 @@
 
 pkgname=fastfetch
 pkgver=2.50.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Like Neofetch, but much faster because written in C"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/fastfetch-cli/fastfetch"
@@ -10,6 +10,19 @@ license=('MIT')
 makedepends=(
   'cmake'
   'linux-headers'
+  'python'
+  'directx-headers'
+  'vulkan-headers'
+  'vulkan-icd-loader'
+  'wayland'
+  'dconf'
+  'imagemagick'
+  'dbus'
+  'libpulse'
+  'xfconf'
+  'libdrm'
+  'libegl'
+  'zlib'
 )
 optdepends=(
   'chafa: Image output as ascii art'
