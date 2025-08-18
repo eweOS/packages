@@ -3,7 +3,7 @@
 pkgbase=numactl
 pkgname=(numactl libnuma)
 pkgver=2.0.19
-pkgrel=1
+pkgrel=2
 pkgdesc='Utils and library for monitoring and controlling NUMA policies'
 url='https://github.com/numactl/numactl'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -32,7 +32,10 @@ build() {
 
 	_pick_ libnuma usr/include
 	_pick_ libnuma usr/lib/
-	_pick_ libnuma usr/share/man/man{2,3}
+	_pick_ libnuma usr/share/man/man3
+
+	# man-pages provides a better description
+	rm usr/share/man/man2/move_pages.2
 
 	msg2 "Picking numactl files"
 	_pick_ numactl usr/bin
