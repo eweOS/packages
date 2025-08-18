@@ -7,7 +7,7 @@ pkgname=(
 )
 _fullhash=bd7e37632246368c60fdcbd374dbf9bad11969b6
 pkgver=20231116.${_fullhash:0:7}
-pkgrel=3
+pkgrel=4
 pkgdesc='Open Sans Font'
 url='https://github.com/googlefonts/opensans'
 arch=(any)
@@ -16,6 +16,7 @@ source=("https://github.com/googlefonts/opensans/archive/$_fullhash.tar.gz")
 sha256sums=('a1b16d859522daa826fb093d791ee252a1627274ef1b90f2773d670eb73a2a92')
 
 package_ttf-opensans() {
+	provides=($pkgbase)
 	cd opensans-$_fullhash
 	_install_license_ OFL.txt
 	mkdir -p $pkgdir/usr/share/fonts/TTF
@@ -24,7 +25,7 @@ package_ttf-opensans() {
 
 package_ttf-opensans-variable() {
 	pkgdesc+=" - variable font"
-	provides=(ttf-opensans)
+	provides=(ttf-opensans $pkgbase)
 	conflicts=(ttf-opensans)
 	cd opensans-$_fullhash
 	_install_license_ OFL.txt
