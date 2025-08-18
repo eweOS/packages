@@ -3,7 +3,7 @@
 pkgbase=font-roboto
 pkgname=(ttf-roboto ttf-roboto-variable)
 pkgver=3.011
-pkgrel=2
+pkgrel=3
 pkgdesc="Google's signature family of fonts"
 url='https://fonts.google.com/specimen/Roboto'
 arch=(any)
@@ -14,7 +14,7 @@ sha256sums=('989fee31706df293f1099a385b392bd2e4a152c993ee5fb3ba72adc7484e750e'
             '061402327a96aadb0bfb694a960ed289ecd38d383e396243831ab81feb109c41')
 
 package_ttf-roboto() {
-  provides=($pkgbase)
+  provides=($pkgbase font-base)
   install -Dm644 -t "$pkgdir"/usr/share/fonts/TTF hinted/static/*.ttf
   _install_license_ OFL.txt
 }
@@ -22,7 +22,7 @@ package_ttf-roboto() {
 package_ttf-roboto-variable() {
   pkgdesc+=" - variable font"
   # have the same font name as the static version
-  provides=(ttf-roboto $pkgbase)
+  provides=(ttf-roboto $pkgbase font-base)
   conflicts=(ttf-roboto)
 
   install -Dm644 -t "$pkgdir"/usr/share/fonts/TTF hinted/Roboto[ital,wdth,wght].ttf
