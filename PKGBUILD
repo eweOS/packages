@@ -2,14 +2,14 @@
 
 pkgname=gd
 pkgver=2.3.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Library for the dynamic creation of images by programmers"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://libgd.github.io/"
 license=('custom')
 depends=('fontconfig' 'libwebp' 'libavif' 'libheif')
 optdepends=('perl: bdftogd script')
-checkdepends=('ttf-font')
+checkdepends=('font-base')
 source=("https://github.com/libgd/libgd/archive/${pkgname}-${pkgver}.tar.gz"
         'https://github.com/libgd/libgd/commit/bdc281eadb1d58d5c0c7bbc1125ee4674256df08.patch'
         'fix-riscv64-tests.patch')
