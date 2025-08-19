@@ -1,7 +1,14 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgbase=font-noto
-pkgname=(ttf-noto-fonts ttf-noto-fonts-extra)
+pkgname=(
+    ttf-noto ttf-noto-variable
+    ttf-noto-base ttf-noto-base-variable
+    ttf-noto-extra ttf-noto-extra-variable
+    ttf-noto-extra-static-only
+    ttf-noto-sans ttf-noto-serif ttf-noto-sans-mono
+    ttf-noto-sans-variable ttf-noto-serif-variable ttf-noto-sans-mono-variable
+)
 pkgver=2025.05.01
 pkgrel=3
 pkgdesc='Google Noto TTF fonts'
@@ -9,6 +16,7 @@ arch=(any)
 url='https://fonts.google.com/noto'
 license=(custom:SIL)
 makedepends=(git)
+options=(!strip)
 source=(https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-$pkgver.tar.gz
         66-noto-sans.conf 66-noto-serif.conf 66-noto-mono.conf
         46-noto-sans.conf 46-noto-serif.conf 46-noto-mono.conf)
@@ -20,29 +28,193 @@ sha256sums=('98c9dfe46cd30427efe5d981fd0c3b86b745823d5e1e75e65bc635e7baea1ea5'
             'c94368b24506770767d003e5bcba589a8e402e489c240ee52453bf3ac7e9b5fa'
             'f5c09b37280d7569b6c99a78511639be4ae25b8c5406464422fe0421fe13a884')
 
-package_ttf-noto-fonts() {
-  optdepends=('ttf-noto-fonts-cjk: CJK characters' 'ttf-noto-fonts-emoji: Emoji characters'
-              'ttf-noto-fonts-extra: additional variants (condensed, semi-bold, extra-light)')
-  provides=(font-noto font-base)
-
-  cd notofonts.github.io-noto-monthly-release-$pkgver
-  install -Dm644 fonts/*/hinted/ttf/*.tt[fc] -t "$pkgdir"/usr/share/fonts/TTF
-  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
-
-  # Move to ttf-noto-extra
-  rm -f "$pkgdir"/usr/share/fonts/TTF/Noto*{-Condensed,-Semi,-Extra}*.ttf
-
-  # Install fontconfig files
-  install -Dm644 "$srcdir"/*.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
-  install -d "$pkgdir"/usr/share/fontconfig/conf.default
-  cp "$pkgdir"/usr/share/fontconfig/conf.avail/* "$pkgdir"/usr/share/fontconfig/conf.default/
+prepare() {
+    cd notofonts.github.io-noto-monthly-release-$pkgver
+    for _FONT in $(find fonts -type d -maxdepth 1 -mindepth 1); do
+        if [ "$_FONT" != "fonts/NotoSans" ] && [ "$_FONT" != "fonts/NotoSansMono" ] && [ "$_FONT" != "fonts/NotoSerif" ]; then
+            if [ -d $_FONT/unhinted/variable-ttf ]; then
+                find "$_FONT/unhinted/variable-ttf" -type f -name "*.ttf" >> $srcdir/variable.list
+                find "$_FONT/hinted/ttf" -type f -name "*.ttf" >> $srcdir/static-withvariable.list
+            else
+                find "$_FONT/hinted/ttf" -type f -name "*.ttf" >> $srcdir/static-only.list
+            fi
+        fi
+    done
 }
 
-package_ttf-noto-fonts-extra() {
-  provides=(font-noto-extra)
-  pkgdesc+=' - additional variants'
-  depends=(ttf-noto-fonts)
-  
-  cd notofonts.github.io-noto-monthly-release-$pkgver
-  install -Dm644 fonts/*/hinted/ttf/*{-Condensed,-Semi,-Extra}*.tt[fc] -t "$pkgdir"/usr/share/fonts/TTF
+package_ttf-noto() {
+    optdepends=('font-noto-cjk: CJK characters'
+                'font-noto-emoji: Emoji characters')
+    depends=(ttf-noto-base ttf-noto-extra)
+    provides=($pkgbase)
+
+    cd notofonts.github.io-noto-monthly-release-$pkgver
+    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+}
+
+package_ttf-noto-variable() {
+    pkgdesc+=' - variable'
+    optdepends=('font-noto-cjk: CJK characters'
+                'font-noto-emoji: Emoji characters')
+    depends=(ttf-noto-base-variable ttf-noto-extra-variable)
+    provides=($pkgbase ttf-noto)
+    conflicts=(ttf-noto)
+
+    cd notofonts.github.io-noto-monthly-release-$pkgver
+    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+}
+
+package_ttf-noto-base() {
+    pkgdesc+=' (Base)'
+    optdepends=('font-noto-extra: additional characters')
+    depends=(ttf-noto-sans ttf-noto-sans-mono ttf-noto-serif)
+    provides=(font-base font-noto-base)
+
+    cd notofonts.github.io-noto-monthly-release-$pkgver
+    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+}
+
+package_ttf-noto-base-variable() {
+    pkgdesc+=' (Base) - variable'
+    optdepends=('font-noto-extra: additional characters')
+    depends=(ttf-noto-sans-variable ttf-noto-sans-mono-variable ttf-noto-serif-variable)
+    provides=(font-base font-noto-base ttf-noto-base)
+    conflicts=(ttf-noto-base)
+
+    cd notofonts.github.io-noto-monthly-release-$pkgver
+    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+}
+
+package_ttf-noto-extra() {
+    pkgdesc+=' (Extra)'
+    depends=(ttf-noto-extra-static-only)
+    provides=(font-noto-extra)
+
+    cd notofonts.github.io-noto-monthly-release-$pkgver
+
+    while read -r _fontpath; do
+        install -Dm644 $_fontpath -t "$pkgdir"/usr/share/fonts/TTF
+    done < $srcdir/static-withvariable.list
+
+    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+}
+
+package_ttf-noto-extra-variable() {
+    pkgdesc+=' (Extra) - variable'
+    depends=(ttf-noto-extra-static-only)
+    provides=(font-noto-extra ttf-noto-extra)
+    conflicts=(ttf-noto-extra)
+
+    cd notofonts.github.io-noto-monthly-release-$pkgver
+
+    while read -r _fontpath; do
+        install -Dm644 $_fontpath -t "$pkgdir"/usr/share/fonts/TTF
+    done < $srcdir/variable.list
+
+    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+}
+
+package_ttf-noto-extra-static-only() {
+    pkgdesc+=' (static-only fonts)'
+
+    cd notofonts.github.io-noto-monthly-release-$pkgver
+
+    while read -r _fontpath; do
+        install -Dm644 $_fontpath -t "$pkgdir"/usr/share/fonts/TTF
+    done < $srcdir/static-only.list
+
+    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+}
+
+package_ttf-noto-sans() {
+    pkgdesc+=' (Sans)'
+    provides=(font-noto-sans)
+
+    cd notofonts.github.io-noto-monthly-release-$pkgver
+
+    install -Dm644 fonts/NotoSans/full/ttf/*.ttf -t "$pkgdir"/usr/share/fonts/TTF
+
+    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+
+    install -Dm644 $srcdir/*-noto-sans.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
+    install -d "$pkgdir"/usr/share/fontconfig/conf.default
+    cp "$pkgdir"/usr/share/fontconfig/conf.avail/* "$pkgdir"/usr/share/fontconfig/conf.default/
+}
+
+package_ttf-noto-sans-variable() {
+    pkgdesc+=' (Sans) - variable'
+    provides=(font-noto-sans ttf-noto-sans)
+    conflicts=(ttf-noto-sans)
+
+    cd notofonts.github.io-noto-monthly-release-$pkgver
+
+    install -Dm644 fonts/NotoSans/full/variable-ttf/*.ttf -t "$pkgdir"/usr/share/fonts/TTF
+
+    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+
+    install -Dm644 $srcdir/*-noto-sans.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
+    install -d "$pkgdir"/usr/share/fontconfig/conf.default
+    cp "$pkgdir"/usr/share/fontconfig/conf.avail/* "$pkgdir"/usr/share/fontconfig/conf.default/
+}
+
+package_ttf-noto-serif() {
+    pkgdesc+=' (Serif)'
+    provides=(font-noto-serif)
+
+    cd notofonts.github.io-noto-monthly-release-$pkgver
+
+    install -Dm644 fonts/NotoSerif/hinted/ttf/*.ttf -t "$pkgdir"/usr/share/fonts/TTF
+
+    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+
+    install -Dm644 $srcdir/*-noto-serif.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
+    install -d "$pkgdir"/usr/share/fontconfig/conf.default
+    cp "$pkgdir"/usr/share/fontconfig/conf.avail/* "$pkgdir"/usr/share/fontconfig/conf.default/
+}
+
+package_ttf-noto-serif-variable() {
+    pkgdesc+=' (Serif) - variable'
+    provides=(font-noto-serif ttf-noto-serif)
+    conflicts=(ttf-noto-serif)
+
+    cd notofonts.github.io-noto-monthly-release-$pkgver
+
+    install -Dm644 fonts/NotoSerif/unhinted/variable-ttf/*.ttf -t "$pkgdir"/usr/share/fonts/TTF
+
+    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+
+    install -Dm644 $srcdir/*-noto-serif.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
+    install -d "$pkgdir"/usr/share/fontconfig/conf.default
+    cp "$pkgdir"/usr/share/fontconfig/conf.avail/* "$pkgdir"/usr/share/fontconfig/conf.default/
+}
+
+package_ttf-noto-sans-mono() {
+    pkgdesc+=' (Sans Mono)'
+    provides=(font-noto-sans-mono)
+
+    cd notofonts.github.io-noto-monthly-release-$pkgver
+
+    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+
+    install -Dm644 fonts/NotoSansMono/hinted/ttf/*.ttf -t "$pkgdir"/usr/share/fonts/TTF
+
+    install -Dm644 $srcdir/*-noto-mono.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
+    install -d "$pkgdir"/usr/share/fontconfig/conf.default
+    cp "$pkgdir"/usr/share/fontconfig/conf.avail/* "$pkgdir"/usr/share/fontconfig/conf.default/
+}
+
+package_ttf-noto-sans-mono-variable() {
+    pkgdesc+=' (Sans Mono) - variable'
+    provides=(font-noto-sans-mono ttf-noto-sans-mono)
+    conflicts=(ttf-noto-sans-mono)
+
+    cd notofonts.github.io-noto-monthly-release-$pkgver
+
+    install -Dm644 fonts/NotoSansMono/unhinted/variable-ttf/*.ttf -t "$pkgdir"/usr/share/fonts/TTF
+
+    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+
+    install -Dm644 $srcdir/*-noto-mono.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
+    install -d "$pkgdir"/usr/share/fontconfig/conf.default
+    cp "$pkgdir"/usr/share/fontconfig/conf.avail/* "$pkgdir"/usr/share/fontconfig/conf.default/
 }
