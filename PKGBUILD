@@ -2,8 +2,8 @@
 # Contributor: Julian Droske <juliandroske@outlook.com>
 
 pkgname=libplasma
-pkgver=6.3.5
-pkgrel=2
+pkgver=6.4.4
+pkgrel=1
 pkgdesc='Plasma library and runtime components'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://kde.org/plasma-desktop/'
@@ -36,8 +36,8 @@ conflicts=(plasma-framework)
 replaces=(plasma-framework)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz no-x11.patch)
-sha256sums=('5012c83d2da265de960709b4f2138f3978aa44e1fb2bb0d6b3ef95de98e6eae4'
-            'f9e4ac7b5a5ddbbee50028f03bdb3cfeba7805838ed481dcc2671e7f1cdfc054')
+sha256sums=('ab0f4b426829821e0abf479052f326a5ce01c3b604e890c9f79949c3eb5fdebe'
+            '30cceca08e6d2455152c275669722dc8c7678d69158c0138ef819f77835518a4')
 
 prepare() {
   _patch_ $pkgname-$pkgver
