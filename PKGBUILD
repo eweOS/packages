@@ -2,13 +2,13 @@
 
 pkgname=ghc
 pkgver=9.6.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Glasgow Haskell Compiler.'
 url='https://ghc.haskell.org/'
 arch=(x86_64 aarch64 riscv64)		# NOTICE: we use NCG only
 _commit=e55b89cda358239fb7f6e713ea19027121cdf74c # 2025-08-17
 license=(BSD-3-Clause)
-depends=(musl libffi libnuma gmp ncurses lld)
+depends=(clang musl libffi libnuma gmp ncurses lld)
 # missing python-sphinx
 makedepends=(python ghc cabal alex happy git)
 options=(!strip)
