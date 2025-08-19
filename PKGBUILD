@@ -6,7 +6,7 @@ pkgname=(
   ttf-fira-code-variable
 )
 pkgver=6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Monospaced font with programming ligatures"
 arch=('any')
 url='https://github.com/tonsky/FiraCode'
@@ -20,13 +20,13 @@ package_ttf-fira-code() {
     provides=(font-fira-code)
     cd ttf
 
-    install -dm755 "$pkgdir/usr/share/fonts/ttf"
+    install -dm755 "$pkgdir/usr/share/fonts/TTF"
 
     # Install fonts
     local fonts=(FiraCode*.ttf)
     local font
     for font in "${fonts[@]}"; do
-        install -vm644 "$font" "$pkgdir/usr/share/fonts/ttf"
+        install -vm644 "$font" "$pkgdir/usr/share/fonts/TTF"
     done
 
     # Install LICENSE
@@ -41,13 +41,13 @@ package_ttf-fira-code-variable() {
 
     cd variable_ttf
 
-    install -dm755 "$pkgdir/usr/share/fonts/ttf"
+    install -dm755 "$pkgdir/usr/share/fonts/TTF"
 
     # Install fonts
     local fonts=(FiraCode*.ttf)
     local font
     for font in "${fonts[@]}"; do
-        install -vm644 "$font" "$pkgdir/usr/share/fonts/ttf"
+        install -vm644 "$font" "$pkgdir/usr/share/fonts/TTF"
     done
 
     # Install LICENSE
