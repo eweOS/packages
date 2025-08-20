@@ -3,7 +3,7 @@
 pkgname=qt6-base
 _qtver=6.9.1
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL-3.0-only
@@ -15,8 +15,8 @@ _pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
 depends=(libjpeg fontconfig vulkan-headers
          shared-mime-info sqlite mesa icu openssl
          libinput libxkbcommon dbus harfbuzz wayland
-         libproxy)
-makedepends=(cmake ninja linux-headers wayland-protocols gtk3)
+         libproxy libcups)
+makedepends=(cmake cups ninja linux-headers wayland-protocols gtk3)
 optdepends=('freetds: MS SQL driver'
             'gdk-pixbuf2: GTK platform plugin'
             'gtk3: GTK platform plugin'
