@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=libcpuid
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='A small C library for x86 CPU detection and feature extraction'
 url='https://github.com/anrieff/libcpuid'
@@ -11,7 +11,7 @@ depends=(musl)
 makedepends=(nasm)
 provides=(libcpuid.so)
 source=("https://github.com/anrieff/libcpuid/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a5fe37d79bda121cbdf385ae3f6fa621da6a3102aa609400a718a4b8b82ed8aa')
+sha256sums=('81f2f40da5d66b8220476e116cb40bca4e6a62c0d22bdeeb8e3856cf14607007')
 
 build () {
 	cd "$pkgname-$pkgver"
