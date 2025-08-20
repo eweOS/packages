@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=squashfs-tools
-pkgver=4.7
+pkgver=4.7.2
 pkgrel=1
 pkgdesc='Tools for squashfs, a highly compressed read-only filesystem for Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -19,7 +19,7 @@ makedepends=(help2man)
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz"
 	"0001-print_pager-add-missing-includes.patch::https://github.com/plougher/squashfs-tools/commit/e6f58e198d5599ca9eeae084e6f4bbacd9d7960c.patch"
 	"0002-generate-manpages-Workaround-busybox-sed.patch")
-sha256sums=('f1605ef720aa0b23939a49ef4491f6e734333ccc4bda4324d330da647e105328'
+sha256sums=('4672b5c47d9418d3a5ae5b243defc6d9eae8275b9771022247c6a6082c815914'
             '1d8a31f352301eaa369d8f610bff6f4664d31995121fab2a9e394e2350d394d5'
             'e358a9d32e90fa970ad924f38d40a8049709dd0d22a3a6618eb04682d0ed1e6b')
 
