@@ -2,15 +2,15 @@
 
 pkgbase=hyfetch
 pkgname=(hyfetch neowofetch)
-pkgver=1.99.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Neofetch with LGBTQ+ pride flags!"
 arch=('any')
 url='https://github.com/hykilpikonna/hyfetch'
 license=('MIT')
 makedepends=('python-setuptools' 'python-typing_extensions')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('c712a11a354b34a86c86e7b080ee5e63faa6db5b8a88a3ebea35ef67c33588fd')
+sha256sums=('55acd632fe26eae752ca8f810dfdeaed1df722efa65d7775a97879a8d2e4f80f')
 
 build() {
   cd "${pkgbase}-${pkgver}"
