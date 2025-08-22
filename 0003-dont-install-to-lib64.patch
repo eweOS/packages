@@ -1,0 +1,31 @@
+diff --git a/config/Makefile.linux b/config/Makefile.linux
+index 694a98d8d6c5..902f8eab0dd3 100644
+--- a/config/Makefile.linux
++++ b/config/Makefile.linux
+@@ -1,24 +1,8 @@
+ NAME = $(GLEW_NAME)
+ CC = cc
+ LD = cc
+-M_ARCH ?= $(shell uname -m)
+-ARCH64 = false
+-ifeq (x86_64,${M_ARCH})
+-  ARCH64 = true
+-endif
+-ifeq (ppc64,${M_ARCH})
+-  ARCH64 = true
+-endif
+-ifeq (e2k,${M_ARCH})
+-  ARCH64 = true
+-endif
+-ifeq (${ARCH64},true)
+-  LDFLAGS.EXTRA = -L/usr/X11R6/lib64 -L/usr/lib64
+-  LIBDIR = $(GLEW_DEST)/lib64
+-else
+-  LDFLAGS.EXTRA = -L/usr/X11R6/lib -L/usr/lib
+-  LIBDIR = $(GLEW_DEST)/lib
+-endif
++LDFLAGS.EXTRA = -L/usr/lib
++LIBDIR = $(GLEW_DEST)/lib
+ LDFLAGS.GL = -lGL -lX11
+ LDFLAGS.STATIC = -Wl,-Bstatic
+ LDFLAGS.DYNAMIC = -Wl,-Bdynamic

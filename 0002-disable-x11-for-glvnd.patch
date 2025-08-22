@@ -1,0 +1,10 @@
+diff --git a/config/Makefile.linux-egl-glvnd b/config/Makefile.linux-egl-glvnd
+index 1f6f930679b8..8bdfb29fd3bd 100644
+--- a/config/Makefile.linux-egl-glvnd
++++ b/config/Makefile.linux-egl-glvnd
+@@ -1,4 +1,4 @@
+ include config/Makefile.linux
+ 
+ LDFLAGS.GL = -lEGL -lOpenGL
+-CFLAGS.EXTRA += -DGLEW_EGL
++CFLAGS.EXTRA += -DGLEW_EGL -DEGL_NO_X11
