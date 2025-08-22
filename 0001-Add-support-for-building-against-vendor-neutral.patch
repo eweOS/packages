@@ -1,0 +1,21 @@
+From 8e2e31e69bb655717bea6c81a2d36b3228acdae5 Mon Sep 17 00:00:00 2001
+From: Vanfanel <redwindwanderer@gmail.com>
+Date: Thu, 28 Oct 2021 16:47:08 +0200
+Subject: [PATCH] Add support for building against vendor-neutral GLVND instead
+ of GLX on Linux/EGL
+
+---
+ config/Makefile.linux-egl-glvnd | 4 ++++
+ 1 file changed, 4 insertions(+)
+ create mode 100644 config/Makefile.linux-egl-glvnd
+
+diff --git a/config/Makefile.linux-egl-glvnd b/config/Makefile.linux-egl-glvnd
+new file mode 100644
+index 00000000..1f6f9306
+--- /dev/null
++++ b/config/Makefile.linux-egl-glvnd
+@@ -0,0 +1,4 @@
++include config/Makefile.linux
++
++LDFLAGS.GL = -lEGL -lOpenGL
++CFLAGS.EXTRA += -DGLEW_EGL
