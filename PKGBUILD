@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=geos
-pkgver=3.13.1
+pkgver=3.14.0
 pkgrel=1
 pkgdesc="C/C++ library for computational geometry"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(bash)
 makedepends=(cmake)
 options=(!emptydirs)
 source=(https://download.osgeo.org/$pkgname/$pkgname-$pkgver.tar.bz2)
-sha256sums=('df2c50503295f325e7c8d7b783aca8ba4773919cde984193850cf9e361dfd28c')
+sha256sums=('fe85286b1977121894794b36a7464d05049361bedabf972e70d8f9bf1e3ce928')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
