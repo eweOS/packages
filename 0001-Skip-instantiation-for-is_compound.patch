@@ -1,0 +1,16 @@
+diff --git a/src/include/cppduals/duals/dual b/src/include/cppduals/duals/dual
+index 4f5bf8acc886..9bd31bff8b97 100644
+--- a/src/include/cppduals/duals/dual
++++ b/src/include/cppduals/duals/dual
+@@ -439,9 +439,11 @@ struct is_arithmetic<duals::dual<T>> : is_arithmetic<T> {};
+ 
+ #endif // CPPDUALS_ENABLE_IS_ARITHMETIC
+ 
++#if 0
+ /// Duals are compound types.
+ template <class T>
+ struct is_compound<duals::dual<T>> : true_type {};
++#endif
+ 
+ // Modification of std::numeric_limits<> per
+ // C++03 17.4.3.1/1, and C++11 18.3.2.3/1.
