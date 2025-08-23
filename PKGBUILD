@@ -9,7 +9,9 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD-3-Clause)
 depends=(musl libjpeg libpng libtiff)
 makedepends=(cmake)
+provides=(libwebp.so libwebpdecoder.so libwebpdemux.so libwebpmux.so)
 source=("https://github.com/webmproject/libwebp/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('93a852c2b3efafee3723efd4636de855b46f9fe1efddd607e1f42f60fc8f2136')
 
 build () {
 	cmake -S libwebp-$pkgver -B build \
@@ -24,5 +26,3 @@ package() {
 	DESTDIR="$pkgdir" cmake --install build
 	_install_license_ libwebp-$pkgver/COPYING
 }
-
-sha256sums=('93a852c2b3efafee3723efd4636de855b46f9fe1efddd607e1f42f60fc8f2136')
