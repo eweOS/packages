@@ -1,0 +1,45 @@
+From b45daccc58eeca1c2898cec8be0902ecc52210c1 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Sat, 23 Aug 2025 15:12:51 +0000
+Subject: [PATCH] build: cmake: Check for OpenGL_OpenGL_FOUND when searching
+ for OpenGL
+
+On systems without GLX, OPENGL_FOUND will always be set to false since
+part of the OpenGL package, OpenGL::GLX, is not found. However it's
+still possible to build wxwidgets if we have OpenGL::OpenGL provided by
+GLVND instead and could link to EGL for platform-specific APIs.
+
+Let's check for OpenGL_OpenGL_FOUND instead of OPENGL_FOUND when looking
+for OpenGL, which is set as long as any of GLX or GLVND libOpenGL is
+found.
+
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ build/cmake/init.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/build/cmake/init.cmake b/build/cmake/init.cmake
+index 3923045fdf1e..46fdbe2bc255 100644
+--- a/build/cmake/init.cmake
++++ b/build/cmake/init.cmake
+@@ -436,7 +436,7 @@ if(wxUSE_GUI)
+             set(OPENGL_LIBRARIES "-framework OpenGLES" "-framework QuartzCore" "-framework GLKit")
+         else()
+             find_package(OpenGL)
+-            if(OPENGL_FOUND)
++            if(OpenGL_OpenGL_FOUND)
+                 foreach(gltarget OpenGL::GL OpenGL::GLU OpenGL::OpenGL)
+                     if(TARGET ${gltarget})
+                         set(OPENGL_LIBRARIES ${gltarget} ${OPENGL_LIBRARIES})
+@@ -459,7 +459,7 @@ if(wxUSE_GUI)
+                 endif()
+             endif()
+         endif()
+-        if(NOT OPENGL_FOUND)
++        if(NOT OpenGL_OpenGL_FOUND)
+             message(WARNING "opengl not found, wxGLCanvas won't be available")
+             wx_option_force_value(wxUSE_OPENGL OFF)
+         endif()
+-- 
+2.50.1
+
