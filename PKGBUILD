@@ -2,7 +2,7 @@
 
 pkgname=weston
 pkgver=14.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Reference implementation of a Wayland compositor'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://wayland.freedesktop.org/'
@@ -10,8 +10,14 @@ license=('MIT')
 depends=('musl' 'wayland' 'libxkbcommon' 'libinput' 'pixman'
   'libdrm' 'cairo' 'libpng' 'mesa' 'dbus' 'pam' 'seatd' 'libdisplay-info')
 makedepends=('wayland-protocols' 'meson' 'ninja' 'linux-headers')
-source=("https://gitlab.freedesktop.org/wayland/${pkgname}/-/releases/$pkgver/downloads/${pkgname}-$pkgver.tar.xz")
-sha256sums=('b47216b3530da76d02a3a1acbf1846a9cd41d24caa86448f9c46f78f20b6e0ac')
+# backport: Allow libdisplay-info 0.3.0
+#   https://gitlab.freedesktop.org/wayland/weston/-/merge_requests/1815
+source=(
+  "https://gitlab.freedesktop.org/wayland/${pkgname}/-/releases/$pkgver/downloads/${pkgname}-$pkgver.tar.xz"
+  "fix-libdisplay-info-0.3.patch"
+)
+sha256sums=('b47216b3530da76d02a3a1acbf1846a9cd41d24caa86448f9c46f78f20b6e0ac'
+            '183cdc9a5155c7673d5912503c2e9513d20bcce1a4540ea9465cdae3d64a1f4f')
 
 _features=(
   -Dimage-jpeg=false
@@ -31,6 +37,7 @@ _features=(
 
 prepare()
 {
+  _patch_ $pkgname-$pkgver
   cd $pkgname-$pkgver
   for filename in tools/zunitc/src/zunitc_impl.c libweston/backend-drm/libbacklight.c; do
     sed -i '1s/^/#include <libgen.h>\n/' $filename
