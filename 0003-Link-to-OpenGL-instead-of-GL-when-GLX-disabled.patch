@@ -1,0 +1,13 @@
+diff --git a/adm/cmake/occt_csf.cmake b/adm/cmake/occt_csf.cmake
+index 49e35d442b15..52c9f5cfe742 100644
+--- a/adm/cmake/occt_csf.cmake
++++ b/adm/cmake/occt_csf.cmake
+@@ -158,7 +158,7 @@ else()
+       set (CSF_OpenGlLibs "GL")
+       set (CSF_XwLibs     "X11")
+     else()
+-      set (CSF_OpenGlLibs "GL EGL")
++      set (CSF_OpenGlLibs "OpenGL EGL")
+     endif()
+     set (CSF_OpenGlesLibs "EGL GLESv2")
+     set (CSF_dl          "dl")
