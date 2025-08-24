@@ -1,0 +1,24 @@
+diff --git a/include/json_common.h b/include/json_common.h
+index 9ad72a50042e..19640fb6c37a 100644
+--- a/include/json_common.h
++++ b/include/json_common.h
+@@ -33,9 +33,6 @@
+  *
+  **********************************************************************************************************************/
+ 
+-#ifdef __APPLE__
+-#if __clang_major__ >= 17
+-
+ #include <wx/unichar.h>
+ 
+ template <>
+@@ -147,9 +144,6 @@ struct std::char_traits<wxUniChar>
+     static inline constexpr int_type eof() noexcept { return static_cast<int_type>( EOF ); }
+ };
+ 
+-#endif
+-#endif
+-
+ #include <nlohmann/json.hpp>
+ #include <kicommon.h>
+ 
