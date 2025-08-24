@@ -4,7 +4,7 @@
 pkgbase=wlroots0.17
 pkgname=(wlroots0.17-devel wlroots0.17)
 pkgver=0.17.4
-pkgrel=5
+pkgrel=6
 license=('MIT')
 url='https://gitlab.freedesktop.org/wlroots/wlroots'
 arch=(x86_64 aarch64 riscv64 loongarch64)
