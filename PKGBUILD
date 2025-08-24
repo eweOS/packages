@@ -3,7 +3,7 @@
 pkgbase=wlroots0.19
 pkgname=(wlroots0.19-devel wlroots0.19)
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Modular Wayland compositor library'
 license=('MIT')
 url='https://gitlab.freedesktop.org/wlroots/wlroots'
