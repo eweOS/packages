@@ -1,0 +1,13 @@
+diff --git a/resources/bitmaps_png/CMakeLists.txt b/resources/bitmaps_png/CMakeLists.txt
+index 049977a1a328..3dbca784431c 100644
+--- a/resources/bitmaps_png/CMakeLists.txt
++++ b/resources/bitmaps_png/CMakeLists.txt
+@@ -915,7 +915,7 @@ endif()
+ 
+ set( TARFLAGS cfz )
+ if( DEFINED ENV{SOURCE_DATE_EPOCH} )
+-    set( TARFLAGS --sort=name --mtime=@$ENV{SOURCE_DATE_EPOCH} --clamp-mtime --owner=0 --group=0 --numeric-owner --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime -czf )
++    set( TARFLAGS --mtime=@$ENV{SOURCE_DATE_EPOCH} --clamp-mtime --owner=0 --group=0 --numeric-owner -czf )
+ endif()
+ 
+ # This is a dummy target to bind the custom command to something we can reuse in other calls

@@ -1,0 +1,31 @@
+diff --git a/compoundfilereader.h b/compoundfilereader.h
+index fbab37d2f030..bee33ea47b32 100644
+--- a/compoundfilereader.h
++++ b/compoundfilereader.h
+@@ -50,9 +50,6 @@
+  *
+  **********************************************************************************************************************/
+ 
+-#ifdef __APPLE__
+-#if __clang_major__ >= 17
+-
+ template <>
+ struct std::char_traits<uint16_t>
+ {
+@@ -162,9 +159,6 @@ struct std::char_traits<uint16_t>
+     static inline constexpr int_type eof() noexcept { return static_cast<int_type>( EOF ); }
+ };
+ 
+-#endif
+-#endif
+-
+ /**********************************************************************************************************************/
+ 
+ namespace CFB
+@@ -610,4 +604,4 @@ private:
+     const PROPERTY_SET_STREAM_HDR* m_hdr;
+ };
+ 
+-}
+\ No newline at end of file
++}
