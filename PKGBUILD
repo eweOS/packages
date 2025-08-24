@@ -3,7 +3,7 @@
 pkgname=kinfocenter
 pkgver=6.4.4
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=1
+pkgrel=2
 pkgdesc='A utility that provides information about a computer system'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://kde.org/plasma-desktop/'
