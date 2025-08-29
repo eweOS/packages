@@ -2,7 +2,7 @@
 
 pkgname=fastfetch
 pkgver=2.50.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Like Neofetch, but much faster because written in C"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/fastfetch-cli/fastfetch"
@@ -22,6 +22,7 @@ makedepends=(
   'xfconf'
   'libdrm'
   'libegl'
+  'yyjson'
   'zlib'
 )
 optdepends=(
@@ -43,6 +44,7 @@ optdepends=(
   'zlib: Faster image output when using kitty graphics protocol'
   'libdrm: Displays detection'
 )
+depends=(yyjson)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('e59f2a2bdd5834ef40adb9fb6680820c268ff60ca0534469c5ea4b86775c83db')
 
@@ -52,6 +54,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
     -DBUILD_TESTS='ON' \
+    -DENABLE_SYSTEM_YYJSON='ON' \
     -DENABLE_SQLITE3='OFF' \
     -DENABLE_RPM='OFF' \
     -DENABLE_IMAGEMAGICK6='OFF' \
