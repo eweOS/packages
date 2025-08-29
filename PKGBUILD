@@ -2,8 +2,8 @@
 
 pkgdesc='Wayfire Configuration Manager'
 pkgname=wcm
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://wayfire.org
 license=(MIT)
@@ -11,7 +11,7 @@ depends=(wayfire wf-shell gtkmm3 wdisplays wlroots0.17)
 optdepends=('wdisplays: display configuration tool')
 makedepends=(wayland-protocols meson ninja glm wlroots0.17-devel linux-headers)
 source=("https://github.com/WayfireWM/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('8c8605ccb720fb24e58f16c2e2727cd07b6754bd441c9a3f0e715548b4e7c4ae')
+sha256sums=('38b912dcaaf52f7585414b5b40a694b0706ed5570e17703bc3d07654646ba707')
 
 build ()
 {
