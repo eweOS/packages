@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=swappy
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 license=('MIT')
 pkgdesc='A Wayland native snapshot editing tool'
@@ -12,7 +12,7 @@ optdepends=('wl-clipboard: for persistent clipboard'
             'otf-font-awesome: to draw paint icons')
 makedepends=('meson' 'scdoc')
 source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4bfa51eb7073dd272aba21c545d416b37e53983430b310a30d12b5d754f7db62')
+sha256sums=('f615cc4c61e033cddc60093003ef03646d246a0ac14becb9cdac9b5fabf37bbe')
 
 build() {
     cd "${pkgname}-${pkgver}"
