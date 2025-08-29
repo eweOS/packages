@@ -1,17 +1,17 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wayfire
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="A modular and extensible wayland compositor"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://wayfire.org
 license=(MIT)
-depends=(cairo pango libjpeg libinput wlroots0.17 wf-config nlohmann-json)
+depends=(cairo pango libjpeg libinput wlroots0.19 wf-config yyjson)
 makedepends=(meson ninja wayland-protocols glm cmake mesa doctest git openmp
-	     linux-headers wlroots0.17-devel)
+	     linux-headers wlroots0.19-devel vulkan-icd-loader)
 source=("git+https://github.com/WayfireWM/${pkgname}.git#tag=v$pkgver")
-sha256sums=('bb96bff746dd22f35cbc63c366566fc5552d9edac89edbb9d345206dbddc8cf7')
+sha256sums=('ceddf00fad33242b8f8236410fa4e0709197bf156b2023df8ec2a3b1a88d2aee')
 
 build()
 {
@@ -19,6 +19,7 @@ build()
   export CXXFLAGS="${CXXFLAGS/-O? /-O0 }"
   ewe-meson "${pkgname}" build \
     -Duse_system_wlroots=enabled \
+    -Duse_system_wfconfig=enabled \
     -Dxwayland=disabled
   ninja -C build
 }
