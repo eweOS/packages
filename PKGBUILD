@@ -1,7 +1,7 @@
 # Maintainer: Sébastien "Seblu" Luttringer <seblu@archlinux.org>
 
 pkgname=nftables
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc='Netfilter tables userspace tools'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ backup=('etc/nftables.conf')
 source=("https://netfilter.org/projects/nftables/files/nftables-$pkgver.tar.xz"
         'config'
         'nftables.service')
-sha256sums=('3444f0012af0472399eeae89a758b9c6dc5f311f6c67a48988fa1600fc4bac86'
+sha256sums=('1daf10f322e14fd90a017538aaf2c034d7cc1eb1cc418ded47445d714ea168d4'
             'e4555d37862430eb1317210132bc4d87bca258bafccf06ee39ea0481237e1483'
             'af89ba2491772ff5a2a1b85f171e091d5c007398716959cc452c6a2836e73a94')
 
