@@ -5,7 +5,7 @@ pkgname=(qemu-user-static
 	 qemu-user-static-{aarch64,alpha,arm,i386,loongarch64,m68k,mips,mips64}
 	 qemu-user-static-{mips64el,mipsel,ppc,ppc64,riscv32,riscv64,s390x}
 	 qemu-user-static-{sparc,sparc64,x86_64})
-pkgver=10.0.3
+pkgver=10.1.0
 pkgrel=1
 pkgdesc='QEMU user mode emulation (static build)'
 url='https://www.qemu.org/'
@@ -20,7 +20,7 @@ qemu_archs=(aarch64 alpha arm i386 loongarch64 m68k mips mips64 mips64el
 	    mipsel ppc ppc64 riscv32 riscv64 s390x sparc sparc64 x86_64)
 source=("https://download.qemu.org/qemu-$pkgver.tar.xz"
 	"binfmt-list")
-sha256sums=('5c891267b1534a774465db8b1a0dfcb0c5e6d7ecb6f71345625adf4e0889945b'
+sha256sums=('e0517349b50ca73ebec2fa85b06050d5c463ca65c738833bd8fc1f15f180be51'
             '3ec211c95be104d45eee80911bbef64b51e7ac6da9c5ca04ec9fec5f5270ed96')
 
 user_targets=""
@@ -42,7 +42,6 @@ build () {
 		--enable-lto
 	)
 	local host_options=()
-	[ $CARCH = x86_64 ] && host_options+=(--enable-avx2 --enable-avx512bw)
 	local user_static_options=(
 		--enable-attr
 		--target-list="$user_targets"
