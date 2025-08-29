@@ -1,16 +1,16 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wf-shell
-pkgver=0.9.0
-pkgrel=3
+pkgver=0.10.0
+pkgrel=1
 pkgdesc='GTK3-based panel for the Wayfire compositor'
 url=https://wayfire.org
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
-depends=(wf-config gtkmm3 gtk-layer-shell libdbusmenu-gtk3 libpulse alsa-lib)
-makedepends=(wayland wayfire wlroots0.17-devel wayland-protocols meson ninja git gobject-introspection glib2 glm)
+depends=(wf-config gtkmm3 gtk-layer-shell libdbusmenu-gtk3 libpulse alsa-lib wlroots0.19)
+makedepends=(wayland wayfire wayland-protocols meson ninja git gobject-introspection glib2 glm wlroots0.19-devel)
 source=("${pkgname}::git+https://github.com/WayfireWM/wf-shell#tag=v$pkgver")
-sha512sums=('99926b6ea6f74ca2f6bc3523c4822ad17d4482f9bdb2d0fa48f26f9d6583f65a03de7ac546d973001cc021c29d39ddfa8c96628a9fd1846a21bde919523e6131')
+sha512sums=('6c2b6504bb7547d8626e816385e62c3a92c0662589c20b07498d2658311374371ac0fbfaed771290d9eb6b2cc0c2f545b5111ec7d812523bd08582b5a4c816ee')
 
 build () {
   ewe-meson "${pkgname}" build -Dpulse=enabled
