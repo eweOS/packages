@@ -2,8 +2,8 @@
 
 pkgbase=font-noto-emoji
 pkgname=ttf-noto-fonts-emoji
-pkgver=2.047
-pkgrel=2
+pkgver=2.048
+pkgrel=1
 pkgdesc='Google Noto emoji fonts'
 arch=(any)
 url='https://www.google.com/get/noto/'
@@ -11,7 +11,7 @@ license=(custom:OFL)
 provides=(font-emoji)
 makedepends=(git)
 source=($pkgbase.tar.gz::https://github.com/googlefonts/noto-emoji/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('2cfaf5a427eb26334cdb30d98e4a0c005b660504a339249dc54373e566f09b50')
+sha256sums=('e6396642172e3d5031bef5f381cc047a007588e73b26209ba1c47b3d1f8faa60')
 
 package() {
   cd noto-emoji-$pkgver
