@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=cmake
-pkgver=4.1.0
+pkgver=4.1.1
 _major_minor=${pkgver%.*}
 pkgrel=1
 pkgdesc='The CMake toolsuite for building, testing and packaging software.'
@@ -12,7 +12,7 @@ url='https://cmake.org'
 license=(BSD-3-Clause)
 source=("$url/files/v$_major_minor/$pkgname-$pkgver.tar.gz"
 	"detect-eweOS.patch")
-sha256sums=('81ee8170028865581a8e10eaf055afb620fa4baa0beb6387241241a975033508'
+sha256sums=('b29f6f19733aa224b7763507a108a427ed48c688e1faf22b29c44e1c30549282'
             '02c915139f6041e4fc93ed4e0a1bdd9f635eb92bd14efab234c9bd238730d9a8')
 
 prepare() {
