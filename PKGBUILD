@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libkcddb
-pkgver=24.12.0
+pkgver=25.08.0
 pkgrel=1
 pkgdesc='KDE CDDB library'
 url='https://www.kde.org/'
@@ -19,7 +19,7 @@ depends=(kcmutils
 makedepends=(extra-cmake-modules
              kdoctools)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz)
-sha256sums=('6beef1b07dbe2970c1b5613f8e98fffa008b8e2c9d37a6011614434ceb771944')
+sha256sums=('e6a8573f554cd920e6f828010cde8c4aaeac5b329029f76ca2fe4bd5495627ec')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
