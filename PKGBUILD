@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kweather
-pkgver=24.12.0
+pkgver=25.08.0
 pkgrel=1
 pkgdesc='Weather application for Plasma Mobile'
 url='https://apps.kde.org/kweather/'
@@ -22,7 +22,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kde-utilities)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz)
-sha256sums=('9acb898f082a5b6fc3187366c12d51dde75c8b50ad785005f3eadf8c2ea19a34')
+sha256sums=('acd8d383abc97323a08283f5c34511d05a06b7019320d024968a01ccf6fe2106')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
