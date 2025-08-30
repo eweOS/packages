@@ -1,25 +1,17 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc> 
 
 pkgbase=font-awesome
-pkgname=(ttf-font-awesome otf-font-awesome)
-pkgver=6.7.1
-pkgrel=2
+pkgname=(otf-awesome)
+pkgver=7.0.0
+pkgrel=1
 pkgdesc="The iconic SVG, font, and CSS toolkit"
 url="https://fontawesome.com/"
 license=('custom:OFL')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FortAwesome/Font-Awesome/archive/$pkgver.tar.gz")
-sha256sums=('44cd670c44616a943dd43d783f208aacd77c3e43e715e7f4977bc0e5909b8084')
+sha256sums=('ac6013cd8c7c49f3f388506bf2ef4c280edea38cc0267d83b445cf1f8a3c1e4b')
 
-package_ttf-font-awesome() {
-  provides=(font-awesome)
-  cd "Font-Awesome-${pkgver}"
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-  install -d "$pkgdir/usr/share/fonts/TTF"
-  install -m644 ./webfonts/*.ttf "$pkgdir/usr/share/fonts/TTF"
-}
-
-package_otf-font-awesome() {
+package_otf-awesome() {
   provides=(font-awesome)
   cd "Font-Awesome-${pkgver}"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
