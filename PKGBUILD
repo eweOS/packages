@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=konversation
-pkgver=24.12.0
+pkgver=25.08.0
 pkgrel=1
 pkgdesc='A user-friendly and fully-featured IRC client'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -45,7 +45,7 @@ makedepends=(extra-cmake-modules kdoctools)
 groups=(kde-applications
         kde-network)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz)
-sha256sums=('1e8080a78372bc09e812c9278550763b8328f7aa78fcb3c93f04e492a5a3cd88')
+sha256sums=('7fb824266234c3ccbd5f4ed751b7f89688dbfc1bcba50a164d33eb3a27b9073f')
 
 prepare() {
   cd $pkgname-$pkgver
