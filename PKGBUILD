@@ -11,7 +11,7 @@ depends=(qt6-base qt6-svg qt6-imageformats qt6-wayland openh264 abseil-cpp
 	 ffmpeg openssl libopus libvpx glib glibmm libdispatch hunspell
 	 kcoreaddons openal-soft rnnoise xxhash zlib-ng boost-libs tl-expected
 	 libavif libheif libjxl protobuf libsrtp libpipewire ada-url)
-makedepends=(cmake ninja boost libtg_owt gobject-introspection lld git)
+makedepends=(cmake ninja boost libtg_owt gobject-introspection lld git gperf)
 _apiid=611335
 _apihash=d524b414d21f4d37f08684c1df41ac9c
 # Committed on 2025.05.27
