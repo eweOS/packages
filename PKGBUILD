@@ -1,14 +1,14 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=hwdata
-pkgver=0.398
+pkgver=0.399
 pkgrel=1
 pkgdesc="hardware identification and configuration databases."
 url=https://github.com/vcrhonek/hwdata
 license=('GPL-2.0-or-later')
 arch=('any')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cd52f7eb5c0f438a3605d1799d9f345a2894ad0f269ab6e8441f55e27e80dd78')
+sha256sums=('74872355e14d5ddc48a0f63036227ffb5f7796a3012c6377ac1fc7432ffe2b41')
 
 build() {
   cd $pkgname-$pkgver
