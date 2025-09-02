@@ -2,7 +2,7 @@
 
 pkgname=perl-exception-class
 pkgver=1.45
-pkgrel=3
+pkgrel=4
 pkgdesc='Most commonly needed test functions and features.'
 url='https://metacpan.org/dist/Exception-Class'
 arch=(any)
