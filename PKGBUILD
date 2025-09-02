@@ -2,7 +2,7 @@
 
 pkgname=perl-extutils-hascompiler
 pkgver=0.025
-pkgrel=3
+pkgrel=4
 pkgdesc='Perl module to check for the presence of a compiler.'
 url='https://metacpan.org/pod/ExtUtils::HasCompiler'
 arch=(any)
