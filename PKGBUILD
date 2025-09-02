@@ -2,7 +2,7 @@
 
 pkgname=zed
 pkgver=0.191.6
-pkgrel=1
+pkgrel=2
 _livekit_commit=3119b6ac0ef5e705b3e92630c8e558648f0892ed
 _scap_commit=08f0a01417505cc0990b9931a37e5120db92e0d0
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
