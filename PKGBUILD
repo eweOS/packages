@@ -2,7 +2,7 @@
 
 pkgname=rrdtool
 pkgver=1.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool for logging and graphing various system status"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.rrdtool.org"
