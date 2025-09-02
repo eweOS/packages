@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qgis
-pkgver=3.42.2
-pkgrel=4
+pkgver=3.44.2
+pkgrel=1
 pkgdesc="Geographic Information System (GIS) that supports vector, raster & database formats"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://qgis.org/"
@@ -19,7 +19,7 @@ optdepends=('fcgi: Map server'
 source=(
   https://qgis.org/downloads/$pkgname-$pkgver.tar.bz2
 )
-sha256sums=('ce63863990da409de09606651252a3811b1cbee017ce8e8fbf2fd20a64778883')
+sha256sums=('21f789e1b61384cf03432af306bc977b42d8c77c55ad48562ea1e914a5495961')
 
 build() {
   cmake -S $pkgname-$pkgver -B build -G Ninja \
