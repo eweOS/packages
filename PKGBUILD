@@ -5,7 +5,7 @@
 pkgname=perl-extutils-installpaths
 _pkgname=ExtUtils-InstallPaths
 pkgver=0.014
-pkgrel=2
+pkgrel=3
 pkgdesc="ExtUtils::InstallPaths - Build.PL install path logic made easy"
 arch=('any')
 license=('PerlArtistic' 'GPL')
