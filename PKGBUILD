@@ -2,7 +2,7 @@
 
 pkgname=perl-sub-uplevel
 pkgver=0.2800
-pkgrel=3
+pkgrel=4
 pkgdesc='Apparently run a function in a higher stack frame'
 url='https://metacpan.org/dist/Sub-Uplevel'
 arch=(any)
