@@ -1,11 +1,11 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=gsm
-pkgver=1.0.22
+pkgver=1.0.23
 _ver=${pkgver%.*}
 _patchlevel=${pkgver##*.}
 _verstr=${_ver}-pl${_patchlevel}
-pkgrel=3
+pkgrel=1
 pkgdesc='GSM lossy speech compression'
 url='https://quut.com/gsm/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,9 +15,9 @@ provides=(libgsm.so)
 source=("https://www.quut.com/gsm/gsm-$pkgver.tar.gz"
 	"0001-fix-install-command.patch"
 	"0002-build-libgsm-as-shared-library.patch")
-sha256sums=('f0072e91f6bb85a878b2f6dbf4a0b7c850c4deb8049d554c65340b3bf69df0ac'
-	    '7829d46febb63dd4f21e4f3a606d545333e5521e49fc1f6fcf1386519e151c68'
-	    'd6bcefc4739eaafaf4101bf8e1181d50937169396ee8cea2642b06bfdeec999b')
+sha256sums=('8b7591a85ac9adce858f2053005e6b2eb20c23b8b8a868dffb2969645fa323c0'
+            '7829d46febb63dd4f21e4f3a606d545333e5521e49fc1f6fcf1386519e151c68'
+            'd6bcefc4739eaafaf4101bf8e1181d50937169396ee8cea2642b06bfdeec999b')
 
 prepare() {
 	_patch_ gsm-$_verstr
