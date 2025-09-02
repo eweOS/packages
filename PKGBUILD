@@ -47,8 +47,7 @@ sha256sums=('bc2426dabe717e71a513eab2656702b6df3e7a16ad635acdcac0f597aa4e49d0'
             '5837dfc23c8a7c0621c88c3ccd3e22215d2a0d2e4ea96583c0a605be2f0675ca'
             '5914fd62534d7e8e9df49962162cbb27e3ff5497494d4af2e334af5018bb5eb2')
 
-build()
-{
+build() {
   local meson_options=(
     --libdir=lib
     -D x11-backend=false
@@ -71,23 +70,21 @@ build()
 
 # Checks are ignored due to execinfo.h is missing in musl
 
-package_gtk4()
-{
+package_gtk4() {
   depends+=(gtk-update-icon-cache adwaita-icon-theme)
   meson install -C build --destdir "$pkgdir"
-  
-  cd $pkgdir
+
+  cd "$pkgdir"
   _pick_ guic \
     usr/bin/gtk4-update-icon-cache
 }
 
-package_gtk-update-icon-cache()
-{
+package_gtk-update-icon-cache() {
   pkgdesc="GTK icon cache updater"
   depends=(gdk-pixbuf hicolor-icon-theme librsvg)
 
-  mv $srcdir/pkgs/guic/* "$pkgdir"
-  
+  mv "$srcdir"/pkgs/guic/* "$pkgdir"
+
   ln -s gtk4-update-icon-cache "$pkgdir/usr/bin/gtk-update-icon-cache"
 
   install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 gtk-update-icon-cache.hook
