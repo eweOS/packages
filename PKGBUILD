@@ -2,7 +2,7 @@
 
 pkgname=kfilemetadata
 pkgver=6.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A library for extracting file metadata'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
