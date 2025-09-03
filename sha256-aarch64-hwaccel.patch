@@ -1,0 +1,221 @@
+From 47c7f6291f10ad4a07f884d6baf22396885ec9a1 Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Tue, 4 Feb 2025 16:43:01 +0000
+Subject: [PATCH] libbb/sha256: support optional hardware acceleration
+
+This adapts the SHA-256 implementation in Linux kernel, making use of
+Armv8-a optionally supported crypto extension. We check hwcap and only
+enable hardware acceleration if it's supported.
+
+On Cortex-A73, a 424% speedup is achieved on a large file,
+compared to the software implementation.
+
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ libbb/Kbuild.src                    |   1 +
+ libbb/hash_md5_sha.c                |  15 +++-
+ libbb/hash_sha256_hwaccel_aarch64.S | 134 ++++++++++++++++++++++++++++
+ 3 files changed, 147 insertions(+), 3 deletions(-)
+ create mode 100644 libbb/hash_sha256_hwaccel_aarch64.S
+
+diff --git a/libbb/Kbuild.src b/libbb/Kbuild.src
+index cb8d2c2ec..81b6d1577 100644
+--- a/libbb/Kbuild.src
++++ b/libbb/Kbuild.src
+@@ -62,6 +62,7 @@ lib-y += hash_sha1_hwaccel_x86-64.o
+ lib-y += hash_sha1_hwaccel_x86-32.o
+ lib-y += hash_sha256_hwaccel_x86-64.o
+ lib-y += hash_sha256_hwaccel_x86-32.o
++lib-y += hash_sha256_hwaccel_aarch64.o
+ # Alternative (disabled) MD5 implementation
+ #lib-y += hash_md5prime.o
+ lib-y += messages.o
+diff --git a/libbb/hash_md5_sha.c b/libbb/hash_md5_sha.c
+index 75a61c32c..e032e9942 100644
+--- a/libbb/hash_md5_sha.c
++++ b/libbb/hash_md5_sha.c
+@@ -8,12 +8,18 @@
+  */
+ #include "libbb.h"
+ 
++#if defined(ENABLE_SHA256_HWACCEL) && defined(__aarch64__)
++# include <sys/auxv.h>
++#endif
++
+ #define STR1(s) #s
+ #define STR(s) STR1(s)
+ 
+ #define NEED_SHA512 (ENABLE_SHA512SUM || ENABLE_USE_BB_CRYPT_SHA)
+ 
+ #if ENABLE_SHA1_HWACCEL || ENABLE_SHA256_HWACCEL
++void FAST_FUNC sha1_process_block64_shaNI(sha1_ctx_t *ctx);
++void FAST_FUNC sha256_process_block64_shaNI(sha256_ctx_t *ctx);
+ # if defined(__GNUC__) && (defined(__i386__) || defined(__x86_64__))
+ static void cpuid_eax_ebx_ecx(unsigned *eax, unsigned *ebx, unsigned *ecx, unsigned *edx)
+ {
+@@ -41,12 +47,10 @@ static NOINLINE int get_shaNI(void)
+ 	shaNI = (int)ebx;
+ 	return (int)ebx;
+ }
+-void FAST_FUNC sha1_process_block64_shaNI(sha1_ctx_t *ctx);
+-void FAST_FUNC sha256_process_block64_shaNI(sha256_ctx_t *ctx);
+ #  if defined(__i386__)
+ struct ASM_expects_76_shaNI { char t[1 - 2*(offsetof(sha256_ctx_t, hash) != 76)]; };
+ #  endif
+-#  if defined(__x86_64__)
++#  if defined(__x86_64__) || defined(__aarch64__)
+ struct ASM_expects_80_shaNI { char t[1 - 2*(offsetof(sha256_ctx_t, hash) != 80)]; };
+ #  endif
+ # endif
+@@ -1251,6 +1255,11 @@ void FAST_FUNC sha256_begin(sha256_ctx_t *ctx)
+ 		if (ni > 0)
+ 			ctx->process_block = sha256_process_block64_shaNI;
+ 	}
++# elif defined(__GNUC__) && defined(__aarch64__)
++	{
++		if (getauxval(AT_HWCAP) & HWCAP_SHA2)
++			ctx->process_block = sha256_process_block64_shaNI;
++	}
+ # endif
+ #endif
+ }
+diff --git a/libbb/hash_sha256_hwaccel_aarch64.S b/libbb/hash_sha256_hwaccel_aarch64.S
+new file mode 100644
+index 000000000..5b7530d8a
+--- /dev/null
++++ b/libbb/hash_sha256_hwaccel_aarch64.S
+@@ -0,0 +1,134 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * SHA-256 transform using v8 Crypto Extensions
++ *
++ * Adapted from Linux kernel arch/arm64/crypto/sha2-ce-core.S
++ *
++ * Copyright (C) 2014 Linaro Ltd <ard.biesheuvel@linaro.org>
++ * Copyright (C) 2025 Yao Zi <ziyao@disroot.org>
++ */
++
++#if ENABLE_SHA256_HWACCEL && defined(__GNUC__) && defined(__aarch64__)
++	.text
++	.arch		armv8-a+crypto
++
++	dga		.req	q20
++	dgav		.req	v20
++	dgb		.req	q21
++	dgbv		.req	v21
++
++	t0		.req	v22
++	t1		.req	v23
++
++	dg0q		.req	q24
++	dg0v		.req	v24
++	dg1q		.req	q25
++	dg1v		.req	v25
++	dg2q		.req	q26
++	dg2v		.req	v26
++
++	.macro		add_only, ev, rc, s0
++	mov		dg2v.16b, dg0v.16b
++	.ifeq		\ev
++	add		t1.4s, v\s0\().4s, \rc\().4s
++	sha256h		dg0q, dg1q, t0.4s
++	sha256h2	dg1q, dg2q, t0.4s
++	.else
++	.ifnb		\s0
++	add		t0.4s, v\s0\().4s, \rc\().4s
++	.endif
++	sha256h		dg0q, dg1q, t1.4s
++	sha256h2	dg1q, dg2q, t1.4s
++	.endif
++	.endm
++
++	.macro		add_update, ev, rc, s0, s1, s2, s3
++	sha256su0	v\s0\().4s, v\s1\().4s
++	add_only	\ev, \rc, \s1
++	sha256su1	v\s0\().4s, v\s2\().4s, v\s3\().4s
++	.endm
++
++	/*
++	 * The SHA-256 round constants
++	 */
++	.section	".rodata", "a"
++	.align		4
++.Lsha2_rcon:
++	.word		0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5
++	.word		0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5
++	.word		0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3
++	.word		0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174
++	.word		0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc
++	.word		0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da
++	.word		0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7
++	.word		0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967
++	.word		0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13
++	.word		0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85
++	.word		0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3
++	.word		0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070
++	.word		0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5
++	.word		0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3
++	.word		0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208
++	.word		0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
++
++	/*
++	 * int sha256_process_block64_shaNI(sha256_ctx_t *ctx);
++	 */
++	.text
++	.global		sha256_process_block64_shaNI
++	.type		sha256_process_block64_shaNI, @function
++sha256_process_block64_shaNI:
++	/* load round constants */
++	adr		x8, .Lsha2_rcon
++	ld1		{ v0.4s- v3.4s}, [x8], #64
++	ld1		{ v4.4s- v7.4s}, [x8], #64
++	ld1		{ v8.4s-v11.4s}, [x8], #64
++	ld1		{v12.4s-v15.4s}, [x8]
++
++	/* load input */
++	ld1		{v16.4s-v19.4s}, [x0]
++
++	/* load state */
++	add		x0, x0, #80
++	mov		x1, x0
++	ld1		{dgav.4s, dgbv.4s}, [x0]
++
++#ifndef BB_BIG_ENDIAN
++	rev32		v16.16b, v16.16b
++	rev32		v17.16b, v17.16b
++	rev32		v18.16b, v18.16b
++	rev32		v19.16b, v19.16b
++#endif
++
++	add		t0.4s, v16.4s, v0.4s
++	mov		dg0v.16b, dgav.16b
++	mov		dg1v.16b, dgbv.16b
++
++	add_update	0,  v1, 16, 17, 18, 19
++	add_update	1,  v2, 17, 18, 19, 16
++	add_update	0,  v3, 18, 19, 16, 17
++	add_update	1,  v4, 19, 16, 17, 18
++
++	add_update	0,  v5, 16, 17, 18, 19
++	add_update	1,  v6, 17, 18, 19, 16
++	add_update	0,  v7, 18, 19, 16, 17
++	add_update	1,  v8, 19, 16, 17, 18
++
++	add_update	0,  v9, 16, 17, 18, 19
++	add_update	1, v10, 17, 18, 19, 16
++	add_update	0, v11, 18, 19, 16, 17
++	add_update	1, v12, 19, 16, 17, 18
++
++	add_only	0, v13, 17
++	add_only	1, v14, 18
++	add_only	0, v15, 19
++	add_only	1
++
++	/* update state */
++	add		dgav.4s, dgav.4s, dg0v.4s
++	add		dgbv.4s, dgbv.4s, dg1v.4s
++
++	/* store new state */
++	st1		{dgav.4s, dgbv.4s}, [x1]
++	ret
++#endif
