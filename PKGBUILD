@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-trove-classifiers
-pkgver=2024.10.14
-pkgrel=2
+pkgver=2025.8.26.11
+pkgrel=1
 pkgdesc="Canonical source for classifiers on PyPI (pypi.org)"
 url="https://github.com/pypa/trove-classifiers"
 license=('Apache-2.0')
@@ -11,7 +11,13 @@ depends=('python')
 makedepends=('git' 'python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-calver')
 checkdepends=('python-pytest')
 source=("git+https://github.com/pypa/trove-classifiers.git#tag=$pkgver")
-sha512sums=('cf1e3731506b5343dd50ad4f2028b00698bc352bc4a8157e6a268859a5251f73c537ec5d2caf40fbf8780fe928f148e0c0d8ea3094927d337971d171223f9dfe')
+sha512sums=('22b8a91ea7d265a70ae25c8ef19d84ea44070f81c45e58aab40e371097a86b45e30434fc7487051fdd2717501acf1ffbb81ef8ce3954a2639a8967446aa9fde0')
+
+prepare() {
+  cd trove-classifiers
+  # calver doesn't detect git tags
+  echo "Version: $pkgver" > PKG-INFO
+}
 
 build() {
   cd trove-classifiers
@@ -20,8 +26,9 @@ build() {
 
 check() {
   cd trove-classifiers
-  pytest
-  PYTHONPATH="$PWD"/build/lib python -m tests.lib
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m tests.lib
 }
 
 package() {
