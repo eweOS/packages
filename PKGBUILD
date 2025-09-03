@@ -4,7 +4,7 @@
 pkgbase=util-linux
 pkgname=(util-linux util-linux-libs)
 pkgver=2.41.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Miscellaneous system utilities for Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://github.com/karelzak/util-linux
@@ -20,11 +20,16 @@ license=(
   'LicenseRef-PublicDomain'
 )
 makedepends=('meson' 'pam' 'bash-completion' 'linux-headers')
+# 0001: Downstream, disable motd display for /usr/bin/login.
+#	We prefer PAM module (pam_motd.so) to do the work on eweOS, which is
+#	more configurable (could be disabled by changing pam configuration,
+#	without rebuilding the program).
 source=(
   "util-linux-${pkgver}.tar.gz::https://github.com/karelzak/util-linux/archive/refs/tags/v${pkgver}.tar.gz"
   $pkgbase-BSD-2-Clause.txt::https://raw.githubusercontent.com/Cyan4973/xxHash/f035303b8a86c1db9be70cbb638678ef6ef4cb2d/LICENSE
   pam-{login,common,remote,runuser,su}
   'util-linux.sysusers'
+  0001-login-disable-motd-display.patch
 )
 sha256sums=('61a9785cbf04091286ec2bbfb78e87c35e6380f084f38115a4677b90b9ad4437'
             '6ffedbc0f7878612d2b23589f1ff2ab15633e1df7963a5d9fc750ec5500c7e7a'
@@ -33,7 +38,8 @@ sha256sums=('61a9785cbf04091286ec2bbfb78e87c35e6380f084f38115a4677b90b9ad4437'
             '8bfbee453618ba44d60ba7fb00eced6c62edebfc592f2e75dede08e769ed8931'
             '48d6fba767631e3dd3620cf02a71a74c5d65a525d4c4ce4b5a0b7d9f41ebfea1'
             '3f54249ac2db44945d6d12ec728dcd0d69af0735787a8b078eacd2c67e38155b'
-            '4a0b3dd8aa6d34dd29e1d153f396cacf908b0d64f7218276cbcab684587c0a0a')
+            '4a0b3dd8aa6d34dd29e1d153f396cacf908b0d64f7218276cbcab684587c0a0a'
+            'e6c85264cd78d5bb72957e88a1c4fb18687818cc1010e0e69e6e7bc8f9083ea6')
 
 prepare() {
   _patch_ "$pkgbase-$pkgver"
@@ -83,7 +89,7 @@ package_util-linux() {
           etc/pam.d/runuser-l
           etc/pam.d/su
           etc/pam.d/su-l)
-  
+
   DESTDIR="${pkgdir}" meson install -C build
 
   # remove static libraries
