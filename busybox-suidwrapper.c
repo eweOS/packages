@@ -12,9 +12,7 @@ int main(int argc, char **argv)
         "ping6",
         "traceroute",
         "passwd",
-        "login",
-        "vlock",
-        "wall"
+        "vlock"
     };
 
     const char * baseexec = basename(argv[0]);

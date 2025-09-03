@@ -3,7 +3,7 @@
 
 pkgname=busybox
 pkgver=1.37.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.busybox.net"
@@ -34,7 +34,7 @@ source=(
   "sha256-aarch64-hwaccel.patch::https://github.com/ziyao233/busybox/commit/47c7f6291f10ad4a07f884d6baf22396885ec9a1.patch"
 )
 sha256sums=('3311dff32e746499f4df0d5df04d7eb396382d7e108bb9250e7b519b837043a4'
-            '707335044325bc225a124c694e00eb7a187de00906a75cc1fb025f482d2a254f'
+            'c4fb884a670d2a6ba936f92f4b74de5d2ba2668aefbdcecc99544fd4378524ab'
             '204a0fc1dabe7cc02a8a18bdec4637d7ddb6547042c9ee1e5f9b71cd22de2f85'
             '644321e67516c8e6869dd1f09b9dfc06d6758dec91df0bdea3cb614419a1e0d3'
             '9c69f0ef1da1d48d1aa36c0925366f240b3a42f2ccd43bea54b5ee95ef9316d2'
@@ -45,7 +45,7 @@ sha256sums=('3311dff32e746499f4df0d5df04d7eb396382d7e108bb9250e7b519b837043a4'
             '9c6d96a3e0d044d0ebb39e00bcad0eceb98001146c807eea98b0685076ed1945'
             'ff1cd59bf41a658916459636b93bc98d8bfaf0482c5c879095c31116c88b0a00'
             '622d0a1743a127bab1fc15e5057034db52c7fa475298b8d085cfc7c046ae5537'
-            '3557692ba310fc114459819f690fdf76047d67c8146dddbb4cc9ad7b8d931b64'
+            'e37ded7fc21fb65ae11db35adc119d99c4674ade887dd5dabdfcd63c3574768c'
             '7eef115b930b2379ccd640507795d5bd751065f54accffeb82c626a27130b6b1'
             'f157359b7992e9d08da728b2c48c10f338e149e44856f3cb9665164c35f6e232'
             'f641a4d722dfaeb70e43ee87d8b1ce6ecadc0aec4ee21bdc28bbe4564dd743f4'
