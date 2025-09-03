@@ -1,0 +1,13 @@
+diff --git a/pgp/seahorse-gpgme.c b/pgp/seahorse-gpgme.c
+index 4d47d8d9..e458cbd9 100644
+--- a/pgp/seahorse-gpgme.c
++++ b/pgp/seahorse-gpgme.c
+@@ -484,7 +484,6 @@ on_gpgme_event (void *user_data,
+ 		break;
+ 
+ 	case GPGME_EVENT_NEXT_KEY:
+-	case GPGME_EVENT_NEXT_TRUSTITEM:
+ 	default:
+ 		/* Ignore unsupported event types */
+ 		break;
+

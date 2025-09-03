@@ -2,7 +2,7 @@
 
 pkgname=seahorse
 pkgver=47.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GNOME application for managing PGP keys."
 url="https://wiki.gnome.org/Apps/Seahorse"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -32,10 +32,15 @@ makedepends=(
   yelp-tools
 )
 groups=(gnome-extra)
-source=("git+https://gitlab.gnome.org/GNOME/seahorse.git#tag=${pkgver/[a-z]/.&}")
-sha256sums=('e5b190aec564b34247a82f745eba42a8f02be913638f9b71e043bc01cea51a75')
+source=(
+  "git+https://gitlab.gnome.org/GNOME/seahorse.git#tag=${pkgver/[a-z]/.&}"
+  gpgme2.patch
+)
+sha256sums=('e5b190aec564b34247a82f745eba42a8f02be913638f9b71e043bc01cea51a75'
+            '45b6f37ee59c47edec25ffce0cfea94ed0a826255a2e14c216964819665d701d')
 
 prepare() {
+  _patch_ seahorse
   cd seahorse
 
   # Fix symbolic icon name
