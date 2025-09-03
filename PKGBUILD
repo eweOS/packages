@@ -3,7 +3,7 @@
 
 pkgname=e2fsprogs
 pkgver=1.47.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Ext2/3/4 filesystem utilities'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL' 'LGPL' 'MIT')
@@ -34,6 +34,7 @@ build()
     --enable-symlink-install \
     --libdir=/usr/lib \
     --sbindir=/usr/bin \
+    --disable-fsck \
     --disable-uuidd \
     --disable-libuuid \
     --disable-libblkid
