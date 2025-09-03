@@ -5,7 +5,7 @@ pkgname=('poppler' 'poppler-glib' 'poppler-qt6')
 pkgver=25.08.0
 # 2025.05.07
 _testdata_commit=c79c6839e859dbee6b73ac260788fa2de8618ba4
-pkgrel=1
+pkgrel=2
 pkgdesc='A PDF rendering library based on the xpdf-3.0 code base'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL-2.0-only'
@@ -16,7 +16,7 @@ license=('GPL-2.0-only'
          'HPND-sell-variant')
 makedepends=('libjpeg' 'cairo' 'fontconfig' 'openjpeg2'
              'gtk3' 'pkgconf' 'lcms2' 'gobject-introspection' 'icu'
-             'qt6-base' 'git' 'nss' 'gpgme' 'gtk-doc' 'curl' 'poppler-data'
+             'qt6-base' 'git' 'nss' 'gpgmepp' 'gtk-doc' 'curl' 'poppler-data'
              'cmake' 'python' 'boost' 'glib2'
              'freetype2' 'libpng' 'libtiff' 'nspr')
 options=('!emptydirs')
