@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=okular
-pkgver=24.12.0
+pkgver=25.08.0
 pkgrel=1
 pkgdesc='Document Viewer'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -45,7 +45,8 @@ depends=(discount
 makedepends=(ebook-tools
              extra-cmake-modules
              kdegraphics-mobipocket
-             kdoctools)
+             kdoctools
+             python3)
 optdepends=('ebook-tools: mobi and epub support'
             'kdegraphics-mobipocket: mobi support'
             'unarchiver: Comic Book Archive support (alternative)'
@@ -56,7 +57,7 @@ source=(
   https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz
   no-x11.patch
 )
-sha256sums=('8258058c40254ae888a3f85b28563b29b116496af235b335449323a5f25e57d1'
+sha256sums=('8c70c448e8aa8c55c3623024ee1d70930888672a503c40c60af2de702ffe64fc'
             '5f44988742376b4f989307b03e32d453b577c77c0a8622d66c3f5bde30332097')
 options=(!zipman)
 
