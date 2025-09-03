@@ -3,7 +3,7 @@
 
 pkgname=busybox
 pkgver=1.37.0
-pkgrel=10
+pkgrel=11
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.busybox.net"
@@ -45,7 +45,7 @@ sha256sums=('3311dff32e746499f4df0d5df04d7eb396382d7e108bb9250e7b519b837043a4'
             '9c6d96a3e0d044d0ebb39e00bcad0eceb98001146c807eea98b0685076ed1945'
             'ff1cd59bf41a658916459636b93bc98d8bfaf0482c5c879095c31116c88b0a00'
             '622d0a1743a127bab1fc15e5057034db52c7fa475298b8d085cfc7c046ae5537'
-            'e37ded7fc21fb65ae11db35adc119d99c4674ade887dd5dabdfcd63c3574768c'
+            'cd62d9d1ae294099b1a28e6ffb053267dd7a17ba8cfadb810bb7901292c4f89b'
             '7eef115b930b2379ccd640507795d5bd751065f54accffeb82c626a27130b6b1'
             'f157359b7992e9d08da728b2c48c10f338e149e44856f3cb9665164c35f6e232'
             'f641a4d722dfaeb70e43ee87d8b1ce6ecadc0aec4ee21bdc28bbe4564dd743f4'

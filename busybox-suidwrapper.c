@@ -7,7 +7,6 @@
 int main(int argc, char **argv)
 {
     const char * cmds[] = {
-        "su",
         "ping",
         "ping6",
         "traceroute",
