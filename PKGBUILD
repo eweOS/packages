@@ -34,18 +34,11 @@ license=('custom')
 options=(!lto)
 source=(
   https://mesa.freedesktop.org/archive/$pkgbase-$pkgver.tar.xz
-  gfxstream-lfs64.patch
 )
-sha512sums=('913ee1d00e13bafb7275740ba0883cf949a42d45595ef5bab60038064cb27aff36285ac9105269be5c0e3b4320fc7b70ca5c5f28e2cf79457882baff7e10620b'
-            'bcb3389a8382ccec65e2f476f43db5eab45d47b66869644ebb489472281f99a9d0cc24f54803bf1eef2eb03993b3f83fb50d303c36858e6c07600fff3f2aca51')
+sha512sums=('913ee1d00e13bafb7275740ba0883cf949a42d45595ef5bab60038064cb27aff36285ac9105269be5c0e3b4320fc7b70ca5c5f28e2cf79457882baff7e10620b')
 
 [ "$CARCH" = x86_64 ] && pkgname+=(vulkan-dzn)
 [ "$CARCH" = aarch64 ] && pkgname+=(vulkan-panfrost)
-
-prepare()
-{
-  _patch_ $pkgbase-$pkgver
-}
 
 build()
 {
