@@ -1,16 +1,15 @@
-diff --git a/src/scripts/device/state-routes.lua b/src/scripts/device/state-routes.lua
-index 0470493c..e8b090ed 100644
---- a/src/scripts/device/state-routes.lua
-+++ b/src/scripts/device/state-routes.lua
-@@ -166,8 +166,7 @@ store_or_restore_routes_hook = AsyncEventHook {
-         local device = event:get_subject ()
-         device:enum_params ("EnumRoute", function (_, e)
-           if e then
--            transition:return_error ("failed to enum routes: "
--                .. tostring (e));
-+            transition:advance ()
-           else
-             transition:advance ()
-           end
-
-
+diff --git a/src/scripts/lib/device-info-cache.lua b/src/scripts/lib/device-info-cache.lua
+index 6e4cf10c..35fc3f86 100644
+--- a/src/scripts/lib/device-info-cache.lua
++++ b/src/scripts/lib/device-info-cache.lua
+@@ -33,8 +33,8 @@ function module.get_device_info (self, device)
+   if not dev_info then
+     local device_name = device_properties ["device.name"]
+     if not device_name then
+-      Log.critical (device, "invalid device.name")
+-      return nil
++      Log.warning (device, "invalid device.name")
++      --return nil
+     end
+ 
+     Log.trace (device, string.format (
