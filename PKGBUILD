@@ -6,7 +6,7 @@ pkgname=(
   libwireplumber
 )
 pkgver=0.5.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Session / policy manager implementation for PipeWire"
 url="https://pipewire.pages.freedesktop.org/wireplumber/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -20,9 +20,19 @@ makedepends=(
   python-packaging
 )
 checkdepends=(pipewire)
-source=("https://gitlab.freedesktop.org/pipewire/$pkgbase/-/archive/$pkgver/$pkgbase-$pkgver.tar.gz" wireplumber.user.service)
+# fix-enum.patch: downstream, fix device enum in libudev-zero
+source=(
+  "https://gitlab.freedesktop.org/pipewire/$pkgbase/-/archive/$pkgver/$pkgbase-$pkgver.tar.gz"
+  wireplumber.user.service
+  fix-enum.patch
+)
 sha256sums=('6edd0732741eec2a59a3ffa7d3fe0fc7dbf16dbdf6c38a9cdb977d7491e6008e'
-            '808beac207616837f1b6d005cb28f7f017333f8b742a74c8343386b6ed6f96e4')
+            '808beac207616837f1b6d005cb28f7f017333f8b742a74c8343386b6ed6f96e4'
+            'a876675da6d9dd50af186e17b512d5f30c9c99517586176e6e6e7fdd53daad34')
+
+prepare() {
+  _patch_ $pkgbase-$pkgver
+}
 
 build()
 {

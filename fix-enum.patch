@@ -1,0 +1,16 @@
+diff --git a/src/scripts/device/state-routes.lua b/src/scripts/device/state-routes.lua
+index 0470493c..e8b090ed 100644
+--- a/src/scripts/device/state-routes.lua
++++ b/src/scripts/device/state-routes.lua
+@@ -166,8 +166,7 @@ store_or_restore_routes_hook = AsyncEventHook {
+         local device = event:get_subject ()
+         device:enum_params ("EnumRoute", function (_, e)
+           if e then
+-            transition:return_error ("failed to enum routes: "
+-                .. tostring (e));
++            transition:advance ()
+           else
+             transition:advance ()
+           end
+
+
