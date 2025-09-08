@@ -15,6 +15,9 @@ Server = https://os-repo-auto.ewe.moe/eweos/$repo/os/$arch
 #Server = https://mirrors.sdust.edu.cn/eweos/$repo/os/$arch
 #Server = https://mirrors.hit.edu.cn/eweos/$repo/os/$arch
 
+## Asia (proxied)
+#Server = https://ewemirror.ftrmedia.org/eweos/$repo/os/$arch
+
 ### Official Mirrors
 
 ## United States
