@@ -6,8 +6,10 @@ pkgrel=1
 pkgdesc="Ultralightweight JSON parser in ANSI C"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=("MIT")
+depends=("musl")
 makedepends=("cmake" "ninja")
 url="https://github.com/DaveGamble/cJSON"
+provides=("libcjson.so" "libcjson_utils.so")
 # 0001: Under review, raise CMake version to fix build with CMake 4.0
 #	https://github.com/DaveGamble/cJSON/pull/935
 # 0002: Should be upstreamed, raise C language version to C99 to allow usage of
