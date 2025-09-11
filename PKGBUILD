@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kbd
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Keytable files and keyboard utilities"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -22,7 +22,7 @@ source=(
   0002-fix-euro2-mapping.patch
 )
 backup=('etc/pam.d/vlock')
-sha256sums=('8bcfc5888ff1f2eafc6b5dd87c36c0f7b167fbdaba066cec59762e5c6f9bdb72'
+sha256sums=('568959073de128c4f2e952856c2fdf397d357989535505bd8440830d2dfcf344'
             '772c44d89098cbcc95b12cee420fd2f1833ac2da0338df99c5e590d1c1672234'
             'ad121d6b04304580719db552b1d729465c70f37a2c6aa20703f172efb2a179a0'
             'a5e0167b6a82a9eb4d581d56baab930c2d80f5541dc34630460b73e1115384b8')
