@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=libaom
-pkgver=3.12.1
+pkgver=3.13.1
 pkgrel=1
 pkgdesc='Alliance for Open Media (AOM) AV1 codec SDK.'
 url='https://aomedia.googlesource.com/aom/'
@@ -14,7 +14,7 @@ source=(
 	"https://storage.googleapis.com/aom-releases/libaom-$pkgver.tar.gz"
 	"libaom-3.4.0-posix-c-source-ftello.patch"
 )
-sha256sums=('9e9775180dec7dfd61a79e00bda3809d43891aee6b2e331ff7f26986207ea22e'
+sha256sums=('19e45a5a7192d690565229983dad900e76b513a02306c12053fb9a262cbeca7d'
             'ebebbb193c5971234980dec3facf97015c1b32750bb9f913710d2cee5f98765d')
 
 prepare()
