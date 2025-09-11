@@ -1,0 +1,15 @@
+diff --git a/data/compress.sh b/data/compress.sh
+index 885a65afc5f3..4603f4ad4c17 100755
+--- a/data/compress.sh
++++ b/data/compress.sh
+@@ -59,7 +59,7 @@ while [ -z "$eof" ]; do
+ 
+ 		suffix="${compressed##$filename.}"
+ 
+-		ln -s -r -- "$compressed" "$symlink.$suffix" ||
++		ln -s -- "$compressed" "$symlink.$suffix" ||
+ 			fatal "Unable to create symlink: $symlink.$suffix"
+ 
+ 		rm -f -- "$symlink" ||:
+])
+
