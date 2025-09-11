@@ -1,15 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=cjson
-pkgver=1.7.18
-pkgrel=2
+pkgver=1.7.19
+pkgrel=1
 pkgdesc="Ultralightweight JSON parser in ANSI C"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=("MIT")
 makedepends=("cmake" "ninja")
 url="https://github.com/DaveGamble/cJSON"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DaveGamble/cJSON/archive/v$pkgver.tar.gz")
-sha512sums=('2accb507c6b97222eb5f0232c015b356cf6d248d1247049928731aa8e897378245e62395c232b1ec57d28d1e53ac72c849be85e59c33616a382d40473649f66b')
+sha512sums=('7b22bdd05b8e0bf8b24ab79db128dbab9f8c2c167f4b1d3073922b8ff1e0f0e8917322283d6d4091002f014f42692984f4f641761f05965d3b66fb3eca14dc46')
 
 prepare() {
   sed -i 's/std=c89/std=gnu99/' cJSON-${pkgver}/CMakeLists.txt
