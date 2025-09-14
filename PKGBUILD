@@ -2,13 +2,13 @@
 
 pkgname=kicad
 pkgver=9.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Electronics design automation suite'
 url='https://www.kicad.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-3.0-or-later)
 depends=(musl llvm-libs wxwidgets-gtk3 boost-libs glew zlib-ng cairo python
-	 curl protobuf libgit2 opencascade glu ngspice unixodbc)
+	 curl protobuf libgit2 opencascade glu ngspice unixodbc abseil-cpp)
 makedepends=(cmake swig boost glm)
 # 0001: Backport for 3rd library nanodbc, fix build with libc++ 19 which
 #	forbids arbitrary instantiation of std::char_traits<>
