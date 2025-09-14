@@ -2,7 +2,7 @@
 
 pkgname=nextpnr
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 _testcommit=aea0b4bac59e07e0c5088a0966af73abdd8ab217
 pkgdesc='Portable FPGA place and route tool'
 url='https://github.com/YosysHQ/nextpnr'
