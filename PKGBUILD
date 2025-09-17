@@ -1,11 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgbase=libxml2
-pkgname=(
-  libxml2
-  libxml2-docs
-)
-pkgver=2.14.5
+pkgname=libxml2
+pkgver=2.15.1
 pkgrel=1
 pkgdesc="XML parsing library, version 2"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,19 +9,18 @@ license=('MIT')
 depends=('zlib' 'ncurses' 'xz')
 makedepends=('python')
 url="http://www.xmlsoft.org/"
-source=(https://download.gnome.org/sources/${pkgbase}/${pkgver%.*}/${pkgbase}-${pkgver}.tar.xz)
-sha256sums=('03d006f3537616833c16c53addcdc32a0eb20e55443cba4038307e3fa7d8d44b')
+source=(https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
+sha256sums=('c008bac08fd5c7b4a87f7b8a71f283fa581d80d80ff8d2efd3b26224c39bc54c')
 
 build()
 {
-  cd ${pkgbase}-${pkgver}
+  cd $pkgname-$pkgver
   autoreconf
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --with-threads \
     --with-zlib \
-    --with-lzma \
     --with-http \
     --with-history \
     --with-python=/usr/bin/python
@@ -33,25 +28,15 @@ build()
 }
 
 check() {
-  cd ${pkgbase}-${pkgver}
+  cd $pkgname-$pkgver
   make check
 }
 
-package_libxml2()
+package()
 {
   optdepends=('python: Python bindings')
   provides=(libxml2.so)
 
-  cd ${pkgbase}-${pkgver}
+  cd $pkgname-$pkgver
   make DESTDIR="${pkgdir}" install
-
-  mkdir -p ../doc/usr/share
-  mv "$pkgdir"/usr/share/{doc,gtk-doc} -t ../doc/usr/share
-}
-
-package_libxml2-docs() {
-  pkgdesc+=" (documentation)"
-  depends=()
-
-  mv doc/* "$pkgdir"
 }
