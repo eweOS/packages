@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=cava
-pkgver=0.10.4
+pkgver=0.10.6
 pkgrel=1
 pkgdesc='Console-based Audio Visualizer for Alsa'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -11,7 +11,7 @@ depends=('fftw' 'alsa-lib' 'ncurses' 'iniparser')
 optdepends=('pulseaudio' 'pipewire')
 makedepends=('libpulse' 'm4' 'automake' 'autoconf' 'libpipewire')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/karlstav/cava/archive/${pkgver}.tar.gz")
-sha512sums=('c0f1d40e6d3c7b06e2ebc9e4c80bd8b6b88b6fdcd083c30648fca34128e4349a46352a7526613ccbf6421eac29eb5778f396e47f74a03691224cf2d969872113')
+sha512sums=('597bf2d7f5a18d1643ca989c2f0b08bad922d7fe84e33513c6842ac820afa8811c8293f5e796e0b40a59c7e34a0e8b653f15d2253fc424db005c166975c5c50a')
 
 build() {
   cd ${pkgname}-${pkgver}
