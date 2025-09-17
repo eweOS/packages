@@ -5,7 +5,7 @@ pkgname=(
   libshumate
   libshumate-docs
 )
-pkgver=1.4.0
+pkgver=1.5.0.1
 pkgrel=1
 pkgdesc="Map widget for GTK 4"
 url="https://wiki.gnome.org/Projects/libshumate"
@@ -36,7 +36,7 @@ checkdepends=(weston)
 source=(
   "git+https://gitlab.gnome.org/GNOME/libshumate.git#tag=${pkgver/[a-z]/.&}"
 )
-sha256sums=('35d68796cb814cb7130922a473d8a64b9d8afb8eec1ced48681ccc2ef4f27ef2')
+sha256sums=('f1ebb1b48b22f370720bf31e5947e3e25373c5d70e284fc904dd89451c467d9b')
 
 build() {
   local meson_options=(
