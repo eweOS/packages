@@ -1,7 +1,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libtirpc
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="Transport Independent RPC library (SunRPC replacement)"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ makedepends=('bsd-compat-headers' 'linux-headers')
 backup=('etc/netconfig')
 provides=('libtirpc.so')
 source=("https://downloads.sourceforge.net/sourceforge/libtirpc/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('bbd26a8f0df5690a62a47f6aa30f797f3ef8d02560d1bc449a83066b5a1d3508')
+sha256sums=('b47d3ac19d3549e54a05d0019a6c400674da716123858cfdb6d3bdd70a66c702')
 
 build()
 {
