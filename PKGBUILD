@@ -6,7 +6,7 @@ pkgname=(
   gobject-introspection-runtime
   libgirepository
 )
-pkgver=1.84.0
+pkgver=1.86.0
 pkgrel=1
 pkgdesc="Introspection system for GObject-based libraries"
 url="https://wiki.gnome.org/Projects/GObjectIntrospection"
@@ -31,7 +31,7 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/gobject-introspection.git#tag=$pkgver"
   "git+https://gitlab.gnome.org/GNOME/gobject-introspection-tests.git"
 )
-sha256sums=('b3b346107c4aeaf1ccdb9e27aeb0b42623f5caf0b905b5c8fbc77628a26d90c0'
+sha256sums=('b01217ce8227867c9d419d0f436f9053cb351426ef9e0644d053bb24ac6ea163'
             'SKIP')
 
 
