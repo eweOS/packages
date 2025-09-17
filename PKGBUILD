@@ -5,7 +5,7 @@ pkgname=(
   gsettings-desktop-schemas
   gsettings-system-schemas
 )
-pkgver=48.0
+pkgver=49.0
 pkgrel=1
 pkgdesc="GSettings schemas for GNOME"
 url="https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas"
@@ -19,7 +19,7 @@ makedepends=(
   meson
 )
 source=("git+$url.git#tag=${pkgver/[a-z]/.&}")
-sha256sums=('c521042d1ce0a30753c6ea4e5051141138b387e609776e929770c461d0af984d')
+sha256sums=('21b149cddf6492bd10682daca6f1dab9bcc372c0d7dcdb5e981219af3faf89a5')
 
 build() {
   ewe-meson $pkgbase build
