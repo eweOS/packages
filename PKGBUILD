@@ -8,7 +8,7 @@ pkgname=(
   nm-cloud-setup
   networkmanager-docs
 )
-pkgver=1.52.1
+pkgver=1.54.1
 pkgrel=1
 pkgdesc="Network connection manager and user applications"
 url="https://networkmanager.dev/"
@@ -24,6 +24,7 @@ makedepends=(
   jansson
   libndp
   libnewt
+  libnvme
   libpsl
   libudev
   linux-headers
@@ -45,19 +46,14 @@ checkdepends=(
 #	Refer to these PRs for more details,
 #	https://github.com/eweOS/packages/pull/2983
 #	https://github.com/eweOS/packages/pull/2995
-# 0002: Backport, fix compatibility with python-gobject 3.52 or later for
-#	document-generating scripts.
-#	https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/commit/12eff9a7fdfeabab12ce56e5f7d515a13a3d704c
 source=(
   "NetworkManager-$pkgver::https://github.com/NetworkManager/NetworkManager/archive/refs/tags/$pkgver.tar.gz"
   networkmanager.service
   0001-force-platform-init.patch
-  0002-meson-Fix-docs-generation-with-PyGObject-3.52.patch
 )
-sha256sums=('a19bc229040b6e10b18da18021a69fb2f2eff44fc5a09ea6ecadf81d695d4e52'
+sha256sums=('3bec7f01698e416c58fe823d042de87fdc0e5ddf54d1871a8b65216070eb9a93'
             '0d6284910b53312082c7624dde57ad88d8ff9c46faaeb4d7540276dc44176723'
-            '412487dc91184526523915a5399dd78feadd146462c790ec0fa47151c4b963a4'
-            '2e943e679dc382ec8f9e14cf3d045b1b7c30fd30d54edd9a0d068d94df314727')
+            '412487dc91184526523915a5399dd78feadd146462c790ec0fa47151c4b963a4')
 
 prepare() {
   _patch_ NetworkManager-$pkgver
@@ -105,9 +101,12 @@ build() {
 }
 
 check() {
-  # build with lto on and debug on causes failure for test check-local-exports-libnm
+  # build with lto on and debug on causes failure for test
+  # check-local-exports-libnm
+  # gettext-tiny isn't compatible with check-potfile-list
   test_list=$(meson test -C build --list) 2> /dev/null
   test_list=${test_list//check-local-exports-libnm}
+  test_list=${test_list//check-potfile-list}
   NMTST_FORCE_REAL_ROOT=1 meson test -C build --print-errorlogs $test_list
 }
 
