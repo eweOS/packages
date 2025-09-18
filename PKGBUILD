@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pavucontrol
-pkgver=6.1
-pkgrel=3
+pkgver=6.2
+pkgrel=1
 pkgdesc="PulseAudio Volume Control"
 url="https://freedesktop.org/software/pulseaudio/pavucontrol/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -22,7 +22,7 @@ makedepends=(
   meson
 )
 source=("git+https://gitlab.freedesktop.org/pulseaudio/pavucontrol.git#tag=v$pkgver")
-sha256sums=('5d37e9a1e9d8f8d523d30a741c0f16fd024e85bd2f3d06adb3cae0c0d5bba2b6')
+sha256sums=('1a6bdc2f4e8516b995e6919c0fa8c74ed247c0b5f6f60da8909728ca56518342')
 
 build() {
   ewe-meson pavucontrol build -D lynx=false
