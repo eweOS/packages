@@ -2,19 +2,25 @@
 
 pkgname=warzone2100
 pkgver=4.5.5
-pkgrel=3
+pkgrel=4
 pkgdesc="3D realtime strategy game on a future Earth"
 url="https://wz2100.net/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL')
 depends=('sdl2' 'openal' 'libvorbis' 'libtheora' 'libsodium' 'physfs' 'sqlite' 'freetype2' 'libopus' 'fmt' 'zip' 'harfbuzz' 'fribidi')
 makedepends=('libzip' 'mesa' 'vulkan-headers' 'shaderc' 'cmake' 'ninja' 'linux-headers')
+# 0001: Downstream, fix type mismatch warnings for bundled QuickJS
+# 0002: Backport, fix deprecated warnings (which are promoted to errors) about
+#	CURLSSLBACKEND_SECURETRANSPORT with cURL 8.15 or later
+#	https://github.com/Warzone2100/warzone2100/commit/ee69edc107142e39736c8863e200fc3929d2e47c
 source=(
   ${pkgname}-${pkgver}_src.tar.xz::https://github.com/Warzone2100/warzone2100/releases/download/${pkgver}/${pkgname}_src.tar.xz
-  no-cast-function-type-mismatch.patch
+  0001-no-cast-function-type-mismatch.patch
+  0002-urlrequest_curl-Remove-references-to-CURLSSLBACKEND.patch
 )
 sha256sums=('07f61bae721687edeb62da4877e85030a03a053a593d645194fc65778e0480ff'
-            'a25200df8542dc0c432ef3dd1d74ed89ec0a54475b08b9db6dde0500d7361861')
+            'a25200df8542dc0c432ef3dd1d74ed89ec0a54475b08b9db6dde0500d7361861'
+            'df4c19d913a800d29d8379d8352804ec04b433a4f8dd3bfc768210d176ee0927')
 
 prepare() {
   # to drop const qualifier
