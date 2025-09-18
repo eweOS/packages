@@ -2,7 +2,7 @@
 
 pkgname=gtkmm
 pkgver=4.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ bindings for GTK 4"
 url="https://www.gtkmm.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -23,6 +23,14 @@ makedepends=(
 checkdepends=(weston)
 source=("git+https://gitlab.gnome.org/GNOME/gtkmm.git#tag=$pkgver")
 sha256sums=('ecdb3e0ed10118fd2b434db37b3515c8cd3fae66dc57c7b0f010587e189ca060')
+
+prepare() {
+  cd gtkmm
+  # Gtk::IconPaintable: Don't derive a GType
+  # Fix compatibility with GTK-4.20, or compiler complains about types being
+  # redefined in iconpaintable.h
+  git cherry-pick -n 94959145f8b9248e7f6384fb293f1429599f614d
+}
 
 build() {
   local meson_options=(
