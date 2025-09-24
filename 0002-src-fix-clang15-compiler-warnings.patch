@@ -1,0 +1,129 @@
+From bb073f897cd37a6253e49c5628a98a59fccf2ea5 Mon Sep 17 00:00:00 2001
+From: Erhan Kurubas <erhan.kurubas@espressif.com>
+Date: Sun, 2 Apr 2023 00:26:51 +0200
+Subject: [PATCH] src: fix clang15 compiler warnings
+
+Below warnings are fixed.
+
+1- A function declaration without a prototype is deprecated in all
+versions of C [-Werror,-Wstrict-prototypes]
+
+2- error: variable set but not used [-Werror,-Wunused-but-set-variable]
+
+Signed-off-by: Erhan Kurubas <erhan.kurubas@espressif.com>
+Change-Id: I1cf14b8e5e3e732ebc9cacc4b1cb9009276a8ea9
+Reviewed-on: https://review.openocd.org/c/openocd/+/7569
+Reviewed-by: Antonio Borneo <borneo.antonio@gmail.com>
+Tested-by: jenkins
+---
+ src/server/gdb_server.c    | 8 ++------
+ src/target/arm7_9_common.c | 2 --
+ src/target/riscv/riscv.c   | 2 --
+ src/target/target.c        | 4 ++--
+ 4 files changed, 4 insertions(+), 12 deletions(-)
+
+diff --git a/src/server/gdb_server.c b/src/server/gdb_server.c
+index b15a6c1c3b..4fdbc9fbbd 100644
+--- a/src/server/gdb_server.c
++++ b/src/server/gdb_server.c
+@@ -2977,7 +2977,8 @@ static int gdb_query_packet(struct connection *connection,
+ 	return ERROR_OK;
+ }
+ 
+-static bool gdb_handle_vcont_packet(struct connection *connection, const char *packet, int packet_size)
++static bool gdb_handle_vcont_packet(struct connection *connection, const char *packet,
++	__attribute__((unused)) int packet_size)
+ {
+ 	struct gdb_connection *gdb_connection = connection->priv;
+ 	struct target *target = get_target_from_connection(connection);
+@@ -2996,7 +2997,6 @@ static bool gdb_handle_vcont_packet(struct connection *connection, const char *p
+ 
+ 	if (parse[0] == ';') {
+ 		++parse;
+-		--packet_size;
+ 	}
+ 
+ 	/* simple case, a continue packet */
+@@ -3035,14 +3035,11 @@ static bool gdb_handle_vcont_packet(struct connection *connection, const char *p
+ 		int current_pc = 1;
+ 		int64_t thread_id;
+ 		parse++;
+-		packet_size--;
+ 		if (parse[0] == ':') {
+ 			char *endp;
+ 			parse++;
+-			packet_size--;
+ 			thread_id = strtoll(parse, &endp, 16);
+ 			if (endp) {
+-				packet_size -= endp - parse;
+ 				parse = endp;
+ 			}
+ 		} else {
+@@ -3065,7 +3062,6 @@ static bool gdb_handle_vcont_packet(struct connection *connection, const char *p
+ 
+ 		if (parse[0] == ';') {
+ 			++parse;
+-			--packet_size;
+ 
+ 			if (parse[0] == 'c') {
+ 				parse += 1;
+diff --git a/src/target/arm7_9_common.c b/src/target/arm7_9_common.c
+index 8f87d9cdae..0632290d98 100644
+--- a/src/target/arm7_9_common.c
++++ b/src/target/arm7_9_common.c
+@@ -1553,7 +1553,6 @@ static int arm7_9_restore_context(struct target *target)
+ 
+ 		if (dirty) {
+ 			uint32_t mask = 0x0;
+-			int num_regs = 0;
+ 			uint32_t regs[16];
+ 
+ 			if (mode_change) {
+@@ -1576,7 +1575,6 @@ static int arm7_9_restore_context(struct target *target)
+ 				if (reg->dirty) {
+ 					regs[j] = buf_get_u32(reg->value, 0, 32);
+ 					mask |= 1 << j;
+-					num_regs++;
+ 					reg->dirty = false;
+ 					reg->valid = true;
+ 					LOG_DEBUG("writing register %i mode %s "
+diff --git a/src/target/riscv/riscv.c b/src/target/riscv/riscv.c
+index 8dafa02b40..865abd0802 100644
+--- a/src/target/riscv/riscv.c
++++ b/src/target/riscv/riscv.c
+@@ -2187,7 +2187,6 @@ int riscv_openocd_poll(struct target *target)
+ 	int halted_hart = -1;
+ 
+ 	if (target->smp) {
+-		unsigned halts_discovered = 0;
+ 		unsigned should_remain_halted = 0;
+ 		unsigned should_resume = 0;
+ 		struct target_list *list;
+@@ -2203,7 +2202,6 @@ int riscv_openocd_poll(struct target *target)
+ 				t->debug_reason = DBG_REASON_NOTHALTED;
+ 				break;
+ 			case RPH_DISCOVERED_HALTED:
+-				halts_discovered++;
+ 				t->state = TARGET_HALTED;
+ 				enum riscv_halt_reason halt_reason =
+ 					riscv_halt_reason(t, r->current_hartid);
+diff --git a/src/target/target.c b/src/target/target.c
+index 6c0f4afb13..c55b67cc95 100644
+--- a/src/target/target.c
++++ b/src/target/target.c
+@@ -1940,13 +1940,13 @@ static int target_call_timer_callbacks_check_time(int checktime)
+ 	return ERROR_OK;
+ }
+ 
+-int target_call_timer_callbacks()
++int target_call_timer_callbacks(void)
+ {
+ 	return target_call_timer_callbacks_check_time(1);
+ }
+ 
+ /* invoke periodic callbacks immediately */
+-int target_call_timer_callbacks_now()
++int target_call_timer_callbacks_now(void)
+ {
+ 	return target_call_timer_callbacks_check_time(0);
+ }
