@@ -2,17 +2,26 @@
 
 pkgname=slibtool
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Skinny libtool implementation, written in C"
 url='http://git.midipix.org/cgit.cgi/slibtool'
 license=('MIT')
 provides=(libtool)
 arch=(x86_64 aarch64 riscv64 loongarch64)
+# 0001: Backport, commit baa9319b9ead ("slbt_ar_get_archive_meta(): properly
+#	handle llvm-ar's long-name deduplication.")
+#	Fix segfault when reading LLVM-ar-produced archives that contain
+#	objects with the same name, and corresponding nametable entries
+#	deduplicated
+# 0002: Under review, fix archive structure calculation when merging
+#	LLVM-ar-produced archives
 source=(
   "http://midipix.org/dl/slibtool/slibtool-$pkgver.tar.xz"
   compile install-sh libtool.m4 ltdl.m4 lt~obsolete.m4 ltsugar.m4 missing
   depcomp libtoolize ltargz.m4 ltmain.sh ltoptions.m4 ltversion.m4
   config.guess config.sub
+  0001-slbt_ar_get_archive_meta-properly-handle-llvm-ar-s-l.patch
+  0002-slbt_ar_merge_archives-Count-nametable-s-size-from-f.patch
 )
 sha256sums=('0308f8a7bc9b61c27229fb441fd5a04c9f77365bc6b72869d5c974811635ae25'
             'a8e92a6becc767713e58a5e381b121dca25bb40224c4f956e7330e985bddcff5'
@@ -29,7 +38,13 @@ sha256sums=('0308f8a7bc9b61c27229fb441fd5a04c9f77365bc6b72869d5c974811635ae25'
             'e77ebba8361b36f14b4d0927173a034b98c5d05049697a9ded84d85eb99a7990'
             'a27b754709de61575197bf5a980696c98ae49da3f92f0de8ee7f42dd543b7465'
             'c081ced2d645e3b107fbf864529cc0e5954399a09b87a4f1d300470854b6dea4'
-            'f08fe8f207c0fa6d722312774c28365024682333f5547c8192d0547957b000af')
+            'f08fe8f207c0fa6d722312774c28365024682333f5547c8192d0547957b000af'
+            '819eaea44fe7ea033f506daf9055307808fac22eae53d5ac84832ebb16814fd0'
+            '37ada0cc967f441f947568dfc534156b8986ccee48be27a8ca7dd3ff4528bf3c')
+
+prepare() {
+  _patch_ slibtool-$pkgver
+}
 
 build()
 {
