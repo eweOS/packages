@@ -46,15 +46,13 @@ prepare() {
   _patch_ slibtool-$pkgver
 }
 
-build()
-{
+build() {
   cd "$srcdir"/slibtool-$pkgver
   ./configure --prefix=/usr
   make
 }
 
-package()
-{
+package() {
   cd "$srcdir"/slibtool-$pkgver
   make DESTDIR="$pkgdir" install
   install -Dm644 -t "$pkgdir/usr/share/licenses/slibtool/" COPYING*
