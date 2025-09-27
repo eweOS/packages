@@ -2,7 +2,7 @@
 
 pkgname=libnsl
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Public client interface library for NIS(YP)"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/thkukuk/libnsl"
