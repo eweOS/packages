@@ -2,10 +2,10 @@
 # Contributor: Eric Long <i@hack3r.moe>
 
 pkgbase=linux-lts
-pkgname=(linux-lts linux-lts-headers linux-lts-devel linux-lts-docs)
+pkgname=(linux-lts linux-lts-devel linux-lts-docs)
 _basename=linux
 pkgver=6.12.47
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux LTS kernel'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
@@ -98,13 +98,6 @@ package_linux-lts() {
     "$pkgdir/usr/lib/modules/$_kernelrelease/pkgbase"
 
   rm -f "$pkgdir/usr/lib/modules/$_kernelrelease/"{build,source}
-}
-
-package_linux-lts-headers() {
-  pkgdesc="Kernel headers sanitized for use in userspace"
-
-  cd "$_basename-$pkgver"
-  make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch INSTALL_HDR_PATH="$pkgdir/usr" headers_install
 }
 
 package_linux-lts-devel() {
