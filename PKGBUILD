@@ -1,10 +1,10 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 # Contributor: Eric Long <i@hack3r.moe>
 
-pkgname=(linux linux-headers linux-devel linux-docs)
+pkgname=(linux linux-devel linux-docs)
 _basename=linux
 pkgver=6.16.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux kernel'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
@@ -95,13 +95,6 @@ package_linux() {
     "$pkgdir/usr/lib/modules/$_kernelrelease/pkgbase"
 
   rm -f "$pkgdir/usr/lib/modules/$_kernelrelease/"{build,source}
-}
-
-package_linux-headers() {
-  pkgdesc="Kernel headers sanitized for use in userspace"
-
-  cd "$_basename-$pkgver"
-  make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch INSTALL_HDR_PATH="$pkgdir/usr" headers_install
 }
 
 package_linux-devel() {
