@@ -3,7 +3,7 @@
 pkgbase=bluez
 pkgname=('bluez' 'bluez-utils' 'bluez-libs' 'bluez-cups' 'bluez-mesh'
          'bluez-obex')
-pkgver=5.83
+pkgver=5.84
 pkgrel=1
 pkgdesc='Userspace daemons, utils and libraries of Linux Bluetooth stack'
 url="http://www.bluez.org/"
@@ -21,7 +21,7 @@ source=(
   0004-allow-obexd-on-non-systemd-system.patch
   0005-grant-permission-to-bluetooth-group.patch
 )
-sha256sums=('108522d909d220581399bfec93daab62035539ceef3dda3e79970785c63bd24c'
+sha256sums=('5ba73d030f7b00087d67800b0e321601aec0f892827c72e5a2c8390d8c886b11'
             'ea87de0d8182404d7ef7139ebc6bb2e8d57224f9b8dfae3e438f95308277c801'
             '93fa6d201bb4546bb680f6d6f903ba5e767829ab275361323c14b0389fb6c803'
             '1a7e4c8b13ffc41304a06fa3d669cb6d252f0870c23c54fe84f5d861d5c964e1'
@@ -95,14 +95,14 @@ build() {
   _pick_ bluez-utils usr/share/man/man1/bluetoothctl*.1
   _pick_ bluez-utils usr/share/man/man1/{btattach,btmgmt,btmon,isotest,l2ping,rctest}.1
   _pick_ bluez-utils usr/share/man/man5/org.bluez.{A,B,D,G,I,L,M,N,P}*.5
-  _pick_ bluez-utils usr/share/man/man7/{l2cap,hci}.7
   _pick_ bluez-utils usr/share/zsh/site-functions/_bluetoothctl
 
   msg2 "Picking bluez-libs"
   _pick_ bluez-libs usr/include/bluetooth/*
   _pick_ bluez-libs usr/lib/libbluetooth.so*
   _pick_ bluez-libs usr/lib/pkgconfig/*
-  _pick_ bluez-libs usr/share/man/man7/{mgmt,sco}.7
+  _pick_ bluez-libs usr/share/man/man7/{mgmt,sco,l2cap,hci,iso}.7
+
 
   msg2 "Picking bluez-cups"
   _pick_ bluez-cups usr/lib/cups/backend/bluetooth
