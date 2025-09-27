@@ -2,7 +2,7 @@
 
 pkgname=merkaartor
 pkgver=0.20.0
-pkgrel=8
+pkgrel=9
 pkgdesc='OpenStreetMap editor'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='http://merkaartor.be/'
