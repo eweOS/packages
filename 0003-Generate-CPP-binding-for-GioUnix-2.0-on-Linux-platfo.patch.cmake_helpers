@@ -1,0 +1,53 @@
+From fea1af1fbf45f9a6434ce9872a9e95842f1099af Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Sun, 28 Sep 2025 09:39:57 +0000
+Subject: [PATCH] Generate CPP binding for GioUnix-2.0 on Linux platform
+
+GLib introduced a separate GIR file, GioUnix-2.0, for platform-specific
+GIO APIs[1] in GLib 2.79.2[2], while still exposing them in Gio-2.0
+for backward compatibility by creating duplicated types.
+
+However, GNOME developers have found the duplicated types could confuse
+gobject-introspection[3]. As a solution, these types are removed[4] from
+Gio since GLib 2.86.0[5], and users generating introspection data from
+these platform-specific types are expected to depend on the
+platform-specific GIR explicitly.
+
+This patch adjusts CMakeLists.txt for GLib, ensuring CPP binding for
+types in GioUnix-2.0 are generated when GLib is newer than 2.68.0.
+
+Link: https://gitlab.gnome.org/GNOME/glib/-/merge_requests/3892 # [1]
+Link: https://gitlab.gnome.org/GNOME/glib/-/commit/342fa9c1610d#9f621eb5fd3bcb2fa5c7bd228c9b1ad42edc46c8_1_17 # [2]
+Link: https://gitlab.gnome.org/GNOME/glib/-/issues/3744 # [3]
+Link: https://gitlab.gnome.org/GNOME/glib/-/merge_requests/4761 # [4]
+Link: https://gitlab.gnome.org/GNOME/glib/-/commit/e33be08bda99#9f621eb5fd3bcb2fa5c7bd228c9b1ad42edc46c8_1_4 # [5]
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ external/glib/CMakeLists.txt | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/external/glib/CMakeLists.txt b/external/glib/CMakeLists.txt
+index 16fa29e477ed..6ddafde893d1 100644
+--- a/external/glib/CMakeLists.txt
++++ b/external/glib/CMakeLists.txt
+@@ -15,11 +15,16 @@ block()
+ endblock()
+ 
+ include(generate_cppgir.cmake)
+-generate_cppgir(external_glib Gio-2.0)
+ 
+ find_package(PkgConfig REQUIRED)
+ pkg_check_modules(DESKTOP_APP_GLIB2 REQUIRED IMPORTED_TARGET glib-2.0 gobject-2.0 gio-2.0 gio-unix-2.0)
+ 
++if (DESKTOP_APP_GLIB2_glib-2.0_VERSION VERSION_GREATER_EQUAL 2.86.0)
++    generate_cppgir(external_glib GioUnix-2.0)
++else ()
++    generate_cppgir(external_glib Gio-2.0)
++endif()
++
+ target_link_libraries(external_glib
+ INTERFACE
+     PkgConfig::DESKTOP_APP_GLIB2
+-- 
+2.51.0
+
