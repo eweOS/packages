@@ -65,8 +65,7 @@ build () {
 		-DDESKTOP_APP_USE_PACKAGED=ON			\
 		-DDESKTOP_APP_DISABLE_X11_INTEGRATION=ON	\
 		-DTDESKTOP_API_ID=$_apiid			\
-		-DTDESKTOP_API_HASH=$_apihash			\
-		-DDESKTOP_APP_DISABLE_JEMALLOC=ON
+		-DTDESKTOP_API_HASH=$_apihash
 	cmake --build build
 }
 
