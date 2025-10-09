@@ -15,7 +15,7 @@ pkgname=(qemu-common
 	 qemu-tests
 	 qemu-guest-agent
 	) # TODO: split firmwares
-pkgver=10.1.0
+pkgver=10.1.1
 pkgrel=1
 pkgdesc='A generic and open source machine emulator and virtualizer.'
 url='https://www.qemu.org/'
@@ -34,7 +34,7 @@ source=(
   "https://download.qemu.org/qemu-$pkgver.tar.xz"
   fix-strerrorname_np.patch
 )
-sha256sums=('e0517349b50ca73ebec2fa85b06050d5c463ca65c738833bd8fc1f15f180be51'
+sha256sums=('e56b93d95953a9b6a64d1985dbcedfb07dc54d92c50b7912526693536c589923'
             '26032d49d40e63b3a92a8346353cfca416029175d7fdc3e1f8b12b7b8914707f')
 # TODO: enable (static) user targets
 
