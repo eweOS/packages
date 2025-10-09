@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=tree-sitter
-pkgver=0.25.9
+pkgver=0.25.10
 pkgrel=1
 pkgdesc='An incremental parsing system for programming tools '
 url='https://github.com/tree-sitter/tree-sitter'
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(musl)
 provides=(libtree-sitter.so)
 source=("https://github.com/tree-sitter/tree-sitter/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('024a2478579acebbb8882d7c2c0f0e07fc0aa19a459b48d10469e4abb96cf16e')
+sha256sums=('ad5040537537012b16ef6e1210a572b927c7cdc2b99d1ee88d44a7dcdc3ff44c')
 
 build () {
 	cd tree-sitter-$pkgver
