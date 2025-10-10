@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=niri
-pkgver=25.05.1
-pkgrel=2
+pkgver=25.08
+pkgrel=1
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/YaLTeR/niri"
@@ -37,10 +37,15 @@ optdepends=(
 )
 # NOTE: linking issues with LTO enabled
 options=(!lto)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('63f6f6e651d2a399259354f5a80fd8815c2be9c1c6b7d5038c03d89fac5966596d0da8b36d83fa7ea85b192e77e0ddfcf40ee9244a2c44cd55776a7a3f54de35')
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  libdisplay-0-3-0.patch
+)
+sha512sums=('d8a10bb726d2e79f695544130cc9f55b1ac0f76dd9a9fb1cafb16cd7934b29a4fecf88656a3bc46ab6140aef7d2c58ed87f3ba43dfe8882df50de997283f2292'
+            '963c6a020a93628a553c8656800bac75c43134b22d9f9219fe1ea561ffd0555c48d97d59039d3354210e289cf76a45d93a279a47669fd0239a78f9a8f63ef634')
 
 prepare() {
+  _patch_ "$pkgname-$pkgver"
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$RUSTHOST"
