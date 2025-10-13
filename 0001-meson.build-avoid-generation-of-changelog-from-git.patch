@@ -1,0 +1,21 @@
+diff --git a/meson.build b/meson.build
+index c17ac4389a9c..3929819e8306 100644
+--- a/meson.build
++++ b/meson.build
+@@ -126,16 +126,6 @@ install_data(['AUTHORS', 'COPYING', 'NEWS', 'README.md', 'TODO'],
+     install_dir: get_option('datadir') / 'doc/libdvdread',
+     install_tag: 'doc')
+ 
+-if import('fs').is_file('.git/logs/HEAD')
+-    git_exe = find_program('git', required: false, disabler: true)
+-    custom_target('ChangeLog', output: 'ChangeLog',
+-        depend_files: '.git/logs/HEAD',
+-        command: ['git', 'log'], capture: true,
+-        install: true,
+-        install_dir: get_option('datadir') / 'doc/libdvdread',
+-        install_tag: 'doc')
+-endif
+-
+ # Include subdir meson.build files
+ # The order is important!
+ 
