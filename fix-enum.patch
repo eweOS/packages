@@ -6,9 +6,8 @@ index 6e4cf10c..35fc3f86 100644
    if not dev_info then
      local device_name = device_properties ["device.name"]
      if not device_name then
--      Log.critical (device, "invalid device.name")
+       Log.warning (device, "invalid device.name")
 -      return nil
-+      Log.warning (device, "invalid device.name")
 +      --return nil
      end
  
