@@ -1,38 +1,37 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xdg-user-dirs
-pkgver=0.18
-pkgrel=6
+pkgver=0.19
+pkgrel=1
 pkgdesc="Manage user directories like ~/Desktop and ~/Music"
 url="https://www.freedesktop.org/wiki/Software/xdg-user-dirs"
 arch=(x86_64 aarch64 riscv64 loongarch64)
-license=(GPL)
-makedepends=(docbook-xsl git)
+license=(GPL-2.0-or-later)
+depends=(musl sh)
+makedepends=(docbook-xsl git meson)
 optdepends=('turnstile: for user service support')
 backup=(etc/xdg/user-dirs.conf etc/xdg/user-dirs.defaults)
 options=(!emptydirs)
-source=("git+https://gitlab.freedesktop.org/xdg/xdg-user-dirs.git#tag=$pkgver"
+source=("git+https://gitlab.freedesktop.org/xdg/xdg-user-dirs.git#tag=v$pkgver"
         xdg-user-dirs-update.user.service)
-sha256sums=('a63a58e5a5541e7fde10a458231092be65d042e651f68840049c208b831d5611'
+sha256sums=('725df2b34482f5d677a2804dd0dd9d0476de5ae4ef804da6ff3814d496304545'
             'b5182186f37cea2146741fb645ad81c3976468c827b19aa1bce2be17c4ce4ccd')
 
-prepare() {
-  cd $pkgname
-  NOCONFIGURE=1 ./autogen.sh
+build() {
+  ewe-meson $pkgname build
+  meson compile -C build
 }
 
-build() {
-  cd $pkgname
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
-  make
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install 
+  meson install -C build --destdir "$pkgdir"
 
-  # We use a service
+  # We use dinit service
   rm "$pkgdir/etc/xdg/autostart/xdg-user-dirs.desktop"
+  rm -r "$pkgdir/usr/lib/systemd/"
 
   _dinit_install_user_services_ $srcdir/xdg-user-dirs-update.user.service
   _dinit_enable_user_services_ xdg-user-dirs-update
