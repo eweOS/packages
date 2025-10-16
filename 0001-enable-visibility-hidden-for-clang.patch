@@ -1,13 +1,18 @@
+diff --git a/build/moz.configure/toolchain.configure b/build/moz.configure/toolchain.configure
+index b2192e406678..d8aef7cb9d07 100644
 --- a/build/moz.configure/toolchain.configure
 +++ b/build/moz.configure/toolchain.configure
-@@ -2186,7 +2186,7 @@
+@@ -2423,10 +2423,10 @@ set_define("_LIBCPP_ALWAYS_INLINE", libcxx_override_visibility.empty)
+ set_define("_LIBCPP_HIDE_FROM_ABI", libcxx_override_visibility.hide_from_abi)
+ 
+ 
 -@depends(target, build_environment)
-+@depends(target, c_compiler, build_environment)
 -def visibility_flags(target, env):
++@depends(target, c_compiler, build_environment)
 +def visibility_flags(target, c_compiler, env):
      if target.os != "WINNT":
--        if target.kernel == "Darwin":
-+        if target.kernel == "Darwin" or c_compiler.type == "clang":
+-        if target.kernel in ("Darwin", "FreeBSD", "OpenBSD"):
++        if target.kernel in ("Darwin", "FreeBSD", "OpenBSD") or c_compiler.type == "clang":
              return ("-fvisibility=hidden", "-fvisibility-inlines-hidden")
          return (
              "-I%s/system_wrappers" % os.path.join(env.dist),

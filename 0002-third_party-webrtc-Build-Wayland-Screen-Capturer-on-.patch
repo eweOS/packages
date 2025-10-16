@@ -1,8 +1,8 @@
 diff --git a/third_party/libwebrtc/modules/desktop_capture/desktop_capture_gn/moz.build b/third_party/libwebrtc/modules/desktop_capture/desktop_capture_gn/moz.build
-index bb0ecca..12012f5 100644
+index b32544897c73..124a97638c9f 100644
 --- a/third_party/libwebrtc/modules/desktop_capture/desktop_capture_gn/moz.build
 +++ b/third_party/libwebrtc/modules/desktop_capture/desktop_capture_gn/moz.build
-@@ -286,32 +286,29 @@ if CONFIG["TARGET_CPU"] == "arm":
+@@ -286,29 +286,26 @@ if CONFIG["TARGET_CPU"] == "arm":
  
  if CONFIG["TARGET_CPU"] == "loongarch64":
  
@@ -35,7 +35,6 @@ index bb0ecca..12012f5 100644
 -        "/third_party/libwebrtc/modules/desktop_capture/linux/x11/window_finder_x11.cc",
 -        "/third_party/libwebrtc/modules/desktop_capture/linux/x11/window_list_utils.cc",
 -        "/third_party/libwebrtc/modules/desktop_capture/linux/x11/x_atom_cache.cc",
--        "/third_party/libwebrtc/modules/desktop_capture/linux/x11/x_error_trap.cc",
 -        "/third_party/libwebrtc/modules/desktop_capture/linux/x11/x_server_pixel_buffer.cc",
 -        "/third_party/libwebrtc/modules/desktop_capture/linux/x11/x_window_property.cc"
 +        "/third_party/libwebrtc/modules/desktop_capture/linux/wayland/egl_dmabuf.cc",
@@ -47,11 +46,8 @@ index bb0ecca..12012f5 100644
 +        "/third_party/libwebrtc/modules/desktop_capture/linux/wayland/shared_screencast_stream.cc"
      ]
  
-+
  if CONFIG["TARGET_CPU"] == "mips32":
- 
-     DEFINES["CR_SYSROOT_KEY"] = "20250129T203412Z-1"
-@@ -575,6 +572,33 @@ if CONFIG["MOZ_X11"] == "1" and CONFIG["OS_TARGET"] == "Linux" and CONFIG["TARGE
+@@ -565,6 +562,32 @@ if CONFIG["MOZ_X11"] == "1" and CONFIG["OS_TARGET"] == "Linux" and CONFIG["TARGE
          "/third_party/libwebrtc/modules/desktop_capture/linux/x11/x_window_property.cc"
      ]
  
@@ -77,7 +73,6 @@ index bb0ecca..12012f5 100644
 +        "/third_party/libwebrtc/modules/desktop_capture/linux/x11/window_finder_x11.cc",
 +        "/third_party/libwebrtc/modules/desktop_capture/linux/x11/window_list_utils.cc",
 +        "/third_party/libwebrtc/modules/desktop_capture/linux/x11/x_atom_cache.cc",
-+        "/third_party/libwebrtc/modules/desktop_capture/linux/x11/x_error_trap.cc",
 +        "/third_party/libwebrtc/modules/desktop_capture/linux/x11/x_server_pixel_buffer.cc",
 +        "/third_party/libwebrtc/modules/desktop_capture/linux/x11/x_window_property.cc"
 +    ]
@@ -85,7 +80,7 @@ index bb0ecca..12012f5 100644
  if CONFIG["MOZ_X11"] == "1" and CONFIG["OS_TARGET"] == "Linux" and CONFIG["TARGET_CPU"] == "mips32":
  
      DEFINES["WEBRTC_USE_X11"] = True
-@@ -683,4 +707,32 @@ if CONFIG["MOZ_X11"] == "1" and CONFIG["OS_TARGET"] == "Linux" and CONFIG["TARGE
+@@ -669,4 +692,31 @@ if CONFIG["MOZ_X11"] == "1" and CONFIG["OS_TARGET"] == "Linux" and CONFIG["TARGE
          "/third_party/libwebrtc/modules/desktop_capture/linux/x11/x_window_property.cc"
      ]
  
@@ -112,17 +107,16 @@ index bb0ecca..12012f5 100644
 +        "/third_party/libwebrtc/modules/desktop_capture/linux/x11/window_finder_x11.cc",
 +        "/third_party/libwebrtc/modules/desktop_capture/linux/x11/window_list_utils.cc",
 +        "/third_party/libwebrtc/modules/desktop_capture/linux/x11/x_atom_cache.cc",
-+        "/third_party/libwebrtc/modules/desktop_capture/linux/x11/x_error_trap.cc",
 +        "/third_party/libwebrtc/modules/desktop_capture/linux/x11/x_server_pixel_buffer.cc",
 +        "/third_party/libwebrtc/modules/desktop_capture/linux/x11/x_window_property.cc"
 +    ]
 +
  Library("desktop_capture_gn")
 diff --git a/third_party/libwebrtc/moz.build b/third_party/libwebrtc/moz.build
-index c6cc893..dc588d4 100644
+index addff5313714..423980b5e02a 100644
 --- a/third_party/libwebrtc/moz.build
 +++ b/third_party/libwebrtc/moz.build
-@@ -717,11 +717,13 @@ if CONFIG["OS_TARGET"] == "WINNT" and CONFIG["TARGET_CPU"] == "x86_64":
+@@ -718,11 +718,13 @@ if CONFIG["OS_TARGET"] == "WINNT" and CONFIG["TARGET_CPU"] == "x86_64":
          "/third_party/libwebrtc/modules/desktop_capture/desktop_capture_differ_sse2_gn"
      ]
  
@@ -138,3 +132,25 @@ index c6cc893..dc588d4 100644
      ]
  
  if CONFIG["MOZ_X11"] == "1" and CONFIG["OS_TARGET"] == "Linux" and CONFIG["TARGET_CPU"] == "ppc64":
+diff --git a/dom/media/webrtc/libwebrtc_overrides/moz.build b/dom/media/webrtc/libwebrtc_overrides/moz.build
+index eed6eae..d665c04 100644
+--- a/dom/media/webrtc/libwebrtc_overrides/moz.build
++++ b/dom/media/webrtc/libwebrtc_overrides/moz.build
+@@ -58,7 +58,7 @@ if CONFIG["OS_TARGET"] == "OpenBSD":
+         "modules/desktop_capture/linux/x11/x_error_trap.cc",
+     ]
+ 
+-if CONFIG["TARGET_CPU"] in ("loongarch64", "ppc64"):
++if CONFIG["TARGET_CPU"] in ("ppc64"):
+     UNIFIED_SOURCES += [
+         "modules/desktop_capture/linux/x11/x_error_trap.cc",
+     ]
+@@ -71,7 +71,7 @@ if CONFIG["OS_TARGET"] == "Linux" and CONFIG["TARGET_CPU"] == "riscv64":
+ if (
+     CONFIG["MOZ_X11"] == "1"
+     and CONFIG["OS_TARGET"] == "Linux"
+-    and CONFIG["TARGET_CPU"] in ("aarch64", "arm", "mips32", "mips64", "x86", "x86_64")
++    and CONFIG["TARGET_CPU"] in ("aarch64", "arm", "mips32", "mips64", "x86", "x86_64", "loongarch64")
+ ):
+     UNIFIED_SOURCES += [
+         "modules/desktop_capture/linux/x11/x_error_trap.cc",
