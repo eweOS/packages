@@ -3,7 +3,7 @@
 pkgname=perl
 pkgver=5.42.0
 _baseversion="${pkgver%.*}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A highly capable, feature-rich programming language"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.perl.org'
@@ -18,9 +18,10 @@ build()
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   export BUILD_ZLIB=False
+  export CFLAGS="$CFLAGS -D_GNU_SOURCE"
+  export HOSTCFLAGS="$CFLAGS -D_GNU_SOURCE"
   ./configure.gnu \
     -des -Dprefix=/usr \
-    -Dcc="cc -D_GNU_SOURCE" \
     -Dvendorprefix=/usr \
     -Dprivlib=/usr/share/perl5/core_perl \
     -Darchlib=/usr/lib/perl5/$_baseversion/core_perl \
