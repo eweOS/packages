@@ -2,7 +2,7 @@
 
 pkgname=nextpnr
 pkgver=0.8
-pkgrel=2
+pkgrel=3
 _testcommit=aea0b4bac59e07e0c5088a0966af73abdd8ab217
 pkgdesc='Portable FPGA place and route tool'
 url='https://github.com/YosysHQ/nextpnr'
@@ -25,12 +25,15 @@ prepare() {
 build() {
 	# TODO: Missing TK for GUI
 	# TODO: Only ECP5 support with prjtrellis is enabled
+	# TODO: Enable tests (the bundled googletest is incompatible with
+	#	CMake 4.0)
 	cmake -S "$pkgname" -B build \
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo	\
 		-DCMAKE_INSTALL_PREFIX=/usr		\
 		-DBUILD_GUI=OFF				\
 		-DBUILD_PYTHON=ON			\
 		-DBUILD_RUST=OFF			\
+		-DUSE_OPENMP=ON				\
 		-DSTATIC_BUILD=OFF			\
 		-DARCH=ecp5
 
