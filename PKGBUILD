@@ -3,7 +3,7 @@
 pkgname=opencascade
 pkgver=7.9.1
 _ver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 pkgdesc='Full-scale 3D geometry library'
 url='https://dev.opencascade.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
