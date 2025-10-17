@@ -5,7 +5,7 @@ pkgname=(opencv
          opencv-samples
          python-opencv)
 pkgver=4.12.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Open Source Computer Vision Library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0)
@@ -51,12 +51,16 @@ optdepends=('opencv-samples: samples'
 # 0001: Workaround, fix compatibility with Qt 6.9
 #	https://github.com/opencv/opencv/issues/27223#issuecomment-2797750952
 #	https://bugreports.qt.io/browse/QTBUG-134774
+# 0002: Backport, fix compatibility with Eigen 5.x
+#	https://github.com/opencv/opencv/pull/27536
 source=(opencv.tar.gz::https://github.com/opencv/opencv/archive/refs/tags/$pkgver.tar.gz
         opencv_contrib.tar.gz::https://github.com/opencv/opencv_contrib/archive/refs/tags/$pkgver.tar.gz
-	0001-workaround-qt-6-9-compatibility-prblem.patch)
+	0001-workaround-qt-6-9-compatibility-prblem.patch
+	0002-eigen-fix-to-get-version-from-eigen.patch)
 sha256sums=('44c106d5bb47efec04e531fd93008b3fcd1d27138985c5baf4eafac0e1ec9e9d'
             '4197722b4c5ed42b476d42e29beb29a52b6b25c34ec7b4d589c3ae5145fee98e'
-            '6dfa9c685fe73587ec20c2c47740ad5df9184c7102b959da9d229269a09b2dee')
+            '6dfa9c685fe73587ec20c2c47740ad5df9184c7102b959da9d229269a09b2dee'
+            'f0317f48b261f42044d158573a3993c1fd6d587e7be4d7e06f907d1ab36c792f')
 options=(!lto) # https://gitlab.archlinux.org/archlinux/packaging/packages/kdenlive/-/issues/8
 
 prepare() {
