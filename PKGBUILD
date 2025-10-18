@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=telegram-desktop
-pkgver=6.0.2
-pkgrel=5
+pkgver=6.2.3
+pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url='https://desktop.telegram.org/'
 arch=(x86_64 aarch64 loongarch64)
@@ -29,7 +29,7 @@ source=("https://github.com/telegramdesktop/tdesktop/releases/download/v$pkgver/
 	"0002-add-missing-includes.patch"
 	"0003-Generate-CPP-binding-for-GioUnix-2.0-on-Linux-platfo.patch.cmake_helpers"
 	"0004-Fix-missing-Gio-DesktopAppInfo-when-building-against.patch.lib_base")
-sha256sums=('81e981079f2a056189783e25aac627b6709dd205b10ee3ef7465cae54245d362'
+sha256sums=('eb78993b1e90944acbff1ffc81438b7eec9199fcae5e988af07f878eb0bfab2b'
             'f3d065d8c3c1c99609ab149f73e24255503857fd2964abfdec1bfd4cedc92843'
             '19cdd86b87ea3e756ea0f5872f2bad15efb3e458f335bd47a1c33b99017d8426'
             '55aebfaf5a274d0c3dfb6324fbfdfb5eabcc3de72e290ff8c716fe5e4fcd4053'
