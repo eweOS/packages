@@ -1,7 +1,7 @@
 basename=lua-compat53
 pkgname=lua51-compat53
-pkgver=0.13
-pkgrel=2
+pkgver=0.14.4
+pkgrel=1
 pkgdesc='Compatbility module providing Lua-5.3-style APIs for Lua'
 url='https://github.com/lunarmodules/lua-compat-5.3'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -9,11 +9,11 @@ license=(MIT)
 depends=(lua51)
 makedepends=(luarocks51)
 source=("https://github.com/lunarmodules/lua-compat-5.3/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f5dc30e7b1fda856ee4d392be457642c1f0c259264a9b9bfbcb680302ce88fc2')
+sha256sums=('a9afa2eb812996039a05c5101067e6a31af9a75eded998937a1ce814afe1b150')
 
 build() {
 	cd lua-compat-5.3-$pkgver
-	luarocks-51 make rockspecs/compat53-scm-0.rockspec	\
+	luarocks-5.1 make rockspecs/compat53-"$pkgver"-1.rockspec \
 		--tree=./build
 }
 
