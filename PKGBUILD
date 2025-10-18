@@ -3,7 +3,7 @@
 pkgbase=lua-mpack
 pkgname=(lua51-mpack lua54-mpack)
 pkgver=1.0.12
-pkgrel=2
+pkgrel=3
 pkgdesc='libmpack lua binding'
 url='https://github.com/libmpack/libmpack-lua'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -18,8 +18,7 @@ sha256sums=('06b662b1f14cfaf592ecb3fab425bef20e51439509b7a1736a790ecc929ef8bf'
 build() {
 	cd libmpack-lua-$pkgver
 	for v in ${_lvers[*]}; do
-		undotv=${v:0:1}${v:2:3}
-		luarocks-$undotv make mpack-1.0.12-0.rockspec \
+		luarocks-$v make mpack-$pkgver-0.rockspec \
 			--tree=./build-$v
 	done
 }
@@ -27,9 +26,9 @@ build() {
 do_package() {
 	v=$1
 	builddir=$srcdir/libmpack-lua-$pkgver/build-$v
-	install -Dm755 $builddir/lib/lua/$v/mpack.so \
-		$pkgdir/usr/lib/lua/$v/mpack.so
-	_install_license_ $srcdir/LICENSE
+	install -Dm755 "$builddir"/lib/lua/$v/mpack.so \
+		"$pkgdir"/usr/lib/lua/$v/mpack.so
+	_install_license_ "$srcdir"/LICENSE
 }
 
 package_lua51-mpack() {
