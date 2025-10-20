@@ -6,7 +6,8 @@ pkgrel=1
 pkgdesc='Keymap handling library for toolkits and window systems'
 url='https://xkbcommon.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
-license=(custom)
+license=(MIT MIT-open-group HPND HPND-sell-variant X11
+	 LicenseRef-digital-equipment-corporation)
 makedepends=(
   libxml2
   meson
