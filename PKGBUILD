@@ -2,7 +2,7 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libunistring
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc='Library for manipulating Unicode strings and C strings'
 url='https://www.gnu.org/software/libunistring/'
@@ -11,7 +11,7 @@ license=(GPL)
 depends=(musl)
 provides=('libunistring.so')
 source=(https://ftp.gnu.org/gnu/$pkgname/${pkgname}-${pkgver}.tar.xz)
-sha512sums=('864d42b1d4ae4941fe5c8327d6726ab8e3a35d2d5f9d25ce4859a72ab2f549a7b68f58638cf8767d863f58161d1a4053495d185860964a942d6750e42facf931')
+sha512sums=('3623cec1d5730353167a3b46d37c3ee42cd0362169285185cad4cd6d6e10b25e55d44a005bfe4769582f7b0a54f2bd8107b8f38bbf267b2e40beec3390f459fb')
 
 prepare()
 {
