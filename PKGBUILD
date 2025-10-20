@@ -25,13 +25,11 @@ source=("https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-$
 sha256sums=('bb1543d956a5b962ee414174e9882c5d6fac3af9f95ebf48defb105151780ed1'
             '5474fe234a693389dd341f1bf55459af43d592b394253324eaec5ca83f651387')
 
-prepare()
-{
+prepare() {
   _patch_ libxkbcommon-xkbcommon-${pkgver}
 }
 
-build()
-{
+build() {
   ewe-meson libxkbcommon-xkbcommon-${pkgver} build \
     -Denable-x11=false \
     -Denable-docs=false
@@ -50,8 +48,7 @@ check() {
   meson test -C build --print-errorlogs
 }
 
-package()
-{
+package() {
   meson install -C build --destdir "$pkgdir"
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" \
     -m644 libxkbcommon-xkbcommon-${pkgver}/LICENSE
