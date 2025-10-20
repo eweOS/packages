@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gtkmm
-pkgver=4.18.0
-pkgrel=2
+pkgver=4.20.0
+pkgrel=1
 pkgdesc="C++ bindings for GTK 4"
 url="https://www.gtkmm.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -22,7 +22,7 @@ makedepends=(
 )
 checkdepends=(weston)
 source=("git+https://gitlab.gnome.org/GNOME/gtkmm.git#tag=$pkgver")
-sha256sums=('ecdb3e0ed10118fd2b434db37b3515c8cd3fae66dc57c7b0f010587e189ca060')
+sha256sums=('ea97fc1951f3c5714872bb1e743e1a28a0edd28ee082ce64c8b4fecf934ea371')
 
 prepare() {
   cd gtkmm
