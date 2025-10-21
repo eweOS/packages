@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=(texlive-bin libsynctex)
-pkgver=20240312
-pkgrel=4
+pkgver=20250308
+pkgrel=1
 license=(GPL-2.0-or-later)
 arch=(x86_64 aarch64 riscv64 loongarch64)
 makedepends=(bash
@@ -31,10 +31,17 @@ makedepends=(bash
              zlib
              zziplib)
 url='https://tug.org/texlive/'
-source=("https://mirrors.nju.edu.cn/tex-historic/systems/texlive/${pkgver:0:4}/texlive-$pkgver-source.tar.xz")
-sha256sums=('7b6d87cf01661670fac45c93126bed97b9843139ed510f975d047ea938b6fe96')
+source=(
+  "https://texlive.info/historic/systems/texlive/${pkgver:0:4}/texlive-$pkgver-source.tar.xz"
+  lua-root.patch
+  ptex-debug-print.patch
+)
+sha256sums=('fffdb1a3d143c177a4398a2229a40d6a88f18098e5f6dcfd57648c9f2417490f'
+            'c2d6a8b14dd8197874c1d894e70df80ad076f28ee4d1cff81e3b7811d9264fb9'
+            'aa838f09003c62c2efb5770a8de66f99b409df049fbd65098d80fd1957d06c50')
 
 prepare() {
+  _patch_ texlive-$pkgver-source
   cd texlive-$pkgver-source
 
 # bibtex-x needs kpathsea flags
