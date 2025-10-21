@@ -49,13 +49,13 @@ arch=(any)
 for _coll in ${_collections[@]}; do
   pkgname+=(texlive-$_coll)
 done
-pkgver=20240312
+pkgver=20250308
 _dbver=${pkgver:0:4}.2
-pkgrel=2
+pkgrel=1
 pkgdesc='TeX Live - '
 license=(GPL)
 url='https://tug.org/texlive/'
-_mirror="https://mirrors.nju.edu.cn/tex-historic"
+_mirror="https://texlive.info/historic"
 source=(texmf-dist.tar.xz::${_mirror}/systems/texlive/${pkgver:0:4}/texlive-$pkgver-texmf.tar.xz
         texlive-bin.tar.xz::${_mirror}/systems/texlive/${pkgver:0:4}/texlive-$pkgver-bin.tar.xz
         tlpkg.tar.gz::${_mirror}/systems/texlive/${pkgver:0:4}/install-tl-unx.tar.gz
@@ -72,14 +72,14 @@ source=(texmf-dist.tar.xz::${_mirror}/systems/texlive/${pkgver:0:4}/texlive-$pkg
         texlive-updmap.script
         80-mtxrun.hook
         mtxrun.script
-        https://github.com/rrthomas/pdfjam/commit/f9b86dcf.patch)
-sha256sums=('c8eae2deaaf51e86d93baa6bbcc4e94c12aa06a0d92893df474cc7d2a012c7a7'
-            '6242e6c6f2a7e103cfd873d9a52c99d7af6bd1facc490ae7013e799e5924d1cb'
-            'fa845fbbd8d5b78c93fb5e9f97e5d908b42fb50c1ae164f7d9aa31c8ad8c31c7'
-            '28884b1fe95bee12ebd919ae2250bc4217743ee29801f9de1e25c20810a2f299'
+	https://gitlab.com/git-latexdiff/git-latexdiff/-/commit/a0aa6bad.patch)
+sha256sums=('08dcda7430bf0d2f6ebb326f1e197e1473d3f7cc0984a2adb7236df45316c7cf'
+            'ff0faf3d334def167110895d1102df878bd9180f971cdd62be08e0395e372f77'
+            '9938f192af75f792e84282580cce6eedac32969e0e07b33cb39ca1b699e948b6'
+            'ae3d202a8e2f8ce3b4e770db626d1d2707798ead8ebb713ad8e5aa14ede77fee'
             '5e79c40cf3ab93348fc89e97890198601767ea2c8fea89ea76088c17a2b35962'
-            '204245fb6f72091c72ad78727ce970a9d03795ef6cab35b9e5d7cf69630ed171'
-            '13932156d6c46cd8d2c19d92f574d92a7aa461928fce793fc06835714b768bc9'
+            '04fe1843336ee0707794497a7179abc31d5fc5148119e5b9b5f6c5de0962fa59'
+            '758c6593be7d0ee7e50095d08401a9fd3ea16db2f6b8bf22a8682fa82334a24f'
             '95f6540c49b11f1ece8010d76b53ca90efd61e1831530562bfcde4350f6c1db1'
             'e6d399faee55ba461cf7e617f2369f5c516de292b28afc6665c9e3fe2b821973'
             'c64c2a6371e94b0f67799c0ac84ea74d8edbc181b26672aa15b8132ec5fbabc3'
@@ -89,7 +89,7 @@ sha256sums=('c8eae2deaaf51e86d93baa6bbcc4e94c12aa06a0d92893df474cc7d2a012c7a7'
             'ee6e76192a5ad880a2152cd7900b86c8465239fb228045a2f8360b0d7a449f4a'
             'f6bb67db32d37ca15eba88bd15d8b9882c61915f98bc8d7c3c21a66c8cf8f019'
             '98b730e917281227e29077ba5689ad78baee0af3859b55966b2604c6a85f1305'
-            '5f027b8a2492d89a04c2083c0628ff2305b2646412a1e7bdf79a498b98d08d6a')
+            'e6b754b49563531ec737891ae7c9ad3d2e5bc716e0718ae7bfda298463af48f1')
 options=(!strip) # Nothing to strip, save packaging time
 
 _grep_til_blank() {
@@ -116,14 +116,14 @@ prepare() {
   ln -sf {texlive-$pkgver-texmf/,}texmf-dist
   ln -sf {install-tl-$pkgver/,}tlpkg
   cp {,tlpkg/}texlive.tlpdb
-  ln -sf {texlive-20240312-bin/,}x86_64-linuxmusl
-
-# Fix --paper option in pdfjam
-  patch -d texmf-dist/scripts/pdfjam -p2 < f9b86dcf.patch
+  ln -sf {texlive-$pkgver-bin/,}x86_64-linuxmusl
 
 # Customize configuration
   patch -d texmf-dist/web2c -p0 < texmf.cnf.patch
   patch -d texmf-dist/web2c -p0 < texmfcnf.lua.patch
+
+# Fix git-latexdiff
+  patch -d texmf-dist/scripts/git-latexdiff -p1 < a0aa6bad.patch
 
   # Copy files where format and maps will be extracted from
   cp texmf-dist/web2c/{fmtutil.cnf,updmap.cfg,texmf.cnf} .
@@ -334,6 +334,8 @@ package_texlive-doc() {
   rm "$pkgdir"/usr/share/info/asy-faq.info
   rm "$pkgdir"/usr/share/man/man1/{asy,dvisvgm,epsffit,extractres,includeres,psbook,psjoin,psnup,psresize,psselect,pstops,psutils,t1ascii,t1asm,t1binary,t1disasm,t1mac,t1unmac}.1
   rm -f "$pkgdir"/usr/share/man{,/man*}/{Makefile,*.pdf}
+# Fix permissions
+  find "$pkgdir" -type d -exec chmod 755 {} \;
 }
  
 package_texlive-meta() {
