@@ -1,0 +1,23 @@
+From cb3e797fde5c748164eb70d9859336141136a166 Mon Sep 17 00:00:00 2001
+From: Constantin Piber <59023762+cpiber@users.noreply.github.com>
+Date: Mon, 10 Nov 2025 23:02:48 +0100
+Subject: [PATCH] internal: fix missing headers (#86)
+
+---
+ src/memory/Memory.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/memory/Memory.cpp b/src/memory/Memory.cpp
+index 567f6f7..ff085e8 100644
+--- a/src/memory/Memory.cpp
++++ b/src/memory/Memory.cpp
+@@ -7,6 +7,9 @@ using namespace Hyprutils::Memory;
+ #ifdef HU_UNIT_TESTS
+ 
+ #include <gtest/gtest.h>
++#include <chrono>
++#include <thread>
++#include <vector>
+ 
+ #define SP CSharedPointer
+ #define WP CWeakPointer
