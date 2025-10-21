@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libxkbcommon
-pkgver=1.12.1
+pkgver=1.12.2
 pkgrel=1
 pkgdesc='Keymap handling library for toolkits and window systems'
 url='https://xkbcommon.org/'
@@ -18,17 +18,8 @@ makedepends=(
 provides=(libxkbcommon.so libxkbregistry.so)
 depends=(libxml2 xkeyboard-config)
 checkdepends=(weston)
-# 0001: Under review, fix test failures on musl where newlocale() doesn't
-#	complain about invalid locales.
-#	https://github.com/xkbcommon/libxkbcommon/pull/880
-source=("https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-${pkgver}.tar.gz"
-	"0001-compose-No-fallback-if-no-missing-locale-detection.patch")
-sha256sums=('bb1543d956a5b962ee414174e9882c5d6fac3af9f95ebf48defb105151780ed1'
-            '5474fe234a693389dd341f1bf55459af43d592b394253324eaec5ca83f651387')
-
-prepare() {
-  _patch_ libxkbcommon-xkbcommon-${pkgver}
-}
+source=("https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-${pkgver}.tar.gz")
+sha256sums=('40a333433d850c308f6fe8b15b57c54c769aad655e9c6563cc288bc650111ecf')
 
 build() {
   ewe-meson libxkbcommon-xkbcommon-${pkgver} build \
