@@ -1,0 +1,35 @@
+From 664d28f5b2afc9d9f0afc6ba151a381bdc3c5d3f Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Tue, 21 Oct 2025 04:10:13 +0000
+Subject: [PATCH] GLStateEGL: Also try loading libOpenGL.so as OpenGL library
+ on non-win32
+
+Currently when creating context through EGL on non-win32 systems, we try
+to load OpenGL from libGL.so and libGL.so.1. However, these libraries
+are expected to contain GLX symbols and cannot be built on systems
+without X11.
+
+Let's try also loading OpenGL from libOpenGL.so, which contains core
+OpenGL symbols only and is present on Wayland-only systems.
+
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+---
+ src/gl-state-egl.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gl-state-egl.cpp b/src/gl-state-egl.cpp
+index 61d7f0688262..fe833195e557 100644
+--- a/src/gl-state-egl.cpp
++++ b/src/gl-state-egl.cpp
+@@ -649,7 +649,7 @@ GLStateEGL::gotValidDisplay()
+ #endif
+ #elif GLMARK2_USE_GL
+     EGLenum apiType(EGL_OPENGL_API);
+-    std::initializer_list<const char *> libNames = { "libGL.so", "libGL.so.1" };
++    std::initializer_list<const char *> libNames = { "libOpenGL.so", "libGL.so", "libGL.so.1" };
+     if (!GLAD_EGL_VERSION_1_4) {
+         Log::error("EGL version %d.%d does not support the OpenGL API\n",
+                    egl_major, egl_minor);
+-- 
+2.51.0
+
