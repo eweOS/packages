@@ -1,21 +1,17 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=supertuxkart
-pkgver=1.4
-pkgrel=2
+pkgver=1.5
+pkgrel=1
 pkgdesc='Kart racing game featuring Tux and his friends'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://supertuxkart.net'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('openal' 'libvorbis' 'freetype2' 'harfbuzz' 'curl'
          'sqlite' 'libjpeg' 'libpng' 'hicolor-icon-theme' 'sdl2' 'shaderc')
 makedepends=('cmake' 'setconf' 'ninja')
-source=("https://github.com/supertuxkart/stk-code/releases/download/${pkgver}/SuperTuxKart-${pkgver}-src.tar.xz"
-        "fix-missing-rotation.patch::https://github.com/supertuxkart/stk-code/commit/0c2b81ac1f9ff29f5012a98f530880b87f416337.patch"
-        "$pkgname-$pkgver-fix-crash.patch::https://github.com/Benau/stk-code/commit/8544f19b59208ae93fc3db0cf41bd386c6aefbcb.patch")
-sha256sums=('9890392419baf4715313f14d5ad60746f276eed36eb580636caf44e2532c0f03'
-            '56a97314b89617eb8659a4164ec8ccc5a961c8a743bc99ba4af9a272f0e42202'
-            'f27b4156d6052a0e23ae958788531458a713bb566fd2d563854f03034b8fbbe9')
+source=("https://github.com/supertuxkart/stk-code/releases/download/${pkgver}/SuperTuxKart-${pkgver}-src.tar.gz")
+sha256sums=('33cf8841e4ff4082d80b9248014295bbbea61d14683e86dff100e3ab8f7b27cb')
 
 prepare() {
   _patch_ SuperTuxKart-${pkgver}-src
