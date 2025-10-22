@@ -6,7 +6,7 @@ pkgname=(
   emacs-nogui
 )
 pkgver=30.2
-pkgrel=1
+pkgrel=2
 url='https://www.gnu.org/software/emacs/emacs.html'
 pkgdesc='Extensible, customizable, self-documenting free/libre text editor'
 arch=(x86_64 aarch64 riscv64 loongarch64)
