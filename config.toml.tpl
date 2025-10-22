@@ -1,4 +1,4 @@
-change-id = 129295
+change-id = 144675
 profile = "user"
 
 [llvm]
@@ -35,7 +35,6 @@ prefix = "/usr"
 [rust]
 debuginfo-level-std = 2
 channel = "stable"
-description = "eweOS rust %RUSTVER%"
 rpath = false
 backtrace-on-ice = true
 remap-debuginfo = true
