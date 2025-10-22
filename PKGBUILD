@@ -2,7 +2,7 @@
 
 pkgname=xfce4-dict
 pkgver=0.8.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A dictionary plugin for the Xfce panel"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://docs.xfce.org/apps/xfce4-dict/start"
