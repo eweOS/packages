@@ -2,7 +2,7 @@
 
 pkgbase=wlroots0.19
 pkgname=(wlroots0.19-devel wlroots0.19)
-pkgver=0.19.1
+pkgver=0.19.2
 pkgrel=1
 pkgdesc='Modular Wayland compositor library'
 license=('MIT')
@@ -13,7 +13,7 @@ makedepends=('flex' 'linux-headers' 'meson' 'wayland-protocols' 'hwdata'
 	     'libegl' 'pixman' 'wayland' 'libdisplay-info' 'lcms2' 'libliftoff'
 	     'libdrm')
 source=("$url/-/releases/$pkgver/downloads/wlroots-$pkgver.tar.gz")
-sha256sums=('f6bace4eac8708010430411a64f42055249ee7742cac29efa1a4036988291b2b')
+sha256sums=('09a0a8d60104c8b0772fee4f60ba76a89aed7e59dff7659d00960fba06bdf267')
 
 build() {
     ewe-meson "wlroots-$pkgver" build \
