@@ -1,0 +1,37 @@
+diff --git i/libvaladoc/charts/chart.vala w/libvaladoc/charts/chart.vala
+index 4e642d1ce..5ef49527b 100644
+--- i/libvaladoc/charts/chart.vala
++++ w/libvaladoc/charts/chart.vala
+@@ -52,15 +52,16 @@ public class Valadoc.Charts.Chart : Api.Visitor {
+ 		context.render (graph, file_type, file);
+ 	}
+ 
+-	public uint8[]? write_buffer (string file_type) {
++	public uint8[:size_t]? write_buffer (string file_type) {
+ 		if (context == null) {
+ 			context = factory.create_context (graph);
+ 		}
+ 
+-		uint8[]? data;
++		uint8[:size_t]? data;
+ 
+ 		/* This will return null in data if it fails. */
+ 		context.render_data (graph, file_type, out data);
++
+ 		return data;
+ 	}
+ 
+diff --git i/vapi/libgvc.vapi w/vapi/libgvc.vapi
+index b128a02ad..8a2211ce2 100644
+--- i/vapi/libgvc.vapi
++++ w/vapi/libgvc.vapi
+@@ -91,7 +91,7 @@ namespace Gvc {
+ 		public int render_jobs (Graph graph);
+ 
+ 		[CCode (cname = "gvRenderData")]
+-		public int render_data (Graph graph, [CCode (type = "char*")] string file_type, [CCode (array_length_type = "unsigned int", type = "char**")] out uint8[] output_data);
++		public int render_data (Graph graph, [CCode (type = "char*")] string file_type, [CCode (array_length_type = "size_t", type = "char**")] out uint8[] output_data);
+ 	}
+ 
+ 	[Compact]
+
