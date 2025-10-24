@@ -26,6 +26,7 @@ depends=(
   libepoxy
   desktop-file-utils
   librsvg
+  libcups
 )
 makedepends=(
   meson
@@ -37,6 +38,7 @@ makedepends=(
   glslang
   lld
   linux-headers
+  shaderc
 )
 checkdepends=(weston)
 source=(
@@ -53,8 +55,6 @@ build() {
     -D x11-backend=false
     -D broadway-backend=false
     -D media-gstreamer=disabled
-    -D print-cups=disabled
-    -D vulkan=disabled
     -D build-demos=false
     -D build-examples=false
     -D build-tests=false
