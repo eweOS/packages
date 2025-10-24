@@ -1,9 +1,28 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
+# Notes about Vala bootstrapping:
+#
+#	Vala sources must be compiled to C sources before translated to machine
+#	code, the compiler is called Valac, which however, requires
+#	bootstrapping since the whole Vala toolchain is written in Vala.
+#
+#	Thanks to the Vala team, the release tarball contains pre-compiled C
+#	code, which makes bootstrap quite simple as only a C compiler is
+#	necessary.
+#
+#	However, we still want to build the compiler twice since we may want to
+#	apply some patches: without a Vala compiler available, it's impossible
+#	to re-generate the C source, and the old, unpatched C source will be
+#	built into the executable (WARNING!)
+#
+#	And if some patches are necessary for the toolchain to function, the
+#	testsuite may probably fail when running against the stage1 toolchain
+#	(unpatched). Let's run it only for stage2 Vala toolchain.
+
 pkgname=vala
 _ver=0.56
 pkgver=$_ver.18
-pkgrel=4
+pkgrel=5
 pkgdesc='Compiler for Vala'
 url='https://vala.dev'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +35,7 @@ checkdepends=(dbus)
 #	in tests-extra-environment.sh
 # 0002: Wait for upstream, starting from 13.0.0 graphviz starts to require
 #	size_t instead of unsigned int in arguments passed to gvRenderData,
-#	which is an ABI breakage.
+#	which is an ABI breakage. This patch modifies Vala code.
 #	https://gitlab.gnome.org/GNOME/vala/-/issues/1621
 source=("https://download.gnome.org/sources/vala/$_ver/vala-$pkgver.tar.xz"
 	"0001-fix-valadoc-ld-library-path.patch"
@@ -37,17 +56,30 @@ prepare() {
 }
 
 build () {
-	cd vala-"$pkgver"
-	./configure --prefix=/usr
+	mkdir -p stage1-root stage1-build
+	cd stage1-build
+
+	"$srcdir/vala-$pkgver/configure" --prefix="$srcdir"/stage1-root
+
 	make
+	make install
+
+	mkdir -p "$srcdir"/stage2-build
+	cd "$srcdir"/stage2-build
+
+	PATH="$srcdir/stage1-root/bin:$PATH" \
+		"$srcdir/vala-$pkgver/configure" --prefix=/usr
+
+	PATH="$srcdir/stage1-root/bin:$PATH" make
 }
 
 check() {
-	cd vala-"$pkgver"
-	make check
+	cd stage2-build
+
+	PATH="$srcdir/stage1-root/bin:$PATH" make check
 }
 
 package() {
-	cd vala-"$pkgver"
-	make install DESTDIR="$pkgdir"
+	cd stage2-build
+	PATH="$srcdir/stage1-root/bin:$PATH" make install DESTDIR="$pkgdir"
 }
