@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index d76fd29..4a3898a 100644
+index 7ebb7d43b59e..643a60b39598 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -40,9 +40,13 @@ include(GenerateExportHeader)
+@@ -29,9 +29,13 @@ include(GenerateExportHeader)
  option(ENABLE_KCM "Enable KDE Config Module" On)
  option(ENABLE_CONFIG_QT "Enable fcitx5-config-qt" On)
  option(ENABLE_TEST "Enable test" Off)
@@ -14,9 +14,9 @@ index d76fd29..4a3898a 100644
 +add_definitions(-DENABLE_X11)
 +endif ()
  
+ set(CONFIG_QT_UNIQUE_APP_SUPPORT 0)
  if (ENABLE_CONFIG_QT)
-     find_package(KF${QT_MAJOR_VERSION}ItemViews REQUIRED)
-@@ -95,15 +99,19 @@ include("${FCITX_INSTALL_CMAKECONFIG_DIR}/Fcitx5Utils/Fcitx5CompilerSettings.cma
+@@ -79,15 +83,19 @@ include("${FCITX_INSTALL_CMAKECONFIG_DIR}/Fcitx5Utils/Fcitx5CompilerSettings.cma
  
  find_package(PkgConfig REQUIRED)
  find_package(Gettext REQUIRED)
@@ -37,7 +37,7 @@ index d76fd29..4a3898a 100644
  
  feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
 diff --git a/src/lib/configwidgetslib/CMakeLists.txt b/src/lib/configwidgetslib/CMakeLists.txt
-index 5476c69..7aba819 100644
+index 5476c692511b..7aba819e6b3c 100644
 --- a/src/lib/configwidgetslib/CMakeLists.txt
 +++ b/src/lib/configwidgetslib/CMakeLists.txt
 @@ -28,5 +28,7 @@ target_link_libraries(configwidgetslib
@@ -51,7 +51,7 @@ index 5476c69..7aba819 100644
 +target_link_libraries(configwidgetslib layoutlib)
 +endif ()
 diff --git a/src/lib/configwidgetslib/layoutselector.cpp b/src/lib/configwidgetslib/layoutselector.cpp
-index fa95cdb..b5b5195 100644
+index e38ad81a6391..57ec28a1e7d5 100644
 --- a/src/lib/configwidgetslib/layoutselector.cpp
 +++ b/src/lib/configwidgetslib/layoutselector.cpp
 @@ -6,7 +6,9 @@
@@ -64,7 +64,7 @@ index fa95cdb..b5b5195 100644
  #include "layoutmodel.h"
  #include "ui_layoutselector.h"
  #include <QDBusPendingCallWatcher>
-@@ -45,6 +47,7 @@ LayoutSelector::LayoutSelector(DBusProvider *dbus, QWidget *parent)
+@@ -44,6 +46,7 @@ LayoutSelector::LayoutSelector(DBusProvider *dbus, QWidget *parent)
      connect(ui_->variantComboBox,
              qOverload<int>(&QComboBox::currentIndexChanged), this,
              &LayoutSelector::variantComboBoxChanged);
@@ -72,7 +72,7 @@ index fa95cdb..b5b5195 100644
      if (qApp->platformName() == "xcb") {
          keyboardLayoutWidget_ = new KeyboardLayoutWidget(this);
          keyboardLayoutWidget_->setMinimumSize(QSize(400, 200));
-@@ -52,6 +55,7 @@ LayoutSelector::LayoutSelector(DBusProvider *dbus, QWidget *parent)
+@@ -51,6 +54,7 @@ LayoutSelector::LayoutSelector(DBusProvider *dbus, QWidget *parent)
                                               QSizePolicy::Expanding);
          ui_->verticalLayout->addWidget(keyboardLayoutWidget_);
      }
@@ -80,7 +80,7 @@ index fa95cdb..b5b5195 100644
  }
  
  LayoutSelector::~LayoutSelector() {}
-@@ -128,6 +132,7 @@ void LayoutSelector::layoutComboBoxChanged() {
+@@ -123,6 +127,7 @@ void LayoutSelector::layoutComboBoxChanged() {
      ui_->variantComboBox->setCurrentIndex(0);
  }
  
@@ -88,7 +88,7 @@ index fa95cdb..b5b5195 100644
  void LayoutSelector::variantComboBoxChanged() {
      if (!keyboardLayoutWidget_) {
          return;
-@@ -142,6 +147,9 @@ void LayoutSelector::variantComboBoxChanged() {
+@@ -137,6 +142,9 @@ void LayoutSelector::variantComboBoxChanged() {
          keyboardLayoutWidget_->setVisible(true);
      }
  }
@@ -99,7 +99,7 @@ index fa95cdb..b5b5195 100644
  } // namespace kcm
  } // namespace fcitx
 diff --git a/src/lib/configwidgetslib/layoutselector.h b/src/lib/configwidgetslib/layoutselector.h
-index beee182..4fe9d56 100644
+index 4746ad345268..7dce73affe6a 100644
 --- a/src/lib/configwidgetslib/layoutselector.h
 +++ b/src/lib/configwidgetslib/layoutselector.h
 @@ -53,7 +53,9 @@ private:
