@@ -3,8 +3,8 @@
 pkgbase=brotli
 pkgname=('brotli' 'python-brotli' 'brotli-testdata')
 _gitcommit=e61745a6b7add50d380cfd7d3883dd6c62fc2c71
-pkgver=1.1.0
-pkgrel=4
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='Generic-purpose lossless compression algorithm'
 url='https://github.com/google/brotli'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -17,7 +17,7 @@ makedepends=(
   python-wheel
 )
 source=("https://github.com/google/brotli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e720a6ca29428b803f4ad165371771f5398faba397edf6778837a18599ea13ff')
+sha256sums=('816c96e8e8f193b40151dad7e8ff37b1221d019dbcb9c35cd3fadbfe6477dfec')
 
 build()
 {
