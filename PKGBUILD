@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=bash-completion
-pkgver=2.16.0
-pkgrel=2
+pkgver=2.17.0
+pkgrel=1
 pkgdesc='Programmable completion for the bash shell'
 arch=(any)
 url='https://github.com/scop/bash-completion'
@@ -13,7 +13,7 @@ options=(!emptydirs !makeflags)
 source=($url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz
 	"0001-deprecate-secret-tool.patch::https://github.com/scop/bash-completion/commit/af8a80d8916edd4a1c146afb2743651b6c3ca406.patch")
 validpgpkeys=(A558062B6D5DA1347CD468D52B0AE2C1B09B07CB)
-sha256sums=('3369bd5e418a75fb990863925aed5b420398acebb320ec4c0306b3eae23f107a'
+sha256sums=('dd9d825e496435fb3beba3ae7bea9f77e821e894667d07431d1d4c8c570b9e58'
             '09362a55277766f49d7d06020f912807b3e4916b5bc8be1bc06596a14ee35359')
 
 prepare() {
