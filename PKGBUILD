@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=systemc
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='Set of C++ classes and macros which provide an event-driven simulation interface for modeling and describing complex hardware systems.'
 url='https://www.accellera.org/downloads/standards/systemc'
@@ -11,7 +11,7 @@ depends=(musl)
 makedepends=(cmake samurai)
 provides=(libsystemc.so)
 source=("https://github.com/accellera-official/systemc/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d07765d0d2ffd6c01767880d0c6aaf53cd9487975f898c593ffffd713258fcbb')
+sha256sums=('9b3693ed286aab958b9e5d79bb0ad3bc523bbc46931100553275352038f4a0c4')
 
 build () {
 	# OVERRIDE_DEFAULT_STACK_SIZE may be necessary
