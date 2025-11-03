@@ -2,7 +2,7 @@
 
 _pkgbase=elfutils
 pkgname=(libelf elfutils)
-pkgver=0.193
+pkgver=0.194
 pkgrel=1
 pkgdesc="libelf is a free ELF object file access library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ options=(staticlibs)
 source=(https://sourceware.org/$_pkgbase/ftp/$pkgver/$_pkgbase-$pkgver.tar.bz2
 	musl-utils.patch
 	fix-includes.patch)
-sha256sums=('7857f44b624f4d8d421df851aaae7b1402cfe6bcdd2d8049f15fc07d3dde7635'
+sha256sums=('09e2ff033d39baa8b388a2d7fbc5390bfde99ae3b7c67c7daaf7433fbcf0f01e'
             'c92ade324270f3f34fe4978cd55dbfcdc867cf8421d23edc23c78414b5b1ebb3'
             'cb0f901094772355120a7bf428432f41eb315230404382cd36c90c27d3395f5f')
 prepare()
