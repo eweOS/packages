@@ -1,18 +1,19 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=qt6-networkauth
-pkgver=6.9.1
+pkgbase=qt6-networkauth
+pkgname=(qt6-networkauth qt6-networkauth-devel)
+pkgver=6.10.0
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Network authentication module'
 depends=(qt6-base)
-makedepends=(cmake git ninja)
+makedepends=(cmake git ninja qt6-base-devel)
 groups=(qt6)
-_pkgfn=${pkgname/6-/}
+_pkgfn=${pkgbase/6-/}
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver)
-sha256sums=('c165d46ab91244286946e9c2ce1fc87a5c7f81242485ea068ba34e425fb4be50')
+sha256sums=('cfc00473641a7202b91fee0eec45d1554244cfa2a31e434f68a7723f2c555bad')
 
 build() {
   export CMARGS=(
@@ -39,11 +40,25 @@ build() {
     "${CMARGS[@]}" \
     "${DIRARGS[@]}"
   cmake --build build
+
+  DESTDIR="$srcdir/install" cmake --install build
+
+  cd $srcdir/install
+  _pick_ devel usr/include/qt6/*/6.*
 }
 
-package() {
-  DESTDIR="$pkgdir" cmake --install build
+package_qt6-networkauth() {
+  cp -r $srcdir/install/* $pkgdir/
 
   install -d "$pkgdir"/usr/share/licenses
   ln -s /usr/share/licenses/qt6-base "$pkgdir"/usr/share/licenses/$pkgname
+}
+
+package_qt6-networkauth-devel() {
+  pkgdesc+=" (Private headers)"
+  depends+=(qt6-networkauth qt6-base-devel)
+
+  cp -r $srcdir/pkgs/devel/* $pkgdir/
+
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
 }
