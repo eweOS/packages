@@ -1,7 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=qt6-location
-_qtver=6.9.1
+pkgbase=qt6-location
+pkgname=(qt6-location qt6-location-devel)
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,13 +17,16 @@ depends=(qt6-base
          qt6-positioning)
 makedepends=(cmake
              git
-             ninja)
+             ninja
+             qt6-base-devel
+             qt6-declarative-devel
+             qt6-positioning-devel)
 groups=(qt6)
-_pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
+_pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
 )
-sha256sums=('c0e8e8907e047ede59f5800f4f9bfd54286239aab1abe7df6723a8fcc127ef57')
+sha256sums=('cbd43e87fb4b2cccd8e01e0c762f951fc3c3d6b99cd2b80d6e526120a25df800')
 
 build() {
   export CMARGS=(
@@ -48,11 +52,24 @@ build() {
     "${CMARGS[@]}" \
     "${DIRARGS[@]}"
   cmake --build build
+
+  DESTDIR="$srcdir/install" cmake --install build
+
+  cd $srcdir/install
+  _pick_ devel usr/include/qt6/*/6.*
 }
 
-package() {
-  DESTDIR="$pkgdir" cmake --install build
+package_qt6-location() {
+  cp -r $srcdir/install/* $pkgdir/
 
-  install -d "$pkgdir"/usr/share/licenses
-  ln -s /usr/share/licenses/qt6-base "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
+}
+
+package_qt6-location-devel() {
+  pkgdesc+=" (Private headers)"
+  depends+=(qt6-location qt6-base-devel qt6-positioning-devel)
+
+  cp -r $srcdir/pkgs/devel/* $pkgdir/
+
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
 }
