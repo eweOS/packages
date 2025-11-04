@@ -1,7 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=qt6-quicktimeline
-pkgver=6.9.1
+pkgbase=qt6-quicktimeline
+pkgname=(qt6-quicktimeline qt6-quicktimeline-devel)
+pkgver=6.10.0
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
@@ -11,11 +12,13 @@ depends=(qt6-base
          qt6-declarative)
 makedepends=(cmake
              git
-             ninja)
+             ninja
+             qt6-base-devel
+             qt6-declarative-devel)
 groups=(qt6)
 _pkgfn=${pkgname/6-/}
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver)
-sha256sums=('94fd463d2e6567d7fd663f4e296ef3218d63611983d5ba0a6ff7da693124e769')
+sha256sums=('1d2fd155f1f6d6595af700d1c17650df78247078f62c74b9b062526ea1a7d99f')
 
 build() {
   export CMARGS=(
@@ -41,12 +44,24 @@ build() {
     "${CMARGS[@]}" \
     "${DIRARGS[@]}"
   cmake --build build
+
+  DESTDIR="$srcdir/install" cmake --install build
+
+  cd $srcdir/install
+  _pick_ devel usr/include/qt6/*/6.*
 }
 
-package() {
-  DESTDIR="$pkgdir" cmake --install build
+package_qt6-quicktimeline() {
+  cp -r $srcdir/install/* $pkgdir/
 
-  install -d "$pkgdir"/usr/share/licenses
-  ln -s /usr/share/licenses/qt6-base "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
 }
 
+package_qt6-quicktimeline-devel() {
+  pkgdesc+=" (Private headers)"
+  depends+=(qt6-quicktimeline qt6-base-devel qt6-declarative-devel)
+
+  cp -r $srcdir/pkgs/devel/* $pkgdir/
+
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
+}
