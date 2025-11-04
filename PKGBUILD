@@ -3,8 +3,9 @@
 pkgbase=qt6-multimedia
 pkgname=(qt6-multimedia
          qt6-multimedia-ffmpeg
-         qt6-multimedia-gstreamer)
-_qtver=6.9.1
+         qt6-multimedia-gstreamer
+         qt6-multimedia-devel)
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -23,13 +24,14 @@ makedepends=(cmake
              gst-plugins-base
              gst-plugins-bad
              ninja
-             qt6-declarative
-             qt6-quick3d
+             qt6-base-devel
+             qt6-declarative-devel
+             qt6-quick3d-devel
              qt6-shadertools)
 groups=(qt6)
 _pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('955e36459518ee55f8e2bb79defc6e44aa94dc1edf5ac58a22d7734b2e07391d')
+sha256sums=('04424021cf0d1d19799f5967310d484d1afa6fdd0b31725d0ee7608d2eef1126')
 
 build() {
   export CMARGS=(
@@ -56,26 +58,39 @@ build() {
     "${CMARGS[@]}" \
     "${DIRARGS[@]}"
   cmake --build build
+
+  DESTDIR="$srcdir/install" cmake --install build
+
+  cd $srcdir/install
+  _pick_ devel usr/include/qt6/*/6.*
 }
 
 package_qt6-multimedia() {
   depends+=(qt6-multimedia-backend)
   optdepends=('qt6-declarative: QML bindings'
               'qt6-quick3d: for QtQuick3DAudio')
+  cp -r $srcdir/install/* $pkgdir/
 
-  DESTDIR="$pkgdir" cmake --install build
-# Split plugins
+  # Split plugins
   rm -r "$pkgdir"/usr/lib/qt6/plugins/
   rm "$pkgdir"/usr/lib/cmake/Qt6Multimedia/Qt6Q{FFmpeg,Gstreamer}*
   rm -r "$pkgdir"/usr/include/qt6/Qt{FFmpeg,Gstreamer}MediaPluginImpl \
         "$pkgdir"/usr/lib/cmake/Qt6{FFmpeg,Gstreamer}MediaPluginImplPrivate \
         "$pkgdir"/usr/lib/libQt6{FFmpeg,Gstreamer}MediaPluginImpl.a \
-        "$pkgdir"/usr/lib/qt6/metatypes/qt6{ffmpeg,gstreamer}mediapluginimplprivate_relwithdebinfo_metatypes.json \
+        "$pkgdir"/usr/lib/qt6/metatypes/qt6{ffmpeg,gstreamer}mediapluginimplprivate_metatypes.json \
         "$pkgdir"/usr/lib/qt6/mkspecs/modules/qt_lib_{ffmpeg,gstreamer}mediapluginimpl_private.pri \
         "$pkgdir"/usr/lib/qt6/modules/{FFmpeg,Gstreamer}MediaPluginImplPrivate.json
 
-  install -d "$pkgdir"/usr/share/licenses
-  ln -s /usr/share/licenses/qt6-base "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
+}
+
+package_qt6-multimedia-devel() {
+  pkgdesc+=" (Private headers)"
+  depends+=(qt6-multimedia qt6-base-devel qt6-declarative-devel qt6-quick3d-devel)
+
+  cp -r $srcdir/pkgs/devel/* $pkgdir/
+
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
 }
 
 package_qt6-multimedia-gstreamer() {
