@@ -1,7 +1,11 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=qt6-connectivity
-_qtver=6.9.1
+pkgbase=qt6-connectivity
+pkgname=(
+  qt6-connectivity
+  qt6-connectivity-devel
+)
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,14 +19,15 @@ depends=(bluez-libs
          qt6-base)
 makedepends=(cmake
              linux-headers
+	     qt6-base-devel
              git
              ninja)
 groups=(qt6)
-_pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
+_pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
 )
-sha256sums=('4988e50112104d5ad85e5b3cef66036ca445f18c22cf375d3dac9dcca95e0a17')
+sha256sums=('560ad5cf2600a0620b811ff9fb4ad0ca2a18ca7b2b6699dadf1961e5bf41fa99')
 
 build() {
   export CMARGS=(
@@ -48,11 +53,25 @@ build() {
     "${CMARGS[@]}" \
     "${DIRARGS[@]}"
   cmake --build build
+
+  DESTDIR="$srcdir/install" cmake --install build
+
+  cd $srcdir/install
+  _pick_ devel usr/include/qt6/*/6.*
 }
 
-package() {
-  DESTDIR="$pkgdir" cmake --install build
+package_qt6-connectivity() {
+  cp -r $srcdir/install/* $pkgdir/
 
   install -d "$pkgdir"/usr/share/licenses
   ln -s /usr/share/licenses/qt6-base "$pkgdir"/usr/share/licenses/$pkgname
+}
+
+package_qt6-connectivity-devel() {
+  pkgdesc+=" (Private headers)"
+  depends+=(qt6-connectivity)
+
+  cp -r $srcdir/pkgs/devel/* $pkgdir/
+
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
 }
