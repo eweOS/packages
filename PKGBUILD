@@ -1,9 +1,10 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=qt6-base
-_qtver=6.9.1
+pkgbase=qt6-base
+pkgname=(qt6-base qt6-base-devel)
+_qtver=6.10.0
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL-3.0-only
@@ -11,12 +12,12 @@ license=(GPL-3.0-only
          LicenseRef-Qt-Commercial
          Qt-GPL-exception-1.0)
 pkgdesc='A cross-platform application and UI framework'
-_pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
+_pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 depends=(libjpeg fontconfig vulkan-headers
          shared-mime-info sqlite mesa icu openssl
          libinput libxkbcommon dbus harfbuzz wayland
-         libproxy libcups)
-makedepends=(cmake cups ninja linux-headers wayland-protocols gtk3)
+         libproxy libcups double-conversion libb2 libproxy md4c)
+makedepends=(cmake cups ninja linux-headers wayland-protocols gtk3 vulkan-headers)
 optdepends=('freetds: MS SQL driver'
             'gdk-pixbuf2: GTK platform plugin'
             'gtk3: GTK platform plugin'
@@ -30,7 +31,7 @@ optdepends=('freetds: MS SQL driver'
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
         qt6-base-cflags.patch
 	qt6-base-nostrip.patch)
-sha256sums=('40caedbf83cc9a1959610830563565889878bc95f115868bbf545d1914acf28e'
+sha256sums=('ead4623bcb54a32257c5b3e3a5aec6d16ec96f4cda58d2e003f5a0c16f72046d'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
 
@@ -67,6 +68,7 @@ build() {
     -DFEATURE_system_harfbuzz=ON
     -DFEATURE_system_jpeg=ON
     -DFEATURE_system_png=ON
+    -DFEATURE_libproxy=ON
     -DFEATURE_opengles2=ON
     -DFEATURE_opengles3=ON
     -DFEATURE_opengles31=ON
@@ -85,17 +87,31 @@ build() {
     "${DIRARGS[@]}" \
     "${FEATUREARGS[@]}"
   cmake --build build
+
+  DESTDIR="$srcdir/install" cmake --install build
+
+  cd $srcdir/install
+  _pick_ devel usr/include/qt6/*/6.*
 }
 
-package() {
-  DESTDIR="$pkgdir" cmake --install build
+package_qt6-base() {
+  cp -r $srcdir/install/* $pkgdir/
 
-  install -Dm644 $_pkgfn/LICENSES/* -t "$pkgdir"/usr/share/licenses/$pkgbase
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
 
-# Install symlinks for user-facing tools
+  # Install symlinks for user-facing tools
   cd "$pkgdir"
   mkdir usr/bin
   while read _line; do
     ln -s $_line
   done < "$srcdir"/build/user_facing_tool_links.txt
+}
+
+package_qt6-base-devel() {
+  pkgdesc+=" (Private headers)"
+  depends+=(qt6-base)
+
+  cp -r $srcdir/pkgs/devel/* $pkgdir/
+
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
 }
