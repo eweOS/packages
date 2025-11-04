@@ -5,7 +5,7 @@
 pkgbase=kmod
 pkgname=(kmod libkmod)
 pkgver=34.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux kernel module management"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
@@ -87,5 +87,5 @@ package_libkmod() {
   provides=(libkmod.so)
 
   install -d "${pkgdir}/usr"
-  mv pkgs/libkmod/* "${pkgdir}/usr/"
+  mv pkgs/libkmod/usr/* "${pkgdir}/usr/"
 }
