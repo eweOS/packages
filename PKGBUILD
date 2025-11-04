@@ -1,7 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=qt6-positioning
-_qtver=6.9.1
+pkgbase=qt6-positioning
+pkgname=(qt6-positioning qt6-positioning-devel)
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +13,8 @@ depends=(qt6-base)
 makedepends=(cmake
              git
              ninja
-             qt6-declarative
+             qt6-base-devel
+             qt6-declarative-devel
              qt6-serialport)
 optdepends=('geoclue: geoclue2 plugin'
             'qt6-declarative: QML bindings'
@@ -20,7 +22,7 @@ optdepends=('geoclue: geoclue2 plugin'
 groups=(qt6)
 _pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('7062734b4989248ca3f0e3e4aebb9aa2e7ed2d6bf19e779e520c6ef69706ff26')
+sha256sums=('ecbfbc90636be19d65c975716e26689558e030e841c4a01afb3bd425756a1ee1')
 
 build() {
   export CMARGS=(
@@ -45,11 +47,24 @@ build() {
     "${CMARGS[@]}" \
     "${DIRARGS[@]}"
   cmake --build build
+
+  DESTDIR="$srcdir/install" cmake --install build
+
+  cd $srcdir/install
+  _pick_ devel usr/include/qt6/*/6.*
 }
 
-package() {
-  DESTDIR="$pkgdir" cmake --install build
+package_qt6-positioning() {
+  cp -r $srcdir/install/* $pkgdir/
 
-  install -d "$pkgdir"/usr/share/licenses
-  ln -s /usr/share/licenses/qt6-base "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
+}
+
+package_qt6-positioning-devel() {
+  pkgdesc+=" (Private headers)"
+  depends+=(qt6-positioning qt6-base-devel qt6-declarative-devel)
+
+  cp -r $srcdir/pkgs/devel/* $pkgdir/
+
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
 }
