@@ -1,19 +1,30 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=qt6-declarative
-_qtver=6.9.1
+pkgbase=qt6-declarative
+pkgname=(
+  qt6-declarative
+  qt6-declarative-devel
+)
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Classes for QML and JavaScript languages'
-_pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
+_pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 depends=(qt6-base)
-makedepends=(cmake git ninja python qt6-languageserver qt6-shadertools)
+makedepends=(
+  cmake git ninja python vulkan-headers
+  qt6-shadertools
+  qt6-languageserver-devel
+  qt6-base-devel
+  qt6-svg-devel
+)
+optdepends=('qt6-svg: for QtQuickVectorImage and svgtoqml')
 groups=(qt6)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('ccb94665df0199d7ee387b965b29677c8b89cfb1782bb6f01239b1d1524cec97')
+sha256sums=('6efd35520902395d865bc12e89f8442c3c228d0374f13af9a1888b844f56f6b0')
 
 build() {
   export CMARGS=(
@@ -40,18 +51,33 @@ build() {
     "${CMARGS[@]}" \
     "${DIRARGS[@]}"
   cmake --build build
+
+  DESTDIR="$srcdir/install" cmake --install build
+
+  cd $srcdir/install
+  _pick_ devel usr/include/qt6/*/6.*
 }
 
-package() {
-  DESTDIR="$pkgdir" cmake --install build
+package_qt6-declarative() {
+  cp -r $srcdir/install/* $pkgdir/
 
   # Install symlinks for user-facing tools
-  cd "$pkgdir"
+  pushd "$pkgdir"
   mkdir usr/bin
   while read _line; do
     ln -s $_line
   done < "$srcdir"/build/user_facing_tool_links.txt
+  popd
 
   install -d "$pkgdir"/usr/share/licenses
   ln -s /usr/share/licenses/qt6-base "$pkgdir"/usr/share/licenses/$pkgname
+}
+
+package_qt6-declarative-devel() {
+  pkgdesc+=" (Private headers)"
+  depends+=(qt6-declarative qt6-base-devel)
+
+  cp -r $srcdir/pkgs/devel/* $pkgdir/
+
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
 }
