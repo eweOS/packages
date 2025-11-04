@@ -1,19 +1,20 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=qt6-wayland
-_qtver=6.9.1
+pkgbase=qt6-wayland
+pkgname=(qt6-wayland qt6-wayland-devel)
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL-3.0-or-later LGPL-3.0-or-later FDL custom)
 pkgdesc='An implementation of the Language Server Protocol'
-_pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
-depends=(qt6-base qt6-declarative wayland)
-makedepends=(cmake git ninja wayland-protocols)
+_pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
+depends=(qt6-base qt6-declarative qt6-svg wayland)
+makedepends=(cmake git ninja wayland-protocols qt6-base-devel qt6-declarative-devel linux-headers)
 groups=(qt6)
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz")
-sha256sums=('7d21ea0e687180ebb19b9a1f86ae9cfa7a25b4f02d5db05ec834164409932e3e')
+sha256sums=('603f2b0a259b24bd0fb14f880d7761b1d248118a42a6870cdbe8fdda4173761f')
 
 build() {
   CXXFLAGS+=" -D_LIBCPP_TYPEINFO_COMPARISON_IMPLEMENTATION=2"
@@ -23,11 +24,13 @@ build() {
     -DCMAKE_BUILD_TYPE=RelWithDebInfo
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
     -DCMAKE_MESSAGE_LOG_LEVEL=STATUS
+    -DCMAKE_PREFIX_PATH=/usr/lib/cmake
   )
 
   export DIRARGS=(
     -DINSTALL_BINDIR=lib/qt6/bin
     -DINSTALL_PUBLICBINDIR=usr/bin
+    -DINSTALL_SHAREDIR=share
     -DINSTALL_LIBEXECDIR=lib/qt6
     -DINSTALL_DOCDIR=share/doc/qt6
     -DINSTALL_ARCHDATADIR=lib/qt6
@@ -41,11 +44,24 @@ build() {
     "${CMARGS[@]}" \
     "${DIRARGS[@]}"
   cmake --build build
+
+  DESTDIR="$srcdir/install" cmake --install build
+
+  cd $srcdir/install
+  _pick_ devel usr/include/qt6/*/6.*
 }
 
-package() {
-  DESTDIR="$pkgdir" cmake --install build
+package_qt6-wayland() {
+  cp -r $srcdir/install/* $pkgdir/
 
-  install -d "$pkgdir"/usr/share/licenses
-  ln -s /usr/share/licenses/qt6-base "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
+}
+
+package_qt6-wayland-devel() {
+  pkgdesc+=" (Private headers)"
+  depends+=(qt6-wayland qt6-base-devel qt6-declarative-devel)
+
+  cp -r $srcdir/pkgs/devel/* $pkgdir/
+
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
 }
