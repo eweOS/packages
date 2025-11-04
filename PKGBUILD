@@ -1,7 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=qt6-sensors
-pkgver=6.9.1
+pkgbase=qt6-sensors
+pkgname=(qt6-sensors qt6-sensors-devel)
+pkgver=6.10.0
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
@@ -11,13 +12,14 @@ depends=(qt6-base)
 makedepends=(cmake
              git
              ninja
-             qt6-declarative)
+             qt6-base-devel
+             qt6-declarative-devel)
 optdepends=('qt6-declarative: QML bindings'
             'iio-sensor-proxy: iio-sensor-proxy backend')
 groups=(qt6)
 _pkgfn=${pkgname/6-/}
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver)
-sha256sums=('a20384cd4aedbf9d83114ebc4b55e2fa5b56891c6e16914b2d02781817df2df1')
+sha256sums=('5a470bf16a751767c20ad77fe0fddea888c55273f8860d360090f25068a4e7a6')
 
 build() {
   export CMARGS=(
@@ -43,12 +45,24 @@ build() {
     "${CMARGS[@]}" \
     "${DIRARGS[@]}"
   cmake --build build
+
+  DESTDIR="$srcdir/install" cmake --install build
+
+  cd $srcdir/install
+  _pick_ devel usr/include/qt6/*/6.*
 }
 
-package() {
-  DESTDIR="$pkgdir" cmake --install build
+package_qt6-sensors() {
+  cp -r $srcdir/install/* $pkgdir/
 
-  install -d "$pkgdir"/usr/share/licenses
-  ln -s /usr/share/licenses/qt6-base "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
 }
 
+package_qt6-sensors-devel() {
+  pkgdesc+=" (Private headers)"
+  depends+=(qt6-sensors qt6-base-devel)
+
+  cp -r $srcdir/pkgs/devel/* $pkgdir/
+
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
+}
