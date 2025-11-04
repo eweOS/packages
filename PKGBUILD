@@ -1,7 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=qt6-charts
-_qtver=6.9.1
+pkgbase=qt6-charts
+pkgname=(qt6-charts qt6-charts-devel)
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,12 +11,13 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Provides a set of easy to use chart components'
 depends=(qt6-base qt6-declarative)
 makedepends=(cmake
+             qt6-base-devel
              git
              ninja)
 groups=(qt6)
-_pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
+_pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('b8871beb7ac816e9241db9cbdc4803a53313f84a1e4b951f108bd00709aec3d3')
+sha256sums=('1bff529320e7bf4da19984d70492b19149168be58aa1e77b0868779fb3437f6b')
 
 build() {
   export CMARGS=(
@@ -40,11 +42,24 @@ build() {
     "${CMARGS[@]}" \
     "${DIRARGS[@]}"
   cmake --build build
+
+  DESTDIR="$srcdir/install" cmake --install build
+
+  cd $srcdir/install
+  _pick_ devel usr/include/qt6/*/6.*
 }
 
-package() {
-  DESTDIR="$pkgdir" cmake --install build
+package_qt6-charts() {
+  cp -r $srcdir/install/* $pkgdir/
 
-  install -d "$pkgdir"/usr/share/licenses
-  ln -s /usr/share/licenses/qt6-base "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
+}
+
+package_qt6-charts-devel() {
+  pkgdesc+=" (Private headers)"
+  depends+=(qt6-5compat qt6-base-devel)
+
+  cp -r $srcdir/pkgs/devel/* $pkgdir/
+
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
 }
