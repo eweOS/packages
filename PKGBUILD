@@ -1,9 +1,10 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=qt6-quick3d
-_qtver=6.9.1
+pkgbase=qt6-quick3d
+pkgname=(qt6-quick3d qt6-quick3d-devel)
+_qtver=6.10.0
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3)
@@ -16,14 +17,24 @@ depends=(qt6-base
 makedepends=(assimp
              cmake
              git
-             ninja)
+             ninja
+             qt6-base-devel
+             qt6-declarative-devel
+             qt6-shadertools-devel
+             qt6-quicktimeline-devel)
 optdepends=('assimp: assimp import plugin')
 groups=(qt6)
-_pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
+_pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
+  assimp6.patch
 )
-sha256sums=('f61600da8fbfd51b7d6b5c431cef453d7c24015c374ae25756c0faf0db2c9977')
+sha256sums=('98258c1ea876e1f29fd73889f1de32008d13c91c9bff3fc8edfd92f663ecd488'
+            '573f00cdad90d77786fba80066d61d5ee97fc56a8b11d0896949acd16bda8e91')
+
+prepare() {
+  _patch_ $_pkgfn
+}
 
 build() {
   export CMARGS=(
@@ -49,11 +60,24 @@ build() {
     "${CMARGS[@]}" \
     "${DIRARGS[@]}"
   cmake --build build
+
+  DESTDIR="$srcdir/install" cmake --install build
+
+  cd $srcdir/install
+  _pick_ devel usr/include/qt6/*/6.*
 }
 
-package() {
-  DESTDIR="$pkgdir" cmake --install build
+package_qt6-quick3d() {
+  cp -r $srcdir/install/* $pkgdir/
 
-  install -d "$pkgdir"/usr/share/licenses
-  ln -s /usr/share/licenses/qt6-base "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
+}
+
+package_qt6-quick3d-devel() {
+  pkgdesc+=" (Private headers)"
+  depends+=(qt6-quick3d qt6-base-devel qt6-declarative-devel)
+
+  cp -r $srcdir/pkgs/devel/* $pkgdir/
+
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
 }
