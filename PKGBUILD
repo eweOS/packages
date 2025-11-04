@@ -1,19 +1,23 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=qt6-languageserver
-_qtver=6.9.1
+pkgbase=qt6-languageserver
+pkgname=(
+  qt6-languageserver
+  qt6-languageserver-devel
+)
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='An implementation of the Language Server Protocol'
-_pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
+_pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 depends=(qt6-base)
-makedepends=(cmake git ninja)
+makedepends=(cmake git ninja qt6-base-devel)
 groups=(qt6)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('ca17353612760b9bb6e3115bfacc9ba5e06d0d18b522f4f62ae6d510d63488ec')
+sha256sums=('4c9e03e09f392c0855251ac2d8c69fda4c5f015c0201c30b14dc09d8712821a6')
 
 build() {
   export CMARGS=(
@@ -40,12 +44,25 @@ build() {
     "${CMARGS[@]}" \
     "${DIRARGS[@]}"
   cmake --build build
+
+  DESTDIR="$srcdir/install" cmake --install build
+
+  cd $srcdir/install
+  _pick_ devel usr/include/qt6/*/6.*
 }
 
-package() {
-  DESTDIR="$pkgdir" cmake --install build
+package_qt6-languageserver() {
+  cp -r $srcdir/install/* $pkgdir/
 
   install -d "$pkgdir"/usr/share/licenses
   ln -s /usr/share/licenses/qt6-base "$pkgdir"/usr/share/licenses/$pkgname
 }
 
+package_qt6-languageserver-devel() {
+  pkgdesc+=" (Private headers)"
+  depends+=(qt6-languageserver)
+
+  cp -r $srcdir/pkgs/devel/* $pkgdir/
+
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
+}
