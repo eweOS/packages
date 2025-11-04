@@ -1,7 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=qt6-websockets
-_qtver=6.9.1
+pkgbase=qt6-websockets
+pkgname=(qt6-websockets qt6-websockets-devel)
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,14 +16,15 @@ depends=(qt6-base)
 makedepends=(cmake
              git
              ninja
-             qt6-declarative)
+             qt6-base-devel
+             qt6-declarative-devel)
 optdepends=('qt6-declarative: QML bindings')
 groups=(qt6)
-_pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
+_pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
 )
-sha256sums=('98be8c863b7f02cc98eedc0b6eac07544c10a9d2fa11c685fd61f6b243f748f5')
+sha256sums=('d1092e7da5c3b8eea242e4069f05ff8e710a17c54d5010c1b557e26f7948806e')
 
 build() {
   export CMARGS=(
@@ -48,11 +50,24 @@ build() {
     "${CMARGS[@]}" \
     "${DIRARGS[@]}"
   cmake --build build
+
+  DESTDIR="$srcdir/install" cmake --install build
+
+  cd $srcdir/install
+  _pick_ devel usr/include/qt6/*/6.*
 }
 
-package() {
-  DESTDIR="$pkgdir" cmake --install build
+package_qt6-websockets() {
+  cp -r $srcdir/install/* $pkgdir/
 
-  install -d "$pkgdir"/usr/share/licenses
-  ln -s /usr/share/licenses/qt6-base "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
+}
+
+package_qt6-websockets-devel() {
+  pkgdesc+=" (Private headers)"
+  depends+=(qt6-websockets qt6-base-devel)
+
+  cp -r $srcdir/pkgs/devel/* $pkgdir/
+
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
 }
