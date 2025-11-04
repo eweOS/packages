@@ -1,8 +1,9 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 _comp=serialport
-pkgname=qt6-$_comp
-_qtver=6.9.1
+pkgbase=qt6-$_comp
+pkgname=(qt6-$_comp qt6-$_comp-devel)
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,12 +13,13 @@ pkgdesc='Provides access to hardware and virtual serial ports'
 depends=(qt6-base)
 makedepends=(cmake
              git
-	     linux-headers
+             linux-headers
+             qt6-base-devel
              ninja)
 groups=(qt6)
-_pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
+_pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('808fed52380c74ae89268306ce4d04b00f8f6b81f8c442489c390006d93eff10')
+sha256sums=('4f1ea0788d1d5dc74c35f605f6edbb09fef89c75ce6028cf418d79c1a0d9f805')
 
 build() {
   export CMARGS=(
@@ -42,11 +44,25 @@ build() {
     "${CMARGS[@]}" \
     "${DIRARGS[@]}"
   cmake --build build
+
+  DESTDIR="$srcdir/install" cmake --install build
+
+  cd $srcdir/install
+  _pick_ devel usr/include/qt6/*/6.*
 }
 
-package() {
-  DESTDIR="$pkgdir" cmake --install build
+package_qt6-serialport() {
+  cp -r $srcdir/install/* $pkgdir/
 
   install -d "$pkgdir"/usr/share/licenses
   ln -s /usr/share/licenses/qt6-base "$pkgdir"/usr/share/licenses/$pkgname
+}
+
+package_qt6-serialport-devel() {
+  pkgdesc+=" (Private headers)"
+  depends+=(qt6-serialport qt6-base-devel)
+
+  cp -r $srcdir/pkgs/devel/* $pkgdir/
+
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
 }
