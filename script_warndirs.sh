@@ -32,5 +32,7 @@ lintdirs() {
     errordirs var/run
     errordirs var/lock
     errordirs usr/lib/systemd
+    errordirs usr/usr
+    errordirs usr/lib/lib
     warndirs usr/local
 }
