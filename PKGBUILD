@@ -1,7 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=qt6-remoteobjects
-_qtver=6.9.1
+pkgbase=qt6-remoteobjects
+pkgname=(qt6-remoteobjects qt6-remoteobjects-devel)
+_qtver=6.10.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,15 +13,15 @@ depends=(qt6-base)
 makedepends=(cmake
              git
              ninja
-             qt6-declarative)
-
+             qt6-base-devel
+             qt6-declarative-devel)
 optdepends=('qt6-declarative: QML bindings')
 groups=(qt6)
 _pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
 )
-sha256sums=('273f079e7b8f72c2e4ba2fea8893cd24773f4c6471d726fbddc097ae8d2e0a10')
+sha256sums=('b1402d5906930011ed6163e55a0313eead19286f01471e22ccc8e87f9f6a2698')
 
 build() {
   export CMARGS=(
@@ -46,11 +47,24 @@ build() {
     "${CMARGS[@]}" \
     "${DIRARGS[@]}"
   cmake --build build
+
+  DESTDIR="$srcdir/install" cmake --install build
+
+  cd $srcdir/install
+  _pick_ devel usr/include/qt6/*/6.*
 }
 
-package() {
-  DESTDIR="$pkgdir" cmake --install build
+package_qt6-remoteobjects() {
+  cp -r $srcdir/install/* $pkgdir/
 
-  install -d "$pkgdir"/usr/share/licenses
-  ln -s /usr/share/licenses/qt6-base "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
+}
+
+package_qt6-remoteobjects-devel() {
+  pkgdesc+=" (Private headers)"
+  depends+=(qt6-remoteobjects qt6-base-devel)
+
+  cp -r $srcdir/pkgs/devel/* $pkgdir/
+
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
 }
