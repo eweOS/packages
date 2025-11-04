@@ -1,9 +1,10 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=qt6-3d
-_qtver=6.9.1
+pkgbase=qt6-3d
+pkgname=(qt6-3d qt6-3d-devel)
+_qtver=6.10.0
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3)
@@ -13,17 +14,18 @@ makedepends=(assimp
              cmake
              git
              ninja
-             qt6-declarative
-             qt6-shadertools)
+             qt6-base-devel
+             qt6-declarative-devel
+             qt6-shadertools-devel)
 optdepends=('assimp: assimp importer plugin'
             'qt6-declarative: QML bindings'
             'qt6-shadertools: RHI renderer')
 groups=(qt6)
-_pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
+_pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
 )
-sha256sums=('9c46497a60147bb326a58b67b1f543bdf81b8aceed908b44d3dde896d79c4784')
+sha256sums=('bd885ff3741f4b6e4e9b29e1dd05feeae834063c0ca84239f38e3f4eed78e9b7')
 
 build() {
   export CMARGS=(
@@ -49,11 +51,24 @@ build() {
     "${CMARGS[@]}" \
     "${DIRARGS[@]}"
   cmake --build build
+
+  DESTDIR="$srcdir/install" cmake --install build
+
+  cd $srcdir/install
+  _pick_ devel usr/include/qt6/*/6.*
 }
 
-package() {
-  DESTDIR="$pkgdir" cmake --install build
+package_qt6-3d() {
+  cp -r $srcdir/install/* $pkgdir/
 
-  install -d "$pkgdir"/usr/share/licenses
-  ln -s /usr/share/licenses/qt6-base "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
+}
+
+package_qt6-3d-devel() {
+  pkgdesc+=" (Private headers)"
+  depends+=(qt6-3d qt6-base-devel qt6-declarative-devel)
+
+  cp -r $srcdir/pkgs/devel/* $pkgdir/
+
+  install -Dm644 $_pkgfn/LICENSES/* -t "$srcdir/install"/usr/share/licenses/$pkgname
 }
