@@ -2,7 +2,7 @@
 
 pkgname=gtk-layer-shell
 pkgdesc="Library to create Wayland desktop components using the Layer Shell protocol"
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-3.0-or-later)
@@ -18,7 +18,7 @@ makedepends=(
   "wayland-protocols"
 )
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
-sha256sums=('526dd95c083e2a73eafd8baa1f5d676a36cb80fc8e7b304cbe3efebd62f0600c')
+sha256sums=('ed9bb801d6d9252defba41104820ace595dac824dc8972a758ee2ad134e10505')
 
 build()
 {
