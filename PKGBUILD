@@ -4,8 +4,8 @@
 # Contributor: dorphell <dorphell@gmx.net>
 
 pkgname=gc
-pkgver=8.2.8
-pkgrel=3
+pkgver=8.2.10
+pkgrel=1
 pkgdesc="A garbage collector for C and C++"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.hboehm.info/gc/"
@@ -13,8 +13,8 @@ license=(MIT)
 depends=(llvm-libs musl)
 source=("https://github.com/ivmai/bdwgc/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
 	remove-deprecated-macros.patch)
-sha512sums=('e0994bac8d1068f79a8379fa5797efbd420b22eb923d6537613e7542fc6805f74f57be0c4ff7555539461f8ace849fa1534e2077752bfb61c0e14f367b5b55af'
-	    '7cd3229112aedb39a54d12935556107f9bea8039331fd571d15d0c41060669cd9ff650327245e1cec504c2021139384eb99e8d81f213cd554791060446024c19')
+sha512sums=('56558bf81716caa882fd015f3f0d0d86d05f38680266b22798153b1e7f4a6fbbcded2efb3e125c41a4c52d44259ac4900061e61729663f62427e73b691e317b0'
+            '7cd3229112aedb39a54d12935556107f9bea8039331fd571d15d0c41060669cd9ff650327245e1cec504c2021139384eb99e8d81f213cd554791060446024c19')
 
 prepare() {
 	_patch_ "$pkgname-$pkgver"
