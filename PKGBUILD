@@ -3,7 +3,7 @@
 
 pkgname=(linux linux-devel linux-docs)
 _basename=linux
-pkgver=6.17.4
+pkgver=6.17.7
 pkgrel=1
 pkgdesc='Linux kernel'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ _kconfig_commit=e3cd3451908580c4ff242d00874c295592d9e0d8
 source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         "git+https://github.com/eweOS/kernel-config.git#commit=$_kconfig_commit"
         busybox-find-compat.patch)
-sha256sums=('010a12296e6fba7597ff36681be2485fd3b1780ac8fd9e6a9f3cfe193f0491db'
+sha256sums=('ddf2ea0d4439e1d57136be3623102af9458f601f5b1cb77e83246e88aea09d0e'
             '41acacaeeb81c37c47d2d0aaaac98b372fb12942ddf82ec73bbe2c29904e0070'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
 
