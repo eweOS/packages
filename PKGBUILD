@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Netscape Portable Runtime"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSPR"
 arch=(x86_64 aarch64 riscv64 loongarch64)
-license=(MPL GPL)
+license=(MPL-2.0)
 makedepends=(mercurial autoconf)
 _revision=9bee7f5d1af535aae05d7511fade18462e2fcab2
 source=("hg+https://hg.mozilla.org/projects/nspr#revision=$_revision")
@@ -41,6 +41,8 @@ build() {
 package() {
   cd nspr
   make DESTDIR="$pkgdir" install
+  _install_license_ LICENSE
+
   ln -s nspr.pc "$pkgdir/usr/lib/pkgconfig/mozilla-nspr.pc"
 
   rm -r "$pkgdir"/usr/include/nspr/md
