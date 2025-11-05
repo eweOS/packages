@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gdk-pixbuf
-pkgver=2.44.1
+pkgver=2.44.4
 pkgrel=1
 pkgdesc="A library that loads image data in various formats"
 url="https://wiki.gnome.org/Projects/GdkPixbuf"
@@ -24,7 +24,7 @@ source=(
   "https://gitlab.gnome.org/GNOME/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
   gdk-pixbuf-query-loaders.hook
 )
-sha256sums=('c42fb6b1699b957bff093ea9741e7e84f03138215df2a56da220fcf9866fb412'
+sha256sums=('6de2f77d992155b4121d20036e7e986dfe595a0e654381cdd0d7257f493c208a'
             '3e052fbe80d98fa4f88e44c9efa8235d4aea15d5913023a05630570bccc65107')
 
 build() {
