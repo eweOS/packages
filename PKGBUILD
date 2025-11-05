@@ -9,7 +9,7 @@ url="https://github.com/fcitx/fcitx5-qt"
 license=('GPL')
 groups=('fcitx5-im')
 depends=('libxkbcommon' 'fcitx5' 'qt6-base' 'qt6-wayland' 'wayland')
-makedepends=('extra-cmake-modules' 'qt6-base' 'ninja' 'zstd')
+makedepends=('extra-cmake-modules' 'qt6-base' 'ninja' 'zstd' 'qt6-base-devel')
 source=("https://download.fcitx-im.org/fcitx5/$pkgname/$pkgname-$pkgver.tar.zst")
 sha512sums=('258202dddd4bce640eb1eb52e4bf35ac59385c355fbee0ad00f3545bbd0b0152d4997a0312bf43c47f6770e64ffd83b1001b637825b42d33b0d260112e6e4c75')
 
