@@ -1,23 +1,27 @@
 # Maintainer: Eric Long <i@hack3r.moe>
 
 pkgname=ripgrep
-pkgver=14.1.1
-pkgrel=2
-_rust_pcre2_ver=0.2.9
+pkgver=15.1.0
+pkgrel=1
+_rust_pcre2_ver=0.2.10
 pkgdesc='Recursively searches directories for a regex pattern while respecting your gitignore'
 url=https://github.com/BurntSushi/ripgrep
 license=('MIT OR Unlicense')
 arch=(x86_64 aarch64 riscv64 loongarch64)
 makedepends=(git cargo rust)
 depends=(musl mimalloc llvm-libs pcre2)
+# pcre2-sys-musl-dynamic: Should be upstreamed, don't link to PCRE2 statically
+#	for musl targets.
+# no-jemalloc: Downstream, disable tikv-jemallocator dependency on musl which
+#	takes jemalloc as backend.
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "git+https://github.com/BurntSushi/rust-pcre2.git#tag=$_rust_pcre2_ver"
         pcre2-sys-musl-dynamic.patch
         no-jemalloc.patch)
-sha256sums=('4dad02a2f9c8c3c8d89434e47337aa654cb0e2aa50e806589132f186bf5c2b66'
-            '974611ff5d7be6d4a79695575ca07702126bd91012701f64b65c4be1d9c66a7d'
+sha256sums=('046fa01a216793b8bd2750f9d68d4ad43986eb9c0d6122600f993906012972e8'
+            '385f16a0ff4a4d625a1ed7f8b72feefc60f4cabecd418ac1923ac17ee4de6d67'
             'e6f3050e4dcd81a17332a6826c157c4e33dc1fdf02b6fe71aaa891b79783bbf7'
-            'bbb1571af97f046d17d7ece1b37f86cb0e491a343ba314e464895779747be582')
+            'f3726131c0a69fb22bad36e53f27a22433e30aace108b777c08081e3459db4d6')
 
 prepare() {
   patch -d rust-pcre2 -Np1 -i ../pcre2-sys-musl-dynamic.patch
