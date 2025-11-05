@@ -7,8 +7,9 @@ pkgrel=1
 pkgdesc="libelf is a free ELF object file access library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://sourceware.org/elfutils/"
-license=(LGPL3 GPL3)
-makedepends=(curl llvm-libs libarchive sqlite xz zlib libuargp musl-fts musl-obstack linux-headers)
+license=(LGPL-3.0-or-later GPL-3.0-or-later GPL-2.0-or-later)
+makedepends=(curl llvm-libs libarchive sqlite xz zlib libuargp musl-fts
+             musl-obstack linux-headers zstd libbz2 openssl)
 options=(staticlibs)
 # 0001: Should be upstreamed, define missing macros and functions for musl
 source=(https://sourceware.org/$_pkgbase/ftp/$pkgver/$_pkgbase-$pkgver.tar.bz2
@@ -51,14 +52,17 @@ build() {
 
 package_elfutils() {
   pkgdesc+=" (utilities)"
-  depends=(libelf=$pkgver)
+  license=(GPL-3.0-or-later)
+  depends=(musl musl-obstack libarchive libbz2 libuargp libelf=$pkgver
+           llvm-libs)
 
   mv "$srcdir/pkgs/elfutils/usr" "$pkgdir"/usr
 }
 
 package_libelf() {
   pkgdesc+=" (libraries)"
-  depends=(xz zlib musl-fts musl-obstack libuargp)
+  license=('LGPL-3.0-or-later OR GPL-2.0-or-later')
+  depends=(libbz2 xz zlib zstd openssl musl-fts musl-obstack libuargp)
   provides=(libasm libdebuginfod libdw libelf)
 
   mv "$srcdir/pkgs/libelf/usr" "$pkgdir"/usr
