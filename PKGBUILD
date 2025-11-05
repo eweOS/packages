@@ -15,8 +15,7 @@ source=(https://sourceware.org/$_pkgbase/ftp/$pkgver/$_pkgbase-$pkgver.tar.bz2
 	0001-define-musl-missing-stuff.patch)
 sha256sums=('09e2ff033d39baa8b388a2d7fbc5390bfde99ae3b7c67c7daaf7433fbcf0f01e'
             'c92ade324270f3f34fe4978cd55dbfcdc867cf8421d23edc23c78414b5b1ebb3')
-prepare()
-{
+prepare() {
   _patch_ $_pkgbase-$pkgver
 }
 
@@ -33,8 +32,7 @@ FLIST_libelf=(
   "usr/share/man/*/libelf*"
 )
 
-build()
-{
+build() {
   cd $_pkgbase-$pkgver
   autoreconf -ivf
   ./configure --prefix=/usr \
@@ -42,26 +40,26 @@ build()
     --program-prefix="eu-" \
     --enable-deterministic-archives \
     --disable-debuginfod
-  make CFLAGS=-Wno-error CXXFLAGS=-Wno-error
-  mkdir -p $srcdir/install
+  make CFLAGS="$CFLAGS -Wno-error" CXXFLAGS="$CXXFLAGS -Wno-error"
+  mkdir -p "$srcdir"/install
   make DESTDIR="$srcdir/install" install
 
-  cd $srcdir/install
+  cd "$srcdir"/install
   _pick_ elfutils "${FLIST_elfutils[@]}"
   _pick_ libelf "${FLIST_libelf[@]}"
 }
 
-package_elfutils()
-{
+package_elfutils() {
   pkgdesc+=" (utilities)"
   depends=(libelf=$pkgver)
-  mv "$srcdir/pkgs/elfutils/usr" $pkgdir/usr
+
+  mv "$srcdir/pkgs/elfutils/usr" "$pkgdir"/usr
 }
 
-package_libelf()
-{
+package_libelf() {
   pkgdesc+=" (libraries)"
   depends=(xz zlib musl-fts musl-obstack libuargp)
   provides=(libasm libdebuginfod libdw libelf)
-  mv "$srcdir/pkgs/libelf/usr" $pkgdir/usr
+
+  mv "$srcdir/pkgs/libelf/usr" "$pkgdir"/usr
 }
