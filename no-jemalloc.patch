@@ -1,19 +1,19 @@
 diff --git a/Cargo.toml b/Cargo.toml
-index 2ec69c9..86dcef6 100644
+index 3fd66640da8a..b7c02b0639f2 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -59,9 +59,6 @@ serde_json = "1.0.23"
+@@ -60,9 +60,6 @@ serde_json = "1.0.23"
  termcolor = "1.1.0"
  textwrap = { version = "0.16.0", default-features = false }
  
--[target.'cfg(all(target_env = "musl", target_pointer_width = "64"))'.dependencies.jemallocator]
--version = "0.5.0"
+-[target.'cfg(all(target_env = "musl", target_pointer_width = "64"))'.dependencies.tikv-jemallocator]
+-version = "0.6.0"
 -
  [dev-dependencies]
  serde = "1.0.77"
  serde_derive = "1.0.77"
 diff --git a/crates/core/main.rs b/crates/core/main.rs
-index 64f35ce..9e3a32e 100644
+index 46aac2624f0f..28d695d16c74 100644
 --- a/crates/core/main.rs
 +++ b/crates/core/main.rs
 @@ -16,29 +16,6 @@ mod haystack;
@@ -41,7 +41,7 @@ index 64f35ce..9e3a32e 100644
 -// i686.
 -#[cfg(all(target_env = "musl", target_pointer_width = "64"))]
 -#[global_allocator]
--static ALLOC: jemallocator::Jemalloc = jemallocator::Jemalloc;
+-static ALLOC: tikv_jemallocator::Jemalloc = tikv_jemallocator::Jemalloc;
 -
  /// Then, as it was, then again it will be.
  fn main() -> ExitCode {
