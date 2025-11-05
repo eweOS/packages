@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=openjpeg2
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 pkgdesc='An open-source JPEG 2000 codec written in C.'
 url='https://www.openjpeg.org/'
@@ -26,4 +26,4 @@ package() {
 #	install -Dm 644 LICENSE $pkgdir/usr/share/licenses/openjpeg2/LICENSE
 }
 
-sha256sums=('368fe0468228e767433c9ebdea82ad9d801a3ad1e4234421f352c8b06e7aa707')
+sha256sums=('a695fbe19c0165f295a8531b1e4e855cd94d0875d2f88ec4b61080677e27188a')
