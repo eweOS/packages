@@ -3,7 +3,7 @@
 pkgbase=gtk4
 pkgname=(gtk4 gtk-update-icon-cache)
 pkgver=4.20.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-platform toolkit for creating graphical user interfaces"
 url="https://www.gtk.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -27,6 +27,7 @@ depends=(
   desktop-file-utils
   librsvg
   libcups
+  vulkan-icd-loader
 )
 makedepends=(
   meson
@@ -34,7 +35,6 @@ makedepends=(
   wayland-protocols
   gobject-introspection
   vulkan-headers
-  vulkan-icd-loader
   glslang
   lld
   linux-headers
