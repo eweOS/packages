@@ -7,7 +7,7 @@ pkgdesc='A high dynamic-range image file format library'
 url='https://www.openexr.com/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD-3-Clause)
-depends=(imath libdeflate openjph)
+depends=(musl llvm-libs imath libdeflate openjph)
 makedepends=(cmake)
 source=(https://github.com/openexr/openexr/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
 sha256sums=('06494da42eb91c47265ffbad02d0c73cf65d8ad7f24683b801f34d842c4ecb6d')
@@ -18,6 +18,11 @@ build() {
     -DCMAKE_BUILD_TYPE=None
   cmake --build build
 }
+
+# TODO: enable check
+# Failed tests
+#	OpenEXR.Iex
+#	OpenEXRCore.testAttrStringVectors
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
