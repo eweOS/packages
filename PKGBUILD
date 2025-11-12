@@ -2,42 +2,55 @@
 
 pkgbase=hyfetch
 pkgname=(hyfetch neowofetch)
-pkgver=2.0.2
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Neofetch with LGBTQ+ pride flags!"
-arch=('any')
+arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://github.com/hykilpikonna/hyfetch'
 license=('MIT')
-makedepends=('python-setuptools' 'python-typing_extensions')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('051acbb25a60ac57e8a8b43159f032a9bcec9b25cd1ed7854899f6ad3bcbd6d5')
+makedepends=('cargo')
+optdepends=('fastfetch: Alternative fetch backend')
+source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('8de8908334470f24dfae5693bd9660360ec8c1074b270f36eac659530e0b35ba')
+
+prepare() {
+  cd "$pkgbase-$pkgver"
+  cargo fetch --locked --target "$RUSTHOST"
+}
 
 build() {
-  cd "${pkgbase}-${pkgver}"
-  python setup.py build
+  cd "$pkgbase-$pkgver"
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
+}
 
-  mkdir -p $srcdir/pkgdir
-  python setup.py install --root="$srcdir/pkgdir" --optimize=1 --skip-build
-  mv $srcdir/pkgdir/usr/bin/neowofetch $srcdir/neowofetch
+check() {
+  cd "$pkgbase-$pkgver"
+  cargo test --frozen --all-features
 }
 
 package_hyfetch() {
-  depends=(python-setuptools python-typing_extensions)
+  cd "$pkgbase-$pkgver"
+  
+  install -Dm 755 "target/release/hyfetch" "$pkgdir/usr/bin/hyfetch"
+  
+  install -Dm 644 "docs/hyfetch.1" "$pkgdir/usr/share/man/man1/hyfetch.1"
 
-  cd "${pkgbase}-${pkgver}"
-  cp -r $srcdir/pkgdir/* $pkgdir/
-
-  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgbase}/README.md"
-  install -Dm 644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
-  install -Dm 644 "${pkgname}/scripts/autocomplete.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgbase}"
-  install -Dm 644 "${pkgname}/scripts/autocomplete.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgbase}"
+  install -Dm 644 "hyfetch/scripts/autocomplete.bash" "$pkgdir/usr/share/bash-completion/completions/hyfetch"
+  install -Dm 644 "hyfetch/scripts/autocomplete.zsh" "$pkgdir/usr/share/zsh/site-functions/_hyfetch"
+  
+  install -Dm 644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_neowofetch() {
   provides=(neofetch)
   conflicts=(neofetch)
   replaces=(neofetch)
-  install -Dm 755 $srcdir/neowofetch $pkgdir/usr/bin/neowofetch
+  
+  cd "$pkgbase-$pkgver"
+  
+  install -Dm 755 neofetch $pkgdir/usr/bin/neowofetch
   ln -s neowofetch $pkgdir/usr/bin/neofetch
-  install -Dm 644 "${pkgbase}-${pkgver}"/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  install -Dm 644 LICENSE.md "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
