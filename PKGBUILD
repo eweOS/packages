@@ -2,7 +2,7 @@
 
 pkgname=mimalloc
 pkgver=2.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="General-purpose allocator with excellent performance characteristics"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/microsoft/mimalloc"
@@ -20,7 +20,8 @@ build()
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DMI_BUILD_STATIC=OFF \
     -DMI_BUILD_OBJECT=OFF \
-    -DMI_INSTALL_TOPLEVEL=ON
+    -DMI_INSTALL_TOPLEVEL=ON \
+    -DMI_NO_OPT_ARCH=ON
   cmake --build build
 }
 
