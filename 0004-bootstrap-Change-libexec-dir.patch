@@ -25,12 +25,15 @@ diff --git a/src/bootstrap/src/core/build_steps/tool.rs b/src/bootstrap/src/core
 index cd57e06ae04a..05d117eba66e 100644
 --- a/src/bootstrap/src/core/build_steps/tool.rs
 +++ b/src/bootstrap/src/core/build_steps/tool.rs
-@@ -954,7 +954,7 @@ fn run(self, builder: &Builder<'_>) -> Option<ToolBuildResult> {
+@@ -1122,9 +1122,9 @@
+             artifact_kind: ToolArtifactKind::Binary,
+         });
  
-         // Copy `rust-analyzer-proc-macro-srv` to `<sysroot>/libexec/`
+-        // Copy `rust-analyzer-proc-macro-srv` to `<sysroot>/libexec/`
++        // Copy `rust-analyzer-proc-macro-srv` to `<sysroot>/lib/`
          // so that r-a can use it.
--        let libexec_path = builder.sysroot(self.compiler).join("libexec");
-+        let libexec_path = builder.sysroot(self.compiler).join("lib");
+-        let libexec_path = builder.sysroot(self.compilers.target_compiler).join("libexec");
++        let libexec_path = builder.sysroot(self.compilers.target_compiler).join("lib");
          t!(fs::create_dir_all(&libexec_path));
          builder.copy_link(
              &tool_result.tool_path,
