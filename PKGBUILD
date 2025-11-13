@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=lxqt-build-tools
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Various packaging tools and scripts for LXQt applications"
 arch=("any")
@@ -9,7 +9,7 @@ url="https://github.com/lxqt/$pkgname"
 license=("BSD")
 depends=("cmake" "qt6-tools" "git" "perl")
 source=("https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('13dcdf2e6b55cc334ac0ddadd0c131d46c46e06fab0d6ca7b8b96c260c8e332f')
+sha256sums=('f979142ceee22993da6f5d43a7eea9b0d8ef1ff9812ea9210f514e9a52407f42')
 
 build() {
 	mkdir -p build
