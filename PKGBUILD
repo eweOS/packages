@@ -1,18 +1,18 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libqtxdg
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Library providing freedesktop.org XDG specs implementations for Qt"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 url="https://github.com/lxqt/$pkgname"
 license=("LGPL" "custom")
 depends=("qt6-base" "qt6-svg")
-makedepends=("cmake" "lxqt-build-tools")
+makedepends=("cmake" "lxqt-build-tools" 'qt6-base-devel')
 checkdepends=("weston" "qt6-wayland")
 provides=("libQt6Xdg.so" "libQt6XdgIconLoader.so")
 source=("https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('a5d430218550d66fa806debce7c418db41268286b17bdab46b8ce3a58f0fe82a')
+sha256sums=('846cb8a35ab55ea3d513a860b6bb5fdf45e2de95a037afb73538b316908efa55')
 
 build() {
   mkdir -p build
