@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=squashfs-tools
-pkgver=4.7.2
+pkgver=4.7.4
 pkgrel=1
 pkgdesc='Tools for squashfs, a highly compressed read-only filesystem for Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -18,7 +18,7 @@ depends=(
 makedepends=(help2man)
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz"
 	"0001-generate-manpages-Workaround-busybox-sed.patch")
-sha256sums=('4672b5c47d9418d3a5ae5b243defc6d9eae8275b9771022247c6a6082c815914'
+sha256sums=('91c49f9a1ed972ad00688a38222119e2baf49ba74cf5fda05729a79d7d59d335'
             'e358a9d32e90fa970ad924f38d40a8049709dd0d22a3a6618eb04682d0ed1e6b')
 
 prepare() {
