@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xdg-desktop-portal-lxqt
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='A backend implementation for xdg-desktop-portal using Qt/KDE Frameworks/libfm-qt'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,12 +11,21 @@ url='https://github.com/lxqt/xdg-desktop-portal-lxqt'
 # All C/C++ files include "any later"
 license=('LGPL-2.1-or-later')
 depends=(qt6-base kwindowsystem xdg-desktop-portal libfm-qt)
-makedepends=(cmake)
+makedepends=(cmake qt6-base-devel)
 provides=(xdg-desktop-portal-impl)
-source=("https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
-        lxqt-portals.conf)
-sha256sums=('227f807b03b3503fc95ceba08895df0353a6508ce8129721a4b33a5251042f9b'
-            '867b15caa72e2a85d2ef566cce9f35d8cdea9ed181fbb0290e5ab50e18a8d4aa')
+# patches: see pr #52 and #53
+source=(
+  "https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
+  xdg-desktop-portal-lxqt-modal-dialog.patch
+  xdg-desktop-portal-lxqt-wayland-parent.patch
+)
+sha256sums=('daa49490600ef3a3dbd9d1ccd94e72870f6c099ae425a1c2982e014555509775'
+            'e27455c673c546688bc1f902eefcfaf7502553635504f38be94966e11782a94b'
+            '787317905987b22d6e9001a0bddc66008c8b352de6104b329b62529520623b7e')
+
+prepare() {
+  _patch_ $pkgname-$pkgver
+}
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
@@ -27,6 +36,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  # fix detection with x-d-p 1.18
-  install -Dm644 ${srcdir}/lxqt-portals.conf  ${pkgdir}/usr/share/xdg-desktop-portal/lxqt-portals.conf
+  # user/xdg-desktop-portal-lxqt.service
+  rm -r $pkgdir/usr/lib/systemd
 }
