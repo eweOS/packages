@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kcmutils
-pkgver=6.17.0
+pkgver=6.20.0
 pkgrel=1
 pkgdesc='Utilities for interacting with KCModules'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -23,7 +23,7 @@ depends=(kconfig
 makedepends=(extra-cmake-modules qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('8f65ef0f4f4f325ad6e2a30cb14242220f811ab1e031416fd3faa544ac683e8a')
+sha256sums=('a2d726c7b6b8feaddff29dc0e75e1c15467f02d1ebe6f8e96f35cd84b23e16ed')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
