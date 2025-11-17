@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=modemmanager-qt
-pkgver=6.17.0
+pkgver=6.20.0
 pkgrel=1
 pkgdesc='Qt wrapper for ModemManager DBus API'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('b41fe1dd9a0e146adb4d8098d569d6b11291f40c90df70dfbaa6ad1654e18d76')
+sha256sums=('1a606b26530de4d9c272cb9793b63b25e80fe7a9c0b61e422399453ff5e5ca79')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
