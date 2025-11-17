@@ -8,7 +8,7 @@ index 3c47cc9b..a60c3a35 100644
  add_subdirectory(wayland)
 -add_subdirectory(xcb)
 diff --git a/panel/lxqtpanel.cpp b/panel/lxqtpanel.cpp
-index 6da5a483..bc86f980 100644
+index 1bfdc3e9..d153a8ee 100644
 --- a/panel/lxqtpanel.cpp
 +++ b/panel/lxqtpanel.cpp
 @@ -50,8 +50,6 @@
@@ -150,7 +150,7 @@ index 6da5a483..bc86f980 100644
          dynamic_cast<QDropEvent *>(event)->setDropAction(Qt::IgnoreAction);
          event->accept();
 diff --git a/panel/plugin.cpp b/panel/plugin.cpp
-index 924950a6..e9ac127e 100644
+index 21225325..150fc1bd 100644
 --- a/panel/plugin.cpp
 +++ b/panel/plugin.cpp
 @@ -31,8 +31,6 @@
@@ -162,7 +162,7 @@ index 924950a6..e9ac127e 100644
  #include <QDebug>
  #include <QProcessEnvironment>
  #include <QStringList>
-@@ -538,10 +536,6 @@ void Plugin::showConfigureDialog()
+@@ -540,10 +538,6 @@ void Plugin::showConfigureDialog()
      mConfigDialog->show();
      mConfigDialog->raise();
      mConfigDialog->activateWindow();
@@ -210,7 +210,7 @@ index c3baf785..2a9983ac 100644
      mColorButton->setColor(col);
      paste(col.name());
 diff --git a/plugin-desktopswitch/desktopswitchconfiguration.cpp b/plugin-desktopswitch/desktopswitchconfiguration.cpp
-index 39fac7f4..dcaa495d 100644
+index 46695bfc..e36df2f0 100644
 --- a/plugin-desktopswitch/desktopswitchconfiguration.cpp
 +++ b/plugin-desktopswitch/desktopswitchconfiguration.cpp
 @@ -30,7 +30,6 @@
@@ -218,11 +218,11 @@ index 39fac7f4..dcaa495d 100644
  #include "../panel/backends/ilxqtabstractwmiface.h"
  
 -#include <KX11Extras>
+ #include <QScreen>
  #include <QTimer>
  
- DesktopSwitchConfiguration::DesktopSwitchConfiguration(PluginSettings *settings, QWidget *parent) :
-@@ -77,21 +76,7 @@ void DesktopSwitchConfiguration::loadDesktopsNames()
-         QLineEdit *edit = new QLineEdit(wmBackend->getWorkspaceName(i), this);
+@@ -81,21 +80,7 @@ void DesktopSwitchConfiguration::loadDesktopsNames()
+         QLineEdit *edit = new QLineEdit(deskName, this);
          ((QFormLayout *) ui->namesGroupBox->layout())->addRow(tr("Desktop %1:").arg(i), edit);
  
 -        //TODO: on Wayland we cannot set desktop names in a standart way
