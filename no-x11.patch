@@ -1,5 +1,5 @@
 diff --git a/src/notification.cpp b/src/notification.cpp
-index ac4013b..955f974 100644
+index 5ea5a9e..62d2582 100644
 --- a/src/notification.cpp
 +++ b/src/notification.cpp
 @@ -33,8 +33,6 @@
@@ -8,10 +8,10 @@ index ac4013b..955f974 100644
  #include <KWindowSystem>
 -#include <KF6/KWindowSystem/KX11Extras>
 -#include <KF6/KWindowSystem/KWindowInfo>
+ #include <QEnterEvent>
  #include <QMouseEvent>
  #include <QPushButton>
- #include <QStyle>
-@@ -340,27 +338,6 @@ void Notification::mouseReleaseEvent(QMouseEvent * event)
+@@ -342,27 +340,6 @@ void Notification::mouseReleaseEvent(QMouseEvent * event)
          emit actionTriggered(m_actionWidget->defaultAction());
          return;
      }
