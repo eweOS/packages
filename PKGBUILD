@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kdnssd
-pkgver=6.17.0
+pkgver=6.20.0
 pkgrel=1
 pkgdesc='Abstraction to system DNSSD features'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('6e1681a01a4cd09650ba4de1bbad4ec03d3f6452fc07ff4f74e24b24040f3e0a')
+sha256sums=('fc616e7f9d56ff4304a5bdc6d04e7ef75e5ff7d84375175f0b25a44ba89af60a')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
