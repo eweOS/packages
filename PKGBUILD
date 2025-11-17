@@ -1,11 +1,12 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=lxqt-wayland-session
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Files needed for the LXQt Wayland Session'
 arch=('any')
 url='https://github.com/lxqt/lxqt-wayland-session'
+groups=("lxqt")
 depends=(
   'lxqt-session'
   'qtxdg-tools'
@@ -22,7 +23,7 @@ optdepends=(
 )
 makedepends=('git' 'cmake' 'qt6-tools' 'lxqt-build-tools')
 source=("git+https://github.com/lxqt/$pkgname.git#tag=$pkgver")
-sha256sums=('b879bd2dea02b90eb218e0b81b03feff4c7658954a1406efeae8a8d2d3083022')
+sha256sums=('ee4bbb4cd97e10be1b636e51a17ccef08d01bf72cb0f415939cdb6b1da4cd544')
 # see https://github.com/lxqt/lxqt-wayland-session/blob/master/LICENSE for more details
 # place at bottom to satisfy obs
 license=(
