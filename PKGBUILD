@@ -5,8 +5,8 @@ pkgname=(gstreamer gstreamer-devel gstreamer-vaapi
 	 gst-plugins-base gst-plugins-good gst-plugins-bad
 	 gst-plugin-gtk gst-plugin-qml6 gst-plugin-qsv gst-plugin-va
 	 gst-libav gst-rtsp-server gst-editing-services gst-python)
-pkgver=1.26.7
-pkgrel=2
+pkgver=1.26.8
+pkgrel=1
 pkgdesc='GStreamer multimedia framework'
 url='https://gstreamer.freedesktop.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -21,7 +21,7 @@ makedepends=(meson samurai glib2 gobject-introspection libdrm python-gobject
 	     vulkan-headers libdrm shaderc linux-headers libva libsoup3
 	     libaom libbz2 curl fluidsynth gsm libopus libsndfile libxml2
 	     libsrt libwebp x265 openal-soft openexr libjpeg librsvg
-	     vulkan-icd-loader libass lcms2 openjpeg2
+	     vulkan-icd-loader libass lcms2 openjpeg2 qt6-base-devel
 	     json-glib ffmpeg svt-av1 mpg123 taglib zxing-cpp)
 # During FD.o migration, temporarily switch to GitHub mirror
 # source=("https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/$pkgver/gstreamer-$pkgver.tar.gz")
@@ -29,7 +29,7 @@ makedepends=(meson samurai glib2 gobject-introspection libdrm python-gobject
 #	should be upstreamed
 source=("https://github.com/GStreamer/gstreamer/archive/refs/tags/$pkgver.tar.gz"
 	"0001-dots-viewer-respect-envvars.patch")
-sha256sums=('e3cdfcf076d5be5384c06e6710adc7980912679ea57df29fbd0383dd43cb5c03'
+sha256sums=('fa4014bfcc64ba6ec04459b7e0812c91e9680d0dc2e972bc2123c9d2e2106930'
             'b0203e26b33b6aaf0970511c16a91dbe294d02c97d9e8172f9f52acb6ee12e72')
 
 prepare () {
