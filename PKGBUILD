@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=knotifications
-pkgver=6.17.0
+pkgver=6.20.0
 pkgrel=1
 pkgdesc='Abstraction for system notifications'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +16,7 @@ makedepends=(extra-cmake-modules
 optdepends=('qt6-declarative: QML bindings')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('b7801c546935e6082a72d4c7dd0387407b6a1905ab88de9bddaf369a8eca4141')
+sha256sums=('aae6d928eaf52540b642bd9c7ea6293e2c0d0f53612e5fb4f0a6001692f8055a')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
