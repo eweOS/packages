@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=lxqt-archiver
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A simple & lightweight desktop-agnostic Qt file archiver"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
@@ -16,7 +16,7 @@ optdepends=(
   'p7zip: 7Z support'
 )
 source=("https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('53e4121369e3dc72c74e3ae2323ff277072550c83622486b94ad77b26a993ac6')
+sha256sums=('948655705e8e6a9c4c57f2d09b1134b4b23739c8cac0c39b09b04fb15d5375ef')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
