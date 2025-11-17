@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kio
-pkgver=6.17.0
+pkgver=6.20.0
 pkgrel=1
 pkgdesc='Resource and network access abstraction'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -33,7 +33,7 @@ depends=(acl
          qt6-base
          solid
          util-linux-libs)
-makedepends=(extra-cmake-modules qt6-tools linux-headers kdoctools)
+makedepends=(extra-cmake-modules qt6-tools linux-headers kdoctools qt6-base-devel)
 optdepends=('kded: proxy management and cookie storage'
             'kdoctools: for the help kioslave'
             'kio-extras: extra protocols support (sftp, fish and more)'
@@ -41,7 +41,7 @@ optdepends=('kded: proxy management and cookie storage'
             'switcheroo-control: hybrid GPU support')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('d00d4952198f8e9ff44335b340714615e0124857edbd67c4964b50e0c913d62d')
+sha256sums=('7e67d471fc10b7df3d76e6ce859480be5d6e675d316592e7a8419b97f01bd649')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
