@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=breeze-icons
-pkgver=6.17.0
+pkgver=6.20.0
 pkgrel=1
 pkgdesc='Breeze icon theme'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(qt6-base)
 makedepends=(extra-cmake-modules python-lxml)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('4ffc75886e9a14a2a02da4871600b8c0b5a40756b8e99cbecfb515696d93c3b8')
+sha256sums=('0a47b28a04a086ccb5b4afb51d6677180006819d0d9302524721689bfa4ad13c')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
