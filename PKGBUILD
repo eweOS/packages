@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kwidgetsaddons
-pkgver=6.17.0
+pkgver=6.20.0
 pkgrel=1
 pkgdesc='Addons to QtWidgets'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(qt6-base)
 makedepends=(extra-cmake-modules qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('dcb33387953cd0429d4297d628b4872e7a3a970cce5ea84b446677d8b7487ea1')
+sha256sums=('39974b85cdffd8c6d6e0a5c0684927a21e071c1e63d7cce3888331f0169a4837')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
