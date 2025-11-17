@@ -12,7 +12,7 @@ pkgname=(
   vulkan-mesa-layers
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
-pkgver=25.2.6
+pkgver=25.3.0
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm' 'spirv-tools')
@@ -26,6 +26,7 @@ makedepends=(
   'llvm-devel'
   'linux-headers'
   'directx-headers'
+  'libdisplay-info'
   'libclc' 'rust' 'rust-bindgen' 'spirv-llvm-translator' 'spirv-tools'
   'python-mako' 'python-pycparser' 'python-yaml')
 url="https://www.mesa3d.org/"
@@ -35,7 +36,7 @@ options=(!lto)
 source=(
   https://mesa.freedesktop.org/archive/$pkgbase-$pkgver.tar.xz
 )
-sha512sums=('c34f55132ee9097a7c4961745bf07a08fc612bf0f7c570c023fedb16c8eafbefdc1cc022f722c345780bb14ec4ce25d9a206a9196d9d51c97b389db5160de9cc')
+sha512sums=('46df9e5e27f9a36cf893a68ad4a465fcc6efe1bcb46ad8d4b015699ad1a11e582b8d41f4157326556af603fe454b2ff34ecc17a0c742b5fd9ce5f0097106fec5')
 
 [ "$CARCH" = x86_64 ] && pkgname+=(vulkan-dzn)
 [ "$CARCH" = aarch64 ] && pkgname+=(vulkan-panfrost)
@@ -78,7 +79,6 @@ build()
     -Dgallium-drivers=${GALLIUM_DRI} \
     -Dgallium-extra-hud=true \
     -Dgallium-rusticl=true \
-    -Dgallium-vdpau=disabled \
     -Dvideo-codecs=all \
     -Dmicrosoft-clc=disabled \
     -Dxlib-lease=disabled \
@@ -175,7 +175,7 @@ package_opencl-mesa() {
 }
 
 _vulkan_driver_deps=('expat' 'libdrm' 'llvm' 'vulkan-icd-loader' 'wayland'
-		     'zlib' 'zstd' 'spirv-tools')
+		     'zlib' 'zstd' 'spirv-tools' 'libdisplay-info')
 
 package_vulkan-dzn()
 {
@@ -271,4 +271,3 @@ package_vulkan-mesa-layers()
   install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
     -t "$pkgdir/usr/share/licenses/$pkgname"
 }
-
