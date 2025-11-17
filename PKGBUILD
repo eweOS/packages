@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kfilemetadata
-pkgver=6.17.0
-pkgrel=3
+pkgver=6.20.0
+pkgrel=1
 pkgdesc='A library for extracting file metadata'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -27,7 +27,7 @@ makedepends=(catdoc
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('2bb9a99846ab0f73636ec34fba244908a123591f7f7458bab91b8cfb23923044')
+sha256sums=('3316505dc826cede409c6062ce87ca17680147a760544036c31739fbf7557f97')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
