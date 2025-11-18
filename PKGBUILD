@@ -4,7 +4,7 @@ pkgbase=qt6-wayland
 pkgname=(qt6-wayland qt6-wayland-devel)
 _qtver=6.10.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL-3.0-or-later LGPL-3.0-or-later FDL custom)
@@ -17,8 +17,6 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submod
 sha256sums=('603f2b0a259b24bd0fb14f880d7761b1d248118a42a6870cdbe8fdda4173761f')
 
 build() {
-  CXXFLAGS+=" -D_LIBCPP_TYPEINFO_COMPARISON_IMPLEMENTATION=2"
-
   export CMARGS=(
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_BUILD_TYPE=RelWithDebInfo
