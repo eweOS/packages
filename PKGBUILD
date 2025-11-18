@@ -4,7 +4,7 @@ pkgbase=qt6-base
 pkgname=(qt6-base qt6-base-devel)
 _qtver=6.10.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL-3.0-only
@@ -42,6 +42,9 @@ prepare() {
 }
 
 build() {
+  # fix for layer-shell-qt: https://bugs.gentoo.org/923292
+  CXXFLAGS+=" -D_LIBCPP_TYPEINFO_COMPARISON_IMPLEMENTATION=2"
+
   export CMARGS=(
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_BUILD_TYPE=RelWithDebInfo
