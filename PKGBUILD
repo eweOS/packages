@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kactivitymanagerd
-pkgver=6.4.4
+pkgver=6.5.2
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='System service to manage user activities and track the usage patterns'
@@ -23,7 +23,7 @@ makedepends=(boost
              extra-cmake-modules)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz)
-sha256sums=('38f24d9529810495db1a2d0f102a89885d22813f131fb6453b79d898bfcbe2a4')
+sha256sums=('9332b5f0fc86f806a480bb45112693a83df906db8eaddc2417459e9a6d7cdf6d')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
