@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qqc2-breeze-style
-pkgver=6.4.4
+pkgver=6.5.2
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Applications useful for Plasma development'
@@ -20,7 +20,7 @@ depends=(llvm-libs
 makedepends=(extra-cmake-modules)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz)
-sha256sums=('fb73e858d079f0a292ed571558f2cd25ef7e83cbecd15f62f5789540c3b0951c')
+sha256sums=('d5483dab67c578230c7e78c9fa54bb900d9e19356f915058e482a84d91956c81')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
