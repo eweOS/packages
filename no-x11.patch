@@ -1,5 +1,7 @@
---- libplasma-6.4.4/src/declarativeimports/core/windowthumbnail.cpp
-+++ libplasma-6.4.4-new/src/declarativeimports/core/windowthumbnail.cpp
+diff --git a/src/declarativeimports/core/windowthumbnail.cpp b/src/declarativeimports/core/windowthumbnail.cpp
+index 5e9f3f1ec..90f1a0a13 100644
+--- a/src/declarativeimports/core/windowthumbnail.cpp
++++ b/src/declarativeimports/core/windowthumbnail.cpp
 @@ -6,7 +6,9 @@
  #include "windowthumbnail.h"
  // KF5
@@ -10,7 +12,7 @@
  // Qt
  #include <QGuiApplication>
  #include <QIcon>
-@@ -280,10 +282,12 @@
+@@ -282,10 +284,12 @@ void WindowThumbnail::setWinId(uint32_t winId)
      if (m_winId == winId) {
          return;
      }
@@ -23,7 +25,7 @@
      if (window() && winId == window()->winId()) {
          // don't redirect to yourself
          return;
-@@ -393,12 +397,16 @@
+@@ -395,12 +399,16 @@ bool WindowThumbnail::nativeEventFilter(const QByteArray &eventType, void *messa
  void WindowThumbnail::iconToTexture(WindowTextureProvider *textureProvider)
  {
      QIcon icon;
@@ -40,14 +42,16 @@
      QImage image = icon.pixmap(boundingRect().size().toSize(), window()->devicePixelRatio()).toImage();
      textureProvider->setTexture(window()->createTextureFromImage(image, QQuickWindow::TextureCanUseAtlas));
  }
---- libplasma-6.4.4/src/plasma/private/contrasteffectwatcher.cpp
-+++ libplasma-6.4.4-new/src/plasma/private/contrasteffectwatcher.cpp
-@@ -88,13 +88,12 @@
+diff --git a/src/plasma/private/blureffectwatcher.cpp b/src/plasma/private/blureffectwatcher.cpp
+index 6f9694dc6..92c1bb120 100644
+--- a/src/plasma/private/blureffectwatcher.cpp
++++ b/src/plasma/private/blureffectwatcher.cpp
+@@ -88,13 +88,12 @@ void BlurEffectWatcher::init()
      }
  }
  
 -#if HAVE_X11
- bool ContrastEffectWatcher::nativeEventFilter(const QByteArray &eventType, void *message, qintptr *result)
+ bool BlurEffectWatcher::nativeEventFilter(const QByteArray &eventType, void *message, qintptr *result)
  {
      if (KWindowSystem::isPlatformWayland()) {
          return false;
@@ -57,52 +61,57 @@
      Q_UNUSED(result);
      // A faster comparison than eventType != "xcb_generic_event_t"
      // given that eventType can only have the following values:
-@@ -118,9 +117,9 @@
+@@ -117,10 +116,9 @@ bool BlurEffectWatcher::nativeEventFilter(const QByteArray &eventType, void *mes
+             Q_EMIT effectChanged(m_effectActive);
          }
      }
- 
+-
 +#endif
      return false;
  }
 -#endif
  
- bool ContrastEffectWatcher::isEffectActive() const
+ bool BlurEffectWatcher::isEffectActive() const
  {
-@@ -132,7 +131,7 @@
+@@ -129,10 +127,10 @@ bool BlurEffectWatcher::isEffectActive() const
+ 
+ bool BlurEffectWatcher::fetchEffectActive() const
+ {
++#if HAVE_X11
      if (KWindowSystem::isPlatformWayland()) {
-         return m_contrastManager->isActive();
+         return m_blurManager->isActive();
      }
 -
-+#if HAVE_X11
      if (m_property == XCB_ATOM_NONE || !m_x11Interface) {
          return false;
      }
-@@ -148,6 +147,7 @@
-             return true;
+@@ -149,6 +147,9 @@ bool BlurEffectWatcher::fetchEffectActive() const
          }
      }
-+#endif
      return false;
++#else
++    return m_blurManager->isActive();
++#endif
  }
  
---- libplasma-6.4.4/src/plasma/private/contrasteffectwatcher_p.h
-+++ libplasma-6.4.4-new/src/plasma/private/contrasteffectwatcher_p.h
-@@ -12,10 +12,12 @@
+ } // namespace Plasma
+diff --git a/src/plasma/private/blureffectwatcher_p.h b/src/plasma/private/blureffectwatcher_p.h
+index 36f0be511..f7a8c1e8d 100644
+--- a/src/plasma/private/blureffectwatcher_p.h
++++ b/src/plasma/private/blureffectwatcher_p.h
+@@ -12,7 +12,11 @@
  
  #include <QAbstractNativeEventFilter>
  
--#include <xcb/xcb.h>
--
++#include <config-plasma.h>
++
++#if HAVE_X11
+ #include <xcb/xcb.h>
++#endif
+ 
  #include <config-plasma.h>
  
-+#if HAVE_X11
-+#include <xcb/xcb.h>
-+#endif
-+
- namespace Plasma
- {
- class ContrastManager;
-@@ -30,9 +32,7 @@
+@@ -30,9 +34,7 @@ public:
      bool isEffectActive() const;
  
  protected:
@@ -112,8 +121,10 @@
  
  Q_SIGNALS:
      void effectChanged(bool on);
---- libplasma-6.4.4/src/plasma/private/theme_p.cpp
-+++ libplasma-6.4.4-new/src/plasma/private/theme_p.cpp
+diff --git a/src/plasma/private/theme_p.cpp b/src/plasma/private/theme_p.cpp
+index f4917a945..ca4c366ec 100644
+--- a/src/plasma/private/theme_p.cpp
++++ b/src/plasma/private/theme_p.cpp
 @@ -17,7 +17,9 @@
  #include <KSharedConfig>
  #include <KWindowEffects>
@@ -124,7 +135,7 @@
  
  namespace Plasma
  {
-@@ -96,9 +98,11 @@
+@@ -96,9 +98,11 @@ ThemePrivate::ThemePrivate(QObject *parent)
      , apiMinor(0)
      , apiRevision(0)
  {
@@ -136,7 +147,7 @@
  
      kSvgImageSet = std::unique_ptr<KSvg::ImageSet>(new KSvg::ImageSet);
      kSvgImageSet->setBasePath(QStringLiteral(PLASMA_RELATIVE_DATA_INSTALL_DIR "/desktoptheme/"));
-@@ -139,9 +143,11 @@
+@@ -139,9 +143,11 @@ ThemePrivate::ThemePrivate(QObject *parent)
          scheduleThemeChangeNotification();
      });
  
@@ -148,19 +159,21 @@
      updateKSvgSelectors();
  }
  
---- libplasma-6.4.4/src/plasmaquick/appletpopup.cpp
-+++ libplasma-6.4.4-new/src/plasmaquick/appletpopup.cpp
-@@ -12,7 +12,9 @@
+diff --git a/src/plasmaquick/appletpopup.cpp b/src/plasmaquick/appletpopup.cpp
+index 5774c1888..910895390 100644
+--- a/src/plasmaquick/appletpopup.cpp
++++ b/src/plasmaquick/appletpopup.cpp
+@@ -13,7 +13,9 @@
  
  #include <KConfigGroup>
  #include <KWindowSystem>
 +#if HAVE_X11
  #include <KX11Extras>
 +#endif
- #include <QSize>
  
  #include "applet.h"
-@@ -65,11 +67,15 @@
+ #include "appletquickitem.h"
+@@ -64,12 +66,16 @@ AppletPopup::AppletPopup()
      setAnimated(true);
      setFlags(flags() | Qt::Dialog);
  
@@ -170,14 +183,17 @@
      } else {
 +#endif
          PlasmaShellWaylandIntegration::get(this)->setRole(QtWayland::org_kde_plasma_surface::role::role_appletpopup);
+         PlasmaShellWaylandIntegration::get(this)->setTakesFocus(true);
 +#if HAVE_X11
      }
 +#endif
  
      auto edgeForwarder = new EdgeEventForwarder(this);
      edgeForwarder->setMargins(padding());
---- libplasma-6.4.4/src/plasmaquick/appletpopup.h
-+++ libplasma-6.4.4-new/src/plasmaquick/appletpopup.h
+diff --git a/src/plasmaquick/appletpopup.h b/src/plasmaquick/appletpopup.h
+index 29982d077..dbcda2535 100644
+--- a/src/plasmaquick/appletpopup.h
++++ b/src/plasmaquick/appletpopup.h
 @@ -10,6 +10,8 @@
  
  #include <QQuickItem>
@@ -187,8 +203,10 @@
  #include <plasmaquick/plasmaquick_export.h>
  
  namespace PlasmaQuick
---- libplasma-6.4.4/src/plasmaquick/dialog.cpp
-+++ libplasma-6.4.4-new/src/plasmaquick/dialog.cpp
+diff --git a/src/plasmaquick/dialog.cpp b/src/plasmaquick/dialog.cpp
+index 096c9c2c8..00c46addb 100644
+--- a/src/plasmaquick/dialog.cpp
++++ b/src/plasmaquick/dialog.cpp
 @@ -24,9 +24,13 @@
  #include <QQuickItem>
  #include <QScreen>
@@ -203,7 +221,7 @@
  
  #include <KWindowEffects>
  #include <Plasma/Corona>
-@@ -253,15 +257,19 @@
+@@ -253,15 +257,19 @@ void DialogPrivate::updateTheme()
                                                   theme.backgroundSaturation(),
                                                   mask);
  
@@ -223,7 +241,7 @@
          if (q->isVisible()) {
              DialogShadows::instance()->addWindow(q, dialogBackground->enabledBorders());
          }
-@@ -710,9 +718,9 @@
+@@ -710,9 +718,9 @@ QPointF DialogPrivate::positionAdjustedForMainItem(const QPointF &point) const
  
  void DialogPrivate::applyType()
  {
@@ -234,7 +252,7 @@
      if (KWindowSystem::isPlatformX11()) {
          switch (type) {
          case Dialog::Normal:
-@@ -745,11 +753,11 @@
+@@ -745,11 +753,11 @@ void DialogPrivate::applyType()
              q->setProperty("_q_xcb_wm_window_type", wmType);
          }
      }
@@ -247,7 +265,7 @@
      if (q->flags() & Qt::WindowStaysOnTopHint) {
          // If the AppletPopup type is not explicitly requested, then use the Dock type in this case
          // to avoid bug #454635.
-@@ -812,6 +820,7 @@
+@@ -812,6 +820,7 @@ void DialogPrivate::applyType()
          }
      }
  
@@ -255,7 +273,7 @@
      if (KWindowSystem::isPlatformX11()) {
          if (type == Dialog::Dock || type == Dialog::Notification || type == Dialog::OnScreenDisplay || type == Dialog::CriticalNotification) {
              KX11Extras::setOnAllDesktops(q->winId(), true);
-@@ -819,6 +828,7 @@
+@@ -819,6 +828,7 @@ void DialogPrivate::applyType()
              KX11Extras::setOnAllDesktops(q->winId(), false);
          }
      }
@@ -263,7 +281,7 @@
  
      PlasmaShellWaylandIntegration::get(q)->setTakesFocus(!q->flags().testFlag(Qt::WindowDoesNotAcceptFocus));
  }
-@@ -1080,11 +1090,13 @@
+@@ -1080,11 +1090,13 @@ QPoint Dialog::popupPosition(QQuickItem *item, const QSize &size)
      // if the item is in a window that ignores WM we want to position the popups outside
      bool outsideParentWindow = (item->window()->flags() & Qt::X11BypassWindowManagerHint) && item->window()->mask().isNull();
  
@@ -277,7 +295,7 @@
  
      QRect parentGeometryBounds;
      if (outsideParentWindow) {
-@@ -1358,9 +1370,11 @@
+@@ -1358,9 +1370,11 @@ void Dialog::showEvent(QShowEvent *event)
          DialogShadows::instance()->addWindow(this, d->dialogBackground->enabledBorders());
      }
  
@@ -289,8 +307,10 @@
      QQuickWindow::showEvent(event);
  }
  
---- libplasma-6.4.4/src/plasmaquick/plasmawindow.cpp
-+++ libplasma-6.4.4-new/src/plasmaquick/plasmawindow.cpp
+diff --git a/src/plasmaquick/plasmawindow.cpp b/src/plasmaquick/plasmawindow.cpp
+index 4aaf54821..d944695ed 100644
+--- a/src/plasmaquick/plasmawindow.cpp
++++ b/src/plasmaquick/plasmawindow.cpp
 @@ -11,9 +11,13 @@
  #include <QMarginsF>
  #include <QQuickItem>
@@ -305,7 +325,7 @@
  
  #include <Plasma/Theme>
  
-@@ -143,9 +147,11 @@
+@@ -143,9 +147,11 @@ void PlasmaWindow::showEvent(QShowEvent *e)
  {
      // EWMH states that the state is reset every hide
      // Qt supports external factors setting state before the next show
@@ -317,7 +337,7 @@
      QQuickWindow::showEvent(e);
  }
  
-@@ -171,11 +177,15 @@
+@@ -171,11 +177,15 @@ void PlasmaWindowPrivate::handleFrameChanged()
                                               theme.backgroundSaturation(),
                                               mask);
  
