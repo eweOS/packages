@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kmenuedit
-pkgver=6.4.4
+pkgver=6.5.2
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE menu editor'
@@ -29,7 +29,7 @@ makedepends=(extra-cmake-modules
              kdoctools)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz)
-sha256sums=('2af771dfedc334aaaac0976d66bf9c8c8e830030ad6d2a328b36be44bbc9eec9')
+sha256sums=('8e61efc74f273f0d94c1e8d780dfe4aa2f50a6be9adea689a4367e0f22cccb55')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
