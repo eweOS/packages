@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=plasma5support
-pkgver=6.4.4
+pkgver=6.5.2
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Support components for porting from KF5/Qt5 to KF6/Qt6'
@@ -11,12 +11,14 @@ license=(LGPL-2.0-or-later)
 depends=(kconfig
          kcoreaddons
          kguiaddons
+	 kholidays
          ki18n
          kidletime
          kio
          kjobwidgets
          knotifications
          kservice
+	 kunitconversion
          libksysguard
          qt6-base
          qt6-declarative
@@ -31,7 +33,7 @@ optdepends=('gpsd: GPS-based geolocation dataengine'
             'plasma-activities: activities dataengine')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz)
-sha256sums=('066c0456149bacad6dfd99eb36783fb61f1918df91b9d70ff4aeac56e3d43bf5')
+sha256sums=('811551c98c4bf042b791e2635a900fe76aaf2b0dc71b54dec80f9c387f74b8ef')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
