@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=breeze
-pkgver=6.4.4
+pkgver=6.5.2
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -28,7 +28,7 @@ makedepends=(extra-cmake-modules)
 optdepends=('breeze-gtk: Breeze widget style for GTK applications')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz)
-sha256sums=('307cfcb5505bd376d959b364f5231cac4a280af938a938ce3a4e3b7a9f71f70d')
+sha256sums=('907b5f058aca913ec8353799df7d9ce0c88dcda2d1bcbbf4a539f8886cf07a8b')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
