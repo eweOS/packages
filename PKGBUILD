@@ -11,9 +11,9 @@ source=(
   "path-transition.patch"
 )
 arch=(x86_64 aarch64 riscv64 loongarch64)
-license=(Apache)
-makedepends=(make git)
-depends=(busybox)
+license=(Apache-2.0)
+makedepends=(make linux-uapi-headers)
+depends=(busybox musl llvm-libs libcap)
 optdepends=('dinit-services: dinit service files')
 options=(emptydirs)
 sha256sums=('cd75b572a2eab4a9bd0610a2bb8cc154da7e80074e61cb1059a996dfd977baae'
