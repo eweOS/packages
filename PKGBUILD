@@ -19,33 +19,27 @@ options=(emptydirs)
 sha256sums=('cd75b572a2eab4a9bd0610a2bb8cc154da7e80074e61cb1059a996dfd977baae'
             'a792613ec687eace3aac2073875dd6ff55aba78b2ac97a4858579c410a63dfc5')
 
-prepare()
-{
+prepare() {
   _patch_ "$pkgname-$pkgver"
   cd "$pkgname-$pkgver"
 }
 
-build()
-{
+build() {
   cd "$pkgname-$pkgver"
   make all \
-    CXXOPTS="-std=c++11 -fno-rtti" \
     SBINDIR="/usr/bin" \
     LDFLAGS_BASE="$LDFLAGS" \
     BUILD_SHUTDOWN=yes \
-    SANITIZEOPTS="-fsanitize=address,undefined" \
     USE_UTMPX=1
 }
 
-check()
-{
+check() {
   cd "$pkgname-$pkgver"
   make check
   make check-igr
 }
 
-package()
-{
+package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" SBINDIR=/usr/bin install
   install -d ${pkgdir}/etc/dinit.d
