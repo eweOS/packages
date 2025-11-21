@@ -28,8 +28,7 @@ prepare() {
   _patch_ $pkgbase-$pkgver
 }
 
-build()
-{
+build() {
   cd ${pkgbase}-${pkgver}
   python -m build --wheel --no-isolation
   cmake -B build \
@@ -48,8 +47,7 @@ check() {
   ctest --output-on-failure --stop-on-failure -j$(nproc)
 }
 
-package_brotli()
-{
+package_brotli() {
   provides=(libbrotlicommon.so libbrotlidec.so libbrotlienc.so)
   cd ${pkgbase}-${pkgver}
   make -C build DESTDIR="$pkgdir" install
