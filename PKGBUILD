@@ -2,14 +2,14 @@
 
 pkgname=python-numpy
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('custom')
 url="https://www.numpy.org/"
 depends=('cblas' 'lapack' 'python')
 optdepends=('blas-openblas: faster linear algebra')
-makedepends=('python-build' 'python-installer' 'meson-python' 'cmake' 'flang' 'cython')
+makedepends=('python-build' 'python-installer' 'meson-python' 'cmake' 'flang' 'cython' 'linux-uapi-headers')
 checkdepends=('python-pytest' 'python-hypothesis')
 source=("https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
 sha512sums=('8f315a681704f1a18712828b5b9d5cd602576230fb08ff00c293ce129656faa49c9e01a446989dbd4d678166975432b531915e4838be66655ead1f0fc05be861')
