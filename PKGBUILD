@@ -48,6 +48,7 @@ check() {
 }
 
 package_brotli() {
+  depends=(musl)
   provides=(libbrotlicommon.so libbrotlidec.so libbrotlienc.so)
   cd ${pkgbase}-${pkgver}
   make -C build DESTDIR="$pkgdir" install
@@ -58,9 +59,10 @@ package_brotli() {
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
+# TODO: Split python-brotli into separate PKGBUILD, and build it statically.
 package_python-brotli() {
   pkgdesc+=' - python library'
-  depends=('python')
+  depends=('musl' 'python')
 
   cd ${pkgbase}-${pkgver}
   python -m installer --destdir="$pkgdir" dist/*.whl
