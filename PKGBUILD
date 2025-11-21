@@ -3,7 +3,7 @@
 pkgname=iverilog
 pkgver=12.0
 _srcver=${pkgver/./_}
-pkgrel=1
+pkgrel=2
 pkgdesc='A Verilog HDL compiler'
 url='https://steveicarus.github.io/iverilog/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -20,6 +20,10 @@ prepare() {
 	cd "$pkgname-$_srcver"
 
 	sh ./autoconf.sh
+
+	# Manually update config.{guess,sub}, the configure script couldn't
+	# be reproduced with modern Autotools.
+	cp /usr/share/autoconf/build-aux/config.{guess,sub} .
 }
 
 build() {
