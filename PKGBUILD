@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='A scalable distributed SCM tool'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.mercurial-scm.org/"
-license=(GPL)
+license=(GPL-2.0-or-later)
 depends=(python)
 makedepends=(
   python-build
@@ -29,7 +29,7 @@ build() {
 check() {
   cd $pkgname-$pkgver/tests
   # FIXME - disabled for now - to many tests fail
-  #python run-tests.py # -j48 || :
+  # python run-tests.py
 }
 
 package() {
