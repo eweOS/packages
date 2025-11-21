@@ -4,7 +4,7 @@ pkgbase=brotli
 pkgname=('brotli' 'python-brotli' 'brotli-testdata')
 _gitcommit=e61745a6b7add50d380cfd7d3883dd6c62fc2c71
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Generic-purpose lossless compression algorithm'
 url='https://github.com/google/brotli'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,8 +16,17 @@ makedepends=(
   python-installer
   python-wheel
 )
-source=("https://github.com/google/brotli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('816c96e8e8f193b40151dad7e8ff37b1221d019dbcb9c35cd3fadbfe6477dfec')
+# 0001: Backport, e230f474b871 ("disable BROTLI_MODEL macro for some targets")
+#	Fix "code model 'small' is not supported on this target" errors.
+#	See also https://github.com/google/brotli/pull/1368
+source=("https://github.com/google/brotli/archive/refs/tags/v${pkgver}.tar.gz"
+	"0001-disable-BROTLI_MODEL-macro-for-some-targets.patch")
+sha256sums=('816c96e8e8f193b40151dad7e8ff37b1221d019dbcb9c35cd3fadbfe6477dfec'
+            '404465f111c9cfbb45afefa1648630763d7fa203e98c0ac2fa26bc4bf6d6c4a9')
+
+prepare() {
+  _patch_ $pkgbase-$pkgver
+}
 
 build()
 {
