@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=imath
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc='A C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics'
 url='https://www.openexr.com/'
@@ -14,7 +14,7 @@ makedepends=(boost
              python
              python-numpy)
 source=(https://github.com/AcademySoftwareFoundation/Imath/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('b2c8a44c3e4695b74e9644c76f5f5480767355c6f98cde58ba0e82b4ad8c63ce')
+sha256sums=('b4275d83fb95521510e389b8d13af10298ed5bed1c8e13efd961d91b1105e462')
 
 build() {
   cmake -B build -S Imath-$pkgver \
