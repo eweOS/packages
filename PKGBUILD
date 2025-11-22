@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libdvdread
-pkgver=7.0.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc='Library for reading DVD video disks'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ makedepends=(git meson)
 #	directory has a different permission.
 source=("git+https://code.videolan.org/videolan/libdvdread.git#tag=$pkgver"
 	"0001-meson.build-avoid-generation-of-changelog-from-git.patch")
-sha256sums=('cf7e11067203c93ba43089d89857abe0002626d5205504755a5049315d2f94da'
+sha256sums=('5197dca2789f796e68e09bcd255203d2f591483cbf0fe7dedb5734c86d0bc8bf'
             '227de7f6145f45736b463fa0c973ca096c55e0b7ee6a539e7e69255eda8db345')
 
 prepare() {
