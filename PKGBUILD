@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libcap
-pkgver=2.76
+pkgver=2.77
 pkgrel=1
 pkgdesc="POSIX 1003.1e capabilities"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -9,7 +9,7 @@ url="https://sites.google.com/site/fullycapable/"
 license=(GPL-2.0-only)
 makedepends=(linux-headers)
 source=(https://kernel.org/pub/linux/libs/security/linux-privs/${pkgname}2/$pkgname-$pkgver.tar.xz)
-sha256sums=('629da4ab29900d0f7fcc36227073743119925fd711c99a1689bbf5c9b40c8e6f')
+sha256sums=('897bc18b44afc26c70e78cead3dbb31e154acc24bee085a5a09079a88dbf6f52')
 
 build()
 {
