@@ -3,14 +3,14 @@
 # Contributor: Drew DeVault
 
 pkgname=scdoc
-pkgver=1.11.3
-pkgrel=2
+pkgver=1.11.4
+pkgrel=1
 license=('MIT')
 pkgdesc='Tool for generating roff manual pages'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://git.sr.ht/~sircmpwn/scdoc/'
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~sircmpwn/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('fbecc505b44c396890c53c05183d34336160dbd02993ee120421fc6e2a3ec78ba349747e8acfe97af956a0081c923309290ff97fb7babafbc3ca8addc9ec92f9')
+sha512sums=('f8950bbef5213a89746185d5ed29fbee2502235632db883afaaac515dc87c60559bc1a39e2a3ea3bb019675e6039bd2d3b5c5d117a0ad022b61c958fb9407877')
 
 build()
 {
