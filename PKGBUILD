@@ -5,7 +5,7 @@ pkgname=(
   p11-kit
   libp11-kit
 )
-pkgver=0.25.8
+pkgver=0.25.10
 pkgrel=1
 pkgdesc="Loads and enumerates PKCS#11 modules"
 url="https://p11-glue.freedesktop.org"
@@ -21,7 +21,7 @@ makedepends=(
   docbook-xsl
 )
 source=(https://github.com/p11-glue/p11-kit/releases/download/$pkgver/p11-kit-$pkgver.tar.xz)
-sha256sums=('2fd4073ee2a47edafaae2c8affa2bcca64e0697f8881f68f580801ef43cab0ce')
+sha256sums=('a62a137a966fb3a9bbfa670b4422161e369ddea216be51425e3be0ab2096e408')
 
 build() {
   local meson_options=(
