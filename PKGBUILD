@@ -2,7 +2,7 @@
 
 pkgname=python-beautifulsoup4
 _pkgname="${pkgname#python-}"
-pkgver=4.13.4
+pkgver=4.14.2
 pkgrel=1
 pkgdesc='A Python HTML/XML parser designed for quick turnaround projects like screen-scraping'
 arch=('any')
@@ -26,7 +26,7 @@ makedepends=(
 )
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://www.crummy.com/software/BeautifulSoup/bs4/download/${pkgver%.*}/$_pkgname-$pkgver.tar.gz")
-sha256sums=('dbb3c4e1ceae6aefebdaf2423247260cd062430a410e38c66f2baa50a8437195')
+sha256sums=('2a98ab9f944a11acee9cc848508ec28d9228abfd522ef0fad6a02a72e0ded69e')
 
 build() {
   cd "$_pkgname-$pkgver"
