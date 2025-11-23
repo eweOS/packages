@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-cffi
-pkgver=1.17.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Foreign Function Interface for Python calling C code"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -15,7 +15,7 @@ source=(
   "https://github.com/python-cffi/cffi/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
   clang-test-errors.patch
 )
-sha512sums=('bb22f2f21f4d9e097bdacaad24b883936304e794d0e319f24db794de37e47de690b3c352487d670e3b9e2322d5144cd3d3582fb847c4f6806be5eb549e63d9de'
+sha512sums=('a71b74e642e11eb50e9bb4ae0e7116bdb3c4a7c9622a3766d84506fa7994c02e09644b41b439b95ca99b0303e91891897cff38018d498eb087e0961f0ad4fb8b'
             'e311758c2859070da21b4bdd6a0907e4653c10872d7790679d75390fd6ef3f8768541196187774df11ab9dc71f668af4ca69c0cb340209617967086175427e59')
 
 prepare() {
