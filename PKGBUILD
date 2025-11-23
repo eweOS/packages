@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-calver
-pkgver=2025.04.17
+pkgver=2025.10.20
 pkgrel=1
 pkgdesc="Setuptools extension for CalVer package versions"
 url="https://github.com/di/calver"
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pretend')
 source=("https://github.com/di/calver/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('9d15bfefd02be1d6449beaed4f9dc8b5662442ebb747153cea1ea246c484c9240f449126fef3f175a2e66d49ec75112aaf91cf28f966abf4109d22ef2932e022')
+sha512sums=('248add922c0dbbb13928dd5568494715a515fe0815057115751d668c77f55aa7e0a258018ac2c2af853b363a0d0ea59652f636f6f72f8665d0ca6ac036311ba3')
 
 prepare() {
   cd calver-$pkgver
