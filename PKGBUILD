@@ -31,6 +31,10 @@ build() {
   cmake --build ./build --config Release --target all
 }
 
+check() {
+  ctest --test-dir build
+}
+
 package() {
   DESTDIR="${pkgdir}" cmake --install build
   install -Dm644 "${pkgname}-${pkgver}"/LICENSE \
