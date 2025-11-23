@@ -1,5 +1,7 @@
---- a/python2/httplib2/certs.py
-+++ b/python2/httplib2/certs.py
+diff --git a/httplib2/certs.py b/httplib2/certs.py
+index 59d1ffc70273..05339ccc6449 100644
+--- a/httplib2/certs.py
++++ b/httplib2/certs.py
 @@ -19,9 +19,7 @@ except ImportError:
      pass
  
@@ -11,19 +13,8 @@
  
  
  def where():
---- a/python3/httplib2/certs.py
-+++ b/python3/httplib2/certs.py
-@@ -19,9 +19,7 @@ except ImportError:
-     pass
- 
- 
--BUILTIN_CA_CERTS = os.path.join(
--    os.path.dirname(os.path.abspath(__file__)), "cacerts.txt"
--)
-+BUILTIN_CA_CERTS = "/etc/ssl/certs/ca-certificates.crt"
- 
- 
- def where():
+diff --git a/tests/test_cacerts_from_env.py b/tests/test_cacerts_from_env.py
+index f04ba0e5d090..79d4bd905ffb 100644
 --- a/tests/test_cacerts_from_env.py
 +++ b/tests/test_cacerts_from_env.py
 @@ -9,7 +9,7 @@ import tempfile
@@ -31,8 +22,7 @@
  
  
 -CA_CERTS_BUILTIN = os.path.join(os.path.dirname(httplib2.__file__), "cacerts.txt")
-+CA_CERTS_BUILTIN = "/etc/ssl/certs/ca-certificates.crt"
++CA_CERTS_BUILTIN = "/etc/ssl/certs/ca-ceriticates.crt"
  CERTIFI_CERTS_FILE = "unittest_certifi_file"
  CUSTOM_CA_CERTS = "unittest_custom_ca_certs"
  
-
