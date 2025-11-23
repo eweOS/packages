@@ -22,13 +22,17 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
+  cmake \
+    --no-warn-unused-cli \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -S "${pkgname}-${pkgver}" \
+    -B build
   cmake --build ./build --config Release --target all
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
   DESTDIR="${pkgdir}" cmake --install build
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 "${pkgname}-${pkgver}"/LICENSE \
+    -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
