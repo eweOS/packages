@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-gobject
-pkgver=3.54.3
+pkgver=3.55.0
 _commit_pycapi_compat=632d1aa0c4be6c67498d6b97630ddd7d7eb0f90a
 _commit_g_intro_tests=ddd662bb9cdc29f047b239789fb7e56e68fa66bb
 pkgrel=1
@@ -25,7 +25,7 @@ optdepends=('cairo: Cairo bindings')
 source=("https://gitlab.gnome.org/GNOME/pygobject/-/archive/$pkgver/pygobject-$pkgver.tar.gz"
 	"git+https://github.com/python/pythoncapi-compat.git#commit=$_commit_pycapi_compat"
 	"git+https://gitlab.gnome.org/GNOME/gobject-introspection-tests.git#commit=$_commit_g_intro_tests")
-sha256sums=('7dff932af05c988dfcaf985f14d6664aeff27cd7c0eb2b2428f8cdb169a3d96e'
+sha256sums=('9b853d963f37e2043313c807ef4a68ae1d9e3e45d8820fbe4d031aa8519545eb'
             'c485f20e20d48c9e1a65f419848d5ce2a42939d858dd7345aaedd7eb4f4d3151'
             '6ef25921088eb377e1046b770c4b784992dcd0d533adccc18bef69addd93d226')
 
