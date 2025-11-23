@@ -7,7 +7,7 @@ pkgdesc="Hyprland utilities library used across the ecosystem"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/hyprwm/hyprutils"
 license=('BSD-3-Clause')
-depends=(pixman)
+depends=(musl llvm-libs pixman)
 makedepends=('git' 'cmake' 'googletest')
 # 0001, backport cb3e797fde5c ("internal: fix missing headers (#86)")
 #	add missing includes to fix build errors
