@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-msgpack
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='MessagePack serializer implementation for Python'
 url='https://github.com/msgpack/msgpack-python'
@@ -11,7 +11,7 @@ depends=('musl' 'python')
 makedepends=('cython' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
 source=(msgpack-python-$pkgver.tar.gz::https://github.com/msgpack/msgpack-python/archive/v$pkgver.tar.gz)
-sha512sums=('0cd5569b0e70d568557d58d5fdf0dbaceaa2dd94a1242ef4dbc079a513fd51eb35ecab85708b09a7958c81c5cb49664622be5eba602296547faa11713e8edc06')
+sha512sums=('bd5bc3498875fd17fcfaeb1a79c49e61313976341950c385cacbe3c6cf85bf1acfc9ccf06046ddeb1848f52929f1d71aac6b67bac41479c1333e42bd1d461542')
 
 build() {
   cd msgpack-python-$pkgver
