@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=python-pytest-asyncio
-pkgver=1.0.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Async io support for pytest'
 url='https://github.com/pytest-dev/pytest-asyncio'
@@ -15,7 +15,7 @@ checkdepends=(python-hypothesis)
 #	https://github.com/pytest-dev/pytest-asyncio/pull/1141
 source=("git+https://github.com/pytest-dev/pytest-asyncio.git#tag=v$pkgver"
 	"0001-test-Adapt-unmarked-async-tests-in-strict-mode-for-p.patch")
-sha256sums=('0e3e4c335ae1384457f961b3d4a329000f8bf0de302a3cb763f1a941a2dbd576'
+sha256sums=('24ff4a43d3a06e2eff1e73694ce558cf27aba42c0e3e0aae1b74fab25cb24954'
             'e844cf9279f8597c86c2a28131cdb78d4d05bb60255661ba18e66d1548f3a175')
 
 prepare() {
