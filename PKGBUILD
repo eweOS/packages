@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-soupsieve
-pkgver=2.7
+pkgver=2.8
 pkgrel=1
 pkgdesc='A CSS4 selector implementation for Beautiful Soup'
 arch=('any')
@@ -21,7 +21,7 @@ checkdepends=(
   'python-lxml'
 )
 source=("$pkgname::git+$url#tag=$pkgver")
-sha256sums=('a6821c8421a34ba7ea2f1d78a137d41b2e74f4808ddfdb8a631d28707e5f5c13')
+sha256sums=('96e4bcbb0d283507b26460aa41561eef4934a993e654f95af2ea7001d9ca977b')
 
 build() {
   cd "$pkgname"
