@@ -2,7 +2,7 @@
 
 pkgname=python-more-itertools
 _name=${pkgname#python-}
-pkgver=10.7.0
+pkgver=10.8.0
 pkgrel=1
 pkgdesc='More routines for operating on iterables, beyond itertools'
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=(
   'python-flit-core'
 )
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('58b9d71f61c05c946764c0905b920e50ef96828cdec424473bfc6dd5789e4b6b')
+sha256sums=('8315c38d33ce161eb578d86f89bd8c93dd681846cca8b927a4d6d87bcafd609b')
 
 build() {
   cd "$_name-$pkgver"
