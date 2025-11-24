@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=python-pytest-mock
-pkgver=3.14.1
+pkgver=3.15.1
 pkgrel=1
 pkgdesc='Thin-wrapper around the mock package for easier use with pytest.'
 url='https://github.com/pytest-dev/pytest-mock'
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-setuptools
 	     python-setuptools-scm python-wheel git)
 checkdepends=(python-pytest-asyncio)
 source=("git+https://github.com/pytest-dev/pytest-mock.git#tag=v$pkgver")
-sha256sums=('17b87b8d0e49d22660e484d0d2d077ec5590831102efdb395dadc503407d24bc')
+sha256sums=('9e2a8ab4b70d694a02d0f12e8b06ad9c0d47a176509e4765646ab12ebc89b26b')
 
 build () {
 	cd pytest-mock
