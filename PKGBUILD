@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=neon
-pkgver=0.35.0
+pkgver=0.36.0
 pkgrel=1
 pkgdesc='HTTP/1.1 and WebDAV client library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -20,7 +20,7 @@ makedepends=(
   xmlto
 )
 source=("git+https://github.com/notroj/neon.git#tag=$pkgver" musl-date-test.patch)
-sha256sums=('b68c9b0658a49c318f998b1df11a692e267eeaf6f30204f40443de7448ff31c8'
+sha256sums=('7a4046075b52a575108fde8fcf6736824cddd1ee3cc189572b68b57122eafc2a'
             'a0c78eb143079cf5c2b9c2a5e452b54da94127d323189ef84588727a9891c883')
 
 prepare() {
