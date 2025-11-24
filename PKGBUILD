@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=semver
-pkgver=7.7.2
+pkgver=7.7.3
 pkgrel=1
 pkgdesc='The semantic version parser used by npm'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-sha512sums=('445d05c3eacee4031ff4c0326915c8e005745258f994c1ea571c5d4a08956e2c52097a049a65ff8e4d02b89c38fb74aaae860ef55a1487e1dcb898afbed25e98')
+sha512sums=('49db0a32b23d4dd823770794491f4cc1e1c0e0427c6311e7f0315a0e2b2f85595439ee01175b4b0fb1808f4948a96565f9d3dbfeb131af406d6f2e65a109b6d1')
 
 package() {
   npm install -g --prefix "$pkgdir"/usr $pkgname-$pkgver.tgz
