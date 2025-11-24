@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gnome-weather
-pkgver=48.0
+pkgver=49.0
 pkgrel=1
 pkgdesc="Access current weather conditions and forecasts"
 url="https://apps.gnome.org/Weather"
@@ -24,7 +24,7 @@ makedepends=(
 )
 groups=(gnome)
 source=("git+https://gitlab.gnome.org/GNOME/gnome-weather.git#tag=${pkgver/[a-z]/.&}")
-sha256sums=('4abef8cf3b131d7dc4c621a8d87c665373242598795a457337e320fe3fb22952')
+sha256sums=('db31384649da7d3dcf4ed4aa0496589bc7c6b126500e6d78e437f0461d4c6a42')
 
 build() {
   ewe-meson $pkgname build
