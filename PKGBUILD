@@ -2,7 +2,7 @@
 
 pkgname=python-requests
 _pyname=${pkgname#*-}
-pkgver=2.32.4
+pkgver=2.32.5
 pkgrel=1
 pkgdesc='An elegant and simple HTTP library for Python, built for human beings.'
 url='https://requests.readthedocs.io'
@@ -15,7 +15,7 @@ optdepends=('python-chardet: alternative character encoding library'
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest python-pytest-httpbin python-trustme)
 source=("https://github.com/psf/requests/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cb4faf6ae4a5a1cee78f08f950c54ef1b03e77dee595ac80f304e96576a48fba')
+sha256sums=('f22e7e83030dbd2685fa0a9bdf0e4efd30b1424b92ff19eb66599decce510a66')
 
 build () {
 	cd $_pyname-$pkgver
