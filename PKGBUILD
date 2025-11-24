@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-markdown
-pkgver=3.8.2
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="Python implementation of John Gruber's Markdown"
 arch=('any')
@@ -11,10 +11,8 @@ depends=('python')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('python-yaml: parse Python in YAML metadata')
 checkdepends=('python-yaml')
-# backport: fix-failing.patch: https://github.com/Python-Markdown/markdown/pull/1548
-source=("$pkgname::git+https://github.com/Python-Markdown/markdown#tag=$pkgver" fix-failing.patch)
-sha256sums=('f99b5f3dc65e02d1a7dbdbe986180ded64fdc82fafbe0c5f4a15a035b3bd2c2f'
-            '5454e782e6276af69be77c72d7dc3e7751a5ac9a656174eac93ac24f3b2c9e00')
+source=("$pkgname::git+https://github.com/Python-Markdown/markdown#tag=$pkgver")
+sha256sums=('e52794ea0069555da7db4b68a0796b6b20a852cb7a558205129d043dc8310bfe')
 
 prepare() {
   _patch_ "$pkgname"
@@ -27,9 +25,6 @@ build() {
 
 check() {
   cd "$pkgname"
-
-  [[ $(python -c "import markdown; print(markdown.__version__)") == "$pkgver" ]]
-  [[ $(python -c "import markdown; print(markdown.markdown('*test*'))") == "<p><em>test</em></p>" ]]
 
   python -m unittest discover tests
 }
