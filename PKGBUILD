@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-pycparser
-pkgver=2.22
-pkgrel=2
+pkgver=2.23
+pkgrel=1
 pkgdesc='C parser and AST generator written in Python'
 url='https://github.com/eliben/pycparser'
 depends=('python')
@@ -13,7 +13,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/eliben/pycparser/archive/release_v$pkgver.tar.gz"
   clang-cpp.patch
 )
-sha256sums=('b074c239ee828fcb9c97774b942f3ce51f0d2edc00809f49c3c3ef0f3baaf9c1'
+sha256sums=('a0037c12991e11c95e9059b18aece5c1b2d41fac6dd7ea5ecf4f1e9e3f402845'
             '990dba59ae479300d9d31fdc34e2b31ca0209efeb5f41e03b572f1895190d177')
 
 prepare() {
