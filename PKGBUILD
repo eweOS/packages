@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-pytest-xdist
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc='py.test xdist plugin for distributed testing and loop-on-failing modes'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-execnet' 'python-pytest')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 checkdepends=('python-filelock' 'python-psutil')
 source=("git+https://github.com/pytest-dev/pytest-xdist.git#tag=v$pkgver")
-sha512sums=('3fb413e7291ee137b19aa36fd4ae9eb34165a55da7c1235743487386edf0c877c39bbe8839b44d657698d52d9c1404eac0ae13baeca85c0505694a7653b8b665')
+sha512sums=('e1b0041f0b45f75a9665f89f745a2f5947553e5e676ade61480b7ea5fa952e52945f825061665aa73713eca23a9ff720844c1f944b9517d4a0058334a513787e')
 
 build() {
   cd pytest-xdist
