@@ -1,0 +1,12 @@
+diff --git a/python/mach/mach/site.py b/python/mach/mach/site.py
+index 7041437..ca4b8c4 100644
+--- a/python/mach/mach/site.py
++++ b/python/mach/mach/site.py
+@@ -1379,6 +1379,7 @@ def activate_virtualenv(virtualenv: PythonVirtualenv):
+         site.addsitedir(os.path.realpath(path))
+ 
+     sys.prefix = virtualenv.prefix
++    sys.exec_prefix = virtualenv.prefix
+ 
+ 
+ def _mach_virtualenv_root(checkout_scoped_state_dir):
