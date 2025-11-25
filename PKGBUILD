@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pkcs11-helper
-pkgver=1.30.0
-pkgrel=2
+pkgver=1.31.0
+pkgrel=1
 pkgdesc='A library that simplifies the interaction with PKCS11 providers for end-user applications using a simple API and optional OpenSSL engine'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/OpenSC/pkcs11-helper'
@@ -10,7 +10,7 @@ license=('GPL' 'BSD')
 depends=('nss' 'openssl')
 provides=('libpkcs11-helper.so')
 source=("https://github.com/OpenSC/${pkgname}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('4c5815ba910cabf26df08d449ca2909daf4538c9899aa7f7fadc61229d3488a9')
+sha256sums=('46f0067bccd7be2c28f88b8bca775172b9e52fb6fc1280b44ca8bb831433fef9')
 
 build() {
   cd pkcs11-helper-$pkgver
