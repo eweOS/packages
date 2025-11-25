@@ -1,0 +1,14 @@
+diff --git a/configure.ac b/configure.ac
+index 04b6f985bb8e..56489160167f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -74,6 +74,9 @@ dnl but POSIX requires <sys/socket.h> for socklen_t to be defined.
+ dnl
+ AC_CHECK_TYPES(socklen_t,,,
+ [AC_INCLUDES_DEFAULT
++#if HAVE_SYS_SOCKET_H
++# include <sys/socket.h>
++#endif
+ #if HAVE_SYS_TYPES_H
+ # include <sys/types.h>
+ #endif
