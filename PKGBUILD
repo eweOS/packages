@@ -4,7 +4,7 @@
 pkgbase=linux-lts
 pkgname=(linux-lts linux-lts-devel linux-lts-docs)
 _basename=linux
-pkgver=6.12.58
+pkgver=6.12.59
 pkgrel=1
 pkgdesc='Linux LTS kernel'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,13 +12,13 @@ url='http://www.kernel.org'
 license=(GPL-2.0-only)
 makedepends=(bison flex perl python libelf linux-headers rsync lld git pahole)
 options=(!strip)
-_kconfig_commit=1cd191310539a1317276da41b6e7733f41db3532
+_kconfig_commit=27bf917262c8d3b07e05e4423a6a7ceed240c61f
 source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         "git+https://github.com/eweOS/kernel-config.git#commit=$_kconfig_commit"
         busybox-find-compat.patch
         0001-amdgpu-dml2-Increase-max-stack-size.patch)
-sha256sums=('5f1c4c546660a6a81046fdfa6195306bad2c8d17c0d69876dc100a85ad4613ac'
-            '7564bd001ed903e20febebc570328b9dc4809e99a4142aef90a767f067be8c91'
+sha256sums=('a1d2cd7327f10eec022615c1bb12c06439bd110d2020164be97f698f43ca58be'
+            '52bae62921d925e8174035e9e27ef5f6fa1e347a857e7f40bc2f96518f3f765a'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd'
             '6a41c19cc18e52258a3300a0a673b31babff78c5c206be697c4c82a84e9e201d')
 
