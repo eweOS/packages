@@ -3,13 +3,13 @@
 pkgbase=rust
 pkgname=(rust rust-src)
 pkgver=1.91.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.rust-lang.org/'
 license=('MIT OR Apache-2.0')
 options=(!lto)
-depends=(musl llvm-libs musl-static curl libssh2 openssl)
+depends=(musl llvm-libs llvm curl libssh2 openssl)
 makedepends=(rust llvm-devel libffi perl python cmake ninja)
 # 0001: Downstream, don't link CRT statically by default on musl targets
 # 0002: Downstream, don't pass -nodefaultlibs to linkers, which prevents usage
