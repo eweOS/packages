@@ -1,0 +1,19 @@
+diff --git a/llvm/lib/Support/CMakeLists.txt b/llvm/lib/Support/CMakeLists.txt
+index a6d8a2581886..065f9e1988a2 100644
+--- a/llvm/lib/Support/CMakeLists.txt
++++ b/llvm/lib/Support/CMakeLists.txt
+@@ -339,6 +339,14 @@ if(LLVM_ENABLE_ZSTD)
+   endif()
+   if (zstd_target STREQUAL zstd::libzstd_shared)
+     get_library_name(${zstd_library} zstd_library)
++    # eweOS depends on zstd's Findzstd.cmake module, instead of LLVM-vendored
++    # one. These two implementations differ in some aspects, and with zstd's
++    # Findzstd.cmake, zstd_library contains the full library name with sover
++    # suffix, e.g., "libzstd.1.5.7", whose suffix get_library_name couldn't
++    # strip away, and could break output of
++    # llvm-config --system-libs --link-static
++    # Let's manually strip the suffix away.
++    string(REGEX MATCH "^[^.]+" zstd_library "${zstd_library}")
+     set(llvm_system_libs ${llvm_system_libs} "${zstd_library}")
+   else()
+     set(llvm_system_libs ${llvm_system_libs} "${zstd_STATIC_LIBRARY}")

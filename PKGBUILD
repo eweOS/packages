@@ -12,7 +12,7 @@ pkgname=(
 )
 _realpkgname=llvm-project
 pkgver=20.1.8
-pkgrel=2
+pkgrel=3
 _binutilsver=2.44
 _majorver="${pkgver%%.*}"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -20,20 +20,42 @@ url='https://llvm.org'
 license=('Apache-2.0 WITH LLVM-exception')
 makedepends=(llvm-devel cmake ninja utmps zlib zstd libffi libedit linux-headers git
              spirv-llvm-translator python)
-# Under review:
-#  try-llvm-libunwind
-# Downstream:
-#  others
+# 0001: Should be upstreamed, ensure clang-config and llvm-config's
+#	installation path fits in CMAKE_INSTALL_PREFIX.
+# 0002: Under review, link to LLVM libunwind to avoid usage of __register_frame,
+#	which leads to error messages like
+#	libunwind: __unw_add_dynamic_fde: bad fde: FDE is really a CIE
+#	caused by different behavior between libgcc and LLVM libunwind.
+#	https://github.com/llvm/llvm-project/pull/112087
+# 0003: Workaround, always link libc with -Wl,no-as-needed, to prevent
+#	reference to weak symbol __cxa_finalize in compile-rt from being
+#	considered dead, resulting in unresovable symbols, calls to which
+#	mold used to turn into a dead loop on riscv64.
+#
+#	This only caused issues on riscv64 (not sure whether loongarch64 is
+#	affected), and may already be unnecessary since mold 2.39.0, commit
+#	e08e7f6aa447 ("Do not turn a call to a resolved weak undefined symbol into an infinite loop")
+#
+#	See also https://github.com/rui314/mold/issues/1451
+#		 https://github.com/llvm/llvm-project/pull/95848
+# 0004: Downstream, see also notes in prepare() function.
+#	LLVM vendors a Findzstd.cmake which isn't compatible with newer zstd's
+#	CMake configuration file. We decided to remove LLVM's copy, but behavior
+#	differences between the two implementations may mess up the zstd-related
+#	flags provided by llvm-config --system-libs --link-static.
+#	The patch mimics the behavior of the LLVM implementation.
 source=("https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}.tar.gz"
         "https://ftp.gnu.org/gnu/binutils/binutils-${_binutilsver}.tar.xz"
-        llvm-install-prefix.patch
-        try-llvm-libunwind.patch
-        0001-clang-force-libc-linked-with-no-as-needed-when-using.patch)
+        0001-fix-llvm-clang-config-install-prefix.patch
+        0002-try-llvm-libunwind.patch
+        0003-clang-force-libc-linked-with-no-as-needed-when-using.patch
+        0004-llvm-Support-strip-zstd-library-sover-suffix.patch)
 sha256sums=('a6cbad9b2243b17e87795817cfff2107d113543a12486586f8a055a2bb044963'
             'ce2017e059d63e67ddb9240e9d4ec49c2893605035cd60e92ad53177f4377237'
             'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94'
             '13a1c761d41324c7a790df55650a3a98a9ade0348d6e88f1e269b6b77ce5df55'
-            '57808d224fd9218a936e6669bf4129eaf4aa04fbd45ab9f7fd5a20efc304e307')
+            '57808d224fd9218a936e6669bf4129eaf4aa04fbd45ab9f7fd5a20efc304e307'
+            '2c276c10568b69e1221eb83a848e6b7b828511583960b053eb83845161460d20')
 
 _basedir=llvm-project-llvmorg-$pkgver
 
