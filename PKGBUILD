@@ -22,7 +22,6 @@ build()
 package()
 {
   cd $pkgname-$pkgver
-  install -d "${pkgdir}/usr/bin"
-  install -m 0755 ninja "${pkgdir}/usr/bin/"
+  install -Dm 0755 ninja "${pkgdir}/usr/bin/ninja"
   _install_license_ COPYING
 }
