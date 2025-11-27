@@ -4,11 +4,11 @@
 pkgname=linux-uapi-headers
 _basename=linux
 pkgver=6.17.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux syscall API headers for userspace usage'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
-license=('GPL-2.0-only with Linux-syscall-note')
+license=('GPL-2.0-only WITH Linux-syscall-note')
 makedepends=(rsync)
 options=(!strip)
 provides=(linux-headers)
