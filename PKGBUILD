@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc='a small build system with a focus on speed'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/ninja-build/ninja'
-license=(Apache)
+license=(Apache-2.0)
 depends=(musl llvm-libs)
 makedepends=(python)
 source=("$url/archive/v${pkgver}.tar.gz")
@@ -24,4 +24,5 @@ package()
   cd $pkgname-$pkgver
   install -d "${pkgdir}/usr/bin"
   install -m 0755 ninja "${pkgdir}/usr/bin/"
+  _install_license_ COPYING
 }
