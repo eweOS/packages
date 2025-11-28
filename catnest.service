@@ -1,4 +1,4 @@
 type = scripted
 command = /usr/bin/catnest
 restart = false
-depends-on = early-fs.target
+depends-on: early-fs.target

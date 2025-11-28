@@ -16,7 +16,7 @@ source=(
   "catnest-reload.hook"
 )
 sha256sums=('2857f29520aeb92c29a8d6f8cbcdeaf6c8d869261d3821745694e0e16dd4c66e'
-            '4db7565a5a2381d1d86f617a229cb7835ec090cf983e0883153c1ddb330cb254'
+            'd12befbc0b98a0064114c3dc29c1a1de5fb18961aa0980096a4dfb842b36eacd'
             '719dd6b9794afc10206967feae0f1f6723df9a7c4c7e3f6321c874833a9058ad'
             'df7685e245d9afee96e237f4a233e3bf1a3b8431da0268fab29fb9ccb04913ce')
 
