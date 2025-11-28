@@ -35,7 +35,7 @@ package_zlib-ng() {
   conflicts=(zlib)
   cd "$pkgname-$pkgver"
   make install DESTDIR="${pkgdir}"
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/zlib/LICENSE"
+  _install_license_ LICENSE
 
   cd "$pkgdir"
   _pick_ zlib-ng-static usr/lib/libz.a
