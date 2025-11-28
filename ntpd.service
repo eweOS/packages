@@ -2,6 +2,6 @@ type = process
 command = /bin/ntpd -dn
 logfile = /var/log/ntpd.log
 restart = false
-depends-on = rc.target
-depends-on = network.target
-before = login.target
+depends-on: rc.target
+depends-on: network.target
+before: login.target
