@@ -2,7 +2,7 @@
 
 pkgname=pawprint
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A substitution of systemd-tmpfiles"
 url="https://github.com/eweOS/pawprint"
 license=(MIT)
@@ -13,7 +13,7 @@ source=("$pkgname::git+$url.git#tag=v$pkgver"
         pawprint-reload.hook
         pawprint-reload.script)
 sha256sums=('83960253358621ecf1132e0a22044e60010dbe49c9a4aca17c7c639e90024b03'
-            'f93ee18de7c6f6426427a7ce7aa8632d85802fbc5a1178860f7ba26a262506eb'
+            '2526fd814f69ac103a2c045783056ee4c4e2142f777e9e29a13bed0e197d4d10'
             'a47a75887d912acc603434e0b93d8407a2410e75892cd0599f884721144c868a'
             '1a22a7add0b8e29932ba7d2ac0efeb78d95807b1194e2c40862d1d7b09ef6675')
 
