@@ -3,7 +3,7 @@
 
 pkgbase=zlib-ng
 pkgname=(zlib-ng zlib-ng-static)
-pkgver=2.2.5
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='zlib data compression library for the next generation systems'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ url="https://github.com/zlib-ng/zlib-ng"
 depends=(musl)
 makedepends=(cmake googletest)
 source=($pkgname-$pkgver::"https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('5b3b022489f3ced82384f06db1e13ba148cbce38c7941e424d6cb414416acd18')
+sha256sums=('94cfa0a53a8265c813c8369d3963bf09ac6a357824ad1f93aee13486176e152e')
 
 prepare()
 {
