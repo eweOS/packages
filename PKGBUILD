@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=tmux
-pkgver=3.5_a
+pkgver=3.6
 pkgrel=1
 pkgdesc='A terminal multiplexer'
 url='https://github.com/tmux/tmux/wiki'
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('ncurses' 'libevent')
 makedepends=('autoconf')
 source=("https://github.com/tmux/tmux/releases/download/${pkgver/_/}/tmux-${pkgver/_/}.tar.gz")
-sha256sums=('16216bd0877170dfcc64157085ba9013610b12b082548c7c9542cc0103198951')
+sha256sums=('136db80cfbfba617a103401f52874e7c64927986b65b1b700350b6058ad69607')
 
 prepare()
 {
