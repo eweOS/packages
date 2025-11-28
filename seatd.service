@@ -3,5 +3,5 @@ command            = /usr/bin/seatd -n 3 -g seat
 smooth-recovery    = true
 logfile            = /var/log/seatd.log
 ready-notification = pipefd:3
-depends-on         = rc.target
-before             = login.target
+depends-on:          rc.target
+before:              login.target
