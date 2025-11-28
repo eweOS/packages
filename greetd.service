@@ -1,5 +1,5 @@
 type = process
-command = greetd
-depends-on = rc.target
-waits-for.d = /usr/lib/dinit/system/greetd.d
-before = login.target
+command = /usr/bin/greetd
+depends-on: rc.target
+waits-for.d: /usr/lib/dinit/system/greetd.d
+before: login.target

@@ -16,7 +16,7 @@ source=(
 )
 sha256sums=('ee5cb70e0add4ca9c9fe57e47581ab0002d44c07743fb5492469f3b570db640b'
             '6e184cd7e902d00d3679097310f7afe90da361a2a40bf4b148085cb84de98bd2'
-            'a413aedea2ed6a24f6da43f1eeb357195559eb7f31d50c57e102801ebbfb1614'
+            '969902535ab1fb399b50678f987a46277fd36dde7924b3e42851495ddfb5608b'
             'a4c75d861abbea1ddca31b139859c03972a61820c6e65283110be90d0c11f596')
 optdepends=('turnstile: user service and session manager support')
 makedepends=(rust pam)
