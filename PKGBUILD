@@ -19,7 +19,7 @@ license=(
   'LGPL-2.1-or-later'
   'LicenseRef-PublicDomain'
 )
-makedepends=('meson' 'pam' 'bash-completion' 'linux-headers')
+makedepends=('meson' 'pam' 'bash-completion' 'linux-headers' 'utmps')
 # 0001: Downstream, disable motd display for /usr/bin/login.
 #	We prefer PAM module (pam_motd.so) to do the work on eweOS, which is
 #	more configurable (could be disabled by changing pam configuration,
@@ -75,12 +75,16 @@ build() {
     -Dbuild-vipw=enabled
     -Dbuild-write=enabled
   )
-  ewe-meson "$pkgbase-$pkgver" build "${_meson_options[@]}"
+  # We need -Wl,--as-needed to avoid overlinking, i.e., executables that don't
+  # make use of UTMP functions get linked to libutmps.so. -Wl,--as-needed is
+  # the default when building with meson, however, we want the extra safety.
+  LDFLAGS="$LDFLAGS -Wl,--push-state -Wl,--as-needed -lutmps -Wl,--pop-state" \
+    ewe-meson "$pkgbase-$pkgver" build "${_meson_options[@]}"
   meson compile -C build
 }
 
 package_util-linux() {
-  depends=('musl' 'util-linux-libs' 'pam' 'libudev')
+  depends=('musl' 'util-linux-libs' 'pam' 'libudev' 'utmps')
 
   backup=(etc/pam.d/chfn
           etc/pam.d/chsh
