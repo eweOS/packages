@@ -26,7 +26,6 @@ package() {
   # we use our own version of dinit service
   rm -r $pkgdir/etc/dinit.d
   _dinit_install_services_ $srcdir/turnstiled.service
-  _dinit_enable_services_ turnstiled
   
   # install turnstiled as dependency of greetd
   install -d $pkgdir/usr/lib/dinit.d/greetd.d
