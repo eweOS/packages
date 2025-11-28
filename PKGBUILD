@@ -24,12 +24,15 @@ makedepends=('meson' 'pam' 'bash-completion' 'linux-headers')
 #	We prefer PAM module (pam_motd.so) to do the work on eweOS, which is
 #	more configurable (could be disabled by changing pam configuration,
 #	without rebuilding the program).
+# 0002: Downstream, drop -r arguments when creating symlinks, which busybox ln
+#	doesn't support.
 source=(
   "util-linux-${pkgver}.tar.gz::https://github.com/karelzak/util-linux/archive/refs/tags/v${pkgver}.tar.gz"
   $pkgbase-BSD-2-Clause.txt::https://raw.githubusercontent.com/Cyan4973/xxHash/f035303b8a86c1db9be70cbb638678ef6ef4cb2d/LICENSE
   pam-{login,common,remote,runuser,su}
   'util-linux.sysusers'
   0001-login-disable-motd-display.patch
+  0002-meson-create-executable-link-with-sf.patch
 )
 sha256sums=('534aa113a323d6866c5f46baf909618dcc60c391ad24a91814e5d21511cefd30'
             '6ffedbc0f7878612d2b23589f1ff2ab15633e1df7963a5d9fc750ec5500c7e7a'
@@ -39,13 +42,11 @@ sha256sums=('534aa113a323d6866c5f46baf909618dcc60c391ad24a91814e5d21511cefd30'
             '48d6fba767631e3dd3620cf02a71a74c5d65a525d4c4ce4b5a0b7d9f41ebfea1'
             '3f54249ac2db44945d6d12ec728dcd0d69af0735787a8b078eacd2c67e38155b'
             '4a0b3dd8aa6d34dd29e1d153f396cacf908b0d64f7218276cbcab684587c0a0a'
-            'e6c85264cd78d5bb72957e88a1c4fb18687818cc1010e0e69e6e7bc8f9083ea6')
+            'e6c85264cd78d5bb72957e88a1c4fb18687818cc1010e0e69e6e7bc8f9083ea6'
+            '86ce89749d78ae7802d598e9a456787ff7200a83163e513b817650c3dfb5d5eb')
 
 prepare() {
   _patch_ "$pkgbase-$pkgver"
-  sed -i 's/srf/sf/' "$pkgname-$pkgver/libmount/meson.build"
-  sed -i 's/srf/sf/' "$pkgname-$pkgver/liblastlog2/meson.build"
-  sed -i '1i #include<asm-generic/unistd.h>' "$pkgname-$pkgver/include/mount-api-utils.h"
 }
 
 build() {
