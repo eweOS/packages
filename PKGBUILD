@@ -7,7 +7,7 @@ pkgdesc='Independent session/login tracker'
 url='https://github.com/chimera-linux/turnstile'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD-2-Clause)
-depends=(pam)
+depends=(musl pam llvm-libs)
 makedepends=(git meson scdoc)
 source=("git+$url.git#tag=v$pkgver" turnstiled.service)
 sha256sums=('829cc9c01603e7de30b9307226d68da33f6e69d7db5fbf4c4dd578b0546ed482'
