@@ -13,7 +13,7 @@ source=("$pkgname::git+$url.git#tag=v$pkgver"
         pawprint-reload.hook
         pawprint-reload.script)
 sha256sums=('83960253358621ecf1132e0a22044e60010dbe49c9a4aca17c7c639e90024b03'
-            '2526fd814f69ac103a2c045783056ee4c4e2142f777e9e29a13bed0e197d4d10'
+            '5af09dfc706d37e96eb6376d6c6b4c43c58724dac815e9ac41919022da45df68'
             'a47a75887d912acc603434e0b93d8407a2410e75892cd0599f884721144c868a'
             '1a22a7add0b8e29932ba7d2ac0efeb78d95807b1194e2c40862d1d7b09ef6675')
 
