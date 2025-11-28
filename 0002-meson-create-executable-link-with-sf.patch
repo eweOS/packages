@@ -1,0 +1,26 @@
+diff --git a/liblastlog2/meson.build b/liblastlog2/meson.build
+index 9f0f76c..fc2bce9 100644
+--- a/liblastlog2/meson.build
++++ b/liblastlog2/meson.build
+@@ -58,7 +58,7 @@ if build_liblastlog2
+     )
+     # the test-setup expects the helpers in the toplevel build-directory
+     link = meson.project_build_root() / test_name
+-    run_command('ln', '-srf', exe.full_path(), link,
++    run_command('ln', '-sf', exe.full_path(), link,
+       check : true)
+   endforeach
+ 
+diff --git a/libmount/meson.build b/libmount/meson.build
+index 29a43be..76ca037 100644
+--- a/libmount/meson.build
++++ b/libmount/meson.build
+@@ -147,7 +147,7 @@ if program_tests
+     )
+     # the test-setup expects the helpers in the toplevel build-directory
+     link = meson.project_build_root() / test_name
+-    run_command('ln', '-srf', exe.full_path(), link,
++    run_command('ln', '-sf', exe.full_path(), link,
+       check : true)
+   endforeach
+ endif
