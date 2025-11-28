@@ -4,7 +4,7 @@
 pkgbase=util-linux
 pkgname=(util-linux util-linux-libs)
 pkgver=2.41.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Miscellaneous system utilities for Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://github.com/karelzak/util-linux
@@ -79,7 +79,7 @@ build() {
 }
 
 package_util-linux() {
-  depends=('util-linux-libs' 'pam' 'libudev')
+  depends=('musl' 'util-linux-libs' 'pam' 'libudev')
 
   backup=(etc/pam.d/chfn
           etc/pam.d/chsh
@@ -124,7 +124,7 @@ package_util-linux() {
 
 package_util-linux-libs() {
   pkgdesc='util-linux runtime libraries'
-  provides=('libutil-linux' lib{blkid,fdisk,lastlog2,mount,smartcols,uuid}.so)
+  provides=('musl' 'libutil-linux' lib{blkid,fdisk,lastlog2,mount,smartcols,uuid}.so)
 
   install -d -m0755 "$pkgdir"/{usr/lib/,usr/share/man/}
   mv util-linux-libs/lib/* "$pkgdir"/usr/lib/
