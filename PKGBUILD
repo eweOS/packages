@@ -11,7 +11,7 @@ depends=(pam)
 makedepends=(git meson scdoc)
 source=("git+$url.git#tag=v$pkgver" turnstiled.service)
 sha256sums=('829cc9c01603e7de30b9307226d68da33f6e69d7db5fbf4c4dd578b0546ed482'
-	'257fd00dc1f6ba7e79b70604aa358e481cff60b318de8d78b829acdec56f7eff')
+	'c3bb35e183ce3de5e7abf3f7385bf01b3be05f91ca21c87c8c326c20e8f9c3c0')
 
 build () {
   ewe-meson $pkgname build -D manage_rundir=true
