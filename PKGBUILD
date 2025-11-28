@@ -11,30 +11,26 @@ license=('custom')
 url="https://github.com/zlib-ng/zlib-ng"
 depends=(musl)
 makedepends=(cmake googletest)
-source=($pkgname-$pkgver::"https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+source=($pkgname-$pkgver.tar.gz::"https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('94cfa0a53a8265c813c8369d3963bf09ac6a357824ad1f93aee13486176e152e')
 
-prepare()
-{
+prepare() {
   cd "$pkgname-$pkgver"
   grep -A 24 '^  Copyright' zlib.h.in > LICENSE
 }
 
-build()
-{
+build() {
   cd "$pkgname-$pkgver"
   cmake . -DZLIB_COMPAT=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DWITH_RVV=OFF
   cmake --build . --config Release
 }
 
-check()
-{
+check() {
   cd "$pkgname-$pkgver"
   ctest --verbose --output-on-failure -C Release
 }
 
-package_zlib-ng()
-{
+package_zlib-ng() {
   provides=(zlib libz.so)
   conflicts=(zlib)
   cd "$pkgname-$pkgver"
