@@ -2,7 +2,7 @@
 
 pkgname=catnest
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A substitution of systemd-sysusers"
 url="https://github.com/eweOS/catnest"
 license=(MIT)
@@ -20,20 +20,17 @@ sha256sums=('2857f29520aeb92c29a8d6f8cbcdeaf6c8d869261d3821745694e0e16dd4c66e'
             '719dd6b9794afc10206967feae0f1f6723df9a7c4c7e3f6321c874833a9058ad'
             'df7685e245d9afee96e237f4a233e3bf1a3b8431da0268fab29fb9ccb04913ce')
 
-prepare()
-{
+prepare() {
   # Use Clang!
   sed -i 's/gcc/cc/g; s/-Werror/-Werror -Wno-missing-field-initializers/g' $pkgname/release.sh
 }
 
-build()
-{
+build() {
   cd $pkgname
   ./release.sh
 }
 
-package()
-{
+package() {
   cd $pkgname
   mkdir -p $pkgdir/etc/sysusers.d
   install -D $pkgname $pkgdir/usr/bin/$pkgname
