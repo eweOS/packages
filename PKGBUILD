@@ -9,8 +9,6 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD-3-Clause)
 depends=(musl readline)
 backup=(etc/conf.d/tftpd.conf)
-# enforce lto to remove duplicate symbols
-options=(lto)
 # 0001: Downstream, check socklen_t in sys/socket.h in addtion to sys/types.h,
 #	where the former is specified by POSIX.
 #
