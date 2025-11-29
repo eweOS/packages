@@ -3,7 +3,7 @@
 
 pkgname=busybox
 pkgver=1.37.0
-pkgrel=12
+pkgrel=13
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.busybox.net"
@@ -11,6 +11,11 @@ license=('GPL')
 depends=("utmps")
 makedepends=("ncurses" "musl" "skalibs" "linux-headers")
 options=(!lto emptydirs)
+backup=(
+  "etc/mdev.conf"
+  "etc/ntp.conf"
+  "etc/sysctl.conf"
+)
 source=(
   "$url/downloads/$pkgname-$pkgver.tar.bz2"
   "config"
