@@ -2,14 +2,13 @@
 
 pkgname=dropbear
 pkgver=2025.88
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight SSH server'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/mkj/dropbear'
 license=(MIT)
 options=(emptydirs)
-depends=(libcrypt.so)
-makedepends=(utmps)
+depends=(utmps libcrypt.so)
 _srcdir=${pkgname}-DROPBEAR_${pkgver}
 source=(
   https://github.com/mkj/${pkgname}/archive/refs/tags/DROPBEAR_${pkgver}.tar.gz
@@ -21,6 +20,7 @@ sha256sums=('93ebe1294ee3203d3bf548c78d51bde9494d3f24de64eaec380a2620f0431f20'
 build()
 {
   cd ${_srcdir}
+  LDFLAGS="$LDFLAGS -Wl,--push-state -Wl,--as-needed -lutmps -Wl,--pop-state"
   ./configure \
     --bindir=/usr/bin \
     --prefix=/usr \
