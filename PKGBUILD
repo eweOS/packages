@@ -8,7 +8,7 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/mkj/dropbear'
 license=(MIT)
 options=(emptydirs)
-depends=(utmps libcrypt.so)
+depends=(musl utmps libcrypt.so)
 _srcdir=${pkgname}-DROPBEAR_${pkgver}
 source=(
   https://github.com/mkj/${pkgname}/archive/refs/tags/DROPBEAR_${pkgver}.tar.gz
