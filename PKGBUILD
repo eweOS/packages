@@ -20,12 +20,12 @@ build() {
 
 check() {
    cd idna-$pkgver
-   pytest
+   pytest -v
 }
 
 package() {
    cd idna-$pkgver
    python -m installer --destdir="$pkgdir" dist/*.whl
-   install -Dm644 LICENSE.md -t "$pkgdir"/usr/share/licenses/$pkgname/
+   _install_license_ LICENSE.md
 }
 
