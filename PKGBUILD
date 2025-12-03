@@ -2,7 +2,7 @@
 
 pkgbase=pahole
 pkgname=(pahole)
-pkgver=1.29
+pkgver=1.31
 pkgrel=1
 pkgdesc="Pahole and other DWARF utils"
 url="https://git.kernel.org/pub/scm/devel/pahole/pahole.git"
@@ -18,7 +18,7 @@ makedepends=(
   zlib
 )
 source=("git+https://github.com/acmel/dwarves#tag=v$pkgver" 0001-CMakeLists.txt-Install-ostra.py-into-Python3_SITELIB.patch)
-sha256sums=('907668c63350914a89d1c86296cc0f971061652efa2cbbb8b8513cd8c0b6883b'
+sha256sums=('5737aa7a32f9427514c9dbcde428da36f3fd0c9425360a6c4dc1c830b31f7806'
             '78e169010fd516a8902d9f1c8e76603aea6d9c3f02947949fcbc92c963a2860b')
 
 prepare() {
