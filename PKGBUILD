@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wayfire
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="A modular and extensible wayland compositor"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(cairo pango libjpeg libinput wlroots0.19 wf-config yyjson)
 makedepends=(meson ninja wayland-protocols glm cmake mesa doctest git openmp
 	     linux-headers wlroots0.19-devel vulkan-icd-loader)
 source=("git+https://github.com/WayfireWM/${pkgname}.git#tag=v$pkgver")
-sha256sums=('ceddf00fad33242b8f8236410fa4e0709197bf156b2023df8ec2a3b1a88d2aee')
+sha256sums=('5872082154d5d1e5dce282d1971773ac1e17cca98ebde42aa7d8d6f4e2cf5d08')
 
 build()
 {
