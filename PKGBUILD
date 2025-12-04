@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sdl12-compat
-pkgver=1.2.70
+pkgver=1.2.72
 pkgrel=1
 pkgdesc="SDL 1.2 runtime compatibility library using SDL 2.0"
 url="https://github.com/libsdl-org/sdl12-compat"
@@ -10,8 +10,17 @@ makedepends=('cmake')
 arch=(x86_64 aarch64 riscv64 loongarch64)
 provides=('sdl1')
 license=('MIT')
-source=("https://github.com/libsdl-org/sdl12-compat/archive/refs/tags/release-${pkgver}.tar.gz")
-sha256sums=('b8350cc400b9605dd5e319f451f09d5d6e70bb1dfc22cd67f718b3ffc16ebb7c')
+# 0001: Under review, fix missing X11 headers when building with sdl2-compat
+#	and X11 disabled.
+#	https://github.com/libsdl-org/sdl12-compat/pull/388
+source=("https://github.com/libsdl-org/sdl12-compat/archive/refs/tags/release-${pkgver}.tar.gz"
+	0001-cmake-Import-definitions-from-SDL2-SDL2.patch)
+sha256sums=('daf6726b89d71120395472dd3cbc16c7a3b0bcbe2c1495de90885d4c2b266d3e'
+            'a58b37c2be7209a38e31f290775bac140d04a9af0fbf6ed583aded94838adb3e')
+
+prepare() {
+  _patch_ sdl12-compat-release-${pkgver}
+}
 
 build() {
   mkdir -p build
