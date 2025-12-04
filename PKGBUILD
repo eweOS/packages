@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sdl12-compat
-pkgver=1.2.70
+pkgver=1.2.72
 pkgrel=1
 pkgdesc="SDL 1.2 runtime compatibility library using SDL 2.0"
 url="https://github.com/libsdl-org/sdl12-compat"
@@ -11,7 +11,7 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 provides=('sdl1')
 license=('MIT')
 source=("https://github.com/libsdl-org/sdl12-compat/archive/refs/tags/release-${pkgver}.tar.gz")
-sha256sums=('b8350cc400b9605dd5e319f451f09d5d6e70bb1dfc22cd67f718b3ffc16ebb7c')
+sha256sums=('daf6726b89d71120395472dd3cbc16c7a3b0bcbe2c1495de90885d4c2b266d3e')
 
 build() {
   mkdir -p build
