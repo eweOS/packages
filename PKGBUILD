@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname="hyprland"
-pkgver=0.52.1
-pkgrel=2
+pkgver=0.52.2
+pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/hyprwm/Hyprland"
@@ -53,7 +53,7 @@ optdepends=('cmake: to build and install plugins using hyprpm'
 source=(
   "$pkgname::git+$url#tag=v$pkgver"
 )
-sha256sums=('1b192a63fac88d713110d6f3226a01746224a9750e091c86de2bfc4e8188455d')
+sha256sums=('6553f9fcfb77b036e1324752a4c42db85ae8ce5ab29868b8ab2561ff29cd1254')
 
 prepare() {
   sed -i '/xcb.h/d' $pkgname/src/xwayland/Dnd.hpp
