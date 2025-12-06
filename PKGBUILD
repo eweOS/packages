@@ -5,7 +5,7 @@ pkgname=(
   ca-certificates-mozilla
 )
 pkgbase=nss
-pkgver=3.118.1
+pkgver=3.119
 pkgrel=1
 pkgdesc="Network Security Services"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
@@ -27,12 +27,10 @@ makedepends=(
 )
 source=(
   "nss::git+https://github.com/nss-dev/nss#tag=NSS_${pkgver//./_}_RTM"
-  "nss-3.87-use-clang-as.patch"
   bundle.sh
   certdata2pem.py
 )
-sha256sums=('3cf5f2e2c9899b717f6cce7e38652c857b437f883b62176811c4c0d1f680dcee'
-            'd78b83d7f80dcbcfceb91716a6cf0e3f388a984a5b295d0a9dc69417bc7f9825'
+sha256sums=('6cdedad079d87a0edcd1b552a27c5feb11419f1826f00c7d2c1cd27680700b56'
             'f64282fbc8e73de51f88f41e5175d211a63a1a3e1cbf12512a8b9e229ad9d259'
             '142861cf04942c141e7a6d0d39a30b6d4b57f13f27d21bfa90c6abcd5d34de60')
 
@@ -41,10 +39,6 @@ prepare() {
 
   mkdir -p certs
   ln -sf $srcdir/nss/lib/ckfw/builtins/{certdata.txt,nssckbi.h} certs/
-
-  _patch_ nss
-  cd nss
-  sed -i "s@'force_integrated_as%': 0,@'force_integrated_as%': 1,@g" coreconf/config.gypi
 }
 
 build() {
