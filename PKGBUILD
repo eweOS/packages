@@ -41,8 +41,11 @@ prepare() {
 }
 
 build() {
+  # Enable the pixbuf loader until SVG-capable glycin loader is enabled in
+  # gdk-pixbuf. See https://gitlab.gnome.org/GNOME/librsvg/-/issues/1186
   local meson_options=(
     -D avif=enabled
+    -D pixbuf-loader=enabled
   )
 
   export LDFLAGS="$LDFLAGS -lunwind"
