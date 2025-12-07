@@ -2,7 +2,7 @@
 
 pkgname=labwc
 pkgver=0.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Stacking wayland compositor with look and feel from openbox'
 url="https://github.com/labwc/labwc"
 arch=(x86_64 aarch64 riscv64 loongarch64)
