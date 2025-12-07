@@ -2,7 +2,7 @@
 
 pkgname=gpgme
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A C wrapper library for GnuPG'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.gnupg.org/related_software/gpgme/'
@@ -11,22 +11,13 @@ makedepends=(
   'gnupg'
   'libgpg-error'
 )
-source=("https://www.gnupg.org/ftp/gcrypt/${pkgname}/${pkgname}-${pkgver}.tar.bz2" lfs64.patch)
-sha256sums=('821ab0695c842eab51752a81980c92b0410c7eadd04103f791d5d2a526784966'
-            '12bebd3d827910a58d4348cd107e0698ed4bb89a2a704cae950548f10b1a0b78')
-
-prepare() {
-  _patch_ $pkgname-$pkgver
-  cd ${pkgname}-${pkgver}/
-
-  sed -i 's/-unknown//' autogen.sh
-  autoreconf -fi
-}
+source=("https://www.gnupg.org/ftp/gcrypt/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('821ab0695c842eab51752a81980c92b0410c7eadd04103f791d5d2a526784966')
 
 build() {
   cd ${pkgname}-${pkgver}
 
-  ./configure \
+  CFLAGS="$CFLAGS -D_LARGEFILE64_SOURCE" ./configure \
     --prefix=/usr \
     --disable-fd-passing \
     --disable-static \
