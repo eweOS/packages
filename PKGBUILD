@@ -21,22 +21,19 @@ prepare() {
   cp /usr/share/autoconf/build-aux/config.{guess,sub} .
 }
 
-build()
-{
+build() {
   cd unixODBC-${pkgver}
   ./configure --prefix=/usr --sysconfdir=/etc
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
-check()
-{
+check() {
   cd unixODBC-${pkgver}
   make -k check
 }
 
-package()
-{
+package() {
   cd unixODBC-${pkgver}
   make DESTDIR="${pkgdir}" install
   touch "$pkgdir"/etc/{odbc,odbcinst}.ini
