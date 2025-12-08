@@ -2,16 +2,16 @@
 
 pkgname=automake
 pkgver=1.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for automatically generating Makefile.in files.'
 arch=('any')
-license=('GPL')
+license=('GPL-2.0-or-later')
 url="http://www.gnu.org/software/automake"
 groups=('base-devel')
 depends=('perl' 'bash')
 makedepends=('autoconf')
-source=(ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz)
-md5sums=('cea31dbf1120f890cbf2a3032cfb9a68')
+source=(https://ftpmirror.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('168aa363278351b89af56684448f525a5bce5079d0b6842bd910fdd3f1646887')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
