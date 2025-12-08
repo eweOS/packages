@@ -1,11 +1,12 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
+# Maintainer: Yao Zi <ziyao@disroot.org>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=unixodbc
 pkgver=2.3.12
-pkgrel=3
+pkgrel=4
 pkgdesc="ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL2' 'LGPL2.1')
