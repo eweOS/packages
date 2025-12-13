@@ -1,5 +1,5 @@
 type = process
-command = bird -d
+command = /usr/bin/bird -d
 logfile = /var/log/bird.log
 restart = false
 depends-on = rc.target
