@@ -16,8 +16,7 @@ provides=('libcrypt.so')
 source=("${url}/releases/download/v${pkgver}/${pkgbase}-${pkgver}.tar.xz")
 sha512sums=('87b363e2bdc03ea993a9d154eb59a75ef77edd0490a9b58d443de4e1b4eec5196408a1eb9b739718fd92f565fe5157469c1ea3d336a4a54ac0947750b16c44c1')
 
-build()
-{
+build() {
   mkdir build-libxcrypt build-libxcrypt-compat
 
   cd "${srcdir}/build-libxcrypt/"
@@ -43,20 +42,17 @@ build()
   make
 }
 
-check()
-{
+check() {
   cd $srcdir/build-libxcrypt && make check
   cd $srcdir/build-libxcrypt-compat && make check
 }
 
-package_libxcrypt()
-{
+package_libxcrypt() {
   cd build-libxcrypt/
   make DESTDIR="${pkgdir}" install
 }
 
-package_libxcrypt-compat()
-{
+package_libxcrypt-compat() {
   pkgdesc='Modern library for one-way hashing of passwords - legacy API functions'
   depends=('libxcrypt')
 
