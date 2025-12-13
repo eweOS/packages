@@ -9,7 +9,7 @@ pkgname=(
   networkmanager-docs
 )
 pkgver=1.54.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Network connection manager and user applications"
 url="https://networkmanager.dev/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -52,7 +52,7 @@ source=(
   0001-force-platform-init.patch
 )
 sha256sums=('749e711154e32eef496d2a666377818c76152cf01c0b72670bb9225712a558bf'
-            '0d6284910b53312082c7624dde57ad88d8ff9c46faaeb4d7540276dc44176723'
+            'bcf4bb9f097bc8f3b5819e4ef76cc2cec269546102c0894aaa2736afe5b6a3b9'
             '412487dc91184526523915a5399dd78feadd146462c790ec0fa47151c4b963a4')
 
 prepare() {
@@ -105,8 +105,8 @@ check() {
   # check-local-exports-libnm
   # gettext-tiny isn't compatible with check-potfile-list
   test_list=$(meson test -C build --list) 2> /dev/null
-  test_list=${test_list//check-local-exports-libnm}
-  test_list=${test_list//check-potfile-list}
+  test_list=${test_list//NetworkManager:check-local-exports-libnm}
+  test_list=${test_list//NetworkManager:check-potfile-list}
   NMTST_FORCE_REAL_ROOT=1 meson test -C build --print-errorlogs $test_list
 }
 
