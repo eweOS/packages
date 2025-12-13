@@ -17,7 +17,7 @@ source=(
   bird.tmpfiles
 )
 sha256sums=('9be6196c5755fca1adf92e90e46aaf6f8ec003bec9b73c084fb45915e07e173f'
-            'b1e444e500759a5f67711d0c12f2a1354eb77c205fe3b69b42e73d9ee4ace300'
+            '7ddea1f507efd2d4a7ad1fea044a3122f0f798887ee9fbd1c8b5ff32fdeafb84'
             '93ccf34aa61e513f27b5287437b68a4f176dfdca9b05a05de6a15aa0dcdd6205')
 
 prepare()
