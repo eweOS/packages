@@ -2,7 +2,7 @@
 
 pkgname=dconf
 pkgver=0.49.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Configuration database system"
 url="https://wiki.gnome.org/Projects/dconf"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ source=("git+https://gitlab.gnome.org/GNOME/dconf.git#tag=$pkgver"
 sha256sums=('14cf469509000b1f59a4c4429be641ee936ab3527c981c16192fddb9961fac5a'
             '330142605370f82f4229e8a94b245f911407eb629b50f1497f415c70164a90ec'
             '8d02176ff001a13d15a7ac087edd2502725494668933fa2c6e6f9cb21ae24e6b'
-            '577bf1aa3a7e32d5d8cbcbd5aff332a903162903aba9cd2a6f904602f0ae5a48')
+            'b5ad13a8ffca36f6efee936e45b4808a87921f5264262a07ccec3a175969d4cc')
 
 build() {
   ewe-meson dconf build
