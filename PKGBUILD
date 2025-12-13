@@ -2,7 +2,7 @@
 
 pkgname=caddy
 pkgver=2.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast and extensible HTTP/1-2-3 webserver'
 url='https://caddyserver.com'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ source=("https://github.com/caddyserver/caddy/archive/refs/tags/v$pkgver.tar.gz"
 	"caddy.service")
 sha256sums=('f63f46b7ae68ced0a5c2e31df1b6dfc7656117d162a1bc7fed4bd4afd14ddc8f'
             '8adfdc224669a82380315c292e010aeb6e3ab26719ccf4e6c66cd5fdbcf3b541'
-            'a2367b92e5e8a907caf6340446eaab916c3535c8fcf242278b4fa1ca229b7817')
+            'd518436e724a5434785c0a0da3478c293e0ccc0e22642f0b500c36e6e7e09d94')
 
 build () {
 	cd caddy-$pkgver
