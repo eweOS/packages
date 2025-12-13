@@ -4,4 +4,4 @@ stop-command = rm /var/run/fcgiwrap/socket
 run-as = www-data
 smooth-recovery = true
 restart = false
-depends-on = network.target
+depends-on: network.target
