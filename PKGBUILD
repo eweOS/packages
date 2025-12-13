@@ -2,7 +2,7 @@
 
 pkgname=bird
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://bird.network.cz/'
@@ -17,7 +17,7 @@ source=(
   bird.tmpfiles
 )
 sha256sums=('9be6196c5755fca1adf92e90e46aaf6f8ec003bec9b73c084fb45915e07e173f'
-            '781cb34f987728bf078d9b44a97f39e62a653c1024c8bbc9e96e059ec449ddbe'
+            'b1e444e500759a5f67711d0c12f2a1354eb77c205fe3b69b42e73d9ee4ace300'
             '93ccf34aa61e513f27b5287437b68a4f176dfdca9b05a05de6a15aa0dcdd6205')
 
 prepare()
