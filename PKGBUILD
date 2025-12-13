@@ -7,7 +7,7 @@ pkgdesc="Configuration database system"
 url="https://wiki.gnome.org/Projects/dconf"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-2.1-or-later)
-depends=(glib2)
+depends=(musl glib2)
 makedepends=(vala dbus git python meson bash-completion docbook-xsl python-packaging)
 provides=(libdconf.so)
 source=("git+https://gitlab.gnome.org/GNOME/dconf.git#tag=$pkgver"
