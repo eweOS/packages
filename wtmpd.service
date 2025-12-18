@@ -2,8 +2,7 @@ type = process
 command = /usr/bin/tty2socket -m 777 --s6 /run/utmps/.wtmpd-socket utmps-wtmpd
 working-dir = /run/utmps
 run-as = utmp
-depends-on = pawprint
-depends-ms = pawprint
-depends-ms = catnest
-depends-on = early-fs.target
-
+depends-on: pawprint
+depends-ms: pawprint
+depends-ms: catnest
+depends-on: early-fs.target
