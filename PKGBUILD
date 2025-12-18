@@ -3,8 +3,8 @@
 
 pkgbase=util-linux
 pkgname=(util-linux util-linux-libs)
-pkgver=2.41.2
-pkgrel=3
+pkgver=2.41.3
+pkgrel=1
 pkgdesc='Miscellaneous system utilities for Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://github.com/karelzak/util-linux
@@ -34,7 +34,7 @@ source=(
   0001-login-disable-motd-display.patch
   0002-meson-create-executable-link-with-sf.patch
 )
-sha256sums=('534aa113a323d6866c5f46baf909618dcc60c391ad24a91814e5d21511cefd30'
+sha256sums=('25dc2fd70c6b6bec1c0c97cb11636edd2d5b2645df2324eef4820db3677bd412'
             '6ffedbc0f7878612d2b23589f1ff2ab15633e1df7963a5d9fc750ec5500c7e7a'
             'ee917d55042f78b8bb03f5467e5233e3e2ddc2fe01e302bc53b218003fe22275'
             '57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af'
