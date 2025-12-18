@@ -2,7 +2,7 @@
 
 pkgname=openssh
 pkgver=9.9p2
-pkgrel=1
+pkgrel=2
 pkgdesc="SSH protocol implementation for remote login, command execution and file transfer"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.openssh.com/portable.html'
@@ -43,8 +43,8 @@ sha256sums=('91aadb603e08cc285eddf965e1199d02585fa94d994d6cae5b41e1721e215673'
             'ac4d74367df7a46dfaa0f522eb15d62ecdbf00b156b10a3a5ef870a0ae74c57b'
             'e8b51db858131b9147d8935ba7a100c16f1cc1ac3638db1fe17934dec094796d'
             '6a5d33c6e9a0f0b8f011a106bd8715e21e4058a244be836bc59faaaa552a3568'
-            '8e25311d0a0de1adca1b772dd7ce5fc8f27a3dac4629f0c231bb8c7893798029'
-            'ebe620bf90f6ba3c1d888d8f54f6d1e4d091633e814ffb4aede62b3db51d1b54')
+            '28b6acaeb544767fa7c2967617b6be4f3aacd89f2f49d2c4f1af420309f11c14'
+            '49511c971bbd19c7144dd493648ec3308099dfd86433f9ceaf9fefdcd289946b')
 
 prepare() {
   cd $pkgname-$pkgver
