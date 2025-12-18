@@ -1,28 +1,16 @@
 # Maintainer: Eric Long <i@hack3r.moe>
 
 pkgname=tinymist
-pkgver=0.13.12
-pkgrel=3
+pkgver=0.14.4
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 pkgdesc='An integrated language service for Typst'
 url='https://github.com/Myriad-Dreamin/tinymist'
 license=(Apache-2.0)
 depends=(musl llvm-libs openssl)
 makedepends=(git rust)
-source=("git+https://github.com/Myriad-Dreamin/tinymist.git#tag=v$pkgver"
-        replace-dummy-root-with-root1.patch)  # https://github.com/Myriad-Dreamin/tinymist/pull/1817
-sha256sums=('fb9a79b083ef80b6dc696aa7b288aca644b21c88f31a8156539ef271c606bf79'
-            '5bc9f507e73f190a2b4b85e0c697f967a70840b0aad37781f515328ed3f12ebe')
-
-pkgver() {
-  # https://github.com/Myriad-Dreamin/tinymist#versioning-and-release-cycle
-  if [[ $pkgver =~ ^.*[13579]$ ]]; then
-    >&2 echo 'Odd-numbered releases target nightly typst, not stable.'
-    exit 1
-  else
-    echo $pkgver
-  fi
-}
+source=("git+https://github.com/Myriad-Dreamin/tinymist.git#tag=v$pkgver")
+sha256sums=('1e76522d36e37d1beb685bada0298b40ff8ea4662d821295ac3b24338526e7d4')
 
 prepare() {
   _patch_ $pkgname
