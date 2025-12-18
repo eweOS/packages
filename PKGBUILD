@@ -2,7 +2,7 @@
 
 pkgname=sing-box
 pkgver=1.12.12
-pkgrel=1
+pkgrel=2
 pkgdesc='The universal proxy platform'
 url='https://sing-box.sagernet.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ source=("https://github.com/SagerNet/sing-box/archive/refs/tags/v$pkgver.tar.gz"
 	"sing-box.service"
 	"sing-box.sysusers")
 sha256sums=('f08add81eab7e4d6091195179bb39fa3f64dbb0326feaa022994566b702d1245'
-            'd91869e4f5916a58312c9d2702561ee951336fe3d70066273b511f3ee75d98b6'
+            '630e65ba24dcf7a44d870f0ba98e21f41232cf1c385773c9c215ebed6da75c0a'
             '34c05361f1153fa624c23cec20aa5d9cb78d60a52250dab64081c4e926bbdd42')
 
 build () {
