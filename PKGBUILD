@@ -2,7 +2,7 @@
 
 pkgname=rsync
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and versatile file copying tool for remote and local files'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://rsync.samba.org/'
@@ -17,13 +17,11 @@ sha256sums=('7dbda2c6b863cd309ffda85c19f0e8754e5cec049b6f860783f8a0ad20c1a503'
             '31d640a82d022281736c9d61f971e6946541a9a8f11bc303479ff429a99cb99e'
             '831492ff00d3e086a82cad36572cc4ebb72fef27e9269c4fb6f62677e6f8fd6f')
 
-prepare()
-{
+prepare() {
   _patch_ "$pkgname-$pkgver"
 }
 
-build()
-{
+build() {
   cd "$srcdir/${pkgname}-${pkgver}"
   ./configure \
     --prefix=/usr \
@@ -34,8 +32,7 @@ build()
   make
 }
 
-package()
-{
+package() {
   backup=(etc/rsyncd.conf)
 
   cd "$srcdir/${pkgname}-${pkgver}"
