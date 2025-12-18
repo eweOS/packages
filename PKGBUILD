@@ -2,7 +2,7 @@
 
 pkgbase=cdrdao
 pkgname=('cdrdao' 'gcdmaster')
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 license=('GPL-2.0-or-later')
@@ -15,7 +15,7 @@ options=('!emptydirs')
 source=(https://downloads.sourceforge.net/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2
         cdrdao-uninitialized-filename.patch
         cdrdao-version-command.patch)
-sha256sums=('d19b67c853c5dba2406afaab6cd788e77f35eebe634cac4679528477c7be01b6'
+sha256sums=('0cf29e1183ffd8e4d167c403d7a6ea2109a2dd4cd97e61f80417cf1373220ff4'
             '970e5d18513f298b915f9d84f206d7489400e93f42b9c04ec55acf2fe9d43e5a'
             'cbb8ec897e390d5a4c4c113e35a88893f5be3ebc2fec3b09eb2ae84bd4275021')
 
