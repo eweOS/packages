@@ -2,6 +2,5 @@ type = bgprocess
 command = /usr/bin/nginx
 smooth-recovery = true
 logfile = /var/log/nginx.log
-depends-on = network.target
+depends-on: network.target
 pid-file = /run/nginx.pid
-
