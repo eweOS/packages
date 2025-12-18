@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=typst
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc='A markup-based typesetting system for the sciences'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ optdepends=('otf-libertinus: additional weights and variants for default font'
             'ttf-linux-libertine: legacy default font prior to v0.12.0')
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('83d132348a8c9481a8a483cdf823d5083ba456466410935f25240f6c26e23c38')
+sha256sums=('70a56445020ca05efc571c7b07a1a9f52eb93842d420518693c077ae74e54142')
 
 prepare() {
 	cd "$_archive"
