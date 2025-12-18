@@ -7,7 +7,7 @@ pkgdesc='A fast and versatile file copying tool for remote and local files'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://rsync.samba.org/'
 license=('GPL-3.0-or-later')
-depends=('acl' 'openssl' 'lz4' 'popt' 'xxhash' 'zlib' 'zstd')
+depends=('acl' 'attr' 'musl' 'openssl' 'lz4' 'popt' 'xxhash' 'zlib' 'zstd')
 source=(https://github.com/WayneD/rsync/archive/refs/tags/v${pkgver}.tar.gz
 	rsyncd.conf
 	rsyncd.service
