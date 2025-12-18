@@ -2,7 +2,7 @@
 
 pkgname=vnstat
 pkgver=2.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A console-based network traffic monitor"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://humdi.net/vnstat/"
@@ -13,7 +13,7 @@ optdepends=('gd: image output')
 backup=(etc/vnstat.conf)
 source=(https://humdi.net/vnstat/$pkgname-$pkgver.tar.gz vnstat.service)
 sha256sums=('c9fe19312d1ec3ddfbc4672aa951cf9e61ca98dc14cad3d3565f7d9803a6b187'
-            '2b1d50b267ffad28cd0c179f411183063ab3efeccda8d400c7cc4f3200cf3d98')
+            'e7b83891bd9066d951247422764e18cf999aa9bd731064da2a0cce395a04aece')
 
 prepare() {
   cd $pkgname-$pkgver
