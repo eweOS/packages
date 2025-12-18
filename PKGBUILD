@@ -14,7 +14,7 @@ source=(https://github.com/WayneD/rsync/archive/refs/tags/v${pkgver}.tar.gz
 	workaround-awk-bug.patch)
 sha256sums=('7dbda2c6b863cd309ffda85c19f0e8754e5cec049b6f860783f8a0ad20c1a503'
             'f1b14a01cfa3bbe6eecfd3491c9d1d43a51a2561dc9808485ca5d21941d660e5'
-            'caa20a3102d5d5e0a12854471c1e16b9de2a96b0d1866237d5fedf4021f8f25e'
+            'b44550b85b1a1365080367c0dc02151ce00afa41debc4372a94c1c6c53156331'
             '831492ff00d3e086a82cad36572cc4ebb72fef27e9269c4fb6f62677e6f8fd6f')
 
 prepare() {
