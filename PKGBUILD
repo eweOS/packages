@@ -2,10 +2,10 @@
 
 pkgbase=poppler
 pkgname=('poppler' 'poppler-glib' 'poppler-qt6')
-pkgver=25.08.0
-# 2025.05.07
-_testdata_commit=c79c6839e859dbee6b73ac260788fa2de8618ba4
-pkgrel=2
+pkgver=25.12.0
+# 2025.09.19
+_testdata_commit=9d5011815a14c157ba25bb160187842fb81579a5
+pkgrel=1
 pkgdesc='A PDF rendering library based on the xpdf-3.0 code base'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL-2.0-only'
@@ -24,8 +24,8 @@ url="https://poppler.freedesktop.org/"
 source=(https://poppler.freedesktop.org/${pkgbase}-${pkgver}.tar.xz
         test::git+https://gitlab.freedesktop.org/poppler/test.git#commit=$_testdata_commit
 )
-sha256sums=('425ed4d4515a093bdcdbbaac6876f20617451edc710df6a4fd6c45dd67eb418d'
-            'b33c91e6f5ae8539f55b79a5b0ce27a51702fa45957c0a3a4dd695f7dcc497d7')
+sha256sums=('c18b40eb36b1a0c5b86e29ca054bf0770304583da4f2cdd42fe86eca6a20de48'
+            '9a76c2c50aae30b1bde5400ae78e9444111161a141c1f606fd01ca8a09df4d8e')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
@@ -38,7 +38,16 @@ build() {
 }
 
 check() {
-  LANG=en_US.UTF8 ctest --test-dir build --output-on-failure
+  # Tests fail in packaging environment:
+  # nss-verify-rsa-shortchain
+  # nss-verify-rsa-moderatechain
+  # nss-verify-ecdsa-shortchain
+  # nss-verify-ecdsa-moderatechain
+  # nss-verify-ecdsa-longchain
+  # These require the certificate database provided by Firefox (?!) and located
+  # in $HOME/.mozilla/firefox/ to run.
+  LANG=en_US.UTF8 ctest --test-dir build --output-on-failure \
+    -E nss-verify-
 }
 
 package_poppler() {
