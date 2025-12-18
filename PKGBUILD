@@ -2,7 +2,7 @@
 
 pkgname=tor
 pkgver=0.4.8.21
-pkgrel=1
+pkgrel=2
 pkgdesc='Anonymizing overlay network.'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://www.torproject.org/download/tor/'
@@ -31,7 +31,7 @@ sha256sums=('eaf6f5b73091b95576945eade98816ddff7cd005befe4d94718a6f766b840903'
             'c5c082fd1cda30c95c40043d5be96926fa81e5388a97534373bf0ce100191ade'
             '04eec05b4e61efccc58c5da657363f0c1059d7f122cb15c32331a201af2d7f94'
             '07bedb17660a3673b31b0005b6505065c90b32f2c6b28b969241da675560f926'
-            'c0c23ac93f8ba56fb5a3a4f03da7f989b0b869116b66c0cf71a0ae69ed002f3f')
+            '18c01bb162aad7647f9829dc8cdc205d74a65056670f7bd669fe3491d3457682')
 
 prepare() {
   cd ${pkgname}-${pkgver}
