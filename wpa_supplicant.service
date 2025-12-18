@@ -1,6 +1,6 @@
 type = process
 command = /usr/bin/wpa_supplicant -u
 restart = false
-depends-on = rc.target
-depends-on = dbus
-before = network.target
+depends-on: rc.target
+depends-on: dbus
+before: network.target
