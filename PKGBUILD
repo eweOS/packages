@@ -2,7 +2,7 @@
 # Contributor: Sébastien Luttringer
 
 pkgname=libnftnl
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Netfilter library providing interface to the nf_tables subsystem'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ depends=('libmnl')
 makedepends=('linux-headers' 'autoconf')
 checkdepends=('jansson')
 source=("https://netfilter.org/projects/libnftnl/files/libnftnl-$pkgver.tar.xz")
-sha256sums=('0f4be47a8bb8b77a350ee58cbd4b5fae6260ad486a527706ab15cfe1dd55a3c4')
+sha256sums=('607da28dba66fbdeccf8ef1395dded9077e8d19f2995f9a4d45a9c2f0bcffba8')
 
 prepare()
 {
