@@ -10,7 +10,7 @@ url='https://mpv.io/'
 depends=(
   'alsa-lib' 'wayland' 'zlib' 'ffmpeg' 'libass' 'lcms2' 'libarchive'
   'sdl2' 'zimg' 'zlib' 'alsa-lib' 'pipewire' 'libpulse' 'libplacebo'
-  'libdrm' 'libjpeg' 'libxkbcommon' 'libdisplay-info'
+  'libdrm' 'libjpeg' 'libxkbcommon' 'libdisplay-info' 'libsixel'
   'mesa' 'libglvnd' 'libva' 'vulkan-icd-loader')
 makedepends=('git' 'meson' 'wayland-protocols' 'linux-headers' 'vulkan-headers')
 source=("https://github.com/mpv-player/mpv/archive/refs/tags/v$pkgver.tar.gz")
@@ -40,16 +40,13 @@ build() {
     -D egl-angle=disabled
     -D egl-angle-lib=disabled
     -D egl-angle-win32=disabled
-    -D egl-drm=disabled
     -D egl-x11=disabled
-    -D gbm=disabled
     -D gl-cocoa=disabled
     -D gl-dxinterop=disabled
     -D gl-win32=disabled
     -D gl-x11=disabled
     -D sdl2-video=disabled
     -D shaderc=disabled
-    -D sixel=disabled
     -D spirv-cross=disabled
     -D vdpau=disabled
     -D vdpau-gl-x11=disabled
