@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=socat
-pkgver=1.8.0.3
+pkgver=1.8.1.0
 pkgrel=1
 pkgdesc='Multipurpose relay'
 url='http://www.dest-unreach.org/socat/'
@@ -9,7 +9,7 @@ license=('GPL2')
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('musl' 'readline' 'openssl')
 source=("$url/download/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('a9f9eb6cfb9aa6b1b4b8fe260edbac3f2c743f294db1e362b932eb3feca37ba4')
+sha256sums=('9a884880b1b00dfb2ffc6959197b1554b200af731018174cd048115dc28ef239')
 
 build()
 {
