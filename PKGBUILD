@@ -1,7 +1,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=angband
-pkgver=4.2.5
+pkgver=4.2.6
 pkgrel=1
 pkgdesc="A free, single-player dungeon exploration game. TUI only version."
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(ncurses)
 makedepends=(cmake)
 source=("https://github.com/angband/angband/releases/download/${pkgver}/Angband-${pkgver}.tar.gz"
   angband.sh)
-md5sums=('b4566c75eb69f4ffee816faf51b7e22b'
+md5sums=('692807debfd94989050266328fc68c5a'
          'a4ac0ee51a6d2516aaf2c11519e03f46')
 
 build()
