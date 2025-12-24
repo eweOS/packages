@@ -5,8 +5,8 @@ pkgname=(
   wireplumber
   libwireplumber
 )
-pkgver=0.5.12
-pkgrel=2
+pkgver=0.5.13
+pkgrel=1
 pkgdesc="Session / policy manager implementation for PipeWire"
 url="https://pipewire.pages.freedesktop.org/wireplumber/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -26,7 +26,7 @@ source=(
   wireplumber.user.service
   fix-enum.patch
 )
-sha256sums=('0ce5cd48087bc5b559d7e1a947e9e0adb2a9b6f1dabd984af801f30fbba5e19c'
+sha256sums=('904e4219dacfc6070e13fcb41846b085c61aa1c1cbb0dcc59e1ab982adc8968a'
             '019fac03a27fef4f51d79cf6a390766dc91f0050a77e7b80c0d823c4921ec732'
             '02b051ad202a14d6e6f5fd53144731f668b44debb5cd86af4b249597135ff3a6')
 
