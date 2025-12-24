@@ -5,7 +5,7 @@ pkgver=0.41.0
 pkgrel=1
 pkgdesc='a free, open source, and cross-platform media player'
 arch=(x86_64 aarch64 riscv64 loongarch64)
-license=('GPL3')
+license=('GPL-2.0-or-later')
 url='https://mpv.io/'
 depends=(
   'alsa-lib' 'wayland' 'zlib' 'ffmpeg' 'libass' 'lcms2' 'libarchive'
