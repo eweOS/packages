@@ -13,6 +13,7 @@ depends=(
   'libdrm' 'libjpeg' 'libxkbcommon' 'libdisplay-info' 'libsixel'
   'mesa' 'libglvnd' 'libva' 'vulkan-icd-loader')
 makedepends=('git' 'meson' 'wayland-protocols' 'linux-headers' 'vulkan-headers')
+checkdepends=('weston')
 source=("https://github.com/mpv-player/mpv/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('ee21092a5ee427353392360929dc64645c54479aefdb5babc5cfbb5fad626209')
 
@@ -98,6 +99,7 @@ build() {
     -D lua=disabled
     -D libmpv=true
     -D manpage-build=disabled
+    -D tests=true
   )
   ewe-meson $pkgname-$pkgver build \
     "${_audioout_features[@]}" \
@@ -110,7 +112,16 @@ build() {
 }
 
 check() {
-  meson test -C build
+  export XDG_RUNTIME_DIR="$PWD/runtime-dir" WAYLAND_DISPLAY=wayland-5
+  mkdir -p -m 700 "$XDG_RUNTIME_DIR"
+
+  weston --backend=headless-backend.so \
+    --socket="$WAYLAND_DISPLAY" \
+    --idle-time=0 &
+  _w=$!
+  trap "kill $_w; wait" EXIT
+
+  meson test -C build --print-errorlogs
 }
 
 package() {
