@@ -5,7 +5,7 @@ pkgname=('poppler' 'poppler-glib' 'poppler-qt6')
 pkgver=25.12.0
 # 2025.09.19
 _testdata_commit=9d5011815a14c157ba25bb160187842fb81579a5
-pkgrel=1
+pkgrel=2
 pkgdesc='A PDF rendering library based on the xpdf-3.0 code base'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL-2.0-only'
@@ -17,7 +17,7 @@ license=('GPL-2.0-only'
 makedepends=('libjpeg' 'cairo' 'fontconfig' 'openjpeg2'
              'gtk3' 'pkgconf' 'lcms2' 'gobject-introspection' 'icu'
              'qt6-base' 'git' 'nss' 'gpgmepp' 'gtk-doc' 'curl' 'poppler-data'
-             'cmake' 'python' 'boost' 'glib2'
+             'cmake' 'python' 'boost' 'glib2' 'gpgme'
              'freetype2' 'libpng' 'libtiff' 'nspr')
 options=('!emptydirs')
 url="https://poppler.freedesktop.org/"
@@ -53,7 +53,7 @@ check() {
 package_poppler() {
   pkgdesc="PDF rendering library based on xpdf 3.0"
   depends=('libjpeg' 'cairo' 'fontconfig' 
-           'openjpeg2' 'lcms2' 'nss' 'curl' 'gpgme'
+           'openjpeg2' 'lcms2' 'nss' 'curl' 'gpgme' 'gpgmepp'
            'nspr' 'libpng' 'freetype2' 'zlib' 'libtiff')
   optdepends=('poppler-data: highly recommended encoding data to display PDF documents with certain encodings and characters')
   provides=('libpoppler.so' 'libpoppler-cpp.so')
