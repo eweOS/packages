@@ -1,8 +1,8 @@
 # Maintainer: Julian Droske <juliandroske@outlook.com>
 
 pkgname=micro
-pkgver=2.0.14
-pkgrel=3
+pkgver=2.0.15
+pkgrel=1
 pkgdesc='A modern and intuitive terminal-based text editor'
 url='https://micro-editor.github.io'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -21,7 +21,7 @@ source=(
   "https://github.com/zyedidia/micro/archive/refs/tags/v$pkgver.tar.gz"
 )
 sha256sums=(
-  '40177579beb3846461036387b649c629395584a4bbe970f61ba7591bd9c0185a'
+  '612c775321c268c8f9e1767505ff378bca9b9ab66f5c41b69ecb2464ecf15084'
 )
 
 build() {
