@@ -1,10 +1,10 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=libtg_owt
-_commit=5c5c71258777d0196dbb3a09cc37d2f56ead28ab
+_commit=d888bc3f79b4aa80333d8903410fa439db5f6696
 _libyuv_commit=ec6f15079ff373b7651698a68bba7244b3556981
 _crc32c_commit=2bbb3be42e20a0e6c0f7b39dc07dc863d9ffbc07
-pkgver=r20251018.${_commit:0:7}
+pkgver=r20251212.${_commit:0:7}
 pkgrel=1
 pkgdesc="Telegram's fork of WebRTC"
 url='https://github.com/desktop-app/tg_owt'
@@ -20,20 +20,16 @@ makedepends=(cmake git linux-headers python)
 # 0002: Under review, fix LLVM 20 build where Clang starts to complain about
 #	[[lifetimebound]] applied to arguments of void functions.
 #	https://github.com/desktop-app/tg_owt/pull/162
-# 0003: Under review, fix build with abseil-cpp 20250814 or later, where
-#	absl::Nonnull<> template is replaced by absl_nonnull
 source=("$url/archive/$_commit.tar.gz"
 	"git+https://gitlab.com/chromiumsrc/libyuv.git#commit=$_libyuv_commit"
 	"https://github.com/google/crc32c/archive/$_crc32c_commit.tar.gz"
 	"0001-use-libopengl.patch"
-	"0002-Remove-ABSL_ATTRIBUTE_LIFETIME_BOUND-from-void-funct.patch"
-	"0003-Replace-absl-template-nullability-annotations.patch")
-sha256sums=('c190115534a3fe2a26c8f62be3a902087fa1319118d9a90d9b7a869e2c1e5b46'
+	"0002-Remove-ABSL_ATTRIBUTE_LIFETIME_BOUND-from-void-funct.patch")
+sha256sums=('4ae4738b85c35bb3a4fbb0f63bc1020c57847d94d91bd226a06a738bdbc3e12f'
             '8e42db1f3e308c3baefc7c2c1368f29af12650f75305b4a2e2c0ea6fa00d21bc'
             '56be8308f23626f82075a035daabd473c8e2b86344768c46182afe86edebf49d'
             'f49cfdb50f5ca0cd7692a43287fd8396e59eeb438a509cce8afd3438736d136b'
-            'e55689c8225319bf66dd630f005544e982351b08877a5bff150c9b646dc995af'
-            '2a590b01bfde30d956d2c1d186064fe8a65893872a11a1f75f2f3235852f53bb')
+            'e55689c8225319bf66dd630f005544e982351b08877a5bff150c9b646dc995af')
 
 prepare() {
 	_patch_ tg_owt-$_commit
