@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=fcitx5-configtool
-pkgver=5.1.11
+pkgver=5.1.12
 pkgrel=1
 pkgdesc='Configuration tool for fcitx5'
 url='https://github.com/fcitx/fcitx5-configtool'
@@ -19,7 +19,7 @@ provides=(libFcitx5Migrator.so)
 source=("https://github.com/fcitx/fcitx5-configtool/archive/refs/tags/$pkgver.tar.gz"
 	"0001-disable-x11.patch"
 	"0002-configlib-Do-not-link-to-unused-PkgConfig-XkbFile.patch")
-sha256sums=('e4d84224b38df2a227225f5a3fb4667632925de65a647a0474ecc3d195e6ea86'
+sha256sums=('f876116ca2d5d57c5e21ec49b737febe646338505648ebf62b8b192dab5de0b4'
             'b98934bd3e21c066bcf0c641a816ef03f64ea85c243960ca40575b01d28b8d7a'
             '5a733762f103038649320c55418d5626a059144bfa7e81b8ea05977f05478ef3')
 
