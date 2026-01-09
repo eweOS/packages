@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=fcitx5-anthy
-pkgver=5.1.8
+pkgver=5.1.9
 pkgrel=1
 pkgdesc='Anthy wrapper for fcitx5.'
 url='https://github.com/fcitx/fcitx5-anthy'
@@ -10,7 +10,7 @@ license=(GPL-2.0-or-later)
 depends=(anthy fcitx5)
 makedepends=(cmake extra-cmake-modules)
 source=("https://github.com/fcitx/fcitx5-anthy/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d7f751d901b4c75c426ac2198c1bb2daf884beb2030195841eacba40aca04982')
+sha256sums=('37e6bdd12ff56899a68d6548b2bf1278847e89e719e34eae05f89d7a5d04d76a')
 
 build () {
 	cmake -S fcitx5-anthy-$pkgver -B build	\
