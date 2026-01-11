@@ -2,7 +2,7 @@
 
 pkgname=glmark2
 pkgver=2023.01
-pkgrel=2
+pkgrel=3
 pkgdesc="An OpenGL 2.0 and ES 2.0 benchmark"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://github.com/glmark2/glmark2"
@@ -22,8 +22,11 @@ prepare() {
 }
 
 build() {
+  local _flavours="drm-gl,drm-glesv2,wayland-gl,wayland-glesv2"
+  _flavours="$_flavours,gbm-gl,gbm-glesv2"
+
   ewe-meson $pkgname-$pkgver build \
-    -Dflavors=drm-gl,drm-glesv2,wayland-gl,wayland-glesv2
+    -Dflavors="$_flavours"
   meson compile -C build
 }
 
