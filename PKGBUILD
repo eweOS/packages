@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ncurses
-pkgver=6.5
-pkgrel=4
+pkgver=6.6
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT-open-group)
 pkgdesc="System V Release 4.0 curses emulation library"
@@ -15,7 +15,7 @@ provides=(
   libncursesw.so
 )
 source=("http://ftp.gnu.org/gnu/ncurses/ncurses-${pkgver}.tar.gz")
-sha256sums=('136d91bc269a9a5785e5f9e980bc76ab57428f604ce3e5a5a90cebc767971cc6')
+sha256sums=('355b4cbbed880b0381a04c46617b7656e362585d52e9cf84a67e2009b749ff11')
 
 build()
 {
