@@ -1,0 +1,29 @@
+From 4c4da8b44ea10660d54e16fbef195ec0b40e62e1 Mon Sep 17 00:00:00 2001
+From: Yao Zi <me@ziyao.cc>
+Date: Tue, 13 Jan 2026 11:54:12 +0000
+Subject: [PATCH] tests: use gnu-diff instead of diff
+
+Busybox diff doesn't support --ignore-matching-lines option, so use
+gnu-diff instead to run the testsuite.
+
+Signed-off-by: Yao Zi <me@ziyao.cc>
+---
+ tests/run_tests.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/run_tests.py b/tests/run_tests.py
+index 351f9af90f7f..13ebfc990cd5 100644
+--- a/tests/run_tests.py
++++ b/tests/run_tests.py
+@@ -31,7 +31,7 @@ class ItstoolTests(unittest.TestCase):
+         options = ""
+         if f1.endswith(".po") or f1.endswith(".pot"):
+             options = "--ignore-matching-lines=^\\\"POT-Creation-Date"
+-        result = self.run_command("diff -u %s %s %s" % (options, f1, f2))
++        result = self.run_command("gnu-diff -u %s %s %s" % (options, f1, f2))
+         self.assertEqual(result['output'], "", result['output'])
+ 
+     def _test_pot_generation(self, start_file, reference_pot=None, expected_status=0, options=None):
+-- 
+2.52.0
+

@@ -1,0 +1,21 @@
+diff --git a/tests/run_tests.py b/tests/run_tests.py
+index 351f9af90f7f..145faa63a14b 100644
+--- a/tests/run_tests.py
++++ b/tests/run_tests.py
+@@ -342,16 +342,6 @@ class ItstoolTests(unittest.TestCase):
+         """ Test that parsing XML requiring external DTD generates exception """
+         res = self._test_pot_generation('IT-uses-external-dtds.xml', expected_status=1)
+ 
+-    def test_IT_translate_with_external_dtds(self):
+-        self._test_translation_process('IT-uses-external-dtds.xml', options='--load-dtd')
+-
+-    # FIXME: It would be nice to be able to do this without loading the
+-    # external subset, but libxml2 seems to verify entity references even
+-    # if it doesn't do substitution.
+-    def test_IT_keep_entities_1(self):
+-        self._test_translation_process('IT-keep-entities-1.xml',
+-                                       options='--load-dtd --keep-entities')
+-
+     def test_IT_keep_entities_2(self):
+         self._test_translation_process('IT-keep-entities-2.xml', options='--keep-entities')
+ 
