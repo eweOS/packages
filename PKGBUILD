@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fcft
-pkgver=3.3.2
+pkgver=3.3.3
 pkgrel=1
 pkgdesc='Simple library for font loading and glyph rasterization'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -18,7 +18,7 @@ depends=(
 makedepends=(meson scdoc tllist git)
 checkdepends=(check ttf-noto-fonts-emoji ttf-unifont)
 source=("git+$url#tag=${pkgver}")
-sha256sums=('43ede5629f872ea057492ff3aa1fd0385c0c3d05ad85ae686d423dab4f2cc8d7')
+sha256sums=('ad689dbf6033f875c3dd9f626e3675bbd499f094e446ce814bfa63048196e0d8')
 
 build() {
   ewe-meson $pkgname build \
