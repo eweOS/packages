@@ -1,14 +1,14 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libuninameslist
-pkgver=20250909
+pkgver=20260107
 pkgrel=1
 pkgdesc='Large, sparse array mapping each unicode code point to the annotation data for it'
 url='https://github.com/fontforge/libuninameslist'
 license=('BSD-3-Clause')
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 source=("https://github.com/fontforge/${pkgname}/releases/download/${pkgver}/${pkgname}-dist-${pkgver}.tar.gz")
-sha256sums=('27b5e9667b668ce8a1623ad0ad52a2b9eeaeef8eb7a206ed1e5e4f5ec0980c85')
+sha256sums=('aadfaf62a96f20914d8dd248e8f19325471ead0cf3133b2f8ae0624c2da3657b')
 
 prepare() {
   cd ${pkgname}-${pkgver}
