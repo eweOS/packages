@@ -1,23 +1,22 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=iso-codes
-pkgver=4.19.0
+pkgver=4.20.1
 pkgrel=1
 pkgdesc='Lists of the country, language, and currency names'
 url='https://salsa.debian.org/iso-codes-team/iso-codes'
 arch=(any)
-license=(LGPL-2.1-or-later)
-makedepends=(python)
+license=(LGPL-2.1-only)
+makedepends=(python meson)
 source=(https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/v$pkgver/iso-codes-v$pkgver.tar.gz)
-sha256sums=('4b143a891feb7d1bb64e44fe3ef253ef36ba1185d1d129c1425338dc6e46e27d')
+sha256sums=('2d7d9f6084ab9ce6c534ce71a3dd5144b6e474f3c97616459a88f73f44a64bff')
 
 build() {
-  cd $pkgname-v$pkgver
-  ./configure --prefix=/usr
-  make
+  meson build $pkgname-v$pkgver \
+    --prefix=/usr
+  meson compile -C build
 }
 
 package() {
-  cd $pkgname-v$pkgver
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir="$pkgdir"
 }
