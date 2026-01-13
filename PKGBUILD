@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wofi
-pkgver=1.5.1
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='launcher for wlroots-based wayland compositors'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=(meson)
 source=("${pkgname}-v${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha512sums=('6c0a05e68022c64506b2a2d0b12c8f4a874070bfe598a371d6508c1faf62d967b76affcc4b41a1eaba294fbad3cae9f3ee84f6715df89bd353d44d41631e893c')
+sha512sums=('59067d8ea080cde13ba4c278e5843e10300c9fd5e1a1445107f6045d01c23b2ceaf59cd3e0393c3d966553b04110c3ebb776b88df39885dd06620d3e49c8ffff')
 
 build() {
   ewe-meson $pkgname-v$pkgver build
