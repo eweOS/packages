@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=seatd
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.9.2
+pkgrel=1
 pkgdesc="A minimal seat management daemon, and a universal seat management library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://sr.ht/~kennylevinsen/seatd/"
@@ -13,7 +13,7 @@ source=(
   seatd.service
   seatd.sysusers
 )
-sha256sums=('819979c922a0be258aed133d93920bce6a3d3565a60588d6d372ce9db2712cd3'
+sha256sums=('2811654fc87b3b1877f62e69cbf1e761c7072146f127860d9b8fe1ca27607d0e'
             'd4c77303b13441280599f87546b3b243cd786cb70452661f6990eb2577dc4257'
             'e833292adf5da25b5258a5209c258f0e4c12e1d6fe81cf228fd0cfb575080d78')
 
