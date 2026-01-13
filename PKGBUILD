@@ -2,17 +2,17 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libinput
-pkgver=1.29.1
+pkgver=1.30.1
 pkgrel=1
 pkgdesc="Input device management and event handling library"
 url="https://gitlab.freedesktop.org/libinput"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(custom:X11)
-depends=('libudev' 'libevdev' 'mtdev')
+depends=('libudev' 'libevdev' 'mtdev' 'lua54')
 makedepends=('meson' 'wayland-protocols' 'check' 'linux-headers')
 checkdepends=('python-pytest')
 source=("$url/libinput/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('98bb615d98ddc4607bddb13a7b7550d129eb8cd16f86cd5ca090207bc46b488b')
+sha256sums=('4339a2b9cc96ede3c120dedaedc61e48ce567808c5229e66587525ea972ef617')
 
 build()
 {
