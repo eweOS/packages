@@ -1,14 +1,14 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qgis
-pkgver=3.44.2
-pkgrel=3
+pkgver=3.44.6
+pkgrel=1
 pkgdesc="Geographic Information System (GIS) that supports vector, raster & database formats"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://qgis.org/"
 license=(GPL)
 #FIXME: missing gsl postgresql qt6-webengine ocl-icd opencl-clhpp netcdf hdf5 pdal
-depends=(proj geos gdal expat spatialindex qwt libzip sqlite3 protobuf
+depends=(proj geos gdal expat qwt libzip sqlite3 protobuf
          zlib exiv2 libspatialite zstd
          qt6-base qt6-svg qt6-serialport qt6-location qt6-3d qt6-declarative qt6-multimedia
          qscintilla-qt6 qtkeychain-qt6 qca-qt6 python-pyqt6 python-qscintilla-qt6
@@ -19,9 +19,11 @@ optdepends=('fcgi: Map server'
 source=(
   https://qgis.org/downloads/$pkgname-$pkgver.tar.bz2
 )
-sha256sums=('21f789e1b61384cf03432af306bc977b42d8c77c55ad48562ea1e914a5495961')
+sha256sums=('6a7a0ad471b325f0ac364a7256b415013fc23e3ede3e6b152005739a8d273cd3')
 
 build() {
+  # Use vendored spatialindex to work around upstream breakage
+  # https://github.com/libspatialindex/libspatialindex/issues/276
   cmake -S $pkgname-$pkgver -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DWITH_3D=TRUE \
@@ -41,7 +43,8 @@ build() {
     -DWITH_GSL=FALSE \
     -DWITH_POSTGRESQL=FALSE \
     -DWITH_QTWEBENGINE=FALSE \
-    -DBUILD_WITH_QT6=TRUE
+    -DBUILD_WITH_QT6=TRUE \
+    -DWITH_INTERNAL_SPATIALINDEX=TRUE \
     # https://github.com/qgis/QGIS/issues/48374
     #-DWITH_INTERNAL_LAZPERF=FALSE \
     # https://github.com/qgis/QGIS/issues/35440
