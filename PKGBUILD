@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Geographic Information System (GIS) that supports vector, raster & database formats"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://qgis.org/"
-license=(GPL)
+license=(GPL-2.0-or-later)
 #FIXME: missing gsl postgresql qt6-webengine ocl-icd opencl-clhpp netcdf hdf5 pdal
 depends=(proj geos gdal expat qwt libzip sqlite3 protobuf
          zlib exiv2 libspatialite zstd
