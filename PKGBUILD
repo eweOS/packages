@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qpdf
-pkgver=12.2.0
+pkgver=12.3.0
 pkgrel=1
 pkgdesc="QPDF: A Content-Preserving PDF Transformation System"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -9,7 +9,7 @@ url="https://github.com/qpdf/qpdf"
 license=('Apache-2.0' 'Artistic-2.0')
 makedepends=('libjpeg' 'zlib' 'openssl' 'cmake')
 source=(https://github.com/qpdf/qpdf/releases/download/v$pkgver/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('b3d1575b2218badc3549d6977524bb0f8c468c6528eebc8967bbe3078cf2cace')
+sha256sums=('5e59dbea264ce096bcaf230ea2a2fb1d991a9d56d940fd54c1a7570b48dde04b')
 
 build() {
   cd ${pkgname}-${pkgver}
