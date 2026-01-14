@@ -6,7 +6,7 @@ pkgrel=10
 pkgdesc='OpenStreetMap editor'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='http://merkaartor.be/'
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('exiv2' 'gdal' 'hicolor-icon-theme' 'qt6-svg' 'qt6-networkauth' 'qt6-5compat' 'protobuf')
 makedepends=('qt6-tools' 'cmake')
 # 0001: Backport, 61fac7791e2c ("Fixed a crash on download when no server is loaded from config.")
