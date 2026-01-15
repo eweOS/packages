@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=wesnoth
-pkgver=1.19.14
+pkgver=1.19.19
 pkgrel=1
 pkgdesc='An open source, turn-based strategy game with a high fantasy theme'
 url='https://www.wesnoth.org/'
@@ -20,7 +20,7 @@ options=(!lto)
 #	undefined references caused by unnecessary mangling.
 source=("https://github.com/wesnoth/wesnoth/archive/refs/tags/$pkgver.tar.gz"
 	0001-include-cppstyle-lua-header.patch)
-sha256sums=('d5e34c44938f37bb91905f966dfb082c8c67a837726260951089b194bceb2312'
+sha256sums=('10036cac353d501deb91ad7a1974ff792171e1e2d08bd176ebc9540d12d086b0'
             'ac06bfc735ae4e6577b77f2d06560aea78d5358bbfc2c5a30a334b1ada434812')
 
 prepare() {
