@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=xfsprogs
-pkgver=6.15.0
-pkgrel=2
+pkgver=6.18.0
+pkgrel=1
 pkgdesc='Utilities for managing XFS filesystem'
 url='https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=(GPL-2.0-only LGPL-2.1-only)
 depends=(musl icu libinih liburcu)
 makedepends=(linux-headers)
 source=("https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/snapshot/xfsprogs-dev-$pkgver.tar.gz")
-sha256sums=('80c46be152feb49c45cc7936af959c0f7e1e7fd8e7aef4ca1bad1479c1b81af5')
+sha256sums=('2db824988b1061e963dcdc7ef856a297b8969f252d91531ab83828329c12356e')
 _srcdir="$pkgname-dev-$pkgver"
 
 prepare() {
