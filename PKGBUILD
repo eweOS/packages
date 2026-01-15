@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=xfel
-pkgver=1.3.3
+pkgver=1.3.5
 pkgrel=1
 pkgdesc='Tiny FEL tools for Allwinner SOC'
 url='https://xboot.org/xfel/'
@@ -9,7 +9,7 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 depends=(musl libusb)
 source=("https://github.com/xboot/xfel/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f4af683caed394ed8a2c4b384a470275cc9c09282800f540de1cf20e7161827d')
+sha256sums=('2bdb9a7b80bdb699536afffb083524ad4efb7c738eb0dd9de03d2f2d00066fbb')
 
 build() {
 	cd "$pkgname-$pkgver"
