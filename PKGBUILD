@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname="hyprland"
-pkgver=0.52.2
-pkgrel=2
+pkgver=0.53.1
+pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/hyprwm/Hyprland"
@@ -29,6 +29,8 @@ depends=(
   libxcurcommon-compat
   hyprgraphics
   re2
+  muparser
+  hyprwire
 )
 makedepends=(
   git
@@ -50,25 +52,29 @@ optdepends=('cmake: to build and install plugins using hyprpm'
             'hyprland-protocols: to build and install plugins using hyprpm'
             'meson: to build and install plugins using hyprpm'
             'uwsm: the recommended way to start Hyprland')
-source=(
-  "$pkgname::git+$url#tag=v$pkgver"
-)
-sha256sums=('6553f9fcfb77b036e1324752a4c42db85ae8ce5ab29868b8ab2561ff29cd1254')
+_archive="${pkgname^}-$pkgver"
+source=("$_archive.tar.gz::$url/releases/download/v$pkgver/source-v$pkgver.tar.gz")
+sha256sums=('1d9d22cfa34d2a559b2be37735adb1f70eef4fd8bbaf226ebf1d20b09fcb0861')
 
 prepare() {
-  sed -i '/xcb.h/d' $pkgname/src/xwayland/Dnd.hpp
-  sed -i '/xfixes.h/d; /xproto.h/d' $pkgname/src/xwayland/XWM.cpp
+  ln -sf hyprland-source "$_archive"
+  sed -i '/xcb.h/d' "$_archive"/src/xwayland/Dnd.hpp
+  sed -i '/xfixes.h/d; /xproto.h/d' "$_archive"/src/xwayland/XWM.cpp
+  sed -i 's/OpenGL::GL/OpenGL::OpenGL/' "$_archive"/CMakeLists.txt
+  sed -i -e '/^release:/{n;s/-D/-DCMAKE_SKIP_RPATH=ON -D/}' "$_archive"/Makefile
 }
 
 build() {
-  cd "$srcdir"
-  CXXFLAGS+=" -fexperimental-library"
-  ewe-meson $pkgname build \
-    -Dsystemd=disabled \
-    -Dxwayland=disabled
-  meson compile -C build
+  cmake -B build -S "$_archive" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DNO_XWAYLAND=1 \
+    -DNO_SYSTEMD=1
+  cmake --build build --config Release --target all
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  DESTDIR=$pkgdir cmake --install build
+  rm -fv "$pkgdir/usr/include/hyprland/src/version.h.in"
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$_archive"/LICENSE
 }
