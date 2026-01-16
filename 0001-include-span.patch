@@ -1,0 +1,19 @@
+diff --git a/src/image/formats/Svg.cpp b/src/image/formats/Svg.cpp
+index d59bfa9..8cd9d24 100644
+--- a/src/image/formats/Svg.cpp
++++ b/src/image/formats/Svg.cpp
+@@ -1,6 +1,7 @@
+ #include "Svg.hpp"
+ #include <filesystem>
+ #include <fstream>
++#include <span>
+ #include <librsvg/rsvg.h>
+ #include <hyprutils/utils/ScopeGuard.hpp>
+ #include <hyprutils/string/String.hpp>
+@@ -93,4 +94,4 @@ std::expected<cairo_surface_t*, std::string> SVG::createSurfaceFromData(const st
+     g_object_unref(handle);
+ 
+     return cairoSurface;
+-}
+\ No newline at end of file
++}
