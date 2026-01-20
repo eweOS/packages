@@ -1,0 +1,36 @@
+diff --git a/src/core/client/ClientSocket.cpp b/src/core/client/ClientSocket.cpp
+index dda4665..cfa756e 100644
+--- a/src/core/client/ClientSocket.cpp
++++ b/src/core/client/ClientSocket.cpp
+@@ -15,6 +15,7 @@
+ #include <hyprwire/core/implementation/Spec.hpp>
+ #include <hyprwire/core/implementation/ClientImpl.hpp>
+ 
++#include <unistd.h>
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ #include <netinet/in.h>
+diff --git a/src/core/server/ServerClient.cpp b/src/core/server/ServerClient.cpp
+index a83c05b..126aed2 100644
+--- a/src/core/server/ServerClient.cpp
++++ b/src/core/server/ServerClient.cpp
+@@ -7,6 +7,7 @@
+ #include "../../helpers/Log.hpp"
+ #include "../../Macros.hpp"
+ 
++#include <unistd.h>
+ #include <hyprwire/core/implementation/ServerImpl.hpp>
+ #include <hyprwire/core/implementation/Spec.hpp>
+ 
+diff --git a/src/core/server/ServerSocket.cpp b/src/core/server/ServerSocket.cpp
+index 647abab..3ea1cd3 100644
+--- a/src/core/server/ServerSocket.cpp
++++ b/src/core/server/ServerSocket.cpp
+@@ -6,6 +6,7 @@
+ #include "../../Macros.hpp"
+ #include "../message/MessageParser.hpp"
+ 
++#include <unistd.h>
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ #include <netinet/in.h>
