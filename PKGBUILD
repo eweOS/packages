@@ -2,7 +2,7 @@
 
 pkgname=limine
 pkgver=10.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, portable, multiprotocol bootloader"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://limine-bootloader.org/"
@@ -12,15 +12,19 @@ optdepends=('efibootmgr: efi entries managing for limine-install')
 source=(
   "https://github.com/limine-bootloader/limine/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
   limine-mkconfig
+  limine-mkconfig.hook
   limine.defaults
   limine.conf
   limine-install
+  update-limine-config
 )
 sha256sums=('e23a71489f991d8b1a5fb79884ea278758ff61ef5017b5adf24493ec26c1b4a9'
-            'b3a9bbf701bf641d5354a0611011ed1e161c01e57fd5c97f1de116cfdfaf35b7'
+            'a93f5b67465c5dc55408720c5faaac343f7f8674fb112005540ad736bd10973b'
+            '98904f4fd1dece1663e4f96e4022718d83706a3c05477ef07d20892d133a46a3'
             'b1d39bd3cc56b4d033f2ffe3c6f1eda8cbb0eb4788626e5041fcb56fa961ea86'
             'f722aacb1e5865489483c14b950900998241fe6558e58875b1119579ef91a5e0'
-            '307eaea79af8eb9e9c1f6b5c6f17841f31e5a01856738cddecb20f7039c21094')
+            '307eaea79af8eb9e9c1f6b5c6f17841f31e5a01856738cddecb20f7039c21094'
+            '283f4f612b63d952075572419e9e2283be7369e7cffaf51a98ab360178797870')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -41,5 +45,7 @@ package() {
   install -Dm 755 $srcdir/limine-install "$pkgdir/usr/bin/limine-install"
   install -Dm 644 $srcdir/limine.defaults "$pkgdir/etc/default/limine"
   install -Dm 644 $srcdir/limine.conf "$pkgdir/etc/limine.conf"
+  install -Dm 644 $srcdir/limine-mkconfig.hook "$pkgdir/usr/share/libalpm/hooks/limine-mkconfig.hook"
+  install -Dm 755 $srcdir/update-limine-config "$pkgdir/usr/share/libalpm/scripts/update-limine-config"
 }
 

@@ -1,86 +1,121 @@
 #!/bin/env sh
 
-exec >/dev/stderr
+set -e
 
-source /etc/os-release
-source /etc/limine.conf
+# default var
+LIMINE_DEFAULT="/etc/default/limine"
+OPT_OUTFILE=""
+BUILD_ID=""
 
-OPTSTRING=":o:b:"
-CFGOUT=/dev/stdout
+if [ -f /etc/os-release ]; then
+  . /etc/os-release
+fi
 
-while getopts ${OPTSTRING} opt; do
+if [ -f /etc/limine.conf ]; then
+  . /etc/limine.conf
+fi
+
+while getopts ":o:b:" opt; do
   case ${opt} in
     o)
-      CFGOUT=${OPTARG}
+      OPT_OUTFILE=${OPTARG}
       ;;
     b)
-      BUILD_ID=${OPTARG:-$BUILD_ID}
+      BUILD_ID=${OPTARG:-${BUILD_ID}}
       ;;
     ?)
-      echo "err: Invalid option: -${OPTARG}"
+      echo "err: Invalid option: -${OPTARG}" >&2
       exit 1
       ;;
   esac
 done
 
-cat /etc/default/limine > $CFGOUT
+# redirect output
+if [ -n "$OPT_OUTFILE" ]; then
+  mkdir -p "$(dirname "$OPT_OUTFILE")"
+  exec 1> "$OPT_OUTFILE"
+fi
 
-function render_advgroup() {
-  cat <<EOF >> $CFGOUT
-/${PRETTY_NAME} ${BUILD_ID} ($pkgbase $kernelver) (Advanced Boot Options)
-    comment: Advanced Boot Options for ${PRETTY_NAME} ${BUILD_ID} ($pkgbase $kernelver)
+# default header
+if [ -f "$LIMINE_DEFAULT" ]; then
+  cat "$LIMINE_DEFAULT"
+fi
+
+# advance options group
+render_advgroup() {
+  # Args: $1 = pkgbase, $2 = kernelver
+  cat <<EOF
+/${PRETTY_NAME} ${BUILD_ID} ($1 $2) (Advanced Boot Options)
+    comment: Advanced Boot Options for ${PRETTY_NAME} ${BUILD_ID} ($1 $2)
 EOF
 }
 
-function render_menu() {
-  MENULEVEL=$1
-  MENUTYPE=$2
-  if [ "$LIMINE_BOOTPROTO" == "linux" ]; then
-    MENUTITLE="$pkgbase $kernelver"
-    CMDLINE="$LIMINE_KERNEL_CMDLINE_NORMAL"
-    if [ "$MENUTYPE" == "normal" ]; then
-      MENUTITLE+=", normal mode"
+# full menu
+render_menu() {
+  # Args: $1 = level, $2 = type, $3 = pkgbase, $4 = kernelver
+  _level="$1"
+  _type="$2"
+  _pkgbase="$3"
+  _kernelver="$4"
+
+  _menutitle="$_pkgbase $_kernelver"
+  _cmdline="$LIMINE_KERNEL_CMDLINE_NORMAL"
+
+  if [ "${LIMINE_BOOTPROTO:-linux}" = "linux" ]; then
+
+    if [ "$_type" = "normal" ]; then
+      _menutitle="$_menutitle, normal mode"
     fi
-    if [ "$MENUTYPE" == "recovery" ]; then
-      CMDLINE="$LIMINE_KERNEL_CMDLINE_RECOVERY"
-      MENUTITLE+=", recovery mode"
+
+    if [ "$_type" = "recovery" ]; then
+      _cmdline="$LIMINE_KERNEL_CMDLINE_RECOVERY"
+      _menutitle="$_menutitle, recovery mode"
     fi
-    if [ "$MENULEVEL" == "1" ]; then
-      cat <<EOF >> $CFGOUT
-/${PRETTY_NAME} ${BUILD_ID} ($MENUTITLE)
-EOF
+
+    if [ "$_level" = "1" ]; then
+      echo "/${PRETTY_NAME} ${BUILD_ID} ($_menutitle)"
+    elif [ "$_level" = "2" ]; then
+      echo "//${PRETTY_NAME} ${BUILD_ID} ($_menutitle)"
     fi
-    if [ "$MENULEVEL" == "2" ]; then
-      cat <<EOF >> $CFGOUT
-//${PRETTY_NAME} ${BUILD_ID} ($MENUTITLE)
-EOF
-    fi
-    cat <<EOF >> $CFGOUT
-    comment: ${PRETTY_NAME} ${BUILD_ID} ($MENUTITLE)
+
+    cat <<EOF
+    comment: ${PRETTY_NAME} ${BUILD_ID} ($_menutitle)
     protocol: linux
-    path: boot():/vmlinuz-${pkgbase}
-    cmdline: $LIMINE_KERNEL_CMDLINE_COMMON $CMDLINE
-    module_path: boot():/initramfs-${pkgbase}.img
+    path: boot():/vmlinuz-${_pkgbase}
+    cmdline: ${LIMINE_KERNEL_CMDLINE_COMMON} $_cmdline
+    module_path: boot():/initramfs-${_pkgbase}.img
 EOF
   fi
 }
 
-for kernelfile in $(find /usr/lib/modules/*/vmlinuz -maxdepth 0 | sort -r) ; do
-  kernel=$(dirname $kernelfile)
-  if ! pacman -Qqo "${kernelfile}" > /dev/null 2>&1; then
-    # if pkgbase does not belong to any package then skip this kernel
+for kernelfile in /usr/lib/modules/*/vmlinuz; do
+  if [ ! -f "$kernelfile" ]; then
     continue
   fi
-  pkgbase=$(pacman -Qqo "${kernelfile}" 2>/dev/null)
-  if [ "$LIMINE_AUTO_COPY_KERNEL" == "1" ]; then
-    install -Dm644 "${kernelfile}" "/boot/vmlinuz-${pkgbase}"
+
+  kerneldir=$(dirname "$kernelfile")
+  kernelver=$(basename "$kerneldir")
+
+  pkgbase=$(pacman -Qqo "$kernelfile" 2>/dev/null)
+
+  if [ -z "$pkgbase" ]; then
+    continue
   fi
-  if [ "$LIMINE_AUTO_GEN_INITRD" == "1" ]; then
-    tinyramfs -f -k ${kernel##/usr/lib/modules/} /boot/initramfs-${pkgbase}.img
+
+  if [ "$LIMINE_AUTO_COPY_KERNEL" = "1" ]; then
+    install -Dm644 "$kernelfile" "/boot/vmlinuz-${pkgbase}"
   fi
-  kernelver=`basename $kernel`
-  render_menu 1
-  render_advgroup
-  render_menu 2 normal
-  render_menu 2 recovery
+
+  if [ "$LIMINE_AUTO_GEN_INITRD" = "1" ]; then
+    if command -v tinyramfs >/dev/null 2>&1; then
+       tinyramfs -f -k "$kernelver" "/boot/initramfs-${pkgbase}.img" 1>&2
+    else
+       echo "warn: tinyramfs not found, skipping initrd generation" >&2
+    fi
+  fi
+
+  render_menu 1 "" "$pkgbase" "$kernelver"
+  render_advgroup "$pkgbase" "$kernelver"
+  render_menu 2 "normal" "$pkgbase" "$kernelver"
+  render_menu 2 "recovery" "$pkgbase" "$kernelver"
 done

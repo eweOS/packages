@@ -1,0 +1,28 @@
+#!/bin/env sh
+
+set -eu
+
+LIMINE_DEFAULT_PATH=/boot/limine/limine.conf
+
+if [ -f /etc/limine.conf ]; then
+  . /etc/limine.conf
+fi
+
+# check if config exists
+for LIMINE_CONF_PATH in "/boot/limine.conf" "/boot/limine/limine.conf"; do
+  if [ -f $LIMINE_CONF_PATH ]; then
+    limine-mkconfig -o $LIMINE_CONF_PATH
+    exit 0
+  fi
+done
+
+target_dir=$(dirname "$LIMINE_DEFAULT_PATH")
+
+# fallback to default dir
+if [ -d $(dirname $LIMINE_DEFAULT_PATH) ]; then
+  limine-mkconfig -o $LIMINE_DEFAULT_PATH
+  exit 0
+else
+  # else do nothing
+  exit 0
+fi
