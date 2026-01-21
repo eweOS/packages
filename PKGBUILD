@@ -2,7 +2,7 @@
 
 pkgname=appstream-glib
 pkgver=0.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Objects and methods for reading and writing AppStream metadata"
 url="https://people.freedesktop.org/~hughsient/appstream-glib/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -18,7 +18,7 @@ depends=(
   json-glib
   libarchive
   libyaml
-  pacman
+  libalpm
   pango
   util-linux-libs
 )
