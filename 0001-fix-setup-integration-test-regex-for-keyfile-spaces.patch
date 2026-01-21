@@ -1,0 +1,11 @@
+diff --git a/build-aux/setup-integration-test.py b/build-aux/setup-integration-test.py
+index bb108bc..ee56e32 100755
+--- a/build-aux/setup-integration-test.py
++++ b/build-aux/setup-integration-test.py
+@@ -14,5 +14,5 @@ config_file = os.path.join(destdir, rel_config_file)
+ with open(config_file, 'r') as f:
+     cfg = f.read()
+ with open(config_file, 'w') as f:
+-    new_cfg = re.sub('^Exec=', 'Exec=' + destdir, cfg, flags=re.M)
++    new_cfg = re.sub('^Exec\s*=\s*', 'Exec=' + destdir, cfg, flags=re.M)
+     f.write(new_cfg)
