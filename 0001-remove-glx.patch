@@ -1,0 +1,23 @@
+--- movit-1.7.1/util.cpp
++++ movit-1.7.1-new/util.cpp
+@@ -19,7 +19,6 @@
+ #elif defined(WIN32)
+ #include <epoxy/wgl.h>
+ #else
+-#include <epoxy/glx.h>
+ #include <epoxy/egl.h>
+ #endif
+ 
+@@ -349,11 +348,7 @@
+ #elif defined(WIN32)
+ 	return (void *)wglGetCurrentContext();
+ #else
+-	void *ret = (void *)eglGetCurrentContext();
+-	if (ret != nullptr) {
+-		return ret;
+-	}
+-	return (void *)glXGetCurrentContext();
++	return (void *)eglGetCurrentContext();
+ #endif
+ }
+ 
