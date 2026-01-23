@@ -1,4 +1,4 @@
-# Maintainer: Yao Zi <ziyao@disroot.org>
+# Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=lame
 pkgver=3.100
@@ -11,6 +11,7 @@ depends=(musl)
 makedepends=(nasm autoconf)
 source=("https://sourceforge.net/projects/lame/files/lame/$pkgver/lame-$pkgver.tar.gz")
 provides=('libmp3lame.so')
+sha256sums=('ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e')
 
 prepare() {
   cd lame-$pkgver
@@ -30,8 +31,5 @@ check() {
 
 package() {
   cd lame-$pkgver
-  make install DESTDIR=${pkgdir}
+  make install DESTDIR="$pkgdir"
 }
-
-sha256sums=('ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e')
-
