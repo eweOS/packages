@@ -2,7 +2,7 @@
 
 pkgname=lame
 pkgver=3.100
-pkgrel=3
+pkgrel=4
 pkgdesc='a high quality MP3 encoder licensed under the LGPL.'
 url='https://lame.sourceforge.io/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -25,7 +25,7 @@ build () {
 
 check() {
   cd lame-$pkgver
-  make check
+  make test
 }
 
 package() {
