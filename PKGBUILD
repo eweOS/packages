@@ -1,7 +1,7 @@
 # Maintainer: YukariChiba <i@0x7f.cc>
 
 pkgname=alsa-lib
-pkgver=1.2.14
+pkgver=1.2.15
 pkgrel=1
 pkgdesc="The Advanced Linux Sound Architecture (ALSA) - library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,11 +12,14 @@ provides=(
   libasound.so
   libatopology.so
 )
-source=("$url/files/pub/lib/$pkgname-$pkgver.tar.bz2")
-sha256sums=('be9c88a0b3604367dd74167a2b754a35e142f670292ae47a2fdef27a2ee97a32')
+# close-range.patch: downstream, remove close_range() (not in musl)
+source=("$url/files/pub/lib/$pkgname-$pkgver.tar.bz2" close-range.patch)
+sha256sums=('83770841585e766a60c99fd23f8c574c22643ae0cb1f2d20b793c3d84eb95a8d'
+            '078dcc3d1f3bf12baf41f73d2f3fe2b01b6e1d85f37a27660db3ab148ea1c063')
 
 prepare()
 {
+  _patch_ $pkgname-$pkgver
   cd $pkgname-$pkgver
   autoreconf -fiv
 }
