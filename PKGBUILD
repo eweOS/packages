@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kde-cli-tools
-pkgver=6.5.2
+pkgver=6.5.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Tools based on KDE Frameworks to better interact with the system'
@@ -28,7 +28,7 @@ makedepends=(extra-cmake-modules
              kdoctools)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz)
-sha256sums=('834f1da71ec6f9eb2d0560218080a0f02a00cd6609c9ed5464011700c28a0a1c')
+sha256sums=('083b5d3c8e6315554547e1fc538c7d9f0671e08f7c52f2bc0a5a345027a12279')
 
 prepare() {
   cd $pkgname-$pkgver
