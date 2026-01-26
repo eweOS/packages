@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libkscreen
-pkgver=6.5.2
+pkgver=6.5.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE screen management software'
@@ -17,7 +17,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz no-x11.patch)
-sha256sums=('28099754348a7d3af74d79b443d7fde8e6a2b32c6e5491b520180d65d1e1ba61'
+sha256sums=('595bf06cd8b0c906800a34efd7d93e45add99f2f7e9248c0e8203a838ec861f9'
             'd2b1779b192b1e736b447c79b22cf80beaa52c159b33f4a148cc1d97b517c6e2')
 
 prepare() {
