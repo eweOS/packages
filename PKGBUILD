@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=layer-shell-qt
-pkgver=6.5.4
+pkgver=6.5.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Qt component to allow applications to make use of the Wayland wl-layer-shell protocol'
@@ -17,7 +17,7 @@ makedepends=(extra-cmake-modules
 optdepends=('qt6-declarative: QML bindings')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz)
-sha256sums=('bb95db253ffcd29e08191656b6a5449f8a8800c38256873e2529749b55eaa80a')
+sha256sums=('6844fee55b8b7cbc320cd8308b51595ef830d5a99b4d355b0fd59f88feab2c11')
 
 build() {
   CFLAGS+=" -D_LIBCPP_TYPEINFO_COMPARISON_IMPLEMENTATION=2"
