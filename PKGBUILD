@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=systemsettings
-pkgver=6.5.2
+pkgver=6.5.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE system manager for hardware, software, and workspaces'
@@ -34,7 +34,7 @@ makedepends=(extra-cmake-modules
              kdoctools)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz)
-sha256sums=('f6f3b2192160f08c829c00fe4c0315f9c06288d4c4daf287141e11e83d8a4bce')
+sha256sums=('8677fe07e66bad787e7ef43e935296c201973a4ec9505ba00d6f3afe4b1cc2c6')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
