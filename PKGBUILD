@@ -1,17 +1,17 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pyalpm
-pkgver=0.10.12
-pkgrel=2
+pkgver=0.11.1
+pkgrel=1
 pkgdesc="Python 3 bindings for libalpm"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gitlab.archlinux.org/archlinux/pyalpm"
 license=('GPL-3.0-or-later')
 depends=('python' 'libalpm')
-makedepends=('git' 'python-setuptools' 'python-pkgconfig' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('git' 'python-setuptools' 'python-pkgconfig' 'python-build' 'python-installer' 'python-wheel' 'meson-python')
 checkdepends=('python-pytest' 'python-pytest-pacman')
 source=("git+https://gitlab.archlinux.org/archlinux/pyalpm.git#tag=$pkgver")
-sha256sums=('3e0fa16465d7b2d1d38082c159c340f757a28de292581c26f0b33520ecf71863')
+sha256sums=('a098f1646e313c8dcd93db69ab8f727cb045717514c9aed1bf4e7be96532189a')
 
 build() {
   cd "${pkgname}"
@@ -20,9 +20,9 @@ build() {
 
 check() {
   cd "${pkgname}"
-  # FIXME: test/test_refcounting.py fails in buildenv
-  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$python_version" pytest || :
+  meson setup builddir
+  meson compile -C builddir
+  meson test -C builddir -v
 }
 
 package() {
