@@ -1,19 +1,19 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=prismlauncher
-pkgver=9.4
+pkgver=10.0.2
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://prismlauncher.org"
-license=('GPL3')
-depends=('java-runtime' 'qt6-base' 'qt6-svg' 'qt6-imageformats' 'qt6-networkauth' 'qt6-5compat' 'zlib' 'hicolor-icon-theme' 'tomlplusplus' 'cmark')
-makedepends=('java-environment=23' 'cmake' 'extra-cmake-modules' 'git' 'scdoc' 'linux-headers')
+license=('GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND LicenseRef-Batch AND OFL-1.1')
+depends=('java-runtime' 'qt6-base' 'qt6-svg' 'qt6-imageformats' 'qt6-networkauth' 'qt6-5compat' 'zlib' 'hicolor-icon-theme' 'tomlplusplus' 'cmark' 'qrencode')
+makedepends=('java-environment=23' 'cmake' 'extra-cmake-modules' 'git' 'scdoc' 'linux-headers' 'gamemode')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
             'visualvm: Profiling support')
 source=("https://github.com/PrismLauncher/PrismLauncher/releases/download/${pkgver}/PrismLauncher-${pkgver}.tar.gz")
-sha256sums=('77ab52239c2a2a9f77d7c4607e1d9cf40970f9240d2f5061b116a7b1b8fd0277')
+sha256sums=('4b36e8b0345a21a9a8da36633fa5bf4d8f44d992da1529cdfb6bf52a0ff7f33c')
 
 prepare() {
   cd "PrismLauncher-${pkgver}"
