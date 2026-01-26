@@ -1,17 +1,21 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wine
-pkgver=10.20
+pkgver=11.1
 pkgrel=1
 _pkgbasever=${pkgver/rc/-rc}
 source=(
-  https://dl.winehq.org/wine/source/10.x/$pkgname-$_pkgbasever.tar.xz
+  https://dl.winehq.org/wine/source/11.x/$pkgname-$_pkgbasever.tar.xz
   llvm-unwind.patch
   rpath.patch
+  30-win32-aliases.conf
+  binfmt.conf
 )
-sha512sums=('96d8f82ace70675b6260f626ebbed93518a2a35ab437d4adbf74732d9efb792a88bc63d4da5755658952b93e75efdc89d5500a4e9cdfa701fc106c12649ba6c1'
+sha512sums=('6fa762eca2df4d27473bc56b9c8361f210237d48957353ada681fe1246bd2e3fb3336e1ff337ebfac6f24fcbb41208f0cd93e25bbaad4ba51d67bd4d9993ac68'
             'e397c07e9c252a42679283af71ea5ad4627ba766ed594d7e88653648052520083299595c803123bd856fd8590c73453ea50bd464cd26d1b99b3b0dce98908cd4'
-            '9881abfd0e7e4589cd5724291f9ec06ccb9d88b842c69abb5ea7865b6c27c778a060e60a9776c3620a030555cf61b8cceded55db9f04d5e45d9c627306763bff')
+            '9881abfd0e7e4589cd5724291f9ec06ccb9d88b842c69abb5ea7865b6c27c778a060e60a9776c3620a030555cf61b8cceded55db9f04d5e45d9c627306763bff'
+            '8beb2fbb2602f04ce4ae67dd51253365514225a1154a41ddae67badfe892361679d5cf23d41fd734afe942143dc99b8b9616a3e6b0a8121603463d40c92a67ec'
+            '1e974f238d3cdaf1bbeb04e5016100cc8c2e1b7e1f5791844204434efe039199a874fba8bf07a8915ce06f120c468e6ec4909333a78527f5f4bd3619fe288caa')
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 arch=(x86_64)
@@ -97,4 +101,7 @@ package() {
 
   # Font aliasing settings for Win32 applications
   install -d "$pkgdir"/usr/share/fontconfig/conf.{avail,default}
+  install -m644 "$srcdir/30-win32-aliases.conf" "$pkgdir/usr/share/fontconfig/conf.avail"
+  ln -s ../conf.avail/30-win32-aliases.conf "$pkgdir/usr/share/fontconfig/conf.default/30-win32-aliases.conf"
+  install -Dm 644 "$srcdir/binfmt.conf" "$pkgdir/usr/share/binfmt.d/wine"
 }
