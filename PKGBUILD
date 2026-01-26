@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=nvtop
-pkgver=3.2.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="GPUs process monitoring for AMD, Intel and NVIDIA"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('ncurses' 'libudev')
 makedepends=('cmake' 'libdrm' 'linux-headers')
 source=("https://github.com/Syllo/nvtop/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('582b849c6d157321439344922c26ce8d74b9d44254f952e0c4737ea24893c16f1b61610426c4fcd2dfdcd03c81f857e2847c24d7b32f38562210f7ac3d50a7b0')
+sha512sums=('2ab702cb7f191f3eb2d6e292e6b176a7abcbb21346f95c4aa0e3229c4a54baaf5695de3468419a5ffd9d4705e4cd50c253fed464ef715f5fa4762c2e901f06c1')
 
 build() {
   cd $pkgname-$pkgver
