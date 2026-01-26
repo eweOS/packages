@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libksysguard
-pkgver=6.5.2
+pkgver=6.5.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Library to retrieve information on the current status of computer hardware'
@@ -34,7 +34,7 @@ makedepends=(extra-cmake-modules
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz)
 install=libksysguard.install
-sha256sums=('4d23a22871ca947cf6fcba21e3bc4d1abd16aabb2f721199dfa34fd33f8945fb')
+sha256sums=('22b8e4812b1dfa6aef18f27d2ba66d6d7702b3e4db250cae48ab946196da734d')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
