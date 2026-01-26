@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=discover
-pkgver=6.5.2
+pkgver=6.5.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE and Plasma resources management GUI'
@@ -43,7 +43,7 @@ makedepends=(extra-cmake-modules
 optdepends=('flatpak: Flatpak packages support')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz)
-sha256sums=('19881d0f5c9751d959f2ecef4b4f68a70b304a6c97cb5579fa4aac97cbaf244a')
+sha256sums=('4202dd2d854b716c15b2f374965f5c1af69915d379c25bcbd4d0fbcf73699634')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
