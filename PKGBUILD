@@ -38,7 +38,7 @@ replaces=(plasma-framework)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz no-x11.patch)
 sha256sums=('7d88f9bd0f90b90f4d2290cd8fa0f37e7af3810a0ed58c7d226a02838ab8a71a'
-            '39f0f65542d6ebeb5632a785aad780cec994e874f1a590000dec3676f5d1e506')
+            'f64601c4cd8587c55418b9b2758ab41cf1e2af1867f4465dfb937d315b3688a1')
 
 prepare() {
   _patch_ $pkgname-$pkgver
