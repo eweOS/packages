@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kwayland
-pkgver=6.5.2
+pkgver=6.5.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Qt-style Client and Server library wrapper for the Wayland libraries'
@@ -19,7 +19,7 @@ makedepends=(extra-cmake-modules
              wayland-protocols)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz)
-sha256sums=('aa63e3753e241f3955eb806ae91af1f3963e42ec731f2b8a2330119b65cb557a')
+sha256sums=('5db0105edecec7f8b429940be1d26dffe2d9dfbb0d967e9e16bddb0a22cfd397')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
