@@ -5,8 +5,8 @@ pkgname=(
   libxslt
   libxslt-docs
 )
-pkgver=1.1.43
-pkgrel=2
+pkgver=1.1.45
+pkgrel=1
 pkgdesc="XML stylesheet transformation library"
 url="https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -18,7 +18,6 @@ depends=(
 )
 makedepends=(
   git
-  python
 )
 checkdepends=(
   docbook-xml
@@ -26,21 +25,21 @@ checkdepends=(
 source=(
   "git+https://gitlab.gnome.org/GNOME/libxslt.git#tag=v$pkgver"
 )
-sha256sums=('19b21c75adfbb9c8b67f4ff99daf5710eb94c0bc7a843296c37f50c0948c8fe5')
+sha256sums=('ff4992ab492670781f37b958caab062cd4612f2c6826c01dd4999f30263208ba')
 
 prepare() {
   cd libxslt
-  rm tests/REC/test-10-3.* # FIXME: locale issue
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
+  # python binding and tests are disabled for now
   local configure_options=(
     --prefix=/usr
     --sysconfdir=/etc
     --localstatedir=/var
     --disable-static
-    --with-python=/usr/bin/python
+    --with-python=no
   )
 
   cd libxslt
@@ -51,11 +50,12 @@ build() {
 
 check() {
   cd libxslt
-  make check
+  # test suite needs deprecated Python libxml2 module
+  # https://gitlab.gnome.org/GNOME/libxslt/-/issues/164
+  #make check
 }
 
 package_libxslt() {
-  optdepends=('python: Python bindings')
   provides=(lib{,e}xslt.so)
 
   cd libxslt
