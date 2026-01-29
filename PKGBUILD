@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kinfocenter
-pkgver=6.5.2
+pkgver=6.5.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='A utility that provides information about a computer system'
@@ -41,7 +41,7 @@ optdepends=('fwupd: firmware security module'
             'plasma-disks: SMART devices health monitor')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz kcm-about-distrorc)
-sha256sums=('ffe09a169c76c79ce551ef2b4eee97a6e1d8726d0b1a2fc247f78da188604649'
+sha256sums=('567b8f9f4c806414cf417fd59aceaa37485696bd6b655aea01fffd6e2bd5b81c'
             'fedd3ab36d246ad3a4807b2bcb5c2377bc8b860db7c18af2eaf10a994b215252')
 
 build() {
