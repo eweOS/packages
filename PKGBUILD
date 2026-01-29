@@ -1,10 +1,10 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgbase=musl
 pkgname=(musl musl-static)
 pkgver=1.2.5
-pkgrel=6
+pkgrel=7
 pkgdesc='An implementation of the C/POSIX standard library.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://musl.libc.org'
@@ -82,12 +82,13 @@ package_musl()
   rm "${pkgdir}"/usr/include/crypt.h
 
   mkdir -p $srcdir/static
-  mv $pkgdir/usr/lib/*.a $srcdir/static
+  # only libc.a is real musl-static
+  mv $pkgdir/usr/lib/libc.a $srcdir/static
 }
 
 package_musl-static()
 {
   options=('staticlibs')
   mkdir -p $pkgdir/usr/lib
-  mv $srcdir/static/*.a $pkgdir/usr/lib
+  mv $srcdir/static/libc.a $pkgdir/usr/lib
 }
