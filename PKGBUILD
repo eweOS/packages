@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kscreen
-pkgver=6.5.2
+pkgver=6.5.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE screen management software'
@@ -33,7 +33,7 @@ makedepends=(extra-cmake-modules
              wayland-protocols)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz no-x11.patch)
-sha256sums=('9c814fd42f9730196fc0c9e6230a85bfc8004c0e5732b04879d35db4d7b9c468'
+sha256sums=('07c9a232825e1627329e77556908dfa8fec19166c3fb0e1e422fc1cd0e83c53f'
             'd0e152d07288557599d23fdaf1787f5291df625971fa8fbc8ad74a511d2f1711')
 
 prepare() {
