@@ -3,7 +3,7 @@
 pkgbase=gdal
 pkgname=(gdal python-gdal)
 pkgver=3.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A translator library for raster and vector geospatial data formats"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gdal.org/"
@@ -16,8 +16,17 @@ makedepends=(cmake python-setuptools python-numpy
              libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd libaec)
 # armadillo basisu brunsli lerc libkml qb3 rasterlite2 sfcgal tiledb
 # ogdi mariadb-libs netcdf
-source=(https://download.osgeo.org/${pkgbase}/${pkgver}/${pkgbase}-${pkgver}.tar.xz)
-sha256sums=('2a4fd3170ff81def93db60f7f61f2842a2ae7ad0335e4ed4ba305252f05835de')
+# 0001: backport: fix for poppler 26
+source=(
+  https://download.osgeo.org/${pkgbase}/${pkgver}/${pkgbase}-${pkgver}.tar.xz
+  0001-backport-poppler-26.patch::https://github.com/OSGeo/gdal/commit/979604d97720287416742ef264977f0e53a84aa8.patch
+)
+sha256sums=('2a4fd3170ff81def93db60f7f61f2842a2ae7ad0335e4ed4ba305252f05835de'
+            '4257bcd9da2537ac5829bd2f3ba651064928328eec47de118b3ce0108455ded6')
+
+prepare() {
+  _patch_ "$pkgbase-$pkgver"
+}
 
 build() {
   cmake -B build -S "$pkgbase-$pkgver" \
