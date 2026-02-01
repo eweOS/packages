@@ -3,8 +3,8 @@
 pkgbase=linux-tools
 pkgname=(bpftool tmon)
 groups=($pkgbase)
-pkgver=6.14.6
-pkgrel=2
+pkgver=6.18.8
+pkgrel=1
 pkgdesc='Linux kernel tools'
 license=(GPL-2.0-only)
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -28,11 +28,9 @@ options=(!strip !lto)
 makedepends=(linux-headers asciidoc xmlto readline zlib libcap libelf python-docutils ncurses)
 makedepends_x86_64=(libnl libcap)
 source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz
-        0001-bpftool-disable-bpf_jit_disasm.patch  # downstream
-        0002-turbostat-add-linux-limits.h.patch)   # will upstream
-sha256sums=('21817f1998e2230f81f7e4f605fa6fdcb040e14fa27d99c27ddb16ce749797a9'
-            'bd265ad84c3cc2e468d66582d245134cdc6c427562ae2f34ea948a4ad7d1e1d7'
-            '503043f40c2cdcf7fab1018477d81a40381338761cf48b3c15855885ba879a7f')
+        0001-bpftool-disable-bpf_jit_disasm.patch)  # downstream
+sha256sums=('37f0c5d5c242c1d604e87d48f08795e861a5a85f725b4ca11d0a538f12ff8cff'
+            'bd265ad84c3cc2e468d66582d245134cdc6c427562ae2f34ea948a4ad7d1e1d7')
 
 case $CARCH in
 x86_64)
