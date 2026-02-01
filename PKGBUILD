@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=firefox
-pkgver=146.0.1
+pkgver=147.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/"
@@ -60,7 +60,7 @@ source=(
   0003-disable-BROTLI_MODEL-macro-for-some-targets.patch
   0004-musl-linux-Don-t-import-conflicting-libc.patch
 )
-sha256sums=('e9678a0e8473923953e1dc312c37919068623b6aa20adade16266049258191eb'
+sha256sums=('689d3d34c31b317511a09d6e568250c6736138ee092ef9129c98836d11d942d9'
             '5efe32a0f0d8c7219cd9f58e5fc9aa9f388457dff4e4bfdd372b13456cce3f2b'
             '18a0f1df76834ac3d4ddb150aa857785df641b54f9fbf0cfb6ffcec64dad72d4'
             'a22ceb0bbf5830d3afbacd656e6893ff0ce455fae5f48c7daa5f836112291ba7'
