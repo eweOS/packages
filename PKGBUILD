@@ -2,7 +2,7 @@
 
 pkgname=gnupg
 pkgdesc='GNU Privacy Guard'
-pkgver=2.4.8
+pkgver=2.4.9
 pkgrel=1
 url='https://gnupg.org'
 license=('GPL-2.0-or-later')
@@ -11,7 +11,7 @@ depends=('musl' 'libassuan' 'libgpg-error' 'npth' 'libksba' 'pinentry'
 optdepends=('ntbtls: For dirmngr support')
 makedepends=('ntbtls')
 source=("https://gnupg.org/ftp/gcrypt/gnupg/gnupg-${pkgver}.tar.bz2")
-sha256sums=('b58c80d79b04d3243ff49c1c3fc6b5f83138eb3784689563bcdd060595318616')
+sha256sums=('dd17ab2e9a04fd79d39d853f599cbc852062ddb9ab52a4ddeb4176fd8b302964')
 arch=(x86_64 aarch64 riscv64 loongarch64)
 provides=(gpg)
 
