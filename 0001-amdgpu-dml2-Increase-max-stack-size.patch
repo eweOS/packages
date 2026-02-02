@@ -1,5 +1,5 @@
-From a63efc5b61b1659f015481fc6db6275db96daf66 Mon Sep 17 00:00:00 2001
-From: Yao Zi <ziyao@disroot.org>
+From 67f5c88ecedee85a7e73d8e189ce1e2e55cc5ec2 Mon Sep 17 00:00:00 2001
+From: Yao Zi <me@ziyao.cc>
 Date: Wed, 19 Feb 2025 05:30:01 +0000
 Subject: [PATCH] amdgpu: dml2: Increase max stack size
 
@@ -13,24 +13,24 @@ even with these options set to off.
 
 Let's increase the allowed stack size as a workaround.
 
-Signed-off-by: Yao Zi <ziyao@disroot.org>
+Signed-off-by: Yao Zi <me@ziyao.cc>
 ---
  drivers/gpu/drm/amd/display/dc/dml2/Makefile | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/amd/display/dc/dml2/Makefile b/drivers/gpu/drm/amd/display/dc/dml2/Makefile
-index 986a69c..d78aac1 100644
+index 2a7669a1071e..9f0390312c46 100644
 --- a/drivers/gpu/drm/amd/display/dc/dml2/Makefile
 +++ b/drivers/gpu/drm/amd/display/dc/dml2/Makefile
-@@ -35,7 +35,7 @@
- frame_warn_flag := -Wframe-larger-than=3072
- endif
- else
--frame_warn_flag := -Wframe-larger-than=2048
-+frame_warn_flag := -Wframe-larger-than=3072
- endif
- endif
+@@ -35,7 +35,7 @@ ifneq ($(CONFIG_FRAME_WARN),0)
+             frame_warn_limit := 3072
+         endif
+     else
+-        frame_warn_limit := 2048
++        frame_warn_limit := 3072
+     endif
  
+     ifeq ($(call test-lt, $(CONFIG_FRAME_WARN), $(frame_warn_limit)),y)
 -- 
-2.48.1
+2.52.0
 
