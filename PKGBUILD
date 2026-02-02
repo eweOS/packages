@@ -2,7 +2,7 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=icu
-pkgver=77.1
+pkgver=78.2
 pkgrel=1
 pkgdesc="International Components for Unicode library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,14 +12,9 @@ depends=('llvm-libs' 'sh')
 makedepends=('python')
 provides=(libicu{data,i18n,io,test,tu,uc}.so)
 source=(
-  https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/${pkgname}4c-${pkgver//./_}-src.tgz
+  https://github.com/unicode-org/icu/releases/download/release-$pkgver/icu4c-$pkgver-sources.tgz
 )
-sha512sums=('a47d6d9c327d037a05ea43d1d1a06b2fd757cc02a94f7c1a238f35cfc3dfd4ab78d0612790f3a3cca0292c77412a9c2c15c8f24b718f79a857e007e66f07e7cd')
-
-prepare()
-{
-  cp /usr/share/autoconf/build-aux/config.{guess,sub} icu/source
-}
+sha512sums=('92feddfe81c57336f386c7cbc9f6d976bf349db148a77a247c4559676f51116115c8c52c4d907feb50933f72ab75fd8e48be092bf9c8ca33a3e8fabc9372a5d6')
 
 build()
 {
