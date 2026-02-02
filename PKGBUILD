@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=libfyaml
-pkgver=0.9
+pkgver=0.9.3
 pkgrel=1
 pkgdesc='Fully feature complete YAML parser and emitter'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +16,7 @@ provides=(libfyaml.so)
 #	Reference: https://github.com/pantoniou/libfyaml/issues/148
 source=("git+https://github.com/pantoniou/libfyaml#tag=v$pkgver"
 	0001-Use-version-number-for-libtool-ABI-versioning.patch)
-sha256sums=('1fcd041e736b6a9bd5f9e4bea1d182573e4db6f2442080b6e9f9a73ece8910ae'
+sha256sums=('ff9f7b7defe589dda095a4796fdeb098bbd3886242bc573a6ed5b65014f4e7b0'
             'e55cafd16ddc700b217fcc0baa32b8a0b56f5445dd38f63aea44688694fb2611')
 
 prepare() {
@@ -29,7 +29,8 @@ prepare() {
 build() {
   cd $pkgname
   ./configure \
-    --prefix=/usr
+    --prefix=/usr \
+    --without-libclang
   make
 }
 
