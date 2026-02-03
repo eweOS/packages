@@ -4,12 +4,11 @@
 pkgbase=musl
 pkgname=(musl musl-static)
 pkgver=1.2.5
-pkgrel=7
+pkgrel=8
 pkgdesc='An implementation of the C/POSIX standard library.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://musl.libc.org'
 license=(MIT)
-groups=(base-devel)
 makedepends=(lld)
 provides=(ld-musl-$(arch).so.1 libc.so)
 # disable lto: https://github.com/InBetweenNames/gentooLTO/issues/244
