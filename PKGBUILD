@@ -2,15 +2,13 @@
 
 pkgname=m4
 pkgver=1.4.20
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 pkgdesc="The GNU macro processor"
 url='http://www.gnu.org/software/m4/'
 license=(GPL3)
-groups=(base-devel)
 depends=(musl bash)
 source=("http://ftp.gnu.org/gnu/m4/m4-${pkgver}.tar.xz")
-
 sha256sums=('e236ea3a1ccf5f6c270b1c4bb60726f371fa49459a8eaaebc90b216b328daf2b')
 
 prepare() {
