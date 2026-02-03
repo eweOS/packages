@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=nextpnr
-pkgver=0.8
-pkgrel=4
+pkgver=0.9
+pkgrel=1
 _testcommit=aea0b4bac59e07e0c5088a0966af73abdd8ab217
 pkgdesc='Portable FPGA place and route tool'
 url='https://github.com/YosysHQ/nextpnr'
@@ -10,12 +10,19 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(ISC)
 depends=(musl llvm-libs prjtrellis python boost-libs tcl)
 makedepends=(cmake boost eigen linux-headers git)
+# 0001: Backport, remove lookup for boost component "system" to fix build with
+#	boost 1.89.0 or later.
+#	https://github.com/YosysHQ/nextpnr/pull/1591
 source=("git+https://github.com/YosysHQ/nextpnr.git#tag=nextpnr-$pkgver"
-	"git+https://github.com/YosysHQ/nextpnr-tests#commit=$_testcommit")
-sha256sums=('e2d943c025e1dac2d9dbb5bf4eeeb9b6ed47c93940fa4055fe72ccb2b5ab29b0'
-            '11cbfbb1add2d88ed386123e203f768a6e935b9195e336a9eb11c7605e1c4783')
+	"git+https://github.com/YosysHQ/nextpnr-tests#commit=$_testcommit"
+	0001-Remove-use-of-boost-system-and-filesystem.patch)
+sha256sums=('994bbd434e64372429aa75d0920144a03aa73f12f0ad02d3a96a2d90dcaf0074'
+            '11cbfbb1add2d88ed386123e203f768a6e935b9195e336a9eb11c7605e1c4783'
+            '4e9b803637014e7731430af23a4bbe78c97e3e84cc6c66a5ad7710935fae5e89')
 
 prepare() {
+	_patch_ "$pkgname"
+
 	cd "$pkgname"
 
 	git config submodule.tests.path "$srcdir"/nextpnr-tests
