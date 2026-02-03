@@ -2,13 +2,13 @@
 
 pkgname=base-devel
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc='Buildtool package set'
 arch=('any')
 license=('GPL')
 depends=(
   'slibtool' 'automake' 'autoconf' 'make'
-  'bash' 'patch' 'file' 'musl-static'
+  'bash' 'patch' 'file'
   'perl' 'pkgconf' 'llvm' 'clang' 'mold'
   'bison' 'flex' 'llvm-lto' 'llvm-tools'
 )
