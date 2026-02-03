@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=frei0r-plugins
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc='Collection of video effect plugins'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -20,7 +20,7 @@ optdepends=(
   'opencv: facebl0r and facedetect plugins'
 )
 source=("git+https://github.com/dyne/frei0r#tag=v$pkgver")
-sha256sums=('e6ca6c7dc03886db4728e4bdb5cfa0cec519b6e5bc4b984c10a5bc3b24efecc8')
+sha256sums=('3a155c715bbf63fa6faa7d05815dabeb1e3686b4c13f4ee67b1232aa894390cf')
 
 build() {
   cmake -S frei0r -B build -G Ninja \
