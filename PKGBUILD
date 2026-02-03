@@ -2,12 +2,11 @@
 
 pkgname=pkgconf
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Package compiler and linker metadata toolkit'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/pkgconf/pkgconf'
 license=(ISC)
-groups=(base-devel)
 source=(
   "$url/archive/refs/tags/$pkgname-$pkgver.tar.gz"
 )
