@@ -2,29 +2,14 @@
 
 pkgname=file
 pkgver=5.46
-pkgrel=1
+pkgrel=2
 pkgdesc='File type identification utility'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('custom')
-groups=('base-devel')
 depends=('musl' 'zlib' 'xz' 'libbz2')
 options=('!emptydirs')
 source=("https://astron.com/pub/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('c9cc77c7c560c543135edc555af609d5619dbef011997e988ce40a3d75d86088')
-
-prepare()
-{
-  cd $pkgname-$pkgver
-  # apply patch from the source array (should be a pacman feature)
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
-    patch -Np1 < "../$src"
-  done
-}
 
 build()
 {
