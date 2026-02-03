@@ -2,12 +2,11 @@
 
 pkgname=automake
 pkgver=1.18.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A tool for automatically generating Makefile.in files.'
 arch=('any')
 license=('GPL-2.0-or-later')
 url="http://www.gnu.org/software/automake"
-groups=('base-devel')
 depends=('perl' 'bash')
 makedepends=('autoconf')
 source=(https://ftpmirror.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz)
