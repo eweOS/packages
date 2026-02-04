@@ -2,14 +2,14 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libucontext
-pkgver=1.3.3
+pkgver=1.5
 pkgrel=1
 pkgdesc="ucontext function implementations"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/kaniini/$pkgname"
 license=('ISC')
 source=("https://distfiles.dereferenced.org/$pkgname/$pkgname-${pkgver}.tar.xz")
-sha512sums=('dbfe17bcd4efacf3cc688fbf96862a104b50fd66ab793644b1608f1abd65e56fab9cb005396e758cb4b9a3838981c6e68a6e04866d016dbb89e987d8e241e0c5')
+sha512sums=('b1a23894a5e395de012fed79e178cfb9a1e26548de4635ba50e873f17d7a0f977a799df287d214a31242857c811d434d0757a9fa2788a0a2adb8c706ca9d1a94')
 
 build()
 {
