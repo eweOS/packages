@@ -27,6 +27,13 @@ build() {
   $_completion zsh >"completions/_$_pkgname"
 }
 
+check() {
+  cd $pkgname-tags-v$pkgver
+  # test_wrap_static_fns fails on aarch64, this is an upstream issue
+  # https://github.com/rust-lang/rust-bindgen/issues/3234
+  cargo test --release --frozen -- --skip test_wrap_static_fns
+}
+
 package() {
   cd $pkgname-tags-v$pkgver
   install -Dm755 "target/release/$_pkgname" "$pkgdir"/usr/bin/bindgen
