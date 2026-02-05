@@ -2,7 +2,7 @@
 
 pkgname=firefox
 pkgver=147.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -105,6 +105,8 @@ build() {
   # malloc_usable_size is used in various parts of the codebase
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
   CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  # firefox 147.0 or later requires C++ 20 to build
+  CXXFLAGS="$CXXFLAGS -std=gnu++20"
 
   ./mach build
 }
