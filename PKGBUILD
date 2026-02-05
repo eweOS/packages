@@ -1,7 +1,7 @@
 # Maintainer: Eric Long <i@hack3r.moe>
 
 pkgname=cargo-about
-pkgver=0.8.2
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="Cargo plugin to generate list of all licenses for a crate"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=('MIT OR Apache-2.0')
 depends=(musl llvm-libs cargo)
 makedepends=(rust)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('f12d67fb4ed585ee3406e73eebb9c5f11823fd9f00627e407e74636789201d93')
+sha256sums=('956cea9d2170936e7d53d1a8c951242332777be89bff4b8531066bff584fbcd3')
 
 prepare() {
   cd $pkgname-$pkgver
