@@ -13,7 +13,7 @@ pkgname=(
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=25.3.4
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm' 'spirv-tools')
 makedepends=(
@@ -39,7 +39,7 @@ source=(
 sha512sums=('3043bebebebc90ba443bbc96d71fbae41c76504d54ff6a44a48ad7c3a132db09e3ad1ae607c49f1d58b724a8b6e4263b68ee5722f8b98328481eb2e82164ac3a')
 
 [ "$CARCH" = x86_64 ] && pkgname+=(vulkan-dzn)
-[ "$CARCH" = aarch64 ] && pkgname+=(vulkan-panfrost)
+[ "$CARCH" = aarch64 ] && pkgname+=(vulkan-panfrost vulkan-freedreno)
 
 build()
 {
@@ -52,7 +52,7 @@ build()
 	    ;;
     aarch64)
 	    GALLIUM_DRI="${GALLIUM_DRI_COMMON},panfrost,freedreno,lima,etnaviv"
-	    VULKAN_DRI="${VULKAN_DRI_COMMON},panfrost"
+	    VULKAN_DRI="${VULKAN_DRI_COMMON},panfrost,freedreno"
 	    ;;
     riscv64)
 	    GALLIUM_DRI="${GALLIUM_DRI_COMMON},etnaviv"
@@ -148,6 +148,10 @@ package_mesa()
   # vulkan-panfrost
   _pick_ vulkan-panfrost usr/share/vulkan/icd.d/panfrost_*.json
   _pick_ vulkan-panfrost usr/lib/libvulkan_panfrost.so
+
+  # vulkan-freedreno
+  _pick_ vulkan-freedreno usr/share/vulkan/icd.d/freedreno_icd*.json
+  _pick_ vulkan-freedreno usr/lib/libvulkan_freedreno.so
 
   install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
     -t "$pkgdir/usr/share/licenses/$pkgname"
@@ -260,6 +264,19 @@ package_vulkan-panfrost()
   install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
     -t "$pkgdir/usr/share/licenses/$pkgname"
 }
+
+package_vulkan-freedreno()
+{
+  pkgdesc="Open-source Vulkan driver for Adreno GPUs"
+  depends=(${_vulkan_driver_deps[*]})
+  optdepends=('vulkan-mesa-layers: additional vulkan layers')
+  provides=('vulkan-driver')
+  mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
+
+  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
+    -t "$pkgdir/usr/share/licenses/$pkgname"
+}
+
 
 package_vulkan-mesa-layers()
 {
