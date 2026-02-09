@@ -4,7 +4,7 @@
 # Contributor: dorphell <dorphell@gmx.net>
 
 pkgname=gc
-pkgver=8.2.10
+pkgver=8.2.12
 pkgrel=1
 pkgdesc="A garbage collector for C and C++"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ url="https://www.hboehm.info/gc/"
 license=(MIT)
 depends=(llvm-libs musl)
 source=("https://github.com/ivmai/bdwgc/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('56558bf81716caa882fd015f3f0d0d86d05f38680266b22798153b1e7f4a6fbbcded2efb3e125c41a4c52d44259ac4900061e61729663f62427e73b691e317b0')
+sha512sums=('af175b33f85b4ba9ea5d5fd4f62e96bfafb1582a5159b6c1798bac48893969f2988e95a05666635b6dee9761bdeedbd1d7212cad5fd272a3a07daf4ec2ea5cc4')
 
 prepare() {
 	_patch_ "$pkgname-$pkgver"
