@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=(luarocks51 luarocks54)
-pkgver=3.12.2
-pkgrel=3
+pkgver=3.13.0
+pkgrel=1
 pkgdesc='The package manager for Lua modules.'
 url='https://luarocks.org'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,8 +13,8 @@ makedepends=(lua51 lua54 lua51-compat53)
 #	eweOS-shipped package instead.
 source=("https://luarocks.org/releases/luarocks-$pkgver.tar.gz"
 	0001-luarocks51-do-not-install-vendored-compat53.patch)
-sha256sums=('b0e0c85205841ddd7be485f53d6125766d18a81d226588d2366931e9a1484492'
-            '59901e5a9a103060a7426ad66042788519ebff4fc0431fbaa971eeda72691893')
+sha256sums=('245bf6ec560c042cb8948e3d661189292587c5949104677f1eecddc54dbe7e37'
+            '447f5f588679e02dfe832476c26c6b0e2e2624c035736d3d5b6e9bb6c7b5edba')
 
 luaver="5.1 5.4"
 
