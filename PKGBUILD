@@ -12,10 +12,12 @@ provides=(aom)
 makedepends=(perl cmake nasm)
 source=(
 	"https://storage.googleapis.com/aom-releases/libaom-$pkgver.tar.gz"
-	"libaom-3.4.0-posix-c-source-ftello.patch"
+	0001-define-_POSIX_C_SOURCE-for-ftello.patch
+	0002-Don-t-install-static-libraries.patch
 )
 sha256sums=('19e45a5a7192d690565229983dad900e76b513a02306c12053fb9a262cbeca7d'
-            'ebebbb193c5971234980dec3facf97015c1b32750bb9f913710d2cee5f98765d')
+            'ebebbb193c5971234980dec3facf97015c1b32750bb9f913710d2cee5f98765d'
+            'd381256ef8b042b98d5da8c1b77775e6cabfbfc2b2a03d75e3e5bf9b37ba45d3')
 
 prepare()
 {
