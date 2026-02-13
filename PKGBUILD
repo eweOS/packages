@@ -33,7 +33,7 @@ build() {
     _assembler="llvm-as" ;;
   esac
 
-  cmake \
+  cmake -S libaom-$pkgver -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_SHARED_LIBS=True \
@@ -41,11 +41,11 @@ build() {
     -DCONFIG_TUNE_VMAF=0 \
     -DCMAKE_ASM_COMPILER="$_assembler" \
     libaom-$pkgver
-  make
+  cmake --build build
 }
 
 package()
 {
-  make install DESTDIR="$pkgdir"
+  DESTDIR="$pkgdir" cmake --install build
   _install_license_ libaom-$pkgver/LICENSE
 }
