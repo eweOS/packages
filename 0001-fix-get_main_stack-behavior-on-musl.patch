@@ -1,0 +1,98 @@
+This patch is taken from Alpine Linux.
+
+Ruby tries to grab the size of main thread's stack with
+pthread_getattr_np() and other pthread_*_np friends, however as
+indicated by the _np suffix, the behavior when pthread_getattr_np() is
+called on main thread isn't the consistent across platforms.
+
+On glibc, pthread_getattr_np() will try to parse /proc/self/maps to
+determine the the already allocated stack's size, and subtracts
+the RLIMIT_STACK with the size, while musl tries to mremap() pages
+below auxvectors to change their size from one page to two pages, and if
+the space is allocated for stack, the mremap() call will fail.
+
+However musl only takes the already allocated stack into account, and
+don't care about RLIMIT_STACK settings. Since Linux allocates stack
+lazily, this will cause the stack size returned by pthread_getattr_np()
+is smaller than the maximum stack size.
+
+This underestimation of the maximum stack size will cause the active
+stack overflow checking logic of Ruby to consider the stack has been
+used out, and throws false SystemStackError, fails recursion cases in
+test_insn.rb.
+
+Let's disable the maximum stack size obtaining logic based on
+non-portable pthread API on eweOS, and use the rlimit-based logic
+instead. Ideally this should be fixed in Ruby upstream, but we don't
+have a clean solution yet.
+
+Reference: https://bugs.ruby-lang.org/issues/14387 # Partially Japanese
+
+--- a/thread_pthread.c
++++ b/thread_pthread.c
+@@ -858,9 +858,6 @@
+ #   define MAINSTACKADDR_AVAILABLE 0
+ # endif
+ #endif
+-#if MAINSTACKADDR_AVAILABLE && !defined(get_main_stack)
+-# define get_main_stack(addr, size) get_stack(addr, size)
+-#endif
+ 
+ #ifdef STACKADDR_AVAILABLE
+ /*
+@@ -942,6 +939,55 @@
+     return 0;
+ #undef CHECK_ERR
+ }
++
++#if defined(__linux__) && !defined(__GLIBC__) && defined(HAVE_GETRLIMIT)
++
++#ifndef PAGE_SIZE
++#include <unistd.h>
++#define PAGE_SIZE sysconf(_SC_PAGE_SIZE)
++#endif
++
++static int
++get_main_stack(void **addr, size_t *size)
++{
++    size_t start, end, limit, prevend = 0;
++    struct rlimit r;
++    FILE *f;
++    char buf[PATH_MAX+80], s[8];
++    int n;
++    STACK_GROW_DIR_DETECTION;
++
++    f = fopen("/proc/self/maps", "re");
++    if (!f)
++        return -1;
++    n = 0;
++    while (fgets(buf, sizeof buf, f)) {
++        n = sscanf(buf, "%zx-%zx %*s %*s %*s %*s %7s", &start, &end, s);
++        if (n >= 2) {
++            if (n == 3 && strcmp(s, "[stack]") == 0)
++                break;
++            prevend = end;
++        }
++        n = 0;
++    }
++    fclose(f);
++    if (n == 0)
++        return -1;
++
++    limit = 100 << 20; /* 100MB stack limit */
++    if (getrlimit(RLIMIT_STACK, &r)==0 && r.rlim_cur < limit)
++        limit = r.rlim_cur & -PAGE_SIZE;
++    if (limit > end) limit = end;
++    if (prevend < end - limit) prevend = end - limit;
++    if (start > prevend) start = prevend;
++    *addr = IS_STACK_DIR_UPPER() ? (void *)start : (void *)end;
++    *size = end - start;
++    return 0;
++}
++#else
++# define get_main_stack(addr, size) get_stack(addr, size)
++#endif
++
+ #endif
+ 
+ static struct {
