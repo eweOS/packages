@@ -1,0 +1,4 @@
+LEXES = cmulex cmu_grapheme_lex cmu_indic_lex
+LANGS = usenglish cmu_grapheme_lang cmu_indic_lang
+VOXES = cmu_us_kal cmu_time_awb cmu_us_kal16 \
+	cmu_us_awb cmu_us_rms cmu_us_slt
