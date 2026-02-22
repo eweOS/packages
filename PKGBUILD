@@ -2,12 +2,12 @@
 
 pkgname=atuin
 pkgver=18.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Magical shell history"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://atuin.sh"
 license=(MIT)
-depends=(musl llvm-libs)
+depends=(musl llvm-libs sqlite)
 makedepends=(rust)
 optdepends=('blesh: bash integration')
 source=("https://github.com/atuinsh/atuin/archive/v$pkgver/atuin-$pkgver.tar.gz")
@@ -20,7 +20,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  cargo build --release --frozen --all-features
+  LIBSQLITE3_SYS_USE_PKG_CONFIG=1 cargo build --release --frozen --all-features
   mkdir completions/
   for sh in bash fish zsh; do
     target/release/$pkgname gen-completions -s $sh -o completions/
@@ -31,7 +31,7 @@ check() {
   cd $pkgname-$pkgver
   # skipping atuin sync tests in binary crates, as atuin sync is an online
   # feature whose test requires complicated server deployment
-  cargo test --frozen --all-features --lib
+  LIBSQLITE3_SYS_USE_PKG_CONFIG=1 cargo test --frozen --all-features --lib
 }
 
 package() {
