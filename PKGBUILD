@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=minicom
-pkgver=2.10
+pkgver=2.11
 pkgrel=1
 pkgdesc='A serial communication program'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -17,7 +17,7 @@ backup=('etc/minirc.dfl')
 source=("${pkgname}-${pkgver}.tar.gz::https://salsa.debian.org/minicom-team/minicom/-/archive/${pkgver}/minicom-${pkgver}.tar.gz"
         "0001-lrzsz-rename.patch"
 	"0002-disable-gettext.patch")
-sha256sums=('66ff82661c3cc49ab2e447f8a070ec1a64ba71d64219906d80a49da284a5d43e'
+sha256sums=('64d68531dae6121dba7ae7d8e8e4b01e51cbf726e6cea8c1abd4af73e810d09f'
             '941bd2bbe1b805eb625394df13e4cd551fae1359d5b75ac90a93551ea9237803'
             '60774d223e16b56d43b3cdcb3f7be09da0239e77e5f9a59ef4e9d99deb977320')
 
