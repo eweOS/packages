@@ -1,7 +1,7 @@
 # Maintainer: Ziyao <ziyao@disroot.org>
 
 pkgname=libgcrypt
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc='A general purpose cryptographic library originally based on code from GnuPG.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -9,7 +9,7 @@ url="https://gnupg.org/software/$pkgname"
 license=(GPL-2.0-or-later LGPL-2.1-or-later GPL-3.0-or-later)
 depends=('musl' 'libgpg-error')
 source=("http://www.ring.gr.jp/pub/net/gnupg/$pkgname/$pkgname-$pkgver.tar.bz2")
-sha256sums=('0311454e678189bad62a7e9402a9dd793025efff6e7449898616e2fc75e0f4f5')
+sha256sums=('7df5c08d952ba33f9b6bdabdb06a61a78b2cf62d2122c2d1d03a91a79832aa3c')
 
 prepare() {
   cd $pkgname-$pkgver
