@@ -2,7 +2,7 @@
 
 pkgbase=rust
 pkgname=(rust rust-src)
-pkgver=1.92.0
+pkgver=1.93.1
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,22 @@ url='https://www.rust-lang.org/'
 license=('MIT OR Apache-2.0')
 options=(!lto)
 depends=(musl llvm-libs llvm curl libssh2 openssl)
-makedepends=(rust llvm-devel libffi perl python cmake ninja)
+# Rust bootstrapping facilities check for presence of libc.a, thus musl-static
+# is required during building,
+#	thread 'main' (6374) panicked at src/bootstrap/src/core/sanity.rs:375:25:
+#	couldn't find libc.a in musl libdir: /usr/lib
+#	stack backtrace:
+#	   0: __rustc::rust_begin_unwind
+#	   1: core::panicking::panic_fmt
+#	   2: bootstrap::core::sanity::check
+#	             at ./src/bootstrap/src/core/sanity.rs:375:25
+#	   3: bootstrap::Build::new
+#	             at ./src/bootstrap/src/lib.rs:617:13
+#	   4: bootstrap::main
+#	             at ./src/bootstrap/src/bin/main.rs:129:21
+#	   5: core::ops::function::FnOnce::call_once
+#	             at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/core/src/ops/function.rs:250:5
+makedepends=(rust llvm-devel libffi perl python cmake ninja musl-static)
 # 0001: Downstream, don't link CRT statically by default on musl targets
 # 0002: Downstream, don't pass -nodefaultlibs to linkers, which prevents usage
 #	of compiler-rt.
@@ -23,10 +38,10 @@ source=(https://static.rust-lang.org/dist/rustc-$pkgver-src.tar.gz
         0002-disable-no-default-libraries.patch
         0003-drop-latomic-for-riscv-targets.patch
         0004-bootstrap-Change-libexec-dir.patch)  # install rust-analyzer-proc-macro-srv in /usr/lib rather than /usr/libexec
-sha256sums=('9e0d2ca75c7e275fdc758255bf4b03afb3d65d1543602746907c933b6901c3b8'
+sha256sums=('4c230a44b3d9c9f3cef950943719f8380058d27c91fda5e36a9a947ef013e01f'
             '9bcc8162593140ea2344a812bb53463363d1b0a194fcbbc09256eafb4a355e1c'
-            '6d0a6a0ed7793ea75b2f8449fd2bbafd3647c4117d681e1f4cfc219ef9280249'
-            '9947368a7ea6c4f1a3dd055558b326ebcc97496cc7239ce88be23ef88f3b71a6'
+            'e4d1fe0eb0e1859837d577bda829b92178154dcea02b8dcc2998dc866df356e1'
+            'f4ffb8f6b2b0081287bc0c7dc258bf48d061ae8f32baa6691c92d15855632f94'
             '6d4a08f1512d065e7b131a30cecb8f8c9c801e55d6dec824b12b7024bf2c6a56'
             '9488711e787dd22ebb25e310f19da7b8ce109224b762df726c2019b1df858646')
 
