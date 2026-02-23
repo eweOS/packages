@@ -2,7 +2,7 @@
 
 pkgbase=libkexiv2
 pkgname=(libkexiv2)
-pkgver=25.08.0
+pkgver=25.12.2
 pkgrel=1
 pkgdesc='A library to manipulate pictures metadata'
 url='https://www.kde.org/'
@@ -12,7 +12,7 @@ depends=(exiv2)
 makedepends=(extra-cmake-modules
              qt6-base)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz)
-sha256sums=('9bb4e5858f35d0dba813ade3c0ff6e7fe750b0930d60a7f4609b48c9563d45eb')
+sha256sums=('b8d914d03ca96b4e2d3a1707af424980a7f0685b109220b25efb76ed7e7778b6')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
