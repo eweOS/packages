@@ -2,7 +2,7 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=libutf8proc
-pkgver=2.10.0
+pkgver=2.11.3
 _sover=3
 pkgrel=1
 pkgdesc='C library for processing UTF-8 encoded Unicode strings'
@@ -12,7 +12,7 @@ license=(custom)
 makedepends=(cmake git ninja)
 source=("git+$url#tag=v$pkgver"
   libutf8proc.pc.in)
-sha256sums=('f810ebce0483c5ba4d3cfb748eecc20a6417dd696491cff04aab3113b772a8e7'
+sha256sums=('97f05a7ce1fd416c896fde94a12b658a27635bbebc3d60c4129db19f6bf53ac1'
             '1d221111ba69df56fb94cd8384af82cb3a267e966baee8c1e32c92aa6c81d257')
 
 prepare()
