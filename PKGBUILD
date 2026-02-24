@@ -15,7 +15,7 @@ license=(Apache-2.0 BSD-2-Clause BSD-3-Clause FSFAP GPL-1.0-or-later
 	 LGPL-2.0-only LGPL-2.0-or-later MIT CC-BY-3.0)
 makedepends=(meson ninja
 	     linux-headers
-	     glib-static zlib-ng-static)
+	     musl-static glib-static zlib-ng-static)
 qemu_archs=(aarch64 alpha arm i386 loongarch64 m68k mips mips64 mips64el
 	    mipsel ppc ppc64 riscv32 riscv64 s390x sparc sparc64 x86_64)
 source=("https://download.qemu.org/qemu-$pkgver.tar.xz"
