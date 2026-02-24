@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='C library for processing UTF-8 encoded Unicode strings'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/JuliaStrings/utf8proc'
-license=(custom)
+license=(MIT Unicode-3.0)
 makedepends=(cmake git ninja)
 source=("git+$url#tag=v$pkgver"
   libutf8proc.pc.in)
