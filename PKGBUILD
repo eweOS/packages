@@ -3,25 +3,17 @@
 
 pkgname=libutf8proc
 pkgver=2.11.3
-_sover=3
 pkgrel=1
 pkgdesc='C library for processing UTF-8 encoded Unicode strings'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/JuliaStrings/utf8proc'
 license=(MIT Unicode-3.0)
 makedepends=(cmake git ninja)
-source=("git+$url#tag=v$pkgver"
-  libutf8proc.pc.in)
-sha256sums=('97f05a7ce1fd416c896fde94a12b658a27635bbebc3d60c4129db19f6bf53ac1'
-            '1d221111ba69df56fb94cd8384af82cb3a267e966baee8c1e32c92aa6c81d257')
+provides=(libutf8proc.so)
+source=("git+$url#tag=v$pkgver")
+sha256sums=('97f05a7ce1fd416c896fde94a12b658a27635bbebc3d60c4129db19f6bf53ac1')
 
-prepare()
-{
-  sed "s#@VERSION@#$pkgver#" libutf8proc.pc.in > libutf8proc.pc
-}
-
-build()
-{
+build() {
   cmake -B build \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_LIBDIR=lib \
@@ -29,21 +21,11 @@ build()
     -D BUILD_SHARED_LIBS=ON \
     -G Ninja \
     -S utf8proc
-  ninja -C build
+  cmake --build build
 }
 
-package()
-{
-  # The install command does not work for libutf8proc
-  #DESTDIR="$pkgdir" ninja -C $pkgname-$pkgver/build install
+package() {
+  DESTDIR="$pkgdir" cmake --install build
 
-  cd utf8proc
-  install -Dm644 utf8proc.h "$pkgdir/usr/include/utf8proc.h"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
-  install -Dm644 "$srcdir/libutf8proc.pc" \
-    "$pkgdir/usr/lib/pkgconfig/libutf8proc.pc"
-  install -Dm644 ../build/libutf8proc.so.$_sover \
-    "$pkgdir/usr/lib/libutf8proc.so.$_sover"
-  ln -s libutf8proc.so.$_sover "$pkgdir/usr/lib/libutf8proc.so"
-  #ldconfig -n "$pkgdir/usr/lib"
+  _install_license_ utf8proc/LICENSE.md
 }
