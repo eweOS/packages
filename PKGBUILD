@@ -1,7 +1,7 @@
 # Maintainer: Eric Long <i@hack3r.moe>
 
 pkgname=gawk
-pkgver=5.3.2
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="GNU version of awk"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -9,7 +9,7 @@ url="https://www.gnu.org/software/gawk/"
 license=(GPL-3.0-or-later)
 depends=(sh musl mpfr)
 source=("https://ftp.gnu.org/pub/gnu/gawk/gawk-$pkgver.tar.gz")
-sha256sums=('8639a1a88fb411a1be02663739d03e902a6d313b5c6fe024d0bfeb3341a19a11')
+sha256sums=('df5756d50772212a8e3f26d903107ece3773c4037c6a9e0a59c2a0a8d7329f0d')
 
 build() {
   cd $pkgname-$pkgver
