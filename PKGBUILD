@@ -2,7 +2,7 @@
 
 pkgname=(texlive-bin libsynctex)
 pkgver=20250308
-pkgrel=1
+pkgrel=2
 license=(GPL-2.0-or-later)
 arch=(x86_64 aarch64 riscv64 loongarch64)
 makedepends=(bash
