@@ -2,7 +2,7 @@
 
 pkgname=xfsprogs
 pkgver=6.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Utilities for managing XFS filesystem'
 url='https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
