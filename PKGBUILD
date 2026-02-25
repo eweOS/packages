@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=node-gyp
-pkgver=11.2.0
+pkgver=12.2.0
 pkgrel=1
 pkgdesc='Node.js native addon build tool'
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('clang: to build C++ modules'
             'python: to build C++ modules')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha512sums=('4f44b5ceab245544b172c493900b0b73bc42c9cad1626b431da7438a7ce872b4e18f24029f990c9440528fa1f8a836e0b083922e69a544879bd256578fe500ac')
+sha512sums=('ab6dd6773ad0bf8f0aa335e5af4535bfd7703bf939f4d1de4b39fa96819c6acc9fd149d2aedcecf2447133e99fc0949fd03917d2ce3785caa09d23b8fd536d85')
 
 package() {
   npm install -g --prefix "$pkgdir"/usr $pkgname-$pkgver.tgz
