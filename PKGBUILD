@@ -2,7 +2,7 @@
 
 pkgname=konsole
 pkgver=25.08.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://apps.kde.org/konsole/'
 pkgdesc='KDE terminal emulator'
