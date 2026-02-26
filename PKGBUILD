@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qcoro
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='C++ Coroutines for Qt'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -17,7 +17,7 @@ conflicts=(qcoro-qt6)
 provides=(qcoro-qt6)
 replaces=(qcoro-qt6)
 source=(git+https://github.com/danvratil/qcoro#tag=v$pkgver)
-sha256sums=('ef4b5ee809ee03f25497fa17d3c73478c506876cb44f4a0bf311ac1705a5c500')
+sha256sums=('f6a2d1b8d85a7f9698385aacb0f11038e6b439450b88b51d8397280c6347c24b')
 
 build() {
   cmake -B build -S $pkgname \
