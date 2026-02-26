@@ -9,7 +9,7 @@ url="https://github.com/lxqt/$pkgname"
 # https://github.com/lxqt/libfm-qt/blob/2.0.1/README.md?plain=1#L8-L10
 license=("LGPL-2.1-or-later")
 depends=("menu-cache" "libexif" "qt6-base" "lxqt-menu-data")
-makedepends=("lxqt-build-tools" "ninja" "qt6-base-devel")
+makedepends=("lxqt-build-tools" "ninja" "qt6-base-devel" "git")
 optdepends=(
   "org.freedesktop.secrets: allow to remember mount passwords"
 )
