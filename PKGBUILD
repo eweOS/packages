@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=simdutf
-pkgver=7.4.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc='SIMD-accelerated Unicode and Base64 routines'
 url='https://simdutf.github.io/simdutf/'
@@ -11,7 +11,7 @@ depends=(musl llvm-libs)
 makedepends=(cmake python)
 provides=(libsimdutf.so)
 source=("https://github.com/simdutf/simdutf/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8fd729ebfd5ec56cb0395bcc176c4801e1f8a0ea834d166d52279d7b9e801283')
+sha256sums=('a21c34c52d91a229591e4ebc8822a876604cf2fffeac9ec065bfda7cbfb9d680')
 
 build() {
 	cmake -S "$pkgname-$pkgver" -B build \
