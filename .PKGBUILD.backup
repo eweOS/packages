@@ -1,0 +1,26 @@
+# Maintainer: Yao Zi <me@ziyao.cc>
+
+pkgname=igt-gpu-tools
+pkgver=2.3
+pkgrel=1
+pkgdesc='Tools for development and testing of DRM drivers'
+url='https://drm.pages.freedesktop.org/igt-gpu-tools/'
+arch=(x86_64 aarch64 riscv64 loongarch64)
+license=(MIT)
+depends=(musl)
+makedepends=(meson ninja)
+source=("%{source}")
+sha256sums=()
+
+build() {
+	ewe-meson "$pkgname-$pkgver" build
+	meson compile -C build
+}
+
+check() {
+	meson test -C build
+}
+
+package() {
+	meson install -C build --destdir="$pkgdir"
+}
