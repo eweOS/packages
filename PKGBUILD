@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=proj
-pkgver=9.7.0
+pkgver=9.7.1
 pkgrel=1
 pkgdesc="Cartographic Projections and Coordinate Transformations Library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(curl libtiff sqlite)
 makedepends=(cmake gmock gtest)
 source=(https://github.com/OSGeo/PROJ/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('65705ecd987b50bf63e15820ce6bd17c042feaabda981249831bd230f6689709')
+sha256sums=('6c097dc803c561929cdfcc46e4bf9945ea977611fb31493ad14e88edaeae260f')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
