@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=weston
-pkgver=14.0.2
-pkgrel=3
+pkgver=15.0.0
+pkgrel=1
 pkgdesc='Reference implementation of a Wayland compositor'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://wayland.freedesktop.org/'
@@ -16,7 +16,7 @@ source=(
   "https://gitlab.freedesktop.org/wayland/${pkgname}/-/releases/$pkgver/downloads/${pkgname}-$pkgver.tar.xz"
   "fix-libdisplay-info-0.3.patch"
 )
-sha256sums=('b47216b3530da76d02a3a1acbf1846a9cd41d24caa86448f9c46f78f20b6e0ac'
+sha256sums=('58c6186d29a5d2f0be0dec4882af71cc190a11da803f6ed1bf0b2c74120da973'
             '183cdc9a5155c7673d5912503c2e9513d20bcce1a4540ea9465cdae3d64a1f4f')
 
 _features=(
