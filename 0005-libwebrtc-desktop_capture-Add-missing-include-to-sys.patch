@@ -1,0 +1,32 @@
+From c9cf2d72dec2f13c314be811446a2e05dcd292c1 Mon Sep 17 00:00:00 2001
+From: Yao Zi <me@ziyao.cc>
+Date: Wed, 4 Mar 2026 16:10:30 +0000
+Subject: [PATCH] libwebrtc: desktop_capture: Add missing include to
+ sys/types.h
+
+To fix compilation errors about unknown type pid_t,
+
+163:56.68 /root/packages/trypr/src/firefox-148.0/third_party/libwebrtc/modules/desktop_capture/desktop_capturer.h:82:5: error: unknown type name 'pid_t'
+163:56.69    82 |     pid_t pid = 0;
+163:56.69       |     ^
+
+Signed-off-by: Yao Zi <me@ziyao.cc>
+---
+ third_party/libwebrtc/modules/desktop_capture/desktop_capturer.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/third_party/libwebrtc/modules/desktop_capture/desktop_capturer.h b/third_party/libwebrtc/modules/desktop_capture/desktop_capturer.h
+index 9b1efa0..a2dbee2 100644
+--- a/third_party/libwebrtc/modules/desktop_capture/desktop_capturer.h
++++ b/third_party/libwebrtc/modules/desktop_capture/desktop_capturer.h
+@@ -17,6 +17,7 @@
+ #include <string>
+ #include <type_traits>
+ #include <vector>
++#include <sys/types.h>
+ 
+ // TODO(alcooper): Update include usage in downstream consumers and then change
+ // this to a forward declaration.
+-- 
+2.53.0
+
