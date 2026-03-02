@@ -2,7 +2,7 @@
 
 pkgname=lua51
 pkgver=5.1.5
-pkgrel=5
+pkgrel=6
 pkgdesc='Powerful lightweight programming language designed for extending applications'
 url='https://www.lua.org'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -36,7 +36,7 @@ Name: Lua
 Description: An Extensible Extension Language
 Version: ${R}
 Requires: 
-Libs: -L${libdir} -llua -lm
+Libs: -L${libdir} -llua-5.1 -lm
 Cflags: -I${includedir}
 EOF
 }
