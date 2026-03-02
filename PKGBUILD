@@ -2,7 +2,7 @@
 
 pkgname=lua54
 pkgver=5.4.8
-pkgrel=1
+pkgrel=2
 _V=5.4
 _R=5.4.7
 pkgdesc='Powerful lightweight programming language designed for extending applications'
@@ -39,7 +39,7 @@ Name: Lua
 Description: An Extensible Extension Language
 Version: ${R}
 Requires:
-Libs: -L${libdir} -llua -lm
+Libs: -L${libdir} -llua-5.4 -lm
 Cflags: -I${includedir}
 EOF
 }
