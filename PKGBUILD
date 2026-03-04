@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=taglib
-pkgver=2.1.1
+pkgver=2.2
 pkgrel=1
 pkgdesc='A Library for reading and editing the meta-data of several popular audio formats'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ makedepends=(cmake
              utf8cpp)
 checkdepends=(cppunit)
 source=(git+https://github.com/taglib/taglib#tag=v$pkgver)
-sha256sums=('895818d7d598b313d728cb236ebc38cd7569cf71522024862b59d2bbc92ab714')
+sha256sums=('5e1b0c9601a4e5e088641aa26f9e5b19be2095ac2cfeb2ff741b48cf383ca1d5')
 
 build() {
   cmake -B build -S $pkgname \
