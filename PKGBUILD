@@ -2,7 +2,7 @@
 
 pkgbase=wxwidgets
 pkgname=(wxwidgets-gtk3)	# TODO: package the QT variant
-pkgver=3.2.8.1
+pkgver=3.2.10
 pkgrel=1
 pkgdesc='Cross-Platform C++ GUI Library'
 url='Cross-Platform'
@@ -18,7 +18,7 @@ makedepends=(gstreamer-devel gst-plugins-bad cmake samurai)
 source=("https://github.com/wxWidgets/wxWidgets/releases/download/v$pkgver/wxWidgets-$pkgver.tar.bz2"
 	0001-Adapt-musl-locale-l.patch
 	0002-build-cmake-Check-for-OpenGL_OpenGL_FOUND-when-searc.patch)
-sha256sums=('ad0cf6c18815dcf1a6a89ad3c3d21a306cd7b5d99a602f77372ef1d92cb7d756'
+sha256sums=('d66e929569947a4a5920699539089a9bda83a93e5f4917fb313a61f0c344b896'
             '69f2dc1a98fbddf338e301f5d45fdd0a84d3692ec48a83b8f29c39b9ecee9d82'
             'bcf59d0be84d0720a7af36c3af442af91a3db4ac1caf1ba615b5585c2f7c638f')
 _srcdir="wxWidgets-$pkgver"
