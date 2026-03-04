@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sdl12-compat
-pkgver=1.2.72
+pkgver=1.2.74
 pkgrel=1
 pkgdesc="SDL 1.2 runtime compatibility library using SDL 2.0"
 url="https://github.com/libsdl-org/sdl12-compat"
@@ -15,7 +15,7 @@ license=('MIT')
 #	https://github.com/libsdl-org/sdl12-compat/pull/388
 source=("https://github.com/libsdl-org/sdl12-compat/archive/refs/tags/release-${pkgver}.tar.gz"
 	0001-cmake-Import-definitions-from-SDL2-SDL2.patch)
-sha256sums=('daf6726b89d71120395472dd3cbc16c7a3b0bcbe2c1495de90885d4c2b266d3e'
+sha256sums=('2588686c0972e1785829dc3bf436b543c317e6afa30a9b91d48013dd9c110e81'
             'a58b37c2be7209a38e31f290775bac140d04a9af0fbf6ed583aded94838adb3e')
 
 prepare() {
