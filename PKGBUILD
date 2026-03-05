@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=mousepad
-pkgver=0.6.5
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='A simple text editor for the Xfce desktop environment.'
 url='https://docs.xfce.org/apps/mousepad/start'
@@ -12,7 +12,7 @@ groups=('xfce4-goodies')
 depends=(musl glib gtk3 gtksourceview4 libxfce4util libxfce4ui)
 makedepends=(meson ninja)
 source=("https://archive.xfce.org/src/apps/mousepad/${pkgver%.*}/mousepad-$pkgver.tar.xz")
-sha256sums=('21762bc8c3c4f120a4a509ce39f4a5a58dbc10e3f0da66cdc6d9a8c735fff2ac')
+sha256sums=('e86c59feb08126d4cace368432c16b2dee8e519aaca8a9d2b409ae1cdd200802')
 
 build () {
 	ewe-meson build mousepad-$pkgver \
