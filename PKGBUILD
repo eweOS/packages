@@ -3,7 +3,7 @@
 
 pkgname=linux-uapi-headers
 _basename=linux
-pkgver=6.18.8
+pkgver=6.19.6
 pkgrel=1
 pkgdesc='Linux syscall API headers for userspace usage'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ provides=(linux-headers)
 replaces=(linux-headers)
 conflicts=(linux-headers)
 source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz")
-sha256sums=('37f0c5d5c242c1d604e87d48f08795e861a5a85f725b4ca11d0a538f12ff8cff')
+sha256sums=('4d9f3ff73214f68c0194ef02db9ca4b7ba713253ac1045441d4e9f352bc22e14')
 
 case $CARCH in
 x86_64)
