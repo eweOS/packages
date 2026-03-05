@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=groff
-pkgver=1.23.0
-pkgrel=3
+pkgver=1.24.0
+pkgrel=1
 pkgdesc='GNU Troff typesettings system.'
 url='https://www.gnu.org/software/groff/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(musl)
 checkdepends=(diffutils)
 options=(emptydirs)
 source=("https://ftp.gnu.org/gnu/groff/groff-$pkgver.tar.gz")
-sha256sums=('6b9757f592b7518b4902eb6af7e54570bdccba37a871fddb2d30ae3863511c13')
+sha256sums=('e79bbcd8ff3ed0200e7ac55d3962a15e118c1229990213025f2fc8b264727570')
 
 build () {
 	cd groff-$pkgver
@@ -30,7 +30,4 @@ check() {
 package() {
 	cd groff-$pkgver
 	make install DESTDIR=$pkgdir
-
-	rm $pkgdir/usr/lib/charset.alias
 }
-
