@@ -4,7 +4,7 @@
 pkgbase=linux-lts
 pkgname=(linux-lts linux-lts-devel linux-lts-docs)
 _basename=linux
-pkgver=6.12.73
+pkgver=6.18.16
 pkgrel=1
 pkgdesc='Linux LTS kernel'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -17,7 +17,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         "git+https://github.com/eweOS/kernel-config.git#commit=$_kconfig_commit"
         busybox-find-compat.patch
         0001-amdgpu-dml2-Increase-max-stack-size.patch)
-sha256sums=('4059d394cbf8e9548df36d37e0b8a80c4409ac4e14ecc5019a72a770ef7b41ba'
+sha256sums=('4f21c01f4d04c1d1b3ed794153f8900802c92497be620b07c4869530f2d28ee3'
             '1c68c1f09434c62031e6aceb2512c55f076f07ecff8320c317ad0b2f8437497c'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd'
             '70d813202220e0fd41b0908c5b22d4e4607e80c7366282ab90caa3d55955ced5')
