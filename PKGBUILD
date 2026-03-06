@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=nodejs
-pkgver=25.6.1
-pkgrel=2
+pkgver=25.8.0
+pkgrel=1
 pkgdesc='JavaScript runtime'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://nodejs.org/'
@@ -17,7 +17,7 @@ optdepends=('npm: package manager')
 source=("https://nodejs.org/dist/v${pkgver}/node-v${pkgver}.tar.xz"
         "0001-no-libatomic.patch"
 	"0002-hwy-broken-rvv.patch")
-sha512sums=('9eba0f2d68f942ec3ef8584e59ae7b03b9bf771965a511641a30decb206e3967a904ec8cce0b55f64bf186691c02cbc385300ddf123bc80e635fd92c9eed435f'
+sha512sums=('dd3a9d6a9f52fb7a120648a0c325678f0eb979d3827343e50f86233bcd9196eb7838d4743717d36e0009de3ea6089ccb498a7dcade7a96e170aa83a52f851952'
             '2c51251e303d64980deb8f00dfadf5928c31fb66ec2bbe94790868ffd6c7a4b2dba0584fe5bd53f70feb33b6a735a8e78dc7fa0d746645408e072eef3bed9d9f'
             'de07b0d9c3481036ee97a22941ff444fee86c78abbc26afef36f17508bb479ce3ab83ca160109fbf4f0b9b3266dcce30860873dc8ffbcac1a70e98d17638ca55')
 
