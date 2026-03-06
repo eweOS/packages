@@ -4,8 +4,8 @@
 # Contributor: Manolis Tzanidakis
 
 pkgname=perl-timedate
-pkgver=2.33
-pkgrel=7
+pkgver=2.34
+pkgrel=1
 pkgdesc="Date formating subroutines"
 arch=('any')
 license=('PerlArtistic')
@@ -14,7 +14,7 @@ depends=('perl')
 provides=('timedate')
 options=('!emptydirs')
 source=("https://www.cpan.org/authors/id/A/AT/ATOOMIC/TimeDate-$pkgver.tar.gz")
-sha512sums=('a3a20a0d9439e68bf621c66fad0598e6257345727be79c87c7cc99994b3a58eb738787fedb720beb069e9758ad1347c15313f64411806dd0f4dfbcca5061c820')
+sha512sums=('db349b9bb70cee537574efeffa19338a7300566ab7700724bfc0f23160c0483bc6e2724a72181dc59ef6364ea3f9c285d9a90d4ffd8e6d016e59968935f4b8ac')
 
 build() {
   cd TimeDate-$pkgver
