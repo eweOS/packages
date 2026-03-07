@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=tinc
-pkgver=1.0.36
-pkgrel=3
+pkgver=1.0.37
+pkgrel=1
 pkgdesc='A Virtual Private Network (VPN) daemon'
 url='https://tinc-vpn.org/download/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=(GPL-2.0-or-later)
 depends=(musl lzo openssl zlib-ng)
 makedepends=(linux-headers autoconf)
 source=("https://tinc-vpn.org/packages/tinc-$pkgver.tar.gz")
-sha256sums=('40f73bb3facc480effe0e771442a706ff0488edea7a5f2505d4ccb2aa8163108')
+sha256sums=('f63b7e21c32c4c637576d85f36bdd28ea678b5aa17fad02427645dea30e52ac7')
 
 prepare () {
 	cd "$pkgname-$pkgver"
