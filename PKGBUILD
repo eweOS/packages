@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fd
-pkgver=10.3.0
+pkgver=10.4.1
 pkgrel=1
 pkgdesc='Simple, fast and user-friendly alternative to find'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -9,7 +9,7 @@ url=https://github.com/sharkdp/fd
 license=('MIT' 'Apache-2.0')
 makedepends=('rust')
 source=("fd-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('fa7d03cbc4abab02db8ed5cc7f3cb91ba87a6b4a609186edb40db80420a31a7ef671558e7a172008d8d31d9f7ef46ad9f58503129e1a253e36f1c2c15135595b')
+sha512sums=('c2651abada738548906b385105b9e9bc6e94ba3f8ea32218df22f44e88e6d11c0f38e83595f7a224ca5f472555ba47c0a66e6b826a0ffffe3f28a2d1cbdcfcb1')
 
 prepare() {
   cd fd-$pkgver
