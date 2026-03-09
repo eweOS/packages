@@ -1,30 +1,27 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=flashrom
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='A utility for detecting, reading, writing, verifying and erasing flash chips'
 url='https://review.coreboot.org/admin/repos/flashrom,general'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-or-later)
-# missing: libpci
-depends=(musl libusb libftdi)
-# missing: python-sphinx
-makedepends=(meson ninja linux-headers)
+depends=(musl libusb libftdi pciutils libjaylink)
+makedepends=(meson ninja linux-headers python-sphinx git)
 # checkdepends=(cmocka)
-source=("https://github.com/flashrom/flashrom/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('735c077ee8ac08e236ef7b7db894ab22d5f4b75f10156a4732bd818a1e21fcc5')
+source=("git+https://github.com/flashrom/flashrom.git#tag=v$pkgver")
+sha256sums=('920995ce4c5600006ed784d892b2841d3d6f9e57c3cc979e09ebe98c2e9a6bb9')
 
 build() {
-	# silence warnings:
-	# linux_mtd.c:52:12: error: variable length array folded to constant
-	# array as an extension [-Werror,-Wgnu-folding-constant]
-	export CFLAGS="$CFLAGS -Wno-gnu-folding-constant"
-	ewe-meson "$pkgname-$pkgver" build \
+	# Fix Clang warnings about time_start/time_end in cli_classic.c is
+	# uninitialized on some code paths, which otherwise will be lifted to
+	# errors.
+	# https://review.coreboot.org/c/flashrom/+/91491
+	export CFLAGS="$CFLAGS -Wno-sometimes-uninitialized"
+	ewe-meson "$pkgname" build \
 		--default-library static		\
-		-Ddocumentation=disabled		\
 		-Dllvm_cov=disabled			\
-		-Dman-pages=disabled			\
 		-Dtests=disabled
 	meson compile -C build
 }
