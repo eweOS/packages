@@ -21,14 +21,12 @@ _makeargs=(
   SHARED=yes
 )
 
-build()
-{
+build() {
   cd $pkgname-$pkgver
   make "${_makeargs[@]}"
 }
 
-package()
-{
+package() {
   cd $pkgname-$pkgver
   make DESTDIR="${pkgdir}" "${_makeargs[@]}" install install-lib
 }
