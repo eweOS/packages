@@ -1,10 +1,9 @@
-# Maintainer: Eric Long <i@hack3r.moe>
 
 pkgbase=linux-tools
-pkgname=(bpftool tmon)
+pkgname=(bpftool tmon perf)
 groups=($pkgbase)
 pkgver=6.18.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux kernel tools'
 license=(GPL-2.0-only)
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -19,13 +18,18 @@ options=(!strip !lto)
 #   readline zlib libcap libelf python-docutils
 #   # tmon
 #   ncurses
+#   # perf
+#   libtraceevent libpfm libelf capstone python llvm-devel xz libnuma slang
+#   llvm-libs zlib-ng zstd
 # )
 # HACK: list these dependencies here so that OBS can read them
 # Make sure to update both here and `makedepends=` comments above and below
 # when modifying dependencies
 # Note that OBS upstream currently only supports _x86_64 (and _i686) suffix,
 # though.
-makedepends=(linux-headers asciidoc xmlto readline zlib libcap libelf python-docutils ncurses)
+makedepends=(linux-headers asciidoc xmlto readline zlib libcap libelf python-docutils ncurses
+             libtraceevent libpfm libelf capstone python llvm-devel xz libnuma
+             slang llvm-libs zlib-ng zstd)
 makedepends_x86_64=(libnl libcap)
 source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz
         0001-bpftool-disable-bpf_jit_disasm.patch)  # downstream
@@ -44,6 +48,12 @@ x86_64)
   ;;
 esac
 
+_perfargs=(
+  prefix=/usr
+  lib=lib
+  perfexecdir=lib/perf
+)
+
 prepare() {
   _patch_ linux-$pkgver
 }
@@ -51,6 +61,14 @@ prepare() {
 build() {
   _linux="$srcdir"/linux-$pkgver
   export CC=cc HOSTCC=cc
+
+  # TODO:
+  #  enable babeltrace
+  msg2 'perf'
+  cd "$_linux"/tools/perf
+  # Invoke Makefile.perf directly, or some make arguments may be stripped by
+  # the wrapper Makefile.
+  make -f Makefile.perf "${_perfargs[@]}"
 
   msg2 'bpftool'
   cd "$_linux"/tools/bpf
@@ -140,4 +158,15 @@ package_x86_energy_perf_policy() {
   cd linux-$pkgver/tools/power/x86/x86_energy_perf_policy
   install -Dm755 x86_energy_perf_policy "$pkgdir"/usr/bin/x86_energy_perf_policy
   install -Dm644 x86_energy_perf_policy.8 "$pkgdir"/usr/share/man/man8/x86_energy_perf_policy.8
+}
+
+package_perf() {
+  pkgdesc='Linux performance auditing tool'
+  depends=(musl libtraceevent libpfm libelf capstone python llvm xz libnuma
+           slang llvm-libs zlib-ng zstd)
+
+  cd linux-$pkgver/tools/perf
+  export CC=cc HOSTCC=cc
+
+  make -f Makefile.perf install DESTDIR="$pkgdir" "${_perfargs[@]}"
 }
