@@ -1,15 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=cmark
-pkgver=0.31.1
-pkgrel=2
+pkgver=0.31.2
+pkgrel=1
 pkgdesc='CommonMark parsing and rendering library and program in C'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/commonmark/cmark'
 license=('custom:BSD2')
 makedepends=(cmake python)
 source=(https://github.com/commonmark/cmark/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('3da93db5469c30588cfeb283d9d62edfc6ded9eb0edc10a4f5bbfb7d722ea802')
+sha256sums=('f9bc5ca38bcb0b727f0056100fac4d743e768872e3bacec7746de28f5700d697')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
