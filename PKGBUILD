@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xfce4-settings
-pkgver=4.20.3
+pkgver=4.20.4
 pkgrel=1
 pkgdesc="Xfce's Configuration System"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -18,7 +18,7 @@ source=(
   "git+https://gitlab.xfce.org/xfce/xfce4-settings.git#tag=$pkgname-$pkgver"
   "git+https://gitlab.freedesktop.org/wlroots/wlr-protocols.git"
 )
-sha256sums=('d94645103a9f60093259be55ae1b7d21f6abb357e01d101b8680f84352c82662'
+sha256sums=('11b138ad304270e3b22bf1ea1e4fc08ef4c2024dd15d5e4e1aaf445919ce8a97'
             'SKIP')
 
 prepare() {
