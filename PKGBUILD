@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=botan
-pkgver=3.10.0
+pkgver=3.11.0
 pkgrel=1
 pkgdesc='Crypto library written in C++'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ makedepends=(boost python linux-headers)
 optdepends=('boost-libs: for the botan executable'
             'python: for using botan2.py')
 source=("https://botan.randombit.net/releases/Botan-$pkgver.tar.xz")
-sha256sums=('fde194236f6d5434f136ea0a0627f6cc9d26af8b96e9f1e1c7d8c82cd90f4f24')
+sha256sums=('e8dd48556818da2c03a9a30932ad05db9e50b12fec90809301ecc64ea51bd11e')
 
 build() {
   cd ${pkgname^}-$pkgver
