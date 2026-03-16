@@ -2,7 +2,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xfce4-panel
-pkgver=4.20.6
+pkgver=4.20.7
 pkgrel=1
 pkgdesc="Panel for the Xfce desktop environment"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -15,7 +15,7 @@ makedepends=('git' 'intltool' 'gobject-introspection' 'vala' 'xfce4-dev-tools')
 source=(
   "git+https://gitlab.xfce.org/xfce/xfce4-panel.git#tag=$pkgname-$pkgver"
 )
-sha256sums=('0b985776ea6af10b0ae65e3a84595a0f75ed4c2b0f880d99a04ea6cebbfa2586')
+sha256sums=('ff8df0de486f6f4852e1a0cd7609170c112d38140e10a609426c7ad99c6db056')
 
 prepare() {
   cd $pkgname
