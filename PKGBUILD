@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=vulkan-volk
-pkgver=1.4.309.0
+pkgver=1.4.341.0
 pkgrel=1
 pkgdesc='Meta loader for Vulkan API'
 url='https://github.com/zeux/volk'
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(musl)
 makedepends=(cmake vulkan-headers)
 source=("https://github.com/zeux/volk/archive/refs/tags/vulkan-sdk-$pkgver.tar.gz")
-sha256sums=('1724924d8e3dccf0c508887edb79d56d9dd11b0738eab5a44e2fa95b8a9ebe1c')
+sha256sums=('42df539c70ffdaea259e317aef73524512f4093f6f4dafb36fa6cf2680c823b9')
 
 build () {
 	cmake -S "volk-vulkan-sdk-$pkgver" -B build \
