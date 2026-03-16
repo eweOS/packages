@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=okular
-pkgver=25.08.0
-pkgrel=2
+pkgver=25.12.3
+pkgrel=1
 pkgdesc='Document Viewer'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://apps.kde.org/okular/'
@@ -57,7 +57,7 @@ source=(
   https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz
   no-x11.patch
 )
-sha256sums=('8c70c448e8aa8c55c3623024ee1d70930888672a503c40c60af2de702ffe64fc'
+sha256sums=('9d509a702aa00c82c075e5a60ed224fcf884bbcd983e5e988d2520ff2fb86276'
             '5f44988742376b4f989307b03e32d453b577c77c0a8622d66c3f5bde30332097')
 options=(!zipman)
 
