@@ -1,15 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=esbuild
-pkgver=0.27.2
-pkgrel=3
+pkgver=0.27.4
+pkgrel=1
 pkgdesc="An extremely fast JavaScript and CSS bundler and minifier."
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://esbuild.github.io/"
 license=('MIT')
 makedepends=(go git)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/evanw/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('e9cea28edb8e0da8ac23fedc9b9b3cbcbe88df18be8ab1dd9f3943ecabee072630c0cca5e1080a77607746798edb9f1f0b560d586621493df4282cffa444f1df')
+sha512sums=('074e07a6565a05d3df9b4af8fe5695079308c697b746e9c294b1dd07a333756fcf29c9f96afe9950ccb921d3164cfa801b8003e22de062429a321547efc1197f')
 
 build() {
     cd "${pkgname}-${pkgver}"
