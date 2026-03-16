@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=vulkan-tools
-pkgver=1.4.309.0
+pkgver=1.4.341.0
 _pkgver=vulkan-sdk-$pkgver
 pkgrel=1
 pkgdesc='Vulkan Development Tools'
@@ -12,7 +12,7 @@ depends=(wayland libvulkan.so)
 makedepends=(cmake python vulkan-headers vulkan-icd-loader wayland-protocols
 	     glslang spirv-tools vulkan-volk linux-headers)
 source=("https://github.com/KhronosGroup/Vulkan-Tools/archive/refs/tags/$_pkgver.tar.gz")
-sha256sums=('d854ff4324b519ff4a1cf5d9e9c333e5244ea7870fad6eadd73efd7b04aedcb0')
+sha256sums=('dc65f1ea97dd0b2155c2281a79e87d27183c0737fb96377744091a3c8460ae1e')
 
 build () {
 	local project_options=(
