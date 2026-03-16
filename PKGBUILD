@@ -2,7 +2,7 @@
 
 pkgname=vulkan-headers
 _pkgname=Vulkan-Headers
-pkgver=1.4.309.0
+pkgver=1.4.341.0
 pkgrel=1
 pkgdesc="Vulkan header files"
 arch=(any)
@@ -10,7 +10,7 @@ url="https://www.khronos.org/vulkan/"
 license=('APACHE')
 makedepends=(cmake ninja git)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/Vulkan-Headers/archive/vulkan-sdk-${pkgver}.tar.gz")
-sha256sums=('2bc1b4127950badc80212abf1edfa5c3b5032f3425edf37255863ba7592c1969')
+sha256sums=('d73bc5036b6556b741f6985ff600ca720308c5f2850e4a43ceb498bd3de069e7')
 
 build() {
   cmake -G Ninja -B build -S ${_pkgname}-vulkan-sdk-$pkgver \
