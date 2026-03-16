@@ -3,7 +3,7 @@
 _pkg=SPIRV-Headers
 pkgname=spirv-headers
 epoch=2
-pkgver=1.4.309.0
+pkgver=1.4.341.0
 pkgrel=1
 pkgdesc="SPIR-V Headers"
 _pkgpfx=vulkan-sdk
@@ -12,7 +12,7 @@ url="https://www.khronos.org/registry/spir-v/"
 license=(MIT)
 makedepends=(cmake)
 source=(https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/${_pkgpfx}-${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('545526940e5b42a53143732d6d00b61ee544f8137507f86b32230fb5110cf2cc8f3fc71d0b167e614ab2dd5faa1c4915965627146d519832d73f23ee6a2aa4bb')
+sha512sums=('d624371dd455c66a300344c89812598ffe11b5eedba555779f789e85c29dc67317741858c60e0744a1e6755cc0d2759b8659f0674f4cc31479c4cb6fc25ed23b')
 
 build() {
   cmake -B build -S ${_pkg}-${_pkgpfx}-${pkgver} -DCMAKE_INSTALL_PREFIX=/usr
