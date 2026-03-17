@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=hyprwire
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A fast and consistent wire protocol for IPC'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,20 +15,17 @@ depends=(llvm-libs
 makedepends=(cmake)
 provides=(libhyprwire.so)
 _archive="$pkgname-$pkgver"
-# 0001: backport: missing string_view header
-# https://github.com/hyprwm/hyprwire/pull/9
-# 0002: downstream: fix for libc++: include unistd.h to fix read() write()
+# Fix: tests missing <unistd.h> header for read(), write(), pipe(), fork(), close()
 source=(
   "$url/archive/v$pkgver/$_archive.tar.gz"
-  0001-backport-string_view.patch::https://github.com/hyprwm/hyprwire/commit/1079777525b30a947c8d657fac158e00ae85de9d.patch
-  0002-fix-read-write.patch
+  "0001-fix-tests-missing-unistd.patch"
 )
-sha256sums=('a6370db771213fe10ebca5a2da748070a7034b09131847f973fda5d60b473c11'
-            '97d6bb27eabdbb83d00dda3197e4a4e0d0c3f36f1f17e34695c9aeef11352bc0'
-            'c16ac234f6c64f25238ae3b55c6c1190371b2badc0b14acaf17f19fa4734172e')
+sha256sums=('ba3ff4b82620209d5680ce0e771d0f2c41f78cdb96d5d84fa66e4f0709ca8de6'
+            '71b35b92a5f3148283b07b9136642a619297f0da6fa60e317ffa52c7bba70025')
 
 prepare() {
-  _patch_ "$_archive"
+  cd "$_archive"
+  patch -p1 -i "$srcdir/0001-fix-tests-missing-unistd.patch"
 }
 
 build() {
@@ -38,6 +35,10 @@ build() {
   )
   cmake -B build -S "$_archive" -W no-dev ${cmake_options[@]}
   cmake --build build
+}
+
+check() {
+  ctest --test-dir build
 }
 
 package() {
