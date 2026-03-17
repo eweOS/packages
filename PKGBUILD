@@ -2,7 +2,7 @@
 
 pkgname=python-pytest
 _name=${pkgname#python-}
-pkgver=8.4.1
+pkgver=9.0.2
 pkgrel=1
 pkgdesc="Simple powerful testing with Python"
 arch=('any')
@@ -38,7 +38,7 @@ makedepends=(
 #  'python-twisted'
 #)
 source=("git+https://github.com/$_name-dev/$_name.git#tag=$pkgver")
-sha256sums=('a8963ebb686fcf84a59c65e5679a644be225d60535d59abf4bef5fc3aa358f8b')
+sha256sums=('e09a526578b488743bb7f832f0ec5bb45a14e22caed05bca4fbb9ae85ad23862')
 
 build() {
   cd "$_name"
