@@ -2,7 +2,7 @@
 
 pkgname=python-typing_extensions
 _name=${pkgname#python-}
-pkgver=4.14.1
+pkgver=4.15.0
 pkgrel=1
 pkgdesc='Backported and Experimental Type Hints for Python 3.8+'
 arch=(any)
@@ -14,7 +14,7 @@ checkdepends=(python-tests python-typing_extensions)
 provides=(python-typing-extensions)
 conflicts=(python-typing-extensions)
 source=("git+${url}.git#tag=${pkgver}")
-sha256sums=('34f3316e0c4d93aefe33a10ceb5ba35487f14b9e7751e00aed323b7c6856264f')
+sha256sums=('e11f88483891ab8573ba6c2fbe49378ca8491774aa4100995ec49fbcfd79d95e')
 
 build() {
   cd "${_name}"
