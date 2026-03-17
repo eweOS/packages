@@ -1,0 +1,20 @@
+diff --git a/config/cmake_files/medMacros.cmake b/config/cmake_files/medMacros.cmake
+index 992103ee575a..e71f8d0b93ba 100644
+--- a/config/cmake_files/medMacros.cmake
++++ b/config/cmake_files/medMacros.cmake
+@@ -444,15 +444,6 @@ MACRO(MED_FIND_HDF5)
+     
+     FIND_PACKAGE(MedfileHDF5 REQUIRED)
+ 
+-    ##
+-    ## Requires 1.12.x version
+-    ##
+-    IF (NOT HDF_VERSION_MAJOR_REF EQUAL 1 OR NOT HDF_VERSION_MINOR_REF EQUAL 12 OR NOT HDF_VERSION_RELEASE_REF GREATER 0)
+-        MESSAGE(FATAL_ERROR "HDF5 version is ${HDF_VERSION_REF}. Only versions >= 1.12.1 are supported.")
+-    ENDIF()
+-    ##
+-    ##
+-
+     ADD_DEFINITIONS(-DH5_USE_16_API -DH5Oget_info_by_name_vers=1 -DH5O_info_t_vers=1)  
+     IF(WIN32 AND MEDFILE_BUILD_SHARED_LIBS)
+       ADD_DEFINITIONS(-D_HDF5USEDLL_ -DH5_BUILT_AS_DYNAMIC_LIB=1)   
