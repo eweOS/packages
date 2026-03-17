@@ -2,7 +2,7 @@
 
 _pypiname=wheel
 pkgname=python-wheel
-pkgver=0.46.1
+pkgver=0.46.3
 pkgrel=1
 pkgdesc="A built-package format for Python"
 arch=(any)
@@ -16,7 +16,7 @@ makedepends=('python-build' 'python-flit-core' 'python-installer')
 checkdepends=('python-jsonschema' 'python-pytest' 'python-xdg'
 	      'python-pytest-cov' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pypa/wheel/archive/$pkgver.tar.gz")
-sha512sums=('b5785455ae2adb755921964b5c4f912496df27b2a3398ba5fe83af865b7990a0d90d3c777210912febb475b6e1cd7a7793133aaa0928ee46d3bcb08319234518')
+sha512sums=('8f92313cc26b55dd5d9720b95a7dce81493ac26f988c261c7eb2591bc0ac204df1c2ec5a58ab3c069bbdb59b13b27f807be29edec996c02d0b09e3ac2ad4aebc')
 
 build() {
   cd wheel-$pkgver
