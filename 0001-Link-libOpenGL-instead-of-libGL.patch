@@ -1,0 +1,22 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a034fd829aa3..f018c8d8962a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -220,7 +220,7 @@ else()
+   find_package(OpenGL REQUIRED)
+   if(OPENGL_FOUND)
+     set(HAVE_OPENGL 1)
+-    set(OPENGL_SYSTEM_LIBRARY_NAME "${OPENGL_gl_LIBRARY}${CMAKE_SHARED_LIBRARY_SUFFIX}")
++    set(OPENGL_SYSTEM_LIBRARY_NAME "${OPENGL_opengl_LIBRARY}${CMAKE_SHARED_LIBRARY_SUFFIX}")
+     if(COIN_BUILD_EGL)
+       if (OpenGL_EGL_FOUND)
+         set(HAVE_EGL 1)
+@@ -238,7 +238,7 @@ else()
+     #include_directories("${OPENGL_INCLUDE_DIR}")
+     if (NOT TARGET OpenGL::GL)
+       list(APPEND COIN_TARGET_INCLUDE_DIRECTORIES ${OPENGL_INCLUDE_DIR})
+-      list(APPEND COIN_TARGET_LINK_LIBRARIES_GL ${OPENGL_gl_LIBRARY})
++      list(APPEND COIN_TARGET_LINK_LIBRARIES_GL ${OPENGL_opengl_LIBRARY})
+     else()
+       list(APPEND COIN_TARGET_LINK_LIBRARIES_GL OpenGL::GL)
+     endif()
