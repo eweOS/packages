@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-wrapt
-pkgver=2.0.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="A Python module for decorators, wrappers and monkey patching"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 source=("https://github.com/GrahamDumpleton/wrapt/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('ff7a69e7c2454f33f0f631f408013242a0292b28a8a601e981cef9b8c997b5769305bfb6b68b2504e96a1d2181d8e9aa48b25a159178f73906b53e527a00cbc5')
+sha512sums=('91fcf4bd1af0ab1175cc8bc31acf5a3aaaa0fa4893e65273b31c8953ebfe2929fe7ec9927b61403230ab21c4029e9c4f1396d13fc649de40dcb9729eee672070')
 
 prepare() {
   # Remove tests that require mypy to run
