@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-markdown
-pkgver=3.10.0
+pkgver=3.10.2
 pkgrel=1
 pkgdesc="Python implementation of John Gruber's Markdown"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python
 optdepends=('python-yaml: parse Python in YAML metadata')
 checkdepends=('python-yaml')
 source=("$pkgname::git+https://github.com/Python-Markdown/markdown#tag=$pkgver")
-sha256sums=('e52794ea0069555da7db4b68a0796b6b20a852cb7a558205129d043dc8310bfe')
+sha256sums=('160461aa9da737a5dc5007afb320d7028f5c166aef73b45387220404ca21575d')
 
 prepare() {
   _patch_ "$pkgname"
