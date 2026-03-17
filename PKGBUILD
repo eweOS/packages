@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-setuptools
-pkgver=80.9.0
+pkgver=82.0.1
 pkgrel=1
 pkgdesc="Easily download, build, install, upgrade, and uninstall Python packages"
 arch=('any')
@@ -23,7 +23,7 @@ provides=('python-distribute')
 replaces=('python-distribute')
 source=("git+https://github.com/pypa/setuptools.git#tag=v$pkgver"
         build-no-isolation.patch)
-sha512sums=('711322927be57c1a9904f9dec46d05d3c3b80bb17fd8efa75643d0bb6224b8c7687016d0966bc10567c9107504ae3ebd490ca89dee673d2d34f53811c4a3f4a9'
+sha512sums=('bb0be14ec45c2fff5b788c05141402cfee784ab8bcc794dc941d0e54f52958a75c664cee10535e03c77469ae78018864eb1418ff1c456663609db83d90b82661'
             '701b4364736344951d945df624f58973dfbca56eeda708aeed928df10f5598509e3acf87074ab30d84bb652fc8e307157184bfe43bb81ee83159966430c58e51')
 
 export SETUPTOOLS_INSTALL_WINDOWS_SPECIFIC_FILES=0
@@ -45,10 +45,6 @@ prepare() {
   # Fix tests invoking python-build
   patch -p1 -i ../build-no-isolation.patch
 
-  # Remove post-release tag since we are using stable tags
-  sed -e '/tag_build = .post/d' \
-    -e '/tag_date = 1/d' \
-    -i setup.cfg
 }
 
 build() {
