@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-packaging
-pkgver=25.0
+pkgver=26.0
 pkgrel=1
 pkgdesc="Core utilities for Python packages"
 arch=('any')
@@ -9,9 +9,9 @@ url="https://github.com/pypa/packaging"
 license=('Apache')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-flit-core')
-checkdepends=('python-pytest' 'python-pretend')
+checkdepends=("python-pytest" "python-pretend" "python-tomli-w")
 source=("https://github.com/pypa/packaging/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('fb8419f81f0f817440c0b297fc6e963832e219e7a324bf4e0321f1e131a4822f17a19f2eb033a8d4adb622ccb16db59776ec44906a0c0b34f2877b59b9558c18')
+sha512sums=('9c96b3f70e483af3812a859de217e58e07cc48210cfb3b7e64fbc3118bd7c53c39e9f5f33d13f532a4e0ce4c208bed58c64ed5ea16390371f3480706d72a9011')
 
 build() {
   cd packaging-$pkgver
