@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-tomli
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A lil' TOML parser"
 url="https://github.com/hukkin/tomli"
@@ -10,7 +10,7 @@ arch=('any')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-flit-core')
 source=("https://github.com/hukkin/tomli/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('bd39f9ef09bf43dc48787541ef96781459f66899fab12f72b24e57ef13a8975e135b6a90b0ed7f44c0c3171a4b3afbe0c8a2a8ffeace4255771a0f331288835e')
+sha512sums=('8bd8c46d4e4337142fbd94a6a78b478db804bc7c535c11eb447a3613afdda3428b679dc06228b37ccaad73af334c204c38236b0b5287f7ff6d21387f1355d420')
 
 build() {
   cd tomli-$pkgver
