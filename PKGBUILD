@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=python-stevedore
-pkgver=5.6.0
+pkgver=5.7.0
 pkgrel=1
 pkgdesc='Manage dynamic plugins for Python applications.'
 url="https://github.com/openstack/stevedore"
@@ -11,7 +11,7 @@ depends=(python)
 makedepends=(python-pbr python-setuptools python-wheel python-build
 	     python-installer git)
 source=("git+https://github.com/openstack/stevedore.git#tag=$pkgver")
-sha256sums=('812f140bbf5ed453a484d5ce283b9d72d53b0be8c099fae80dfc898bb570fb6b')
+sha256sums=('fe503190a5e175ab5590d5ef3b5bb8db8476618baaf3972d3ca2e1ff0b048910')
 build () {
 	cd stevedore
 	python -m build --wheel --no-isolation
