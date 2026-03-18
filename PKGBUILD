@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=gsm
-pkgver=1.0.23
+pkgver=1.0.24
 _ver=${pkgver%.*}
 _patchlevel=${pkgver##*.}
 _verstr=${_ver}-pl${_patchlevel}
@@ -15,7 +15,7 @@ provides=(libgsm.so)
 source=("https://www.quut.com/gsm/gsm-$pkgver.tar.gz"
 	"0001-fix-install-command.patch"
 	"0002-build-libgsm-as-shared-library.patch")
-sha256sums=('8b7591a85ac9adce858f2053005e6b2eb20c23b8b8a868dffb2969645fa323c0'
+sha256sums=('a3c40c6471928383f4abfcb2e8f24012a1f562be2f17b8d672145d5986681a92'
             '7829d46febb63dd4f21e4f3a606d545333e5521e49fc1f6fcf1386519e151c68'
             'd6bcefc4739eaafaf4101bf8e1181d50937169396ee8cea2642b06bfdeec999b')
 
