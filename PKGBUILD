@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=extra-cmake-modules
-pkgver=6.20.0
+pkgver=6.24.0
 pkgrel=1
 pkgdesc='Extra modules and scripts for CMake'
 arch=(any)
@@ -11,7 +11,7 @@ depends=(cmake)
 makedepends=(qt6-tools)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz
 	detect-eweOS.patch)
-sha256sums=('3711de8572db5da618efe3f28cc094ca25a1abb0bddffc63dced12c4f8caae5f'
+sha256sums=('8ef3f7e176588e099c02559d20ddf4fed0590f92c168f0bcc60a7e638ba1e6a3'
             '9c4168e52667c6b4fcd4b39869480a401da5f13af8c4fbd5d747b3c670a85af0')
 
 prepare() {
