@@ -1,0 +1,76 @@
+diff --git a/src/Mod/Part/Gui/SoBrepFaceSet.cpp b/src/Mod/Part/Gui/SoBrepFaceSet.cpp
+index 7610c2d16bcd..3bb2a80fe53c 100644
+--- a/src/Mod/Part/Gui/SoBrepFaceSet.cpp
++++ b/src/Mod/Part/Gui/SoBrepFaceSet.cpp
+@@ -141,7 +141,7 @@ public:
+             PFNGLDELETEBUFFERSARBPROC glDeleteBuffersARB = (PFNGLDELETEBUFFERSARBPROC)cc_glglue_getprocaddress(glue, "glDeleteBuffersARB");
+ #endif
+             auto &buffer = it->second;
+-            glDeleteBuffersARB(2, buffer.myvbo);
++            glDeleteBuffers(2, buffer.myvbo);
+             self->vbomap.erase(it);
+         }
+     }
+@@ -1412,7 +1412,7 @@ void SoBrepFaceSet::VBO::render(SoGLRenderAction * action,
+         const cc_glglue * glue = cc_glglue_instance(action->getCacheContext());
+         PFNGLGENBUFFERSPROC glGenBuffersARB = (PFNGLGENBUFFERSPROC)cc_glglue_getprocaddress(glue, "glGenBuffersARB");
+ #endif
+-        glGenBuffersARB(2, buf.myvbo);
++        glGenBuffers(2, buf.myvbo);
+         buf.vertex_array_size = 0;
+         buf.index_array_size = 0;
+         buf.vboLoaded = false;
+@@ -1442,8 +1442,8 @@ void SoBrepFaceSet::VBO::render(SoGLRenderAction * action,
+ #endif
+         // We must manage buffer size increase let's clear everything and re-init to test the
+         // clearing process
+-        glDeleteBuffersARB(2, buf.myvbo);
+-        glGenBuffersARB(2, buf.myvbo);
++        glDeleteBuffers(2, buf.myvbo);
++        glGenBuffers(2, buf.myvbo);
+         vertex_array = ( float * ) malloc ( sizeof(float) * num_indices * 10 );
+         index_array = ( GLuint *) malloc ( sizeof(GLuint) * num_indices );
+         buf.vertex_array_size = sizeof(float) * num_indices * 10;
+@@ -1641,14 +1641,14 @@ void SoBrepFaceSet::VBO::render(SoGLRenderAction * action,
+             }
+         }
+ 
+-        glBindBufferARB(GL_ARRAY_BUFFER_ARB, buf.myvbo[0]);
+-        glBufferDataARB(GL_ARRAY_BUFFER_ARB, sizeof(float) * indice , vertex_array, GL_DYNAMIC_DRAW_ARB);
++        glBindBuffer(GL_ARRAY_BUFFER, buf.myvbo[0]);
++        glBufferData(GL_ARRAY_BUFFER, sizeof(float) * indice , vertex_array, GL_DYNAMIC_DRAW);
+ 
+-        glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, buf.myvbo[1]);
+-        glBufferDataARB(GL_ELEMENT_ARRAY_BUFFER_ARB, sizeof(GLuint) * this->indice_array , &index_array[0], GL_DYNAMIC_DRAW_ARB);
++        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buf.myvbo[1]);
++        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * this->indice_array , &index_array[0], GL_DYNAMIC_DRAW);
+ 
+-        glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
+-        glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, 0);
++        glBindBuffer(GL_ARRAY_BUFFER, 0);
++        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+ 
+         buf.vboLoaded = true;
+         buf.updateVbo = false;
+@@ -1663,8 +1663,8 @@ void SoBrepFaceSet::VBO::render(SoGLRenderAction * action,
+ #endif
+ 
+     if (!buf.updateVbo) {
+-        glBindBufferARB(GL_ARRAY_BUFFER_ARB, buf.myvbo[0]);
+-        glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, buf.myvbo[1]);
++        glBindBuffer(GL_ARRAY_BUFFER, buf.myvbo[0]);
++        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buf.myvbo[1]);
+     }
+ 
+     glEnableClientState(GL_VERTEX_ARRAY);
+@@ -1680,8 +1680,8 @@ void SoBrepFaceSet::VBO::render(SoGLRenderAction * action,
+     glDisableClientState(GL_COLOR_ARRAY);
+     glDisableClientState(GL_NORMAL_ARRAY);
+     glDisableClientState(GL_VERTEX_ARRAY);
+-    glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
+-    glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, 0);
++    glBindBuffer(GL_ARRAY_BUFFER, 0);
++    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+     buf.updateVbo = false;
+     // The data is within the VBO we can clear it at application level
+ }
