@@ -1,0 +1,115 @@
+From 692d40916a61c813560c72c80c7c91c8c44b672a Mon Sep 17 00:00:00 2001
+From: wmayer <wmayer@freecad.org>
+Date: Tue, 27 May 2025 11:54:04 +0200
+Subject: [PATCH] Py3.13: Disable Py_UNICODE support in PyCXX
+
+---
+ src/CXX/Python3/Config.hxx     |  4 ++++
+ src/CXX/Python3/Objects.hxx    | 16 ++++++++--------
+ src/CXX/Python3/cxxsupport.cxx |  2 +-
+ 3 files changed, 13 insertions(+), 9 deletions(-)
+
+diff --git a/src/CXX/Python3/Config.hxx b/src/CXX/Python3/Config.hxx
+index 08aa49526957..76bd4b786bdc 100644
+--- a/src/CXX/Python3/Config.hxx
++++ b/src/CXX/Python3/Config.hxx
+@@ -133,6 +133,10 @@
+ typedef long int Py_hash_t;
+ #endif
+ 
++#if PY_VERSION_HEX >= 0x030d0000
++#define Py_UNICODE_DEPRECATED
++#endif
++
+ #ifndef PYCXX_PYTHON_2TO3
+ #define PYCXX_PYTHON_2TO3
+ #endif
+diff --git a/src/CXX/Python3/Objects.hxx b/src/CXX/Python3/Objects.hxx
+index 0ed3fc969b33..e216d6858d8a 100644
+--- a/src/CXX/Python3/Objects.hxx
++++ b/src/CXX/Python3/Objects.hxx
+@@ -1783,7 +1783,7 @@ namespace Py
+     // Python strings return strings as individual elements.
+     // I'll try having a class Char which is a String of length 1
+     //
+-#if !defined(Py_LIMITED_API)
++#if !defined(Py_LIMITED_API) && !defined(Py_UNICODE_DEPRECATED)
+     typedef std::basic_string<Py_UNICODE> unicodestring;
+     extern Py_UNICODE unicode_null_string[1];
+ #endif
+@@ -1979,7 +1979,7 @@ namespace Py
+             validate();
+         }
+ 
+-#if !defined( Py_LIMITED_API )
++#if !defined( Py_LIMITED_API ) && !defined(Py_UNICODE_DEPRECATED)
+         Char( Py_UNICODE v )
+         : Object( PyUnicode_FromOrdinal( v ), true )
+         {
+@@ -1987,7 +1987,7 @@ namespace Py
+         }
+ #endif
+ 
+-#if !defined( Py_LIMITED_API )
++#if !defined( Py_LIMITED_API ) && !defined(Py_UNICODE_DEPRECATED)
+         Char( const unicodestring &v )
+         : Object( PyUnicode_FromKindAndData( PyUnicode_4BYTE_KIND, const_cast<Py_UNICODE*>( v.data() ),1 ), true )
+         {
+@@ -2008,7 +2008,7 @@ namespace Py
+             return *this;
+         }
+ 
+-#if !defined( Py_LIMITED_API )
++#if !defined( Py_LIMITED_API ) && !defined(Py_UNICODE_DEPRECATED)
+         Char &operator=( const unicodestring &v )
+         {
+             set( PyUnicode_FromKindAndData( PyUnicode_4BYTE_KIND, const_cast<Py_UNICODE*>( v.data() ), 1 ), true );
+@@ -2016,7 +2016,7 @@ namespace Py
+         }
+ #endif
+ 
+-#if !defined( Py_LIMITED_API )
++#if !defined( Py_LIMITED_API ) && !defined(Py_UNICODE_DEPRECATED)
+         Char &operator=( int v_ )
+         {
+             Py_UNICODE v( v_ );
+@@ -2025,7 +2025,7 @@ namespace Py
+         }
+ #endif
+ 
+-#if !defined( Py_LIMITED_API )
++#if !defined( Py_LIMITED_API ) && !defined(Py_UNICODE_DEPRECATED)
+         Char &operator=( Py_UNICODE v )
+         {
+             set( PyUnicode_FromKindAndData( PyUnicode_4BYTE_KIND, &v, 1 ), true );
+@@ -2164,7 +2164,7 @@ namespace Py
+         }
+ #endif
+ 
+-#if !defined( Py_LIMITED_API )
++#if !defined( Py_LIMITED_API ) && !defined(Py_UNICODE_DEPRECATED)
+         String( const Py_UNICODE *s, int length )
+         : SeqBase<Char>( PyUnicode_FromKindAndData( PyUnicode_4BYTE_KIND, s, length ), true )
+         {
+@@ -2185,7 +2185,7 @@ namespace Py
+             return *this;
+         }
+ 
+-#if !defined( Py_LIMITED_API )
++#if !defined( Py_LIMITED_API ) && !defined(Py_UNICODE_DEPRECATED)
+         String &operator=( const unicodestring &v )
+         {
+             set( PyUnicode_FromKindAndData( PyUnicode_4BYTE_KIND, const_cast<Py_UNICODE *>( v.data() ), v.length() ), true );
+diff --git a/src/CXX/Python3/cxxsupport.cxx b/src/CXX/Python3/cxxsupport.cxx
+index 3c58afe9600d..dad7198648dc 100644
+--- a/src/CXX/Python3/cxxsupport.cxx
++++ b/src/CXX/Python3/cxxsupport.cxx
+@@ -45,7 +45,7 @@ Py_ssize_t numeric_limits_max()
+     return std::numeric_limits<Py_ssize_t>::max();
+ }
+ 
+-#if !defined(Py_LIMITED_API)
++#if !defined(Py_LIMITED_API) && !defined(Py_UNICODE_DEPRECATED)
+ Py_UNICODE unicode_null_string[1] = { 0 };
+ #endif
+ char32_t ucs4_null_string[1] = { 0 };

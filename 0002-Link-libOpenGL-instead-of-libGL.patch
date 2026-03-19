@@ -1,0 +1,26 @@
+diff --git a/src/Gui/CMakeLists.txt b/src/Gui/CMakeLists.txt
+index b928eccc124f..18329a26692e 100644
+--- a/src/Gui/CMakeLists.txt
++++ b/src/Gui/CMakeLists.txt
+@@ -93,7 +93,7 @@ else(MSVC)
+         FreeCADApp
+         ${COIN3D_LIBRARIES}
+         ${Boost_LIBRARIES}
+-        ${OPENGL_gl_LIBRARY}
++        ${OPENGL_opengl_LIBRARY}
+         ${3DCONNEXION_LINKFLAGS}
+     )
+ endif(MSVC)
+diff --git a/src/Mod/CAM/PathSimulator/AppGL/CMakeLists.txt b/src/Mod/CAM/PathSimulator/AppGL/CMakeLists.txt
+index 9191cbdc1ffd..1ad2e5492921 100644
+--- a/src/Mod/CAM/PathSimulator/AppGL/CMakeLists.txt
++++ b/src/Mod/CAM/PathSimulator/AppGL/CMakeLists.txt
+@@ -26,7 +26,7 @@ set(CAMSimulator_LIBS
+     FreeCADApp
+     FreeCADGui
+     ${QtOpenGL_LIBRARIES}
+-    ${OPENGL_gl_LIBRARY}
++    ${OPENGL_opengl_LIBRARY}
+ )
+ 
+ SET(CAMSimulator_SRCS_Python

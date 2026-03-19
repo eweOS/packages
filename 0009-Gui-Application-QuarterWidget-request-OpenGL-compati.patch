@@ -1,0 +1,74 @@
+From b3e8ed7814ac54598474a2f20ea56ea5420c44ea Mon Sep 17 00:00:00 2001
+From: Sami Liedes <sami.liedes@iki.fi>
+Date: Tue, 30 Sep 2025 02:22:29 +0200
+Subject: [PATCH] Gui/Application, QuarterWidget: request OpenGL compatibility
+ profile (#23768)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+On Wayland with Qt, the default OpenGL context often ends up being
+OpenGL ES. ES is a stricter API based on the "core" profile and lacks
+many legacy functions (e.g. glEnd). FreeCAD relies on some of these
+functions, which work under Mesa’s permissive stack but fail outright
+with NVIDIA’s proprietary drivers, resulting in a blank 3D view.
+
+Fix this by explicitly requesting a desktop OpenGL compatibility
+profile both before QApplication creation and in QuarterWidget. This
+ensures the presence of the legacy entry points required by Coin/SoQt.
+
+(NB: both requests appear to be necessary; a single change was not
+sufficient in testing.)
+---
+ src/Gui/Application.cpp           | 7 +++++++
+ src/Gui/Quarter/QuarterWidget.cpp | 9 +++++++++
+ 2 files changed, 16 insertions(+)
+
+diff --git a/src/Gui/Application.cpp b/src/Gui/Application.cpp
+index 9166183fab0a..0ec6a3998027 100644
+--- a/src/Gui/Application.cpp
++++ b/src/Gui/Application.cpp
+@@ -35,6 +35,7 @@
+ #include <QScreen>
+ #include <QStatusBar>
+ #include <QStyle>
++#include <QSurfaceFormat>
+ #include <QTextStream>
+ #include <QTimer>
+ #include <QWindow>
+@@ -2383,6 +2384,12 @@ void Application::runApplication()
+ {
+     StartupProcess::setupApplication();
+ 
++    QSurfaceFormat fmt;
++    fmt.setRenderableType(QSurfaceFormat::OpenGL);
++    fmt.setProfile(QSurfaceFormat::CompatibilityProfile);
++    fmt.setOption(QSurfaceFormat::DeprecatedFunctions, true);
++    QSurfaceFormat::setDefaultFormat(fmt);
++
+     // A new QApplication
+     Base::Console().log("Init: Creating Gui::Application and QApplication\n");
+ 
+diff --git a/src/Gui/Quarter/QuarterWidget.cpp b/src/Gui/Quarter/QuarterWidget.cpp
+index b69b87ca5d8a..eb4867361890 100644
+--- a/src/Gui/Quarter/QuarterWidget.cpp
++++ b/src/Gui/Quarter/QuarterWidget.cpp
+@@ -160,6 +160,15 @@ public:
+         //surfaceFormat.setMajorVersion(3);
+         //surfaceFormat.setMinorVersion(2);
+         //surfaceFormat.setProfile(QSurfaceFormat::CoreProfile);
++
++        // On Wayland, we typically get a core profile unless we explicitly
++        // request a compatibility profile. On llvmpipe, this still seems to
++        // "just work" even if out of spec; on proprietary Nvidia drivers, it
++        // does not.
++        surfaceFormat.setRenderableType(QSurfaceFormat::OpenGL);
++        surfaceFormat.setProfile(QSurfaceFormat::CompatibilityProfile);
++        surfaceFormat.setOption(QSurfaceFormat::DeprecatedFunctions, true);
++
+ #if defined (_DEBUG) && 0
+         surfaceFormat.setOption(QSurfaceFormat::DebugContext);
+ #endif
+-- 
+2.53.0
+
