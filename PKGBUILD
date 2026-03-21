@@ -3,7 +3,7 @@
 pkgname=hyphen
 pkgver=2.8.8
 _majorminorver=${pkgver%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for high quality hyphenation and justification'
 url='https://sourceforge.net/projects/hunspell/files/Hyphen'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,6 +12,12 @@ depends=(musl)
 provides=(libhyphen.so)
 source=("https://sourceforge.net/projects/hunspell/files/Hyphen/$_majorminorver/hyphen-$pkgver.tar.gz")
 sha256sums=('304636d4eccd81a14b6914d07b84c79ebb815288c76fe027b9ebff6ff24d5705')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+
+	autoreconf -fiv
+}
 
 build() {
 	cd "$pkgname-$pkgver"
