@@ -9,7 +9,7 @@ url='Cross-Platform'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-2.0-or-later WITH WxWindows-exception-3.1)
 depends=(musl gtk3 libjpeg libpng libtiff libwebp zlib-ng expat libsecret
-	 sdl2 libnotify gstreamer pcre2 nanosvg)
+	 sdl2 libnotify gstreamer pcre2 nanosvg webkit2gtk-4.1)
 makedepends=(gstreamer-devel gst-plugins-bad cmake samurai)
 # 0001: Taken from Alpine Linux, define macro wrappers to provide _l variants
 #	for string functions.
@@ -36,7 +36,6 @@ build() {
 		-DOPENGL_USE_GLES3=ON		\
 		-DOPENGL_USE_OPENGL=ON		\
 		-DwxUSE_SYS_LIBS=ON		\
-		-DwxUSE_WEBVIEW=OFF		\
 		-DwxUSE_SPELLCHECK=OFF		\
 		-DwxUSE_NANOSVG="sys"
 	cmake --build build
