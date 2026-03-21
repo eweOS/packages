@@ -3,7 +3,7 @@
 pkgbase=wxwidgets
 pkgname=(wxwidgets-gtk3)	# TODO: package the QT variant
 pkgver=3.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-Platform C++ GUI Library'
 url='Cross-Platform'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,13 +14,10 @@ makedepends=(gstreamer-devel gst-plugins-bad cmake samurai)
 # 0001: Taken from Alpine Linux, define macro wrappers to provide _l variants
 #	for string functions.
 #	https://git.alpinelinux.org/aports/diff/community/wxwidgets/musl-locale-l.patch?id=cc5b7b05c04630cc1cb3f396604630c98d3b3141
-# 0002: Should be upstreamed, allow OpenGL to be used without GLX
 source=("https://github.com/wxWidgets/wxWidgets/releases/download/v$pkgver/wxWidgets-$pkgver.tar.bz2"
-	0001-Adapt-musl-locale-l.patch
-	0002-build-cmake-Check-for-OpenGL_OpenGL_FOUND-when-searc.patch)
+	0001-Adapt-musl-locale-l.patch)
 sha256sums=('d66e929569947a4a5920699539089a9bda83a93e5f4917fb313a61f0c344b896'
-            '69f2dc1a98fbddf338e301f5d45fdd0a84d3692ec48a83b8f29c39b9ecee9d82'
-            'bcf59d0be84d0720a7af36c3af442af91a3db4ac1caf1ba615b5585c2f7c638f')
+            '69f2dc1a98fbddf338e301f5d45fdd0a84d3692ec48a83b8f29c39b9ecee9d82')
 _srcdir="wxWidgets-$pkgver"
 
 prepare() {
@@ -33,6 +30,11 @@ build() {
 	cmake -S "$_srcdir" -B build -G Ninja \
 		-DCMAKE_BUILD_TYPE=Release	\
 		-DCMAKE_INSTALL_PREFIX=/usr	\
+		-DOPENGL_USE_GLX=OFF		\
+		-DOPENGL_USE_EGL=ON		\
+		-DOPENGL_USE_GLES2=ON		\
+		-DOPENGL_USE_GLES3=ON		\
+		-DOPENGL_USE_OPENGL=ON		\
 		-DwxUSE_SYS_LIBS=ON		\
 		-DwxUSE_WEBVIEW=OFF		\
 		-DwxUSE_SPELLCHECK=OFF		\
