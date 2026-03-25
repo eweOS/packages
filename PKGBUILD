@@ -2,15 +2,15 @@
 
 pkgname=perl-net-ssleay
 _perlname=Net-SSLeay
-pkgver=1.94
-pkgrel=5
+pkgver=1.96
+pkgrel=1
 pkgdesc='Perl bindings for OpenSSL and LibreSSL'
 url='https://metacpan.org/pod/Net::SSLeay'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL PerlArtistic)
 depends=(perl openssl)
 source=("https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-$pkgver.tar.gz")
-sha256sums=('9d7be8a56d1bedda05c425306cc504ba134307e0c09bda4a788c98744ebcd95d')
+sha256sums=('ab213691685fb2a576c669cbc8d9266f8165a31563ad15b7c4030b94adfc0753')
 
 build () {
 	cd "$_perlname-$pkgver"
