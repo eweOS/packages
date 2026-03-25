@@ -1,15 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=autoconf
-pkgver=2.72
-pkgrel=2
+pkgver=2.73
+pkgrel=1
 pkgdesc='A tool that produces shell scripts to automatically configure source code.'
 arch=('any')
 license=(GPL3)
 url="http://www.gnu.org/software/autoconf"
 depends=('busybox' 'm4' 'bash')
 source=("http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-md5sums=('1be79f7106ab6767f18391c5e22be701')
+md5sums=('9cbad9a116ef845bafeed8e7bc771bf4')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
