@@ -2,7 +2,7 @@
 
 pkgname=hdf5
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='HDF5 scientific data model implementation'
 url='https://www.hdfgroup.org/solutions/hdf5/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,11 +15,26 @@ source=("https://github.com/HDFGroup/hdf5/releases/download/$pkgver/hdf5.tar.gz"
 sha256sums=('ce7f5515a95d588b8606c3fb50643f8b88ac52ffbbde9c63bb1edca6a256e964')
 
 build() {
+	local _enable_fortran=ON
+	# flang fails to build the binding on
+	# LoongArch
+	#	[  286s] LLVM ERROR: Cannot select: 0x7fffef2de8c0: f32 = bf16_to_fp 0x7fffef3a4650, tf_gen.F90:243:5 @[ tf_gen.F90:227:7 ]
+	#	...
+	#	[  286s] In function: _QMth5_misc_genPverify_real_kind_3
+	# RISC-V
+	#	flang/lib/Optimizer/CodeGen/Target.cpp:100: not yet implemented:
+	#	passing VALUE BIND(C) derived type for this target
+	#	when compiling H5VLff.F90.
+	case "$CARCH" in
+	riscv64|loongarch64)
+		_enable_fortran=OFF ;;
+	esac
+
 	# TODO: Enable OpenMPI
 	cmake -S "$pkgname-$pkgver" -B build \
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo	\
 		-DCMAKE_INSTALL_PREFIX=/usr		\
-		-DHDF5_BUILD_FORTRAN=ON			\
+		-DHDF5_BUILD_FORTRAN="$_enable_fortran"	\
 		-DHDF5_ONLY_SHARED_LIBS=ON		\
 		-DBUILD_TESTING=ON			\
 
