@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fcitx5
-pkgver=5.1.17
+pkgver=5.1.19
 pkgrel=1
 pkgdesc="Next generation of fcitx"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ depends=('cairo' 'dbus' 'iso-codes' 'libuv' 'libxkbcommon' 'pango' 'wayland' 'gd
 makedepends=('ninja' 'wayland-protocols' 'fmt' 'extra-cmake-modules' 'zstd'
 	     'linux-headers' 'nlohmann-json')
 source=("https://download.fcitx-im.org/fcitx5/fcitx5/fcitx5-${pkgver}_dict.tar.zst")
-sha512sums=('fe3f13d7615ae823b0746bd731d0eac4df90b216c22c186c4f63ab71c0450f38adfa558e906a5493bb5eab873bffea913477c8dcb2ba7055668305cf995e235f')
+sha512sums=('7924fff0e1c5aaa6d9f5b1190e1f0cd9330d53b3dc071322f01b598e10aa08d09f61b4c995bb7b8a233a0130d6d97e38ccb166ef163154926afbdd204bd5fea8')
 
 prepare() {
   _patch_ $pkgname-$pkgver
