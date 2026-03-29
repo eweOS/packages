@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=bubblewrap
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.11.1
+pkgrel=1
 pkgdesc='Unprivileged sandboxing tool'
 url='https://github.com/projectatomic/bubblewrap'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +16,7 @@ makedepends=(
   linux-headers
 )
 source=("git+$url#tag=v$pkgver")
-sha256sums=('7548a7381750f818e35048f9e6b49c96b4e9b991012cad21272df10d47eaa452')
+sha256sums=('bbbd3f98dbac8955d35c5cefce9226953a5a5b7fadbbef2ef0c8a15a9e3fd052')
 
 build() {
   ewe-meson $pkgname build -D selinux=disabled -D man=disabled
