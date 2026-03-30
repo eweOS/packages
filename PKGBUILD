@@ -2,8 +2,8 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=filesystem
-pkgver=1.0.0
-pkgrel=14
+pkgver=2026.03.30
+pkgrel=1
 pkgdesc='The base directory structure and a few core files for the system.'
 arch=(any)
 url='https://os.ewe.moe'
@@ -36,7 +36,7 @@ sha256sums=('e787b373a74594b33b77892a903647d7a6cf519d427a0b0790e11be4482696e0'
             '4cc26708349348ad3520dae0e1046ef3d1b6eb823c9e1361aa24062d785595d8'
             'b4d36eb75767bebb41c5fa7a35599952e1883b3d3f6332496e1561eeb4067018'
             '297b784a25fc59641589c6ef05dc26680e2805e9cab37a4ea3699aa072a25c2e'
-            '6979dc53ed05ebdacc18700025ccf0232e0985f52aa56d31a5515935e03b04eb'
+            '4766ea50f217a7fa61f0acc7729e76d7b8ccaffd591604a4a2eea926b13bc66c'
             'c2c5bcc232314cdad3c452b955fbdb01192ae51ce7c8cab37e216edf4d6483f0'
             'c0fca42f35a4c2034fb2105cdd428f65ecd5d5454fc8e58f5620adbfc0ec9509'
             '95b9288fbefc8af3f6412b1369ca2ee2df6daf038e0c035476c0f6bed27307b5'
