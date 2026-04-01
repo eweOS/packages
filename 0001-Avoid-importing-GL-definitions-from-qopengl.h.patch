@@ -1,0 +1,12 @@
+diff --git a/src/gui/QGLView.h b/src/gui/QGLView.h
+index c7e7d44e3431..b1090b2317c4 100644
+--- a/src/gui/QGLView.h
++++ b/src/gui/QGLView.h
+@@ -1,5 +1,7 @@
+ #pragma once
+ 
++#define QOPENGL_H
++
+ #include "glview/system-gl.h"
+ #include "core/Selection.h"
+ #include "gui/MouseSelector.h"
