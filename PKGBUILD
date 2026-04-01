@@ -7,19 +7,17 @@ pkgrel=1
 pkgdesc="A directory listing program displaying a depth indented list of files"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://mama.indstate.edu/users/ice/tree/"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('musl')
 source=("https://gitlab.com/OldManProgrammer/unix-tree/-/archive/${pkgver}/unix-tree-${pkgver}.tar.gz")
 sha512sums=('c22dd6bd6074f521959d31c3c9adbccec5a039029ca818df8345c7572f5b29b4b7b813e9ce4336cc0d600095130a709f7cbf7f88765a7a1e6894b16701d1fcd9')
 
-build()
-{
+build() {
   cd "unix-tree-${pkgver}"
   make
 }
 
-package()
-{
+package() {
   cd "unix-tree-${pkgver}"
   make PREFIX="${pkgdir}/usr" MANDIR="${pkgdir}/usr/share/man" install
 }
