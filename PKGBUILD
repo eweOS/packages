@@ -4,6 +4,7 @@ pkgbase=pipewire
 pkgname=(
   pipewire libpipewire
   gst-plugin-pipewire
+  pipewire-docs
 )
 pkgver=1.6.2
 pkgrel=1
@@ -14,6 +15,7 @@ license=(MIT)
 makedepends=(
   'alsa-lib'
   'dbus'
+  'doxygen'
   'ffmpeg'
   'glib'
   'gstreamer-devel'
@@ -52,8 +54,8 @@ prepare()
 build()
 {
   local features=(
-    -D man=disabled
-    -D docs=disabled
+    -D docs=enabled
+    -D man=enabled
     -D libsystemd=disabled
     -D logind=disabled
     -D systemd-user-service=disabled
@@ -153,6 +155,7 @@ package_pipewire()
   _pick_ lib usr/lib/lib$_pwname.so*
   _pick_ lib usr/lib/pkgconfig/lib{$_pwname,$_spaname}.pc
   _pick_ gst usr/lib/gstreamer-1.0
+  _pick_ doc usr/share/{man,doc}
 }
 
 package_libpipewire() {
@@ -177,3 +180,10 @@ package_gst-plugin-pipewire() {
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $pkgbase-$pkgver/COPYING
 }
 
+package_pipewire-docs() {
+  depends=()
+  pkgdesc+=' - documentation'
+
+  mv pkgs/doc/* "$pkgdir"
+  _install_license_ "$pkgbase-$pkgver"/COPYING
+}
