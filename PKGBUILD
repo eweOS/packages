@@ -2,7 +2,7 @@
 
 pkgbase=libuv
 pkgname=(libuv libuv-docs)
-pkgver=1.52.0
+pkgver=1.52.1
 pkgrel=1
 pkgdesc="Multi-platform support library with a focus on asynchronous I/O"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ url="https://github.com/libuv/libuv"
 license=('MIT')
 makedepends=(python-sphinx linux-headers)
 source=(https://dist.libuv.org/dist/v$pkgver/libuv-v$pkgver.tar.gz)
-sha256sums=('19fd091a582c39c7ea26dcbb40a7d2e7cf095b070a757b3c32c05de6cfed6638')
+sha256sums=('66d511b9e6e334c0e62279eb234fbfb2b3110b1479c09b95b44c7afca8cff9e7')
 
 build() {
     cd "$pkgbase-v$pkgver"
