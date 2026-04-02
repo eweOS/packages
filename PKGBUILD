@@ -2,7 +2,7 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=texinfo
-pkgver=7.2
+pkgver=7.3
 pkgrel=1
 pkgdesc='GNU documentation system for on-line information and printed output'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ url='https://www.gnu.org/software/texinfo/'
 license=(GPL-3.0-or-later)
 depends=(ncurses perl sh musl)
 source=("https://ftp.gnu.org/pub/gnu/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('0329d7788fbef113fa82cb80889ca197a344ce0df7646fe000974c5d714363a6')
+sha256sums=('51f74eb0f51cfa9873b85264dfdd5d46e8957ec95b88f0fb762f63d9e164c72e')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
