@@ -1,0 +1,55 @@
+From fa546f47cf9239c71964f5cf142fcada71103087 Mon Sep 17 00:00:00 2001
+From: Yao Zi <me@ziyao.cc>
+Date: Sun, 5 Apr 2026 18:12:04 +0000
+Subject: [PATCH] sat: bmc: Explicitly include stdint.h if necessary
+
+Explicitly include stdint.h for files using int64_t, instead of manually
+defining the type on Windows, or relying on recursively included headers
+on other platforms, which at least breaks on Linux systems based on musl
+libc.
+
+Fixes: 38c2bec1ff98 ("Adding support for Kissat in "lutexact".")
+Fixes: b7f8df09419b ("Command "andexact".")
+Signed-off-by: Yao Zi <me@ziyao.cc>
+---
+ src/sat/bmc/bmcMaj8.c | 5 +----
+ src/sat/bmc/bmcMaj9.c | 7 +------
+ 2 files changed, 2 insertions(+), 10 deletions(-)
+
+diff --git a/src/sat/bmc/bmcMaj8.c b/src/sat/bmc/bmcMaj8.c
+index 5b65fbbbf4a6..663a5fdfc527 100644
+--- a/src/sat/bmc/bmcMaj8.c
++++ b/src/sat/bmc/bmcMaj8.c
+@@ -27,10 +27,7 @@
+ #include "base/main/main.h"
+ #include "base/cmd/cmd.h"
+ 
+-#ifdef _WIN32
+-#include <windows.h>
+-typedef __int64 int64_t;
+-#endif
++#include <stdint.h>
+ 
+ #define KISSAT_UNSAT 20
+ #define KISSAT_SAT   10
+diff --git a/src/sat/bmc/bmcMaj9.c b/src/sat/bmc/bmcMaj9.c
+index ea8ac9d17dad..f3187f144d8a 100644
+--- a/src/sat/bmc/bmcMaj9.c
++++ b/src/sat/bmc/bmcMaj9.c
+@@ -27,12 +27,7 @@
+ #include "base/main/main.h"
+ #include "base/cmd/cmd.h"
+ 
+-#ifdef _WIN32
+-#include <windows.h>
+-typedef __int64 int64_t;
+-#else
+-#include <unistd.h>
+-#endif
++#include <stdint.h>
+ #include <limits.h>
+ 
+ #define KISSAT_UNSAT 20
+-- 
+2.53.0
+
