@@ -1,15 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=jsoncpp
-pkgver=1.9.6
-pkgrel=2
+pkgver=1.9.7
+pkgrel=1
 pkgdesc='C++ library for interacting with JSON'
 url='https://github.com/open-source-parsers/jsoncpp'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('MIT' 'custom:Public_Domain')
 makedepends=('python' 'meson')
 source=($url/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('f93b6dd7ce796b13d02c108bc9f79812245a82e577581c4c9aabe57075c90ea2')
+sha256sums=('830bf352d822d8558e9d0eb19d640d2e38536b4b6699c30a4488da09d5b1df18')
 
 build() {
   cd ${pkgname}-${pkgver}
