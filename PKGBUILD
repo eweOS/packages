@@ -14,13 +14,6 @@ _tag=virglrenderer-$pkgver
 source=(virglrenderer-$pkgver.tar.bz2::https://gitlab.freedesktop.org/virgl/virglrenderer/-/archive/$_tag/virglrenderer-$_tag.tar.bz2)
 sha256sums=('a3486ff05c01d6a091176128d569138b01a36f173d56fd3195f1f24e4551be87')
 
-prepare() {
-  # tests fails on riscv64
-  if [ "$CARCH" == "riscv64" ]; then
-    sed -i '/test_virgl_transfer/d; /test_virgl_resource/d' "virglrenderer-$_tag/tests/meson.build"
-  fi
-}
-
 build() {
   ewe-meson virglrenderer-$_tag build \
     -Dvideo=true \
