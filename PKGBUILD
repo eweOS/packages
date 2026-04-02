@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=yosys-abc
-pkgver=0.54
+pkgver=0.63
 pkgrel=1
 pkgdesc="System for Sequential Logic Synthesis and Formal Verification (Yosys' fork)"
 url='https://github.com/YosysHQ/abc'
@@ -13,7 +13,7 @@ provides=(abc libabc.so)
 #	https://github.com/YosysHQ/abc/pull/38
 source=("https://github.com/YosysHQ/abc/archive/refs/tags/v$pkgver.tar.gz"
 	"0001-Makefile-Respect-LDFLAGS-when-linking-shared-library.patch")
-sha256sums=('39240d49aaffe058c33dc39b8bc70342cfefe360293ad3d053c1acf2ff6926d0'
+sha256sums=('a3f4a762e5dfcc201e03d9858fbe320277eea50eaf8922d3efbffe749fa71653'
             '406192b2109abc76820ccd9e9f16142da1696b517593dca5ef642a8a10a81aff')
 
 prepare() {
