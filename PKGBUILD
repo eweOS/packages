@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=yosys-abc
-pkgver=0.54
+pkgver=0.63
 pkgrel=1
 pkgdesc="System for Sequential Logic Synthesis and Formal Verification (Yosys' fork)"
 url='https://github.com/YosysHQ/abc'
@@ -10,11 +10,16 @@ license=("custom: ABC")
 depends=(musl llvm-libs readline)
 provides=(abc libabc.so)
 # 0001: Under review, fix shared-library linking when LTO is enabled
-#	https://github.com/YosysHQ/abc/pull/38
+#	https://github.com/berkeley-abc/abc/pull/495
+# 0002: Under review, fix unknown type "int64_t" because of missing include of
+#	stdint.h.
+#	https://github.com/berkeley-abc/abc/pull/494
 source=("https://github.com/YosysHQ/abc/archive/refs/tags/v$pkgver.tar.gz"
-	"0001-Makefile-Respect-LDFLAGS-when-linking-shared-library.patch")
-sha256sums=('39240d49aaffe058c33dc39b8bc70342cfefe360293ad3d053c1acf2ff6926d0'
-            '406192b2109abc76820ccd9e9f16142da1696b517593dca5ef642a8a10a81aff')
+	"0001-Makefile-Respect-LDFLAGS-when-linking-shared-library.patch"
+	"0002-sat-bmc-Explicitly-include-stdint.h-if-necessary.patch")
+sha256sums=('a3f4a762e5dfcc201e03d9858fbe320277eea50eaf8922d3efbffe749fa71653'
+            '406192b2109abc76820ccd9e9f16142da1696b517593dca5ef642a8a10a81aff'
+            'a9ad6b5d1f06d7ea77b18ae0ddac4b3c37c478d731ad4c2f9171abed3d3c5e69')
 
 prepare() {
 	_patch_ "abc-$pkgver"
