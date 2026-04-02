@@ -3,8 +3,8 @@
 
 pkgbase=util-linux
 pkgname=(util-linux util-linux-libs)
-pkgver=2.41.3
-pkgrel=2
+pkgver=2.42
+pkgrel=1
 pkgdesc='Miscellaneous system utilities for Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://github.com/karelzak/util-linux
@@ -26,6 +26,8 @@ makedepends=('meson' 'pam' 'bash-completion' 'linux-headers' 'utmps')
 #	without rebuilding the program).
 # 0002: Downstream, drop -r arguments when creating symlinks, which busybox ln
 #	doesn't support.
+# 0003: Backport 5452239f6e69 ("nsenter: Fix AT_HANDLE_FID on musl") to work
+#	around missing constant AT_HANDLE_FID on musl libc.
 source=(
   "util-linux-${pkgver}.tar.gz::https://github.com/karelzak/util-linux/archive/refs/tags/v${pkgver}.tar.gz"
   $pkgbase-BSD-2-Clause.txt::https://raw.githubusercontent.com/Cyan4973/xxHash/f035303b8a86c1db9be70cbb638678ef6ef4cb2d/LICENSE
@@ -33,8 +35,9 @@ source=(
   'util-linux.sysusers'
   0001-login-disable-motd-display.patch
   0002-meson-create-executable-link-with-sf.patch
+  0003-nsenter-Fix-AT_HANDLE_FID-on-musl.patch
 )
-sha256sums=('25dc2fd70c6b6bec1c0c97cb11636edd2d5b2645df2324eef4820db3677bd412'
+sha256sums=('ae5db06b513ac5d42b91e131f26aa8b59da6b623eeb948567cc7a7cb2c13ccb2'
             '6ffedbc0f7878612d2b23589f1ff2ab15633e1df7963a5d9fc750ec5500c7e7a'
             'ee917d55042f78b8bb03f5467e5233e3e2ddc2fe01e302bc53b218003fe22275'
             '57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af'
@@ -43,7 +46,8 @@ sha256sums=('25dc2fd70c6b6bec1c0c97cb11636edd2d5b2645df2324eef4820db3677bd412'
             '3f54249ac2db44945d6d12ec728dcd0d69af0735787a8b078eacd2c67e38155b'
             '4a0b3dd8aa6d34dd29e1d153f396cacf908b0d64f7218276cbcab684587c0a0a'
             'e6c85264cd78d5bb72957e88a1c4fb18687818cc1010e0e69e6e7bc8f9083ea6'
-            '86ce89749d78ae7802d598e9a456787ff7200a83163e513b817650c3dfb5d5eb')
+            '86ce89749d78ae7802d598e9a456787ff7200a83163e513b817650c3dfb5d5eb'
+            '8938f94ef26f6db54b0726b9d3f987ccf3e6bf462b26b8393f01ec71510ecae3')
 
 prepare() {
   _patch_ "$pkgbase-$pkgver"
@@ -74,6 +78,8 @@ build() {
     -Dbuild-newgrp=enabled
     -Dbuild-vipw=enabled
     -Dbuild-write=enabled
+
+    -Dbuild-getino=disabled
   )
   # We need -Wl,--as-needed to avoid overlinking, i.e., executables that don't
   # make use of UTMP functions get linked to libutmps.so. -Wl,--as-needed is
