@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wl-clipboard
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Command-line copy/paste utilities for Wayland"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/bugaevc/wl-clipboard"
@@ -14,7 +14,7 @@ optdepends=(
 )
 makedepends=('meson' 'wayland-protocols')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bugaevc/wl-clipboard/archive/v$pkgver.tar.gz")
-sha256sums=('6eb8081207fb5581d1d82c4bcd9587205a31a3d47bea3ebeb7f41aa1143783eb')
+sha256sums=('b4dc560973f0cd74e02f817ffa2fd44ba645a4f1ea94b7b9614dacc9f895f402')
 
 build() {
     ewe-meson "$pkgname-$pkgver" build
