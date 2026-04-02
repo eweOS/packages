@@ -1,0 +1,12 @@
+diff --git a/font/ttfsrc/Makefile b/font/ttfsrc/Makefile
+index ea6115045267..66124593027d 100644
+--- a/font/ttfsrc/Makefile
++++ b/font/ttfsrc/Makefile
+@@ -125,7 +125,6 @@ sbit: $(FONTFILE).bdf
+ 	    Generate($$2, "ttf"); \
+ 	    Close()' \
+ 	   $(FONTFILE).bdf $(FONTFILE).ttf
+-	rm -f $(FONTFILE).bdf
+ 
+ #
+ # Delete files copied into this directory to build TTF fonts.
