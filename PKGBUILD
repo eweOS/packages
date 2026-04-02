@@ -1,12 +1,12 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgbase=gstreamer
-pkgname=(gstreamer gstreamer-devel gstreamer-vaapi
+pkgname=(gstreamer gstreamer-devel
 	 gst-plugins-base gst-plugins-good gst-plugins-bad
 	 gst-plugin-gtk gst-plugin-qml6 gst-plugin-qsv gst-plugin-va
 	 gst-libav gst-rtsp-server gst-editing-services gst-python)
-pkgver=1.26.10
-pkgrel=3
+pkgver=1.28.1
+pkgrel=1
 pkgdesc='GStreamer multimedia framework'
 url='https://gstreamer.freedesktop.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -22,14 +22,14 @@ makedepends=(meson samurai glib2 gobject-introspection libdrm python-gobject
 	     libaom libbz2 curl fluidsynth gsm libopus libsndfile libxml2
 	     libsrt libwebp x265 openal-soft openexr libjpeg librsvg
 	     vulkan-icd-loader libass lcms2 openjpeg2 qt6-base-devel
-	     json-glib ffmpeg svt-av1 mpg123 taglib zxing-cpp)
+	     json-glib ffmpeg svt-av1 mpg123 taglib zxing-cpp orc)
 # During FD.o migration, temporarily switch to GitHub mirror
 # source=("https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/$pkgver/gstreamer-$pkgver.tar.gz")
 # 0001: Dirty, respect RUSTFLAGS in rust devtools to avoid LTO failures
 #	should be upstreamed
 source=("https://github.com/GStreamer/gstreamer/archive/refs/tags/$pkgver.tar.gz"
 	"0001-dots-viewer-respect-envvars.patch")
-sha256sums=('2839c9fa70fd4775d16bf4aa77cf339ca2f59b8e34b0944a832ad56db851b37f'
+sha256sums=('97fee2ed866d087cd0f0cecbb3b955d18145bda22c8ae4d3a04603c6a055e8a6'
             'b0203e26b33b6aaf0970511c16a91dbe294d02c97d9e8172f9f52acb6ee12e72')
 
 prepare () {
@@ -130,6 +130,7 @@ build () {
 		-Dgst-plugins-bad:microdns=disabled
 		-Dgst-plugins-bad:modplug=disabled
 		-Dgst-plugins-bad:mpeg2enc=disabled
+		-Dgst-plugins-bad:mpeghdec=disabled
 		-Dgst-plugins-bad:mplex=disabled
 		-Dgst-plugins-bad:musepack=disabled
 		-Dgst-plugins-bad:neon=disabled
@@ -155,12 +156,16 @@ build () {
 		-Dgst-plugins-bad:svthevcenc=disabled	# missing SvtHevcEnc
 		-Dgst-plugins-bad:svtjpegxs=disabled
 		-Dgst-plugins-bad:teletext=disabled	# missing zsbi
+		-Dgst-plugins-bad:tflite=disabled
 		-Dgst-plugins-bad:udev=disabled # gudev
+		-Dgst-plugins-bad:vmaf=disabled
 		-Dgst-plugins-bad:voaacenc=disabled
 		-Dgst-plugins-bad:voamrwbenc=disabled
 		-Dgst-plugins-bad:webrtc=disabled
 		-Dgst-plugins-bad:webrtcdsp=disabled
 		-Dgst-plugins-bad:wildmidi=disabled
+		-Dgst-plugins-bad:wpe=disabled
+		-Dgst-plugins-bad:wpe2=disabled
 		-Dgst-plugins-bad:zbar=disabled		# missing zbar
 	)
 
@@ -176,11 +181,6 @@ build () {
 	# TODO: Enable the viewer when single-instance is dropped/upgraded.
 	[ "$CARCH" = loongarch64 ] &&
 		devtools_opt+=(-Dgst-devtools:dots_viewer=disabled)
-
-	local vaapi_opt=(
-		-Dgstreamer-vaapi:x11=disabled
-		-Dgstreamer-vaapi:glx=disabled
-	)
 
 	if check_option lto y; then
 		export RUSTFLAGS="$RUSTFLAGS -Clinker-plugin-lto -Clink-arg=-flto"
@@ -200,7 +200,6 @@ build () {
 		-Dges=enabled						\
 		-Drtsp_server=enabled					\
 		-Drs=disabled						\
-		-Dvaapi=enabled						\
 		-Dgst-examples=disabled					\
 		-Dpython=enabled					\
 		-Dsharp=disabled					\
@@ -223,7 +222,6 @@ build () {
 		${plugins_base_opt[@]}					\
 		${plugins_good_opt[@]}					\
 		${plugins_bad_opt[@]}					\
-		${vaapi_opt[@]}						\
 		${devtools_opt[@]}					\
 		-Dpackage-name="eweOS Linux GStreamer $pkgver-$pkgrel"	\
 		-Dpackage-origin="https://os.ewe.moe/"
@@ -317,10 +315,6 @@ _modules_gst_plugin_gtk=(gtk gtkwayland)
 
 _modules_gst_plugin_qml6=(qml6)
 
-#====================== gstreamer-vaapi
-
-_modules_gstreamer_vaapi=(vaapi)
-
 #====================== gst-plugin-qsv
 
 _modules_gst_plugin_qsv=(qsv)
@@ -359,6 +353,7 @@ _files_gst_python=(
 ##########################################
 
 package_gstreamer() {
+	conflicts=('gstreamer-vaapi<=1.26.10-3')
 	meson install -C build --destdir "$pkgdir"
 
 	cd $pkgdir
@@ -405,7 +400,7 @@ package_gst-plugins-base() {
 	depends=(musl gstreamer="$pkgver-$pkgrel" libdrm libglvnd glib wayland
 		 zlib-ng)
 	depends+=(alsa-lib cairo graphene harfbuzz libjpeg libogg libopus
-		  pango libpng libvorbis iso-codes)
+		  pango libpng libvorbis iso-codes orc)
 	do_install
 }
 
@@ -414,7 +409,7 @@ package_gst-plugins-good() {
 	depends=(${_plugin_depends[*]})
 	depends+=(libflac libglvnd at-spi2-core libbz2 llvm-libs musl cairo
 		  libgcrypt gdk-pixbuf glib harfbuzz libjpeg pango libpng taglib
-		  libpulse libvpx wayland libxml2 zlib-ng lame libsoup3 mpg123)
+		  libpulse libvpx wayland libxml2 zlib-ng lame libsoup3 mpg123 orc)
 	do_install
 }
 
@@ -427,7 +422,7 @@ package_gst-plugins-bad() {
 	depends+=(openexr imath libaom libass at-spi2-core libbz2 cairo openssl
 		  curl gdk-pixbuf gsm harfbuzz lcms2 openal-soft openjpeg2
 		  libopus pango librsvg libsndfile libsrt libwebp libx265
-		  libxml2 svt-av1)
+		  libxml2 svt-av1 orc)
 	do_install
 }
 
@@ -454,6 +449,7 @@ package_gst-plugin-qml6() {
 
 package_gst-plugin-va() {
 	pkgdesc+=" - va plugin"
+	replaces=('gstreamer-vaapi<=1.26.10-3')
 	depends=(${_plugin_depends[*]})
 	depends+=(libva)
 	do_install
@@ -462,21 +458,14 @@ package_gst-plugin-va() {
 package_gst-rtsp-server() {
 	pkgdesc+=" - rtsp server"
 	depends=(${_plugin_depends[*]})
-	depends+=(zlib)
+	depends+=(zlib orc)
 	do_install
 }
 
 package_gst-editing-services() {
 	pkgdesc+=" - editing services"
 	depends=(${_plugin_depends[*]})
-	depends+=(json-glib libxml2 python python-gobject zlib)
-	do_install
-}
-
-package_gstreamer-vaapi() {
-	pkgdesc+=" - vaapi plugin"
-	depends=(${_plugin_depends[*]})
-	depends+=(libglvnd libva wayland)
+	depends+=(json-glib libxml2 python python-gobject zlib orc)
 	do_install
 }
 
