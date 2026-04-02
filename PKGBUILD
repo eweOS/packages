@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libplacebo
-pkgver=7.351.0
-pkgrel=3
+pkgver=7.360.0
+pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives'
 url='https://github.com/haasn/libplacebo'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,21 +14,8 @@ makedepends=(
   'libglvnd' 'fast_float'
 )
 provides=('libplacebo.so')
-# 0001: Backport, Python introduced breaking change to xml.etree.ElementTree,
-#	which is later backported to 3.13 and breaks libpalcebo building.
-#	https://github.com/python/cpython/pull/135643
-#	libplacebo issue https://github.com/haasn/libplacebo/issues/335
-#
-#	However, differing from the commit message, Python 3.13.6 and later
-#	3.13 releases are also affected.
-source=("https://code.videolan.org/videolan/libplacebo/-/archive/v${pkgver}/libplacebo-v${pkgver}.tar.gz"
-	0001-vulkan-utils_gen-fix-for-python-3.14.patch)
-sha512sums=('325e14b783aafdd0120abc6125d3949d60e2336fba3cd8d9aefececf93005a8333e5e6c53d6e54bb4c19e4a29981c9014f303fb48b5b89383ca948f64e7e6449'
-            '3def24ce5707c9851949dab430b82693c34ef1ecc1cd7227fb9723778ef0181a90dff6015602441a1b200904b601e2d6d97ce55750d8f026d03655cc2097c1f5')
-
-prepare() {
-  _patch_ "$pkgname-v$pkgver"
-}
+source=("https://code.videolan.org/videolan/libplacebo/-/archive/v${pkgver}/libplacebo-v${pkgver}.tar.gz")
+sha512sums=('61dc54e673e2d454e761768f77a3f45eeaba6bc70d4f925fa880c63ba69c9ce70b0cc7006a96f59c4abcf26e998c91ee2e04eb66b87c39eba3d09fafda7a2117')
 
 build() {
   cd "$pkgname-v$pkgver"
