@@ -1,14 +1,14 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xz
-pkgver=5.8.2
+pkgver=5.8.3
 pkgrel=1
 pkgdesc='Library and command line tools for XZ and LZMA compressed files'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL-2.0-or-later' 'GPL-3.0-or-later' 'LGPL-2.1-or-later' '0BSD')
 provides=('liblzma.so')
 source=("https://tukaani.org/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ce09c50a5962786b83e5da389c90dd2c15ecd0980a258dd01f70f9e7ce58a8f1')
+sha256sums=('3d3a1b973af218114f4f889bbaa2f4c037deaae0c8e815eec381c3d546b974a0')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
