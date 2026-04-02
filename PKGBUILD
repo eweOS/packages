@@ -30,7 +30,8 @@ build() {
 }
 
 check() {
-  VRENDTEST_USE_EGL_SURFACELESS=1 LIBGL_ALWAYS_SOFTWARE=1 meson test -C build
+  VRENDTEST_USE_EGL_SURFACELESS=1 LIBGL_ALWAYS_SOFTWARE=1 \
+    meson test -C build -t 5
 }
 
 package() {
