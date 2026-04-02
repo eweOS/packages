@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=cryptsetup
-pkgver=2.8.3
+pkgver=2.8.4
 pkgrel=1
 pkgdesc='Userspace setup tool for transparent encryption of block devices using dm-crypt'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ makedepends=('util-linux' 'linux-headers' 'git')
 provides=('libcryptsetup.so')
 options=('!emptydirs')
 source=("https://www.kernel.org/pub/linux/utils/cryptsetup/v${pkgver%.*}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('4a8a23b8b9d1a3250452e40acead4421a03e45a38954ad0595634f4266aa800f')
+sha256sums=('443e46f8964c9acc780f455afbb8e23aa0e8ed7ec504cfc59e04f406fa1e8a83')
 
 build() {
   cd $pkgname-$pkgver
