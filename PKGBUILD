@@ -5,7 +5,7 @@ pkgname=(
   librsvg
   librsvg-docs
 )
-pkgver=2.62.0
+pkgver=2.62.1
 pkgrel=1
 pkgdesc="SVG rendering library"
 url="https://wiki.gnome.org/Projects/LibRsvg"
@@ -33,7 +33,7 @@ makedepends=(
 )
 checkdepends=(ttf-dejavu)
 source=("https://gitlab.gnome.org/GNOME/librsvg/-/archive/$pkgver/librsvg-$pkgver.tar.gz")
-sha256sums=('b63d70e672e6f7135b32a8e9bd71f257c6fb6d132509a3896c7c886a678bb31c')
+sha256sums=('b43856d3caba86e6152e6004d6653ba2c7a48e7ac58eba9745850526c61d274d')
 
 prepare() {
   cd librsvg-$pkgver
