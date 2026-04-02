@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=libaom
-pkgver=3.13.1
-pkgrel=2
+pkgver=3.13.2
+pkgrel=1
 pkgdesc='Alliance for Open Media (AOM) AV1 codec SDK.'
 url='https://aomedia.googlesource.com/aom/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -17,20 +17,14 @@ makedepends=(perl cmake nasm)
 #	Since pacman will strip static library away, if we keep static library
 #	targets, consumer of libaom built with CMake may fail to import
 #	corresponding static targets.
-# 0003: Backport, 6d2b7f71b98b ("cmake: fix nasm detection w/3.0")
-#	Fix compatibility with NASM 3.0 or later, which doesn't include
-#	optimization flags in output of "-hf", thus without the patch detection
-#	of support for "-Ox" flag will always fail.
 source=(
 	"https://storage.googleapis.com/aom-releases/libaom-$pkgver.tar.gz"
 	0001-define-_POSIX_C_SOURCE-for-ftello.patch
 	0002-Don-t-install-static-libraries.patch
-	0003-cmake-fix-nasm-detection-w-3.0.patch
 )
-sha256sums=('19e45a5a7192d690565229983dad900e76b513a02306c12053fb9a262cbeca7d'
+sha256sums=('634039cc79c3a3307206b6c25ea759abc0e734c6f4ac14f6dbea5694e46af837'
             'ebebbb193c5971234980dec3facf97015c1b32750bb9f913710d2cee5f98765d'
-            'd381256ef8b042b98d5da8c1b77775e6cabfbfc2b2a03d75e3e5bf9b37ba45d3'
-            '87c5dbf391b1b9fbad770066d186bb9751f0a729d5f38b7cf66b6e3d468a5590')
+            'd381256ef8b042b98d5da8c1b77775e6cabfbfc2b2a03d75e3e5bf9b37ba45d3')
 
 prepare() {
   _patch_ libaom-$pkgver
