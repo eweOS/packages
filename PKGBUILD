@@ -2,12 +2,12 @@
 
 pkgname=nodejs
 pkgver=25.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='JavaScript runtime'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://nodejs.org/'
 license=('MIT')
-depends=('musl' 'llvm-libs' 'brotli' 'openssl' 'zlib' 'icu' 'libuv' 'libnghttp2' 'c-ares')
+depends=('musl' 'llvm-libs' 'brotli' 'openssl' 'zlib' 'icu' 'libuv' 'libnghttp2' 'c-ares' 'ada-url' 'zstd')
 makedepends=('git' 'python' 'linux-headers')
 optdepends=('npm: package manager')
 # 0001: Should be upstreamed, don't link libatomic for targets without
@@ -39,7 +39,9 @@ build() {
     --experimental-http-parser \
     --shared-nghttp2 \
     --shared-cares \
-    --shared-brotli
+    --shared-brotli \
+    --shared-ada \
+    --shared-zstd
 
   make
 }
