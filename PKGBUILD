@@ -2,14 +2,14 @@
 
 pkgname=zed
 pkgver=0.191.6
-pkgrel=2
+pkgrel=3
 _livekit_commit=3119b6ac0ef5e705b3e92630c8e558648f0892ed
 _scap_commit=08f0a01417505cc0990b9931a37e5120db92e0d0
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64 aarch64 riscv64)
 url='https://zed.dev'
 license=(GPL-3.0-or-later AGPL-3.0-or-later Apache-2.0)
-depends=(alsa-lib curl dbus fontconfig llvm-libs libxkbcommon musl nodejs openssl
+depends=(alsa-lib curl dbus fontconfig llvm-libs libgit2 libxkbcommon musl nodejs openssl
          pipewire sqlite vulkan-driver vulkan-icd-loader wayland zlib zstd)
 makedepends=(rust clang lld cargo cargo-about cmake git gn ninja protobuf libpulse
              python-httplib2 linux-headers bsd-compat-headers vulkan-headers)
@@ -107,6 +107,10 @@ build() {
   )
   export LK_CUSTOM_WEBRTC="$(pwd)/linux-$_google_arch-release"
   popd
+
+  export LIBGIT2_NO_VENDOR=1
+  export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+  export ZSTD_SYS_USE_PKG_CONFIG=1
 
   # `release-fast` profile disables LTO
   cargo build --profile release-fast --frozen --package zed --package cli
