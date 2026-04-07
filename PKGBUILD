@@ -2,8 +2,8 @@
 pkgbase=linux-tools
 pkgname=(bpftool tmon perf)
 groups=($pkgbase)
-pkgver=6.18.8
-pkgrel=2
+pkgver=6.19.11
+pkgrel=1
 pkgdesc='Linux kernel tools'
 license=(GPL-2.0-only)
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -33,7 +33,7 @@ makedepends=(linux-headers asciidoc xmlto readline zlib libcap libelf python-doc
 makedepends_x86_64=(libnl libcap)
 source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz
         0001-bpftool-disable-bpf_jit_disasm.patch)  # downstream
-sha256sums=('37f0c5d5c242c1d604e87d48f08795e861a5a85f725b4ca11d0a538f12ff8cff'
+sha256sums=('20039d7b6b256c08be2f8fac43c3ff9a620308c703c643cf2f80c3910b9bd59b'
             'bd265ad84c3cc2e468d66582d245134cdc6c427562ae2f34ea948a4ad7d1e1d7')
 
 case $CARCH in
