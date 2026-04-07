@@ -1,7 +1,7 @@
 # Maintainer: Julian Droske <juliandroske@outlook.com>
 
 pkgname=7zip
-pkgver=25.01
+pkgver=26.00
 pkgrel=1
 pkgdesc="Command-line file archiver with high compression ratio"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -25,10 +25,8 @@ source=(
   'https://www.7-zip.org/a/7z2501-src.tar.xz'
   '0001-adjust-7z.so-load-path-for-eweos.patch'
 )
-sha256sums=(
-  'ed087f83ee789c1ea5f39c464c55a5c9d4008deb0efe900814f2df262b82c36e'
-  '9d3604f51ddcdee78631c31d90e93949cb41772a91f6d9b98b8fac5dc90a028a'
-)
+sha256sums=('ed087f83ee789c1ea5f39c464c55a5c9d4008deb0efe900814f2df262b82c36e'
+            '9d3604f51ddcdee78631c31d90e93949cb41772a91f6d9b98b8fac5dc90a028a')
 
 prepare(){
   _patch_ .
