@@ -6,7 +6,7 @@ pkgname=(qemu-user-static
 	 qemu-user-static-{mips64el,mipsel,ppc,ppc64,riscv32,riscv64,s390x}
 	 qemu-user-static-{sparc,sparc64,x86_64})
 pkgver=10.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='QEMU user mode emulation (static build)'
 url='https://www.qemu.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
