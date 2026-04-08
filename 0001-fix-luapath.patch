@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 353d592d4eb6..50d4a4695213 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -85,7 +85,7 @@ function(_RESOLVE_LIBRARY_PATH _FILE_NAME _LIBRARY_PATH)
+ endfunction()
+ 
+ if(USE_DLOPEN)
+-    _RESOLVE_LIBRARY_PATH(LUA_LIBRARY_PATH ${FCITX_LUA_LIBRARY_PATH})
++    set(LUA_LIBRARY_PATH ${FCITX_LUA_LIBRARY_PATH})
+ endif()
+ 
+ configure_file(config.h.in config.h)
