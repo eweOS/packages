@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fcitx5-lua
-pkgver=5.0.15
+pkgver=5.0.16
 pkgrel=1
 pkgdesc="Lua support for Fcitx 5"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('fcitx5' 'lua')
 makedepends=('git' 'extra-cmake-modules' 'ninja')
 source=("git+https://github.com/fcitx/fcitx5-lua.git#tag=$pkgver" fix-luapath.patch)
-sha512sums=('604c645a14f54e515a865bc976572fe48218edf2c54a7b6d30f21894531a38f676026e12e180a122ef31c6f929616e7bed9cb62a176c6ea5ab32ed0792154090'
+sha512sums=('4eb517abad3c0f0d17cb11873d54e6801f2d802900d4c8d7f28e223a3ba767a7785dc7f0d1c885377a6c94312d70faf9555ab1d52623c94b58b59068490dc260'
             '8617ee26953d006cfa0d98608eaf91c1f577388c7500e6466b06de64317d2f6ef1a3fe23aede0e90ccfd5d568cc19f863d868e27fc65d9a8d7179286f3e7c19a')
 
 prepare() {
