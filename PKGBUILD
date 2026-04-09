@@ -2,7 +2,7 @@
 
 pkgname=frei0r-plugins
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Collection of video effect plugins'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://frei0r.dyne.org/'
