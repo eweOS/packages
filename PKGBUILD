@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Lua support for Fcitx 5"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/fcitx/fcitx5-lua"
-license=('GPL')
+license=('LGPL-2.1-or-later')
 depends=('fcitx5' 'lua')
 makedepends=('git' 'extra-cmake-modules' 'ninja')
 # 0001: Downstream, fix Lua library resolution on eweOS, where objdump is the
