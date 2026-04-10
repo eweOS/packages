@@ -2,40 +2,50 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=libfyaml
-pkgver=0.9.3
-pkgrel=2
+pkgver=0.9.6
+pkgrel=1
 pkgdesc='Fully feature complete YAML parser and emitter'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://pantoniou.github.io/libfyaml/'
 license=(MIT)
 depends=(musl)
 makedepends=(git linux-headers)
+checkdepends=(check)
 provides=(libfyaml.so)
-# 0001: Downstream, upstream Makefile.am passes invalid argument to libtool for
-#	ABI versioning, breaking build with slibtool.
-#	Reference: https://github.com/pantoniou/libfyaml/issues/148
+# CMakeLists.txt fetches specific commit of yaml-test-suite and JSONTestSuite
+# 0001: Downstream, look for shared target Check::checkShared instead of the
+#	static Check::check during configuration, since eweOS doesn't ship the
+#	static version.
 source=("git+https://github.com/pantoniou/libfyaml#tag=v$pkgver"
-	0001-Use-version-number-for-libtool-ABI-versioning.patch)
-sha256sums=('ff9f7b7defe589dda095a4796fdeb098bbd3886242bc573a6ed5b65014f4e7b0'
-            'e55cafd16ddc700b217fcc0baa32b8a0b56f5445dd38f63aea44688694fb2611')
+	"git+https://github.com/yaml/yaml-test-suite"
+	"git+https://github.com/nst/JSONTestSuite"
+	0001-Look-for-shared-check-library.patch)
+sha256sums=('6e3066fc231e83fe7899c3ccd8ed8931cb46461ffb25e73fcab89a35affaeccd'
+            'SKIP'
+            'SKIP'
+            '2c902bb72243928f2978fe14e4809608a485d3306afe0b3e6ead406442ec63b3')
 
 prepare() {
   _patch_ $pkgname
-
-  cd $pkgname
-  autoreconf -fiv
 }
 
 build() {
-  cd $pkgname
-  ./configure \
-    --prefix=/usr \
-    --without-libclang
-  make
+  cmake -S $pkgname -B build \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_SHARED_LIBS=ON \
+    -DENABLE_LIBCLANG=OFF \
+    -DBUILD_TESTING=ON \
+    -DTESTSUITEURL="$srcdir/yaml-test-suite" \
+    -DJSONTESTSUITEURL="$srcdir/JSONTestSuite"
+  cmake --build build
+}
+
+check() {
+  ctest --test-dir build -j"$JOBS" --verbose
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
-  _install_license_ LICENSE
+  DESTDIR="$pkgdir" cmake --install build
+  _install_license_ $pkgname/LICENSE
 }
