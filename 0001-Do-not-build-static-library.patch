@@ -1,12 +1,3 @@
-diff --git a/cmake/check-config.cmake.in b/cmake/check-config.cmake.in
-index 82620719317b..cf35d7732763 100644
---- a/cmake/check-config.cmake.in
-+++ b/cmake/check-config.cmake.in
-@@ -1,3 +1,4 @@
- @PACKAGE_INIT@
- include("${CMAKE_CURRENT_LIST_DIR}/@EXPORT_NAME@-targets.cmake")
- 
-+add_library(Check::check ALIAS checkShared)
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 index 4a02dbeaec4d..74ec395700be 100644
 --- a/src/CMakeLists.txt
