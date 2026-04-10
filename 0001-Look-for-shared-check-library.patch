@@ -1,0 +1,18 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ef0c3ae38c16..afd19a9f8ef8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -239,10 +239,10 @@ if(BUILD_TESTING AND (NOT CMAKE_CROSSCOMPILING OR HAVE_WINE))
+         if(check_FOUND)
+             set(HAVE_CHECK 1)
+             set(CHECK_LIBRARIES check)
+-            if(TARGET Check::check)
+-                set(CHECK_TARGET Check::check)
++            if(TARGET Check::checkShared)
++                set(CHECK_TARGET Check::checkShared)
+             else()
+-                set(CHECK_TARGET check)
++                set(CHECK_TARGET checkShared)
+             endif()
+             get_target_property(CHECK_INCLUDE_DIRS ${CHECK_TARGET} INTERFACE_INCLUDE_DIRECTORIES)
+             # Get library location to extract directory
