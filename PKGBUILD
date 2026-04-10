@@ -32,7 +32,7 @@ build () {
 
 check() {
 	cd check-$pkgver
-	ctest --test-dir build
+	ctest --test-dir build -j"$JOBS"
 }
 
 package() {
