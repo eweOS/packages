@@ -2,14 +2,24 @@
 
 pkgname=jsoncpp
 pkgver=1.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ library for interacting with JSON'
 url='https://github.com/open-source-parsers/jsoncpp'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('MIT' 'LicenseRef-Public_Domain')
 makedepends=('python' 'meson')
-source=($url/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('830bf352d822d8558e9d0eb19d640d2e38536b4b6699c30a4488da09d5b1df18')
+# 0001: Backport, fix ABI compatibility when jsonscpp is built against earlier
+#	C++ versions without string_view available, but is used in later C++
+#	versions, which would fail with missing string_view-related symbols
+#	https://github.com/open-source-parsers/jsoncpp/pull/1675/
+source=($url/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz
+	0001-Fix-C++11-ABI-breakage-when-compiled.patch)
+sha256sums=('830bf352d822d8558e9d0eb19d640d2e38536b4b6699c30a4488da09d5b1df18'
+            'b048ce249b4e1482851f18265ddb8ba41937b1a50a8a071314bd0440c56e88d4')
+
+prepare() {
+  _patch_ ${pkgname}-${pkgver}
+}
 
 build() {
   cd ${pkgname}-${pkgver}
