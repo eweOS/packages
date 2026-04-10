@@ -2,7 +2,7 @@
 
 pkgname=swayimg
 pkgver=4.7
-pkgrel=2
+pkgrel=3
 pkgdesc='A lightweight image viewer for Wayland display servers'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('MIT')
