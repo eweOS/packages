@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xdg-dbus-proxy
-pkgver=0.1.6
-pkgrel=2
+pkgver=0.1.7
+pkgrel=1
 pkgdesc="Filtering proxy for D-Bus connections"
 url="https://github.com/flatpak/xdg-dbus-proxy"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -17,7 +17,7 @@ makedepends=(
   meson
 )
 source=("git+$url#tag=$pkgver")
-sha256sums=('bf8faec9cedf50025079711557677e5eaa016cf599d090d76eab74a7d096ce4f')
+sha256sums=('900891e24b0dbdbbea6555d49484e77837dda4ec4b789054f871b901fa359fc3')
 
 build() {
   ewe-meson $pkgname build
