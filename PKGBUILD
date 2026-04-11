@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=meson
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc='High productivity build system'
 url='https://mesonbuild.com/'
@@ -18,7 +18,7 @@ source=(
   https://github.com/mesonbuild/meson/releases/download/${pkgver}/meson-${pkgver}.tar.gz
   ewe-meson
 )
-sha512sums=('69fe938dad22728a969d1848f1e3ba43c72a2083158431fd639eb51ebce4f2b38e4a2797663d2e4bb251ed0870533bfab57705da6ae941f541769290b126fd45'
+sha512sums=('43d408fde7390c81eaef63b835deb4acfcae279cf05bcd63a368c4bc1de69b7fb620f801a7700345d4c41e155a4429a43cdef12e60322aa20a33edfaeb5ce7e9'
             'e6c3c179c027b54afd9d5340cd14a2e5a291a0e3e9c99bb3ba265f0ae9057adcfae86823536a67e2b1f45309e2c68e0cd9a342c144345c060ad03a450146e297')
 
 build()
