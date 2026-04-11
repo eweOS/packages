@@ -4,19 +4,19 @@
 pkgname=(linux linux-devel linux-docs)
 _basename=linux
 pkgver=6.19.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux kernel'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
 license=(GPL-2.0-only)
 makedepends=(bison flex perl python libelf linux-headers rsync lld git pahole)
 options=(!strip)
-_kconfig_commit=b923049b00b31e7e2823759f2bce1290bdae365a
+_kconfig_commit=9ae88fc01b174714b084d83573de0fa50eb539a4
 source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         "git+https://github.com/eweOS/kernel-config.git#commit=$_kconfig_commit"
         busybox-find-compat.patch)
 sha256sums=('20039d7b6b256c08be2f8fac43c3ff9a620308c703c643cf2f80c3910b9bd59b'
-            '1c68c1f09434c62031e6aceb2512c55f076f07ecff8320c317ad0b2f8437497c'
+            'eaa53fcfd50d6057e31493a6a2a1f67b8ed97b3700cd4ba60e669d3f7fbb2332'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
 
 case $CARCH in
