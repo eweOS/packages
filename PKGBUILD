@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gnome-maps
-pkgver=47.1
-pkgrel=4
+pkgver=50.0
+pkgrel=1
 pkgdesc="Find places around the world"
 url="https://apps.gnome.org/Maps"
 arch=(x86_64 aarch64 riscv64)
@@ -35,9 +35,9 @@ makedepends=(
 checkdepends=(gnome-keyring tzdata)
 groups=(gnome)
 source=(
-  "git+https://gitlab.gnome.org/GNOME/gnome-maps.git#tag=v${pkgver/[a-z]/.&}"
+  "git+https://gitlab.gnome.org/GNOME/gnome-maps.git#tag=${pkgver/[a-z]/.&}"
 )
-sha256sums=('10bf20028c41af457c746a7cc747e87db2b0eb3008ac2296e3996e4738640548')
+sha256sums=('fc02af0336e1f48881113accd42f06a37a77a6abe0b32ab2a6103b34ba1ba825')
 
 build() {
   ewe-meson $pkgname build
