@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=groff
-pkgver=1.24.0
+pkgver=1.24.1
 pkgrel=1
 pkgdesc='GNU Troff typesettings system.'
 url='https://www.gnu.org/software/groff/'
@@ -11,7 +11,7 @@ depends=(musl)
 checkdepends=(diffutils)
 options=(emptydirs)
 source=("https://ftp.gnu.org/gnu/groff/groff-$pkgver.tar.gz")
-sha256sums=('e79bbcd8ff3ed0200e7ac55d3962a15e118c1229990213025f2fc8b264727570')
+sha256sums=('74e2819795b6aff431aeac983d63a9c8968eeaba2a2eba7df8ba4c7b41e7cfd8')
 
 build () {
 	cd groff-$pkgver
