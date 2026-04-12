@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=geoclue
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="Modular geoinformation service built on the D-Bus messaging system"
 url="https://gitlab.freedesktop.org/geoclue/geoclue/-/wikis/home"
@@ -28,7 +28,7 @@ backup=(etc/geoclue/geoclue.conf)
 source=(
   "git+https://gitlab.freedesktop.org/geoclue/geoclue.git#tag=$pkgver"
 )
-sha256sums=('f36bde3bb5e9cd3f9a49375cd87fc306efa2154d8a30cadf453d5ff6fd534a36')
+sha256sums=('30767211452388b2d8599355b29e6fcd637ebcb5c07be521ee96c752725827d3')
 
 # provided by geoclue
 _wifiurl="https://api.positon.xyz/v1/geolocate?key=56aba903-ae67-4f26-919b-15288b44bda9"
