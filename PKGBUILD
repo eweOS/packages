@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=htop
-pkgver=3.4.1
+pkgver=3.5.0
 pkgrel=1
 pkgdesc='Interactive process viewer'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(musl ncurses)
 makedepends=(linux-headers)
 options=('!emptydirs')
 source=("https://github.com/htop-dev/htop/releases/download/${pkgver}/htop-${pkgver}.tar.xz")
-sha256sums=('904f7d4580fc11cffc7e0f06895a4789e0c1c054435752c151e812fead9f6220')
+sha256sums=('b6586e405c5223ebe5ac7828df21edad45cbf90288088bd1b18ad8fa700ffa05')
 
 prepare()
 {
