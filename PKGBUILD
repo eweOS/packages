@@ -2,8 +2,8 @@
 
 pkgbase=gdal
 pkgname=(gdal python-gdal)
-pkgver=3.12.1
-pkgrel=3
+pkgver=3.12.3
+pkgrel=1
 pkgdesc="A translator library for raster and vector geospatial data formats"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gdal.org/"
@@ -21,7 +21,7 @@ source=(
   https://download.osgeo.org/${pkgbase}/${pkgver}/${pkgbase}-${pkgver}.tar.xz
   0001-backport-poppler-26.patch::https://github.com/OSGeo/gdal/commit/979604d97720287416742ef264977f0e53a84aa8.patch
 )
-sha256sums=('2a4fd3170ff81def93db60f7f61f2842a2ae7ad0335e4ed4ba305252f05835de'
+sha256sums=('398a5a32ee6e75040598a7f8e895126a8225118317f272d715867c844f932848'
             '4257bcd9da2537ac5829bd2f3ba651064928328eec47de118b3ce0108455ded6')
 
 prepare() {
