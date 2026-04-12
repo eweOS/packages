@@ -10,10 +10,11 @@ pkgname=(
   vulkan-swrast
   vulkan-virtio
   vulkan-mesa-layers
+  vulkan-nouveau
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=26.0.4
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm' 'spirv-tools')
 makedepends=(
@@ -28,15 +29,39 @@ makedepends=(
   'directx-headers'
   'libdisplay-info'
   'libclc' 'rust' 'rust-bindgen' 'spirv-llvm-translator' 'spirv-tools'
-  'python-mako' 'python-pycparser' 'python-yaml')
+  'python-mako' 'python-pycparser' 'python-yaml'
+  'cbindgen'
+)
 url="https://www.mesa3d.org/"
 license=('custom')
 # mold may fails with lto enabled
 options=(!lto)
+
+_syn_pkgver=2.0.87
+_quote_pkgver=1.0.35
+_proc_macro2_pkgver=1.0.86
+_unicode_ident_pkgver=1.0.12
+_paste_pkgver=1.0.14
+_rustc_hash_pkgver=2.1.1
+
 source=(
   https://mesa.freedesktop.org/archive/$pkgbase-$pkgver.tar.xz
+  syn-$_syn_pkgver.tar.gz::https://crates.io/api/v1/crates/syn/$_syn_pkgver/download
+  quote-$_quote_pkgver.tar.gz::https://crates.io/api/v1/crates/quote/$_quote_pkgver/download
+  proc-macro2-$_proc_macro2_pkgver.tar.gz::https://crates.io/api/v1/crates/proc-macro2/$_proc_macro2_pkgver/download
+  unicode-ident-$_unicode_ident_pkgver.tar.gz::https://crates.io/api/v1/crates/unicode-ident/$_unicode_ident_pkgver/download
+  paste-$_paste_pkgver.tar.gz::https://crates.io/api/v1/crates/paste/$_paste_pkgver/download
+  rustc-hash-$_rustc_hash_pkgver.tar.gz::https://crates.io/api/v1/crates/rustc-hash/$_rustc_hash_pkgver/download
 )
-sha512sums=('ddb59df633116a7ccd9d2d3a2e2009945909e3f774956efcbc032a2f963641cce50d0f319bebdc041df17700aa827aa2ccbc61c9e40b4020de9ff027eab27e23')
+
+sha512sums=('ddb59df633116a7ccd9d2d3a2e2009945909e3f774956efcbc032a2f963641cce50d0f319bebdc041df17700aa827aa2ccbc61c9e40b4020de9ff027eab27e23'
+              'bcfff545d6dfefd81e09f8f30a86bdd85759b3a7d4093ef3365ed02718e10dbd604c52b94c9d7fa955d339fdc5b6c079940c6f345b5a48c52b5c8607794ca6f2'
+              'f5314fb6af17cf36c228e1970c569c29ec248954a450a5f90ba9e2896d04f74904c9cec5a1f74325f2489295a94491eee4ce8fb461e22cd4b34e53f1f881efd2'
+              '1cdb7e22a35ae231d880c9420784c9acf97bda2db258b3d34aae5061dc1858449defe19a49e12c6a4173906aa72a4115059ac2db0fc760205fd2ab8b5b414434'
+              'bc1824e1e4452a40732fc69874d7e1a66f7803717a314790dcf48867eba34bc9441331ef031e386912e52c385645c25b6ed39d4f149973b5b97371b1b96b1920'
+              '3a793f0e5e773a7f7defc798a4c17ae9a40d715144632ea6cb0a8c785e14c4212046491df016bb9838281f8eaf327a79f01c1e2ac5f26785c028bc880faff9ee'
+              '87097d98d47f327d000041ab13acddc366f1500d9c3e5c82169c3358112c7a7c03701c9b3c2c81d9f9da65b7ebac1c479b179dfaf7c059cd0b929b4673e51084'
+           )
 
 [ "$CARCH" = x86_64 ] && pkgname+=(vulkan-dzn)
 [ "$CARCH" = aarch64 ] && pkgname+=(vulkan-panfrost vulkan-freedreno)
@@ -44,7 +69,7 @@ sha512sums=('ddb59df633116a7ccd9d2d3a2e2009945909e3f774956efcbc032a2f963641cce50
 build()
 {
   GALLIUM_DRI_COMMON="r300,r600,radeonsi,nouveau,virgl,svga,softpipe,llvmpipe,zink"
-  VULKAN_DRI_COMMON="amd,gfxstream,intel,intel_hasvk,swrast,virtio"
+  VULKAN_DRI_COMMON="amd,gfxstream,intel,intel_hasvk,swrast,virtio,nouveau"
   case "${CARCH}" in
     x86_64)
 	    GALLIUM_DRI="${GALLIUM_DRI_COMMON},i915,iris,crocus,d3d12"
@@ -64,6 +89,10 @@ build()
 	    ;;
   esac
   VULKAN_LAYER=device-select,intel-nullhw,overlay,screenshot,vram-report-limit
+  
+  # Let Meson read rust packages download in source().
+  export MESON_PACKAGE_CACHE_DIR="${srcdir}"
+
   ewe-meson $pkgbase-$pkgver build \
     --libdir=lib \
     -D platforms=wayland \
@@ -152,6 +181,10 @@ package_mesa()
   # vulkan-freedreno
   _pick_ vulkan-freedreno usr/share/vulkan/icd.d/freedreno_icd*.json
   _pick_ vulkan-freedreno usr/lib/libvulkan_freedreno.so
+
+  # vulkan-nouveau (NVK)
+  _pick_ vulkan-nouveau usr/share/vulkan/icd.d/nouveau_icd*.json
+  _pick_ vulkan-nouveau usr/lib/libvulkan_nouveau.so
 
   install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
     -t "$pkgdir/usr/share/licenses/$pkgname"
@@ -288,3 +321,16 @@ package_vulkan-mesa-layers()
   install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
     -t "$pkgdir/usr/share/licenses/$pkgname"
 }
+
+package_vulkan-nouveau()
+{
+  pkgdesc="Open-source Vulkan driver for Nvidia Nouveau (NVK)"
+  depends=(${_vulkan_driver_deps[*]})
+  optdepends=('vulkan-mesa-layers: additional vulkan layers')
+  provides=('vulkan-driver')
+  mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
+
+  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
+    -t "$pkgdir/usr/share/licenses/$pkgname"
+}
+
