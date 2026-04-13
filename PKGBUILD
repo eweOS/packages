@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=openfpgaloader
-pkgver=0.13.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Universal utility for programming FPGA'
 url='https://trabucayre.github.io/openFPGALoader/'
@@ -17,7 +17,7 @@ makedepends=(cmake)
 source=("https://github.com/trabucayre/openFPGALoader/archive/refs/tags/v$pkgver.tar.gz"
 	"0001-gowin-Fix-compilation-on-musl.patch"
 	"0002-cmsisDAP-Avoid-memcpy-on-possibly-overlapping-buffer.patch")
-sha256sums=('372f1942dec8a088bc7475f94ccf5a86264cb74e9154d8a162b8d4d26d3971e3'
+sha256sums=('ca965f933c52a2a9dbb318df4d4de70fac5f095a8e64523f81036ab467a4b567'
             '99b0dd1ce531f0817ad0fc8d19863cde45df997719a785a6a9043090d99dd7cb'
             '0449f9452463e719be2fc08656182bf6d03661aee63a6cbc5d953d6403adecd3')
 
