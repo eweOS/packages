@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=opencsg
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc='OpenGL image-based CSG-rendering library'
 url='https://opencsg.org/'
@@ -11,7 +11,7 @@ depends=(musl llvm-libs libglvnd)
 makedepends=(cmake glad)
 provides=(libopencsg.so)
 source=("https://www.opencsg.org/OpenCSG-$pkgver.tar.gz")
-sha256sums=('afcc004a89ed3bc478a9e4ba39b20f3d589b24e23e275b7383f91a590d4d57c5')
+sha256sums=('5ac5df73b1ad3340dd6705ff90e009f1a946bb9536c21c2263a6f974265664c0')
 
 prepare() {
 	cd "OpenCSG-$pkgver"/src
