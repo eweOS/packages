@@ -2,7 +2,7 @@
 
 pkgname=orc
 pkgver=0.4.42
-pkgrel=2
+pkgrel=3
 pkgdesc="Optimized Inner Loop Runtime Compiler"
 url="https://gstreamer.freedesktop.org/modules/orc.html"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -32,6 +32,10 @@ prepare() {
 }
 
 build() {
+  # FIXME: Testcases fail with -Os and above when compiled with Clang 20.
+  #	   Remove this work around after upgrading Clang/LLVM.
+  [ "$CARCH" = "loongarch64" ] && export CFLAGS="-O1"
+
   ewe-meson orc build -Dhotdoc=disabled
   meson compile -C build
 }
