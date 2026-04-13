@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=openjph
-pkgver=0.25.2
+pkgver=0.26.3
 pkgrel=1
 pkgdesc='Open-source implementation of JPEG2000 Part-15 (or JPH or HTJ2K)'
 url='https://github.com/aous72/OpenJPH'
@@ -10,12 +10,8 @@ license=(BSD-2-Clause)
 depends=(musl llvm-libs)
 makedepends=(cmake linux-uapi-headers)
 provides=(libopenjph.so)
-# 0001: Under review, fix compilation of ojph_sockets.cpp on non-glibc systems
-#	https://github.com/aous72/OpenJPH/pull/229
-source=("https://github.com/aous72/OpenJPH/archive/refs/tags/$pkgver.tar.gz"
-	0001-apps-ojph_sockets-Detect-__GLIBC__-before-using-GNU-.patch)
-sha256sums=('ae5f09562cb811cb2fb881c5eb74583e18db941848cfa3c35787e2580f3defc6'
-            '6cafd659ca5b73cf32004631f5678671c7ede59fb786d04e804064ce404751f5')
+source=("https://github.com/aous72/OpenJPH/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('29de006da7f1e8cf0cd7c3ec424cf29103e465052c00b5a5f0ccb7e1f917bb3f')
 
 prepare() {
 	_patch_ OpenJPH-"$pkgver"
