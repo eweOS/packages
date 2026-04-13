@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=openttd
-pkgver=15.2
+pkgver=15.3
 pkgrel=1
 pkgdesc='Engine for running Transport Tycoon Deluxe'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ makedepends=(cmake ninja)
 optdepends=('openttd-opengfx: free graphics'
             'openttd-opensfx: free soundset')
 source=("https://cdn.$pkgname.org/$pkgname-releases/$pkgver/$pkgname-$pkgver-source.tar.xz")
-sha256sums=('d29ab617b7c0faa56ec4f8f13663c690a1b85e9212dd01717cc214c720d3ff76')
+sha256sums=('5ea21eea7d59c78a42071924ac18c6bc0116088f2e96b14cfee9369175973be7')
 
 build() {
   cmake \
