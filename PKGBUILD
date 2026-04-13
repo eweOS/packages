@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=openai-codex
-pkgver=0.112.0
+pkgver=0.120.0
 pkgrel=1
 pkgdesc='Lightweight coding agent that runs in your terminal'
 url='https://openai.com/codex/'
@@ -14,7 +14,7 @@ optdepends=(
 )
 makedepends=(rust linux-uapi-headers)
 source=("https://github.com/openai/codex/archive/refs/tags/rust-v$pkgver.tar.gz")
-sha256sums=('9bbfe41f1e86f125a23022b1c6481d4b1e6687fedac76275f1eaf1858b66fc9d')
+sha256sums=('b25b5acb4cd610f0fa4142812d7cdaf1afaa644f5bc5d758ddfe627706cc5fa1')
 
 # TODO:
 #	Devendor sqlite from libsqlite3-sys
