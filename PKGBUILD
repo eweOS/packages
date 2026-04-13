@@ -1,27 +1,25 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libprocps
-pkgver=3.3.17
-pkgrel=2
+pkgver=4.0.6
+pkgrel=1
 pkgdesc='procps 3.x libraries for monitoring your system and its processes'
 url='https://gitlab.com/procps-ng/procps'
-license=('GPL' 'LGPL')
+license=('GPL-2.0-or-later AND LGPL-2.1-or-later')
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 provides=('libprocps.so')
 makedepends=('autoconf')
 options=('!emptydirs')
 source=("https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-${pkgver}.tar.xz")
-sha256sums=('4518b3e7aafd34ec07d0063d250fd474999b20b200218c3ae56f5d2113f141b4')
+sha256sums=('67bea6fbc3a42a535a0230c9e891e5ddfb4d9d39422d46565a2990d1ace15216')
 
 prepare() {
-  sed -i '1i #include <langinfo.h>' procps-${pkgver}/proc/escape.c
-
-  cd procps-${pkgver}
+  cd procps-ng-${pkgver}
   autoreconf -fiv
 }
 
 build() {
-  cd procps-${pkgver}
+  cd procps-ng-${pkgver}
 
   ./configure \
     --prefix=/usr \
@@ -37,7 +35,7 @@ build() {
 }
 
 package() {
-  cd procps-${pkgver}
+  cd procps-ng-${pkgver}
 
   make DESTDIR="${pkgdir}" install
 
