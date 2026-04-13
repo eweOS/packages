@@ -1,9 +1,9 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=opencascade
-pkgver=7.9.1
+pkgver=7.9.3
 _ver=${pkgver//./_}
-pkgrel=3
+pkgrel=1
 pkgdesc='Full-scale 3D geometry library'
 url='https://dev.opencascade.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ source=("https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V$_ver.tar.g
 	0001-no-execinfo-backtrace.patch
 	0002-OpenGL-GraphicsDriver-drop-unnecessary-X11-include.patch
 	0003-Link-to-OpenGL-instead-of-GL-when-GLX-disabled.patch)
-sha256sums=('de442298cd8860f5580b01007f67f0ecd0b8900cfa4da467fa3c823c2d1a45df'
+sha256sums=('5ecf094ec6b12d5413dfb851d8c3590c354058aee556e32e408bdfbf8c357d57'
             'c5c5dd03937a8c060efe06e5487c1b8893eb719b2be1019d00dd0a4647834dd5'
             '6543a3f14bc4145122bb1e7061db306223d82f26e7d8a6d700a92f8a3b0af461'
             'ca5817e8e294719beb0612e4a0d59237b7a44eb8caeb1d70b78bbb1574972704')
