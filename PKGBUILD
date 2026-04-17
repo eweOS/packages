@@ -3,13 +3,13 @@
 pkgbase=rust
 pkgname=(rust rust-src)
 pkgver=1.94.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.rust-lang.org/'
 license=('MIT OR Apache-2.0')
 options=(!lto)
-depends=(musl llvm-libs llvm curl libssh2 openssl)
+depends=(musl llvm-libs llvm curl libssh2 openssl sqlite)
 # Rust bootstrapping facilities check for presence of libc.a, thus musl-static
 # is required during building,
 #	thread 'main' (6374) panicked at src/bootstrap/src/core/sanity.rs:375:25:
@@ -55,6 +55,8 @@ build() {
     -e "s@%RUSTTARGET%@$RUSTHOST@g" \
     > rustc-$pkgver-src/config.toml
 
+  export LIBSSH2_SYS_USE_PKG_CONFIG=1
+  export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
   export RUST_BACKTRACE=1
 
   cd "$srcdir"/rustc-$pkgver-src
