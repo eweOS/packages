@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=man-pages
-pkgver=6.14
+pkgver=6.17
 pkgrel=1
 pkgdesc='Linux kernel and C library user-space interface documentation.'
 url='https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git/'
@@ -14,7 +14,7 @@ license=(BSD-2-Clause BSD-3-Clause BSD-4-Clause-UC GPL-1.0-or-later
 	 Linux-man-pages-copyleft MIT)
 source=("https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git/snapshot/man-pages-$pkgver.tar.gz"
 	"install")
-sha256sums=('008e4809d2e99e633eba89f70d3916b063c3923ab375597963361604804fa445'
+sha256sums=('8af0f5be01f60efce1976c7ed3d7c6e9463375c856775754e38955486a51c0a8'
             'd4e0bf360243e64398fc512cdb62ac41f5df7b07ddb50893aff3d1570b08b628')
 
 remove_man=(
