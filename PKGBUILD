@@ -5,8 +5,8 @@ pkgname=(
   libgweather
   libgweather-docs
 )
-pkgver=4.4.4
-pkgrel=3
+pkgver=4.6.0
+pkgrel=1
 pkgdesc="Location and timezone database and weather-lookup library"
 url="https://wiki.gnome.org/Projects/LibGWeather"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -18,6 +18,7 @@ depends=(
   json-glib
   libsoup3
   libxml2
+  gweather-locations
 )
 makedepends=(
   gi-docgen
@@ -31,7 +32,7 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/libgweather.git#tag=$pkgver"
   disable-metar-test.diff
 )
-sha256sums=('7e621b4e0814b32291958c5c1477ba64afa557d7e5577c5dadbb3054aedfd2cf'
+sha256sums=('b1d1d399ff75826c51bdeaa8acb01c5e65860b32f971dcb65cab0b9920a52804'
             '42ebd95b2de37ff959a759546473985a86fa1a5488211b303a97540f2b7a8805')
 
 prepare() {
