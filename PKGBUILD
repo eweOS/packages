@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libwmf
-pkgver=0.2.14
+pkgver=0.2.15
 pkgrel=1
 pkgdesc="A library for reading vector images in Microsoft's native Windows Metafile Format (WMF)"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=('expat' 'freetype2' 'libjpeg' 'libpng' 'zlib')
 makedepends=('gdk-pixbuf2')
 optdepends=('gdk-pixbuf2: for pixbuf loader')
 source=($pkgname-$pkgver.tar.gz::https://github.com/caolanm/libwmf/archive/v$pkgver.tar.gz)
-sha256sums=('dea2a07ed27fc041a9b2901dc9d12f0d68b76cee6578df955a559b340c32a86c')
+sha256sums=('379ae041dd53ab35f55c9b73a78a31f1ce530e925023c31607b05f2199d867e6')
 
 prepare() {
   cd ${pkgname}-${pkgver}
