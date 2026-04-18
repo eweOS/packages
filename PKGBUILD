@@ -1,7 +1,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libmicrohttpd
-pkgver=1.0.3
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='a small C library that is supposed to make it easy to run an HTTP server as part of another application.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=('musl')
 checkdepends=('curl')
 provides=('libmicrohttpd.so')
 source=("https://ftp.gnu.org/gnu/libmicrohttpd/$pkgname-$pkgver.tar.gz")
-sha256sums=('7816b57aae199cf5c3645e8770e1be5f0a4dfafbcb24b3772173dc4ee634126a')
+sha256sums=('b46d00f58efa6f497b97d2e782c4ee66301d412ddd855dd3068518b3a2cd3ea2')
 
 build()
 {
