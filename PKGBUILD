@@ -2,8 +2,8 @@
 
 # We use OpenResty LuaJIT
 pkgname=luajit
-_commit=33d6b04681d2f079a6d013988a426a841c52e29e
-pkgver="2.1.r20240815.${_commit:0:7}"
+_commit=3640b6c590f9c383ffa5d0955f35e646f684a1da
+pkgver="2.1.r20260317.${_commit:0:7}"
 pkgrel=1
 pkgdesc='A Just-In-Time compiler for the Lua programming language.'
 url='http://luajit.org/'
@@ -12,11 +12,12 @@ url='http://luajit.org/'
 arch=(x86_64 aarch64)
 license=(MIT)
 depends=(musl mimalloc)
+makedepends=(git)
 provides=(libluajit-5.1.so)
 source=("git+https://github.com/OpenResty/luajit2.git#commit=$_commit"
 	"module-path.patch"
 	"libunwind.patch")
-sha256sums=('7e0533f583dd9b9a3861667dd653e60c24d1ad86e23389772bc7e1d437ad2607'
+sha256sums=('6d8cabf6fb849d90282acd298e0dcabb72239b6fe66debb4f649b78d007d9498'
             'c0f7c34cb173d78dea4a9a641633a07ed68248498c87ef7e894d8abd4ca7b828'
             'b703d1b358f76287b36413240f53ca4dc4c4390cd8d779e5ae9c30fbf0e84799')
 
