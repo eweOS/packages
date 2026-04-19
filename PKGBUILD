@@ -7,7 +7,7 @@
 
 pkgname=atool
 pkgver=0.39.0
-pkgrel=8
+pkgrel=9
 pkgdesc='A script for managing file archives of various types'
 arch=(any)
 url="https://www.nongnu.org/$pkgname"
@@ -27,7 +27,7 @@ optdepends=('bzip2: support bzip2 compression'
             'zip: support creating zip archives'
             'unzip: support extracting zip archives')
 _archive="$pkgname-$pkgver"
-source=("https://savannah.nongnu.org/download/$pkgname/$_archive.tar.gz")
+source=("http://download.savannah.gnu.org/releases/atool/$_archive.tar.gz")
 sha256sums=('aaf60095884abb872e25f8e919a8a63d0dabaeca46faeba87d12812d6efc703b')
 
 build() {
