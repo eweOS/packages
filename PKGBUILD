@@ -11,7 +11,7 @@ pkgrel=9
 pkgdesc='A script for managing file archives of various types'
 arch=(any)
 url="https://www.nongnu.org/$pkgname"
-license=(GPL3)
+license=(GPL-2.0-or-later)
 depends=(file
          perl)
 optdepends=('bzip2: support bzip2 compression'
