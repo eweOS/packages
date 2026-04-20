@@ -34,4 +34,8 @@ package() {
 	for f in ${remove_man[*]}; do
 		rm $pkgdir/usr/share/man/$f
 	done
+
+	for f in LICENSES/*; do
+		_install_license_ $f $(basename "$f")
+	done
 }
