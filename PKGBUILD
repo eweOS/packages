@@ -8,8 +8,9 @@ url='https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git/'
 arch=(any)
 options=(!strip)
 license=(BSD-2-Clause BSD-3-Clause BSD-4-Clause-UC GPL-1.0-or-later
-	 GPL-2.0-only GPL-2.0-or-later LGPL-3.0-or-later
-	 LGPL-3.0-linking-exception Linux-man-pages-1-para
+	 GPL-2.0-only GPL-2.0-or-later
+	 'LGPL-3.0-or-later WITH LGPL-3.0-linking-exception'
+	 Linux-man-pages-1-para
 	 Linux-man-pages-copyleft-2-para Linux-man-pages-copyleft-var
 	 Linux-man-pages-copyleft MIT)
 source=("https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git/snapshot/man-pages-$pkgver.tar.gz"
