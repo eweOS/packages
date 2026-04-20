@@ -10,7 +10,7 @@ pkgdesc="A curses-based scrolling 'Matrix'-like screen"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.asty.org/cmatrix/"
 license=('GPL-3.0-or-later')
-depends=('ncurses')
+depends=('musl' 'ncurses')
 makedepends=('cmake')
 optdepends=('kbd: cmatrix-tty custom font'
   'xterm: cmatrix-tty custom font')
