@@ -2,7 +2,7 @@
 
 pkgname=json-c
 pkgver=0.18
-pkgrel=1
+pkgrel=3
 pkgdesc="A JSON implementation in C"
 url="https://github.com/json-c/json-c/wiki"
 license=(MIT)
@@ -18,6 +18,7 @@ sha256sums=('3112c1f25d39eca661fe3fc663431e130cc6e2f900c081738317fba49d29e298')
 build() {
   cd "$srcdir"
   cmake -S "$pkgname-$pkgname-$pkgver-$_datetag" -B build -G Ninja \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
