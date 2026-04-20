@@ -19,26 +19,17 @@ sha512sums=('1aeecd8e8abb6f87fc54f88a8c25478f69d42d450af782e73c0fca7f051669a415c
 
 # cmatrix-tty is ignored, see archlinux
 
-prepare()
-{
-  mkdir build
-}
-
-build()
-{
-  cd build
-  cmake ../$pkgname-$pkgver \
+build() {
+  cmake -S $pkgname-$pkgver -B build \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_POLICY_VERSION_MINIMUM=3.5
-
-  make
+  cmake --build build
 }
 
-package()
-{
+package() {
   # only the binary has a target to install
-  make -C build DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 
   cd $pkgname-$pkgver
 
