@@ -1,10 +1,11 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
+# Maintainer: Yao Zi <me@ziyao.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 
 pkgname=cmatrix
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A curses-based scrolling 'Matrix'-like screen"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.asty.org/cmatrix/"
@@ -29,7 +30,9 @@ build()
   cmake ../$pkgname-$pkgver \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    make
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5
+
+  make
 }
 
 package()
