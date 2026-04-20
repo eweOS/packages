@@ -24,7 +24,8 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DBUILD_STATIC_LIBS=OFF \
     -DENABLE_THREADING=ON \
-    -DENABLE_RDRAND=OFF
+    -DENABLE_RDRAND=OFF \
+    -DDISABLE_WERROR=ON
   cmake --build build
 }
 
