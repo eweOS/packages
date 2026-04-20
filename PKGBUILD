@@ -5,7 +5,7 @@ pkgname=(gstreamer gstreamer-devel
 	 gst-plugins-base gst-plugins-good gst-plugins-bad
 	 gst-plugin-gtk gst-plugin-qml6 gst-plugin-qsv gst-plugin-va
 	 gst-libav gst-rtsp-server gst-editing-services gst-python)
-pkgver=1.28.1
+pkgver=1.28.2
 pkgrel=1
 pkgdesc='GStreamer multimedia framework'
 url='https://gstreamer.freedesktop.org/'
@@ -29,7 +29,7 @@ makedepends=(meson samurai glib2 gobject-introspection libdrm python-gobject
 #	should be upstreamed
 source=("https://github.com/GStreamer/gstreamer/archive/refs/tags/$pkgver.tar.gz"
 	"0001-dots-viewer-respect-envvars.patch")
-sha256sums=('97fee2ed866d087cd0f0cecbb3b955d18145bda22c8ae4d3a04603c6a055e8a6'
+sha256sums=('c221bcac5c954d8ac7a02d3ea34d5466058f073c43d48b7b317a7b0a78595ec3'
             'b0203e26b33b6aaf0970511c16a91dbe294d02c97d9e8172f9f52acb6ee12e72')
 
 prepare () {
