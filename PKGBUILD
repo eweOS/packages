@@ -35,4 +35,5 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  _install_license_ "$pkgname-$pkgname-$pkgver-$_datetag"/COPYING
 }
