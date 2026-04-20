@@ -4,19 +4,19 @@ _vers=(4.{2..5})
 
 pkgname=docbook-xml
 pkgver=${_vers[-1]}
-pkgrel=2
+pkgrel=3
 pkgdesc="A widely used XML scheme for writing documentation and help"
 url="https://www.oasis-open.org/docbook/"
 arch=(any)
 license=(MIT)
 depends=(libxml2)
 install=docbook-xml.install
-source=(https://docbook.org/xml/4.1.2/docbkx412.zip
+source=(https://archive.docbook.org/xml/4.1.2/docbkx412.zip
         LICENSE)
 noextract=(docbkx412.zip)
 
 for _ver in ${_vers[@]}; do
-  source+=("https://docbook.org/xml/$_ver/docbook-xml-$_ver.zip")
+  source+=("https://archive.docbook.org/xml/$_ver/docbook-xml-$_ver.zip")
   noextract+=("docbook-xml-$_ver.zip")
 done
   
