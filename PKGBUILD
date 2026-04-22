@@ -3,7 +3,7 @@
 pkgname=python-jaraco.collections
 _name="${pkgname#python-}"
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Models and classes to supplement the stdlib 'collections' module."
 arch=('any')
 url='https://github.com/jaraco/jaraco.collections'
@@ -17,7 +17,6 @@ source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('b41aa4ed1544e35def2f882b3257bc5dcbb5163d8e3d4496a33b04aac0a854a503a959bccb397fdebf98471bf4525990728e8851a59b07458427c9d0c5aa72ef')
 
 build() {
-python -m pip install setuptools-scm
   cd "$_name"-$pkgver
   SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver python -m build --wheel --no-isolation
 }
