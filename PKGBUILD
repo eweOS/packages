@@ -81,10 +81,7 @@ optdepends=(
 )
 
 prepare() {
-  # Allow ccache to work
-  mv $pkgname-$_pkgbasever $pkgname
-
-  _patch_ $pkgname
+  _patch_ $pkgname-$pkgver
 }
 
 build() {
@@ -92,9 +89,9 @@ build() {
   export CXX="clang++"
   export LD="ld.lld"
 
-  mkdir "$pkgname-64-build"
+  mkdir -p "$pkgname-64-build"
   cd "$pkgname-64-build"
-  ../$pkgname/configure \
+  ../$pkgname-$pkgver/configure \
     --prefix=/usr \
     --libdir=/usr/lib \
     --without-x \
