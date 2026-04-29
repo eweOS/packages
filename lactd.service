@@ -1,0 +1,6 @@
+type = process
+command = /usr/bin/lact daemon
+smooth-recovery = true
+depends-on = rc.target
+log-type = file
+logfile = /var/log/lactd.log

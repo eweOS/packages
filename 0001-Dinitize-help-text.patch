@@ -1,0 +1,22 @@
+diff --git a/lact-gui/src/app.rs b/lact-gui/src/app.rs
+index 46ba0d44617e..de75bde93694 100644
+--- a/lact-gui/src/app.rs
++++ b/lact-gui/src/app.rs
+@@ -423,7 +423,7 @@ impl AsyncComponent for AppModel {
+ 
+         if system_info.version != GUI_VERSION || system_info.commit.as_deref() != Some(GIT_COMMIT) {
+             let err = anyhow!(
+-                "Version mismatch between GUI and daemon ({GUI_VERSION}-{GIT_COMMIT} vs {}-{})! If you have updated LACT, you need to restart the service with `sudo systemctl restart lactd`.",
++                "Version mismatch between GUI and daemon ({GUI_VERSION}-{GIT_COMMIT} vs {}-{})! If you have updated LACT, you need to restart the service with `dinitctl restart lactd`.",
+                 system_info.version,
+                 system_info.commit.as_deref().unwrap_or_default()
+             );
+@@ -1290,7 +1290,7 @@ fn show_embedded_info(parent: &ApplicationWindow, err: anyhow::Error) {
+ 
+     let text_label = gtk::Label::new(Some(&text));
+     let enable_label = gtk::Entry::builder()
+-        .text("sudo systemctl enable --now lactd")
++        .text("dinitctl enable lactd")
+         .editable(false)
+         .build();
+ 
