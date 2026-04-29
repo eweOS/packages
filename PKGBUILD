@@ -2,7 +2,7 @@
 
 pkgname=cargo-c
 pkgver=0.10.21
-pkgrel=1
+pkgrel=2
 pkgdesc='A cargo subcommand to build and install C-ABI compatibile dynamic and static libraries'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/lu-zero/cargo-c/'
@@ -10,10 +10,11 @@ license=('MIT')
 depends=(
   'cargo'
   'curl' 'libcurl.so'
+  'libssh2'
   'openssl'
+  'sqlite'
   'zlib'
 )
-options=(!lto)
 source=("https://github.com/lu-zero/cargo-c/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.Cargo.lock"::"https://github.com/lu-zero/cargo-c/releases/download/v${pkgver}/Cargo.lock")
 sha256sums=('819b62a61e5271924dffd122b7c713e446e5d65f3e630bbe9b90d4d46513d8fa'
@@ -25,16 +26,18 @@ prepare() {
 }
 
 build() {
-    export CFLAGS+=' -ffat-lto-objects'
     export RUSTUP_TOOLCHAIN='stable'
     export CARGO_TARGET_DIR="${pkgname}-${pkgver}/target"
+    export LIBSSH2_SYS_USE_PKG_CONFIG=1
+    export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
     cargo build --release --frozen --manifest-path="${pkgname}-${pkgver}/Cargo.toml"
 }
 
 check() {
-    export CFLAGS+=' -ffat-lto-objects'
     export RUSTUP_TOOLCHAIN='stable'
     export CARGO_TARGET_DIR="${pkgname}-${pkgver}/target"
+    export LIBSSH2_SYS_USE_PKG_CONFIG=1
+    export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
     cargo test --frozen --manifest-path="${pkgname}-${pkgver}/Cargo.toml"
 }
 
