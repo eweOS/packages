@@ -15,7 +15,7 @@ pkgname=(qemu-common
 	 qemu-tests
 	 qemu-guest-agent
 	) # TODO: split firmwares
-pkgver=10.2.2
+pkgver=11.0.0
 pkgrel=1
 pkgdesc='A generic and open source machine emulator and virtualizer.'
 url='https://www.qemu.org/'
@@ -30,12 +30,8 @@ makedepends=(alsa-lib bzip2 cairo curl dtc fuse3 gtk3 glib ncurses pipewire
 	     meson ninja)
 qemu_archs=(aarch64 alpha arm i386 loongarch64 m68k mips mips64 mips64el
 	    mipsel ppc ppc64 riscv32 riscv64 s390x sparc sparc64 x86_64)
-source=(
-  "https://download.qemu.org/qemu-$pkgver.tar.xz"
-  fix-strerrorname_np.patch
-)
-sha256sums=('784b296ff29c1417aa72323abcb2d2ea9ab9771724f577dcd785c3b04f21e176'
-            '26032d49d40e63b3a92a8346353cfca416029175d7fdc3e1f8b12b7b8914707f')
+source=("https://download.qemu.org/qemu-$pkgver.tar.xz")
+sha256sums=('c04ca36012653f32d11c674d370cf52a710e7d3f18c2d8b63e4932052a4854d6')
 
 system_targets=""
 for t in ${qemu_archs[*]}; do
@@ -228,7 +224,7 @@ package_qemu-common() {
 	local qmod=usr/lib/qemu
 
 	# qemu-tests
-	_pick_ qemu-tests $qmod/accel-qtest-*.so
+	_pick_ qemu-tests $qmod/accel-qtest.so
 
 	# audio backends
 	_pick_ qemu-audio-alsa $qmod/audio-alsa.so
