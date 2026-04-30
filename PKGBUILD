@@ -2,7 +2,7 @@
 
 pkgbase=fftw
 pkgname=(fftw)
-pkgver=3.3.10
+pkgver=3.3.11
 pkgrel=1
 pkgdesc="A library for computing the discrete Fourier transform (DFT)"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -19,7 +19,7 @@ source=(
   http://www.fftw.org/$pkgname-$pkgver.tar.gz
   cycle.h.patch
 )
-sha512sums=('2d34b5ccac7b08740dbdacc6ebe451d8a34cf9d9bfec85a5e776e87adf94abfd803c222412d8e10fbaa4ed46f504aa87180396af1b108666cde4314a55610b40'
+sha512sums=('ca1bf80490dc6955a0ab49b1af05d6658c2ecc0968b3bde5b4af22271e47d30cd38f6f8347e8e6124091b6a17717447942bee95f94ca29574ba71c4d167af351'
             '7da269fc43dabd02ae6fad2ebad92b07e06825b6b7c6f8987fc6444f02e0d55080db4ba6e401760e071f5c33015faf8c710f643636cab7a79bdf1af5d434dbb4')
 _build_types=(single double long-double)
 _soname=3.6.10
