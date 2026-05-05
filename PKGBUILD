@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=mold
-pkgver=2.40.4
+pkgver=2.41.0
 pkgrel=1
 pkgdesc='A Modern Linker'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('musl' 'mimalloc' 'openssl' 'zlib' 'cmake' 'tbb')
 makedepends=('python' 'linux-headers')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('69414c702ec1084e1fa8ca16da24f167f549e5e11e9ecd5d70a8dcda6f08c249')
+sha256sums=('0a61abac85d818437b425df856822e9d6e9982baeae5a93bcb02fe6c0060c61a')
 
 build()
 {
