@@ -3,7 +3,7 @@
 
 pkgname=(linux linux-devel linux-docs)
 _basename=linux
-pkgver=6.19.12
+pkgver=7.0.4
 pkgrel=1
 pkgdesc='Linux kernel'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,12 +12,17 @@ license=(GPL-2.0-only)
 makedepends=(bison flex perl python libelf linux-headers rsync lld git pahole)
 options=(!strip)
 _kconfig_commit=9ae88fc01b174714b084d83573de0fa50eb539a4
-source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
+# 0001: Backport, f4c50a4034e6 ("xfrm: esp: avoid in-place decrypt on shared skb frags")
+#	security fix for ESP-related part of dirtyfrag.
+#	Reference: https://github.com/V4bel/dirtyfrag
+source=("https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-$pkgver.tar.xz"
         "git+https://github.com/eweOS/kernel-config.git#commit=$_kconfig_commit"
-        busybox-find-compat.patch)
-sha256sums=('ce5c4f1205f9729286b569b037649591555f31ca1e03cc504bd3b70b8e58a8d5'
+        busybox-find-compat.patch
+	0001-xfrm-esp-avoid-in-place-decrypt-on-shared-skb-frags.patch)
+sha256sums=('d92081d84c925adb21a6a709042499e5dcad5dd93a1d9c683f05304fda9257a7'
             'eaa53fcfd50d6057e31493a6a2a1f67b8ed97b3700cd4ba60e669d3f7fbb2332'
-            'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
+            'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd'
+            '4c52c364c7884d8ec2ad580d9e7ba815a342d0de325457b71c8ab931cfe783e1')
 
 case $CARCH in
 x86_64)
