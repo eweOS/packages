@@ -2,13 +2,13 @@
 
 pkgname=nodejs
 pkgver=25.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='JavaScript runtime'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://nodejs.org/'
 license=('MIT')
 depends=('musl' 'llvm-libs' 'brotli' 'openssl' 'zlib' 'icu' 'libuv' 'libnghttp2' 'c-ares' 'ada-url' 'zstd')
-makedepends=('git' 'python' 'linux-headers')
+makedepends=('git' 'python' 'ninja' 'linux-headers')
 optdepends=('npm: package manager')
 # 0001: Should be upstreamed, don't link libatomic for targets without
 #	non-word-sized atomic ops, as compiler-rt doesn't provide the library.
@@ -29,6 +29,7 @@ build() {
   cd node-v$pkgver
   export CC=cc CXX=c++
   ./configure \
+    --ninja \
     --prefix=/usr \
     --with-intl=system-icu \
     --without-npm \
