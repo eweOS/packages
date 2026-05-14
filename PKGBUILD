@@ -4,7 +4,7 @@
 pkgname=vim
 _vermajor=9
 _verminor=2
-_verpatch=0280
+_verpatch=0480
 pkgver="${_vermajor}.${_verminor}.${_verpatch}"
 pkgrel=1
 pkgdesc='An IMproved version of the vi editor'
@@ -20,7 +20,7 @@ optdepends=(
 makedepends=(python lua)
 options=(emptydirs)
 source=("https://github.com/vim/vim/archive/v${pkgver}.tar.gz")
-sha256sums=('0810bd9a5dfaed9c024f6976f8038808360bc29beb0f7c17ffb786249e9f446c')
+sha256sums=('c9ec52d36c0b9544b5669635a92d05052533f4b71c20c1ad15bb8b2797a7c54e')
 
 build()
 {
