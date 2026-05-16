@@ -3,7 +3,7 @@
 
 pkgname=(linux linux-devel linux-docs)
 _basename=linux
-pkgver=7.0.4
+pkgver=7.0.8
 pkgrel=1
 pkgdesc='Linux kernel'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -19,7 +19,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-$pkgver.tar.xz"
         "git+https://github.com/eweOS/kernel-config.git#commit=$_kconfig_commit"
         busybox-find-compat.patch
 	0001-xfrm-esp-avoid-in-place-decrypt-on-shared-skb-frags.patch)
-sha256sums=('d92081d84c925adb21a6a709042499e5dcad5dd93a1d9c683f05304fda9257a7'
+sha256sums=('1945afb22c9f4f7c78d971210f3bbb7deb09f5d8c41a38bfac772de25f6dcb22'
             'eaa53fcfd50d6057e31493a6a2a1f67b8ed97b3700cd4ba60e669d3f7fbb2332'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd'
             '4c52c364c7884d8ec2ad580d9e7ba815a342d0de325457b71c8ab931cfe783e1')
