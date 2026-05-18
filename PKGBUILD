@@ -2,7 +2,7 @@
 
 pkgname=libyuv
 pkgver=r2426+464c51a03
-pkgrel=3
+pkgrel=4
 pkgdesc="Library for YUV scaling"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://chromium.googlesource.com/libyuv/libyuv/"
@@ -30,7 +30,8 @@ prepare() {
 
 build() {
   cmake -B build -S ${pkgname} \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make -C build
 }
 
