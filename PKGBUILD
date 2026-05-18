@@ -2,14 +2,14 @@
 
 pkgname=giflib
 pkgver=5.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for reading and writing gif images'
 url='http://giflib.sourceforge.net/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('MIT')
 provides=('libgif.so')
 makedepends=('xmlto' 'docbook-xml' 'docbook-xsl')
-source=(https://downloads.sourceforge.net/project/giflib/${pkgname}-${pkgver}.tar.gz
+source=(https://downloads.sourceforge.net/project/giflib/giflib-${pkgver%%.*}.x/${pkgname}-${pkgver}.tar.gz
         giflib-5.1.9-fix-missing-quantize-API-symbols.patch
         giflib-5.1.9-make-flags.patch)
 sha512sums=('0865ab2b1904fa14640c655fdb14bb54244ad18a66e358565c00287875d00912343f9be8bfac7658cc0146200d626f7ec9160d7a339f20ba3be6b9941d73975f'
