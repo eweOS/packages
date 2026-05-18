@@ -3,7 +3,7 @@
 pkgbase=graphite
 pkgname=(graphite)
 pkgver=1.3.14
-pkgrel=3
+pkgrel=4
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/silnrsi/graphite"
 pkgdesc='reimplementation of the SIL Graphite text processing engine'
@@ -27,6 +27,7 @@ build() {
     -DCMAKE_SKIP_INSTALL_RPATH=ON
     -DGRAPHITE2_COMPARE_RENDERER=OFF
     -DGRAPHITE2_VM_TYPE=direct
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   )
 
   cmake -S graphite2-${pkgver} -B build "${cmake_options[@]}"
