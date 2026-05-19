@@ -2,7 +2,7 @@
 
 pkgname=yaml-cpp
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="YAML parser and emitter in C++, written around the YAML 1.2 spec"
 url="https://github.com/jbeder/yaml-cpp"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -27,7 +27,8 @@ build() {
         -DBUILD_SHARED_LIBS=ON \
         -DYAML_BUILD_SHARED_LIBS=ON \
         -DCMAKE_BUILD_TYPE=Release \
-	-DCMAKE_INSTALL_LIBDIR=lib
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   ninja -C build
 }
 
