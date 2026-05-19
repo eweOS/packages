@@ -2,7 +2,7 @@
 
 pkgname=woff2
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Web Open Font Format 2 reference implementation"
 url="https://github.com/google/woff2"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -24,7 +24,8 @@ build() {
   cmake -S woff2 -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build
 }
 
