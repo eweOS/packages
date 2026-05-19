@@ -1,13 +1,9 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
-# Contributor: Caleb Maclennan <caleb@alerque.com>
-# Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
-# Contributor: leif_thande <leif.thande@gmail.com>
-# Contributor: tranquility <trankas@gmail.com>
-# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=atool
 pkgver=0.39.0
-pkgrel=9
+pkgrel=10
 pkgdesc='A script for managing file archives of various types'
 arch=(any)
 url="https://www.nongnu.org/$pkgname"
@@ -27,7 +23,7 @@ optdepends=('bzip2: support bzip2 compression'
             'zip: support creating zip archives'
             'unzip: support extracting zip archives')
 _archive="$pkgname-$pkgver"
-source=("http://download.savannah.gnu.org/releases/atool/$_archive.tar.gz")
+source=("http://download-mirror.savannah.gnu.org/releases/atool/$_archive.tar.gz")
 sha256sums=('aaf60095884abb872e25f8e919a8a63d0dabaeca46faeba87d12812d6efc703b')
 
 build() {
