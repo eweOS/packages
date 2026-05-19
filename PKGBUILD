@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=nlohmann-json
-pkgver=3.11.3
+pkgver=3.12.0
 pkgrel=1
 # tests are tracked in a separate repo
 # https://github.com/nlohmann/json_test_data
@@ -14,9 +14,11 @@ makedepends=(cmake git)
 source=(
   "$pkgname::git+https://github.com/nlohmann/json#tag=v$pkgver"
   "json_test_data-$_test_pkgver.tar.gz::https://github.com/nlohmann/json_test_data/archive/v$_test_pkgver.tar.gz"
+  "fix-musl.patch"
 )
-sha256sums=('SKIP'
-            '884b1e21f38cfd6a62c159f1b7e0a8f5168ae5daaa384ed4dc0c0fa6660f21bd')
+sha256sums=('4f0ead690fc5ae3b9aaf789a71fba5f01dc65bd0881001e6ed6c129236f3a821'
+            '884b1e21f38cfd6a62c159f1b7e0a8f5168ae5daaa384ed4dc0c0fa6660f21bd'
+            'bb9f5d2f8ecc9f642918c858c11f0015066521f16bdf267dec06137797a6a71c')
 
 pkgver() {
   cd $pkgname
@@ -24,6 +26,8 @@ pkgver() {
 }
 
 prepare() {
+  # https://github.com/nlohmann/json/issues/4767
+  _patch_ $pkgname
   mkdir -vp build-test/
   mv -v json_test_data-${_test_pkgver}/ build-test/json_test_data/
 }
