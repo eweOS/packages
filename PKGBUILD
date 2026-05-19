@@ -2,7 +2,7 @@
 
 pkgname=blosc
 pkgver=1.21.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A blocking, shuffling and loss-less compression library'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://www.blosc.org'
@@ -31,7 +31,8 @@ build() {
     -D DEACTIVATE_SNAPPY="OFF" \
     -D PREFER_EXTERNAL_LZ4="ON" \
     -D PREFER_EXTERNAL_ZLIB="ON" \
-    -D PREFER_EXTERNAL_ZSTD="ON"
+    -D PREFER_EXTERNAL_ZSTD="ON" \
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5
 
   cmake --build build
 }
