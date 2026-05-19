@@ -2,7 +2,7 @@
 
 pkgname=soxr
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc='High quality, one-dimensional sample-rate conversion library '
 url='https://sourceforge.net/projects/soxr/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -32,7 +32,8 @@ build () {
 		-DWITH_LSR_BINDINGS=ON			\
 		-DWITH_OPENMP=ON			\
 		-DWITH_PFFFT=ON				\
-		-DWITH_VR32=ON
+		-DWITH_VR32=ON				\
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5
 	cmake --build build
 }
 
