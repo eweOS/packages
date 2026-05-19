@@ -3,7 +3,7 @@
 
 pkgname=libevent
 pkgver=2.1.12
-pkgrel=6
+pkgrel=7
 pkgdesc="Event notification library"
 url="https://libevent.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -34,7 +34,8 @@ build()
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_INSTALL_RPATH=TRUE \
     -DEVENT__LIBRARY_TYPE=SHARED \
-    -DEVENT__DISABLE_REGRESS=OFF
+    -DEVENT__DISABLE_REGRESS=OFF \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build
 }
 
