@@ -3,7 +3,7 @@
 _name=gitpython
 pkgdesc="A python library used to interact with Git repositories"
 pkgname=python-gitpython
-pkgver=3.1.45
+pkgver=3.1.50
 pkgrel=1
 url="https://github.com/gitpython-developers/gitpython"
 license=(BSD-3-Clause)
@@ -25,7 +25,7 @@ checkdepends=(
   python-pytest-mock
 )
 source=("git+$url.git#tag=$pkgver")
-sha512sums=('02e1d0fecd66263257b88ecb986e381424e8d3642ca41b39ac2cce0cefd5a60a262338b047f5d3e40286d97fe8958ae35de0ac5a05d2153e1f9d8188ccd4f0a5')
+sha512sums=('100360015e8620b82acb3893c86f6fd96c5b9b18b2e587691c580a151d1b79c5661ce0e263776fa505227e5699cadb2380048908597a96374139aacae98b5d4d')
 
 build() {
   cd $_name
@@ -60,17 +60,10 @@ check() {
 
   cd $_name
   export TRAVIS="VERY CONVENIENT"
-
-  # Use a fake HOME directory to avoid messing up your Git config
-  mkdir -p "$srcdir/testdata"
-  export HOME="$srcdir/testdata"
-
+  # avoid `error: could not lock config file /dev/null: Permission denied` from git
+  export GIT_CONFIG_GLOBAL="$HOME/.gitconfig"
   git config --global user.name "Test User"
   git config --global user.email "test@user.org"
-
-  # Some tests assume the default name
-  git config --global init.defaultbranch master
-
   ./init-tests-after-clone.sh
   PYTHONDONTWRITEBYTECODE=1 pytest -vv -c /dev/null "${deselected[@]}"
 }
