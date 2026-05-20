@@ -2,12 +2,13 @@
 
 pkgname=glmark2
 pkgver=2023.01
-pkgrel=3
+pkgrel=4
 pkgdesc="An OpenGL 2.0 and ES 2.0 benchmark"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://github.com/glmark2/glmark2"
 license=('GPL-3.0-or-later' 'custom:SGI')
-depends=('libjpeg-turbo' 'libpng' 'libgl' 'wayland')
+depends=('musl' 'llvm-libs' 'libdrm' 'libjpeg-turbo' 'libpng' 'libgl' 'wayland'
+	 'libudev-zero')
 makedepends=('meson' 'wayland-protocols' 'linux-headers')
 # 0001: Under review, fix glmark2-wayland fails to load OpenGL library, since
 #	eweOS ships no X11-dependent libGL.so.
