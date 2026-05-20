@@ -30,4 +30,5 @@ package() {
        install
   mkdir -p "$pkgdir/usr/share/terminfo/w/"
   cp wterm.info "$pkgdir/usr/share/terminfo/w/"
+  _install_license_ LICENSE
 }
