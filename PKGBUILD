@@ -2,7 +2,7 @@
 
 pkgname=jxrlib
 pkgver=0.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source implementation of jpegxr"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://archive.codeplex.com/?p=jxrlib"
@@ -22,7 +22,8 @@ prepare() {
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build
 }
 
