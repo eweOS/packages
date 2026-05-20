@@ -3,7 +3,7 @@
 pkgname=qhull
 pkgver=2020.2
 _pkgver=8.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A general dimension code for computing convex hulls and related structures'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.qhull.org/'
@@ -17,7 +17,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_C_FLAGS="$CFLAGS -ffat-lto-objects" \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS -ffat-lto-objects" \
-    -DCMAKE_SKIP_RPATH=ON
+    -DCMAKE_SKIP_RPATH=ON \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build
   cmake --build build --target libqhull # deprecated, needed by octave
 }
