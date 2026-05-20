@@ -51,8 +51,8 @@ build() {
 
 package() {
 	cd tinyemu-${version}
-	mkdir -p ${pkgdir}/usr/local/bin
-	make CONFIG_SDL= install bindir=${pkgdir}/usr/local/bin
+	mkdir -p "${pkgdir}"/usr/bin
+	make CONFIG_SDL= install bindir="${pkgdir}"/usr/bin
 	install -Dm 644 MIT-LICENSE.txt \
 		${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
