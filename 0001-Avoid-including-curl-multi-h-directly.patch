@@ -1,0 +1,13 @@
+diff --git a/fs_wget.c b/fs_wget.c
+index b4857b057735..ea273490673d 100644
+--- a/fs_wget.c
++++ b/fs_wget.c
+@@ -39,7 +39,7 @@
+ #if defined(EMSCRIPTEN)
+ #include <emscripten.h>
+ #else
+-#include <curl/multi.h>
++#include <curl/curl.h>
+ #endif
+ 
+ /***********************************************/
