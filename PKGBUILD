@@ -17,14 +17,13 @@ prepare()
 {
   cd $pkgname
   sed -i "/tic -s wterm.info/d" Makefile
-  sed -i "s/gcc/cc/g" src/wld/config.mk
 }
 
 build()
 {
   cd $pkgname
-  CC=cc make wld VERSION=$pkgver
-  CC=cc make wterm VERSION=$pkgver
+  make wld VERSION=$pkgver
+  make wterm VERSION=$pkgver
 }
 
 package()
