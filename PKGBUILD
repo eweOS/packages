@@ -2,7 +2,7 @@
 
 pkgname=clisp
 pkgver=2.49.93
-pkgrel=2
+pkgrel=3
 pkgdesc="ANSI Common Lisp interpreter, compiler and debugger"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL')
@@ -17,7 +17,8 @@ sha256sums=('e1845c268f8cc94fdb4c54d2792994d4fae715490319fc10cb2707590080346c')
 
 build() {
   cd $pkgname
-  CFLAGS+=" -ffat-lto-objects" \
+  # -fno-strict-overflow: https://lists.freebsd.org/archives/freebsd-ports-bugs/2026-February/091094.html
+  CFLAGS+=" -ffat-lto-objects -fno-strict-overflow" \
   ./configure --prefix=/usr --with-readline --without-ffcall src
 
   cd src
