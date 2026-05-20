@@ -2,7 +2,7 @@
 
 pkgname=libftdi
 pkgver=1.5
-pkgrel=3
+pkgrel=4
 pkgdesc='An open source library to talk to FTDI chips.'
 url='https://www.intra2net.com/en/developer/libftdi'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -31,7 +31,8 @@ build() {
 		-DDOCUMENTATION=OFF			\
 		-DEXAMPLES=OFF				\
 		-DFTDIPP=ON				\
-		-DFTDI_EEPROM=OFF
+		-DFTDI_EEPROM=OFF       \
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5
 	cmake --build build
 }
 
