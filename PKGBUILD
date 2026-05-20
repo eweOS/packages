@@ -46,14 +46,13 @@ prepare() {
 
 build() {
 	cd tinyemu-${version}
-	sed -i -e "29d" -e "34d" Makefile
-	make
+	make CONFIG_SDL=
 }
 
 package() {
 	cd tinyemu-${version}
 	mkdir -p ${pkgdir}/usr/local/bin
-	make install bindir=${pkgdir}/usr/local/bin
+	make CONFIG_SDL= install bindir=${pkgdir}/usr/local/bin
 	install -Dm 644 MIT-LICENSE.txt \
 		${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
