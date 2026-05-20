@@ -8,16 +8,22 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/LBCrion/sfwbar'
 license=('GPL-3.0-or-later')
 depends=(
+  'musl'
+  'cairo'
+  'pango'
+  'glib'
   'wayland'
   'gtk3'
   'json-c'
   'gtk-layer-shell'
   'wayland-protocols'
+  'libxkbcommon'
 )
 optdepends=(
-  'alsa-lib: ALSA audio volume control',
-  'libpulse: pulse audio volume control',
-  'libmpdclient: music player daemon control',
+  'alsa-lib: ALSA audio volume control'
+  'libpulse: Pulseaudio volume control'
+  'libpipewire: Pipewire volume control'
+  'libmpdclient: music player daemon control'
   'libxkbcommon: xkb layout conversion support'
 )
 makedepends=('meson' 'libpulse' 'libmpdclient' 'alsa-lib' 'python-docutils'
