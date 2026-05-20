@@ -11,7 +11,8 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
 license=(LGPL-2.1-or-later GPL-2.0-or-later)
 depends=(musl openssl xz zlib zstd) # shared between kmod and libkmod
-makedepends=(meson scdoc pahole) # pahole is used in test (at least when using LLVM)
+# pahole is used in test (at least when using LLVM)
+makedepends=(meson scdoc pahole symlinks)
 checkdepends=(linux-devel libelf lld linux)
 # 0000-disable-test-depmod.patch
 #   Disable test test-depmod which would always fail
