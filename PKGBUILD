@@ -8,7 +8,8 @@ pkgdesc="xterm for wayland (simple wayland st suckless terminal)"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/majestrate/wterm"
 license=('MIT')
-depends=('wayland' 'libxkbcommon' 'fontconfig' 'pixman' 'libdrm')
+depends=('musl' 'wayland' 'freetype2' 'libxkbcommon' 'fontconfig' 'pixman'
+         'libdrm')
 makedepends=('linux-headers' 'git')
 source=("git+https://github.com/majestrate/wterm.git#commit=$_commit")
 sha256sums=('5b554ed9d83aac0992727a7494f1ed7414bdd14c7982bd33505b8b3fbd2fd7a7')
