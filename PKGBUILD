@@ -13,21 +13,18 @@ makedepends=('linux-headers' 'git')
 source=("git+https://github.com/majestrate/wterm.git#commit=$_commit")
 sha256sums=('5b554ed9d83aac0992727a7494f1ed7414bdd14c7982bd33505b8b3fbd2fd7a7')
 
-prepare()
-{
+prepare() {
   cd $pkgname
   sed -i "/tic -s wterm.info/d" Makefile
 }
 
-build()
-{
+build() {
   cd $pkgname
   make wld VERSION=$pkgver
   make wterm VERSION=$pkgver
 }
 
-package()
-{
+package() {
   cd $pkgname
   make BIN_PREFIX="$pkgdir/usr/" SHARE_PREFIX="$pkgdir/usr/" VERSION=$pkgver \
        install
