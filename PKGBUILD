@@ -1,4 +1,4 @@
-# Maintainer: Ziyao <ziyao@disroot.org>
+# Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=temu
 pkgdesc='Tiny Emulator'
