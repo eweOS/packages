@@ -3,7 +3,7 @@
 pkgbase=libfm
 pkgname=(libfm libfm-extra libfm-gtk3)
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for file management'
 url='https://lxde.org/'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
