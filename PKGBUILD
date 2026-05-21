@@ -3,7 +3,7 @@
 pkgname=python-jsonschema-specifications
 _pyname=${pkgname#*-}
 pkgver=2024.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Support files exposing JSON from the JSON Schema specifications to Python'
 url='https://jsonschema-specifications.readthedocs.io/en/latest/'
 arch=(any)
