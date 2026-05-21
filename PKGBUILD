@@ -2,7 +2,7 @@
 
 pkgname=stb
 pkgver=r2216.f1c79c0
-pkgrel=1
+pkgrel=2
 pkgdesc='Single-file public domain (or MIT licensed) libraries for C/C++'
 arch=(any)
 url=https://github.com/nothings/stb
