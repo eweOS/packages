@@ -2,7 +2,7 @@
 
 pkgname=xfce4-taskmanager
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy to use task manager"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://docs.xfce.org/apps/xfce4-taskmanager/start"
