@@ -2,7 +2,7 @@
 
 pkgname=qcoro
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ Coroutines for Qt'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/danvratil/qcoro'
