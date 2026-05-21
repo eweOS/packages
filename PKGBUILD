@@ -3,7 +3,7 @@
 pkgname=python-sniffio
 _pyname=${pkgname#*-}
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Glue for different async I/O implementations'
 url='https://sniffio.readthedocs.io/'
 arch=(any)
