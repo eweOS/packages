@@ -3,7 +3,7 @@
 pkgname=libogg
 pkgdesc='Ogg bitstream library'
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 url='https://xiph.org/ogg/'
 license=('BSD')
 depends=('musl')
