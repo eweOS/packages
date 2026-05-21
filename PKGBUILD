@@ -2,7 +2,7 @@
 
 pkgname=openai-codex
 pkgver=0.112.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight coding agent that runs in your terminal'
 url='https://openai.com/codex/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
