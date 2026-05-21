@@ -2,7 +2,7 @@
 
 pkgname=libisofs
 pkgver=1.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to pack up hard disk files and directories into a ISO 9660 disk image"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://dev.lovelyhq.com/libburnia"
