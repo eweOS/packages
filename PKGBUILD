@@ -3,7 +3,7 @@
 pkgbase=fuse
 pkgname=(fuse-common fuse3)
 pkgver=3.18.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Interface for userspace programs to export a filesystem to the Linux kernel'
 url='https://github.com/libfuse/libfuse'
 arch=(x86_64 aarch64 riscv64 loongarch64)
