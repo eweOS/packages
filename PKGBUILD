@@ -2,7 +2,7 @@
 
 pkgname=libtommath
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Highly optimized and portable routines for integer based number theoretic applications'
 url='http://www.libtom.net/'
 license=(custom)
