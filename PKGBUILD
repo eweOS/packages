@@ -2,7 +2,7 @@
 
 pkgname=libmarisa
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Matching Algorithm with Recursively Implemented StorAge'
 url='https://github.com/s-yata/marisa-trie'
 arch=(x86_64 aarch64 riscv64 loongarch64)
