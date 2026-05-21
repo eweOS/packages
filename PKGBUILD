@@ -2,7 +2,7 @@
 
 pkgname=hunspell
 pkgver=1.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc='The most popular spellchecking library.'
 url='https://hunspell.github.io/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
