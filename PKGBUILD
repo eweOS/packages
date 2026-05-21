@@ -2,7 +2,7 @@
 
 pkgname=wlopm
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Wayland output power management.'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://sr.ht/~leon_plickat/wlopm'
