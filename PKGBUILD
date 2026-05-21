@@ -2,7 +2,7 @@
 
 pkgname=draco
 pkgver=1.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for compressing and decompressing 3D geometric meshes and point clouds"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://github.com/google/draco"
