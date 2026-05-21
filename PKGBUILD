@@ -2,7 +2,7 @@
 
 pkgname=turnstile
 pkgver=0.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Independent session/login tracker'
 url='https://github.com/chimera-linux/turnstile'
 arch=(x86_64 aarch64 riscv64 loongarch64)
