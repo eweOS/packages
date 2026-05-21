@@ -2,7 +2,7 @@
 
 pkgname=ragel
 pkgver=6.10
-pkgrel=4
+pkgrel=5
 pkgdesc="Finite state machine compiler"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://www.complang.org/ragel/"
