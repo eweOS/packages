@@ -2,7 +2,7 @@
 
 pkgname=mtdev
 pkgver=1.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A stand-alone library which transforms all variants of kernel MT events to the slotted type B protocol"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://bitmath.org/code/mtdev/"
