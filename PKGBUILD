@@ -3,7 +3,7 @@
 pkgname=perl-crypt-urandom
 _perlname=Crypt-URandom
 pkgver=0.54
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl library providing non blocking randomness'
 url='https://github.com/david-dick/crypt-urandom'
 arch=(any)
