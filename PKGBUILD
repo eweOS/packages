@@ -2,7 +2,7 @@
 
 pkgname=libmpc
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for the arithmetic of complex numbers with arbitrarily high precision'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.multiprecision.org/'
