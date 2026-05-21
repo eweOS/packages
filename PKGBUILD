@@ -2,7 +2,7 @@
 
 pkgname=libnghttp2
 pkgver=1.68.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Framing layer of HTTP/2 is implemented as a reusable C library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://nghttp2.org/'
