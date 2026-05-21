@@ -2,7 +2,7 @@
 
 pkgname=semver
 pkgver=7.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc='The semantic version parser used by npm'
 arch=('any')
 url='https://github.com/npm/node-semver'
