@@ -2,7 +2,7 @@
 
 pkgname=swayidle
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc="Idle management daemon for Wayland"
 makedepends=(
