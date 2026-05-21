@@ -2,7 +2,7 @@
 
 pkgname=xfce4-diskperf-plugin
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Displays instant disk/partition performance in the Xfce4 panel"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 license=('BSD-2-Clause')
