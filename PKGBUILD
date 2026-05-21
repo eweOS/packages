@@ -2,7 +2,7 @@
 
 pkgname=libxfce4ui
 pkgver=4.20.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Widgets library for the Xfce desktop environment'
 url='https://docs.xfce.org/xfce/libxfce4ui/start'
 arch=(x86_64 aarch64 riscv64 loongarch64)
