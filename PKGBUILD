@@ -2,7 +2,7 @@
 
 pkgname=gtkwave
 pkgver=3.3.127
-pkgrel=1
+pkgrel=2
 pkgdesc='A fully featured GTK+ based wave viewer'
 url='https://gtkwave.github.io/gtkwave/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
