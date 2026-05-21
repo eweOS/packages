@@ -2,7 +2,7 @@
 
 pkgname=libfreexl
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to extract valid data from within an Excel (.xls) spreadsheet"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://www.gaia-gis.it/fossil/freexl/index"
