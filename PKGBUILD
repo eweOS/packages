@@ -2,7 +2,7 @@
 
 pkgname=opencc
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Conversion between Traditional and Simplified Chinese'
 url='https://github.com/BYVoid/OpenCC'
 arch=(x86_64 aarch64 riscv64 loongarch64)
