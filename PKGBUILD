@@ -2,7 +2,7 @@
 
 pkgname=nodejs
 pkgver=25.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc='JavaScript runtime'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://nodejs.org/'
