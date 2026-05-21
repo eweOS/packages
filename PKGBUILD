@@ -2,7 +2,7 @@
 
 pkgname=libsixel
 pkgver=1.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A C language SIXEL encoder/decoder implementation'
 url='https://github.com/libsixel/libsixel'
 arch=(x86_64 aarch64 riscv64 loongarch64)
