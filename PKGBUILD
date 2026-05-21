@@ -3,7 +3,7 @@
 
 pkgname=libraw1394
 pkgver=2.1.2
-pkgrel=5
+pkgrel=6
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('LGPL2.1')
 pkgdesc="Provides an API to the Linux IEEE1394 (FireWire) driver"
