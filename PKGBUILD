@@ -2,7 +2,7 @@
 
 pkgname=gamemode
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A daemon/lib combo that allows games to request a set of optimisations be temporarily applied to the host OS'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://github.com/FeralInteractive/gamemode
