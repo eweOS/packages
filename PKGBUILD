@@ -3,7 +3,7 @@
 
 pkgname=gdbm
 pkgver=1.26
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU database library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.gnu.org/software/gdbm/gdbm.html"
