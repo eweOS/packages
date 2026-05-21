@@ -6,7 +6,7 @@ pkgname=(
   libp11-kit
 )
 pkgver=0.25.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Loads and enumerates PKCS#11 modules"
 url="https://p11-glue.freedesktop.org"
 arch=(x86_64 aarch64 riscv64 loongarch64)
