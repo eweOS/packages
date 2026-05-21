@@ -2,7 +2,7 @@
 
 pkgname=dosfstools
 pkgver=4.2
-pkgrel=4
+pkgrel=5
 pkgdesc="DOS filesystem utilities"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('musl')
