@@ -2,7 +2,7 @@
 
 pkgname=rav1e
 pkgver=0.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc='An AV1 encoder focused on speed and safety'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://github.com/xiph/rav1e/
