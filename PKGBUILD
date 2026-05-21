@@ -2,7 +2,7 @@
 
 pkgname=lxc
 pkgver=6.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The Linux Containers tool set for kernel-level isolation"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://linuxcontainers.org"
