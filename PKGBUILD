@@ -3,7 +3,7 @@
 pkgbase=numactl
 pkgname=(numactl libnuma)
 pkgver=2.0.19
-pkgrel=2
+pkgrel=3
 pkgdesc='Utils and library for monitoring and controlling NUMA policies'
 url='https://github.com/numactl/numactl'
 arch=(x86_64 aarch64 riscv64 loongarch64)
