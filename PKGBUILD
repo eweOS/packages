@@ -2,7 +2,7 @@
 
 pkgname=ethtool
 pkgver=7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility for controlling network drivers and hardware"
 url="https://cdn.kernel.org/pub/software/network/ethtool"
 arch=(x86_64 aarch64 riscv64 loongarch64)
