@@ -3,7 +3,7 @@
 pkgbase=lua-lmerge
 pkgname=(lua54-lmerge)
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for merging Lua sources.'
 url='https://github.com/ziyao233/lmerge'
 arch=(any)
