@@ -2,7 +2,7 @@
 
 pkgname=libbs2b
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bauer stereophonic-to-binaural DSP effect library"
 url="http://bs2b.sourceforge.net"
 arch=(x86_64 aarch64 riscv64 loongarch64)
