@@ -2,7 +2,7 @@
 
 pkgname=gnuplot
 pkgver=6.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line driven graphing utility'
 url='command-line'
 arch=(x86_64 aarch64 riscv64 loongarch64)
