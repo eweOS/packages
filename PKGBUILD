@@ -2,7 +2,7 @@
 
 pkgname=json-c
 pkgver=0.18
-pkgrel=3
+pkgrel=4
 pkgdesc="A JSON implementation in C"
 url="https://github.com/json-c/json-c/wiki"
 license=(MIT)
