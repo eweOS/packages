@@ -51,7 +51,7 @@ for _coll in ${_collections[@]}; do
 done
 pkgver=20250308
 _dbver=${pkgver:0:4}.2
-pkgrel=1
+pkgrel=2
 pkgdesc='TeX Live - '
 license=(GPL)
 url='https://tug.org/texlive/'
