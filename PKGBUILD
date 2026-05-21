@@ -2,7 +2,7 @@
 
 pkgname=pcmanfm-qt
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The LXQt file manager, Qt port of PCManFM"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 groups=("lxqt")
