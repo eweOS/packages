@@ -2,7 +2,7 @@
 
 pkgname=wpa_supplicant
 pkgver=2.11
-pkgrel=5
+pkgrel=6
 pkgdesc='A utility providing key negotiation for WPA wireless networks'
 url='https://w1.fi/wpa_supplicant/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
