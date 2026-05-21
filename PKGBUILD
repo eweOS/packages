@@ -3,7 +3,7 @@
 pkgbase=font-noto-emoji
 pkgname=ttf-noto-fonts-emoji
 pkgver=2.048
-pkgrel=2
+pkgrel=3
 pkgdesc='Google Noto emoji fonts'
 arch=(any)
 url='https://www.google.com/get/noto/'
