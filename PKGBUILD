@@ -2,7 +2,7 @@
 
 pkgname=exiv2
 pkgver=0.28.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Exif, Iptc and XMP metadata manipulation library and tools"
 url="https://exiv2.org"
 arch=(x86_64 aarch64 riscv64 loongarch64)
