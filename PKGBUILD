@@ -2,7 +2,7 @@
 
 pkgname=openssl
 pkgver=3.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A toolkit for the TLS and SSL protocols'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.openssl.org'
