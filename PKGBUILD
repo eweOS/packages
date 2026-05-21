@@ -2,7 +2,7 @@
 
 pkgname=freetype2
 pkgver=2.14.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Font rasterization library"
 url="https://www.freetype.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
