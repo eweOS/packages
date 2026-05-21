@@ -3,7 +3,7 @@
 pkgname=perl-class-method-modifiers
 _perlname=Class-Method-Modifiers
 pkgver=2.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Library providing moose-like method modifiers'
 url='https://github.com/moose/Class-Method-Modifiers'
 arch=(any)
