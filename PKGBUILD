@@ -3,7 +3,7 @@
 pkgname=libvorbis
 pkgdesc='Ogg Vorbis codec'
 pkgver=1.3.7
-pkgrel=2
+pkgrel=3
 url='https://xiph.org/vorbis/'
 license=('BSD')
 depends=('musl' 'libogg')
