@@ -1,13 +1,9 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
-# Contributor: Christian Rebischke <Chris.Rebischke@archlinux.org>
-# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
-# Contributor: Anatol Pomozov <anatol.pomozov gmail>
-# Contributor: RunningDroid <runningdroid AT zoho.com>
-# Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=gflags
 pkgver=2.2.2
-pkgrel=5
+pkgrel=6
 pkgdesc='C++ Library for commandline flag processing'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/schuhschuh/gflags'
@@ -27,7 +23,8 @@ build()
     -DREGISTER_INSTALL_PREFIX=OFF \
     -DBUILD_SHARED_LIBS=ON \
     -DBUILD_STATIC_LIBS=ON \
-    -DBUILD_TESTING=ON
+    -DBUILD_TESTING=ON \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make
 }
 
