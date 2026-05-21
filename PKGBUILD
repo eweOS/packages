@@ -2,7 +2,7 @@
 
 pkgname=cabal
 pkgver=3.10.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='a system for building and packaging Haskell libraries and programs.'
 url='https://haskell.org/cabal'
 arch=(x86_64 aarch64 riscv64)
