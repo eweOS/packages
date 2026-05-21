@@ -2,7 +2,7 @@
 
 pkgname=libslirp
 pkgver=4.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A general purpose TCP-IP emulator.'
 url='https://gitlab.freedesktop.org/slirp/libslirp'
 arch=(x86_64 aarch64 riscv64 loongarch64)
