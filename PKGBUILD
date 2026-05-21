@@ -2,7 +2,7 @@
 
 pkgname=libmad
 pkgver=0.15.1b
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-quality MPEG audio decoder"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://www.underbit.com/products/mad/"
