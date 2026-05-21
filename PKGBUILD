@@ -5,7 +5,7 @@ pkgver=1.3.10
 # fxxk obs
 # _pkgver=rel_${pkgver//./_}
 _pkgver=rel_1_3_8
-pkgrel=1
+pkgrel=2
 pkgdesc='A template library written in Python.'
 url='https://pypi.org/project/Mako/'
 arch=(any)
