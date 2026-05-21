@@ -3,7 +3,7 @@
 pkgname=python-jinja
 _name="${pkgname#python-}"
 pkgver=3.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple pythonic template language written in Python"
 arch=('any')
 url="https://palletsprojects.com/p/jinja/"
