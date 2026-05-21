@@ -9,7 +9,7 @@
 pkgbase=pcre2
 pkgname=(pcre2 pcre2-static)
 pkgver=10.47
-pkgrel=1
+pkgrel=2
 pkgdesc='A library that implements Perl 5-style regular expressions. 2nd version'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.pcre.org/'
