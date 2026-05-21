@@ -2,7 +2,7 @@
 
 pkgname=tinc
 pkgver=1.0.37
-pkgrel=1
+pkgrel=2
 pkgdesc='A Virtual Private Network (VPN) daemon'
 url='https://tinc-vpn.org/download/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
