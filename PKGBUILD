@@ -2,7 +2,7 @@
 
 pkgname=attica
 pkgver=6.20.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 pkgdesc='Qt library that implements the Open Collaboration Services API'
 url='https://community.kde.org/Frameworks'
