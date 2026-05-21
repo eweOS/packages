@@ -3,7 +3,7 @@
 pkgbase=coin
 pkgname=(coin coin-doc)
 pkgver=4.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Coin3D core library'
 url='https://www.coin3d.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
