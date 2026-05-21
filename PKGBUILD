@@ -5,7 +5,7 @@
 
 pkgname=chrpath
 pkgver=0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Change or delete the rpath or runpath in ELF files"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://codeberg.org/pere/chrpath"
