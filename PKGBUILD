@@ -2,7 +2,7 @@
 
 pkgname=('flac' 'libflac')
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 url='https://www.xiph.org/flac/'
 depends=('musl')
 source=("https://ftp.osuosl.org/pub/xiph/releases/flac/flac-${pkgver}.tar.xz")
