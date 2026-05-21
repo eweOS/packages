@@ -3,7 +3,7 @@
 pkgbase=java-common
 pkgname=('java-runtime-common' 'java-environment-common')
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Common files for Java Runtime Environments'
 url='https://os.ewe.moe'
 arch=('any')
