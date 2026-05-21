@@ -2,7 +2,7 @@
 
 pkgname=kbd
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Keytable files and keyboard utilities"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="http://www.kbd-project.org"
