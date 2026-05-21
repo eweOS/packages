@@ -2,7 +2,7 @@
 
 pkgname=libbpf
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for loading eBPF programs and reading and manipulating eBPF objects from user-space'
 url='https://github.com/libbpf/libbpf'
 arch=(x86_64 aarch64 riscv64 loongarch64)
