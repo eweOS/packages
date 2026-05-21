@@ -2,7 +2,7 @@
 
 pkgname=ngspice
 pkgver=44.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Spice simulator for electric and electronic circuits'
 url='https://ngspice.sourceforge.io/index.html'
 arch=(x86_64 aarch64 riscv64 loongarch64)
