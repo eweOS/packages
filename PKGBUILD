@@ -2,7 +2,7 @@
 
 pkgname=fmt
 pkgver=12.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source formatting library for C++'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://fmt.dev
