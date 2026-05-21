@@ -3,7 +3,7 @@
 pkgname=pangomm-gtk3
 _pkgname=pangomm
 pkgver=2.46.3
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ bindings for Pango"
 url="https://www.gtkmm.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
