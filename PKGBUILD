@@ -3,7 +3,7 @@
 pkgdesc='Wayfire Configuration Manager'
 pkgname=wcm
 pkgver=0.10.0
-pkgrel=2
+pkgrel=3
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://wayfire.org
 license=(MIT)
