@@ -2,7 +2,7 @@
 
 pkgname=libcap
 pkgver=2.78
-pkgrel=1
+pkgrel=2
 pkgdesc="POSIX 1003.1e capabilities"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://sites.google.com/site/fullycapable/"
