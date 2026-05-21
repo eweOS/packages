@@ -2,7 +2,7 @@
 
 pkgname=hdparm
 pkgver=9.65
-pkgrel=1
+pkgrel=2
 pkgdesc="A shell utility for manipulating Linux IDE drive/driver parameters"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 source=(https://downloads.sourceforge.net/sourceforge/hdparm/${pkgname}-${pkgver}.tar.gz
