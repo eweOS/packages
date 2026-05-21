@@ -2,7 +2,7 @@
 
 pkgname=waycheck
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple GUI that displays the protocols implemented by a Wayland compositor"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gitlab.freedesktop.org/serebit/$pkgname"
