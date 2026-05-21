@@ -2,7 +2,7 @@
 
 pkgname=libtirpc
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Transport Independent RPC library (SunRPC replacement)"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://git.linux-nfs.org/?p=steved/libtirpc.git;a=summary"
