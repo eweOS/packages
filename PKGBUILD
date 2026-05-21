@@ -2,7 +2,7 @@
 
 pkgname=libutempter
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Interface for terminal emulators such as screen and xterm to record user sessions to utmp and wtmp files"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="http://ftp.altlinux.org/pub/people/ldv/utempter"
