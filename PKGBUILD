@@ -3,7 +3,7 @@
 
 pkgname=gmp
 pkgver=6.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A free library for arbitrary precision arithmetic'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://gmplib.org/'
