@@ -2,7 +2,7 @@
 
 pkgname=tetris
 pkgver=7.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Port of OpenBSD tetris for Linux."
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/eNV25/tetris"
