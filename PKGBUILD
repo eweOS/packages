@@ -3,7 +3,7 @@
 _name=toml
 pkgname=python-toml
 pkgver=0.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python library for parsing and creating TOML"
 arch=('any')
 url="https://github.com/uiri/toml"
