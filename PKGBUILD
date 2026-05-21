@@ -3,7 +3,7 @@
 pkgname=rapidcheck
 _commit=ff6af6fc683159deb51c543b065eba14dfcf329b
 pkgver=20231214."${_commit:0:7}"
-pkgrel=2
+pkgrel=3
 pkgdesc='A C++ framework for property based testing inspired by QuickCheck'
 url='https://github.com/emil-e/rapidcheck'
 arch=(x86_64 aarch64 riscv64 loongarch64)
