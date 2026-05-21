@@ -2,7 +2,7 @@
 
 pkgname=xfconf
 pkgver=4.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc='D-Bus-based configuration storage system'
 url='https://docs.xfce.org/xfce/xfconf/start'
 arch=(x86_64 aarch64 riscv64 loongarch64)
