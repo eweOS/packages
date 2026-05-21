@@ -2,7 +2,7 @@
 
 pkgname=python-typeguard
 pkgver=4.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Run-time type checker for Python"
 url="https://github.com/agronholm/typeguard"
 license=('MIT')
