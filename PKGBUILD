@@ -3,7 +3,7 @@
 _pypiname=wheel
 pkgname=python-wheel
 pkgver=0.46.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A built-package format for Python"
 arch=(any)
 url="https://pypi.python.org/pypi/wheel"
