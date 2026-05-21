@@ -2,7 +2,7 @@
 
 pkgname=gnome-weather
 pkgver=48.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Access current weather conditions and forecasts"
 url="https://apps.gnome.org/Weather"
 arch=(any)
