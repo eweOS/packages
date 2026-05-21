@@ -2,7 +2,7 @@
 
 pkgname=openttd-opensfx
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Free sound set for openttd"
 arch=('any')
 url="https://www.openttd.org"
