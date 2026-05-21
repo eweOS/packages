@@ -2,7 +2,7 @@
 
 pkgname=hwdata
 pkgver=0.406
-pkgrel=1
+pkgrel=2
 pkgdesc="hardware identification and configuration databases."
 url=https://github.com/vcrhonek/hwdata
 license=('GPL-2.0-or-later')
