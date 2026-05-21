@@ -2,7 +2,7 @@
 
 pkgname=libgcrypt
 pkgver=1.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A general purpose cryptographic library originally based on code from GnuPG.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gnupg.org/software/$pkgname"
