@@ -3,7 +3,7 @@
 pkgname=vulkan-headers
 _pkgname=Vulkan-Headers
 pkgver=1.4.341.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Vulkan header files"
 arch=(any)
 url="https://www.khronos.org/vulkan/"
