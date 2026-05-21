@@ -2,7 +2,7 @@
 
 pkgname=glew
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenGL extension loading library for C/C++'
 url='https://github.com/nigels-com/glew'
 arch=(x86_64 aarch64 riscv64 loongarch64)
