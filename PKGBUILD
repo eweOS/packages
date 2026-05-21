@@ -3,7 +3,7 @@
 pkgbase=fcgi2
 pkgname=fcgi
 pkgver=2.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A language independent, high performant extension to CGI"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('LicenseRef-OML')
