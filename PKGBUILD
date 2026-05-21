@@ -3,7 +3,7 @@
 pkgname=python-docutils
 _pyname=${pkgname#*-}
 pkgver=0.22.4
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source text processing system for processing plaintext documentation into useful formats'
 url='https://docutils.sourceforge.io/'
 arch=(any)
