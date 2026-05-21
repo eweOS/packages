@@ -3,7 +3,7 @@
 pkgbase=gtkmm
 pkgname=gtkmm3
 pkgver=3.24.10
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ bindings for glib"
 url="https://www.gtkmm.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
