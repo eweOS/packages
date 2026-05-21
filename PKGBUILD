@@ -2,7 +2,7 @@
 
 pkgname=sound-theme-freedesktop
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop sound theme"
 arch=(any)
 license=('GPL-2.0-only'
