@@ -68,7 +68,7 @@ pkgname=(otf-aurulent-nerd
          ttf-zed-mono-nerd)
 pkgdesc="Iconic font aggregator, collection, and patcher"
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
 _urlbase="${url}/releases/download/v${pkgver}"
