@@ -2,7 +2,7 @@
 
 pkgname=steponmine
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple TUI-based minesweeper game'
 url='https://github.com/ziyao233/steponmine'
 arch=(x86_64 aarch64 riscv64 loongarch64)
