@@ -2,7 +2,7 @@
 
 pkgname=gnome-terminal
 pkgver=3.60.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNOME Terminal Emulator"
 url="https://wiki.gnome.org/Apps/Terminal"
 arch=(x86_64 aarch64 riscv64 loongarch64)
