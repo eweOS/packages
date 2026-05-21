@@ -2,7 +2,7 @@
 
 pkgname=enet
 pkgver=1.3.18
-pkgrel=2
+pkgrel=3
 pkgdesc='A relatively thin, simple and robust network communication layer on top of UDP'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://enet.bespin.org/'
