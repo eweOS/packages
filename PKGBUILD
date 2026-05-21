@@ -2,7 +2,7 @@
 
 pkgname=libde265
 pkgver=1.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Open h.265 video codec implementation'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/strukturag/libde265'
