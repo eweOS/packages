@@ -2,7 +2,7 @@
 
 pkgname=perl-capture-tiny
 pkgver=0.50
-pkgrel=3
+pkgrel=4
 pkgdesc='Extremely flexible deep comparison'
 arch=(any)
 url='https://metacpan.org/dist/Capture-Tiny'
