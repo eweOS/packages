@@ -2,7 +2,7 @@
 
 pkgname=conmon
 pkgver=2.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc='OCI container runtime monitor'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/containers/conmon'
