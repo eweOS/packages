@@ -3,7 +3,7 @@
 _npmname=nopt
 pkgname=nodejs-$_npmname
 pkgver=8.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Node/npm Option Parsing library"
 arch=('any')
 url="https://github.com/npm/nopt"
