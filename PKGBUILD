@@ -2,7 +2,7 @@
 
 pkgname=libgudev
 pkgver=238
-pkgrel=1
+pkgrel=2
 pkgdesc='GObject bindings for libudev'
 url='https://gitlab.gnome.org/GNOME/libgudev'
 arch=(x86_64 aarch64 riscv64 loongarch64)
