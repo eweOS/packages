@@ -2,7 +2,7 @@
 
 pkgname=qtxdg-tools
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="libqtxdg user tools"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 url="https://github.com/lxqt/qtxdg-tools"
