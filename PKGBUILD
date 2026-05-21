@@ -2,7 +2,7 @@
 
 pkgname=libmpd
 pkgver=11.8.17
-pkgrel=2
+pkgrel=3
 pkgdesc='Signal based wrapper around libmpdclient'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://gmpclient.org/'
