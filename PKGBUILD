@@ -4,7 +4,7 @@
 pkgname=libedit
 _pkgver=20251016-3.1
 pkgver=${_pkgver/-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line editor library providing generic line editing, history, and tokenization functions"
 url='https://thrysoee.dk/editline/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
