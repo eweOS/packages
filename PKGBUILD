@@ -2,7 +2,7 @@
 
 pkgname=gtk-doc
 pkgver=1.35.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Documentation tool for public library API"
 url="https://www.gtk.org/gtk-doc/"
 arch=(any)
