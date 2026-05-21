@@ -2,7 +2,7 @@
 
 pkgname=debugedit
 pkgver=5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to mangle source locations in .debug files'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://sourceware.org/debugedit/'
