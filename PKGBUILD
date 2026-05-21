@@ -2,7 +2,7 @@
 
 pkgname=ncmpc
 pkgver=0.52
-pkgrel=2
+pkgrel=3
 pkgdesc="Fully featured MPD client which runs in a terminal"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://www.musicpd.org/clients/ncmpc/
