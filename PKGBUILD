@@ -3,7 +3,7 @@
 pkgname=python-rfc3987
 _pyname=${pkgname#*-}
 pkgver=1.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Parsing and validation of URIs (RFC 3896) and IRIs (RFC 3987) in Python'
 url='https://codeberg.org/atufi/rfc3987/'
 arch=(any)
