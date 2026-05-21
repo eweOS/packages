@@ -2,7 +2,7 @@
 
 pkgname=pigz
 pkgver=2.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Parallel implementation of the gzip file compressor'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.zlib.net/pigz'
