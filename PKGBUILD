@@ -2,7 +2,7 @@
 
 pkgname=tree-sitter
 pkgver=0.25.10
-pkgrel=1
+pkgrel=2
 pkgdesc='An incremental parsing system for programming tools '
 url='https://github.com/tree-sitter/tree-sitter'
 arch=(x86_64 aarch64 riscv64 loongarch64)
