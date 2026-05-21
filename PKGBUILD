@@ -2,7 +2,7 @@
 
 pkgname=fcft
 pkgver=3.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple library for font loading and glyph rasterization'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://codeberg.org/dnkl/${pkgname}
