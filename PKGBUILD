@@ -2,7 +2,7 @@
 
 pkgname=cxxopts
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight C++ command line option parser"
 arch=(any)
 url="https://github.com/jarro2783/cxxopts"
