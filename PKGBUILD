@@ -2,7 +2,7 @@
 
 pkgname=kirigami-addons
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Add-ons for the Kirigami framework'
 url='https://invent.kde.org/libraries/kirigami-addons'
 arch=(x86_64 aarch64 riscv64 loongarch64)
