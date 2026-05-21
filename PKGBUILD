@@ -2,7 +2,7 @@
 
 pkgname=node-gyp
 pkgver=12.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Node.js native addon build tool'
 arch=('any')
 url='https://github.com/nodejs/node-gyp'
