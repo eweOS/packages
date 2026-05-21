@@ -2,7 +2,7 @@
 
 pkgname=plasma-wayland-protocols
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Plasma Specific Protocols for Wayland'
 arch=(any)
 url='https://kde.org/plasma-desktop'
