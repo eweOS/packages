@@ -3,7 +3,7 @@
 pkgbase=libcap-ng
 pkgname=(libcap-ng python-libcap-ng)
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for programming Linux capabilities'
 url='https://github.com/stevegrubb/libcap-ng'
 arch=(x86_64 aarch64 riscv64 loongarch64)
