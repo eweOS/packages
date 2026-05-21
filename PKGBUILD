@@ -2,7 +2,7 @@
 
 pkgname=zenity
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Display graphical dialog boxes from shell scripts"
 url="https://gitlab.gnome.org/GNOME/zenity"
 arch=(x86_64 aarch64 riscv64 loongarch64)
