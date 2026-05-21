@@ -2,7 +2,7 @@
 
 pkgname=dav1d
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A new open-source AV1 decoder.'
 url='https://www.videolan.org/projects/dav1d.html'
 arch=(x86_64 aarch64 riscv64 loongarch64)
