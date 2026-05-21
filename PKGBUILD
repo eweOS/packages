@@ -5,7 +5,7 @@
 
 pkgname=libexif
 pkgver=0.6.25
-pkgrel=1
+pkgrel=2
 pkgdesc='Library to parse an EXIF file and read the data from those tags'
 url='https://github.com/libexif/libexif'
 arch=(x86_64 aarch64 riscv64 loongarch64)
