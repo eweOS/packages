@@ -2,7 +2,7 @@
 
 pkgname=openocd
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for on-chip programming and debugging'
 url='https://openocd.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
