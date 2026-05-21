@@ -4,7 +4,7 @@
 pkgbase=musl
 pkgname=(musl musl-static)
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='An implementation of the C/POSIX standard library.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://musl.libc.org'
