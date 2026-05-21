@@ -2,7 +2,7 @@
 
 pkgname=ada-url
 pkgver=3.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='WHATWG-compliant and fast URL parser written in modern C++'
 url='https://ada-url.com'
 arch=(x86_64 aarch64 riscv64 loongarch64)
