@@ -2,7 +2,7 @@
 
 pkgname=gweather-locations
 pkgver=2026.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Location database for gweather'
 url='https://gitlab.gnome.org/GNOME/gweather-locations'
 arch=(x86_64 aarch64 riscv64 loongarch64)
