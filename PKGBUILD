@@ -4,7 +4,7 @@
 pkgbase=openldap
 pkgname=('libldap' 'openldap')
 pkgver=2.6.10
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 pkgdesc='Implementaton of Lightweight Directory Access Protocol (LDAP)'
 url="https://www.openldap.org/"
