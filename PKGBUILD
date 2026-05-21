@@ -2,7 +2,7 @@
 
 pkgname=libxml2
 pkgver=2.15.3
-pkgrel=1
+pkgrel=2
 pkgdesc="XML parsing library, version 2"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('MIT')
