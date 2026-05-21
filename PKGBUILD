@@ -2,7 +2,7 @@
 
 pkgname=xfce4-whiskermenu-plugin
 pkgver=2.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Menu for Xfce4'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://docs.xfce.org/panel-plugins/xfce4-whiskermenu-plugin/start'
