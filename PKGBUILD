@@ -2,7 +2,7 @@
 
 pkgname=dinit-services
 pkgver=20260515.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Service monitoring / "init" system (service files)'
 url='https://github.com/eweOS/dinit-services'
 source=(
