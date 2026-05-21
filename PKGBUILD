@@ -2,7 +2,7 @@
 
 pkgname=eigen
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra'
 arch=(any)
 url='https://eigen.tuxfamily.org'
