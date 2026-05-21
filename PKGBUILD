@@ -6,7 +6,7 @@ pkgname=(
   gsettings-system-schemas
 )
 pkgver=49.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GSettings schemas for GNOME"
 url="https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas"
 arch=(any)
