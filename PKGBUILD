@@ -3,7 +3,7 @@
 
 pkgname=benchmark
 pkgver=1.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A microbenchmark support library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/google/benchmark"
