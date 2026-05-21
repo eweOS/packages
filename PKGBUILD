@@ -2,7 +2,7 @@
 
 pkgname=onetbb
 pkgver=2022.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='High level abstract threading library (oneAPI Threading Building Blocks)'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://uxlfoundation.github.io/oneTBB/'
