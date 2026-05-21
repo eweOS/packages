@@ -2,7 +2,7 @@
 
 pkgname=doctest
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The feature-rich C++11/14/17/20 single-header testing framework'
 arch=('any')
 url='https://github.com/onqtam/doctest'
