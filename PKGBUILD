@@ -2,7 +2,7 @@
 
 pkgname=lxqt-about
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LXQt about dialog."
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 groups=("lxqt")
