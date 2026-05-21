@@ -4,7 +4,7 @@
 pkgname=(linux linux-devel linux-docs)
 _basename=linux
 pkgver=7.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux kernel'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
