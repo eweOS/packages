@@ -3,7 +3,7 @@
 pkgname=python-distro
 _pyname=${pkgname#*-}
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OS platform information API for Python'
 url='https://distro.readthedocs.io/'
 arch=(any)
