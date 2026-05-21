@@ -2,7 +2,7 @@
 
 pkgname=gtk3
 pkgver=3.24.52
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-platform toolkit for creating graphical user interfaces"
 url="https://www.gtk.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
