@@ -2,7 +2,7 @@
 
 pkgname=glibmm
 pkgver=2.88.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ bindings for glib"
 url="https://www.gtkmm.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
