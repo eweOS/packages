@@ -2,7 +2,7 @@
 
 pkgname=lact
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux GPU Configuration And Monitoring Tool '
 url='https://github.com/ilya-zlobintsev/LACT'
 arch=(x86_64 aarch64 riscv64 loongarch64)
