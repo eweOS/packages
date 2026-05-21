@@ -2,7 +2,7 @@
 
 pkgname=opencl-headers
 pkgver=2025.07.22
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenCL (Open Computing Language) header files'
 arch=('any')
 url='https://www.khronos.org/registry/cl/'
