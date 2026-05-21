@@ -2,7 +2,7 @@
 
 pkgname=tcc
 pkgver=0.9.27
-pkgrel=4
+pkgrel=5
 pkgdesc="Tiny C Compiler"
 arch=(x86_64 aarch64 riscv64)
 url="https://bellard.org/tcc/"
