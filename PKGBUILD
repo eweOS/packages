@@ -2,7 +2,7 @@
 
 pkgname=gnome-keyring
 pkgver=48.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Stores passwords and encryption keys"
 url="https://gitlab.gnome.org/GNOME/gnome-keyring"
 arch=(x86_64 aarch64 riscv64 loongarch64)
