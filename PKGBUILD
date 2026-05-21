@@ -3,7 +3,7 @@
 pkgbase=wxwidgets
 pkgname=(wxwidgets-gtk3)	# TODO: package the QT variant
 pkgver=3.2.10
-pkgrel=2
+pkgrel=3
 pkgdesc='Cross-Platform C++ GUI Library'
 url='Cross-Platform'
 arch=(x86_64 aarch64 riscv64 loongarch64)
