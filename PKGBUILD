@@ -2,7 +2,7 @@
 
 pkgname=file
 pkgver=5.47
-pkgrel=1
+pkgrel=2
 pkgdesc='File type identification utility'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('custom')
