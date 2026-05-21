@@ -6,7 +6,7 @@ pkgname=(
   libsoup3-docs
 )
 pkgver=3.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP client/server library for GNOME"
 url="https://wiki.gnome.org/Projects/libsoup"
 arch=(x86_64 aarch64 riscv64 loongarch64)
