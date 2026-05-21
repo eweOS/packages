@@ -3,7 +3,7 @@
 pkgname=('libgpiod' 'python-gpiod')
 pkgbase='libgpiod'
 pkgver=2.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='C library and tools for interacting with the linux GPIO character device'
 url='https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
