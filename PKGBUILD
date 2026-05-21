@@ -3,7 +3,7 @@
 pkgbase=qwt
 pkgname=(qwt qwt-docs)
 pkgver=6.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt Widgets for Technical Applications'
 url='https://qwt.sourceforge.io/'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
