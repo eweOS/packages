@@ -2,7 +2,7 @@
 
 pkgname=perl-test-exception
 pkgver=0.43
-pkgrel=4
+pkgrel=5
 pkgdesc='Test exception-based code'
 url='https://metacpan.org/dist/Test-Exception'
 arch=(any)
