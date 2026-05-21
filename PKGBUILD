@@ -2,7 +2,7 @@
 
 pkgname=python-trove-classifiers
 pkgver=2025.11.14.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Canonical source for classifiers on PyPI (pypi.org)"
 url="https://github.com/pypa/trove-classifiers"
 license=('Apache-2.0')
