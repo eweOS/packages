@@ -3,7 +3,7 @@
 pkgname=python-pexpect
 _pyname=${pkgname#*-}
 pkgver=4.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python module for controlling interactive programs in a pseudo-terminal'
 url='http://pexpect.readthedocs.io/'
 arch=(any)
