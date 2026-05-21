@@ -3,7 +3,7 @@
 pkgname=cmake
 pkgver=4.3.2
 _major_minor=${pkgver%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc='The CMake toolsuite for building, testing and packaging software.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=(openssl)
