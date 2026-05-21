@@ -2,7 +2,7 @@
 
 pkgname=fcitx5
 pkgver=5.1.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation of fcitx"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/fcitx/fcitx5"
