@@ -3,7 +3,7 @@
 pkgname=python-simplejson
 _pyname=${pkgname#*-}
 pkgver=3.20.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, fast, extensible JSON encoder/decoder for Python'
 url='https://simplejson.readthedocs.io/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
