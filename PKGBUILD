@@ -2,7 +2,7 @@
 
 pkgname=fastfetch
 pkgver=2.62.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Like Neofetch, but much faster because written in C"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/fastfetch-cli/fastfetch"
