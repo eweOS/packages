@@ -7,7 +7,7 @@ pkgname=(
   libnma-gtk4
 )
 pkgver=1.10.6
-pkgrel=2
+pkgrel=3
 pkgdesc="NetworkManager GUI client library"
 url="https://gitlab.gnome.org/GNOME/libnma"
 arch=(x86_64 aarch64 riscv64 loongarch64)
