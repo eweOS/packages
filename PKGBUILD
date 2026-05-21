@@ -2,7 +2,7 @@
 
 pkgname=python-iniconfig
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="brain-dead simple config-ini parsing"
 url="https://github.com/RonnyPfannschmidt/iniconfig"
 license=('MIT')
