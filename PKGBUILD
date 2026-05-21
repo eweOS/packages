@@ -2,7 +2,7 @@
 
 pkgname=yosys-abc
 pkgver=0.63
-pkgrel=1
+pkgrel=2
 pkgdesc="System for Sequential Logic Synthesis and Formal Verification (Yosys' fork)"
 url='https://github.com/YosysHQ/abc'
 arch=(x86_64 aarch64 riscv64 loongarch64)
