@@ -2,7 +2,7 @@
 
 pkgname=basu
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The sd-bus library, extracted from systemd"
 url="https://sr.ht/~emersion/basu/"
 license=(LGPL-2.1-or-later)
