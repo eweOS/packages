@@ -2,7 +2,7 @@
 
 pkgname=cage
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A kiosk compositor for Wayland"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.hjdskes.nl/projects/cage/"
