@@ -3,7 +3,7 @@
 pkgbase=fakeroot
 pkgname=(fakeroot fakeroot-tcp)
 pkgver=1.37.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Tool for simulating superuser privileges'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL')
