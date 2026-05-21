@@ -3,7 +3,7 @@
 pkgname=python-jsonpointer
 _pyname=python-json-pointer
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library to resolve RFC 6901 JSON Pointers'
 url='https://github.com/stefankoegl/python-json-pointer'
 arch=(any)
