@@ -2,7 +2,7 @@
 
 pkgname=nvtop
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GPUs process monitoring for AMD, Intel and NVIDIA"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/Syllo/nvtop"
