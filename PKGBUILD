@@ -2,7 +2,7 @@
 
 pkgname=thunar
 pkgver=4.20.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern, fast and easy-to-use file manager for Xfce"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://docs.xfce.org/xfce/thunar/start"
