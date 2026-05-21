@@ -3,7 +3,7 @@
 pkgname=python-isoduration
 _pyname=${pkgname#*-}
 pkgver=20.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Operations with ISO 8601 durations in Python'
 url='https://github.com/bolsote/isoduration'
 arch=(any)
