@@ -2,7 +2,7 @@
 
 pkgname=angband
 pkgver=4.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, single-player dungeon exploration game. TUI only version."
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://rephial.org/"
