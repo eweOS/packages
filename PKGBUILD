@@ -1,7 +1,7 @@
 # Maintainer: Aleksana QwQ
 pkgname=musl-obstack
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone library to implement GNU libc's obstack"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/void-linux/musl-obstack"
