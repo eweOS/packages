@@ -2,7 +2,7 @@
 
 pkgname=lua54
 pkgver=5.4.8
-pkgrel=2
+pkgrel=3
 _V=5.4
 _R=5.4.7
 pkgdesc='Powerful lightweight programming language designed for extending applications'
