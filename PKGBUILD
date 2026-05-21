@@ -2,7 +2,7 @@
 
 pkgname=xfce4-dev-tools
 pkgver=4.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a collection of tools and macros for Xfce'
 url='https://docs.xfce.org/xfce/xfce4-dev-tools/start'
 arch=(x86_64 aarch64 riscv64 loongarch64)
