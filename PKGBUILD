@@ -2,7 +2,7 @@
 
 pkgname=clisp
 pkgver=2.49.93
-pkgrel=3
+pkgrel=4
 pkgdesc="ANSI Common Lisp interpreter, compiler and debugger"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL')
