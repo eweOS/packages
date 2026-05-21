@@ -3,7 +3,7 @@
 pkgbase=qtkeychain
 pkgname=(qtkeychain-qt6)
 pkgver=0.14.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides support for secure credentials storage'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/frankosterfeld/qtkeychain'
