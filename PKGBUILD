@@ -2,7 +2,7 @@
 
 pkgname=lzo
 pkgver=2.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Portable lossless data compression library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.oberhumer.com/opensource/lzo"
