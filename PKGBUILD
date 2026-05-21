@@ -2,7 +2,7 @@
 
 pkgname=kirc
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiny IRC client written in POSIX C99"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/mcpcpc/kirc"
