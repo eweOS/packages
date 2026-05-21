@@ -2,7 +2,7 @@
 
 pkgname=mpg123
 pkgver=1.33.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Console based real time MPEG Audio Player for Layer 1, 2 and 3'
 url='https://mpg123.de/'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
