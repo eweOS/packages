@@ -2,7 +2,7 @@
 
 pkgname=7zip
 pkgver=26.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line file archiver with high compression ratio"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://7-zip.org"
