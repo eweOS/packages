@@ -2,7 +2,7 @@
 
 pkgname=eweos-keyring
 pkgver=20240326
-pkgrel=1
+pkgrel=2
 pkgdesc='eweOS PGP keyring'
 arch=('any')
 url='https://os.ewe.moe'
