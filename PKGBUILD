@@ -3,7 +3,7 @@
 pkgname=perl-xml-simple
 _realname=XML-Simple
 pkgver=2.25
-pkgrel=5
+pkgrel=6
 pkgdesc="Simple XML parser for perl"
 arch=('any')
 license=('PerlArtistic')
