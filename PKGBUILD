@@ -2,7 +2,7 @@
 
 pkgname=mpfr
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Multiple-precision floating-point library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.mpfr.org/'
