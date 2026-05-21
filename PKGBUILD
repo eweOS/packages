@@ -3,7 +3,7 @@
 pkgbase=mesa-demos
 pkgname=('mesa-demos' 'mesa-utils')
 pkgver=9.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Mesa demos"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.mesa3d.org/"
