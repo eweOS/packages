@@ -3,7 +3,7 @@
 pkgname=anthy
 pkgver=9100h
 _filecode=37536
-pkgrel=2
+pkgrel=3
 pkgdesc='Anthy is a system for Japanese input method.'
 url='https://osdn.net/projects/anthy/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
