@@ -3,7 +3,7 @@
 
 pkgname=e2fsprogs
 pkgver=1.47.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Ext2/3/4 filesystem utilities'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL' 'LGPL' 'MIT')
