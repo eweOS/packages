@@ -2,7 +2,7 @@
 
 pkgname=inotify-tools
 pkgver=4.25.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A C library and a set of command-line programs providing a simple interface to inotify'
 url='https://github.com/inotify-tools/inotify-tools'
 arch=(x86_64 aarch64 riscv64 loongarch64)
