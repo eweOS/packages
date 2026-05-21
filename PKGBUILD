@@ -2,7 +2,7 @@
 
 pkgname=orc
 pkgver=0.4.42
-pkgrel=3
+pkgrel=4
 pkgdesc="Optimized Inner Loop Runtime Compiler"
 url="https://gstreamer.freedesktop.org/modules/orc.html"
 arch=(x86_64 aarch64 riscv64 loongarch64)
