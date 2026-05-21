@@ -3,7 +3,7 @@
 pkgname=hyphen
 pkgver=2.8.8
 _majorminorver=${pkgver%.*}
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for high quality hyphenation and justification'
 url='https://sourceforge.net/projects/hunspell/files/Hyphen'
 arch=(x86_64 aarch64 riscv64 loongarch64)
