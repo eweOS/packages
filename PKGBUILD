@@ -4,7 +4,7 @@
 
 pkgname=cppunit
 pkgver=1.15.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A C++ unit testing framework"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.freedesktop.org/wiki/Software/cppunit"
