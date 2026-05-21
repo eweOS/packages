@@ -2,7 +2,7 @@
 
 pkgname=man-pages
 pkgver=6.17
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux kernel and C library user-space interface documentation.'
 url='https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git/'
 arch=(any)
