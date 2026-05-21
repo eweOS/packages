@@ -2,7 +2,7 @@
 
 pkgname=minicom
 pkgver=2.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A serial communication program'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://salsa.debian.org/minicom-team/minicom'
