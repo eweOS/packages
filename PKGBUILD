@@ -3,7 +3,7 @@
 pkgbase=hyfetch
 pkgname=(hyfetch neowofetch)
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Neofetch with LGBTQ+ pride flags!"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://github.com/hykilpikonna/hyfetch'
