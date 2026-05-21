@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-anthy
 pkgver=5.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Anthy wrapper for fcitx5.'
 url='https://github.com/fcitx/fcitx5-anthy'
 arch=(x86_64 aarch64 riscv64 loongarch64)
