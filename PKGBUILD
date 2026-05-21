@@ -2,7 +2,7 @@
 
 pkgname=xfce4-settings
 pkgver=4.20.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Xfce's Configuration System"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://docs.xfce.org/xfce/xfce4-settings/start"
