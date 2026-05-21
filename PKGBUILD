@@ -4,7 +4,7 @@
 
 pkgname=libsass
 pkgver=3.6.6
-pkgrel=2
+pkgrel=3
 pkgdesc="C implementation of Sass CSS preprocessor (library)."
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://sass-lang.com/libsass"
