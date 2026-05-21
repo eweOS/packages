@@ -3,7 +3,7 @@
 pkgname=python-uri-template
 _pyname=${pkgname#*-}
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python implementation of RFC 6570 URI Templates'
 url='https://gitlab.linss.com/open-source/python/uri-template'
 arch=(any)
