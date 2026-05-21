@@ -3,7 +3,7 @@
 pkgname=zip
 pkgver=3.0
 _pkgver=${pkgver/./}
-pkgrel=2
+pkgrel=3
 pkgdesc='Compressor/archiver for creating and modifying zipfiles'
 url='http://www.info-zip.org/Zip.html'
 arch=(x86_64 aarch64 riscv64 loongarch64)
