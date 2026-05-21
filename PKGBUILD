@@ -4,7 +4,7 @@
 pkgname=libisoburn
 pkgver=1.5.8
 _pkgver=${pkgver/.pl01/}
-pkgrel=1
+pkgrel=2
 pkgdesc="frontend for libraries libburn and libisofs"
 url="https://dev.lovelyhq.com/libburnia"
 arch=(x86_64 aarch64 riscv64 loongarch64)
