@@ -4,7 +4,7 @@
 
 pkgname=dash
 pkgver=0.5.13
-pkgrel=1
+pkgrel=2
 pkgdesc='POSIX compliant shell that aims to be as small as possible'
 url='http://gondor.apana.org.au/~herbert/dash/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
