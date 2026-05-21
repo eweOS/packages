@@ -3,7 +3,7 @@
 
 pkgname=fzpac
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch Linux TUI package finder with fzf"
 arch=("any")
 url="https://github.com/sheepla/fzpac"
