@@ -2,7 +2,7 @@
 
 pkgname=glmark2
 pkgver=2023.01
-pkgrel=4
+pkgrel=5
 pkgdesc="An OpenGL 2.0 and ES 2.0 benchmark"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://github.com/glmark2/glmark2"
