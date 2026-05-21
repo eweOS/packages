@@ -2,7 +2,7 @@
 
 pkgname=potrace
 pkgver=1.16
-pkgrel=2
+pkgrel=3
 pkgdesc='Utility for tracing a bitmap (input: PBM,PGM,PPM,BMP; output: EPS,PS,PDF,SVG,DXF,PGM,Gimppath,XFig)'
 url='http://potrace.sourceforge.net/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
