@@ -3,7 +3,7 @@
 pkgbase=qscintilla
 pkgname=(qscintilla-qt6 python-qscintilla-qt6)
 pkgver=2.14.1
-pkgrel=1
+pkgrel=2
 license=(GPL)
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.riverbankcomputing.com/software/qscintilla/intro'
