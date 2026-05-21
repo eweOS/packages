@@ -2,7 +2,7 @@
 
 pkgname=verdict
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Compute quality functions of 2 and 3-dimensional regions'
 url='https://github.com/sandialabs/verdict'
 arch=(x86_64 aarch64 riscv64 loongarch64)
