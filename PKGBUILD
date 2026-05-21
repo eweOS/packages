@@ -2,7 +2,7 @@
 
 pkgname=openal-soft
 pkgver=1.25.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A software implementation of the OpenAL 3D audio API'
 url='https://openal-soft.org'
 arch=(x86_64 aarch64 riscv64 loongarch64)
