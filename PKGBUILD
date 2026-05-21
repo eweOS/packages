@@ -3,7 +3,7 @@
 pkgname=binfmt-manager
 _commit=e9712d901ca32aa6668fcce7f463b35b01882efc
 pkgver=20240915.${_commit:0:7}
-pkgrel=3
+pkgrel=4
 pkgdesc='A script to manage binfmt entries'
 url='https://github.com/eweOS/binfmt-manager'
 arch=(any)
