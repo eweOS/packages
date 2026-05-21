@@ -2,7 +2,7 @@
 
 pkgname=msgpack-c
 pkgver=6.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc=' An efficient object serialization library for C'
 url='https://github.com/msgpack/msgpack-c'
 arch=(x86_64 aarch64 riscv64 loongarch64)
