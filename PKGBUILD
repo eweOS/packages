@@ -2,7 +2,7 @@
 
 pkgname=thunar-vcs-plugin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SVN and GIT integration for Thunar"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://docs.xfce.org/xfce/thunar/thunar-vcs-plugin"
