@@ -4,7 +4,7 @@
 pkgname=linux-uapi-headers
 _basename=linux
 pkgver=6.19.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux syscall API headers for userspace usage'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
