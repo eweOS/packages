@@ -2,7 +2,7 @@
 
 pkgname=pambase
 pkgver=20241203
-pkgrel=1
+pkgrel=2
 pkgdesc="Base PAM configuration for services"
 arch=(any)
 url="https://os.ewe.moe"
