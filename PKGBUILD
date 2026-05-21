@@ -3,7 +3,7 @@
 pkgname=python-trio
 _pyname=${pkgname#*-}
 pkgver=0.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A friendly Python library for async concurrency and I/O'
 url='https://trio.readthedocs.io/'
 arch=(any)
