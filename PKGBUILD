@@ -2,7 +2,7 @@
 
 pkgname=libldac
 pkgver=2.0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="LDAC Bluetooth encoder library"
 url="https://github.com/EHfive/ldacBT"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -26,7 +26,8 @@ build() {
   cmake -S ldacBT -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
-    -DLDAC_SOFT_FLOAT=OFF
+    -DLDAC_SOFT_FLOAT=OFF \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build
 }
 
