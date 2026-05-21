@@ -3,7 +3,7 @@
 pkgname=python-strict-rfc3339
 _pyname=${pkgname#*-}
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Strict, simple, lightweight RFC3339 functions in Python'
 url='https://github.com/danielrichman/strict-rfc3339'
 arch=(any)
