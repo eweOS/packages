@@ -3,7 +3,7 @@
 
 pkgname=bash
 pkgver=5.2.37
-pkgrel=2
+pkgrel=3
 pkgdesc='The GNU Bourne Again shell'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL3)
