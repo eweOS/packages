@@ -3,7 +3,7 @@
 pkgname=python-parameterized
 _pyname=${pkgname#*-}
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Parameterized testing with any Python test framework'
 url='https://github.com/wolever/parameterized'
 arch=(any)
