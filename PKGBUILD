@@ -2,7 +2,7 @@
 
 pkgname=iperf3
 pkgver=3.21
-pkgrel=1
+pkgrel=2
 pkgdesc='The ultimate speed test tool for TCP, UDP and SCTP'
 url='https://iperf.fr/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
