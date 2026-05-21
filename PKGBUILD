@@ -2,7 +2,7 @@
 
 pkgname=nasm
 pkgver=3.01
-pkgrel=1
+pkgrel=2
 pkgdesc='80x86 assembler designed for portability and modularity'
 url='https://www.nasm.us'
 arch=(x86_64 aarch64 riscv64 loongarch64)
