@@ -2,7 +2,7 @@
 
 pkgname=python-pivy
 pkgver=0.6.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings to Coin 3D'
 url='https://github.com/coin3d/pivy/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
