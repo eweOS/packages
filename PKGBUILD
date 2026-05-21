@@ -2,7 +2,7 @@
 
 pkgname=spatialindex
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Extensible framework that supports robust spatial indexing methods and sophisticated spatial queries'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://libspatialindex.github.io/"
