@@ -10,7 +10,7 @@ pkgname=(blas
          lapack64
          lapacke64)
 pkgver=3.12.1
-pkgrel=1
+pkgrel=2
 url='https://www.netlib.org/lapack'
 pkgdesc='Linear Algebra PACKage'
 makedepends=(cmake
