@@ -2,7 +2,7 @@
 
 pkgname=xkeyboard-config
 pkgver=2.47
-pkgrel=1
+pkgrel=2
 pkgdesc="X keyboard configuration files"
 arch=(any)
 license=('custom')
