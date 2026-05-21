@@ -2,7 +2,7 @@
 
 pkgname=python-appdirs
 pkgver=1.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A small Python module for determining appropriate platform-specific dirs.'
 url='https://github.com/ActiveState/appdirs'
 arch=(any)
