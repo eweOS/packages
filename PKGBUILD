@@ -6,7 +6,7 @@ pkgname=(
   libnotify-docs
 )
 pkgver=0.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for sending desktop notifications"
 url="https://gitlab.gnome.org/GNOME/libnotify"
 arch=(x86_64 aarch64 riscv64 loongarch64)
