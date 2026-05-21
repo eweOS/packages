@@ -3,7 +3,7 @@
 pkgname=atkmm-gtk3
 _pkgname=atkmm
 pkgver=2.28.4
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ bindings for ATK"
 url="https://www.cairographics.org/cairomm/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
