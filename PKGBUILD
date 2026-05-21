@@ -2,7 +2,7 @@
 
 pkgname=vid.stab
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Video stabilization library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=http://public.hronopik.de/vid.stab
