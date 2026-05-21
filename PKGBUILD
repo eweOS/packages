@@ -2,7 +2,7 @@
 
 pkgname=woff2
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Web Open Font Format 2 reference implementation"
 url="https://github.com/google/woff2"
 arch=(x86_64 aarch64 riscv64 loongarch64)
