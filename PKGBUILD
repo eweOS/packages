@@ -5,7 +5,7 @@
 
 pkgname=libusb
 pkgver=1.0.29
-pkgrel=1
+pkgrel=2
 pkgdesc="Library that provides generic access to USB devices"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://libusb.info/"
