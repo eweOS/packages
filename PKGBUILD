@@ -3,7 +3,7 @@
 pkgbase=font-roboto
 pkgname=(ttf-roboto ttf-roboto-variable)
 pkgver=3.015
-pkgrel=1
+pkgrel=2
 pkgdesc="Google's signature family of fonts"
 url='https://fonts.google.com/specimen/Roboto'
 arch=(any)
