@@ -2,7 +2,7 @@
 
 pkgname=oksh
 pkgver=7.8
-pkgrel=1
+pkgrel=2
 url='https://github.com/ibara/oksh/'
 pkgdesc='Ported version of ksh from OpenBSD'
 license=('BSD')
