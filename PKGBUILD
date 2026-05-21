@@ -2,7 +2,7 @@
 
 pkgname=minimodem
 pkgver=0.24
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to (de)code modem audio'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='http://www.whence.com/minimodem/'
