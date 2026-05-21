@@ -2,7 +2,7 @@
 
 pkgname=cgal
 pkgver=6.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ library for Geometric algorithms'
 url='https://www.cgal.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
