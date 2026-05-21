@@ -2,7 +2,7 @@
 
 pkgname=radeontop
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='View GPU utilization for AMD GPUs'
 url='https://github.com/clbr/radeontop'
 arch=(x86_64 aarch64 riscv64 loongarch64)
