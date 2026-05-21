@@ -2,7 +2,7 @@
 
 pkgname=libsrtp
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for SRTP (Secure Realtime Transport Protocol)'
 url='https://github.com/cisco/libsrtp'
 arch=(x86_64 aarch64 riscv64 loongarch64)
