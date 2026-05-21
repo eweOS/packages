@@ -2,7 +2,7 @@
 
 pkgname=neovim
 pkgver=0.11.6
-pkgrel=1
+pkgrel=2
 pkgdesc='hyperextensible Vim-based text editor'
 url='https://neovim.io'
 arch=(x86_64 aarch64 riscv64 loongarch64)
