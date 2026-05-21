@@ -2,7 +2,7 @@
 
 pkgname=kpackage
 pkgver=6.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Framework that lets applications manage user installable packages of non-binary assets'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
