@@ -3,7 +3,7 @@
 # NOTE: this package is fully statically linked to work in containers
 pkgname=catatonit
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A container init that is so simple it's effectively brain-dead."
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/openSUSE/catatonit/"
