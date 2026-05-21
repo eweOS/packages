@@ -2,7 +2,7 @@
 
 pkgname=openjph
 pkgver=0.25.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source implementation of JPEG2000 Part-15 (or JPH or HTJ2K)'
 url='https://github.com/aous72/OpenJPH'
 arch=(x86_64 aarch64 riscv64 loongarch64)
