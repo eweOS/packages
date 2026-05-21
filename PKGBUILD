@@ -3,7 +3,7 @@
 pkgname=python-sphinxcontrib-qthelp
 _name=${pkgname#python-}
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Sphinx extension which outputs QtHelp document'
 arch=(any)
 url=https://github.com/sphinx-doc/sphinxcontrib-qthelp
