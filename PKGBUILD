@@ -3,7 +3,7 @@
 pkgbase=maturin
 pkgname=(maturin python-maturin)
 pkgver=1.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for building and publishing Rust crates as Python packages'
 url='https://www.maturin.rs/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
