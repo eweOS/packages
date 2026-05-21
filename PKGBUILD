@@ -4,7 +4,7 @@
 
 pkgname=scdoc
 pkgver=1.11.4
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='Tool for generating roff manual pages'
 arch=(x86_64 aarch64 riscv64 loongarch64)
