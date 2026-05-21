@@ -3,7 +3,7 @@
 pkgname=python-fqdn
 _pyname=${pkgname#*-}
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='RFC-compliant FQDN validation and manipulation for Python'
 url='http://fqdn.readthedocs.io/'
 arch=(any)
