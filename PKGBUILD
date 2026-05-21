@@ -5,7 +5,7 @@
 
 pkgname=libmd
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Message Digest functions from BSD systems"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.hadrons.org/software/libmd/"
