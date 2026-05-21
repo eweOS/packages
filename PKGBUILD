@@ -2,7 +2,7 @@
 
 pkgname=thunar-media-tags-plugin
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds special features for media files to the Thunar File Manager"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 license=('GPL-2.0-or-later')
