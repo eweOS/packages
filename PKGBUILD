@@ -2,7 +2,7 @@
 
 pkgname=sfwbar
 pkgver=1.0_beta17
-pkgrel=1
+pkgrel=2
 pkgdesc='S* Floating Window taskBar'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/LBCrion/sfwbar'
