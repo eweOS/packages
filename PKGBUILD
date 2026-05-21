@@ -2,7 +2,7 @@
 
 pkgname=speexdsp
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="DSP library derived from Speex"
 url="https://www.speex.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
