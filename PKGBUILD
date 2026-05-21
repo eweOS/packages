@@ -2,7 +2,7 @@
 
 pkgname=musl-locales
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://git.adelielinux.org/adelie/musl-locales/-/wikis/home"
 pkgdesc="Locales support for musl"
