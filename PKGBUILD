@@ -2,7 +2,7 @@
 
 pkgname=libyaml
 pkgver=0.2.5
-pkgrel=3
+pkgrel=4
 pkgdesc="YAML 1.1 library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://pyyaml.org/wiki/LibYAML"
