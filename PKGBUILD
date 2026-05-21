@@ -9,7 +9,7 @@ pkgname=(
   libfreeciv freeciv-data
 )
 pkgver=3.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiuser clone of the famous Microprose game of Civilization"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://www.freeciv.org/"
