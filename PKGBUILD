@@ -12,7 +12,7 @@ pkgname=(
 )
 _realpkgname=llvm-project
 pkgver=20.1.8
-pkgrel=3
+pkgrel=4
 _binutilsver=2.44
 _majorver="${pkgver%%.*}"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -271,8 +271,8 @@ build() {
 
   cmake -B build -G Ninja \
     "${CMARGS[@]}" \
-    -DLLVM_ENABLE_PROJECTS="compiler-rt;clang;clang-tools-extra;flang;mlir;lld;lldb;openmp" \
-    -DLLVM_ENABLE_RUNTIMES="libunwind;libcxxabi;libcxx" \
+    -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;flang;mlir;lld;lldb;openmp" \
+    -DLLVM_ENABLE_RUNTIMES="compiler-rt;libunwind;libcxxabi;libcxx" \
     -S $_basedir/llvm
 
   # Ensure compiler-rt has been available before building other rt libraries
