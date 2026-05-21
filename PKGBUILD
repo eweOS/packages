@@ -4,7 +4,7 @@
 pkgname=publicsuffix-list
 _gitcommit=4f29f15313eef1a540b3c8222ab891debf405a59
 pkgver=20220825.1289.4f29f15
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-vendor public domain suffix database'
 url='https://github.com/publicsuffix/list'
 arch=('any')
