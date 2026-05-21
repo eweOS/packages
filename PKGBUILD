@@ -2,7 +2,7 @@
 
 pkgname=openfpgaloader
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Universal utility for programming FPGA'
 url='https://trabucayre.github.io/openFPGALoader/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
