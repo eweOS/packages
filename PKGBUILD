@@ -3,7 +3,7 @@
 pkgname=python-imagesize
 _pyname=imagesize_py
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Module for analyzing image headers and returns image size or DIP.'
 url='https://github.com/shibukawa/imagesize_py'
 arch=(any)
