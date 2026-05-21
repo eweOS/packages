@@ -2,7 +2,7 @@
 
 pkgname=opencsg
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenGL image-based CSG-rendering library'
 url='https://opencsg.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
