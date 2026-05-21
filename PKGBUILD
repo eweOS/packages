@@ -2,7 +2,7 @@
 
 pkgname=geocode-glib
 pkgver=3.26.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Helper library for geocoding services"
 url="https://gitlab.gnome.org/GNOME/geocode-glib"
 arch=(x86_64 aarch64 riscv64 loongarch64)
