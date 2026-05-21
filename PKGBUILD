@@ -3,7 +3,7 @@
 
 pkgname=axel
 pkgver=2.17.14
-pkgrel=3
+pkgrel=4
 pkgdesc="Light command line download accelerator"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/axel-download-accelerator/axel"
