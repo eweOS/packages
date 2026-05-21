@@ -2,7 +2,7 @@
 
 pkgname=vtk
 pkgver=9.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Software for maniplutating and displaying scientific data'
 url='https://vtk.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
