@@ -2,7 +2,7 @@
 
 pkgname=ell
 pkgver=0.83
-pkgrel=1
+pkgrel=2
 pkgdesc='Embedded Linux library'
 url='https://git.kernel.org/pub/scm/libs/ell/ell.git/about/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
