@@ -4,7 +4,7 @@
 
 pkgname=re2c
 pkgver=4.3
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=(llvm-libs)
 makedepends=(cmake)
