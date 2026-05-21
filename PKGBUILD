@@ -2,7 +2,7 @@
 
 pkgname=i2c-tools
 pkgver=4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of I2C tools for Linux'
 url='https://www.kernel.org/pub/software/utils/i2c-tools/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
