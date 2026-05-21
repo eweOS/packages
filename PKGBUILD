@@ -2,7 +2,7 @@
 
 pkgname=chayang
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Gradually dim the screen (wayland).'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://git.sr.ht/~emersion/chayang'
