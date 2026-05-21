@@ -10,7 +10,7 @@ pkgname=(
     ttf-noto-sans-variable ttf-noto-serif-variable ttf-noto-sans-mono-variable
 )
 pkgver=2026.04.01
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Noto TTF fonts'
 arch=(any)
 url='https://fonts.google.com/noto'
