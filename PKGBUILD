@@ -3,7 +3,7 @@
 pkgname=kdecoration
 pkgver=6.5.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=1
+pkgrel=2
 pkgdesc='Plugin based library to create window decorations'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://kde.org/plasma-desktop/'
