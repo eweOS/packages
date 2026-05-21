@@ -2,7 +2,7 @@
 
 pkgname=namcap
 pkgver=3.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc='A Pacman package analyzer'
 arch=(any)
 url="https://gitlab.archlinux.org/pacman/$pkgname"
