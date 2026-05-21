@@ -2,7 +2,7 @@
 
 pkgname=directx-headers
 pkgver=1.619.1
-pkgrel=1
+pkgrel=2
 pkgdesc="DirectX headers for using D3D12"
 url="https://github.com/microsoft/DirectX-Headers"
 arch=(x86_64 aarch64 riscv64 loongarch64)
