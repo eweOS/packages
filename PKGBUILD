@@ -2,7 +2,7 @@
 
 pkgname=manifold
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Geometry library for creating and operating on manifold triangle meshes'
 url='https://github.com/elalish/manifold'
 arch=(x86_64 aarch64 riscv64 loongarch64)
