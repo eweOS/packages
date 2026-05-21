@@ -2,7 +2,7 @@
 
 pkgname=libmypaint
 pkgver=1.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Library for making brushstrokes which is used by MyPaint and other projects'
 url='http://mypaint.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -17,7 +17,7 @@ sha512sums=('f759223e2e2da9fcc675bc2fa6324e2688ab36bdd979c0b3fad6737a6884e6095b6
 prepare() {
   cd ${pkgname}-${pkgver}
   patch -Np1 < ../libmypaint-autoconf-2.7.patch
-  sed -i 's/-1.16/-1.17/' ./autogen.sh
+  sed -i 's/-1.16//' ./autogen.sh
   ./autogen.sh
   autoreconf -fiv
 }
