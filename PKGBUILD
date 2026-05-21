@@ -2,7 +2,7 @@
 
 pkgname=atkmm
 pkgver=2.36.3
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ bindings for Cairo"
 url="https://www.cairographics.org/cairomm/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
