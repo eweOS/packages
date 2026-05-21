@@ -6,7 +6,7 @@
 
 pkgname=nethack
 pkgver=3.6.7
-pkgrel=2
+pkgrel=3
 pkgdesc='A single player dungeon exploration game'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.nethack.org/index.html"
