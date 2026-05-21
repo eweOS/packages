@@ -3,7 +3,7 @@
 
 pkgname=libcue
 pkgver=2.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Parses so-called cue sheets and handles the parsed data'
 url='https://github.com/lipnitsk/libcue/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
