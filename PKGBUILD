@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 pkgname=wterm
 pkgver=20220907
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="xterm for wayland (simple wayland st suckless terminal)"
 arch=(x86_64 aarch64 riscv64 loongarch64)
