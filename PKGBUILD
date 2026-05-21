@@ -3,7 +3,7 @@
 _pkgname=bird
 pkgname=bird2
 pkgver=2.17.1
-pkgrel=2
+pkgrel=3
 pkgdesc='RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://bird.network.cz/'
