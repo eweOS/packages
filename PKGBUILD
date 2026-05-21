@@ -3,7 +3,7 @@
 pkgbase=jasper
 pkgname=(jasper)
 pkgver=4.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard'
 url='https://www.ece.uvic.ca/~frodo/jasper/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
