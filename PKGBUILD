@@ -3,7 +3,7 @@
 
 pkgname=perl-http-daemon
 pkgver=6.16
-pkgrel=4
+pkgrel=5
 pkgdesc="Simple http server class"
 arch=('any')
 url='https://metacpan.org/pod/HTTP::Daemon'
