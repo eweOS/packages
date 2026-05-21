@@ -2,7 +2,7 @@
 
 pkgname=libpfm
 pkgver=4.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux perf_events setup helper'
 url='https://perfmon2.sourceforge.net/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
