@@ -2,7 +2,7 @@
 
 pkgname=unifdef
 pkgver=2.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Utility to selectively process preprocessor conditionals'
 url='https://dotat.at/prog/unifdef/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
