@@ -2,7 +2,7 @@
 
 pkgname=tcpdump
 pkgver=4.99.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A powerful command-line packet analyzer'
 url='https://www.tcpdump.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
