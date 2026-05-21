@@ -3,7 +3,7 @@
 pkgname=libopus
 pkgdesc='A totally open, royalty-free, highly versatile audio codec.'
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 url='https://opus-codec.org/'
 license=('BSD')
 depends=('musl')
