@@ -3,7 +3,7 @@
 pkgbase=libjxl
 pkgname=('libjxl')
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc='JPEG XL image format reference implementation'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://jpeg.org/jpegxl/'
