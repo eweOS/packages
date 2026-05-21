@@ -3,7 +3,7 @@
 pkgname=efivar
 pkgdesc="Tools and libraries to work with EFI variables"
 pkgver=39
-pkgrel=2
+pkgrel=3
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/rhboot/efivar"
 license=(LGPL2.1)
