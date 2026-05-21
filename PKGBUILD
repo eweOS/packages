@@ -3,7 +3,7 @@
 pkgname=python-ptyprocess
 _pyname=${pkgname#*-}
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Run a subprocess in a pseudo terminal'
 url='https://ptyprocess.readthedocs.io/en/latest/'
 arch=(any)
