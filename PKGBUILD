@@ -3,7 +3,7 @@
 pkgbase=font-awesome
 pkgname=(otf-awesome)
 pkgver=7.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The iconic SVG, font, and CSS toolkit"
 url="https://fontawesome.com/"
 license=('OFL-1.1-RFN')
