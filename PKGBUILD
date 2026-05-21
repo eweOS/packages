@@ -3,7 +3,7 @@
 pkgbase=graphite
 pkgname=(graphite)
 pkgver=1.3.14
-pkgrel=4
+pkgrel=5
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/silnrsi/graphite"
 pkgdesc='reimplementation of the SIL Graphite text processing engine'
