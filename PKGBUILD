@@ -2,7 +2,7 @@
 
 pkgname=wget
 pkgver=1.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Network utility to retrieve files from the Web'
 url='https://www.gnu.org/software/wget/wget.html'
 arch=(x86_64 aarch64 riscv64 loongarch64)
