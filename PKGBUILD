@@ -3,7 +3,7 @@
 pkgname=perl-mime-base32
 _perlname=MIME-Base32
 pkgver=1.303
-pkgrel=3
+pkgrel=4
 pkgdesc='Base32 encoder and decoder for Perl'
 url='https://github.com/perl5-utils/MIME-Base32'
 arch=(any)
