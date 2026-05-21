@@ -2,7 +2,7 @@
 
 pkgname=tl-expected
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='C++11/14/17 std::expected with functional-style extensions.'
 url='https://tl.tartanllama.xyz'
 arch=(x86_64 aarch64 riscv64 loongarch64)
