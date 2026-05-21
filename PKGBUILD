@@ -3,7 +3,7 @@
 pkgbase=libkexiv2
 pkgname=(libkexiv2)
 pkgver=25.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A library to manipulate pictures metadata'
 url='https://www.kde.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
