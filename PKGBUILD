@@ -2,7 +2,7 @@
 
 pkgname=imagemagick
 pkgver=7.1.2.18
-pkgrel=2
+pkgrel=3
 _relname=ImageMagick-${pkgver%%.*}
 _tarname=ImageMagick-${pkgver%.*}-${pkgver##*.}
 pkgdesc='An image viewing/manipulation program'
