@@ -2,7 +2,7 @@
 
 pkgname=xdg-utils
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tools that assist applications with a variety of desktop integration tasks"
 arch=('any')
 url="https://www.freedesktop.org/wiki/Software/xdg-utils/"
