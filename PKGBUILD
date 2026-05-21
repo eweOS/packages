@@ -2,7 +2,7 @@
 
 pkgname=yelp-xsl
 pkgver=49.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Document transformations from Yelp"
 url="https://gitlab.gnome.org/GNOME/yelp-xsl"
 arch=(any)
