@@ -2,7 +2,7 @@
 
 pkgname=perl-clone
 pkgver=0.46
-pkgrel=4
+pkgrel=5
 pkgdesc='recursively copy Perl datatypes '
 url='https://metacpan.org/dist/Clone'
 arch=(any)
