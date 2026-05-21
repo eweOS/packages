@@ -2,7 +2,7 @@
 
 pkgname=lxqt-globalkeys
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LXQt daemon and library for global keyboard shortcuts registration."
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 groups=("lxqt")
