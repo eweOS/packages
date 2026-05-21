@@ -3,7 +3,7 @@
 pkgbase=font-inter
 pkgname=(ttf-inter ttf-inter-variable)
 pkgver=4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A typeface specially designed for user interfaces'
 url='https://github.com/rsms/inter'
 license=(OFL-1.1-RFN)
