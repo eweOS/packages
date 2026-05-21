@@ -3,7 +3,7 @@
 
 pkgname=libgpg-error
 pkgver=1.59
-pkgrel=1
+pkgrel=2
 pkgdesc="Support library for libgcrypt"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.gnupg.org"
