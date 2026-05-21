@@ -1,7 +1,7 @@
 pkgbase=cyrus-sasl
 pkgname=(cyrus-sasl libsasl cyrus-sasl-gssapi cyrus-sasl-ldap)
 pkgver=2.1.28
-pkgrel=5
+pkgrel=6
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.cyrusimap.org/sasl/"
 license=(custom)
