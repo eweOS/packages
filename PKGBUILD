@@ -2,7 +2,7 @@
 
 pkgname=libsigsegv
 pkgver=2.15
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 pkgdesc="Page fault detection library"
 url="https://www.gnu.org/software/libsigsegv/"
