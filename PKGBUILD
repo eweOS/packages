@@ -3,7 +3,7 @@
 pkgname=python-immutables
 _pyname=${pkgname#*-}
 pkgver=0.21
-pkgrel=1
+pkgrel=2
 pkgdesc='An implementation of immutable mapping type for Python'
 url='https://github.com/MagicStack/immutables'
 arch=(x86_64 aarch64 riscv64 loongarch64)
