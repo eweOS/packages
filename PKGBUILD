@@ -2,7 +2,7 @@
 
 pkgname=lxqt-archiver
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple & lightweight desktop-agnostic Qt file archiver"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 groups=("lxqt")
