@@ -2,7 +2,7 @@
 
 pkgname=musl-locales
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://git.adelielinux.org/adelie/musl-locales/-/wikis/home"
 pkgdesc="Locales support for musl"
@@ -20,7 +20,8 @@ build() {
   cd $pkgname-$pkgver
   cmake -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build
 }
 
