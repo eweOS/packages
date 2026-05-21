@@ -2,7 +2,7 @@
 
 pkgname=kicad-library-3d
 pkgver=9.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='3D model library for KiCAD'
 url='https://gitlab.com/kicad/libraries/kicad-packages3D'
 arch=(x86_64 aarch64 riscv64 loongarch64)
