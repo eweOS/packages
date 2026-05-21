@@ -4,7 +4,7 @@
 pkgname=perl-file-slurper
 _dist=File-Slurper
 pkgver=0.014
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple, sane and efficient module to slurp a file"
 arch=('any')
 url="https://metacpan.org/release/${_dist}"
