@@ -2,7 +2,7 @@
 
 pkgname=movit
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The modern video toolkit"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://movit.sesse.net/"
