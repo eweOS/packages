@@ -2,7 +2,7 @@
 
 pkgname=skalibs
 pkgver=2.14.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A library suite supporting skarnet.org software.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=(musl)
