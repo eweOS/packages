@@ -3,7 +3,7 @@
 pkgname=gn
 pkgver=0.2174.b3a0bff4
 _commit=b3a0bff47dd81073bfe67a402971bad92e4f2423
-pkgrel=2
+pkgrel=3
 pkgdesc="Meta-build system that generates build files for Ninja"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gn.googlesource.com/gn/"
