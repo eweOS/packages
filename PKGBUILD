@@ -2,7 +2,7 @@
 
 pkgname=cmark
 pkgver=0.31.2
-pkgrel=1
+pkgrel=2
 pkgdesc='CommonMark parsing and rendering library and program in C'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/commonmark/cmark'
