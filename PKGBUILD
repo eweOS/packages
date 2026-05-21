@@ -2,7 +2,7 @@
 
 pkgname=pixman
 pkgver=0.46.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The pixel-manipulation library for X and cairo"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://cgit.freedesktop.org/pixman/"
