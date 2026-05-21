@@ -3,7 +3,7 @@
 pkgbase=python
 pkgname=(python python-tests)
 pkgver=3.13.13
-pkgrel=1
+pkgrel=2
 _pybasever=${pkgver%.*}
 pkgdesc='The Python programming language'
 arch=(x86_64 aarch64 riscv64 loongarch64)
