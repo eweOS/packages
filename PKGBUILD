@@ -3,7 +3,7 @@
 pkgname=foot
 pkgdesc='A fast, lightweight and minimalistic Wayland terminal emulator'
 pkgver=1.26.1
-pkgrel=1
+pkgrel=2
 url="https://codeberg.org/dnkl/$pkgname"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
