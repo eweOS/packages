@@ -2,7 +2,7 @@
 
 pkgname=papirus-icon-theme
 pkgver=20250501
-pkgrel=1
+pkgrel=2
 pkgdesc="Papirus icon theme"
 arch=('any')
 url="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme"
