@@ -2,7 +2,7 @@
 
 pkgname=door-knocker
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Check availability of all portals provided by xdg-desktop-portal"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://codeberg.org/tytan652/door-knocker"
