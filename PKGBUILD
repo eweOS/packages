@@ -3,7 +3,7 @@
 pkgname=python-psutil
 _pyname=${pkgname#*-}
 pkgver=6.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Cross-platform lib for process and system monitoring in Python'
 url='https://github.com/giampaolo/psutil'
 arch=(x86_64 aarch64 riscv64 loongarch64)
