@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-configtool
 pkgver=5.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Configuration tool for fcitx5'
 url='https://github.com/fcitx/fcitx5-configtool'
 arch=(x86_64 aarch64 riscv64 loongarch64)
