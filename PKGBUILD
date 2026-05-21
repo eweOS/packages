@@ -2,7 +2,7 @@
 
 pkgname=cabextract
 pkgver=1.11
-pkgrel=2
+pkgrel=3
 pkgdesc='A program to extract Microsoft cabinet (.CAB) files'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL)
