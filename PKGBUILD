@@ -2,7 +2,7 @@
 
 pkgname=fcgiwrap
 pkgver=1.1.0
-pkgrel=9
+pkgrel=10
 pkgdesc='A simple server for running CGI applications over FastCGI.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('MIT')
