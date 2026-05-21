@@ -2,7 +2,7 @@
 
 pkgname=perl-cpan-requirements-dynamic
 pkgver=0.002
-pkgrel=2
+pkgrel=3
 pkgdesc='Dynamic prerequisites in meta files.'
 url='https://metacpan.org/pod/CPAN::Requirements::Dynamic'
 arch=(any)
