@@ -3,7 +3,7 @@
 
 pkgname=libucontext
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="ucontext function implementations"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/kaniini/$pkgname"
