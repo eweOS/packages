@@ -2,7 +2,7 @@
 
 pkgname=libdbusmenu-lxqt
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A library that provides a Qt implementation of the DBusMenu spec'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/lxqt/libdbusmenu-lxqt'
