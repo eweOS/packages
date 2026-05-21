@@ -2,7 +2,7 @@
 
 pkgname=python-tempora
 pkgver=5.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Objects and routines pertaining to date and time (tempora).'
 url='https://github.com/jaraco/tempora'
 arch=(any)
