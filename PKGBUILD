@@ -2,7 +2,7 @@
 
 pkgname=md4c
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc='C Markdown parser'
 url='https://github.com/mity/md4c'
 arch=(x86_64 aarch64 riscv64 loongarch64)
