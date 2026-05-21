@@ -2,7 +2,7 @@
 
 pkgname=librttopo
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="RT Topology Library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://git.osgeo.org/gitea/rttopo/librttopo"
