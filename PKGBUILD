@@ -2,7 +2,7 @@
 
 pkgname=mm-common
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Common build files of the C++ bindings"
 url="https://www.gtkmm.org/"
 arch=(any)
