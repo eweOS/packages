@@ -2,7 +2,7 @@
 
 pkgname=libxfce4util
 pkgver=4.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Extension library for Xfce'
 url='https://developer.xfce.org/libxfce4util/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
