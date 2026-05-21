@@ -2,7 +2,7 @@
 
 pkgname=xdg-desktop-portal-wlr
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='xdg-desktop-portal backend for wlroots'
 url="https://github.com/emersion/xdg-desktop-portal-wlr"
 arch=(x86_64 aarch64 riscv64 loongarch64)
