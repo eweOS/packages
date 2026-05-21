@@ -5,7 +5,7 @@ pkgname=('poppler' 'poppler-glib' 'poppler-qt6')
 pkgver=26.04.0
 # 2025.09.19
 _testdata_commit=9d5011815a14c157ba25bb160187842fb81579a5
-pkgrel=1
+pkgrel=2
 pkgdesc='A PDF rendering library based on the xpdf-3.0 code base'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL-2.0-only'
