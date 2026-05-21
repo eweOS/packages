@@ -3,7 +3,7 @@
 
 pkgname=libfyaml
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Fully feature complete YAML parser and emitter'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://pantoniou.github.io/libfyaml/'
