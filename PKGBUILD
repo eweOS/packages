@@ -2,7 +2,7 @@
 
 pkgname=cargo-about
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Cargo plugin to generate list of all licenses for a crate"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/EmbarkStudios/cargo-about"
