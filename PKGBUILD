@@ -2,7 +2,7 @@
 
 pkgname=flite
 pkgver=2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A lightweight speech synthesis engine"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://www.festvox.org/flite/"
