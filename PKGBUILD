@@ -2,7 +2,7 @@
 
 pkgname=smartmontools
 pkgver=7.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Programs to control and monitor storage systems using S.M.A.R.T.'
 url='https://www.smartmontools.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
