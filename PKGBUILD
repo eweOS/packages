@@ -2,7 +2,7 @@
 
 pkgname=babl
 pkgver=0.1.124
-pkgrel=1
+pkgrel=2
 pkgdesc='Dynamic, any to any, pixel format conversion library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://gegl.org/babl/'
