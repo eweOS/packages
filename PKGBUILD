@@ -2,7 +2,7 @@
 
 pkgname=python-hatch-vcs
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hatch plugin for versioning with your preferred VCS"
 url="https://github.com/ofek/hatch-vcs"
 license=('MIT')
