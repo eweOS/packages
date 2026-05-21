@@ -2,7 +2,7 @@
 
 pkgname=rapidjson
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A fast JSON parser/generator for C++ with both SAX/DOM style API'
 url='https://github.com/Tencent/rapidjson'
 arch=(x86_64 aarch64 riscv64 loongarch64)
