@@ -3,7 +3,7 @@
 _name=fastjsonschema
 pkgname=python-fastjsonschema
 pkgver=2.21.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast JSON schema validator for Python"
 arch=(any)
 url="https://github.com/horejsek/python-fastjsonschema"
