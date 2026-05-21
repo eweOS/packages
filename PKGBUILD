@@ -2,7 +2,7 @@
 
 pkgname=physfs
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Portable and flexible I/O abstraction for archives'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://icculus.org/physfs'
@@ -17,6 +17,7 @@ build() {
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D PHYSFS_BUILD_TEST=OFF \
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -G Ninja \
     -S $pkgname
   ninja -C build all
