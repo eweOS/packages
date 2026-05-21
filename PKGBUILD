@@ -3,7 +3,7 @@
 pkgname=perl-moo
 _perlname=Moo
 pkgver=2.005005
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal object orientation for Perl'
 url='https://metacpan.org/dist/Moo'
 arch=(any)
