@@ -3,7 +3,7 @@
 
 pkgname=atool
 pkgver=0.39.0
-pkgrel=10
+pkgrel=11
 pkgdesc='A script for managing file archives of various types'
 arch=(any)
 url="https://www.nongnu.org/$pkgname"
