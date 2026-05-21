@@ -3,7 +3,7 @@
 pkgname=python-coverage
 _pyname=coveragepy
 pkgver=7.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The code coverage tool for Python'
 url='https://coverage.readthedocs.io/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
