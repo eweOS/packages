@@ -3,7 +3,7 @@
 pkgname=python-cattrs
 _pipname=${pkgname#python-}
 pkgver=25.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Complex custom class converters for attrs'
 arch=(any)
 #url='https://catt.rs'
