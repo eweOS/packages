@@ -2,7 +2,7 @@
 
 pkgname=efibootmgr
 pkgver=18
-pkgrel=5
+pkgrel=6
 pkgdesc="Linux user-space application to modify the EFI Boot Manager"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/rhboot/efibootmgr"
