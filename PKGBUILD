@@ -1,25 +1,17 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=openjph
-pkgver=0.25.2
-pkgrel=2
+pkgver=0.27.3
+pkgrel=1
 pkgdesc='Open-source implementation of JPEG2000 Part-15 (or JPH or HTJ2K)'
 url='https://github.com/aous72/OpenJPH'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD-2-Clause)
-depends=(musl llvm-libs)
+depends=(musl llvm-libs libtiff)
 makedepends=(cmake linux-uapi-headers)
 provides=(libopenjph.so)
-# 0001: Under review, fix compilation of ojph_sockets.cpp on non-glibc systems
-#	https://github.com/aous72/OpenJPH/pull/229
-source=("https://github.com/aous72/OpenJPH/archive/refs/tags/$pkgver.tar.gz"
-	0001-apps-ojph_sockets-Detect-__GLIBC__-before-using-GNU-.patch)
-sha256sums=('ae5f09562cb811cb2fb881c5eb74583e18db941848cfa3c35787e2580f3defc6'
-            '6cafd659ca5b73cf32004631f5678671c7ede59fb786d04e804064ce404751f5')
-
-prepare() {
-	_patch_ OpenJPH-"$pkgver"
-}
+source=("https://github.com/aous72/OpenJPH/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('f96808ef72cf3acca73a52123bda3e680f6550dfb4774ad7de57eb3ce26de57a')
 
 build() {
 	cmake -S OpenJPH-"$pkgver" -B build \
