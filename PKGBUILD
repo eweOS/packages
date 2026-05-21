@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-benchmark
 pkgver=5.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A py.test fixture for benchmarking code'
 arch=('any')
 license=('BSD-2-Clause')
