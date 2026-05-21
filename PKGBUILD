@@ -3,7 +3,7 @@
 pkgbase=lua-mpack
 pkgname=(lua51-mpack lua54-mpack)
 pkgver=1.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc='libmpack lua binding'
 url='https://github.com/libmpack/libmpack-lua'
 arch=(x86_64 aarch64 riscv64 loongarch64)
