@@ -2,7 +2,7 @@
 
 pkgname=wmenu
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='dmenu substitution on Wayland'
 url='https://codeberg.org/adnano/wmenu'
 arch=(x86_64 aarch64 riscv64 loongarch64)
