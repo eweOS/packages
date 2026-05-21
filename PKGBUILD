@@ -2,7 +2,7 @@
 
 pkgname=kexec-tools
 pkgver=2.0.32
-pkgrel=1
+pkgrel=2
 pkgdesc='Userspace portion of Kexec'
 url='Userspace'
 arch=(x86_64 aarch64 riscv64 loongarch64)
