@@ -1,10 +1,9 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
-# Contributor: Gaetan Bisson <bisson@archlinux.org>
-# Contributor: said <atvordhosbn[at]gmail[dot]com>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libcue
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Parses so-called cue sheets and handles the parsed data'
 url='https://github.com/lipnitsk/libcue/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +15,12 @@ sha512sums=('fe2c39cc9794ac36c0706405e0432bab23228d343ba4e3395220d5b2a2ebf8b3c97
 build()
 {
   cd ${pkgname}-${pkgver}
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON .
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_SHARED_LIBS=ON \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    .
   make
 }
 
