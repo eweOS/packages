@@ -2,7 +2,7 @@
 
 pkgname=dmidecode
 pkgver=3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop Management Interface table related utilities"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.nongnu.org/dmidecode"
