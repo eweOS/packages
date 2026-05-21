@@ -2,7 +2,7 @@
 
 pkgname=diffutils
 pkgver=3.12
-pkgrel=1
+pkgrel=2
 pkgdesc='A package of several programs related to finding differences between files.'
 url='https://www.gnu.org/software/diffutils/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
