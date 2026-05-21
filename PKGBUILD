@@ -2,7 +2,7 @@
 
 pkgname=xfce4-clipman-plugin
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A clipboard plugin for the Xfce4 panel"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 license=('GPL-2.0-or-later')
