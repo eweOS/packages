@@ -2,7 +2,7 @@
 
 pkgname=python-fs
 pkgver=2.4.16
-pkgrel=2
+pkgrel=3
 pkgdesc="Filesystem abstraction layer"
 arch=('any')
 license=('MIT')
