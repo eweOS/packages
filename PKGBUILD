@@ -2,7 +2,7 @@
 
 pkgname=automake
 pkgver=1.18.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A tool for automatically generating Makefile.in files.'
 arch=('any')
 license=('GPL-2.0-or-later')
