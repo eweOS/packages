@@ -3,7 +3,7 @@
 
 pkgname=libinput
 pkgver=1.31.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Input device management and event handling library"
 url="https://gitlab.freedesktop.org/libinput"
 arch=(x86_64 aarch64 riscv64 loongarch64)
