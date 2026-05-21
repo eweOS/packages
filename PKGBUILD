@@ -12,7 +12,7 @@ pkgname=(
 )
 _realpkgname=llvm-project
 pkgver=20.1.8
-pkgrel=4
+pkgrel=5
 _binutilsver=2.44
 _majorver="${pkgver%%.*}"
 arch=(x86_64 aarch64 riscv64 loongarch64)
