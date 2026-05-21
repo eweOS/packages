@@ -2,7 +2,7 @@
 
 pkgname=simdutf
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='SIMD-accelerated Unicode and Base64 routines'
 url='https://simdutf.github.io/simdutf/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
