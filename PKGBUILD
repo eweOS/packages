@@ -2,7 +2,7 @@
 
 pkgname=soundtouch
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An audio processing library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://www.surina.net/soundtouch/
