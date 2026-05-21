@@ -4,7 +4,7 @@
 pkgbase=zlib-ng
 pkgname=(zlib-ng zlib-ng-static)
 pkgver=2.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc='zlib data compression library for the next generation systems'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Zlib)
