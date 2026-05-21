@@ -2,7 +2,7 @@
 
 pkgname='wlogout'
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Logout menu for wayland"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=("MIT")
