@@ -3,7 +3,7 @@
 pkgname=cargo-insta
 _pkgname=insta
 pkgver=1.43.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Cargo plugin for snapshot testing in Rust'
 url='https://github.com/mitsuhiko/insta'
 depends=(musl llvm-libs cargo)
