@@ -2,7 +2,7 @@
 
 pkgname=physfs
 pkgver=3.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Portable and flexible I/O abstraction for archives'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://icculus.org/physfs'
