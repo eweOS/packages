@@ -2,7 +2,7 @@
 
 pkgname=mtools
 pkgver=4.0.49
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of utilities to access MS-DOS disks"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.gnu.org/software/mtools/"
