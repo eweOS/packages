@@ -2,7 +2,7 @@
 
 pkgname=vulkan-volk
 pkgver=1.4.341.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta loader for Vulkan API'
 url='https://github.com/zeux/volk'
 arch=(x86_64 aarch64 riscv64 loongarch64)
