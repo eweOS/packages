@@ -2,7 +2,7 @@
 
 pkgname=convertlit
 pkgver=1.8
-pkgrel=2
+pkgrel=3
 pkgdesc='An extractor/converter for .LIT eBooks'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.convertlit.com/'
