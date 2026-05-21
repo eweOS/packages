@@ -2,7 +2,7 @@
 
 pkgname=readline
 pkgver=8.3
-pkgrel=2
+pkgrel=3
 pkgdesc='GNU readline library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL')
