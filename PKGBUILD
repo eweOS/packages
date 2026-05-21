@@ -2,7 +2,7 @@
 
 pkgname=cargo-c
 pkgver=0.10.21
-pkgrel=2
+pkgrel=3
 pkgdesc='A cargo subcommand to build and install C-ABI compatibile dynamic and static libraries'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/lu-zero/cargo-c/'
