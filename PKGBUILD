@@ -2,7 +2,7 @@
 
 pkgname=autoconf
 pkgver=2.73
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool that produces shell scripts to automatically configure source code.'
 arch=('any')
 license=(GPL3)
