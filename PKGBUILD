@@ -2,7 +2,7 @@
 
 pkgname=python-pyqt6-sip
 pkgver=13.8.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 pkgdesc='The sip module support for PyQt6'
 url='https://riverbankcomputing.com/software/pyqt/intro'
