@@ -3,7 +3,7 @@
 _pyname=pytest-subtests
 pkgname=python-$_pyname
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc='unittest subTest() support and subtests fixture'
 arch=('any')
 license=('MIT')
