@@ -2,7 +2,7 @@
 
 pkgname=libhandy
 pkgver=1.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Library full of GTK+ widgets for mobile phones"
 url="https://gitlab.gnome.org/GNOME/libhandy"
 arch=(x86_64 aarch64 riscv64 loongarch64)
