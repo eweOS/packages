@@ -2,7 +2,7 @@
 
 pkgname=xfce4-wavelan-plugin
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin to monitor wifi connectivity for the Xfce4 panel"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://docs.xfce.org/panel-plugins/xfce4-wavelan-plugin/start"
