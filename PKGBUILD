@@ -3,7 +3,7 @@
 pkgname=jade
 pkgver=1.3.5
 _pkgver=1.3.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Scriptable backend & TUI Installer for eweOS"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/eweOS/$pkgname"
