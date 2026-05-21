@@ -2,7 +2,7 @@
 
 pkgname=sdl3
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3)"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://www.libsdl.org"
