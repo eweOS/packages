@@ -2,7 +2,7 @@
 
 pkgname=dconf-editor
 pkgver=45.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GSettings editor for GNOME"
 url="https://wiki.gnome.org/Apps/DconfEditor"
 arch=(x86_64 aarch64 riscv64 loongarch64)
