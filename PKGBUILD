@@ -2,7 +2,7 @@
 
 pkgname=gigolo
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote filesystem management frontend"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://docs.xfce.org/apps/gigolo/start"
