@@ -2,7 +2,7 @@
 
 pkgname=m4
 pkgver=1.4.21
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 pkgdesc="The GNU macro processor"
 url='http://www.gnu.org/software/m4/'
