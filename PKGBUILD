@@ -2,7 +2,7 @@
 
 pkgname=libepoxy
 pkgver=1.5.10
-pkgrel=5
+pkgrel=6
 pkgdesc="Library handling OpenGL function pointer management"
 url="https://github.com/anholt/libepoxy"
 arch=(x86_64 aarch64 riscv64 loongarch64)
