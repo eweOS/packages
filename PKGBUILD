@@ -2,7 +2,7 @@
 
 pkgname=editorconfig-core-c
 pkgver=0.12.9
-pkgrel=1
+pkgrel=2
 pkgdesc='EditorConfig core code written in C (for use by plugins supporting EditorConfig parsing)'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/editorconfig/editorconfig-core-c'
