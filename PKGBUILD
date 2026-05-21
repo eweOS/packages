@@ -2,7 +2,7 @@
 
 pkgname=libsamplerate
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Sample Rate Converter for audio."
 url="https://libsndfile.github.io/libsamplerate/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
