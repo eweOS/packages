@@ -2,7 +2,7 @@
 
 pkgname=typst
 pkgver=0.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A markup-based typesetting system for the sciences'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://$pkgname.app"
