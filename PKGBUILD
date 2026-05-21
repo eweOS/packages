@@ -7,7 +7,7 @@
 
 pkgname=(med med-doc)
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for exchanging multi-physics simulation data'
 url='https://github.com/chennes/med'
 arch=(x86_64 aarch64 riscv64 loongarch64)
