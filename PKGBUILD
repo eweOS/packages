@@ -2,7 +2,7 @@
 
 pkgname=libcrc32c
 pkgver=1.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc='CRC32C implementation with CPU-specific optimization.'
 url='https://github.com/google/crc32c'
 arch=(x86_64 aarch64 riscv64 loongarch64)
