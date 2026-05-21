@@ -2,7 +2,7 @@
 
 pkgname=lxqt-sudo
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LXQt privilege program (lxsu)."
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 groups=("lxqt")
