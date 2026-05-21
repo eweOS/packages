@@ -3,7 +3,7 @@
 pkgname=perl-parallel-forkmanager
 _perlname=Parallel-ForkManager
 pkgver=2.04
-pkgrel=1
+pkgrel=2
 pkgdesc='Parallel processing fork manager in Perl'
 url='https://github.com/dluxhu/perl-parallel-forkmanager'
 arch=(any)
