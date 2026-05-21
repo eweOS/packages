@@ -2,7 +2,7 @@
 
 pkgname=expac
 pkgver=10
-pkgrel=2
+pkgrel=3
 pkgdesc='alpm data (pacman database) extraction utility'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/falconindy/expac"
