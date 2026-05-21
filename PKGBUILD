@@ -2,7 +2,7 @@
 
 pkgname=ii
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimalistic FIFO and filesystem based IRC client'
 url='https://tools.suckless.org/ii/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
