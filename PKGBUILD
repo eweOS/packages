@@ -2,7 +2,7 @@
 
 pkgname=expect
 pkgver=5.45.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for automating interactive applications'
 url='https://www.nist.gov/services-resources/software/expect'
 arch=(x86_64 aarch64 riscv64 loongarch64)
