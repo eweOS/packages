@@ -3,7 +3,7 @@
 pkgbase=base
 pkgname=(base base-baremetal)
 pkgver=1
-pkgrel=5
+pkgrel=6
 arch=('any')
 license=('GPL')
 
