@@ -3,7 +3,7 @@
 
 pkgname=gcompat
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="The GNU C Library compatibility layer for musl"
 url="https://git.adelielinux.org/adelie/gcompat"
 arch=(x86_64 aarch64 riscv64 loongarch64)
