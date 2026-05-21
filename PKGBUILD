@@ -2,7 +2,7 @@
 
 pkgname=pango
 pkgver=1.57.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for layout and rendering of text"
 url="https://www.pango.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
