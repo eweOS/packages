@@ -2,7 +2,7 @@
 
 pkgname=wine
 pkgver=11.7
-pkgrel=1
+pkgrel=2
 _pkgbasever=${pkgver/rc/-rc}
 # llvm-unwind.patch: Explicitly link LLVM libunwind for _Unwind_Find_FDE, this
 #	isn't necessary for libgcc-based systems, where libgcc_s.so.1 provides
