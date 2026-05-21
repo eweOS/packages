@@ -4,7 +4,7 @@
 
 pkgname=sassc
 pkgver=3.6.2
-pkgrel=4
+pkgrel=5
 pkgdesc="C implementation of Sass CSS preprocessor."
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://sass-lang.com"
