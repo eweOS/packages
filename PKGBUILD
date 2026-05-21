@@ -2,7 +2,7 @@
 
 pkgname=grass
 pkgver=0.13.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A Sass compiler written purely in Rust'
 url='https://docs.rs/grass/latest/grass/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
