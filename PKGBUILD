@@ -3,7 +3,7 @@
 pkgname=containers-common
 _upstream=container-libs
 pkgver=0.66.0
-pkgrel=1
+pkgrel=2
 _podman_pkgver=5.7.0
 _shortnames_pkgver=2025.03.19
 _skopeo_pkgver=1.20.0
