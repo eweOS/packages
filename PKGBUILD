@@ -2,7 +2,7 @@
 
 pkgname=libspnav
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Library to get input from 6-dof devices'
 url='https://spacenav.sourceforge.net/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
