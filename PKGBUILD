@@ -2,7 +2,7 @@
 
 pkgname=libpcap
 pkgver=1.10.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A system-independent interface for user-level packet capture'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.tcpdump.org/'
