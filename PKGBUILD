@@ -2,7 +2,7 @@
 
 pkgname=base-devel
 pkgver=1
-pkgrel=5
+pkgrel=6
 pkgdesc='Buildtool package set'
 arch=('any')
 license=('GPL')
