@@ -2,7 +2,7 @@
 
 pkgname=wayland-protocols
 pkgver=1.48
-pkgrel=1
+pkgrel=2
 pkgdesc='Specifications of extended Wayland protocols'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://wayland.freedesktop.org/'
