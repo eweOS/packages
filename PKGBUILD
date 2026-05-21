@@ -3,7 +3,7 @@
 pkgname=bsd-compat-headers
 pkgver=0.7.2
 _pkgtag=v3.14.10
-pkgrel=3
+pkgrel=4
 pkgdesc="BSD compatibility headers (cdefs, queue, tree)"
 arch=(any)
 url="https://pkgs.alpinelinux.org/package/edge/main/x86_64/bsd-compat-headers"
