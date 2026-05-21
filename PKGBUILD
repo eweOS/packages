@@ -3,7 +3,7 @@
 pkgbase=snowball
 pkgname=(snowball libstemmer)
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="String processing language for creating stemming algorithms"
 url="https://snowballstem.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
