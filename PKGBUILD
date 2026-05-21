@@ -2,7 +2,7 @@
 
 pkgname=havoc
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='minimal terminal emulator for Wayland on Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/ii8/havoc'
