@@ -2,7 +2,7 @@
 
 pkgname=fractal
 pkgver=12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Matrix group messaging app"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gitlab.gnome.org/World/fractal"
