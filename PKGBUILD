@@ -2,7 +2,7 @@
 
 pkgname=libcdio-paranoia
 pkgver=10.2+2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Compact Disc Digital Audio (CDDA) extraction tool using libcdio for CDROM access'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.gnu.org/software/libcdio/'
