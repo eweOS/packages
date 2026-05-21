@@ -2,7 +2,7 @@
 
 pkgname=sdl12-compat
 pkgver=1.2.74
-pkgrel=1
+pkgrel=2
 pkgdesc="SDL 1.2 runtime compatibility library using SDL 2.0"
 url="https://github.com/libsdl-org/sdl12-compat"
 depends=('musl' 'sdl2' 'glu')
