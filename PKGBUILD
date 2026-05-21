@@ -2,7 +2,7 @@
 
 pkgname=pacman-mirrorlist
 pkgver=20250908
-pkgrel=1
+pkgrel=2
 pkgdesc="eweOS mirror list for use by pacman"
 arch=('any')
 url="https://os.ewe.moe"
