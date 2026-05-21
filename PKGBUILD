@@ -2,7 +2,7 @@
 
 pkgname=attr
 pkgver=2.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Extended attribute support library for ACL support'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('LGPL')
