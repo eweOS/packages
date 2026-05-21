@@ -2,7 +2,7 @@
 
 pkgname=sdbus-cpp
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='a high-level C++ D-Bus library designed to provide expressive, easy-to-use API'
 url="https://github.com/Kistler-Group/$pkgname"
 arch=(x86_64 aarch64 riscv64 loongarch64)
