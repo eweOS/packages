@@ -4,7 +4,7 @@
 pkgname=cataclysm-dda
 pkgver=0.H
 _pkgver=0.H
-pkgrel=1
+pkgrel=2
 pkgdesc="A post-apocalyptic roguelike. (TUI version)"
 url="https://cataclysmdda.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
