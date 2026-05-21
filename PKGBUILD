@@ -3,7 +3,7 @@
 _name=setuptools_scm
 pkgname=python-setuptools-scm
 pkgver=9.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Handles managing your python package versions in scm metadata"
 arch=('any')
 url="https://github.com/pypa/setuptools_scm"
