@@ -6,7 +6,7 @@ pkgname=(
   ttf-fira-code-variable
 )
 pkgver=6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Monospaced font with programming ligatures"
 arch=('any')
 url='https://github.com/tonsky/FiraCode'
