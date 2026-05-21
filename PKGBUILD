@@ -3,7 +3,7 @@
 pkgname=python-rfc3339-validator
 _pyname=${pkgname#*-}
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='An RFC3339 validator in pure Python'
 url='https://github.com/naimetti/rfc3339-validator'
 arch=(any)
