@@ -2,7 +2,7 @@
 
 pkgname=python-soupsieve
 pkgver=2.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A CSS4 selector implementation for Beautiful Soup'
 arch=('any')
 url='https://github.com/facelessuser/soupsieve'
