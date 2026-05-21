@@ -2,7 +2,7 @@
 
 pkgname=iso-codes
 pkgver=4.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lists of the country, language, and currency names'
 url='https://salsa.debian.org/iso-codes-team/iso-codes'
 arch=(any)
