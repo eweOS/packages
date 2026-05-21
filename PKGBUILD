@@ -6,7 +6,7 @@ pkgname=(
   cairo-docs
 )
 pkgver=1.18.4
-pkgrel=1
+pkgrel=2
 pkgdesc="2D graphics library with support for multiple output devices"
 url="https://cairographics.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
