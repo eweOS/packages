@@ -2,7 +2,7 @@
 
 pkgname=prison
 pkgver=6.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A library to produce QRCode barcodes and DataMatrix barcodes'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
