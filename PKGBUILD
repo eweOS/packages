@@ -3,7 +3,7 @@
 pkgbase=libsigc++
 pkgname=libsigc++3
 pkgver=3.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Callback Framework for C++"
 url="https://libsigcplusplus.github.io/libsigcplusplus/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
