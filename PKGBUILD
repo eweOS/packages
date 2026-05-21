@@ -2,7 +2,7 @@
 
 pkgname=libspectre
 pkgver=0.2.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Small library for rendering Postscript documents'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-or-later)
