@@ -3,7 +3,7 @@
 
 pkgname=libksba
 pkgver=1.6.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for working with X.509 certificates, CMS data and related objects'
 url='https://www.gnupg.org/related_software/libksba/'
 license=('GPL')
