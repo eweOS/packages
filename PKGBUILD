@@ -3,7 +3,7 @@
 pkgname=python-webcolors
 _pyname=${pkgname#*-}
 pkgver=24.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A library for working with HTML/CSS color formats in Python'
 url='https://webcolors.readthedocs.io/en/latest/'
 arch=(any)
