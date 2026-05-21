@@ -2,7 +2,7 @@
 
 pkgname=libzip
 pkgver=1.11.4
-pkgrel=1
+pkgrel=2
 pkgdesc="C library for reading, creating, and modifying zip archives"
 url="https://libzip.org"
 license=('BSD')
