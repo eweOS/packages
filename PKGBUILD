@@ -2,7 +2,7 @@
 
 pkgname=connman
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel's modular network connection manager"
 url="https://01.org/connman"
 arch=(x86_64 aarch64 riscv64 loongarch64)
