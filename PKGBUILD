@@ -2,7 +2,7 @@
 
 pkgname=xfdesktop
 pkgver=4.20.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Xfce's desktop manager"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://docs.xfce.org/xfce/xfdesktop/start"
