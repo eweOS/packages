@@ -2,7 +2,7 @@
 
 pkgname=spdlog
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Very fast, header-only/compiled, C++ logging library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/gabime/spdlog'
