@@ -3,7 +3,7 @@
 pkgbase=cdrdao
 pkgname=('cdrdao' 'gcdmaster')
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 license=('GPL-2.0-or-later')
 url="http://cdrdao.sourceforge.net/"
