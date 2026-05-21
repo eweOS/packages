@@ -3,7 +3,7 @@
 pkgname=rust-bindgen
 _pkgname=bindgen
 pkgver=0.72.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Automatically generates Rust FFI bindings to C (and some C++) libraries'
 url='https://github.com/rust-lang/rust-bindgen'
 makedepends=('cargo')
