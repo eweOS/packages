@@ -3,7 +3,7 @@
 _name=backends
 pkgname=sane
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Scanner Access Now Easy"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gitlab.com/sane-project/backends"
