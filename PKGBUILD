@@ -5,14 +5,21 @@
 pkgbase=pacman
 pkgname=(libalpm pacman repo-tools)
 pkgver=7.1.0
-pkgrel=3
+pkgrel=4
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://www.archlinux.org/pacman/
 license=(GPL)
 makedepends=(meson libarchive openssl ninja acl curl xz gpgme)  # TODO: asciidoc doxygen
 checkdepends=(python)
+# 0001: new feature, to be upstreamed
+# 0002: Under review, fix pacman hang/crash in child process with cURL 8.20
+#       which carries a lot improvements in multi-threading.
+#       https://gitlab.archlinux.org/pacman/pacman/-/merge_requests/361
+#
+#       Related reports: https://gitlab.archlinux.org/pacman/pacman/-/work_items/319
 source=(https://gitlab.archlinux.org/pacman/pacman/-/archive/v$pkgver/pacman-v$pkgver.tar.gz
-        0001-rust-ltoflags.patch  # new feature, to be upstreamed
+        0001-rust-ltoflags.patch
+        0002-libalpm-invalidate-curl-data-in-child.patch
         pacman.conf
         makepkg.conf
         function_patch.sh
@@ -24,6 +31,7 @@ source=(https://gitlab.archlinux.org/pacman/pacman/-/archive/v$pkgver/pacman-v$p
         script_noglibc.sh)
 sha256sums=('1090f680958a73dc1f443a1eb919bd2ad77b3caff38e92e9737dec100c647bc9'
             'de0902f0e3a4607bfcbac2df8ab0707f63f0b39ea3f0ec7c306f2af1fff447b5'
+            '5865513b59a2b7937f581f66de3163a78b55d6d631489b7bfe6e3ad2953486c6'
             '0865036ef04a06b00926640ac7db2275988b834f435101e8110eedf8a2e58b88'
             'a2c787c7e56d6ae79259e7d99433ee50bde6a6afbc2dafcb8c2c9584ba1d660c'
             '738432ead6dae6c63a5cbd33e110f8a5e34f5143d125e183cf77dc3dbe87fe92'
