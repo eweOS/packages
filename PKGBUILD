@@ -5,7 +5,7 @@
 
 pkgname=gc
 pkgver=8.2.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A garbage collector for C and C++"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.hboehm.info/gc/"
