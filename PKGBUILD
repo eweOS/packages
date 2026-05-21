@@ -3,7 +3,7 @@
 pkgbase=lua-cjson
 pkgname=(lua51-cjson lua54-cjson)
 pkgver=2.1.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast JSON encoding/parsing module for Lua'
 url='https://github.com/openresty/lua-cjson'
 arch=(x86_64 aarch64 riscv64 loongarch64)
