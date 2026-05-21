@@ -2,7 +2,7 @@
 
 pkgname=python-chardet
 pkgver=7.2.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/chardet/chardet"
 license=('LGPL-2.1-or-later')
