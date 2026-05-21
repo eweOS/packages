@@ -2,7 +2,7 @@
 
 pkgname=xfce4-indicator-plugin
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin to display information from applications in the Xfce4 panel"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://docs.xfce.org/panel-plugins/xfce4-indicator-plugin/start"
