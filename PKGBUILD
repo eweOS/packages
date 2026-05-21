@@ -2,7 +2,7 @@
 
 pkgname=libraqm
 pkgver=0.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A library that encapsulates the logic for complex text layout'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/HOST-Oman/libraqm/'
