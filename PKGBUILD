@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-mock
 pkgver=3.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Thin-wrapper around the mock package for easier use with pytest.'
 url='https://github.com/pytest-dev/pytest-mock'
 arch=(any)
