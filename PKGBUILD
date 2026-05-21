@@ -2,7 +2,7 @@
 
 pkgname=soxr
 pkgver=0.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc='High quality, one-dimensional sample-rate conversion library '
 url='https://sourceforge.net/projects/soxr/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
