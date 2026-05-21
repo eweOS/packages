@@ -2,7 +2,7 @@
 
 pkgname=zsh
 pkgver=5.9
-pkgrel=2
+pkgrel=3
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.zsh.org/'
 license=('custom')
