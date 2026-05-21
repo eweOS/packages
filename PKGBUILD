@@ -2,7 +2,7 @@
 
 pkgname=atuin
 pkgver=18.13.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Magical shell history"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://atuin.sh"
