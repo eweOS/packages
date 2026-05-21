@@ -3,7 +3,7 @@
 pkgname=libudev
 _pkgname=libudev-zero
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 so_ver=1.6.3
 pkgdesc="Daemonless replacement for libudev "
 arch=(x86_64 aarch64 riscv64 loongarch64)
