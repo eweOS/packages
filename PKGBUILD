@@ -2,7 +2,7 @@
 
 pkgname=iftop
 pkgver=1.0pre4
-pkgrel=3
+pkgrel=4
 pkgdesc="Display bandwidth usage on an interface"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://www.ex-parrot.com/~pdw/iftop/"
