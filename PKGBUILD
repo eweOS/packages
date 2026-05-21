@@ -3,7 +3,7 @@
 pkgname=perl-sub-quote
 _perlname=Sub-Quote
 pkgver=2.006009
-pkgrel=1
+pkgrel=2
 pkgdesc='Efficient subroutine generation via string evaluation'
 url='https://github.com/moose/Sub-Quote'
 arch=(any)
