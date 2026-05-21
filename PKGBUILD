@@ -2,7 +2,7 @@
 
 pkgname=mg
 pkgver=20260227
-pkgrel=1
+pkgrel=2
 pkgdesc="Microscopic EMACS style editor"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/hboetes/mg"
