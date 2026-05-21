@@ -2,7 +2,7 @@
 
 pkgname=hyprland-protocols
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Wayland protocol extensions for Hyprland'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/hyprwm/$pkgname"
