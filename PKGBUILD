@@ -2,7 +2,7 @@
 
 pkgname=spice-protocol
 pkgver=0.14.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Headers for SPICE protocol"
 arch=(any)
 url="https://spice-space.org"
