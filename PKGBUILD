@@ -2,7 +2,7 @@
 
 pkgname=perl-class-data-inheritable
 pkgver=0.10
-pkgrel=3
+pkgrel=4
 pkgdesc='Inheritable, overridable class data'
 url='https://metacpan.org/dist/Class-Data-Inheritable'
 arch=(any)
