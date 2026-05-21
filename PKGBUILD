@@ -2,7 +2,7 @@
 
 pkgname=happy
 pkgver=1.20.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='The Happy parser generator for Haskell'
 url='https://hackage.haskell.org/package/happy'
 arch=(x86_64 aarch64 riscv64)
