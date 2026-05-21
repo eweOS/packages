@@ -2,7 +2,7 @@
 
 pkgname=qpdf
 pkgver=12.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="QPDF: A Content-Preserving PDF Transformation System"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/qpdf/qpdf"
