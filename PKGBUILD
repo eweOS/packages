@@ -2,7 +2,7 @@
 
 pkgname=catnest
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A substitution of systemd-sysusers"
 url="https://github.com/eweOS/catnest"
 license=(MIT)
