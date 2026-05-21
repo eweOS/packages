@@ -2,7 +2,7 @@
 
 pkgname=valgrind
 pkgver=3.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An instrumentation framework for building dynamic analysis tools.'
 url='https://valgrind.org/'
 arch=(x86_64 aarch64 riscv64)
