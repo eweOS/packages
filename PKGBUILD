@@ -2,7 +2,7 @@
 
 pkgname=lensfun
 pkgver=0.3.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Database of photographic lenses and a library that allows advanced access to the database'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://lensfun.github.io/'
@@ -25,7 +25,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS -fno-delete-null-pointer-checks" \
-    -DINSTALL_PYTHON_MODULE=OFF
+    -DINSTALL_PYTHON_MODULE=OFF \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build
   cd build/apps
   python -m build --wheel --no-isolation
