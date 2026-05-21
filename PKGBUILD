@@ -2,7 +2,7 @@
 
 pkgname=python-pystemmer
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Snowball stemming algorithms, for information retrieval"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 license=('BSD-3-Clause' 'MIT')
