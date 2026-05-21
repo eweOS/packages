@@ -2,7 +2,7 @@
 
 pkgname=jxrlib
 pkgver=0.2.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Open source implementation of jpegxr"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://archive.codeplex.com/?p=jxrlib"
