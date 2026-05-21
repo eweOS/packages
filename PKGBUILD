@@ -5,7 +5,7 @@ pkgname=itstool
 # the lxml patch cleanly requires it.
 _commit=19f9580f27aa261ea383b395fdef7e153f3f9e6d # 2025.03.26
 pkgver=2.0.7.r2.g${_commit:0:7}
-pkgrel=1
+pkgrel=2
 pkgdesc="XML to PO and back again"
 arch=(any)
 url="http://itstool.org/"
