@@ -2,7 +2,7 @@
 
 pkgname=jbigkit
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Data compression library/utilities for bi-level high-resolution images'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.cl.cam.ac.uk/~mgk25/jbigkit/'
