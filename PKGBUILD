@@ -2,7 +2,7 @@
 
 pkgname=adw-gtk-theme
 pkgver=5.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial GTK 3 port of the libadwaita theme'
 arch=(any)
 url=https://github.com/lassekongo83/adw-gtk3
