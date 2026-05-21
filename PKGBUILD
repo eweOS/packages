@@ -2,7 +2,7 @@
 
 pkgname=python-hatchling
 pkgver=1.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensible, standards compliant build backend used by Hatch"
 arch=('any')
 url="https://github.com/pypa/hatch/tree/master/backend"
