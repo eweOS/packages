@@ -2,7 +2,7 @@
 
 pkgname=groff
 pkgver=1.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GNU Troff typesettings system.'
 url='https://www.gnu.org/software/groff/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
