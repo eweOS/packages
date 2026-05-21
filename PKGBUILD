@@ -2,7 +2,7 @@
 
 pkgname=python-pyparsing
 pkgver=3.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='General parsing module for Python'
 arch=('any')
 url='https://github.com/pyparsing/pyparsing/'
