@@ -2,7 +2,7 @@
 
 pkgname=konversation
 pkgver=25.08.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A user-friendly and fully-featured IRC client'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://apps.kde.org/konversation/'
