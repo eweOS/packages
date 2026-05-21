@@ -2,7 +2,7 @@
 
 pkgname=clipper2
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Polygon operation library'
 url='https://github.com/AngusJohnson/Clipper2'
 arch=(x86_64 aarch64 riscv64 loongarch64)
