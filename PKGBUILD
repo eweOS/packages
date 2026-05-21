@@ -2,7 +2,7 @@
 
 pkgname=libhidapi
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Simple cross-platform library for communicating with HID devices.'
 url='https://libusb.info/hidapi'
 arch=(x86_64 aarch64 riscv64 loongarch64)
