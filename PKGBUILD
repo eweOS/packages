@@ -2,7 +2,7 @@
 
 pkgname=putty
 pkgver=0.83
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal integrated SSH/Telnet client'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.chiark.greenend.org.uk/~sgtatham/putty/'
