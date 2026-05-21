@@ -2,7 +2,7 @@
 
 pkgname=wesnoth
 pkgver=1.19.22
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source, turn-based strategy game with a high fantasy theme'
 url='https://www.wesnoth.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
