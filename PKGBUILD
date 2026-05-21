@@ -8,7 +8,7 @@ pkgname=(
 )
 pkgver=2.88.0
 _pkgver_major=${pkgver%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-level core library that forms the basis for projects such as GTK+ and GNOME"
 url="https://wiki.gnome.org/Projects/GLib"
 license=(LGPL)
