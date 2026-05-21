@@ -2,7 +2,7 @@
 
 pkgname=winetricks
 pkgver=20260125
-pkgrel=1
+pkgrel=2
 pkgdesc='Script to install various redistributable runtime libraries in Wine.'
 url='https://wiki.winehq.org/winetricks'
 license=('LGPL')
