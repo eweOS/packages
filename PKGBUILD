@@ -2,7 +2,7 @@
 
 pkgname=nlohmann-json
 pkgver=3.12.0
-pkgrel=1
+pkgrel=2
 # tests are tracked in a separate repo
 # https://github.com/nlohmann/json_test_data
 _test_pkgver=3.1.0
