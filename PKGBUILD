@@ -2,7 +2,7 @@
 
 pkgname=kdiagram
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful libraries for creating business diagrams'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
