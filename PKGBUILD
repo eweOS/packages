@@ -3,7 +3,7 @@
 pkgbase=qt6-quicktimeline
 pkgname=(qt6-quicktimeline qt6-quicktimeline-devel)
 pkgver=6.10.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
