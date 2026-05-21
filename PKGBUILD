@@ -2,7 +2,7 @@
 
 pkgname=lib3mf
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='C++ implementation of 3D Manufacturing Format (3MF)'
 url='https://3mf.io/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
