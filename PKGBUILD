@@ -2,7 +2,7 @@
 
 pkgname=hdf5
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='HDF5 scientific data model implementation'
 url='https://www.hdfgroup.org/solutions/hdf5/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
