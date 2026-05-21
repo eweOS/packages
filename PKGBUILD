@@ -2,7 +2,7 @@
 
 pkgname="hyprwayland-scanner"
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Hyprland implementation of wayland-scanner, in and for C++"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/hyprwm/hyprwayland-scanner"
