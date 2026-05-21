@@ -2,7 +2,7 @@
 
 pkgname=frameworkintegration
 pkgver=6.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Framework providing components to allow applications to integrate with a KDE Workspace'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
