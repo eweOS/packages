@@ -2,7 +2,7 @@
 
 pkgname=python-wrapt
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python module for decorators, wrappers and monkey patching"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://pypi.python.org/pypi/wrapt"
