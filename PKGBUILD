@@ -6,7 +6,7 @@ pkgname=(
   sof-tools
 )
 pkgver=2025.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Sound Open Firmware"
 url="https://www.sofproject.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
