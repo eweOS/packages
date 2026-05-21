@@ -7,7 +7,7 @@ pkgname=(
   libadwaita-docs
 )
 pkgver=1.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Building blocks for modern adaptive GNOME applications"
 url="https://gnome.pages.gitlab.gnome.org/libadwaita/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
