@@ -3,7 +3,7 @@
 pkgname=perl-regexp-common
 _perlname=Regexp-Common
 pkgver=2024080801
-pkgrel=1
+pkgrel=2
 pkgdesc='Commonly requested regular expressions in Perl'
 url='https://www.nxp.com/docs/en/user-guide/UM10204.pdf'
 arch=(any)
