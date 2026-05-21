@@ -3,7 +3,7 @@
 _name=roman-numerals
 pkgname=python-roman-numerals-py
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Manipulate well-formed Roman numerals'
 arch=(any)
 url=https://github.com/AA-Turner/roman-numerals/tree/master/python
