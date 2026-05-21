@@ -2,7 +2,7 @@
 
 pkgname=rollmeow
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A generic update checker.'
 url='https://github.com/eweOS/rollmeow'
 arch=(any)
