@@ -2,7 +2,7 @@
 
 pkgname=xdg-user-dirs
 pkgver=0.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage user directories like ~/Desktop and ~/Music"
 url="https://www.freedesktop.org/wiki/Software/xdg-user-dirs"
 arch=(x86_64 aarch64 riscv64 loongarch64)
