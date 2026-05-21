@@ -2,7 +2,7 @@
 
 pkgname=ntbtls
 pkgver=0.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Not Too Bad TLS library'
 url='https://wiki.gnupg.org/NTBTLS'
 arch=(x86_64 aarch64 riscv64 loongarch64)
