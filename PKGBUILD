@@ -2,7 +2,7 @@
 
 pkgname=python-pretend
 pkgver=1.0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for stubbing in Python"
 arch=('any')
 license=('BSD-3-Clause')
