@@ -2,7 +2,7 @@
 
 pkgname=shellcheck
 pkgver=0.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A static analysis tool for shell scripts'
 url='https://www.shellcheck.net/'
 arch=(x86_64 aarch64 riscv64)
