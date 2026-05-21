@@ -2,7 +2,7 @@
 
 pkgname=protobuf
 pkgver=34.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Google's data interchange format"
 url='https://github.com/protocolbuffers/protobuf/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
