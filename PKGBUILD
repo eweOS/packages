@@ -3,7 +3,7 @@
 _pkgbase=regex
 pkgname=python-regex
 pkgver=2024.11.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Alternative python regular expression module."
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://github.com/mrabarnett/mrab-regex"
