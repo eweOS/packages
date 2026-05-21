@@ -2,7 +2,7 @@
 
 pkgname=repo
 pkgver=2.62
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool built on top of Git to manage many repositories'
 url='https://android.googlesource.com/tools/repo'
 arch=(any)
