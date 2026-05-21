@@ -3,7 +3,7 @@
 pkgbase=pulseaudio
 pkgname=libpulse
 pkgver=17.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A featureful, general-purpose sound server"
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
