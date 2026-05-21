@@ -2,7 +2,7 @@
 
 pkgname=tor
 pkgver=0.4.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Anonymizing overlay network.'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://www.torproject.org/download/tor/'
