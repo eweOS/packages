@@ -2,7 +2,7 @@
 
 pkgname=openttd-opengfx
 pkgver=7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A free graphics set for openttd'
 arch=('any')
 url='https://dev.openttdcoop.org/projects/opengfx'
