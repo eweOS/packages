@@ -2,7 +2,7 @@
 
 pkgname=libtraceevent
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Library to parse raw trace event formats'
 url='Library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
