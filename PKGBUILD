@@ -3,7 +3,7 @@
 
 pkgname=icu
 pkgver=78.2
-pkgrel=1
+pkgrel=2
 pkgdesc="International Components for Unicode library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://icu.unicode.org"
