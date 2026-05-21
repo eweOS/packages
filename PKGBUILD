@@ -2,7 +2,7 @@
 
 pkgname=libsrt
 pkgver=1.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Secure Reliable Transport (SRT)'
 url='https://www.srtalliance.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
