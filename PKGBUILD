@@ -2,7 +2,7 @@
 
 pkgname=kdesu
 pkgver=6.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Integration with su for elevated privileges'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
