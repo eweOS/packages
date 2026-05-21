@@ -3,7 +3,7 @@
 pkgname=python-pdm-backend
 _pyname=${pkgname#*-}
 pkgver=2.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Build backend used by PDM that supports latest packaging standard'
 url='https://backend.pdm-project.org/'
 arch=(any)
