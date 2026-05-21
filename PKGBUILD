@@ -3,7 +3,7 @@
 _pkgbase=ReGreet
 pkgname=greetd-regreet
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Clean and customizable greeter for greetd'
 url="https://github.com/rharish101/$_pkgbase"
 license=(GPL3)
