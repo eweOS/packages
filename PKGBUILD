@@ -2,7 +2,7 @@
 
 pkgname=libwmf
 pkgver=0.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for reading vector images in Microsoft's native Windows Metafile Format (WMF)"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/caolanm/libwmf"
