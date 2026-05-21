@@ -3,7 +3,7 @@
 pkgname=perl-role-tiny
 _perlname=Role-Tiny
 pkgver=2.002004
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimalist role composition tool'
 url='https://github.com/moose/Role-Tiny'
 arch=(any)
