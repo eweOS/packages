@@ -2,7 +2,7 @@
 
 pkgname=make
 pkgver=4.4.1
-pkgrel=3
+pkgrel=4
 arch=(x86_64 aarch64 riscv64 loongarch64)
 pkgdesc="GNU make utility to maintain groups of programs"
 url="https://www.gnu.org/software/make"
