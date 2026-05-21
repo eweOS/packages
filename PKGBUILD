@@ -3,7 +3,7 @@
 pkgname=discount
 pkgver=3.0.1
 _pkgver=3.0.0d
-pkgrel=1
+pkgrel=2
 pkgdesc='A Markdown implementation written in C'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.pell.portland.or.us/~orc/Code/discount/'
