@@ -2,7 +2,7 @@
 
 pkgname=liblqr
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A seam-carving C/C++ library called Liquid Rescale'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://liblqr.wikidot.com/'
