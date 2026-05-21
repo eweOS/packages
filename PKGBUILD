@@ -2,7 +2,7 @@
 
 pkgname=check
 pkgver=0.15.2
-pkgrel=4
+pkgrel=5
 pkgdesc='A unit testing framework for C'
 url='https://github.com/libcheck/check'
 arch=(x86_64 aarch64 riscv64 loongarch64)
