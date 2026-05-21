@@ -2,7 +2,7 @@
 
 pkgname=thunar-archive-plugin
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds archive operations to the Thunar file context menus"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://docs.xfce.org/xfce/thunar/archive"
