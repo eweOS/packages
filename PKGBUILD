@@ -4,8 +4,8 @@
 pkgbase=linux-lts
 pkgname=(linux-lts linux-lts-devel linux-lts-docs)
 _basename=linux
-pkgver=6.18.27
-pkgrel=2
+pkgver=6.18.32
+pkgrel=1
 pkgdesc='Linux LTS kernel'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
@@ -15,19 +15,14 @@ options=(!strip)
 _kconfig_commit=b923049b00b31e7e2823759f2bce1290bdae365a
 # 0001: Downstream, fixed in master, enlarge stack frame size limitation to
 #	fix amdgpu compilation on x86_64 with LLVM
-# 0002: Backport, f4c50a4034e6 ("xfrm: esp: avoid in-place decrypt on shared skb frags")
-#	security fix for ESP-related part of dirtyfrag.
-#	Reference: https://github.com/V4bel/dirtyfrag
 source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         "git+https://github.com/eweOS/kernel-config.git#commit=$_kconfig_commit"
         busybox-find-compat.patch
-        0001-amdgpu-dml2-Increase-max-stack-size.patch
-	0002-xfrm-esp-avoid-in-place-decrypt-on-shared-skb-frags.patch)
-sha256sums=('25017b93946f0ba2cbf71910b59640a29d9167a5b65ccd41b12cd991875ce2ea'
+        0001-amdgpu-dml2-Increase-max-stack-size.patch)
+sha256sums=('067dadd445578284ea6158f312f7970d8940fed3e094dbe49cff66d188d3bda4'
             '1c68c1f09434c62031e6aceb2512c55f076f07ecff8320c317ad0b2f8437497c'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd'
-            '70d813202220e0fd41b0908c5b22d4e4607e80c7366282ab90caa3d55955ced5'
-            '4c52c364c7884d8ec2ad580d9e7ba815a342d0de325457b71c8ab931cfe783e1')
+            '70d813202220e0fd41b0908c5b22d4e4607e80c7366282ab90caa3d55955ced5')
 
 case $CARCH in
 x86_64)
