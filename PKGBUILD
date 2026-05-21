@@ -3,7 +3,7 @@
 
 pkgname=gflags
 pkgver=2.2.2
-pkgrel=6
+pkgrel=7
 pkgdesc='C++ Library for commandline flag processing'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/schuhschuh/gflags'
