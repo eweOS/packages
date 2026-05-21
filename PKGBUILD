@@ -2,7 +2,7 @@
 
 pkgname=ghc
 pkgver=9.6.7
-pkgrel=3
+pkgrel=4
 pkgdesc='Glasgow Haskell Compiler.'
 url='https://ghc.haskell.org/'
 arch=(x86_64 aarch64 riscv64)		# NOTICE: we use NCG only
