@@ -2,7 +2,7 @@
 
 pkgname=tllist
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A typed linked list C header file only library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://codeberg.org/dnkl/tllist
