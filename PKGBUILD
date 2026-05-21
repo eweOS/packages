@@ -2,7 +2,7 @@
 
 pkgname=libgeotiff
 pkgver=1.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A TIFF based interchange format for georeferenced raster imagery"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/OSGeo/libgeotiff"
