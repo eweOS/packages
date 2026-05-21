@@ -2,7 +2,7 @@
 
 pkgname=gdk-pixbuf
 pkgver=2.44.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A library that loads image data in various formats"
 url="https://wiki.gnome.org/Projects/GdkPixbuf"
 arch=(x86_64 aarch64 riscv64 loongarch64)
