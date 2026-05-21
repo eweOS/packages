@@ -3,7 +3,7 @@
 pkgname=python-fonttools
 _pyname=${pkgname#python-}
 pkgver=4.60.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A library to manipulate font files from Python'
 url="https://github.com/fonttools/$_pyname"
 license=(MIT)
