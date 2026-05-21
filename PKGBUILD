@@ -2,7 +2,7 @@
 
 pkgname=python-freezegun
 pkgver=1.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Let your Python tests travel through time'
 arch=('any')
 url='https://github.com/spulec/freezegun'
