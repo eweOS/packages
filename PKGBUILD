@@ -2,7 +2,7 @@
 
 pkgname=optipng
 pkgver=7.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Compresses PNG files to a smaller size, without losing any information.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://optipng.sourceforge.net/'
