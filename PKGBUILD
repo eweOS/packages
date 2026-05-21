@@ -2,7 +2,7 @@
 
 pkgname=systemc
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Set of C++ classes and macros which provide an event-driven simulation interface for modeling and describing complex hardware systems.'
 url='https://www.accellera.org/downloads/standards/systemc'
 arch=(x86_64 aarch64 riscv64 loongarch64)
