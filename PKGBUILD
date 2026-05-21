@@ -3,7 +3,7 @@
 pkgbase=font-dejavu
 pkgname=ttf-dejavu
 pkgver=2.37
-pkgrel=6
+pkgrel=7
 pkgdesc="Font family based on the Bitstream Vera Fonts with a wider range of characters"
 arch=('any')
 url="https://dejavu-fonts.github.io/"
