@@ -2,7 +2,7 @@
 
 pkgname=xfce4-screenshooter
 pkgver=1.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An application to take screenshots"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://docs.xfce.org/apps/xfce4-screenshooter/start"
