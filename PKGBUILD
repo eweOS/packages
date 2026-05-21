@@ -3,7 +3,7 @@
 
 pkgname=libsodium
 pkgver=1.0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Portable & Packageable NaCl-based crypto library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/jedisct1/libsodium"
