@@ -2,7 +2,7 @@
 
 pkgname=kicad-library
 pkgver=9.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Symbol, footprint and template library for KiCAD'
 url='https://gitlab.com/kicad/libraries'
 arch=(x86_64 aarch64 riscv64 loongarch64)
