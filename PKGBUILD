@@ -2,7 +2,7 @@
 
 pkgname=garcon
 pkgver=4.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org compliant menu library"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://docs.xfce.org/xfce/garcon/start"
