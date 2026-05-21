@@ -2,7 +2,7 @@
 
 pkgname=geos
 pkgver=3.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="C/C++ library for computational geometry"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://libgeos.org/"
