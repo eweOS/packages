@@ -2,7 +2,7 @@
 
 pkgname=tinyxml2
 pkgver=11.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple XML parser made for easy integration'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/leethomason/tinyxml2'
