@@ -2,7 +2,7 @@
 
 pkgname=ladspa
 pkgver=1.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Audio Developer's Simple Plugin API (LADSPA)"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-2.1)
