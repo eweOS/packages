@@ -2,7 +2,7 @@
 
 pkgname=liblxqt
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Common base library for LXQt components"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 url="https://github.com/lxqt/$pkgname"
