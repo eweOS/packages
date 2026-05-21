@@ -2,7 +2,7 @@
 
 pkgname=libayatana-indicator
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Ayatana Indicators shared library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/AyatanaIndicators/libayatana-indicator'
