@@ -2,7 +2,7 @@
 
 pkgname=xfce4-appfinder
 pkgver=4.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Application launcher and finder"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://docs.xfce.org/xfce/xfce4-appfinder/start"
