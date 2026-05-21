@@ -2,7 +2,7 @@
 
 pkgname=mousepad
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple text editor for the Xfce desktop environment.'
 url='https://docs.xfce.org/apps/mousepad/start'
 arch=(x86_64 aarch64 riscv64 loongarch64)
