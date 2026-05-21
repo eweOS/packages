@@ -2,7 +2,7 @@
 
 pkgname=cava
 pkgver=0.10.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Console-based Audio Visualizer for Alsa'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://github.com/karlstav/cava'
