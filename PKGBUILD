@@ -2,7 +2,7 @@
 
 pkgname=pavucontrol-qt
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Pulseaudio mixer in Qt (port of pavucontrol)"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 groups=("lxqt")
