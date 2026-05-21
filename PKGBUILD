@@ -2,7 +2,7 @@
 
 pkgname=gavl
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Low level library, upon which multimedia APIs can be built'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://gmerlin.sourceforge.net/'
