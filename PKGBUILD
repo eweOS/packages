@@ -3,7 +3,7 @@
 
 pkgname=xfce4-panel
 pkgver=4.20.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Panel for the Xfce desktop environment"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://docs.xfce.org/xfce/xfce4-panel/start"
