@@ -2,7 +2,7 @@
 
 pkgname=intel-gmmlib
 pkgver=22.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel Graphics Memory Management Library'
 url='https://github.com/intel/gmmlib/'
 # TODO: make it portable
