@@ -3,7 +3,7 @@
 pkgbase=mesa-demos
 pkgname=('mesa-demos' 'mesa-utils')
 pkgver=9.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Mesa demos"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.mesa3d.org/"
@@ -13,7 +13,7 @@ makedepends=('meson' 'libgl' 'glu'
              'glslang' 'vulkan-headers' 'vulkan-icd-loader' 'libdecor'
              'wayland-protocols' 'wayland' 'libdrm' 'libxkbcommon' 'git' 'linux-headers')
 source=($pkgbase::git+https://gitlab.freedesktop.org/mesa/demos.git#commit=${_commit})
-sha512sums=('SKIP')
+sha512sums=('6d7f6f30c05e911169fda4bc7cf1f18dd4ec437976836e221179561938a004d0976d789dfc0e9419c9f46aaba4255dd38aa2a63c0bfc7bd3c21834d39cda04f8')
 
 pkgver() {
   cd $pkgname
@@ -25,7 +25,8 @@ build() {
     -D gles1=disabled \
     -D with-system-data-files=true \
     -D x11=disabled \
-    -D glut=disabled
+    -D glut=disabled \
+    -D osmesa=disabled
 
   # Print config
   meson configure build
