@@ -3,7 +3,7 @@
 pkgname=python-jsonschema
 _pyname=${pkgname#*-}
 pkgver=4.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An implementation of the JSON Schema specification for Python'
 url='https://python-jsonschema.readthedocs.io/en/stable/'
 arch=(any)
