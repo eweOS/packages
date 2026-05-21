@@ -2,7 +2,7 @@
 
 pkgname=nspr
 pkgver=4.38
-pkgrel=1
+pkgrel=2
 pkgdesc="Netscape Portable Runtime"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSPR"
 arch=(x86_64 aarch64 riscv64 loongarch64)
