@@ -2,7 +2,7 @@
 
 pkgname=pkcs11-helper
 pkgver=1.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A library that simplifies the interaction with PKCS11 providers for end-user applications using a simple API and optional OpenSSL engine'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/OpenSC/pkcs11-helper'
