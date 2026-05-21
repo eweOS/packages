@@ -2,7 +2,7 @@
 
 pkgname=perl-xml-namespacesupport
 pkgver=1.12
-pkgrel=4
+pkgrel=5
 pkgdesc="Generic namespace helpers (ported from SAX2)"
 arch=('any')
 url="https://search.cpan.org/dist/XML-NamespaceSupport"
