@@ -2,7 +2,7 @@
 
 pkgname=poppler-data
 pkgver=0.4.12
-pkgrel=1
+pkgrel=2
 _POPPLER_DATA_EXTRA_VERSION="0.4.11-2"
 pkgdesc="Encoding data for the poppler PDF rendering library"
 arch=('any')
