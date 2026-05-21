@@ -2,7 +2,7 @@
 
 pkgname=zziplib
 pkgver=0.13.80
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight library that offers the ability to easily extract data from files archived in a single zip file"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/gdraheim/zziplib"
