@@ -2,7 +2,7 @@
 
 pkgname=liburcu
 pkgver=0.15.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Userspace data synchronization library based on Read-Copy Update'
 url='https://lttng.org/files/urcu/userspace-rcu-0.15.3.tar.bz2'
 arch=(x86_64 aarch64 riscv64 loongarch64)
