@@ -2,7 +2,7 @@
 
 pkgname=tinymist
 pkgver=0.14.4
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 pkgdesc='An integrated language service for Typst'
 url='https://github.com/Myriad-Dreamin/tinymist'
