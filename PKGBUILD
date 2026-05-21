@@ -3,7 +3,7 @@
 _name=pip
 pkgname=python-$_name
 pkgver=26.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The PyPA recommended tool for installing Python packages"
 url="https://pip.pypa.io/"
 arch=(any)
