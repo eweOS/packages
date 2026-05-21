@@ -4,7 +4,7 @@
 
 pkgname=help2man
 pkgver=1.49.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Conversion tool to create man files"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.gnu.org/software/help2man/"
