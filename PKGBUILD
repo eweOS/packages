@@ -2,7 +2,7 @@
 
 pkgname=sdl2-compat
 pkgver=2.32.64
-pkgrel=1
+pkgrel=2
 pkgdesc="An SDL2 compatibility layer that uses SDL3 behind the scenes"
 url="https://github.com/libsdl-org/sdl2-compat"
 depends=('musl' 'sdl3')
