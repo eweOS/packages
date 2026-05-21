@@ -2,7 +2,7 @@
 
 pkgname=xxhash
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An extremely fast hash algorithm'
 url='https://github.com/Cyan4973/xxHash'
 arch=(x86_64 aarch64 riscv64 loongarch64)
