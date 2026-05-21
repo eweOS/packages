@@ -2,7 +2,7 @@
 
 pkgname=double-conversion
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Binary-decimal and decimal-binary routines for IEEE doubles'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/google/double-conversion'
