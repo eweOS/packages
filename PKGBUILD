@@ -2,7 +2,7 @@
 
 pkgname="hyprcursor"
 pkgver=0.1.13
-pkgrel=3
+pkgrel=4
 pkgdesc="The hyprland cursor format, library and utilities"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/hyprwm/hyprcursor"
