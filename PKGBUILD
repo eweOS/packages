@@ -3,7 +3,7 @@
 pkgbase=gtkgreet
 pkgname=greetd-gtk
 pkgver=0.8
-pkgrel=2
+pkgrel=3
 pkgdesc='GTK based greeter for greetd'
 url="https://git.sr.ht/~kennylevinsen/$pkgbase"
 license=(GPL3)
