@@ -3,7 +3,7 @@
 pkgname=qhull
 pkgver=2020.2
 _pkgver=8.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A general dimension code for computing convex hulls and related structures'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.qhull.org/'
