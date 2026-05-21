@@ -2,7 +2,7 @@
 
 pkgname=xfce4-terminal
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern terminal emulator primarily for the Xfce desktop environment"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://docs.xfce.org/apps/terminal/start"
