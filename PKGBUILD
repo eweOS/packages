@@ -2,7 +2,7 @@
 
 pkgname=libtheora
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Standard encoder and decoder library for the Theora video compression format'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.theora.org/'
