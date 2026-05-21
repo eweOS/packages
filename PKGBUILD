@@ -2,7 +2,7 @@
 
 pkgname=lddtree
 pkgver=1.27
-pkgrel=0
+pkgrel=1
 pkgdesc="Fork of pax-utils' lddtree.sh"
 url='https://github.com/ncopa/lddtree'
 arch=(any)
