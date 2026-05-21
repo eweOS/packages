@@ -3,7 +3,7 @@
 _pkgbase=bzip2
 pkgname=libbz2
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A high-quality data compression program"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('BSD')
