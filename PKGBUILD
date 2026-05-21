@@ -2,7 +2,7 @@
 
 pkgname=swappy
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='A Wayland native snapshot editing tool'
 arch=(x86_64 aarch64 riscv64 loongarch64)
