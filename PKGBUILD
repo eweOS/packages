@@ -3,7 +3,7 @@
 pkgbase=font-unifont
 pkgname=(ttf-unifont otf-unifont)
 pkgver=17.0.04
-pkgrel=1
+pkgrel=2
 pkgdesc="TrueType version of the GNU Unifont"
 url="https://unifoundry.com/unifont.html"
 arch=(any)
