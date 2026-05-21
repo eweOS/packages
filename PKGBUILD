@@ -2,7 +2,7 @@
 
 pkgname=mozjs
 pkgver=140.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="JavaScript interpreter and libraries - Version 128"
 url="https://spidermonkey.dev/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
