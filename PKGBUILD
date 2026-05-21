@@ -3,7 +3,7 @@
 pkgbase=lvm2
 pkgname=('lvm2' 'device-mapper')
 pkgver=2.03.39
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://sourceware.org/lvm2/'
 license=('GPL2' 'LGPL2.1')
