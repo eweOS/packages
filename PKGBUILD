@@ -3,7 +3,7 @@
 pkgdesc='A library to create panels and other desktop components for Wayland using the Layer Shell protocol and GTK4'
 pkgname=gtk4-layer-shell
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 url="https://github.com/wmww/gtk4-layer-shell"
