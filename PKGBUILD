@@ -2,7 +2,7 @@
 
 pkgname=sdl2-ttf
 pkgver=2.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Support for TrueType (.ttf) font files with Simple Directmedia Layer'
 url='https://github.com/libsdl-org/SDL_ttf'
 arch=(x86_64 aarch64 riscv64 loongarch64)
