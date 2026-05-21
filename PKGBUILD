@@ -3,7 +3,7 @@
 pkgname=python-rpds-py
 _pyname=rpds
 pkgver=0.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings to the Rust rpds crate for persistent data structures'
 url='https://rpds.readthedocs.io/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
