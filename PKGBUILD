@@ -2,7 +2,7 @@
 
 pkgname=python-calver
 pkgver=2025.10.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Setuptools extension for CalVer package versions"
 url="https://github.com/di/calver"
 license=('Apache-2.0')
