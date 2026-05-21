@@ -2,7 +2,7 @@
 
 pkgname=tzdata
 pkgver=2026a
-pkgrel=1
+pkgrel=2
 pkgdesc="Sources for time zone and daylight saving time data"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.iana.org/time-zones"
