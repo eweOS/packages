@@ -2,7 +2,7 @@
 
 pkgname=libmypaint
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for making brushstrokes which is used by MyPaint and other projects'
 url='http://mypaint.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
