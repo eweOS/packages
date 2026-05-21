@@ -3,7 +3,7 @@
 pkgbase=pahole
 pkgname=(pahole)
 pkgver=1.31
-pkgrel=2
+pkgrel=3
 pkgdesc="Pahole and other DWARF utils"
 url="https://git.kernel.org/pub/scm/devel/pahole/pahole.git"
 arch=(x86_64 aarch64 riscv64 loongarch64)
