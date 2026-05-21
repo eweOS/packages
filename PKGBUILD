@@ -2,7 +2,7 @@
 
 pkgname=brightnessctl
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight brightness control tool"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/Hummer12007/brightnessctl'
