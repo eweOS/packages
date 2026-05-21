@@ -4,7 +4,7 @@
 pkgname=sockstat
 pkgdesc='FreeBSD utility to display information about open sockets'
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD-3-Clause)
 depends=(musl)
