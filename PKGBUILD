@@ -2,7 +2,7 @@
 
 pkgname=seatd
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal seat management daemon, and a universal seat management library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://sr.ht/~kennylevinsen/seatd/"
