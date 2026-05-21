@@ -2,7 +2,7 @@
 
 pkgname=mobile-broadband-provider-info
 pkgver=20251101
-pkgrel=1
+pkgrel=2
 pkgdesc="APN configuration presets for mobile broadband connections"
 url="https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info"
 arch=(any)
