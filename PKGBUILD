@@ -2,7 +2,7 @@
 
 pkgname=libdvdread
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for reading DVD video disks'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.videolan.org/developers/libdvdnav.html'
