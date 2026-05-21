@@ -2,7 +2,7 @@
 
 pkgname=libpciaccess
 pkgver=0.18.1
-pkgrel=2
+pkgrel=3
 pkgdesc="X11 PCI access library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('custom')
