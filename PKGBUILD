@@ -2,7 +2,7 @@
 
 pkgname=jsoncpp
 pkgver=1.9.7
-pkgrel=2
+pkgrel=3
 pkgdesc='C++ library for interacting with JSON'
 url='https://github.com/open-source-parsers/jsoncpp'
 arch=(x86_64 aarch64 riscv64 loongarch64)
