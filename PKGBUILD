@@ -2,7 +2,7 @@
 
 pkgname=dbus
 pkgver=1.16.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
