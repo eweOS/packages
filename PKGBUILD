@@ -2,7 +2,7 @@
 
 pkgname=xdg-utils-cxx
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Implementation of the FreeDesktop specifications to be used in C++ projects'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/azubieta/xdg-utils-cxx'
