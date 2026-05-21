@@ -2,7 +2,7 @@
 
 pkgname=helvum
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='GTK patchbay for PipeWire'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://gitlab.freedesktop.org/pipewire/helvum'
