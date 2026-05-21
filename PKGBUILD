@@ -2,7 +2,7 @@
 
 pkgname=libb2
 pkgver=0.98.1
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 pkgdesc='C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp hash functions'
 url='https://blake2.net/'
