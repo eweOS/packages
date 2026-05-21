@@ -2,7 +2,7 @@
 
 pkgname=xfce4-places-plugin
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A menu with quick access to folders, documents, and removable media"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://docs.xfce.org/panel-plugins/xfce4-places-plugin/start"
