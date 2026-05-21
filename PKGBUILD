@@ -3,7 +3,7 @@
 
 pkgname=nudoku
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ncurses based sudoku game"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://jubalh.github.io/nudoku"
