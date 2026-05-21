@@ -3,7 +3,7 @@
 pkgbase=tiff
 pkgname=libtiff
 pkgver=4.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for manipulation of TIFF images'
 url='http://www.simplesystems.org/libtiff/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
