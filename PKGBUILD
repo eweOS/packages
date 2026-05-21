@@ -2,7 +2,7 @@
 
 pkgname=libpng
 pkgver=1.6.58
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of routines used to create PNG format graphics files"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://www.libpng.org/pub/png/libpng.html"
