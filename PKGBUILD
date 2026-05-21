@@ -3,7 +3,7 @@
 pkgname=nanosvg
 _commit=ea6a6aca009422bba0dbad4c80df6e6ba0c82183
 pkgver="20241219.${_commit:0:7}"
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple stupid SVG parser library'
 url='https://github.com/memononen/nanosvg'
 arch=(x86_64 aarch64 riscv64 loongarch64)
