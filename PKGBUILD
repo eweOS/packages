@@ -3,7 +3,7 @@
 pkgname=man-pages-posix
 _commit=3032a293a74969989e3ed4921b690cf9442ac674
 pkgver=20210214.${_commit:0:7}
-pkgrel=2
+pkgrel=3
 pkgdesc='POSIX man pages.'
 url='https://www.kernel.org/doc/man-pages/index.html'
 arch=(any)
