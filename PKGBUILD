@@ -1,16 +1,16 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wasi-libc
-pkgver=0+392+b9ef79d7
-_commit=b9ef79d7dbd47c6c5bafdae760823467c2f60b70 # tags/wasi-sdk-24
-pkgrel=2
+pkgver=0+465+d181bdd4
+_commit=d181bdd429f0067c92d817909b01e4970ad7d70a # tags/wasi-sdk-28
+pkgrel=1
 pkgdesc='WASI libc implementation for WebAssembly'
 arch=('any')
 url='https://github.com/WebAssembly/wasi-libc'
 license=('Apache-2.0 WITH LLVM-exception AND Apache-2.0 AND MIT')
 makedepends=('git' 'llvm' 'clang')
 source=("git+https://github.com/WebAssembly/wasi-libc.git#commit=${_commit}")
-sha256sums=('f10dc387ca7aa5b59c557a212515871d06f12a5afd463568b1683a31a864c15c')
+sha256sums=('0ea4092e95b4f2c7de78368ad19b28cfca3f75beceeb73f650466189c3d888d6')
 options=('staticlibs')
 
 pkgver()
