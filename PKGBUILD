@@ -2,7 +2,7 @@
 
 pkgname=flashrom
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A utility for detecting, reading, writing, verifying and erasing flash chips'
 url='https://review.coreboot.org/admin/repos/flashrom,general'
 arch=(x86_64 aarch64 riscv64 loongarch64)
