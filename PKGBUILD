@@ -2,7 +2,7 @@
 
 pkgname=lxqt-runner
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The LXQt application launcher"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 groups=("lxqt")
