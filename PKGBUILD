@@ -2,7 +2,7 @@
 
 pkgname=ewe-pkgtool
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for easing eweOS packaging'
 url='https://github.com/eweOS/ewe-pkgtool'
 arch=(any)
