@@ -2,7 +2,7 @@
 
 pkgname=lxqt-themes
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LXQt themes, graphics and icons."
 arch=("any")
 groups=("lxqt")
