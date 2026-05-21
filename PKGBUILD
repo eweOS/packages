@@ -2,7 +2,7 @@
 
 pkgname=mutt
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The Mutt E-mail Client.'
 url='http://www.mutt.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
