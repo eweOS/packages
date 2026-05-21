@@ -3,7 +3,7 @@
 
 pkgname=libaio
 pkgver=0.3.113
-pkgrel=8
+pkgrel=9
 pkgdesc="The Linux-native asynchronous I/O facility (aio) library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://pagure.io/libaio"
