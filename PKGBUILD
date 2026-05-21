@@ -2,7 +2,7 @@
 
 pkgname=utf8cpp
 pkgver=4.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="UTF-8 with C++ in a Portable Way"
 arch=(any)
 url="https://github.com/nemtrif/utfcpp"
