@@ -2,7 +2,7 @@
 
 pkgname=libgee
 pkgver=0.20.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection library providing GObject-based interfaces and classes for commonly used data structures"
 url="https://gitlab.gnome.org/GNOME/libgee"
 license=(LGPL-2.1-or-later)
