@@ -3,7 +3,7 @@
 pkgname=libdecor
 pkgdesc='Client-side decorations library for Wayland clients'
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 url="https://gitlab.freedesktop.org/libdecor/libdecor"
 license=('MIT')
 arch=(x86_64 aarch64 riscv64 loongarch64)
