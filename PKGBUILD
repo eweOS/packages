@@ -2,7 +2,7 @@
 
 pkgname=kweathercore
 pkgver=25.08.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Library to facilitate retrieval of weather information including forecasts and alerts'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-or-later)
