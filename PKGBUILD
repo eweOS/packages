@@ -2,7 +2,7 @@
 
 pkgname=libuninameslist
 pkgver=20260107
-pkgrel=1
+pkgrel=2
 pkgdesc='Large, sparse array mapping each unicode code point to the annotation data for it'
 url='https://github.com/fontforge/libuninameslist'
 license=('BSD-3-Clause')
