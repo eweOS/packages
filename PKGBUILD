@@ -2,7 +2,7 @@
 
 pkgname=lmdb
 pkgver=0.9.33
-pkgrel=1
+pkgrel=2
 pkgdesc="Symas Lightning Memory-Mapped Database"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://symas.com/lmdb"
