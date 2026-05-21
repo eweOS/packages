@@ -3,7 +3,7 @@
 pkgname=iverilog
 pkgver=12.0
 _srcver=${pkgver/./_}
-pkgrel=2
+pkgrel=3
 pkgdesc='A Verilog HDL compiler'
 url='https://steveicarus.github.io/iverilog/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
