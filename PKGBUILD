@@ -2,7 +2,7 @@
 
 pkgname=libcrc32c
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='CRC32C implementation with CPU-specific optimization.'
 url='https://github.com/google/crc32c'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -21,7 +21,8 @@ build () {
 		-DCRC32C_BUILD_TESTS=OFF	\
 		-DCRC32C_BUILD_BENCHMARKS=OFF	\
 		-DCRC32C_USE_GLOG=OFF		\
-		-DBUILD_SHARED_LIBS=ON
+		-DBUILD_SHARED_LIBS=ON      \
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5
 	cmake --build build
 }
 
