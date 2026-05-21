@@ -4,7 +4,7 @@
 pkgname=(go go-doc)
 epoch=2
 pkgver=1.26.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://golang.org/'
