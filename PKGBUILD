@@ -2,7 +2,7 @@
 
 pkgname=npm
 pkgver=11.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='JavaScript package manager'
 arch=(any)
 url="https://www.npmjs.com"
