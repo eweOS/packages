@@ -2,7 +2,7 @@
 
 pkgname=signify
 pkgver=32
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenBSD tool to signs and verify signatures on files'
 url='https://github.com/aperezdc/signify'
 arch=(x86_64 aarch64 riscv64 loongarch64)
