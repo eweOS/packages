@@ -3,7 +3,7 @@
 _pkgname=poetry-core
 pkgname=python-${_pkgname}
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Poetry PEP 517 Build Backend & Core Utilities'
 arch=(any)
 url="https://github.com/python-poetry/${_pkgname}"
