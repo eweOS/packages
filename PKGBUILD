@@ -3,7 +3,7 @@
 pkgname=python-outcome
 _pyname=${pkgname#*-}
 pkgver=1.3.0.post0
-pkgrel=1
+pkgrel=2
 pkgdesc='Capture the outcome of Python function calls'
 url='https://outcome.readthedocs.io/en/latest/'
 arch=(any)
