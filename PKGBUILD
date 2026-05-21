@@ -2,7 +2,7 @@
 
 pkgname=xfmpc
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A graphical GTK+ MPD client focusing on low footprint'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://docs.xfce.org/apps/xfmpc/start'
