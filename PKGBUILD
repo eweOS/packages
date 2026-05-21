@@ -2,7 +2,7 @@
 
 pkgname=greetd-tui
 pkgver=0.9.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A console UI greeter for greetd'
 url='https://github.com/apognu/tuigreet'
 license=(GPL3)
