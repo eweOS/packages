@@ -2,7 +2,7 @@
 
 pkgname=python-magic
 pkgver=0.4.27
-pkgrel=3
+pkgrel=4
 pkgdesc="A python wrapper for libmagic"
 arch=(any)
 url="https://github.com/ahupp/python-magic"
