@@ -2,7 +2,7 @@
 
 pkgname=libevdev
 pkgver=1.13.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrapper library for evdev devices"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.freedesktop.org/wiki/Software/libevdev/"
