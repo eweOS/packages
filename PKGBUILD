@@ -7,7 +7,7 @@ pkgname=(
 )
 pkgbase=font-nerd-symbols
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High number of extra glyphs from popular 'iconic fonts'"
 arch=('any')
 url=https://github.com/ryanoasis/nerd-fonts
