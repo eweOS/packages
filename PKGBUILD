@@ -6,7 +6,7 @@ pkgname=(
   libsecret-docs
 )
 pkgver=0.21.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for storing and retrieving passwords and other secrets"
 url="https://gnome.pages.gitlab.gnome.org/libsecret/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
