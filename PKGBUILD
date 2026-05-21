@@ -7,7 +7,7 @@ pkgname=(
   modemmanager-docs
 )
 pkgver=1.24.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Mobile broadband modem management service"
 url="https://www.freedesktop.org/wiki/Software/ModemManager/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
