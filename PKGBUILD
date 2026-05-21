@@ -2,7 +2,7 @@
 
 pkgname=symlinks
 pkgver=1.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Scan and change symbolic links'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('MIT')
