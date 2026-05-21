@@ -3,7 +3,7 @@
 pkgname=rust-analyzer
 pkgver=2026.01.12
 _pkgver=${pkgver//./-}
-pkgrel=1
+pkgrel=2
 pkgdesc='Rust compiler front-end for IDEs'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://rust-analyzer.github.io'
