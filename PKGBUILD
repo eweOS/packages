@@ -2,7 +2,7 @@
 
 pkgname=intel-media-driver
 pkgver=26.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel Media Driver for VAAPI'
 url='https://github.com/intel/media-driver/'
 # TODO: make intel-gmmlib portable
