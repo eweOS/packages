@@ -2,7 +2,7 @@
 
 pkgname=xfce4-battery-plugin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A battery monitor plugin for the Xfce panel"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 license=('GPL-2.0-or-later')
