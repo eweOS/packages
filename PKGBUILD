@@ -2,7 +2,7 @@
 
 pkgname=virglrenderer
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A virtual 3D GPU library, that allows the guest operating system to use the host GPU to accelerate 3D rendering'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://virgil3d.github.io/'
