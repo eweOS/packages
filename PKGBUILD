@@ -2,7 +2,7 @@
 
 pkgname=xfel
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiny FEL tools for Allwinner SOC'
 url='https://xboot.org/xfel/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
