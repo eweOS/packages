@@ -2,7 +2,7 @@
 
 pkgname=libcpuid
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A small C library for x86 CPU detection and feature extraction'
 url='https://github.com/anrieff/libcpuid'
 arch=(x86_64)
