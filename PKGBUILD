@@ -2,7 +2,7 @@
 
 pkgname=wireguard-tools
 pkgver=1.0.20260223
-pkgrel=1
+pkgrel=2
 pkgdesc='next generation secure network tunnel - tools for configuration'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.wireguard.com/'
