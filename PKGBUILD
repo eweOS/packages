@@ -3,7 +3,7 @@
 pkgname=ruby
 pkgver=3.4.8
 _majorminorver="${pkgver%.*}"
-pkgrel=1
+pkgrel=2
 pkgdesc='An object-oriented language for quick and easy programming'
 url='https://www.ruby-lang.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
