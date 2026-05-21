@@ -2,7 +2,7 @@
 
 pkgname=mypaint-brushes1
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Brushes used by MyPaint and other software using libmypaint (v1.x)'
 url='https://github.com/mypaint/mypaint-brushes'
 arch=('any')
