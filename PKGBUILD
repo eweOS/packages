@@ -2,7 +2,7 @@
 
 pkgname=giflib
 pkgver=5.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Library for reading and writing gif images'
 url='http://giflib.sourceforge.net/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
