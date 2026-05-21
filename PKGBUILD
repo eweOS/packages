@@ -2,7 +2,7 @@
 
 pkgname=(dtc libfdt)
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The device-tree compiler'
 url='https://git.kernel.org/pub/scm/utils/dtc/dtc.git/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
