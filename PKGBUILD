@@ -2,7 +2,7 @@
 
 pkgname=python-validate-pyproject
 pkgver=0.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Validation library and CLI tool for checking on 'pyproject.toml' files using JSON Schema"
 url="https://github.com/abravalheri/validate-pyproject"
 license=('MPL-2.0')
