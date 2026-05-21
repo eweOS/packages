@@ -2,7 +2,7 @@
 
 pkgname=gawk
 pkgver=5.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU version of awk"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.gnu.org/software/gawk/"
