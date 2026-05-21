@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 pkgname=musl-fts
 pkgver=1.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone library to implement GNU libc's fts"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/void-linux/musl-fts"
