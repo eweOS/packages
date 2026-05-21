@@ -2,7 +2,7 @@
 
 pkgname=yosys
 pkgver=0.63
-pkgrel=1
+pkgrel=2
 pkgdesc='An open framework for RTL synthesis tools'
 url='https://yosyshq.net/yosys/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
