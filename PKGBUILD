@@ -11,9 +11,9 @@ pkgname=(
   lldb openmp flang mlir
 )
 _realpkgname=llvm-project
-pkgver=20.1.8
-pkgrel=5
-_binutilsver=2.44
+pkgver=21.1.8
+pkgrel=1
+_binutilsver=2.46.0
 _majorver="${pkgver%%.*}"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://llvm.org'
@@ -50,8 +50,8 @@ source=("https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver
         0002-try-llvm-libunwind.patch
         0003-clang-force-libc-linked-with-no-as-needed-when-using.patch
         0004-llvm-Support-strip-zstd-library-sover-suffix.patch)
-sha256sums=('a6cbad9b2243b17e87795817cfff2107d113543a12486586f8a055a2bb044963'
-            'ce2017e059d63e67ddb9240e9d4ec49c2893605035cd60e92ad53177f4377237'
+sha256sums=('7ba3f2a8d8fda88be18a31d011e8195d3b7f87f9fa92b20c94cba2d7f65b0e3f'
+            'd75a94f4d73e7a4086f7513e67e439e8fcdcbb726ffe63f4661744e6256b2cf2'
             'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94'
             '13a1c761d41324c7a790df55650a3a98a9ade0348d6e88f1e269b6b77ce5df55'
             '57808d224fd9218a936e6669bf4129eaf4aa04fbd45ab9f7fd5a20efc304e307'
