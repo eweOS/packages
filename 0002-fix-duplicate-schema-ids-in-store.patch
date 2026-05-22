@@ -1,0 +1,44 @@
+SchemaStore's pyproject.json now has multiple tools referencing the same
+schema (e.g. dfc and docstring-format-checker both point to
+partial-dfc.json).  Additionally, nested $ref URLs within tool schemas
+can resolve to the same URL multiple times.  This causes
+SchemaWithDuplicatedId errors when building the validator.
+
+Track seen $id values and skip duplicates in load_store.
+---
+ src/validate_pyproject/remote.py | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/src/validate_pyproject/remote.py b/src/validate_pyproject/remote.py
+index fe292b9..a1b2c3d 100644
+--- a/src/validate_pyproject/remote.py
++++ b/src/validate_pyproject/remote.py
+@@ -68,6 +68,7 @@ def load_store(pyproject_url: str) -> Generator[RemotePlugin, None, None]:
+     (https://json.schemastore.org/pyproject.json) is in.
+     """
+ 
++    seen_ids: set[str] = set()
+     fragment, contents = load_from_uri(pyproject_url)
+     if fragment:
+         _logger.error(
+@@ -82,6 +83,9 @@ def load_store(pyproject_url: str) -> Generator[RemotePlugin, None, None]:
+             rp = RemotePlugin.from_url(
+                 tool, urllib.parse.urljoin(pyproject_url, info["$ref"])
+             )
++            if rp.id in seen_ids:
++                continue
++            seen_ids.add(rp.id)
+             yield rp
+             # Does not support anyOf and similar with properties inside them
+             for values in rp.schema.get("properties", {}).values():
+@@ -89,7 +93,10 @@ def load_store(pyproject_url: str) -> Generator[RemotePlugin, None, None]:
+                 if url:
+                     absolute_url = urllib.parse.urljoin(rp.id, url)
+                     if absolute_url.startswith(("http://", "https://")):
+-                        yield RemotePlugin.from_url("", absolute_url)
++                        nested = RemotePlugin.from_url("", absolute_url)
++                        if nested.id not in seen_ids:
++                            seen_ids.add(nested.id)
++                            yield nested
+         else:
+             _logger.warning(f"{tool!r} does not contain $ref")  # pragma: no cover
