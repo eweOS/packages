@@ -3,7 +3,7 @@
 pkgname=python-pdm-backend
 _pyname=${pkgname#*-}
 pkgver=2.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Build backend used by PDM that supports latest packaging standard'
 url='https://backend.pdm-project.org/'
 arch=(any)
@@ -36,6 +36,8 @@ check() {
 	# Switch to a fake HOME to prevent existing git configuration messes
 	# the testsuite up.
 	(
+	    # Avoid `error: could not lock config file /dev/null: Permission denied` from git
+	    export GIT_CONFIG_GLOBAL="${PWD}/gitconfig"
 		export HOME="$srcdir/fakehome"
 		mkdir -p "$HOME"
 		git config --global user.name "testuser"
