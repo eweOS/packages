@@ -1,0 +1,10 @@
+--- tetris-7.1.0/screen.c
++++ tetris-7.1.0.new/screen.c
+@@ -48,6 +48,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <term.h>
++#include <termios.h>
+ #include <unistd.h>
+ 
+ #include "screen.h"
