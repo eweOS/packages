@@ -2,7 +2,7 @@
 
 pkgname=grass
 pkgver=0.13.4
-pkgrel=3
+pkgrel=4
 pkgdesc='A Sass compiler written purely in Rust'
 url='https://docs.rs/grass/latest/grass/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,9 +13,6 @@ source=("https://github.com/connorskees/grass/archive/refs/tags/$pkgver.tar.gz")
 provides=(sass)
 sha256sums=('577858cce48440d161c6036d83dbfb3c173058f9df297977b13b8646f88a4906')
 
-# grass makes use of nightly features
-export RUSTC_BOOTSTRAP=1
-
 prepare() {
 	cd "$pkgname-$pkgver"
 	# For loongarch64 support of libc
@@ -25,12 +22,12 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	cargo build --frozen --release --all-features
+	cargo build --frozen --release --features "commandline,random,macro"
 }
 
 check() {
 	cd "$pkgname-$pkgver"
-	cargo test --frozen --release --all-features
+	cargo test --frozen --release --features "commandline,random,macro"
 }
 
 package() {
