@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qgis
-pkgver=3.44.6
-pkgrel=3
+pkgver=4.0.2
+pkgrel=1
 pkgdesc="Geographic Information System (GIS) that supports vector, raster & database formats"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://qgis.org/"
@@ -19,7 +19,7 @@ optdepends=('fcgi: Map server'
 source=(
   https://qgis.org/downloads/$pkgname-$pkgver.tar.bz2
 )
-sha256sums=('6a7a0ad471b325f0ac364a7256b415013fc23e3ede3e6b152005739a8d273cd3')
+sha256sums=('e1f017c3bc1881a5f534d89188e4d16d4d1bb1413278ea27aef4604ff35b090a')
 
 build() {
   # Use vendored spatialindex to work around upstream breakage
@@ -29,21 +29,15 @@ build() {
     -DWITH_3D=TRUE \
     -DWITH_QUICK=TRUE \
     -DWITH_SERVER=TRUE \
+    -DQGIS_QML_SUBDIR=lib/qt/qml \
     -DWITH_CUSTOM_WIDGETS=TRUE \
     -DBINDINGS_GLOBAL_INSTALL=TRUE \
     -DQGIS_MANUAL_SUBDIR=share/man \
-    -DWITH_QTWEBKIT=FALSE \
-    -DWITH_QWTPOLAR=TRUE \
-    -DQWTPOLAR_LIBRARY=/usr/lib/libqwt.so \
-    -DQWTPOLAR_INCLUDE_DIR=/usr/include/qwt \
-    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DQWT_POLAR_VERSION=0x060200" \
-    -DWITH_INTERNAL_QWTPOLAR=FALSE \
     -DUSE_OPENCL=OFF \
     -DWITH_PDAL=FALSE \
     -DWITH_GSL=FALSE \
     -DWITH_POSTGRESQL=FALSE \
     -DWITH_QTWEBENGINE=FALSE \
-    -DBUILD_WITH_QT6=TRUE \
     -DWITH_INTERNAL_SPATIALINDEX=TRUE \
     # https://github.com/qgis/QGIS/issues/48374
     #-DWITH_INTERNAL_LAZPERF=FALSE \
