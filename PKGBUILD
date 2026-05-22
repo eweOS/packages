@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=python-pivy
-pkgver=0.6.10
-pkgrel=2
+pkgver=0.6.11
+pkgrel=1
 pkgdesc='Python bindings to Coin 3D'
 url='https://github.com/coin3d/pivy/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=(ISC)
 depends=(python coin musl llvm-libs python-numpy pyside6 qt6-base)
 makedepends=(python cmake swig)
 source=("https://github.com/coin3d/pivy/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('7b409816c9fad84cf94f93659281f9dd2501d285eb2fc609e9401a3d004ce723')
+sha256sums=('78f79bd7d1ce7e8140ceba4b1220136ea1f14b4403b1e463c59fa892feed961e')
 
 build() {
 	# Some wrapper returns NULL from int-typed functions. Musl defines NULL
