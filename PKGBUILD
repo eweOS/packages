@@ -2,8 +2,8 @@
 # Contributor: Julian Droske <juliandroske@outlook.com>
 
 pkgname=busybox
-pkgver=1.37.0
-pkgrel=15
+pkgver=1.38.0
+pkgrel=1
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.busybox.net"
@@ -38,7 +38,7 @@ source=(
   "sha-ni.patch"
   "sha256-aarch64-hwaccel.patch::https://github.com/ziyao233/busybox/commit/47c7f6291f10ad4a07f884d6baf22396885ec9a1.patch"
 )
-sha256sums=('3311dff32e746499f4df0d5df04d7eb396382d7e108bb9250e7b519b837043a4'
+sha256sums=('34f9ea6ff8636f2c9241153b9114eefa9e65674a45318ae1ef95bb5f31c53bb2'
             'c4fb884a670d2a6ba936f92f4b74de5d2ba2668aefbdcecc99544fd4378524ab'
             '204a0fc1dabe7cc02a8a18bdec4637d7ddb6547042c9ee1e5f9b71cd22de2f85'
             '644321e67516c8e6869dd1f09b9dfc06d6758dec91df0bdea3cb614419a1e0d3'
