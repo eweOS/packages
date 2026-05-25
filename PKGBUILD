@@ -6,8 +6,8 @@ pkgname=(
   gst-plugin-pipewire
   pipewire-docs
 )
-pkgver=1.6.2
-pkgrel=2
+pkgver=1.6.5
+pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -41,7 +41,7 @@ source=(
   pipewire-pulse.user.service
   pipewire.conf.in
 )
-sha256sums=('2014c187fccdd6d245585be4eda7dabd781dcddd921604c40ab015bba6cb042d'
+sha256sums=('4c9f7e85a760a4169cd4bc668bafea90fe4838aaf3f08a93f11bb9222809d490'
             'b2b7f7730f1607fccb59248dd48da3eed577afc35feef24faac0193de5832191'
             '2a0807319f60671483de2e015427241d8f9224ccce2616eff143377c0a840193'
             'a1d7812aabba038ff1d90a0af2139f0c420419c5f66ee401b9bc45d0445edfdd')
