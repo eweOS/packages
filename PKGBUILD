@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=hdf5
-pkgver=2.1.0
-pkgrel=3
+pkgver=2.1.1
+pkgrel=1
 pkgdesc='HDF5 scientific data model implementation'
 url='https://www.hdfgroup.org/solutions/hdf5/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ makedepends=(cmake perl flang)
 provides=(libhdf5.so libhdf5_hl_f90cstub.so libhdf5_f90cstub.so
 	  libhdf5_hl_fortran.so libhdf5_fortran.so libhdf5_tools.so)
 source=("https://github.com/HDFGroup/hdf5/releases/download/$pkgver/hdf5.tar.gz")
-sha256sums=('ce7f5515a95d588b8606c3fb50643f8b88ac52ffbbde9c63bb1edca6a256e964')
+sha256sums=('efff93b5a904d66e8f626d7da60b5eedc9faf544be27dbabbaa87967b8ad798b')
 
 build() {
 	local _enable_fortran=ON
