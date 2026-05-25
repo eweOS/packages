@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=sdl2-mixer
-pkgver=2.8.1
-pkgrel=2
+pkgver=2.8.2
+pkgrel=1
 pkgdesc='An audio mixer that supports various file formats for Simple Directmedia Layer'
 url='https://wiki.libsdl.org/SDL2_mixer/FrontPage'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ optdepends=('fluidsynth: use fluidsynth for MIDI outout'
 makedepends=(cmake libflac mpg123 libvorbis fluidsynth)
 provides=(sdl2_mixer libSDL2_mixer-2.0.so)
 source=("https://github.com/libsdl-org/SDL_mixer/archive/refs/tags/release-$pkgver.tar.gz")
-sha256sums=('63804b4b2ba503865c0853f102231aeff489b1dfc6dea4750a69e2a8ef54b2bb')
+sha256sums=('bcd36dc5df23f2a8a89ea518a323dcdde0e296bdcd9b3427d933c21165ca42ce')
 _dirname="SDL_mixer-release-$pkgver"
 
 build() {
