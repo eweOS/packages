@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=cython
-pkgver=3.2.4
-pkgrel=2
+pkgver=3.2.5
+pkgrel=1
 pkgdesc='C-Extensions for Python'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://cython.org'
@@ -14,7 +14,7 @@ makedepends=(git
              python-setuptools
              python-wheel)
 source=(git+https://github.com/cython/cython#tag=$pkgver)
-sha256sums=('345fc5424c0ade49510997398c47f33ad3d1f349610b8a328b53795c716b3c92')
+sha256sums=('9bf7360bda08f3eb179e5bcebda1225d49036c296c69b6c6ed62c7831f24bb6e')
 
 build() {
   cd cython
