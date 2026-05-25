@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=cargo-c
-pkgver=0.10.21
-pkgrel=3
+pkgver=0.10.22
+pkgrel=1
 pkgdesc='A cargo subcommand to build and install C-ABI compatibile dynamic and static libraries'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/lu-zero/cargo-c/'
@@ -17,8 +17,8 @@ depends=(
 )
 source=("https://github.com/lu-zero/cargo-c/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.Cargo.lock"::"https://github.com/lu-zero/cargo-c/releases/download/v${pkgver}/Cargo.lock")
-sha256sums=('819b62a61e5271924dffd122b7c713e446e5d65f3e630bbe9b90d4d46513d8fa'
-            '09b956aa5aed9bd6da3fdf1bb92a7205db989aff66eecd85e554d3c83be1b725')
+sha256sums=('a7b00539437932f2a17a72b97d9c2142367a2d70ee20f9f1692a8b13c7255332'
+            'f7837bca0bda930b3007e08e740f3ee9482796e349c05af25ded58c81cfd8db3')
 
 prepare() {
     ln -sf "../${pkgname}-${pkgver}.Cargo.lock" "${pkgname}-${pkgver}/Cargo.lock"
