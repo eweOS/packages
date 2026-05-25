@@ -13,8 +13,8 @@ pkgname=(
   vulkan-nouveau
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
-pkgver=26.0.5
-pkgrel=2
+pkgver=26.1.1
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm' 'spirv-tools')
 makedepends=(
@@ -54,7 +54,7 @@ source=(
   rustc-hash-$_rustc_hash_pkgver.tar.gz::https://crates.io/api/v1/crates/rustc-hash/$_rustc_hash_pkgver/download
 )
 
-sha512sums=('8aa03a46269b2443be15cbd516d523af78fdd35e5273f5346b9142d2d21e245f6d5fd47e7e90176b0444ea967540eaa7c62d217f599ca5a216ef83244ee97d5c'
+sha512sums=('384a7db33d2f06e287337329f2f17503082ba6b1cd876a1884e940fdb6193ffae6d6b14344625256f3b3b39972ad697130a4d2ea25c40979f7aa76c2176f7988'
             'bcfff545d6dfefd81e09f8f30a86bdd85759b3a7d4093ef3365ed02718e10dbd604c52b94c9d7fa955d339fdc5b6c079940c6f345b5a48c52b5c8607794ca6f2'
             'f5314fb6af17cf36c228e1970c569c29ec248954a450a5f90ba9e2896d04f74904c9cec5a1f74325f2489295a94491eee4ce8fb461e22cd4b34e53f1f881efd2'
             '1cdb7e22a35ae231d880c9420784c9acf97bda2db258b3d34aae5061dc1858449defe19a49e12c6a4173906aa72a4115059ac2db0fc760205fd2ab8b5b414434'
