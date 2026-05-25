@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=hyprwire
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.3.1
+pkgrel=1
 pkgdesc='A fast and consistent wire protocol for IPC'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/hyprwm/$pkgname"
@@ -20,7 +20,7 @@ source=(
   "$url/archive/v$pkgver/$_archive.tar.gz"
   "0001-fix-tests-missing-unistd.patch"
 )
-sha256sums=('ba3ff4b82620209d5680ce0e771d0f2c41f78cdb96d5d84fa66e4f0709ca8de6'
+sha256sums=('92a673d40ae6a7d66fbcd0a34ec071e026e17eaeeb0040c3375e4b2a80dba737'
             '71b35b92a5f3148283b07b9136642a619297f0da6fa60e317ffa52c7bba70025')
 
 prepare() {
