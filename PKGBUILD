@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname="hyprwayland-scanner"
-pkgver=0.4.5
-pkgrel=2
+pkgver=0.4.6
+pkgrel=1
 pkgdesc="A Hyprland implementation of wayland-scanner, in and for C++"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/hyprwm/hyprwayland-scanner"
@@ -11,7 +11,7 @@ depends=('pugixml')
 makedepends=('git' 'cmake')
 _archive="${pkgname}-$pkgver"
 source=("$_archive.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2125d279eea106e3e6c8dc9fa15181c75d67467b5352d24e2a07903b10abad62')
+sha256sums=('05f55fd1a20d8ca81b5030980fdb7c87147749230145bdb3745af2741d617f5c')
 
 build() {
 	cd "$_archive"
