@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=npm
-pkgver=11.3.0
-pkgrel=2
+pkgver=11.15.0
+pkgrel=1
 pkgdesc='JavaScript package manager'
 arch=(any)
 url="https://www.npmjs.com"
@@ -17,7 +17,7 @@ depends=(
 makedepends=(git symlinks)
 optdepends=("git: for dependencies using Git URL's")
 source=("npm-cli::git+https://github.com/npm/cli.git#tag=v$pkgver")
-sha256sums=('01cbfc518402f4a45a979a18b8670c9ff35dc9d93db8ea040236b1ac8e0e62b7')
+sha256sums=('e191424705a7b7184d873735a36522605f85a5849c48ae23ca9d6ddb57662ced')
 
 build() {
   cd npm-cli
