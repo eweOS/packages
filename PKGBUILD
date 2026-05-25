@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sdl2-image
-pkgver=2.8.8
-pkgrel=2
+pkgver=2.8.12
+pkgrel=1
 pkgdesc="A simple library to load images of various formats as SDL surfaces (Version 2)"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/libsdl-org/SDL_image"
@@ -12,7 +12,7 @@ makedepends=('cmake')
 provides=(sdl2_image)
 options=(!lto)
 source=("https://github.com/libsdl-org/SDL_image/releases/download/release-${pkgver}/SDL2_image-${pkgver}.tar.gz")
-sha256sums=('2213b56fdaff2220d0e38c8e420cbe1a83c87374190cba8c70af2156097ce30a')
+sha256sums=('393f5efb50536ec13ca4f4affb69cc9966d3c3f969e6c5e701faddf9f9785381')
 
 prepare() {
   cd "$srcdir/SDL2_image-$pkgver"
