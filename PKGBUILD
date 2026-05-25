@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xdg-desktop-portal
-pkgver=1.21.0
-pkgrel=2
+pkgver=1.21.2
+pkgrel=1
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://flatpak.github.io/xdg-desktop-portal/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -30,7 +30,7 @@ makedepends=(
 # checkdepends=(python-pytest umockdev)
 optdepends=('xdg-desktop-portal-impl: Portal backends')
 source=("git+https://github.com/flatpak/xdg-desktop-portal#tag=$pkgver")
-sha256sums=('b8e1f240305003c2b2da6e43db829959784befb757f755c7575e9388fc44957b')
+sha256sums=('64e945feb6fcc3a8c2ea531c60ee5689b0db197bdbf1a794809adf28d3e40557')
 
 prepare() {
   _patch_ $pkgname
