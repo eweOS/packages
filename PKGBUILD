@@ -4,15 +4,15 @@
 # Contributor: C. Dominik Bódi <dominik dot bodi at gmx dot de>
 
 pkgname=libmd
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Message Digest functions from BSD systems"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.hadrons.org/software/libmd/"
 license=('BSD')
 depends=('musl')
 source=("https://libbsd.freedesktop.org/releases/$pkgname-$pkgver.tar.xz")
-sha256sums=('1bd6aa42275313af3141c7cf2e5b964e8b1fd488025caf2f971f43b00776b332')
+sha256sums=('ac15ffb8430502fbaccdec66c5a82ee0eab0b0f36220df56710feadfeb13d0a0')
 
 build()
 {
