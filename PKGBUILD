@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=plymouth
-pkgver=24.004.60
-pkgrel=13
+pkgver=26.134.222
+pkgrel=1
 pkgdesc='Graphical boot splash screen'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.freedesktop.org/wiki/Software/Plymouth/'
@@ -17,7 +17,7 @@ source=(
   plymouth-boot.service
   plymouth-boot.sh
 )
-sha256sums=('f3f7841358c98f5e7b06a9eedbdd5e6882fd9f38bbd14a767fb083e3b55b1c34'
+sha256sums=('6ee1068216c5047923fabf0f6aa583e9d77cab383077358df3fc22f2ee398bb0'
             'fc984b17fbb89d2bb2692a05257544a3b0add6db073c94fa4471a4f8982b5df2'
             '79c3dd078199f2447a71ac6669fa63fd7f1736bcc8283d31bdc19a552c8bd948'
             '60f2fb37af5edcab74dd42e7c30d23997f7fecd2f39afb1bedfa1426b2a39879'
