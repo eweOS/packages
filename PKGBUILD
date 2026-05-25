@@ -1,15 +1,15 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=samurai
-pkgver=1.2
-pkgrel=7
+pkgver=1.3
+pkgrel=1
 pkgdesc='a ninja-compatible build tool written in C99'
 url='https://github.com/michaelforney/samurai/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0)
 depends=(musl)
 source=("https://github.com/michaelforney/samurai/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('37a2d9f35f338c53387eba210bab7e5d8abe033492664984704ad84f91b71bac')
+sha256sums=('44ff119a27b343ec47a797fa8701c19b9e672230bc15f3c6a6cede9641ea6332')
 
 build () {
   cd samurai-$pkgver
