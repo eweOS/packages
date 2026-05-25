@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=lxqt-about
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="LXQt about dialog."
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 groups=("lxqt")
@@ -13,7 +13,7 @@ makedepends=("lxqt-build-tools")
 source=(
 	"https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
 )
-sha256sums=('199056c2e848f8d22b4f6818ddca04305e849c22ac059b200df5bd574aaa12bd')
+sha256sums=('77263dd1b3582791b7134c590a2aee641fb7423ee5f89cf05378529276445fae')
 
 build() {
 	mkdir -p build
