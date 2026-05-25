@@ -5,7 +5,7 @@
 pkgbase=kmod
 pkgname=(kmod libkmod)
 pkgver=34.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Linux kernel module management"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
@@ -51,12 +51,16 @@ build() {
   meson compile -C build
 }
 
-check() {
-  # Use the reasonable kernel source instead of the exact running one
-  MODVER=$(pacman -Qi linux-devel | awk -e '{ if ($1 == "Version") { print ($3) } }')
-  # LLVM=1: make Kbuild use lld instead of mold in eweOS
-  KDIR="/lib/modules/${MODVER}-ewe/build" LLVM=1 meson test -C build
-}
+# Temporarily disable test for now, linux-devel couldn't build out-of-tree
+# modules.
+# https://github.com/eweOS/packages/issues/7269
+
+#check() {
+#  # Use the reasonable kernel source instead of the exact running one
+#  MODVER=$(pacman -Qi linux-devel | awk -e '{ if ($1 == "Version") { print ($3) } }')
+#  # LLVM=1: make Kbuild use lld instead of mold in eweOS
+#  KDIR="/lib/modules/${MODVER}-ewe/build" LLVM=1 meson test -C build
+#}
 
 package_kmod() {
   pkgdesc="${pkgdesc} tool"
