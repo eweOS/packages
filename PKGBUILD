@@ -2,15 +2,15 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libsodium
-pkgver=1.0.21
-pkgrel=2
+pkgver=1.0.22
+pkgrel=1
 pkgdesc="Portable & Packageable NaCl-based crypto library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/jedisct1/libsodium"
 license=('custom:ISC')
 provides=('libsodium.so')
 source=("https://download.libsodium.org/libsodium/releases/libsodium-$pkgver.tar.gz")
-sha512sums=('ee8cc2f3f5707b172bf75d8c04afbd5f0c83c6f94dbab3f988f07aab716d96f1662556a59e09b3d83c3bd5c22f59327ad95937bf499d523c86146f4df830f777')
+sha512sums=('8f392de781f09578d9a32000a4198e8d199ab910743017af3b3c5cae8053f745bcc885a9417fcaffb03b832400d829aef3a93c065bbb77b92598d882b6dcf187')
 
 prepare()
 {
