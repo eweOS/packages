@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xdg-desktop-portal-wlr
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc='xdg-desktop-portal backend for wlroots'
 url="https://github.com/emersion/xdg-desktop-portal-wlr"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -32,7 +32,7 @@ optdepends=(
 )
 source=("${pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz"
         "wlr-portals.conf")
-sha512sums=('58da2a4c530a0ce842d5e6c4847853968e55575a20c87d58c4dd76266875887c0873689aadd6852f407b6339c6e5da61a9222573555f2b508f276ed185d937cd'
+sha512sums=('5ecb38da97dae07424004dfaffa10b88bf826b50559adb22adb4c96f6b28f00354f01b801459bc314dd56ae279f17983ed0d0843068954eccd880fa073b969c1'
             '72980b5c3c893237b89e42a0ee7ad2c438f25ab9a044718e3748ad49746cac4d8deea24c1408718dd4d2566fcfe6d15eaee2620a73d63c6eb54b0d5c65701cbb')
 
 build() {
