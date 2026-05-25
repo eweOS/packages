@@ -1,16 +1,15 @@
-From 47c7f6291f10ad4a07f884d6baf22396885ec9a1 Mon Sep 17 00:00:00 2001
-From: Yao Zi <ziyao@disroot.org>
-Date: Tue, 4 Feb 2025 16:43:01 +0000
+From ebd8cc322e3546cd9bd34a1f2399640f4cdd1f61 Mon Sep 17 00:00:00 2001
+From: JulianDroske <JulianDroske@juliandroske@outlook.com>
+Date: Tue, 26 May 2026 02:58:42 +1000
 Subject: [PATCH] libbb/sha256: support optional hardware acceleration
 
-This adapts the SHA-256 implementation in Linux kernel, making use of
-Armv8-a optionally supported crypto extension. We check hwcap and only
-enable hardware acceleration if it's supported.
+This patch has been edited to work on busybox 1.38.0.
 
-On Cortex-A73, a 424% speedup is achieved on a large file,
-compared to the software implementation.
+Original patch:
+https://github.com/ziyao233/busybox/commit/47c7f62.patch
 
-Signed-off-by: Yao Zi <ziyao@disroot.org>
+Co-authored-by: Yao Zi <ziyao@disroot.org>
+Signed-off-by: Julian Droske <juliandroske@outlook.com>
 ---
  libbb/Kbuild.src                    |   1 +
  libbb/hash_md5_sha.c                |  15 +++-
@@ -19,7 +18,7 @@ Signed-off-by: Yao Zi <ziyao@disroot.org>
  create mode 100644 libbb/hash_sha256_hwaccel_aarch64.S
 
 diff --git a/libbb/Kbuild.src b/libbb/Kbuild.src
-index cb8d2c2ec..81b6d1577 100644
+index cb8d2c2..81b6d15 100644
 --- a/libbb/Kbuild.src
 +++ b/libbb/Kbuild.src
 @@ -62,6 +62,7 @@ lib-y += hash_sha1_hwaccel_x86-64.o
@@ -31,7 +30,7 @@ index cb8d2c2ec..81b6d1577 100644
  #lib-y += hash_md5prime.o
  lib-y += messages.o
 diff --git a/libbb/hash_md5_sha.c b/libbb/hash_md5_sha.c
-index 75a61c32c..e032e9942 100644
+index 9ebda23..c8478c6 100644
 --- a/libbb/hash_md5_sha.c
 +++ b/libbb/hash_md5_sha.c
 @@ -8,12 +8,18 @@
@@ -45,7 +44,7 @@ index 75a61c32c..e032e9942 100644
  #define STR1(s) #s
  #define STR(s) STR1(s)
  
- #define NEED_SHA512 (ENABLE_SHA512SUM || ENABLE_USE_BB_CRYPT_SHA)
+ #define NEED_SHA512 (ENABLE_SHA512SUM || ENABLE_SHA384SUM || ENABLE_USE_BB_CRYPT_SHA)
  
  #if ENABLE_SHA1_HWACCEL || ENABLE_SHA256_HWACCEL
 +void FAST_FUNC sha1_process_block64_shaNI(sha1_ctx_t *ctx);
@@ -67,7 +66,7 @@ index 75a61c32c..e032e9942 100644
  struct ASM_expects_80_shaNI { char t[1 - 2*(offsetof(sha256_ctx_t, hash) != 80)]; };
  #  endif
  # endif
-@@ -1251,6 +1255,11 @@ void FAST_FUNC sha256_begin(sha256_ctx_t *ctx)
+@@ -1260,6 +1264,11 @@ void FAST_FUNC sha256_begin(sha256_ctx_t *ctx)
  		if (ni > 0)
  			ctx->process_block = sha256_process_block64_shaNI;
  	}
@@ -81,7 +80,7 @@ index 75a61c32c..e032e9942 100644
  }
 diff --git a/libbb/hash_sha256_hwaccel_aarch64.S b/libbb/hash_sha256_hwaccel_aarch64.S
 new file mode 100644
-index 000000000..5b7530d8a
+index 0000000..5b7530d
 --- /dev/null
 +++ b/libbb/hash_sha256_hwaccel_aarch64.S
 @@ -0,0 +1,134 @@
@@ -219,3 +218,6 @@ index 000000000..5b7530d8a
 +	st1		{dgav.4s, dgbv.4s}, [x1]
 +	ret
 +#endif
+-- 
+2.52.0
+
