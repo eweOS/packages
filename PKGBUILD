@@ -2,8 +2,8 @@
 
 _pyname=pytest-subtests
 pkgname=python-$_pyname
-pkgver=0.14.1
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc='unittest subTest() support and subtests fixture'
 arch=('any')
 license=('MIT')
@@ -13,7 +13,7 @@ makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python
              'python-wheel')
 checkdepends=('python-pytest-xdist')
 source=("git+$url.git#tag=v$pkgver")
-sha512sums=('84962d65c4816620e4554e6f61a0723a77fc6b6eeda7b3ab458c145b35fd21f89de34d308a512244a1d71e6380708d0fb1032a1353550847783195b3c4b1f862')
+sha512sums=('36e639bd9957365188c090bd10cd2f291acb6c02e706251f0e3763dd381c32292ef76ba6995d3492ee110554e14a7f3c52085600e3a48952c41de80adc579735')
 
 build() {
   cd $_pyname
