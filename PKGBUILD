@@ -4,12 +4,11 @@
 pkgname=linux-uapi-headers
 _basename=linux
 pkgver=6.19.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux syscall API headers for userspace usage'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
 license=('GPL-2.0-only WITH Linux-syscall-note')
-makedepends=(rsync)
 options=(!strip)
 provides=(linux-headers)
 replaces=(linux-headers)
@@ -40,5 +39,6 @@ package() {
   pkgdesc="Kernel headers sanitized for use in userspace"
 
   cd "$_basename-$pkgver"
-  make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch INSTALL_HDR_PATH="$pkgdir/usr" headers_install
+  make LLVM=1 LLVM_IAS=1 ARCH=$_build_arch headers
+  find usr/include -name '*.h' | cpio -pdvmu "$pkgdir"
 }
