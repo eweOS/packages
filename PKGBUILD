@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=lxqt-globalkeys
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="LXQt daemon and library for global keyboard shortcuts registration."
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 groups=("lxqt")
@@ -13,7 +13,7 @@ makedepends=("lxqt-build-tools")
 source=(
 	"https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
 )
-sha256sums=('1a3f86e7e4eb4a98811f76f0a8e6bd5e7d898abf48d51c88ef0dd3629f0889c6')
+sha256sums=('6f7fb82337bd06823f698df5a1e631059e99e544bfa9a1d7c5b67fd01ff9319a')
 
 prepare() {
   # no x11
