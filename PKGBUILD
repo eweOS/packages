@@ -2,15 +2,15 @@
 
 pkgname=python-cryptography
 pkgver=48.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A package designed to expose cryptographic recipes and primitives to Python developers"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 license=('Apache')
 url="https://github.com/pyca/cryptography"
 depends=('python-cffi')
 makedepends=('git' 'python-setuptools-rust' 'python-build' 'python-installer' 'python-wheel' 'python-maturin')
-checkdepends=('python-pytest' 'python-pytest-subtests' 'python-iso8601' 'python-pretend'
-              'python-hypothesis' 'python-pytz' 'python-certifi')
+checkdepends=('python-pytest' 'python-iso8601' 'python-pretend'
+	      'python-hypothesis' 'python-pytz' 'python-certifi')
 source=("git+https://github.com/pyca/cryptography.git#tag=$pkgver")
 sha256sums=('e5a21c178cff7a1e5ae369b6ff9bf1bf246504b1644f48cb9ceb10006aff4876')
 
