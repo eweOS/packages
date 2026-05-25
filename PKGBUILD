@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=btop
-pkgver=1.4.6
-pkgrel=2
+pkgver=1.4.7
+pkgrel=1
 pkgdesc='A monitor of system resources, bpytop ported to C++'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/aristocratos/$pkgname"
@@ -10,7 +10,7 @@ license=(Apache)
 depends=(musl llvm-libs)
 makedepends=(linux-headers)
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('4beb90172c6acaac08c1b4a5112fb616772e214a7ef992bcbd461453295a58be')
+sha256sums=('933de2e4d1b2211a638be463eb6e8616891bfba73aef5d38060bd8319baeefc6')
 
 build()
 {
