@@ -1,8 +1,6 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 932f789..410c7e2 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -31,7 +31,6 @@ find_package(Qt6Widgets ${QT_MINIMUM_VERSION} REQUIRED)
+--- lxqt-session-2.4.0/CMakeLists.txt
++++ lxqt-session-2.4.0-new/CMakeLists.txt
+@@ -31,7 +31,6 @@
  find_package(KF6WindowSystem ${KF6_MINIMUM_VERSION} REQUIRED)
  find_package(lxqt ${LXQT_MINIMUM_VERSION} REQUIRED)
  find_package(qtxdg-tools ${QTXDG_MINIMUM_VERSION} REQUIRED)
@@ -10,10 +8,8 @@ index 932f789..410c7e2 100644
  find_package(LayerShellQt ${SHELLQT_MINIMUM_VERSION} REQUIRED)
  message(STATUS "Building with Qt${Qt6Core_VERSION}")
  find_package(PkgConfig REQUIRED)
-diff --git a/lxqt-session/src/lxqtmodman.cpp b/lxqt-session/src/lxqtmodman.cpp
-index 3f120c8..808a742 100644
---- a/lxqt-session/src/lxqtmodman.cpp
-+++ b/lxqt-session/src/lxqtmodman.cpp
+--- lxqt-session-2.4.0/lxqt-session/src/lxqtmodman.cpp
++++ lxqt-session-2.4.0-new/lxqt-session/src/lxqtmodman.cpp
 @@ -48,7 +48,6 @@
  #include "log.h"
  
@@ -22,7 +18,7 @@ index 3f120c8..808a742 100644
  
  #define MAX_CRASHES_PER_APP 5
  
-@@ -191,15 +190,6 @@ void LXQtModuleManager::themeChanged()
+@@ -192,15 +191,6 @@
  
  void LXQtModuleManager::startWm(LXQt::Settings *settings)
  {
@@ -38,7 +34,7 @@ index 3f120c8..808a742 100644
      if (mWindowManager.isEmpty())
      {
          mWindowManager = settings->value(QL1S("window_manager")).toString();
-@@ -219,16 +209,7 @@ void LXQtModuleManager::startWm(LXQt::Settings *settings)
+@@ -220,16 +210,7 @@
  
      // Wait until the WM loads
      QEventLoop waitLoop;
@@ -56,11 +52,9 @@ index 3f120c8..808a742 100644
      QTimer t;
      connect(&t, &QTimer::timeout, this, checker);
      t.setSingleShot(false);
-diff --git a/lxqt-session/src/numlock.cpp b/lxqt-session/src/numlock.cpp
-index 3672120..a2b8904 100644
---- a/lxqt-session/src/numlock.cpp
-+++ b/lxqt-session/src/numlock.cpp
-@@ -32,57 +32,10 @@
+--- lxqt-session-2.4.0/lxqt-session/src/numlock.cpp
++++ lxqt-session-2.4.0-new/lxqt-session/src/numlock.cpp
+@@ -32,57 +32,9 @@
  #include <QGuiApplication>
  #include <string.h>
  #include <stdlib.h>
@@ -70,7 +64,7 @@ index 3672120..a2b8904 100644
  
  /* the XKB stuff is based on code created by Oswald Buddenhagen <ossi@kde.org> */
  
--static unsigned int xkb_mask_modifier(Display* /*dpy*/, XkbDescPtr xkb, const char *name )
+-static unsigned int xkb_mask_modifier(Display* /*dpy*/, XkbDescPtr xkb, const char *name)
 -{
 -    int i = 0;
 -    if( !xkb || !xkb->names )
@@ -103,13 +97,13 @@ index 3672120..a2b8904 100644
 -    mask = xkb_numlock_mask(dpy);
 -    if( mask == 0 )
 -        return 0;
--    XkbLockModifiers ( dpy, XkbUseCoreKbd, mask, mask);
+-    XkbLockModifiers (dpy, XkbUseCoreKbd, mask, mask);
 -    return 1;
 -}
 -
  void enableNumlock()
  {
-     // this currently only works for X11
+-    // this currently only works for X11
 -    if (QGuiApplication::platformName() == QStringLiteral("xcb")) {
 -        if (auto x11NativeInterface = qGuiApp->nativeInterface<QNativeInterface::QX11Application>()) {
 -            if (Display* dpy = x11NativeInterface->display()) {
@@ -118,10 +112,8 @@ index 3672120..a2b8904 100644
 -        }
 -    }
  }
-diff --git a/lxqt-session/src/sessionapplication.cpp b/lxqt-session/src/sessionapplication.cpp
-index 30dc635..560ef0e 100644
---- a/lxqt-session/src/sessionapplication.cpp
-+++ b/lxqt-session/src/sessionapplication.cpp
+--- lxqt-session-2.4.0/lxqt-session/src/sessionapplication.cpp
++++ lxqt-session-2.4.0-new/lxqt-session/src/sessionapplication.cpp
 @@ -32,9 +32,6 @@
  #include <QGuiApplication>
  #include "log.h"
@@ -132,7 +124,7 @@ index 30dc635..560ef0e 100644
  SessionApplication::SessionApplication(int& argc, char** argv) :
      LXQt::Application(argc, argv),
      lockScreenManager(new LockScreenManager(this))
-@@ -85,45 +82,6 @@ bool SessionApplication::startup()
+@@ -92,45 +89,6 @@
  
      // loadFontSettings(settings);
  
@@ -178,7 +170,7 @@ index 30dc635..560ef0e 100644
      if (lockScreenManager->startup(settings.value(QLatin1String("lock_screen_before_power_actions"), true).toBool()
                  , settings.value(QLatin1String("power_actions_after_lock_delay"), 0).toInt()))
          qCDebug(SESSION) << "LockScreenManager started successfully";
-@@ -193,26 +151,9 @@ void SessionApplication::loadKeyboardSettings(LXQt::Settings& settings)
+@@ -205,26 +163,9 @@
  {
      qCDebug(SESSION) << settings.fileName();
      settings.beginGroup(QSL("Keyboard"));
@@ -205,7 +197,7 @@ index 30dc635..560ef0e 100644
      // turn on numlock as needed
      if(settings.value(QSL("numlock")).toBool())
          enableNumlock();
-@@ -253,13 +194,6 @@ void SessionApplication::loadMouseSettings(LXQt::Settings& settings)
+@@ -265,13 +206,6 @@
      // other mouse settings
      int accel_factor = settings.value(QSL("accel_factor")).toInt();
      int accel_threshold = settings.value(QSL("accel_threshold")).toInt();
@@ -219,7 +211,7 @@ index 30dc635..560ef0e 100644
  
      // left handed mouse?
      bool left_handed = settings.value(QSL("left_handed"), false).toBool();
-@@ -315,45 +249,6 @@ void SessionApplication::setLeftHandedMouse(bool mouse_left_handed)
+@@ -327,45 +261,6 @@
      int n_buttons = 0;
      int i = 0;
      int idx_1 = 0, idx_3 = 1;
