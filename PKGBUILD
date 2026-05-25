@@ -5,8 +5,8 @@
 # Contributor : Nick Erdmann <erdmann@date.upb.de>
 
 pkgname=nethack
-pkgver=3.6.7
-pkgrel=3
+pkgver=5.0.0
+pkgrel=1
 pkgdesc='A single player dungeon exploration game'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.nethack.org/index.html"
@@ -17,7 +17,7 @@ source=(
   "https://www.nethack.org/download/${pkgver}/${pkgname}-${pkgver//./}-src.tgz"
   "${pkgname}.tmpfiles"
 )
-sha512sums=('7890d17e087f4344d30e9a908fa1f24d7c72bc714c4a6415ed59800902cc0aa6b3ce94c5d73857b0222349b96b1fdc8bf3f93b3ac1153477ad1419af7b0d3fb5'
+sha512sums=('a668525d9030055a4b7a504ff6a6b028d4a6d6db5b79a1f1e716d60d40346c0e6d4ac281f393a6ae8aa0453103850bafc67882a75f0518fecc6225af5efda1db'
             '277503212c0b2f9344ef6493ecbff6d0aab6ecf148885db23bbb55d9eebdcd0f48f4abd2e42aa7aed8fd8d426e48f011912e2d3c1d7a85f407846f8a7be84ee9')
 
 _builddir="NetHack-${pkgver}"
