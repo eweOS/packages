@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pavucontrol-qt
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="A Pulseaudio mixer in Qt (port of pavucontrol)"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 groups=("lxqt")
@@ -13,7 +13,7 @@ makedepends=("lxqt-build-tools" "libpulse")
 source=(
 	"https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
 )
-sha256sums=('b5cd029418b5205f1d28e68606f63394eeaaae4ee6ffac468718b908a1ed6fbd')
+sha256sums=('7f813d3029e9f1b66020cf3da143d07196dd8bce01a95bd754489287ca5b6380')
 
 build() {
 	mkdir -p build
