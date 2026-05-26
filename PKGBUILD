@@ -10,10 +10,10 @@ pkgbase=webkit2gtk
 # package size).
 pkgname=(webkit2gtk-4.1 webkit2gtk-6.0
 	 webkit2gtk-4.1-docs webkit2gtk-6.0-docs)
-pkgver=2.50.5
-pkgrel=2
+pkgver=2.53.2
+pkgrel=1
 pkgdesc='GTK port of the WebKit rendering engine'
-url='https://webkitgtk.org/releases/webkitgtk-2.50.5.tar.xz'
+url='https://webkitgtk.org/releases/webkitgtk-2.53.2.tar.xz'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD-2-Clause  LGPL-2.0-or-later)
 depends=(musl llvm-libs xdg-dbus-proxy gstreamer glib icu zlib-ng
@@ -28,12 +28,17 @@ makedepends=(cmake ruby unifdef ninja gstreamer-devel gobject-introspection
 #	architectures.
 # 0002: Should be upstreamed, add missing include of system_error header to fix
 #	build with libc++.
+# 0003: backport
+#       fix error: no member named 'pageSize' in namespace 'WTF'
+#       https://github.com/WebKit/WebKit/pull/64367
 source=("https://webkitgtk.org/releases/webkitgtk-$pkgver.tar.xz"
 	0001-Turn-on-system-malloc.patch
-	0002-contextextensions-add-missing-system_error-include.patch)
-sha256sums=('8737631bac3e9c7ad3e5208f9370e076c09d9c45b39980021ce54edadcc6f94f'
-            '89e9a619d6543656f7a4c61ad464eefcfc7cbc2f408152429a25fc0da67dd093'
-            '5ea539d3d84830c59c83e01c1bcf0b290c83d42a7fbd15a68677c61054100ba0')
+	0002-contextextensions-add-missing-system_error-include.patch
+        0003-fix-no-member-pagesize.patch)
+sha256sums=('79f03692f65149685c32c64c66c6f4696c91e652a2abfab0614532da323b8bb9'
+            '24bcf3e2eaa9b5bd00b56b24eb856551d2e39d4d552b81c455972e95a216b215'
+            '1dafcb39ebba7cb663e79bc7447ceb723b98bb04d7e08ea76c06fef1b38f9bd3'
+            '54b07b6f6efbf0f59fcb4dc62fd37aed6c0899b758610bc0d16f8b76e00750cd')
 
 prepare() {
 	_patch_ "webkitgtk-$pkgver"
@@ -60,7 +65,6 @@ build() {
 		-DENABLE_WAYLAND_TARGET=ON
 		-DENABLE_X11_TARGET=OFF
 		-DUSE_LIBBACKTRACE=OFF
-		-DUSE_SOUP2=OFF
 		-DENABLE_SPELLCHECK=OFF
 		-DENABLE_GAMEPAD=OFF
 		-DUSE_SYSTEM_SYSPROF_CAPTURE=NO
