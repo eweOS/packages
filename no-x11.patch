@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 0a431b7..647a683 100644
+index 8a219de..10c9819 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -58,9 +58,6 @@ set(QXT_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/src/third-party")
@@ -33,7 +33,7 @@ index 0a431b7..647a683 100644
      src/forms/qterminal.ui
      src/forms/propertiesdialog.ui
 diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
-index d5163c8..87a00fe 100644
+index 060f789..0fd8c5c 100644
 --- a/src/mainwindow.cpp
 +++ b/src/mainwindow.cpp
 @@ -104,7 +104,6 @@ MainWindow::MainWindow(TerminalConfig &cfg,
@@ -44,11 +44,12 @@ index d5163c8..87a00fe 100644
  
      setContentsMargins(0, 0, 0, 0);
      if (m_dropMode) {
-@@ -199,22 +198,9 @@ void MainWindow::enableDropMode()
+@@ -201,31 +200,9 @@ void MainWindow::enableDropMode()
      setKeepOpen(Properties::Instance()->dropKeepOpen);
      m_dropLockButton->setAutoRaise(true);
  
 -    setDropShortcut(Properties::Instance()->dropShortCut);
+-    setDropLockShortCut(Properties::Instance()->dropLockShortCut);
      realign();
  }
  
@@ -64,37 +65,39 @@ index d5163c8..87a00fe 100644
 -    }
 -}
 -
+-void MainWindow::setDropLockShortCut(const QKeySequence& dropLockShortCut)
+-{
+-    if (m_dropLockButton)
+-    {
+-        m_dropLockButton->setShortcut(dropLockShortCut);
+-    }
+-}
+-
  void MainWindow::setup_Action(const char *name, QAction *action, const char *defaultShortcut, const QObject *receiver,
                                const char *slot, QMenu *menu, const QVariant &data)
  {
-@@ -725,8 +711,6 @@ void MainWindow::propertiesChanged()
+@@ -721,9 +698,6 @@ void MainWindow::propertiesChanged()
      QApplication::setStyle(Properties::Instance()->guiStyle);
      consoleTabulator->setTabPosition((QTabWidget::TabPosition)Properties::Instance()->tabsPos);
      consoleTabulator->propertiesChanged();
 -    setDropShortcut(Properties::Instance()->dropShortCut);
+-    setDropLockShortCut(Properties::Instance()->dropLockShortCut);
 -
  
      const auto menuBarActions = m_menuBar->actions();
      if (Properties::Instance()->noMenubarAccel)
 diff --git a/src/mainwindow.h b/src/mainwindow.h
-index 1088aca..3d7f277 100644
+index b355ce0..c30013e 100644
 --- a/src/mainwindow.h
 +++ b/src/mainwindow.h
-@@ -24,7 +24,6 @@
- #include <QMainWindow>
- #include <QAction>
- 
--#include "qxtglobalshortcut.h"
- #include "terminalconfig.h"
- #include "dbusaddressable.h"
- 
-@@ -93,9 +92,7 @@ private:
+@@ -93,10 +93,7 @@ private:
      QToolButton *m_dropLockButton;
      bool m_dropMode;
      LayerShellQt::Window *m_layerWindow;
 -    QxtGlobalShortcut m_dropShortcut;
      void realign();
 -    void setDropShortcut(const QKeySequence& dropShortCut);
+-    void setDropLockShortCut(const QKeySequence& dropLockShortCut);
  
      bool hasMultipleTabs(QAction *);
      bool hasMultipleSubterminals(QAction *);
