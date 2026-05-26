@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=lximage-qt
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="The LXQt image viewer and screenshot tool"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 groups=("lxqt")
@@ -21,7 +21,7 @@ source=(
   "https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
   no-x11.patch
 )
-sha256sums=('9376d492945917a5ee2ec6a69bb8f6aeadf89d0f14c38d73a2eac5407b34b641'
+sha256sums=('7ca49039f3246011b80d76037603ac6a7af484574d8e5e2cc5bb7b8534298636'
             'ac5845e00853c5f40f32d099c97602ce4bec21c2ee563a83b4f3f6fe8a7c69a6')
 
 prepare() {
