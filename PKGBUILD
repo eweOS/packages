@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=yosys
-pkgver=0.63
-pkgrel=2
+pkgver=0.65
+pkgrel=1
 pkgdesc='An open framework for RTL synthesis tools'
 url='https://yosyshq.net/yosys/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +16,7 @@ makedepends=(cxxopts python)
 source=("https://github.com/YosysHQ/yosys/archive/refs/tags/v$pkgver.tar.gz"
 	"0001-Use-system-cxxopts.patch"
 	"0002-Use-default-linker-when-building-with-Clang.patch")
-sha256sums=('49c18f7e6fb1da30d8b2dc443b542405ce9648ef220cb84ad1c56241684a3f43'
+sha256sums=('1a74e02b56fd221cfb1f316011f5748a87841bee697702e353e5e03be0e61cbe'
             '5ed9ab3de0a387fa88c4bc76c3ddbb97ea89cfc5df096e4c2c2621e642a1aa5e'
             '97db7b78a80c93c0bc4bff76f61c2a9e91140ceaf4a5d9227eb56e027b019977')
 
