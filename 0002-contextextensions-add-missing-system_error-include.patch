@@ -2,11 +2,11 @@ diff --git a/Source/WebCore/contentextensions/ContentExtensionActions.h b/Source
 index a600f410bf96..2d4c3ccd1029 100644
 --- a/Source/WebCore/contentextensions/ContentExtensionActions.h
 +++ b/Source/WebCore/contentextensions/ContentExtensionActions.h
-@@ -27,6 +27,7 @@
+@@ -29,6 +29,7 @@
  
  #if ENABLE(CONTENT_EXTENSIONS)
  
 +#include <system_error>
- #include "ContentExtensionStringSerialization.h"
+ #include <WebCore/ContentExtensionStringSerialization.h>
+ #include <system_error>
  #include <wtf/JSONValues.h>
- #include <wtf/Hasher.h>
