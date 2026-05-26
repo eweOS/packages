@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=(texlive-bin libsynctex)
-pkgver=20250308
-pkgrel=3
+pkgver=20260301
+pkgrel=1
 license=(GPL-2.0-or-later)
 arch=(x86_64 aarch64 riscv64 loongarch64)
 makedepends=(bash
@@ -36,7 +36,7 @@ source=(
   lua-root.patch
   ptex-debug-print.patch
 )
-sha256sums=('fffdb1a3d143c177a4398a2229a40d6a88f18098e5f6dcfd57648c9f2417490f'
+sha256sums=('cb120d314d3ceb23ac608af17ddd2c623afcf02331f400a0f25eead5b8ac1d70'
             'c2d6a8b14dd8197874c1d894e70df80ad076f28ee4d1cff81e3b7811d9264fb9'
             'aa838f09003c62c2efb5770a8de66f99b409df049fbd65098d80fd1957d06c50')
 
