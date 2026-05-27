@@ -1,0 +1,47 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgbase=zint
+pkgname=(zint
+         zint-qt)
+pkgver=2.16.0
+pkgrel=1
+pkgdesc='Barcode encoding library supporting over 50 symbologies'
+arch=(x86_64 aarch64 riscv64 loongarch64)
+url='https://zint.org.uk/'
+license=(GPL-3.0-or-later)
+makedepends=(cmake
+             git
+             qt6-svg
+             qt6-tools)
+source=(git+https://github.com/zint/zint#tag=$pkgver)
+sha256sums=('0bd39dbba01db925e9c50fcd282b36377b9b748a3f0ea9fbc890ccb37b448d4c')
+
+build() {
+  cmake -B build -S zint \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DZINT_QT6=ON
+  cmake --build build
+}
+
+package_zint() {
+  depends+=(libpng)
+  DESTDIR="$pkgdir" cmake --install build
+
+  rm "$pkgdir/usr/bin/zint-qt" \
+     "$pkgdir/usr/include/qzint.h" \
+     "$pkgdir/usr/lib/libQZint"*
+}
+
+package_zint-qt() {
+  pkgdesc='Zint Barcode Studio GUI'
+  depends+=(qt6-base
+            qt6-svg
+            qt6-tools
+            zint)
+
+  DESTDIR="$pkgdir" cmake --install build/backend_qt
+  DESTDIR="$pkgdir" cmake --install build/frontend_qt
+
+  install -Dm644 zint/zint-qt.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/zint-qt.png"
+  install -Dm644 zint/zint-qt.desktop "$pkgdir/usr/share/applications/zint-qt.desktop"
+}
