@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pam
-pkgver=1.7.1
-pkgrel=2
+pkgver=1.7.2
+pkgrel=1
 pkgdesc="PAM (Pluggable Authentication Modules) library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL-2.0-or-later OR BSD-3-Clause')
@@ -13,7 +13,7 @@ source=(
   "pam::git+https://github.com/linux-pam/linux-pam#tag=v${pkgver}"
   "$pkgname.tmpfiles"
 )
-sha256sums=('6bf3e4a7889ae34c09336f0bae019a420e04aafc1616a71299c4e71e4cd679e5'
+sha256sums=('4fc9be25be6da8fd1cb0b42af4106ed309132c00bff48212ccfffb21a40683d0'
             '5631f224e90c4f0459361c2a5b250112e3a91ba849754bb6f67d69d683a2e5ac')
 options=('!emptydirs')
 provides=('libpam.so' 'libpamc.so' 'libpam_misc.so')
