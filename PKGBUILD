@@ -1,17 +1,17 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=cage
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="A kiosk compositor for Wayland"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.hjdskes.nl/projects/cage/"
 license=(MIT)
-depends=(wayland wlroots0.19)
+depends=(wayland wlroots0.20)
 makedepends=(libxkbcommon meson pixman wayland-protocols git linux-headers
-	     wlroots0.19-devel)
+	     wlroots0.20-devel)
 source=("git+https://github.com/cage-kiosk/cage.git#tag=v$pkgver")
-sha512sums=('4cda60e4fcdffeefb5ff8c0b50fee4fe3d008f706d3bae1cc4ac899e3cf72f01da2bb806626fc0043521669136a24f839f672a3670f3b992b4e7584a1bbc6fc1')
+sha512sums=('0925e1605ea9afcb3f005d36b2438ddcba67c6966df402a57bb606a6c26269d070887ad742b75e0308ca15091ea9ba22224e3d5f2810bc0ccdbde3432d05cdb7')
 
 build() {
   ewe-meson -Dman-pages=disabled build "$pkgname"
