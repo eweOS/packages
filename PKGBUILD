@@ -2,14 +2,14 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libtasn1
-pkgver=4.20.0
-pkgrel=2
+pkgver=4.21.0
+pkgrel=1
 pkgdesc="The ASN.1 library used in GNUTLS"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL-3.0-or-later' 'LGPL-2.1-or-later' 'GFDL-1.3-or-later')
 url="https://www.gnu.org/software/libtasn1/"
 source=("https://ftp.gnu.org/gnu/libtasn1/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('92e0e3bd4c02d4aeee76036b2ddd83f0c732ba4cda5cb71d583272b23587a76c')
+sha256sums=('1d8a444a223cc5464240777346e125de51d8e6abf0b8bac742ac84609167dc87')
 
 build()
 {
