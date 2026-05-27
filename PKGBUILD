@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=double-conversion
-pkgver=3.3.1
-pkgrel=2
+pkgver=3.4.0
+pkgrel=1
 pkgdesc='Binary-decimal and decimal-binary routines for IEEE doubles'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/google/double-conversion'
@@ -11,12 +11,7 @@ depends=(llvm-libs musl)
 makedepends=(cmake
              git)
 source=(git+https://github.com/google/double-conversion#tag=v$pkgver)
-sha256sums=('6009d129b305b65819cf37cd8cd8f07557a461d141a91f6e3afd553c4a384d59')
-
-prepare() {
-# Fix build with cmake 4
-  git -C $pkgname cherry-pick -n 101e1ba89dc41ceb75090831da97c43a76cd2906
-}
+sha256sums=('9963201818e6ef262b99e68b2ec2500b2b49270d0205dc7487d16ec5e8f467f3')
 
 build() {
   cmake -B build -S $pkgname \
