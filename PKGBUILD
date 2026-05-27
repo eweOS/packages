@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libavif
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.4.2
+pkgrel=1
 pkgdesc="Library for encoding and decoding .avif files"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/AOMediaCodec/libavif"
@@ -13,7 +13,7 @@ makedepends=(cmake
              git
              nasm)
 source=(git+https://github.com/AOMediaCodec/libavif#tag=v$pkgver)
-sha256sums=('71f5a51a8e1a9198cd9f2e38c158e50815989bb1fe28cc80e481aa16a3e1ec2d')
+sha256sums=('2c84afde7ea25afbf3ed9981d65a87723920137e1033f5e4fb48c76c4566ede1')
 
 build() {
   cmake -B build -S $pkgname \
