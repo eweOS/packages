@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=md4c
-pkgver=0.5.2
-pkgrel=3
+pkgver=0.5.3
+pkgrel=1
 pkgdesc='C Markdown parser'
 url='https://github.com/mity/md4c'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(musl)
 makedepends=(cmake)
 provides=(libmd4c.so libmd4c-html.so)
 source=("https://github.com/mity/md4c/archive/refs/tags/release-$pkgver.tar.gz")
-sha256sums=('55d0111d48fb11883aaee91465e642b8b640775a4d6993c2d0e7a8092758ef21')
+sha256sums=('353c346f376b87c954a13f3415ede2d51264cc61dc5abcd38ff1d2aa0d059b9e')
 
 build () {
 	cmake -S "$pkgname-release-$pkgver" -B build \
