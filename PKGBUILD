@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=rdfind
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc='Redundant data find - a program that finds duplicate files'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://rdfind.pauldreik.se'
@@ -13,9 +13,9 @@ depends=(nettle)
 source=("${url}/${pkgname}-${pkgver}.tar.gz"
 	"0001-testcases-base64-use-busybox-supported-arguments.patch"
 	"0002-disable-busybox-incompatible-tests.patch")
-sha256sums=('78c463152e1d9e4fd1bfeb83b9c92df5e7fc4c5f93c7d426fb1f7efa2be4df29'
+sha256sums=('0a2d0d32002cc2dc0134ee7b649bcc811ecfb2f8d9f672aa476a851152e7af35'
             'd0a15534ba522ec75aad866915916fa184ca6c2e3b7c80cc20f833392496debc'
-            'f75f4dcfc3d71b1197ad5ec4dd62db8296962da361c05de7c2202f7885c18c2f')
+            'ea44cbf509e129d224b44ee7a22cdf441867d4db0752cc27c089fde8f1490d3b')
 
 prepare() {
   _patch_ $pkgname-$pkgver
