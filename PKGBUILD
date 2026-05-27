@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=orage
-pkgver=4.18.0
-pkgrel=2
+pkgver=4.21.0
+pkgrel=1
 pkgdesc="A simple calendar application with reminders for Xfce"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://docs.xfce.org/apps/orage/start"
@@ -12,7 +12,7 @@ makedepends=('git' 'xfce4-dev-tools' 'intltool')
 group=('xfce4-goodies')
 optdepends=('libnotify: desktop notifications support')
 source=("git+https://gitlab.xfce.org/apps/orage.git#tag=$pkgname-$pkgver")
-sha256sums=('b60993de942c6017635900a251011725f7fdcdd8c9e3cecd982ae872cbdc5a20')
+sha256sums=('9bbd058c4196c6557accde282aef90a704ca47d9484e3fafcd560c2039561a48')
 
 prepare() {
   cd $pkgname
