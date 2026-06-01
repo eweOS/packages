@@ -1,21 +1,25 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=ifupdown-ng
-pkgver=0.12.1
-pkgrel=6
+pkgver=0.13.0
+pkgrel=1
 pkgdesc='Flexible ifup/ifdown implementation'
 url='https://github.com/ifupdown-ng/ifupdown-ng'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(ISC)
-depends=(musl)
-makedepends=(scdoc)
+depends=(musl libmnl)
+makedepends=(scdoc musl-static)
 options=(!lto emptydirs)
 source=("https://github.com/ifupdown-ng/ifupdown-ng/archive/refs/tags/ifupdown-ng-$pkgver.tar.gz"
 	"ifupdown-ng.service")
-sha256sums=('d42c8c18222efbce0087b92a14ea206de4e865d5c9dde6c0864dcbb2b45f2d85'
+sha256sums=('9efc4c47d0baa9611fccfc428862d7da94a96ac7769efc4a7935a106ac5d3896'
             '3e3321263a2214bb365aeabef6e06865a461a98b2b19a11884bd69b64e507b03')
 
 # TODO: enable checks (need Kyua)
+
+prepare () {
+	_patch_ ifupdown-ng-ifupdown-ng-$pkgver
+}
 
 build () {
 	cd ifupdown-ng-ifupdown-ng-$pkgver
