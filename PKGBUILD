@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=frei0r-plugins
-pkgver=2.5.1
-pkgrel=3
+pkgver=3.1.3
+pkgrel=1
 pkgdesc='Collection of video effect plugins'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://frei0r.dyne.org/'
@@ -13,14 +13,10 @@ makedepends=(
   gavl
   git
   ninja
-)
-optdepends=(
-  'cairo: cairoaffineblend, cairoblend, cairogradient and cairoimagegrid plugins'
-  'gavl: rgbparade, scale0tilt and vectorscope plugins'
-  'opencv: facebl0r and facedetect plugins'
+  opencv
 )
 source=("git+https://github.com/dyne/frei0r#tag=v$pkgver")
-sha256sums=('3a155c715bbf63fa6faa7d05815dabeb1e3686b4c13f4ee67b1232aa894390cf')
+sha256sums=('29876d59322d4d680b76ddf155484ef7f9f136522e633741609ccf16c47f647c')
 
 build() {
   cmake -S frei0r -B build -G Ninja \
