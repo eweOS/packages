@@ -2,17 +2,17 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libedit
-_pkgver=20251016-3.1
+_pkgver=20260512-3.1
 pkgver=${_pkgver/-/_}
-pkgrel=2
+pkgrel=1
 pkgdesc="Command line editor library providing generic line editing, history, and tokenization functions"
 url='https://thrysoee.dk/editline/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('musl' 'ncurses')
 provides=('libedit.so')
 source=(${url}/${pkgname}-${_pkgver}.tar.gz)
-sha256sums=('21362b00653bbfc1c71f71a7578da66b5b5203559d43134d2dd7719e313ce041')
+sha256sums=('432d5e7ea8b0116dd39f2eca7bc11d0eed77faa6b77ea526ace89907c23ea4a0')
 
 build()
 {
