@@ -49,9 +49,9 @@ arch=(any)
 for _coll in ${_collections[@]}; do
   pkgname+=(texlive-$_coll)
 done
-pkgver=20250308
-_dbver=${pkgver:0:4}.2
-pkgrel=2
+pkgver=20260301
+_dbver=${pkgver:0:4}.1
+pkgrel=1
 pkgdesc='TeX Live - '
 license=(GPL)
 url='https://tug.org/texlive/'
@@ -62,7 +62,6 @@ source=(texmf-dist.tar.xz::${_mirror}/systems/texlive/${pkgver:0:4}/texlive-$pkg
         texlive.tlpdb::https://git.texlive.info/texlive/plain/Master/tlpkg/texlive.tlpdb?h=tags/texlive-${_dbver}
         09-texlive-fonts.conf
         texmf.cnf.patch
-        texmfcnf.lua.patch
         70-mktexlsr.hook
         71-texlive-language.hook
         texlive-language.script
@@ -71,15 +70,13 @@ source=(texmf-dist.tar.xz::${_mirror}/systems/texlive/${pkgver:0:4}/texlive-$pkg
         73-texlive-updmap.hook
         texlive-updmap.script
         80-mtxrun.hook
-        mtxrun.script
-	https://gitlab.com/git-latexdiff/git-latexdiff/-/commit/a0aa6bad.patch)
-sha256sums=('08dcda7430bf0d2f6ebb326f1e197e1473d3f7cc0984a2adb7236df45316c7cf'
-            'ff0faf3d334def167110895d1102df878bd9180f971cdd62be08e0395e372f77'
-            '9938f192af75f792e84282580cce6eedac32969e0e07b33cb39ca1b699e948b6'
-            'ae3d202a8e2f8ce3b4e770db626d1d2707798ead8ebb713ad8e5aa14ede77fee'
+        mtxrun.script)
+sha256sums=('349eb7c5c2c15333d77490a52934b053c6dcb88834f2224978f7a4edf67940e7'
+            'd36f205460e1a9858d0b869914a4ef6bf68ea4036ab7b34157cfbc79ce55bfe0'
+            '5cc0703d6fe49f00a2932c4e3bcee37a11cc0a969ae9fcbf9cad6f0d984d6363'
+            'ae33f319ba29c515079f5e8ef0a9b33e08ecb41dcc57c1c65e04d7b906acfb90'
             '5e79c40cf3ab93348fc89e97890198601767ea2c8fea89ea76088c17a2b35962'
-            '04fe1843336ee0707794497a7179abc31d5fc5148119e5b9b5f6c5de0962fa59'
-            '758c6593be7d0ee7e50095d08401a9fd3ea16db2f6b8bf22a8682fa82334a24f'
+            'fb5dbba4a2eb7c47c403ae8ac48df897e10316a2f54f3d0b67fbbd06386dfd3a'
             '95f6540c49b11f1ece8010d76b53ca90efd61e1831530562bfcde4350f6c1db1'
             'e6d399faee55ba461cf7e617f2369f5c516de292b28afc6665c9e3fe2b821973'
             'c64c2a6371e94b0f67799c0ac84ea74d8edbc181b26672aa15b8132ec5fbabc3'
@@ -88,8 +85,7 @@ sha256sums=('08dcda7430bf0d2f6ebb326f1e197e1473d3f7cc0984a2adb7236df45316c7cf'
             '2141c0842668fb937fd21ca2fae39b642c9665656e404a0d4ee7bdc477bf51fe'
             'ee6e76192a5ad880a2152cd7900b86c8465239fb228045a2f8360b0d7a449f4a'
             'f6bb67db32d37ca15eba88bd15d8b9882c61915f98bc8d7c3c21a66c8cf8f019'
-            '98b730e917281227e29077ba5689ad78baee0af3859b55966b2604c6a85f1305'
-            'e6b754b49563531ec737891ae7c9ad3d2e5bc716e0718ae7bfda298463af48f1')
+            '98b730e917281227e29077ba5689ad78baee0af3859b55966b2604c6a85f1305')
 options=(!strip) # Nothing to strip, save packaging time
 
 _grep_til_blank() {
@@ -120,10 +116,6 @@ prepare() {
 
 # Customize configuration
   patch -d texmf-dist/web2c -p0 < texmf.cnf.patch
-  patch -d texmf-dist/web2c -p0 < texmfcnf.lua.patch
-
-# Fix git-latexdiff
-  patch -d texmf-dist/scripts/git-latexdiff -p1 < a0aa6bad.patch
 
   # Copy files where format and maps will be extracted from
   cp texmf-dist/web2c/{fmtutil.cnf,updmap.cfg,texmf.cnf} .
