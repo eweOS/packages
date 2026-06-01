@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ffmpeg
-pkgver=7.1.1
-pkgrel=13
+pkgver=8.1.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://ffmpeg.org/
@@ -62,14 +62,10 @@ provides=(
   libswresample.so
   libswscale.so
 )
-# 0001: Backport, fix compatibility with svt-av1a 3.0.1
-source=("https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n$pkgver.tar.gz"
-	"0001-avcodec-libsvtav1-unbreak-build-with-latest.patch::https://github.com/FFmpeg/FFmpeg/commit/d1ed5c06e3edc5f2b5f3664c80121fa55b0baa95.patch")
-sha256sums=('f117507dc501f2a6c11f9241d8d0c3213846cfad91764361af37befd6b6c523d'
-            '50af862d25bbeddd0d2e3eff7ebe25899651ee24cc23ed6f785180b5523d246e')
+source=("https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n$pkgver.tar.gz")
+sha256sums=('918929faccab2700c9cc7be2531c0b74f054a4dd5d3862bc485b0ab17af76486')
 
 prepare() {
-  _patch_ FFmpeg-n$pkgver
   cd FFmpeg-n$pkgver
 
   if [ "$CARCH" == "riscv64" ]; then
