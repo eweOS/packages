@@ -1,9 +1,9 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=iverilog
-pkgver=12.0
+pkgver=13.0
 _srcver=${pkgver/./_}
-pkgrel=3
+pkgrel=1
 pkgdesc='A Verilog HDL compiler'
 url='https://steveicarus.github.io/iverilog/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ makedepends=(gperf)
 # with ones that actually contain LLVM bytecode. Disable LTO to workaround this.
 options=(!lto)
 source=("https://github.com/steveicarus/iverilog/archive/refs/tags/v${_srcver}.tar.gz")
-sha256sums=('a68cb1ef7c017ef090ebedb2bc3e39ef90ecc70a3400afb4aa94303bc3beaa7d')
+sha256sums=('c897bbfa9848688982c6d5c30529fc29d68df0b9ff22ffa73bad89db73a7ce49')
 
 prepare() {
 	cd "$pkgname-$_srcver"
