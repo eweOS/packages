@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=kicad
-pkgver=9.0.7
-pkgrel=3
+pkgver=10.0.3
+pkgrel=1
 pkgdesc='Electronics design automation suite'
 url='https://www.kicad.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -27,7 +27,7 @@ source=("https://gitlab.com/kicad/code/kicad/-/archive/$pkgver/kicad-$pkgver.tar
 	0002-Remove-options-not-supported-by-bsdtar.patch
 	0003-Define-our-own-char_traits-for-eweOS.patch
 	0004-Enable-json-common-for-std-char_traits-with-wxUniChar.patch)
-sha256sums=('4743c5504576794c02f7e884a79f3fb5d7ec0f1dd359371a9225e9f2913581c5'
+sha256sums=('16d4febafe510edd2c2a3b66741a5ba06462d1bf93cb7080b7e27e9ed0506f5d'
             '125061fb75c8318f3779b1cd620d6b0b08b8724035c60ac8bb2b4582de7108b7'
             '50620a09a43705e61ac1322a2b421b222ab3f321be150731f12951e1fac8957e'
             '0b51717b6a983fc91ef74508ae23d135a22eb5cbf40a8cb61502f78dcb1ccf07'
