@@ -2,7 +2,7 @@
 
 pkgname=nodejs
 pkgver=26.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='JavaScript runtime'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://nodejs.org/'
@@ -30,6 +30,7 @@ build() {
   export CC=cc CXX=c++
   ./configure \
     --ninja \
+    --enable-lto \
     --prefix=/usr \
     --with-intl=system-icu \
     --without-npm \
