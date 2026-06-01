@@ -1,19 +1,18 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
-# Contributor: Andreas Radke <andyrtr@archlinux.org>
-# Contributor: Judd <judd@archlinux.org>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=nano
-pkgver=8.7.1
-pkgrel=2
+pkgver=9.0
+pkgrel=1
 pkgdesc="Pico editor clone with enhancements"
 arch=(x86_64 aarch64 riscv64 loongarch64)
-license=('GPL')
+license=('GPL-3.0-or-later')
 url="https://www.nano-editor.org"
 depends=('ncurses' 'file' 'sh')
 makedepends=('linux-headers')
 backup=('etc/nanorc')
-source=("https://www.nano-editor.org/dist/v8/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('76f0dcb248f2e2f1251d4ecd20fd30fb400a360a3a37c6c340e0a52c2d1cdedf')
+source=("https://www.nano-editor.org/dist/v9/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('9f384374b496110a25b73ad5a5febb384783c6e3188b37063f677ac908013fde')
 
 build()
 {
