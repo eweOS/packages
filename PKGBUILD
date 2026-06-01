@@ -2,7 +2,7 @@
 
 pkgbase=capstone
 pkgname=(capstone python-capstone)
-pkgver=5.0.8
+pkgver=5.0.9
 pkgrel=1
 pkgdesc='Lightweight multi-platform, multi-architecture disassembly framework'
 url='https://www.capstone-engine.org/index.html'
@@ -16,7 +16,7 @@ makedepends=(
   python-wheel
 )
 source=(https://github.com/aquynh/capstone/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('f02204de6976bdfa9c356fa81ed6324ac51fcf5337b3e2ee4d4eaa40bf472b5fa048c62451d0ef834e8513c8c29e7577d825492fba39c6c3d10e9525a4154500')
+sha512sums=('e4fe24002aed02cdbc0626dafee5211646e5da6a208c8ef99cd2d4f08beb0022999684af55cd80214aea4067fad427abb5ed5b1f5433b42a1f9047092481c039')
 
 build() {
   cd ${pkgbase}-${pkgver}
