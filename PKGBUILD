@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pacman-contrib
-pkgver=1.10.6
-pkgrel=9
+pkgver=1.13.1
+pkgrel=1
 pkgdesc='Contributed scripts and tools for pacman systems'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gitlab.archlinux.org/pacman/pacman-contrib"
@@ -21,8 +21,8 @@ source=(
   "git+$url.git#tag=v$pkgver"
   eweos-archs.patch
 )
-sha256sums=('73d360e3d08c73cc2c1a75e7cec6b8101bb359ad7c991388c410d75dee704fd2'
-            '5c5ccd1d8d2a3e75cb314167abd0bf830e2ca35f23dd9e282281732c3b695fcf')
+sha256sums=('2be546b3d6e3e1b57150d63e81d69d169af791f5f23f7d3ebbe5de231b4cc839'
+            '75895a1b80ae064068edfc32e3aa8bab9d41f958afe27f2990d4c1bd50b68c37')
 
 prepare() {
   _patch_ "$pkgname"
