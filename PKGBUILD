@@ -1,15 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=mimalloc
-pkgver=2.2.6
-pkgrel=2
+pkgver=2.3.2
+pkgrel=1
 pkgdesc="General-purpose allocator with excellent performance characteristics"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/microsoft/mimalloc"
 license=('MIT')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('9e636b659fd9260a35b0521550943fbbd2f2712cb1d9c79a702e4edca1435e0ef9938c0afb7d8792a0eb1ac66eb4a0f641b8de6fa8cbea43a9fa1bd4ebfeaef0')
+sha512sums=('40b5ad4546b7a527adf56079c028a103cf1290e367ea155db933e953ee88b352b4dca45d6ac0db77b5755a132aef1a9f494d76e162d59d2d701edfe90f1dd888')
 
 build()
 {
