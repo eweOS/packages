@@ -1,17 +1,26 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=crun
-pkgver=1.27.1
+pkgver=1.28
 pkgrel=1
 pkgdesc="A fast and lightweight fully featured OCI runtime and C library for running containers"
 url="https://github.com/containers/crun"
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 provides=('oci-runtime')
-depends=('yajl' 'libcap' 'libseccomp' 'libuargp')
+depends=('yajl' 'libcap' 'libseccomp' 'libuargp' 'json-c')
 makedepends=('python' 'go-md2man' 'git')
-source=("git+https://github.com/containers/crun.git#tag=$pkgver")
-sha256sums=('0d6a1c945e1bf73371196c5625a15cdfa9dde0c0e6a7dd696964d3fd906ac74c')
+source=(
+  "git+https://github.com/containers/crun.git#tag=$pkgver"
+  0001-fix-missing-json-c-symbols-in-build.patch
+)
+sha256sums=('0d01636b19653202e5de7fe94beacdb7099e333a41d7bb6dec63c127364422f1'
+            'e3b3616f32d02dd9711be48aec8c9ef8262893d8959378075ad6fdb638fdd3f8')
+
+prepare() {
+  # 0001: downstream, copied from archlinux
+  _patch_ $pkgname
+}
 
 build() {
     export MAKEFLAGS="CC=cc CXX=c++ -j$JOBS"
