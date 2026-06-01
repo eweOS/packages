@@ -2,7 +2,7 @@
 
 pkgname=orage
 pkgver=4.18.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple calendar application with reminders for Xfce"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://docs.xfce.org/apps/orage/start"
