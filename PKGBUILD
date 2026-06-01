@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=intel-media-driver
-pkgver=26.1.5
-pkgrel=2
+pkgver=26.2.0
+pkgrel=1
 pkgdesc='Intel Media Driver for VAAPI'
 url='https://github.com/intel/media-driver/'
 # TODO: make intel-gmmlib portable
@@ -16,7 +16,7 @@ makedepends=(cmake linux-headers)
 source=("https://github.com/intel/media-driver/archive/refs/tags/intel-media-$pkgver.tar.gz"
 	"0001-silence-clang-cxx-vla-extension.patch"
         "0002-fix-compatibility-with-cmake-4.0.patch::https://github.com/intel/media-driver/pull/1919.patch")
-sha256sums=('c56899fecc003d047ce6afbdf471851512e0ceac66c2ef22ac36f1e6ce46170c'
+sha256sums=('32f984333d0804ec8f784f25cf443499ee86074a7da7791483d9a9afbfa97c74'
             '889a9c9dce82ff752e36dffca5d947e7f5fe1cc7b640d4779a2e2df38842f05b'
             '03dfeb072533b20e79bdff83e38f6f729010c771e7896955c83c4dc0e35b8b83')
 _dirname="media-driver-intel-media-$pkgver"
