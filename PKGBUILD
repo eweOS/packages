@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=editorconfig-core-c
-pkgver=0.12.9
-pkgrel=2
+pkgver=0.12.11
+pkgrel=1
 pkgdesc='EditorConfig core code written in C (for use by plugins supporting EditorConfig parsing)'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/editorconfig/editorconfig-core-c'
@@ -10,7 +10,7 @@ license=(BSD-3-Clause)
 depends=(pcre2)
 makedepends=(cmake git)
 source=(git+https://github.com/editorconfig/$pkgname#tag=v$pkgver)
-sha256sums=('d18aa56df9b9839b47e310d5dcf5b118fe2ae4e4b79ce09c17793fd8f452a1c5')
+sha256sums=('fee3ac0305ed291e2a7d39d9979be1b4fe4f971350dcf4ee76b1d26f9e44de22')
 
 build() {
   cmake -B build -S $pkgname \
