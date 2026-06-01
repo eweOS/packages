@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=(dtc libfdt)
-pkgver=1.7.2
-pkgrel=2
+pkgver=1.8.1
+pkgrel=1
 pkgdesc='The device-tree compiler'
 url='https://git.kernel.org/pub/scm/utils/dtc/dtc.git/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=(BSD GPL2)
 depends=(musl)
 makedepends=(flex bison meson ninja)
 source=("https://git.kernel.org/pub/scm/utils/dtc/dtc.git/snapshot/dtc-$pkgver.tar.gz")
-sha256sums=('8f1486962f093f28a2f79f01c1fd82f144ef640ceabe555536d43362212ceb7c')
+sha256sums=('74b50bb19134f6562490afea53e59953dd6c4afb17e5ccb60be32221262d3390')
 
 build () {
 	cd dtc-$pkgver
@@ -18,7 +18,6 @@ build () {
 		-D yaml=disabled
 		-D valgrind=disabled
 		-D python=disabled
-		-D static-build=false
 	)
 	ewe-meson . build ${meson_options[*]}
 	meson compile -C build
