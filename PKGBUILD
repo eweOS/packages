@@ -1,15 +1,15 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=repo
-pkgver=2.62
-pkgrel=2
+pkgver=2.64
+pkgrel=1
 pkgdesc='A tool built on top of Git to manage many repositories'
 url='https://android.googlesource.com/tools/repo'
 arch=(any)
 license=(Apache-2.0)
 depends=(python git)
 source=("git+https://android.googlesource.com/tools/repo#tag=v$pkgver")
-sha256sums=('fa4086ea5b2ef27d6e06edb4b006d74e442ebbe7e3e4ef08c93ed0fa1f7ecba3')
+sha256sums=('b1bc657dcc993007c7079118ca22758cb1e0af0a7a8d100bd5d724e90df606a5')
 
 package() {
 	cd "$pkgname"
