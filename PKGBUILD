@@ -4,7 +4,7 @@ pkgbase=bluez
 pkgname=('bluez' 'bluez-utils' 'bluez-libs' 'bluez-cups' 'bluez-mesh'
          'bluez-obex')
 pkgver=5.86
-pkgrel=3
+pkgrel=4
 pkgdesc='Userspace daemons, utils and libraries of Linux Bluetooth stack'
 url="http://www.bluez.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -19,13 +19,15 @@ source=(
   0002-src-org.bluez.service-start-dinit-service.patch
   0003-allow-mesh-on-non-systemd-system.patch
   0004-grant-permission-to-bluetooth-group.patch
+  0005-libical-4.patch
 )
 sha256sums=('99f144540c6070591e4c53bcb977eb42664c62b7b36cb35a29cf72ded339621d'
             '286cf9aa23d923023957f372e40b255889dc3fa3bb8075206548f6db805fa90b'
             '93fa6d201bb4546bb680f6d6f903ba5e767829ab275361323c14b0389fb6c803'
             '1a7e4c8b13ffc41304a06fa3d669cb6d252f0870c23c54fe84f5d861d5c964e1'
             '417ea301f980e0e9ff38083aa73b3ac4e011f930a3f3338fdeb3e80a585e8c1f'
-            '8fb22853838ddf51774da01eb6a812ac4f03da99f792256c07d6fe2f715d5bdd')
+            '8fb22853838ddf51774da01eb6a812ac4f03da99f792256c07d6fe2f715d5bdd'
+            '221b22662d87ad814dbeb1702303ceadf1a4dcaa697205e891b6b2396087c5ad')
 
 prepare() {
   _patch_ "${pkgname}"-${pkgver}
