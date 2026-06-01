@@ -1,0 +1,29 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgname=mypaint-brushes
+pkgver=2.0.2
+pkgrel=1
+pkgdesc='Brushes used by MyPaint and other software using libmypaint'
+url='https://github.com/mypaint/mypaint-brushes'
+arch=('any')
+license=('custom:CC0')
+depends=('libmypaint')
+source=(https://github.com/mypaint/mypaint-brushes/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
+sha512sums=('89cecd9d78f4de84ada97a3e33fd67b86dfd259880da15c0ecbfad0fceb8c3b0e93790f3c0bff0cc375959bdf6921b01d1f3646e27c3f961715219a349017556')
+
+prepare() {
+  cd ${pkgname}-${pkgver}
+  autoreconf -fiv
+}
+
+build() {
+  cd ${pkgname}-${pkgver}
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd ${pkgname}-${pkgver}
+  make DESTDIR="${pkgdir}" install
+  install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
