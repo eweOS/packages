@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=imagemagick
-pkgver=7.1.2.18
-pkgrel=4
+pkgver=7.1.2.24
+pkgrel=1
 _relname=ImageMagick-${pkgver%%.*}
 _tarname=ImageMagick-${pkgver%.*}-${pkgver##*.}
 pkgdesc='An image viewing/manipulation program'
@@ -62,7 +62,7 @@ checkdepends=(gsfonts
               ttf-dejavu)
 replaces=(imagemagick-doc)
 source=(https://imagemagick.org/archive/releases/$_tarname.tar.xz)
-sha256sums=('abb85df40f06fddf17d031629c7ad2778a55d478a8bff80d55ffee75c90a3982')
+sha256sums=('e44e70aa49e97ceb8b4f68e97829d0bde69b79387d69660b8886b1f6e06ddb19')
 
 build() {
   cd $_tarname
