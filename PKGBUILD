@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=verdict
-pkgver=1.4.4
-pkgrel=2
+pkgver=1.4.5
+pkgrel=1
 pkgdesc='Compute quality functions of 2 and 3-dimensional regions'
 url='https://github.com/sandialabs/verdict'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(musl llvm-libs)
 makedepends=(cmake doxygen googletest)
 provides=(libverdict.so)
 source=("https://github.com/sandialabs/verdict/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d12d1cd41c6568997df348a72cc2973a662fae1b3634a068ea2201b5f7383186')
+sha256sums=('8c3ba194894a1b10b0700643363d02514cfdf88109a0c2710c0a32e857b2bde0')
 
 build() {
 	cmake -S "$pkgname-$pkgver" -B build \
