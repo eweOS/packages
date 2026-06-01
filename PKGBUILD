@@ -3,16 +3,16 @@
 
 pkgname=cmocka
 epoch=2
-pkgver=1.1.8
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc='Elegant unit testing framework for C with support for mock objects'
 url='https://cmocka.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
-license=('Apache')
+license=('Apache-2.0')
 depends=('musl')
 makedepends=('cmake' 'git')
-source=(https://cmocka.org/files/1.1/cmocka-${pkgver}.tar.xz)
-sha512sums=('59c3d8732c5558abf4dd9aedac2d5e41cf7693c26a88932449c3dec7be7903c479515f15b4ab8876e4b03f3b4b68460ef34bc6ce079677262638c15e29da37ef')
+source=(https://cmocka.org/files/2.0/cmocka-${pkgver}.tar.xz)
+sha512sums=('d02d65f0881f18f30b9e46c325acfa349261339daa2c1bf3a4e6360976f13b31588e997415197220f6def156f77d9864994d4e3cfd09c8f16a8594d0a4789a16')
 
 prepare()
 {
