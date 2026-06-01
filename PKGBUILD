@@ -2,7 +2,7 @@
 
 pkgname=wasi-llvm-libs
 pkgver=20.1.8
-pkgrel=2
+pkgrel=3
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://llvm.org'
 pkgdesc='LLVM runtime libraries for WASI platform'
@@ -77,6 +77,10 @@ build() {
     x86_64)
       export CFLAGS="$(echo $CFLAGS | sed "s/-fstack-clash-protection//; s/-fcf-protection//")"
       export CXXFLAGS="$(echo $CXXFLAGS | sed "s/-fstack-clash-protection//; s/-fcf-protection//")"
+      ;;
+    loongarch64)
+      export CFLAGS="$(echo $CFLAGS | sed "s/-mcmodel=medium//")"
+      export CXXFLAGS="$(echo $CXXFLAGS | sed "s/-mcmodel=medium//")"
       ;;
   esac
 
