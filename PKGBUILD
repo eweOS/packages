@@ -3,7 +3,7 @@
 pkgbase=rust
 pkgname=(rust rust-src)
 pkgver=1.94.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.rust-lang.org/'
