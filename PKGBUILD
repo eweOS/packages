@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=wasi-llvm-libs
-pkgver=20.1.8
-pkgrel=3
+pkgver=21.1.8
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://llvm.org'
 pkgdesc='LLVM runtime libraries for WASI platform'
@@ -14,7 +14,7 @@ conflicts=(wasi-compiler-rt wasi-libc++ wasi-libc++abi)
 source=("https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}.tar.gz"
         wasi-toolchain.cmake::https://raw.githubusercontent.com/WebAssembly/wasi-sdk/fef66e3d2319d8360825dcba1cf23061f5313c11/wasi-sdk.cmake
         llvm-install-prefix.patch)
-sha256sums=('a6cbad9b2243b17e87795817cfff2107d113543a12486586f8a055a2bb044963'
+sha256sums=('7ba3f2a8d8fda88be18a31d011e8195d3b7f87f9fa92b20c94cba2d7f65b0e3f'
             '5e58f02fe01ea22ea0406e4250ad89a053d517ef103a1dacfade4ecd98a7f2bc'
             'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94')
 
