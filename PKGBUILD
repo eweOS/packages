@@ -2,8 +2,9 @@
 
 pkgbase=glslang
 pkgname=(glslang glslang-static)
-pkgver=16.2.0
-pkgrel=2
+epoch=1
+pkgver=1.4.350.0
+pkgrel=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/KhronosGroup/glslang'
@@ -11,11 +12,11 @@ license=('BSD-3-Clause')
 depends=('spirv-tools')
 makedepends=('cmake' 'ninja' 'spirv-headers' 'python')
 options=('staticlibs')
-source=(${pkgbase}-${pkgver}.tar.gz::$url/archive/${pkgver}.tar.gz)
-sha256sums=('01985335785c97906a91afe3cb5ee015997696181ec6c125bab5555602ba08e2')
+source=(${pkgbase}-${pkgver}.tar.gz::$url/archive/vulkan-sdk-${pkgver}.tar.gz)
+sha256sums=('a6885b1631fd77c89cd689b939cf2b3032c5ec13ee99250270d34bcad1efc10c')
 
 build() {
-  cd ${pkgbase}-${pkgver}
+  cd ${pkgbase}-vulkan-sdk-${pkgver}
 
   cmake \
     -Bbuild-static \
@@ -39,12 +40,12 @@ build() {
 }
 
 check() {
-  cd ${pkgbase}-${pkgver}
+  cd ${pkgbase}-vulkan-sdk-${pkgver}
   ninja -Cbuild-shared test
 }
 
 package_glslang() {
-  cd ${pkgbase}-${pkgver}
+  cd ${pkgbase}-vulkan-sdk-${pkgver}
   DESTDIR="${pkgdir}" cmake --install build-shared
 
   install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgbase}/LICENSE
@@ -56,7 +57,7 @@ package_glslang() {
 }
 
 package_glslang-static() {
-  cd ${pkgbase}-${pkgver}
+  cd ${pkgbase}-vulkan-sdk-${pkgver}
   DESTDIR="${pkgdir}" cmake --install build-static
 
   install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgbase}/LICENSE
