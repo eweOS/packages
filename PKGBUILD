@@ -46,12 +46,12 @@ _rustc_hash_pkgver=2.1.1
 
 source=(
   https://mesa.freedesktop.org/archive/$pkgbase-$pkgver.tar.xz
-  syn-$_syn_pkgver.tar.gz::https://crates.io/api/v1/crates/syn/$_syn_pkgver/download
-  quote-$_quote_pkgver.tar.gz::https://crates.io/api/v1/crates/quote/$_quote_pkgver/download
-  proc-macro2-$_proc_macro2_pkgver.tar.gz::https://crates.io/api/v1/crates/proc-macro2/$_proc_macro2_pkgver/download
-  unicode-ident-$_unicode_ident_pkgver.tar.gz::https://crates.io/api/v1/crates/unicode-ident/$_unicode_ident_pkgver/download
-  paste-$_paste_pkgver.tar.gz::https://crates.io/api/v1/crates/paste/$_paste_pkgver/download
-  rustc-hash-$_rustc_hash_pkgver.tar.gz::https://crates.io/api/v1/crates/rustc-hash/$_rustc_hash_pkgver/download
+  syn-$_syn_pkgver.tar.gz::https://static.crates.io/crates/syn/syn-$_syn_pkgver.crate
+  quote-$_quote_pkgver.tar.gz::https://static.crates.io/crates/quote/quote-$_quote_pkgver.crate
+  proc-macro2-$_proc_macro2_pkgver.tar.gz::https://static.crates.io/crates/proc-macro2/proc-macro2-$_proc_macro2_pkgver.crate
+  unicode-ident-$_unicode_ident_pkgver.tar.gz::https://static.crates.io/crates/unicode-ident/unicode-ident-$_unicode_ident_pkgver.crate
+  paste-$_paste_pkgver.tar.gz::https://static.crates.io/crates/paste/paste-$_paste_pkgver.crate
+  rustc-hash-$_rustc_hash_pkgver.tar.gz::https://static.crates.io/crates/rustc-hash/rustc-hash-$_rustc_hash_pkgver.crate
 )
 
 sha512sums=('384a7db33d2f06e287337329f2f17503082ba6b1cd876a1884e940fdb6193ffae6d6b14344625256f3b3b39972ad697130a4d2ea25c40979f7aa76c2176f7988'
