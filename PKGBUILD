@@ -2,9 +2,9 @@
 
 pkgname=spirv-tools
 epoch=1
-pkgver=1.4.341.0
+pkgver=1.4.350.0
 _pkgver=vulkan-sdk-$pkgver
-pkgrel=2
+pkgrel=1
 pkgdesc="API and commands for processing SPIR-V modules"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.khronos.org/vulkan/"
@@ -12,7 +12,7 @@ license=('custom')
 depends=('llvm-libs')
 makedepends=('cmake' 'python' 'ninja' 'spirv-headers')
 source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/${_pkgver}.tar.gz")
-sha256sums=('15bfb678138cdf9cd1480dfb952547bbb66b763a735b6d5582578572f5c2e6f9')
+sha256sums=('446b288fe76d3f31bbf9a405d62b97020ac0f135edb0ed5dbdf1136c488138f5')
 
 build()
 {
