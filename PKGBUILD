@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=syntax-highlighting
-pkgver=6.20.0
-pkgrel=2
+pkgver=6.26.0
+pkgrel=1
 pkgdesc='Syntax highlighting engine for structured text and code'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -14,7 +14,7 @@ makedepends=(extra-cmake-modules
 optdepends=('qt6-declarative: QML bindings')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('6e2862a3857c11e9a75accc6e3acfcc16f634ee878586b4d2a97b573f52bfdc0')
+sha256sums=('a4e86d167cd5f3c4318584119451f891551c24cd4a0ff1f7ef95e2476a39c5ac')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
