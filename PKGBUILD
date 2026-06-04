@@ -2,8 +2,8 @@
 
 pkgbase=qt6-sensors
 pkgname=(qt6-sensors qt6-sensors-devel)
-pkgver=6.10.0
-pkgrel=2
+pkgver=6.11.1
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -19,7 +19,7 @@ optdepends=('qt6-declarative: QML bindings'
 groups=(qt6)
 _pkgfn=${pkgname/6-/}
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver)
-sha256sums=('5a470bf16a751767c20ad77fe0fddea888c55273f8860d360090f25068a4e7a6')
+sha256sums=('4bdc6286542e586d83a65e15aedff5c1e911908c1a7119d26647654b8ca45c42')
 
 build() {
   export CMARGS=(
