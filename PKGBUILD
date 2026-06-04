@@ -2,8 +2,8 @@
 
 pkgbase=qt6-quicktimeline
 pkgname=(qt6-quicktimeline qt6-quicktimeline-devel)
-pkgver=6.10.0
-pkgrel=2
+pkgver=6.11.1
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -18,7 +18,7 @@ makedepends=(cmake
 groups=(qt6)
 _pkgfn=${pkgname/6-/}
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver)
-sha256sums=('1d2fd155f1f6d6595af700d1c17650df78247078f62c74b9b062526ea1a7d99f')
+sha256sums=('ff14238075a2e7759edded5a7d7afeeedf80b54b755d52d2b90e446e4c56dd67')
 
 build() {
   export CMARGS=(
