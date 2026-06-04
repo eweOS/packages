@@ -5,9 +5,9 @@ pkgname=(
   qt6-connectivity
   qt6-connectivity-devel
 )
-_qtver=6.10.0
+_qtver=6.11.1
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL-3.0-only
@@ -27,7 +27,7 @@ _pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
 )
-sha256sums=('560ad5cf2600a0620b811ff9fb4ad0ca2a18ca7b2b6699dadf1961e5bf41fa99')
+sha256sums=('2105289ea414b46ed5fa53ba8782230045b9e47cc8156b5940c9e31e3980e591')
 
 build() {
   export CMARGS=(
