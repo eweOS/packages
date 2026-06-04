@@ -2,14 +2,15 @@
 
 pkgname=libfm-qt
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Core library of PCManFM-Qt (Qt binding for libfm)"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 url="https://github.com/lxqt/$pkgname"
 # https://github.com/lxqt/libfm-qt/blob/2.0.1/README.md?plain=1#L8-L10
 license=("LGPL-2.1-or-later")
 depends=("menu-cache" "libexif" "qt6-base" "lxqt-menu-data")
-makedepends=("lxqt-build-tools" "ninja" "qt6-base-devel" "git")
+# need qt6-declarative for lrelease in qt6-tool
+makedepends=("lxqt-build-tools" "ninja" "qt6-base-devel" "git" "qt6-declarative")
 optdepends=(
   "org.freedesktop.secrets: allow to remember mount passwords"
 )
