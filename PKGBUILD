@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=purpose
-pkgver=6.20.0
-pkgrel=2
+pkgver=6.26.0
+pkgrel=1
 pkgdesc='Framework for providing abstractions to get the developers purposes fulfilled'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -13,12 +13,14 @@ depends=(kcmutils
          ki18n
          kio
          kirigami
+	 kitemmodels
          knotifications
          kservice
          qt6-base
          qt6-declarative)
 makedepends=(extra-cmake-modules
-             qt6-tools     
+             prison
+             qt6-tools
              intltool)
 optdepends=('bluedevil: sharing via Bluetooth'
             'kdeclarative: Nextcloud and YouTube plugins'
@@ -27,7 +29,7 @@ optdepends=('bluedevil: sharing via Bluetooth'
             'telegram-desktop: sharing via Telegram')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('3a33a069534f5cfcd751e67b7dc37785f3b8ec9d027cf1d7a0d42f0ffbfc9857')
+sha256sums=('cc7b7599d1ac7ce7ed07351a35d742fac1b7e554b208a7b1c92e859b3b4add30')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
