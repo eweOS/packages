@@ -4,7 +4,7 @@ pkgbase=qt6-tools
 pkgname=(qt6-tools qt6-tools-devel)
 _qtver=6.11.1
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL-3.0-only
@@ -13,7 +13,7 @@ license=(GPL-3.0-only
          Qt-GPL-exception-1.0)
 pkgdesc='Classes for QML and JavaScript languages'
 _pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
-depends=(qt6-base zstd)
+depends=(qt6-base zstd qt6-declarative)
 makedepends=(cmake git ninja python qt6-base-devel qt6-declarative-devel llvm-devel)
 groups=(qt6)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
