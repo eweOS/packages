@@ -3,7 +3,7 @@
 
 pkgname=libplasma
 pkgver=6.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Plasma library and runtime components'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://kde.org/plasma-desktop/'
