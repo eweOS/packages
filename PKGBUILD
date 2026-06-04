@@ -3,26 +3,18 @@
 
 pkgname=(go go-doc)
 epoch=2
-pkgver=1.26.2
-pkgrel=2
+pkgver=1.26.4
+pkgrel=1
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://golang.org/'
-license=(BSD)
+license=(BSD-3-Clause)
 makedepends=(go git)
 replaces=(go-pie)
 provides=(go-pie)
 options=(!strip staticlibs)
-source=("https://go.dev/dl/go${pkgver}.src.tar.gz"
-	"remove-use-gold.patch")
-sha256sums=('2e91ebb6947a96e9436fb2b3926a8802efe63a6d375dffec4f82aa9dbd6fd43b'
-            'dce8539658ba86658c20e4bc039af403e4f7a4c3ef44838fbe0e92a33a9e03ae')
-
-prepare()
-{
-  # do not try to use gold in arm64, we use mold
-  _patch_ $pkgname
-}
+source=("https://go.dev/dl/go${pkgver}.src.tar.gz")
+sha256sums=('4f668a32fbfc1132e6a881fb968c2f1dada631492a339211735fbb255a42602d')
 
 build()
 {
