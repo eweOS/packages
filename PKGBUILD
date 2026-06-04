@@ -2,9 +2,9 @@
 
 pkgbase=qt6-charts
 pkgname=(qt6-charts qt6-charts-devel)
-_qtver=6.10.0
+_qtver=6.11.1
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -17,7 +17,7 @@ makedepends=(cmake
 groups=(qt6)
 _pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('1bff529320e7bf4da19984d70492b19149168be58aa1e77b0868779fb3437f6b')
+sha256sums=('3fe3ed318c2a86d1417c5c29cf7494275e8fd4b537cd37453f5599c57365515c')
 
 build() {
   export CMARGS=(
