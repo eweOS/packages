@@ -2,7 +2,7 @@
 
 pkgname=xdg-desktop-portal-lxqt
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A backend implementation for xdg-desktop-portal using Qt/KDE Frameworks/libfm-qt'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 groups=(lxqt)
