@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kholidays
-pkgver=6.20.0
-pkgrel=2
+pkgver=6.26.0
+pkgrel=1
 pkgdesc='KDE library for regional holiday information'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -14,7 +14,7 @@ makedepends=(extra-cmake-modules
 optdepends=('qt6-declarative: QML bindings')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('b29a7a27f85f3b533c02002bd5efd375fed64268e898cb40e6d377b0d7243864')
+sha256sums=('fc4f46cb5bb8e4766f550fe1a8b401731d797fcf6afa7cb53679048c215a60be')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
