@@ -5,12 +5,15 @@ pkgname=(
   qt6-declarative
   qt6-declarative-devel
 )
-_qtver=6.10.0
+_qtver=6.11.1
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
-license=(GPL3 LGPL3 FDL custom)
+license=(GPL-3.0-only
+         LGPL-3.0-only
+         LicenseRef-Qt-Commercial
+         Qt-GPL-exception-1.0)
 pkgdesc='Classes for QML and JavaScript languages'
 _pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 depends=(qt6-base)
@@ -24,7 +27,7 @@ makedepends=(
 optdepends=('qt6-svg: for QtQuickVectorImage and svgtoqml')
 groups=(qt6)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('6efd35520902395d865bc12e89f8442c3c228d0374f13af9a1888b844f56f6b0')
+sha256sums=('52e670f670b0304f534b24f98c47ceb8a41bb710464414ebc9527ec71cc86aa4')
 
 build() {
   export CMARGS=(
@@ -60,14 +63,6 @@ build() {
 
 package_qt6-declarative() {
   cp -r $srcdir/install/* $pkgdir/
-
-  # Install symlinks for user-facing tools
-  pushd "$pkgdir"
-  mkdir usr/bin
-  while read _line; do
-    ln -s $_line
-  done < "$srcdir"/build/user_facing_tool_links.txt
-  popd
 
   install -d "$pkgdir"/usr/share/licenses
   ln -s /usr/share/licenses/qt6-base "$pkgdir"/usr/share/licenses/$pkgname
