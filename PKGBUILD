@@ -2,9 +2,9 @@
 
 pkgbase=qt6-speech
 pkgname=(qt6-speech qt6-speech-devel)
-_qtver=6.10.0
+_qtver=6.11.1
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL3)
@@ -16,7 +16,8 @@ makedepends=(cmake
              git
              ninja
              qt6-base-devel
-             qt6-declarative)
+             qt6-declarative
+             qt6-multimedia-devel)
 optdepends=('flite: flite TTS backend'
             'speech-dispatcher: speech-dispatcher TTS backend'
             'qt6-declarative: QML bindings')
@@ -25,7 +26,7 @@ _pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
 )
-sha256sums=('13033066830ccc8be50951e3a2f2564c712e5f5e9b0af4e1040184f1a64aa51e')
+sha256sums=('c035c318012025875a653245701a23d3807e8e46b8bf7987877842219c273f14')
 
 build() {
   export CMARGS=(
