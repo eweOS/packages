@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ki18n
-pkgver=6.20.0
-pkgrel=2
+pkgver=6.26.0
+pkgrel=1
 pkgdesc='Advanced internationalization framework'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -16,7 +16,7 @@ optdepends=('python: to compile .ts files'
             'qt6-declarative: ktranscript plugin and QML bindings')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('f29c805137af9cee6abab424b380fea964a59b089f90fb909601d9fc78df5f73')
+sha256sums=('484aad486bfafef6c86d8d5b26529258e67c74c96250c1ac212ddf568448c7c0')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
