@@ -2,12 +2,15 @@
 
 pkgbase=qt6-quick3d
 pkgname=(qt6-quick3d qt6-quick3d-devel)
-_qtver=6.10.0
+_qtver=6.11.1
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
-license=(GPL3)
+license=(GPL-3.0-only
+         LGPL-3.0-only
+         LicenseRef-Qt-Commercial
+         Qt-GPL-exception-1.0)
 pkgdesc='Qt module and API for defining 3D content in Qt Quick'
 depends=(qt6-base
          qt6-declarative
@@ -27,14 +30,8 @@ groups=(qt6)
 _pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
-  assimp6.patch
 )
-sha256sums=('98258c1ea876e1f29fd73889f1de32008d13c91c9bff3fc8edfd92f663ecd488'
-            '573f00cdad90d77786fba80066d61d5ee97fc56a8b11d0896949acd16bda8e91')
-
-prepare() {
-  _patch_ $_pkgfn
-}
+sha256sums=('c76b85de3f8aa2a4bee64987acfef560675c1b378b92076c7c6264613e5b456f')
 
 build() {
   export CMARGS=(
