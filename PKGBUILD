@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kunitconversion
-pkgver=6.20.0
-pkgrel=2
+pkgver=6.26.0
+pkgrel=1
 pkgdesc='Support for unit conversion'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -16,7 +16,7 @@ makedepends=(extra-cmake-modules
 optdepends=('pyside6: Python bindings')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('5ab4ee3853e77b0d6a69a66443724b09eaa6121ab835fed46d091d35e6feaa3f')
+sha256sums=('94404453011eec373f858ef4a58091d24fbadbb90f96bbbf470c098646d9675e')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
