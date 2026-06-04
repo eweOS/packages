@@ -2,9 +2,9 @@
 
 pkgbase=qt6-websockets
 pkgname=(qt6-websockets qt6-websockets-devel)
-_qtver=6.10.0
+_qtver=6.11.1
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL-3.0-only
@@ -24,7 +24,7 @@ _pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
 )
-sha256sums=('d1092e7da5c3b8eea242e4069f05ff8e710a17c54d5010c1b557e26f7948806e')
+sha256sums=('243e3aa11924c8c5c1645e892f62d013caa3766c57512ca926d5b58146646fbf')
 
 build() {
   export CMARGS=(
