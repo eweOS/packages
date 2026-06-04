@@ -3,9 +3,9 @@
 _comp=virtualkeyboard
 pkgbase=qt6-$_comp
 pkgname=(qt6-$_comp qt6-$_comp-devel)
-_qtver=6.10.0
+_qtver=6.11.1
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 _pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
@@ -25,7 +25,7 @@ makedepends=(cmake
              qt6-base-devel)
 groups=(qt6)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('SKIP')
+sha256sums=('a1c6967b326243b2ca8d50bc7b7f7852c3975d9aa6ce4b186ebdf35bb1007e1c')
 
 build() {
   export CMARGS=(
