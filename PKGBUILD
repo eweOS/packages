@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kquickcharts
-pkgver=6.20.0
-pkgrel=2
+pkgver=6.26.0
+pkgrel=1
 pkgdesc='A QtQuick plugin providing high-performance charts'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -15,7 +15,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('94f52ce42c15cb7dc514ce9868dba41ed8f0645b941ff2256d02227746301792')
+sha256sums=('ae3e0784a2a2d1396cb751cc61f43a567e066d6434971246b1a18365481a1b52')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
