@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ktexteditor
-pkgver=6.20.0
-pkgrel=2
+pkgver=6.26.0
+pkgrel=1
 pkgdesc='Advanced embeddable text editor'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -33,7 +33,7 @@ makedepends=(extra-cmake-modules
 optdepends=('git: git integration')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('3f59d16fd71de258fe531b65720d764fab85d0b3cf0423201c9f66c4042e64cc')
+sha256sums=('ec7bc094f93d514b5f675ae95c274dd24acc47769d971606d8708cc88f811341')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
