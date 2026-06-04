@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-qt
 pkgver=5.1.13
-pkgrel=2
+pkgrel=3
 pkgdesc="Fcitx5 Qt Library (Qt5 & Qt6 integrations)"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/fcitx/fcitx5-qt"
