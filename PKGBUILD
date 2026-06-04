@@ -3,7 +3,7 @@
 pkgbase=pyside6
 pkgname=(pyside6 pyside6-tools shiboken6)
 pkgver=6.10.0
-pkgrel=3
+pkgrel=4
 url='https://doc.qt.io/qtforpython-6/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('(GPL-2.0-only AND (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-3.0-only WITH QT-GPL-exception-1.0) OR LGPL-3.0-only')
