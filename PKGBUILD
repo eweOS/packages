@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kdesu
-pkgver=6.20.0
-pkgrel=2
+pkgver=6.26.0
+pkgrel=1
 pkgdesc='Integration with su for elevated privileges'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://community.kde.org/Frameworks'
@@ -16,7 +16,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('de2313f42f57b8969faff133f0e2b214c5ba96891c16164512130fccb5f3fb84')
+sha256sums=('37df33a1236850b6bebd773a1aeab56ca597e347432924ca5855369337d4be24')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
