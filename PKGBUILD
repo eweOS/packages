@@ -2,8 +2,8 @@
 
 pkgbase=hyfetch
 pkgname=(hyfetch neowofetch)
-pkgver=2.0.5
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Neofetch with LGBTQ+ pride flags!"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://github.com/hykilpikonna/hyfetch'
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('cargo')
 optdepends=('fastfetch: Alternative fetch backend')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('32942e558288f7939ae4ff1cc2ceccd9dcc9112074afc598b230c03b13c7bfca')
+sha256sums=('23e3600093de3daa60dbbfd1edff258504f41f0fcfcb5537ddff78711b0d2eb2')
 
 prepare() {
   cd "$pkgbase-$pkgver"
