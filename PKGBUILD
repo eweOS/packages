@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libde265
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Open h.265 video codec implementation'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(musl llvm-libs)
 makedepends=(git cmake)
 provides=(libde265.so)
 source=(git+https://github.com/strukturag/libde265#tag=v$pkgver)
-sha256sums=('f1f2b3b4ed36d2a3817a4cf32a4ad42f97b72520bbf0e64ebcef40f3beff5e9a')
+sha256sums=('ed18f906f31fcb34838af29822d08af8c624e55d31f566f7f9d17799a3a60f94')
 
 build() {
   cmake -S $pkgname -B build \
