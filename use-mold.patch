@@ -1,0 +1,28 @@
+--- jdk25u-jdk-25.0.4-4/make/autoconf/flags-ldflags.m4
++++ jdk25u-jdk-25.0.4-4-new/make/autoconf/flags-ldflags.m4
+@@ -71,11 +71,7 @@
+     LDFLAGS_CXX_PARTIAL_LINKING="$MACHINE_FLAG -r"
+ 
+     if test "x$OPENJDK_TARGET_OS" = xlinux; then
+-      # Clang needs the lld linker to work correctly
+-      BASIC_LDFLAGS="-fuse-ld=lld -Wl,--exclude-libs,ALL"
+-      if test "x$CXX_IS_USER_SUPPLIED" = xfalse && test "x$CC_IS_USER_SUPPLIED" = xfalse; then
+-        UTIL_REQUIRE_PROGS(LLD, lld, $TOOLCHAIN_PATH:$PATH)
+-      fi
++      BASIC_LDFLAGS="-fuse-ld=mold -Wl,--exclude-libs,ALL"
+ 
+       if test "x$ENABLE_LINKTIME_GC" = xtrue; then
+         BASIC_LDFLAGS_JDK_ONLY="$BASIC_LDFLAGS_JDK_ONLY -Wl,--gc-sections"
+--- jdk25u-jdk-25.0.4-4/make/autoconf/toolchain.m4
++++ jdk25u-jdk-25.0.4-4-new/make/autoconf/toolchain.m4
+@@ -628,8 +628,8 @@
+     # Force use of lld, since that is what we expect when setting flags later on
+     if test "x$TOOLCHAIN_TYPE" = xclang; then
+       if test "x$OPENJDK_TARGET_OS" = xlinux; then
+-        LD="$LD -fuse-ld=lld"
+-        LDCXX="$LDCXX -fuse-ld=lld"
++        LD="$LD -fuse-ld=mold"
++        LDCXX="$LDCXX -fuse-ld=mold"
+       fi
+     fi
+   fi

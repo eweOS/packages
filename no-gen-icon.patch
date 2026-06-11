@@ -1,0 +1,40 @@
+--- jdk25u-jdk-25.0.4-4/make/modules/java.desktop/Gendata.gmk
++++ jdk25u-jdk-25.0.4-4-new/make/modules/java.desktop/Gendata.gmk
+@@ -27,6 +27,5 @@
+ 
+ include GendataCommon.gmk
+ include gendata/GendataFontConfig.gmk
+-include gendata/GendataHtml32dtd.gmk
+ 
+ ################################################################################
+--- jdk25u-jdk-25.0.4-4/make/modules/java.desktop/Gensrc.gmk
++++ jdk25u-jdk-25.0.4-4-new/make/modules/java.desktop/Gensrc.gmk
+@@ -27,10 +27,6 @@
+ 
+ include GensrcCommon.gmk
+ 
+-ifeq ($(call isTargetOs, windows), false)
+-  include gensrc/GensrcIcons.gmk
+-endif
+-
+ ifeq ($(call isTargetOs, linux aix), true)
+   include gensrc/GensrcX11Wrappers.gmk
+ endif
+--- jdk25u-jdk-25.0.4-4/src/java.desktop/unix/classes/sun/awt/X11/XWindowPeer.java
++++ jdk25u-jdk-25.0.4-4-new/src/java.desktop/unix/classes/sun/awt/X11/XWindowPeer.java
+@@ -429,15 +429,7 @@
+         if (defaultIconInfo == null) {
+             defaultIconInfo = new ArrayList<IconInfo>();
+             if (XlibWrapper.dataModel == 32) {
+-                defaultIconInfo.add(new IconInfo(sun.awt.AWTIcon32_java_icon16_png.java_icon16_png));
+-                defaultIconInfo.add(new IconInfo(sun.awt.AWTIcon32_java_icon24_png.java_icon24_png));
+-                defaultIconInfo.add(new IconInfo(sun.awt.AWTIcon32_java_icon32_png.java_icon32_png));
+-                defaultIconInfo.add(new IconInfo(sun.awt.AWTIcon32_java_icon48_png.java_icon48_png));
+             } else {
+-                defaultIconInfo.add(new IconInfo(sun.awt.AWTIcon64_java_icon16_png.java_icon16_png));
+-                defaultIconInfo.add(new IconInfo(sun.awt.AWTIcon64_java_icon24_png.java_icon24_png));
+-                defaultIconInfo.add(new IconInfo(sun.awt.AWTIcon64_java_icon32_png.java_icon32_png));
+-                defaultIconInfo.add(new IconInfo(sun.awt.AWTIcon64_java_icon48_png.java_icon48_png));
+             }
+         }
+         return defaultIconInfo;
