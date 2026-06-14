@@ -5,15 +5,15 @@ pkgname=(
   ca-certificates-mozilla
 )
 pkgbase=nss
-pkgver=3.122
-pkgrel=2
+pkgver=3.125
+pkgrel=1
 pkgdesc="Network Security Services"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL MPL)
 depends=(
-  'nspr>=4.35'
-  'p11-kit>=0.23.19'
+  nspr
+  p11-kit
   sqlite
   zlib
   sh
@@ -30,7 +30,7 @@ source=(
   bundle.sh
   certdata2pem.py
 )
-sha256sums=('7e529c90dd44ca0f95c9c2fd72903d1bbcb4d65b87e24cce3b76e7afabf1b45d'
+sha256sums=('1c29b8bca79bfc838bfb3248591ee381421870e3d8c9cb61283ede1164bda06d'
             'f64282fbc8e73de51f88f41e5175d211a63a1a3e1cbf12512a8b9e229ad9d259'
             '142861cf04942c141e7a6d0d39a30b6d4b57f13f27d21bfa90c6abcd5d34de60')
 
