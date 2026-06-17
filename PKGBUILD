@@ -4,15 +4,15 @@
 # Contributor: Eric Johnson <eric.archlinux.org>
 
 pkgname=libidn
-pkgver=1.43
-pkgrel=2
+pkgver=1.44
+pkgrel=1
 pkgdesc="Implementation of the Stringprep, Punycode and IDNA specifications"
 url="https://www.gnu.org/software/libidn/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL3' 'LGPL')
 depends=('musl')
 source=("https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('bdc662c12d041b2539d0e638f3a6e741130cdb33a644ef3496963a443482d164')
+sha256sums=('499608bab3a65650a0ea52888c13a8deebe3f71408e319acd9ec52e02eb13959')
 
 build()
 {
