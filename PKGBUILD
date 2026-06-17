@@ -1,8 +1,8 @@
 # Maintainer: Eric Long <i@hack3r.moe>
 
 pkgname=tinymist
-pkgver=0.14.4
-pkgrel=2
+pkgver=0.14.25
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 pkgdesc='An integrated language service for Typst'
 url='https://github.com/Myriad-Dreamin/tinymist'
@@ -10,7 +10,7 @@ license=(Apache-2.0)
 depends=(musl llvm-libs openssl)
 makedepends=(git rust)
 source=("git+https://github.com/Myriad-Dreamin/tinymist.git#tag=v$pkgver")
-sha256sums=('1e76522d36e37d1beb685bada0298b40ff8ea4662d821295ac3b24338526e7d4')
+sha256sums=('594106d8d8bb02a60730bcd0cbea9919251e7ad8bab783ac06d9752ccf70d3e0')
 
 prepare() {
   _patch_ $pkgname
