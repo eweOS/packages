@@ -1,8 +1,8 @@
 # Maintainer: YukariChiba <i@0x7f.cc>
 
 pkgname=alsa-lib
-pkgver=1.2.15.3
-pkgrel=2
+pkgver=1.2.16
+pkgrel=1
 pkgdesc="The Advanced Linux Sound Architecture (ALSA) - library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.alsa-project.org"
@@ -14,7 +14,7 @@ provides=(
 )
 # close_range() replaced with closefrom() in 1.2.15.1 (not needed)
 source=("$url/files/pub/lib/$pkgname-$pkgver.tar.bz2")
-sha256sums=('7b079d614d582cade7ab8db2364e65271d0877a37df8757ac4ac0c8970be861e')
+sha256sums=('122b1e3166d55fe19bcde656535d7a36f2ab10e66c72c6ad2f43f20ffded0a96')
 
 prepare()
 {
