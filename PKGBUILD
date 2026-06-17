@@ -1,15 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=file
-pkgver=5.47
-pkgrel=2
+pkgver=5.48
+pkgrel=1
 pkgdesc='File type identification utility'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('custom')
 depends=('musl' 'zlib' 'xz' 'libbz2')
 options=('!emptydirs')
 source=("https://astron.com/pub/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('45672fec165cb4cc1358a2d76b5d57d22876dcb97ab169427ac385cbe1d5597a')
+sha256sums=('ed14656883b23a364b4057c05595d93252da9bc473d30106519519d0da141283')
 
 build()
 {
