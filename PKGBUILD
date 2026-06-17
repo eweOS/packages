@@ -1,8 +1,8 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=tetris
-pkgver=7.1.0
-pkgrel=4
+pkgver=7.9.0
+pkgrel=1
 pkgdesc="Port of OpenBSD tetris for Linux."
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/eNV25/tetris"
@@ -13,7 +13,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "termios-h.patch"
 )
-sha512sums=('994f3c8c5185de20915fee4875839c4c2347fb7250c4245cd04e990e7e9a526a9a142c0a75b4e8b1291a347e9fc1daca0af8ecc01c5af04c2207dae1fd23ad4c'
+sha512sums=('fabc3569dee760dfb97fc97384cdc225da7ac5b8fb9798ef22f6a8fd6529cdc765da198b127f86df3a59831aabd6aa5fcda859b4dac78a9019b83b75b742aaee'
             'e4a42584dbd712b03bd4295590b4a8d7e2f9d654dfd0d202add28029ca69982c0836f49ec5117fa758bc3b19466faaf99663ad2a822f8e443bdd54ea664b7f07')
 
 prepare()
