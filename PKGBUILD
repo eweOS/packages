@@ -10,7 +10,7 @@ pkgbase=webkit2gtk
 # package size).
 pkgname=(webkit2gtk-4.1 webkit2gtk-6.0
 	 webkit2gtk-4.1-docs webkit2gtk-6.0-docs)
-pkgver=2.53.2
+pkgver=2.53.3
 pkgrel=1
 pkgdesc='GTK port of the WebKit rendering engine'
 url='https://webkitgtk.org/releases/webkitgtk-2.53.2.tar.xz'
@@ -35,7 +35,7 @@ source=("https://webkitgtk.org/releases/webkitgtk-$pkgver.tar.xz"
 	0001-Turn-on-system-malloc.patch
 	0002-contextextensions-add-missing-system_error-include.patch
         0003-fix-no-member-pagesize.patch)
-sha256sums=('79f03692f65149685c32c64c66c6f4696c91e652a2abfab0614532da323b8bb9'
+sha256sums=('369863f6c32672d1b10b4e749e7e22f6f081aacab02b92b0bdf5c0706eebf7f8'
             '24bcf3e2eaa9b5bd00b56b24eb856551d2e39d4d552b81c455972e95a216b215'
             '1dafcb39ebba7cb663e79bc7447ceb723b98bb04d7e08ea76c06fef1b38f9bd3'
             '54b07b6f6efbf0f59fcb4dc62fd37aed6c0899b758610bc0d16f8b76e00750cd')
