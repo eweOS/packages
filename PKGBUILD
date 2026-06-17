@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libnvme
-pkgver=1.16.1
-pkgrel=2
+pkgver=1.16.2
+pkgrel=1
 pkgdesc="C Library for NVM Express on Linux"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/linux-nvme/libnvme"
@@ -23,7 +23,7 @@ depends=(
   'openssl'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/linux-nvme/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('ce1d9d393feb84c4e82ca096db2bdb7dd4a5fd1997d711cc1904796944f2c579')
+sha256sums=('1d850d5a871559abf641d6e6b63bb86047e4cb26f3ad144597c2c64b3cff7231')
 
 build() {
   cd "$pkgname-$pkgver"
