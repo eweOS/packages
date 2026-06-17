@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=jsoncpp
-pkgver=1.9.7
-pkgrel=3
+pkgver=1.9.8
+pkgrel=1
 pkgdesc='C++ library for interacting with JSON'
 url='https://github.com/open-source-parsers/jsoncpp'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ makedepends=('python' 'meson')
 #	https://github.com/open-source-parsers/jsoncpp/pull/1675/
 source=($url/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz
 	0001-Fix-C++11-ABI-breakage-when-compiled.patch)
-sha256sums=('830bf352d822d8558e9d0eb19d640d2e38536b4b6699c30a4488da09d5b1df18'
+sha256sums=('51828cf3574281d2b79ec2a1c56a9e4c20cc1103711321ea96384cffb8d2d904'
             'b048ce249b4e1482851f18265ddb8ba41937b1a50a8a071314bd0440c56e88d4')
 
 prepare() {
