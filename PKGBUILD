@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qgis
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Geographic Information System (GIS) that supports vector, raster & database formats"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -19,7 +19,7 @@ optdepends=('fcgi: Map server'
 source=(
   https://qgis.org/downloads/$pkgname-$pkgver.tar.bz2
 )
-sha256sums=('e1f017c3bc1881a5f534d89188e4d16d4d1bb1413278ea27aef4604ff35b090a')
+sha256sums=('e3c1d06d6b195aba99daf0a0562331d62359afd728666634ce4095ce99a844f4')
 
 build() {
   # Use vendored spatialindex to work around upstream breakage
