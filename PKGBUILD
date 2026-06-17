@@ -2,8 +2,8 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=hwloc
-pkgver=2.13.0
-pkgrel=2
+pkgver=2.14.0
+pkgrel=1
 pkgdesc="a portable abstraction of hierarchical architectures"
 url='https://www.open-mpi.org/projects/hwloc/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -18,7 +18,7 @@ provides=(libhwloc.so)
 # 0001: Downstream, disable ports testsuite which Clang isn't able to compile
 source=("https://www.open-mpi.org/software/hwloc/v${pkgver%.*}/downloads/${pkgname}-${pkgver}.tar.bz2"
 	0001-Disable-ports-testsuite.patch)
-sha512sums=('88958a624211fbc3fd2f424de8eed2d6b47a0e3b3cf524725c9695d8a73929de71f3615d4f2e610678a8e1b169c7a592eae45464493f6288b16b0ce368015b28'
+sha512sums=('547a9ed3c6af399de9617fe675bd6d16db300cc98213d6c71b2f1b41dd4a1706c7f2cf0dd1feb0d9f8a546b1976740c7a959dca0c23a4f52eac0b25cc403d087'
             '78bcc41086a3d085c10de9e5babef565910649e028a3163dfe06c9b6c16bb89dfe2ca0f51723d6edd02e3539ca5e3af1c475362f8e07886749549cb15882e19f')
 
 prepare()
