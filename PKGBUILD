@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sqlite
-pkgver=3.53.1
+pkgver=3.53.2
 _minorpatchver=${pkgver#3.}
 _minorver=${_minorpatchver%%.*}
 _patchver=${_minorpatchver##*.}
@@ -15,7 +15,7 @@ depends=('musl' 'readline' 'zlib')
 provides=('sqlite3' 'libsqlite3.so')
 options=('!emptydirs')
 source=("https://sqlite.org/2026/sqlite-autoconf-$_srcver.tar.gz")
-sha256sums=('83e6b2020a034e9a7ad4a72feea59e1ad52f162e09cbd26735a3ffb98359fc4f')
+sha256sums=('588ad51949419a56ebe81fe56193d510c559eb94c9a57748387860b5d3069316')
 
 build()
 {
