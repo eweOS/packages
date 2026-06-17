@@ -1,15 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=utf8cpp
-pkgver=4.0.9
-pkgrel=2
+pkgver=4.1.1
+pkgrel=1
 pkgdesc="UTF-8 with C++ in a Portable Way"
 arch=(any)
 url="https://github.com/nemtrif/utfcpp"
 license=(BSL-1.0)
 makedepends=(cmake)
 source=(${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('397a9a2a6ed5238f854f490b0177b840abc6b62571ec3e07baa0bb94d3f14d5a')
+sha256sums=('1ca68016f0abc24172998e39ce0d8f8e2b7a26f7579a0ff85d4e1b9a7aea56f8')
 
 build() {
   cmake -B build -S ${pkgname/8}-${pkgver} \
