@@ -2,7 +2,7 @@
 
 pkgname=kicad
 pkgver=9.0.7
-pkgrel=3
+pkgrel=4
 pkgdesc='Electronics design automation suite'
 url='https://www.kicad.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
