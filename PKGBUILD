@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gimp
-pkgver=3.0.6
-pkgrel=8
+pkgver=3.2.4
+pkgrel=1
 pkgdesc='GNU Image Manipulation Program'
 url='https://www.gimp.org/'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -21,17 +21,19 @@ depends=(
   libgexiv2
   librsvg
   libwmf
-  mypaint-brushes1
+  mypaint-brushes
   openexr
   openjpeg2
   openmp
   poppler-data
   poppler-glib
   python-gobject
+  python-cairo
 )
 makedepends=(
   alsa-lib
   appstream
+  bash-completion
   curl
   ffmpeg
   ghostscript
@@ -55,7 +57,7 @@ makedepends=(
   font-base
   vala
   yelp-tools
-  zlib	
+  zlib
 )
 # gegl: build requires ffmpeg and sdl2
 checkdepends=('weston')
@@ -81,7 +83,7 @@ source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${pkgname}-${pkgver}.t
         'docs_dont_fail_on_warn.patch'
 	'fix-crash-max-samples.patch'
         'linux.gpl')
-sha256sums=('246c225383c72ef9f0dc7703b7d707084bbf177bd2900e94ce466a62862e296b'
+sha256sums=('7312bc53e9c6d2d0056ca7b93f1c6b98707946dd934f714c21b8746ecb601588'
             'c39d1551bb3be45f661c80892a0d6abc49e18dca6cf3fcdfcd0b8ba13f680382'
             '31eaca307583fed9763996ebf41a0aa953a8315d183037c7438d27c34496583c'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
