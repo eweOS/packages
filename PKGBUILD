@@ -2,8 +2,8 @@
 
 pkgname=atkmm-gtk3
 _pkgname=atkmm
-pkgver=2.28.4
-pkgrel=3
+pkgver=2.28.5
+pkgrel=1
 pkgdesc="C++ bindings for ATK"
 url="https://www.cairographics.org/cairomm/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ depends=(atk glibmm-gtk3)
 makedepends=(meson mm-common perl-xml-parser)
 options=(!emptydirs)
 source=("https://gitlab.gnome.org/GNOME/$_pkgname/-/archive/$pkgver/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('1cf934c82e5297d64b98fd70cea7764d4e97b7049979771f6e92be084e7702b7')
+sha256sums=('98db1cdbbf6758c68237f2bbb6ecf417dce8fc084c86a052b1e82c1f520c838f')
 
 build() {
   ewe-meson $_pkgname-$pkgver build \
