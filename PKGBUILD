@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libayatana-indicator
-pkgver=0.9.4
-pkgrel=2
+pkgver=0.9.5
+pkgrel=1
 pkgdesc='Ayatana Indicators shared library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/AyatanaIndicators/libayatana-indicator'
@@ -15,7 +15,7 @@ makedepends=(cmake
              gobject-introspection
              vala)
 source=(https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('a18d3c682e29afd77db24366f8475b26bda22b0e16ff569a2ec71cd6eb4eac95')
+sha256sums=('73d71c908b803f12e4a5ecd8392511b58afbdd0c82ad7909611a17bb7847c5c8')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
