@@ -8,8 +8,8 @@ pkgname=(
   libportal-gtk4
   libportal-qt6
 )
-pkgver=0.9.1
-pkgrel=5
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="GIO-style async APIs for most Flatpak portals"
 url="https://github.com/flatpak/libportal"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -35,7 +35,7 @@ checkdepends=(
   qt6-wayland
 )
 source=("git+https://github.com/flatpak/libportal#tag=$pkgver")
-sha256sums=('6055da27b6198bf3e3854ed696f782dca2d14fee91cf9cfc6c3f3a0bf2a9eb27')
+sha256sums=('17bff0c39b3dbf039abbba67fc2e43df405905032c0256d705bbef822ce27b23')
 
 prepare() {
   cd libportal
