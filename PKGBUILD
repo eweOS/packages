@@ -2,15 +2,15 @@
 
 pkgbase=font-roboto
 pkgname=(ttf-roboto ttf-roboto-variable)
-pkgver=3.015
-pkgrel=2
+pkgver=3.016
+pkgrel=1
 pkgdesc="Google's signature family of fonts"
 url='https://fonts.google.com/specimen/Roboto'
 arch=(any)
 license=(OFL-1.1-RFN)
 source=("https://github.com/googlefonts/roboto-3-classic/releases/download/v$pkgver/Roboto_v$pkgver.zip"
         "https://raw.githubusercontent.com/googlefonts/roboto-3-classic/v$pkgver/OFL.txt")
-sha256sums=('bee3e9334ea86dd63e184598f31fb16750881c2da1a6f097a66e0f66a95b3d54'
+sha256sums=('1653dbe12f248da8fb0b9920db7b9496cd677ed3981154f6f15285c8bd4e334f'
             '061402327a96aadb0bfb694a960ed289ecd38d383e396243831ab81feb109c41')
 
 package_ttf-roboto() {
