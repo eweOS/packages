@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=tor
-pkgver=0.4.9.9
+pkgver=0.4.9.11
 pkgrel=1
 pkgdesc='Anonymizing overlay network.'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -26,7 +26,7 @@ source=("https://dist.torproject.org/${pkgname}-${pkgver}.tar.gz"
         'tor.sysusers'
         'tor.tmpfiles'
         'tor.service')
-sha256sums=('bd75ba7fd68f607c7806fcf70156a300aa926e9ad69a5e56a8e6414f5227e833'
+sha256sums=('2e6c1720118c812acf0079fd47cf91b6bfaba5d766c321c4d3d2a28d6a11a8ed'
             '4067f5a6589bfaa97dd2b1a20aa73a9d3f1793bb8862c602c24b4f0cefd05dc9'
             'c5c082fd1cda30c95c40043d5be96926fa81e5388a97534373bf0ce100191ade'
             '04eec05b4e61efccc58c5da657363f0c1059d7f122cb15c32331a201af2d7f94'
