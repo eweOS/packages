@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=typst
-pkgver=0.14.2
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc='A markup-based typesetting system for the sciences'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://$pkgname.app"
@@ -15,7 +15,7 @@ optdepends=('otf-libertinus: additional weights and variants for default font'
             'ttf-linux-libertine: legacy default font prior to v0.12.0')
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('70a56445020ca05efc571c7b07a1a9f52eb93842d420518693c077ae74e54142')
+sha256sums=('5044bd12138491c6e880df0e09056a9ae4607d937c73962d5806402ae6ee96a6')
 
 prepare() {
 	cd "$_archive"
@@ -26,7 +26,8 @@ build() {
 	local hash=$(gunzip < "$_archive.tar.gz" | git get-tar-commit-id)
 	cd "$_archive"
 	CFLAGS+=' -ffat-lto-objects'
-	export TYPST_VERSION="$pkgver (${hash::8})"
+	export TYPST_VERSION="$pkgver"
+	export TYPST_COMMIT_SHA="${hash::8}"
 	export GEN_ARTIFACTS=artifacts/
 	export OPENSSL_NO_VENDOR=true
 	cargo build -p typst-cli --frozen --release
