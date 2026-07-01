@@ -2,8 +2,8 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libevent
-pkgver=2.1.12
-pkgrel=8
+pkgver=2.1.13
+pkgrel=1
 pkgdesc="Event notification library"
 url="https://libevent.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -19,7 +19,7 @@ source=(
   EVENT__SIZEOF_TIME_T.patch
   libevent-2.1.12-openssl-compat.patch
 )
-sha256sums=('92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb'
+sha256sums=('f7e9383b8c0baa81b687e5b5eecc01beefaf1b19b64151d95ed61647fe7a315c'
             '945fc885b15692721bc7ae52f5774ef4fab8cc0f6108baa8860ab368de8675cf'
             'e41527c55f6dacc6453b13eeeea2664798496896b796abcd2a5c8304c9eb2bae')
 
