@@ -7,7 +7,7 @@ pkgname=(
   pipewire-docs
 )
 pkgver=1.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64 aarch64 riscv64 loongarch64)
