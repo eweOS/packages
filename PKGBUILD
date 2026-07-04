@@ -7,7 +7,7 @@ pkgname=(qt6-multimedia
          qt6-multimedia-devel)
 _qtver=6.11.1
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=3
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL-3.0-only
