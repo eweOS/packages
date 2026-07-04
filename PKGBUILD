@@ -2,7 +2,7 @@
 
 pkgname=mpd
 pkgver=0.24.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Flexible, powerful, server-side application for playing music"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.musicpd.org/"
