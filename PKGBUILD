@@ -21,14 +21,11 @@ provides=(libSvtAv1Enc.so)
 source=("git+https://gitlab.com/AOMediaCodec/SVT-AV1.git#tag=v${pkgver}")
 sha256sums=('d29ff8a576587ac18e5d4efa2468075081758ba00299ff7c8df6db606e19477f')
 
-prepare() {
-  sed '/CMAKE_BUILD_TYPE Release/d' -i SVT-AV1/CMakeLists.txt
-}
-
 build() {
   cmake -S SVT-AV1 -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=ON \
+    -DCMAKE_BUILD_TYPE=None \
     -DNATIVE=OFF
   ninja -C build
 }
