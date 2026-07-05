@@ -2,15 +2,15 @@
 
 pkgbase=tiff
 pkgname=libtiff
-pkgver=4.7.1
-pkgrel=2
+pkgver=4.7.2
+pkgrel=1
 pkgdesc='Library for manipulation of TIFF images'
 url='http://www.simplesystems.org/libtiff/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('custom')
 depends=('zlib' 'xz' 'libjpeg')
 source=(https://download.osgeo.org/$pkgname/${pkgbase}-${pkgver}.tar.gz)
-sha256sums=('f698d94f3103da8ca7438d84e0344e453fe0ba3b7486e04c5bf7a9a3fabe9b69')
+sha256sums=('672bd7d10aee4606171afb864f3570b83340f6a33e2c186dc0512f7145ffdf6a')
 
 build() {
   cd $pkgbase-$pkgver
