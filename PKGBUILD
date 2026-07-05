@@ -7,7 +7,7 @@ pkgdesc='Scalable Video Technology AV1 encoder and decoder'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://gitlab.com/AOMediaCodec/SVT-AV1
 license=(
-  BSD
+  BSD-2-Clause
   'custom: Alliance for Open Media Patent License 1.0'
 )
 depends=(musl)
