@@ -15,8 +15,7 @@ provides=(libevent{,_core,_extra,_openssl,_pthreads}-2.1.so)
 source=("https://github.com/libevent/libevent/releases/download/release-$pkgver-stable/libevent-$pkgver-stable.tar.gz")
 sha256sums=('f7e9383b8c0baa81b687e5b5eecc01beefaf1b19b64151d95ed61647fe7a315c')
 
-build()
-{
+build() {
   cmake -S libevent-$pkgver-stable -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -27,8 +26,7 @@ build()
   cmake --build build
 }
 
-check()
-{
+check() {
   cd build
   ctest \
     --output-on-failure \
@@ -36,8 +34,7 @@ check()
     -j$(nproc)
 }
 
-package_libevent()
-{
+package() {
   DESTDIR="$pkgdir" cmake --install build
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 libevent-$pkgver-stable/LICENSE
 }
