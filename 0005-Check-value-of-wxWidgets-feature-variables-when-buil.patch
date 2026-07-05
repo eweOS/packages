@@ -1,0 +1,49 @@
+From f16f992739aabdd13414053e4a892729e9da28f8 Mon Sep 17 00:00:00 2001
+From: Yao Zi <me@ziyao.cc>
+Date: Fri, 3 Jul 2026 11:46:41 +0000
+Subject: [PATCH] Check value of wxWidgets feature variables when building GLAD
+
+When they're not defined in configuration headers of wxwidgets,
+wxWidgets_HAS_{EGL,GLX} and wxWidgets_GLCANVAS_EGL are still defined
+but would evaluate to their names, thus it's insufficient to check
+for their existence to determine whether EGL/GLX are supported in
+wxwidgets.
+
+Check whether these variables evaluate to 1 instead when determining
+GLAD files to build.
+
+Signed-off-by: Yao Zi <me@ziyao.cc>
+---
+ thirdparty/glad/CMakeLists.txt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/thirdparty/glad/CMakeLists.txt b/thirdparty/glad/CMakeLists.txt
+index 9db0dd7bf7b2..a5d58072020a 100644
+--- a/thirdparty/glad/CMakeLists.txt
++++ b/thirdparty/glad/CMakeLists.txt
+@@ -7,18 +7,18 @@ set(GLAD_SOURCES
+ if(WIN32)
+ 	list(APPEND GLAD_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/wgl.c)
+ elseif(UNIX AND NOT APPLE)
+-	if(wxWidgets_HAS_GLX OR wxWidgets_HAS_EGL)
++	if(wxWidgets_HAS_GLX EQUAL 1 OR wxWidgets_HAS_EGL EQUAL 1)
+ 		# wx 3.3.2+ macros
+-		if(wxWidgets_HAS_EGL)
++		if(wxWidgets_HAS_EGL EQUAL 1)
+ 			list(APPEND GLAD_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/egl.c)
+ 		endif()
+ 
+-		if(wxWidgets_HAS_GLX)
++		if(wxWidgets_HAS_GLX EQUAL 1)
+ 			list(APPEND GLAD_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/glx.c)
+ 		endif()
+ 	else()
+ 		# Older wx macro (runtime GLX/EGL switch not supported)
+-		if(wxWidgets_GLCANVAS_EGL)
++		if(wxWidgets_GLCANVAS_EGL EQUAL 1)
+ 			list(APPEND GLAD_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/egl.c)
+ 		else()
+ 			list(APPEND GLAD_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/glx.c)
+-- 
+2.54.0
+
