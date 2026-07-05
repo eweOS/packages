@@ -49,12 +49,7 @@ build() {
 
 check() {
   mkdir -p tmp
-  # FIXME: check-symbol fails
-  if [ "$CARCH" == "x86_64" ]; then
   TMPDIR="$PWD/tmp" meson test -C build --print-errorlogs
-  else
-  TMPDIR="$PWD/tmp" meson test -C build --print-errorlogs || :
-  fi
   rm -r tmp
 }
 
