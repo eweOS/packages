@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -28,7 +28,7 @@ if (BUILD_TESTING)
+ endif()
+ 
+ # create a Config.cmake and a ConfigVersion.cmake file and install them
+-set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_DATAROOTDIR}/cmake/PlasmaWaylandProtocols")
++set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/PlasmaWaylandProtocols")
+ 
+ configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/PlasmaWaylandProtocolsConfig.cmake.in"
+                               "${CMAKE_CURRENT_BINARY_DIR}/PlasmaWaylandProtocolsConfig.cmake"
