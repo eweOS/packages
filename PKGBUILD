@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fcitx5
-pkgver=5.1.19
-pkgrel=2
+pkgver=5.1.21
+pkgrel=1
 pkgdesc="Next generation of fcitx"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/fcitx/fcitx5"
@@ -11,9 +11,9 @@ groups=('fcitx5-im')
 provides=('fcitx')
 depends=('cairo' 'dbus' 'iso-codes' 'libuv' 'libxkbcommon' 'pango' 'wayland' 'gdk-pixbuf')
 makedepends=('ninja' 'wayland-protocols' 'fmt' 'extra-cmake-modules' 'zstd'
-	     'linux-headers' 'nlohmann-json')
+	     'linux-headers' 'nlohmann-json' 'plasma-wayland-protocols')
 source=("https://download.fcitx-im.org/fcitx5/fcitx5/fcitx5-${pkgver}_dict.tar.zst")
-sha512sums=('7924fff0e1c5aaa6d9f5b1190e1f0cd9330d53b3dc071322f01b598e10aa08d09f61b4c995bb7b8a233a0130d6d97e38ccb166ef163154926afbdd204bd5fea8')
+sha512sums=('88a536843cd7eb6a1bc85dfb1ddb4096119a63b333736d768d0d59fa61721da6699f517e188129bd3dbced8cc782972f6b89ff0da3e27f95a21ee9bb12a27a9d')
 
 prepare() {
   _patch_ $pkgname-$pkgver
