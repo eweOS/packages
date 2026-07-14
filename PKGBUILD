@@ -2,7 +2,7 @@
 
 pkgname=lua54
 pkgver=5.4.8
-pkgrel=3
+pkgrel=4
 _V=5.4
 _R=5.4.7
 pkgdesc='Powerful lightweight programming language designed for extending applications'
@@ -10,7 +10,6 @@ url='https://www.lua.org'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 depends=(readline)
-makedepends=(patch)
 provides=(lua)
 source=(https://www.lua.org/ftp/lua-$pkgver.tar.gz
   Makefile.patch
