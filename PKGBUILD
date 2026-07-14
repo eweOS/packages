@@ -2,7 +2,7 @@
 
 pkgname=lua55
 pkgver=5.5.0
-pkgrel=1
+pkgrel=2
 _V=5.5
 _R=5.5.0
 pkgdesc='Powerful lightweight programming language designed for extending applications'
@@ -10,8 +10,6 @@ url='https://www.lua.org'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 optdepends=('readline: For better REPL experience')
-makedepends=(patch)
-provides=(lua)
 source=(https://www.lua.org/ftp/lua-$pkgver.tar.gz
 	Makefile.patch
 	src-Makefile.patch)
