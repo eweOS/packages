@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 1234567..abcdefg 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -254,7 +254,7 @@ AC_DEFINE_UNQUOTED([HAVE_ASAN], [$HAVE_ASAN], [Define to 1 if ASAN is enabled])
+ # Link libm on platforms where trunc() lives outside libc.
+ AC_SEARCH_LIBS([trunc], [m])
+ LIBM="$ac_cv_search_trunc"
+-if test "x$LIBM" = "xno" || test "x$LIBM" = "xyes" ; then
++if test "x$LIBM" = "xno" || test "x$LIBM" = "xyes" || test "x$LIBM" = "xnone required" ; then
+ 	LIBM=""
+ fi
+ AC_SUBST(LIBM)
