@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libldac
-pkgver=2.0.2.3
-pkgrel=4
+pkgver=2.0.2.6
+pkgrel=1
 pkgdesc="LDAC Bluetooth encoder library"
 url="https://github.com/EHfive/ldacBT"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ makedepends=(git cmake)
 provides=(libldacBT_{abr,enc}.so)
 source=("git+$url#tag=v$pkgver"
         "git+https://gitlab.com/eh5/libldac.git")
-sha256sums=('d2a53c44c8c45c81276608e6dad66c781fa3f185c7c42d46088e8e4579f3526e'
+sha256sums=('a252bfacae2cbcc97bd7b59d3e5b82fbf7c589fc8610ceea05ae73e0d343ebae'
             'SKIP')
 
 prepare() {
