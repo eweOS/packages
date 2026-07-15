@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=caddy
-pkgver=2.11.3
+pkgver=2.11.4
 pkgrel=1
 pkgdesc='Fast and extensible HTTP/1-2-3 webserver'
 url='https://caddyserver.com'
@@ -12,7 +12,7 @@ makedepends=(go)
 source=("https://github.com/caddyserver/caddy/archive/refs/tags/v$pkgver.tar.gz"
 	"caddy.sysusers"
 	"caddy.service")
-sha256sums=('de751e6b7ca769f0dc1f9b0a1949c7b149c115efde3aaf53182da2bf6a94c825'
+sha256sums=('2c3d02078286a6282cdb4d1d8744077788d556659dac0b64d8ed5886a7e5aeb9'
             '8adfdc224669a82380315c292e010aeb6e3ab26719ccf4e6c66cd5fdbcf3b541'
             'd518436e724a5434785c0a0da3478c293e0ccc0e22642f0b500c36e6e7e09d94')
 
