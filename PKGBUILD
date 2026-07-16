@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=cbindgen
-pkgver=0.29.3
+pkgver=0.29.4
 pkgrel=1
 pkgdesc="A tool for generating C bindings to Rust code"
 url="https://github.com/eqrion/cbindgen"
@@ -16,7 +16,7 @@ checkdepends=(
   python
 )
 source=("https://github.com/eqrion/cbindgen/archive/v$pkgver.tar.gz")
-sha256sums=('f3589ce10fd6a61b32d1ac1a1043112838e44b401432f4db9838c2a9ec4322f8')
+sha256sums=('9b5757e915cf8be523d3aca282b9b5651bafa112e14bf1ba488562ba282807d6')
 
 prepare() {
   cd cbindgen-"$pkgver"
