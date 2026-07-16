@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=android-tools
-pkgver=35.0.2
-pkgrel=17
+pkgver=36.0.1
+pkgrel=1
 pkgdesc='Android platform tools'
 url='http://tools.android.com/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,16 +10,8 @@ license=(Apache-2.0 MIT)
 depends=(brotli fmt libusb pcre2 protobuf googletest zstd python abseil-cpp)
 optdepends=('python: mkbootimg, unpack_bootimg and repack_bootimg support')
 makedepends=(cmake go perl linux-headers)
-# 0001: downstream, fix compatibility with protobuf 30.0
-source=("https://github.com/nmeum/android-tools/releases/download/$pkgver/android-tools-$pkgver.tar.xz"
-	"0001-jsonpb-fix-compatibility-with-protobuf-30.patch")
-sha256sums=('d2c3222280315f36d8bfa5c02d7632b47e365bfe2e77e99a3564fb6576f04097'
-            'e4b18a51384505e90dbeebd9dc9280aaf3f3f40de138ee2b9839e0d26d1bdb97')
-
-prepare() {
-	cd "$pkgname-$pkgver/vendor/extras/libjsonpb"
-	patch -p1 < "$srcdir/0001-jsonpb-fix-compatibility-with-protobuf-30.patch"
-}
+source=("https://github.com/nmeum/android-tools/releases/download/$pkgver/android-tools-$pkgver.tar.xz")
+sha256sums=('38e8a84b739480141de0836bf6d581b3339ac7d53d0f7ce8c044a3368c8c2f8f')
 
 build () {
 	# use bundled libusb since android-tools depends on unreleased libusb
