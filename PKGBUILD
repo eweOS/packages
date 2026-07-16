@@ -2,8 +2,8 @@
 
 pkgbase=coin
 pkgname=(coin coin-doc)
-pkgver=4.0.8
-pkgrel=2
+pkgver=4.0.10
+pkgrel=1
 pkgdesc='Coin3D core library'
 url='https://www.coin3d.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -18,7 +18,7 @@ provides=(libCoin.so)
 #	EGL is supported and we don't need GLX API.
 source=("https://github.com/coin3d/coin/releases/download/v$pkgver/coin-$pkgver-src.tar.gz"
 	0001-Link-libOpenGL-instead-of-libGL.patch)
-sha256sums=('aff6c7edf24cfb935edba46574ec5f83b543c47ff79e40c21fb92dc709b0f2c4'
+sha256sums=('13fe68831292e7e725e7db1c6909d2b4fe5802080474c229fcac14ddf6445188'
             '01deef30598a2c34ef3d8900e45979c056669e063c5fc3338971aaf47592e9ab')
 
 prepare() {
