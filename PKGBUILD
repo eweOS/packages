@@ -2,9 +2,9 @@
 
 pkgbase=doxygen
 pkgname=(doxygen doxywizard)
-pkgver=1.16.1
+pkgver=1.17.0
 _pkgver=${pkgver//./_}
-pkgrel=3
+pkgrel=1
 pkgdesc='Tool for generating documentation from annotated sources'
 url='https://www.doxygen.nl'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ makedepends=(cmake clang llvm fmt spdlog sqlite qt6-base libglvnd llvm-devel
 	     qt6-svg)
 checkdepends=(perl python)
 source=("https://github.com/doxygen/doxygen/archive/refs/tags/Release_$_pkgver.tar.gz")
-sha256sums=('cdf9d614ee8ed6a939ad12ab31a6aaa1b0c089dff2a4ce20aa008893b686d636')
+sha256sums=('28199ea88989fc56e302c927ef979596fe9247dd231e767ba6edcdbaa49f78aa')
 
 build() {
 	# TODO:
