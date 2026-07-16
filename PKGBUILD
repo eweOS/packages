@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=librevenge
-pkgver=0.0.5
-pkgrel=3
+pkgver=0.0.6
+pkgrel=1
 pkgdesc="library for REVerses ENGineered formats filters"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://sf.net/p/libwpd/librevenge/"
@@ -11,7 +11,7 @@ license=('LGPL-2.1-or-later OR MPL-2.0' 'BSD-3-Clause')
 depends=('zlib')
 makedepends=('boost' 'cppunit' 'autoconf')
 source=(https://sourceforge.net/projects/libwpd/files/librevenge/$pkgname-$pkgver/$pkgname-$pkgver.tar.xz)
-sha256sums=('106d0c44bb6408b1348b9e0465666fa83b816177665a22cd017e886c1aaeeb34')
+sha256sums=('19eacf5ce55d7fe6a990a45142589cdf7da0c7b68701797f133482cb44f189fa')
 
 prepare() {
   cd $pkgname-$pkgver
