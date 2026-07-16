@@ -3,7 +3,7 @@
 
 pkgname=(go go-doc)
 epoch=2
-pkgver=1.26.4
+pkgver=1.26.5
 pkgrel=1
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ replaces=(go-pie)
 provides=(go-pie)
 options=(!strip staticlibs)
 source=("https://go.dev/dl/go${pkgver}.src.tar.gz")
-sha256sums=('4f668a32fbfc1132e6a881fb968c2f1dada631492a339211735fbb255a42602d')
+sha256sums=('495be4bc87176ac567392e5b4116abd98466d33d7b49d41e764ccc6976b2dc42')
 
 build()
 {
