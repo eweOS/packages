@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=jimtcl
-pkgver=0.83
-pkgrel=2
+pkgver=0.84
+pkgrel=1
 pkgdesc='An open-source, small-footprint TCL implementation'
 url='http://jim.tcl.tk/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(musl openssl zlib-ng)
 makedepends=(tcl)
 provides=(libjim.so)
 source=("https://github.com/msteveb/jimtcl/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('6f2df00009f5ac4ad654c1ae1d2f8ed18191de38d1f5a88a54ea99cc16936686')
+sha256sums=('435095b436b38b96dd85e8cda13878144813bf52066057f76368db178dd8fea2')
 
 prepare() {
 	# Require network connection
