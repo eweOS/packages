@@ -4,15 +4,15 @@
 # Contributor: Clement Tsang (xoronth) <cjhtsang@uwaterloo.ca>
 
 pkgname=bottom
-pkgver=0.10.2
-pkgrel=4
+pkgver=0.14.4
+pkgrel=1
 pkgdesc="A graphical process/system monitor"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/ClementTsang/bottom"
 license=('MIT')
 makedepends=('rust')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('79359181d04434bd85496392dd15eb737bc33441a0d8984b15c3caf26e60efb08d93769e499b56732f7c76a0bdb2e0ea946eee7e799de32e80e8ce0ddf4d8945')
+sha512sums=('7dcbf50b8e6330b6c7c863f6e3875cb6d8bfca4a0661378c1837bd8dc91d13cd166976b60786ffb48411d9d631c861fe72c490cc98d762c4155bb30bc925b98d')
 
 
 prepare()
