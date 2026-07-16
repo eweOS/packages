@@ -5,8 +5,8 @@ pkgname=(
   gvfs
   gvfs-nfs
 )
-pkgver=1.60.0
-pkgrel=2
+pkgver=1.61.1
+pkgrel=1
 pkgdesc="Virtual filesystem implementation for GIO"
 url="https://gitlab.gnome.org/GNOME/gvfs"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -34,7 +34,7 @@ makedepends=(
 )
 groups=(gnome)
 source=("git+https://gitlab.gnome.org/GNOME/gvfs.git#tag=$pkgver")
-sha256sums=('07cd046b75a89b9ac63884ab03410f3043e58b97c15c08c0eb791e32c3d078e7')
+sha256sums=('539df3fb2efd09b32605ec00909207bb9d5b8333fb7b06c7b086db9742deee5f')
 
 build() {
   # admin: polkit
