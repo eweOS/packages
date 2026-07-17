@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=podofo
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A C++ library to work with the PDF file format'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -25,7 +25,7 @@ _resource_commit=a5d78b823e9b902d89b06b2d4d81a2e801cd96c4
 provides=(libpodofo.so)
 source=("git+$_url.git#tag=$pkgver"
 	"git+https://github.com/podofo/podofo-resources.git#commit=$_resource_commit")
-sha256sums=('1bb5fe483b917fb97cc14621eec02b164402a52277a852ef5ed3d4fa2c237a43'
+sha256sums=('955591be47c3c81429d5ccf13f1464f39bb7772a6999cb3e9b98f752e2a3433a'
             '123ae670e936a5fdb18ad653a3576da23e6cced2e188d36f65f98a07c1a56e00')
 
 prepare() {
