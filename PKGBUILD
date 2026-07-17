@@ -1,8 +1,8 @@
 # Maintainer: Eric Long <i@hack3r.moe>
 
 pkgname=ripgrep
-pkgver=15.1.0
-pkgrel=2
+pkgver=15.2.0
+pkgrel=1
 _rust_pcre2_ver=0.2.10
 pkgdesc='Recursively searches directories for a regex pattern while respecting your gitignore'
 url=https://github.com/BurntSushi/ripgrep
@@ -18,10 +18,10 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "git+https://github.com/BurntSushi/rust-pcre2.git#tag=$_rust_pcre2_ver"
         pcre2-sys-musl-dynamic.patch
         no-jemalloc.patch)
-sha256sums=('046fa01a216793b8bd2750f9d68d4ad43986eb9c0d6122600f993906012972e8'
+sha256sums=('7605249d3eb0d5f170e3414498e3344e26b1e7a147aec518b57090b80036a562'
             '385f16a0ff4a4d625a1ed7f8b72feefc60f4cabecd418ac1923ac17ee4de6d67'
             'e6f3050e4dcd81a17332a6826c157c4e33dc1fdf02b6fe71aaa891b79783bbf7'
-            'f3726131c0a69fb22bad36e53f27a22433e30aace108b777c08081e3459db4d6')
+            'bfa2ec9ef8b41f9ee901b7a4e6b2963c4cda205f4c203528aeec3595942ae8eb')
 
 prepare() {
   patch -d rust-pcre2 -Np1 -i ../pcre2-sys-musl-dynamic.patch
