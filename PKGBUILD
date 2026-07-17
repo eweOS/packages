@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=zxing-cpp
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='A C++ library to decode QRCode'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,14 +12,8 @@ makedepends=(cmake stb git)
 checkdepends=(gtest)
 source=(
   https://github.com/nu-book/zxing-cpp/archive/v$pkgver/$pkgname-$pkgver.tar.gz
-  system-stb.patch
 )
-sha256sums=('b063dacf384c7bb93ab2c3eea247cc06b4525330f0efa631907aa3029f7e2144'
-            'cc83c917902c3551ff0a4b7752baf895044d40901eba74678aeef19e236266f1')
-
-prepare() {
-  _patch_ $pkgname-$pkgver
-}
+sha256sums=('3fb23a3a82788fd176f0109ddbaa76c6a53e78fd19fc93554eeb6b9e16ae6f90')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
@@ -28,7 +22,8 @@ build() {
     -DZXING_EXAMPLES=OFF \
     -DZXING_UNIT_TESTS=ON \
     -DZXING_USE_BUNDLED_ZINT=OFF \
-    -DCMAKE_CXX_STANDARD=20
+    -DCMAKE_CXX_STANDARD=20 \
+    -DSTB_IMAGE_INCLUDE_DIR=/usr/include/stb
   cmake --build build
 }
 
