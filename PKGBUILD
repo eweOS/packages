@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=cgal
-pkgver=6.1.1
-pkgrel=2
+pkgver=6.2
+pkgrel=1
 pkgdesc='C++ library for Geometric algorithms'
 url='https://www.cgal.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=(GPL-3.0-or-later)
 depends=(bash)
 makedepends=(cmake)
 source=("https://github.com/CGAL/cgal/releases/download/v$pkgver/CGAL-$pkgver.tar.xz")
-sha256sums=('52506935f70e247ed2777e3c65f20e86f79208c2a2d0e180ae7475daf11c96ef')
+sha256sums=('fbc32816745e871a5cbdeb6245317e9dbf10ae1a957b0ab1edb00b4fde00ba8d')
 
 build() {
 	cmake -S "CGAL-$pkgver" -B build \
