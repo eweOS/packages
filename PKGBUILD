@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libva
-pkgver=2.23.0
-pkgrel=2
+pkgver=2.24.1
+pkgrel=1
 pkgdesc='Video Acceleration (VA) API for Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://01.org/linuxmedia/vaapi
@@ -30,7 +30,7 @@ provides=(
 )
 backup=(etc/libva.conf)
 source=(git+https://github.com/intel/libva.git#tag=$pkgver)
-sha256sums=('1819b31a1ae54957db182ed1d1ea119965f02d262b70e9dc81ca1ee133b6f9d4')
+sha256sums=('ac469cf452b8654c879217f4fd59de3fec6dbebeea47b05791f66ed033c197ee')
 
 build() {
   CFLAGS+=" -DENABLE_VA_MESSAGING" # Option missing
