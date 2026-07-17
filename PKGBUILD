@@ -1,20 +1,20 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=git
-pkgver=2.54.0
-pkgrel=2
+pkgver=2.55.0
+pkgrel=1
 pkgdesc='the fast distributed version control system'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://git-scm.com/'
 license=('GPL-2.0-only')
 depends=('curl' 'expat' 'perl' 'perl-error'
-  'openssl' 'pcre2' 'zlib')
-makedepends=('python' 'asciidoc' 'xmlto')
+  'openssl' 'pcre2' 'zlib-ng')
+makedepends=('python' 'asciidoc' 'xmlto' 'linux-headers' 'rust')
 optdepends=('perl-mailtools: git send-email support'
 	    'perl-authen-sasl: TLS support for git send-email'
 	    'perl-io-socket-ssl: TLS support for git send-email')
 source=("https://www.kernel.org/pub/software/scm/git/git-${pkgver}.tar.xz")
-sha256sums=('f689162364c10de79ef89aa8dbf48731eb057e34edbbd20aca510ce0154681a3')
+sha256sums=('457fdb04dc8728e007d4688695e6912e6f680727920f2a40bf11eacc17505357')
 
 _make_paths=(
   prefix='/usr'
@@ -29,6 +29,7 @@ _make_options=(
   MAN_BOLD_LITERAL=1
   NO_PERL_CPAN_FALLBACKS=1
   USE_LIBPCRE2=1
+  WITH_RUST=1
   NO_REGEX=NeedsStartEnd
   CC=clang HOSTCC=clang
 )
