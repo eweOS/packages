@@ -1,0 +1,80 @@
+From 4915f4b84d1863f11bd69d2733cabefe1c5fcc90 Mon Sep 17 00:00:00 2001
+From: Rajdeep Singh <rajdeep.kuswaha@s.amity.edu>
+Date: Sat, 21 Mar 2026 01:46:11 +0530
+Subject: [PATCH 1/2] CGALConfig.cmake: resolve symlinks before computing
+ CGAL_CONFIG_DIR (fix #8521)
+
+On distributions such as Arch Linux and Fedora where /lib is a symlink to
+/usr/lib, CMAKE_CURRENT_LIST_FILE may be reported as
+/lib/cmake/CGAL/CGALConfig.cmake.  The subsequent chain of
+get_filename_component(... DIRECTORY) calls then walks up through the
+symlink path, producing CGAL_ROOT=/ instead of /usr, and the existence
+check for include/CGAL/config.h fails, even when CGAL is properly
+installed.
+
+Fix: resolve the real path of CMAKE_CURRENT_LIST_FILE before extracting
+the directory.  Use file(REAL_PATH) when available (CMake >= 3.19), with
+a get_filename_component(... REALPATH) fallback for CMake 3.15-3.18.
+---
+ Installation/lib/cmake/CGAL/CGALConfig.cmake | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+Paths are manually modified to apply on v6.2
+
+diff --git a/Installation/lib/cmake/CGAL/CGALConfig.cmake b/Installation/lib/cmake/CGAL/CGALConfig.cmake
+index 276c7ebb6c94..1e3735247a6f 100644
+--- a/lib/cmake/CGAL/CGALConfig.cmake
++++ b/lib/cmake/CGAL/CGALConfig.cmake
+@@ -7,7 +7,15 @@ set( CGAL_REQUESTED_COMPONENTS ${CGAL_FIND_COMPONENTS} )
+ 
+ set(CGAL_LIBRARIES CGAL)
+ 
+-get_filename_component(CGAL_CONFIG_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
++# Resolve symlinks before extracting the directory so that the subsequent
++# DIRECTORY walk produces a correct CGAL_ROOT (e.g. /lib -> /usr/lib on
++# Arch Linux).  See https://github.com/CGAL/cgal/issues/8521
++if(NOT CMAKE_VERSION VERSION_LESS 3.19)
++  file(REAL_PATH "${CMAKE_CURRENT_LIST_FILE}" _cgal_config_realpath)
++else()
++  get_filename_component(_cgal_config_realpath "${CMAKE_CURRENT_LIST_FILE}" REALPATH)
++endif()
++get_filename_component(CGAL_CONFIG_DIR "${_cgal_config_realpath}" DIRECTORY)
+ 
+ function(cgal_detect_branch_build VAR_NAME)
+   if(IS_DIRECTORY ${CGAL_CONFIG_DIR}/../../../../Installation/package_info/Installation/)
+
+From 80aec6e50e56366bac7434f61d4978760c6b1cfc Mon Sep 17 00:00:00 2001
+From: Laurent Rineau <laurent.rineau@cgal.org>
+Date: Thu, 11 Jun 2026 14:46:16 +0200
+Subject: [PATCH 2/2] assume CMake>=3.22 (as documented in the CGAL manual)
+
+---
+ Installation/lib/cmake/CGAL/CGALConfig.cmake | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/Installation/lib/cmake/CGAL/CGALConfig.cmake b/Installation/lib/cmake/CGAL/CGALConfig.cmake
+index 1e3735247a6f..9b3f76c692e0 100644
+--- a/lib/cmake/CGAL/CGALConfig.cmake
++++ b/lib/cmake/CGAL/CGALConfig.cmake
+@@ -2,6 +2,8 @@
+ # This file is the CGALConfig.cmake for a header-only CGAL installation
+ #
+ 
++cmake_minimum_required(VERSION 3.22...3.31)
++
+ # For CGAL_CreateSingleSourceCGALProgram.cmake
+ set( CGAL_REQUESTED_COMPONENTS ${CGAL_FIND_COMPONENTS} )
+ 
+@@ -10,11 +12,7 @@ set(CGAL_LIBRARIES CGAL)
+ # Resolve symlinks before extracting the directory so that the subsequent
+ # DIRECTORY walk produces a correct CGAL_ROOT (e.g. /lib -> /usr/lib on
+ # Arch Linux).  See https://github.com/CGAL/cgal/issues/8521
+-if(NOT CMAKE_VERSION VERSION_LESS 3.19)
+-  file(REAL_PATH "${CMAKE_CURRENT_LIST_FILE}" _cgal_config_realpath)
+-else()
+-  get_filename_component(_cgal_config_realpath "${CMAKE_CURRENT_LIST_FILE}" REALPATH)
+-endif()
++file(REAL_PATH "${CMAKE_CURRENT_LIST_FILE}" _cgal_config_realpath)
+ get_filename_component(CGAL_CONFIG_DIR "${_cgal_config_realpath}" DIRECTORY)
+ 
+ function(cgal_detect_branch_build VAR_NAME)
