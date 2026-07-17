@@ -1,15 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=openssl
-pkgver=3.6.2
-pkgrel=2
+pkgver=3.6.3
+pkgrel=1
 pkgdesc='A toolkit for the TLS and SSL protocols'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.openssl.org'
 license=(BSD)
 makedepends=(perl zlib linux-headers)
 source=("https://github.com/openssl/openssl/releases/download/openssl-$pkgver/openssl-$pkgver.tar.gz")
-sha256sums=('aaf51a1fe064384f811daeaeb4ec4dce7340ec8bd893027eee676af31e83a04f')
+sha256sums=('243a86649cf6f23eeb6a2ff2456e09e5d77dd9018a54d3d96b0c6bdd6ba6c7f1')
 
 prepare()
 {
