@@ -2,8 +2,8 @@
 
 pkgbase=graphite
 pkgname=(graphite)
-pkgver=1.3.14
-pkgrel=5
+pkgver=1.3.15
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/silnrsi/graphite"
 pkgdesc='reimplementation of the SIL Graphite text processing engine'
@@ -11,8 +11,8 @@ license=('LGPL-2.1-or-later OR MPL-2.0 OR GPL-2.0-or-later')
 makedepends=('cmake' 'freetype2' 'python')
 checkdepends=('python-fonttools')
 source=(https://github.com/silnrsi/graphite/releases/download/${pkgver}/graphite2-${pkgver}.tgz disable-tests.patch)
-sha256sums=('f99d1c13aa5fa296898a181dff9b82fb25f6cc0933dbaa7a475d8109bd54209d'
-            'f72629014e3bbba3a58d60c679a75e3aca744a34374bd725dd30cb200c14c3dc')
+sha256sums=('c6bc8b4252724665297f7cad0c55897285c673f9b8e6db3522ace833593fe0b1'
+            '55942df6c3c1eea8cae8487d78fc350def075e5dc1e44999462d89c3ef9f2a72')
 
 prepare() {
   _patch_ graphite2-${pkgver}
