@@ -2,7 +2,7 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=dinit
-pkgver=0.22.0
+pkgver=0.22.1
 pkgrel=1
 pkgdesc='Service monitoring / "init" system'
 url='https://github.com/davmac314/dinit'
@@ -16,7 +16,7 @@ makedepends=(make linux-uapi-headers)
 depends=(busybox musl llvm-libs libcap)
 optdepends=('dinit-services: dinit service files')
 options=(emptydirs)
-sha256sums=('926d431e1c596a214612a1fc31c66fc0356630c5759edc313fe7153eaf462ffc'
+sha256sums=('8907d4f668259c4f66d9d2c7cbbb55d455c28dc433596ab29005d589cb572e1e'
             '22052127397bf6322f421fe891b8eec5484f24554aef805b4fb18aa32ccbb722')
 
 prepare() {
