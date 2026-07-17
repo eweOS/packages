@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=openjph
-pkgver=0.27.3
+pkgver=0.30.1
 pkgrel=1
 pkgdesc='Open-source implementation of JPEG2000 Part-15 (or JPH or HTJ2K)'
 url='https://github.com/aous72/OpenJPH'
@@ -11,7 +11,7 @@ depends=(musl llvm-libs libtiff)
 makedepends=(cmake linux-uapi-headers)
 provides=(libopenjph.so)
 source=("https://github.com/aous72/OpenJPH/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('f96808ef72cf3acca73a52123bda3e680f6550dfb4774ad7de57eb3ce26de57a')
+sha256sums=('fb3ccf71af838ed2a42c6ea669308a2adaba115ae9d5862dfb1e2865b43eb5b8')
 
 build() {
 	cmake -S OpenJPH-"$pkgver" -B build \
