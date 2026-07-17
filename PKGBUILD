@@ -9,6 +9,8 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-3.0-or-later)
 depends=(bash)
 makedepends=(cmake)
+# This is a header-only library with no binary.
+options=(!strip)
 # 0001: Backport, cabec72deea0 ("CGALConfig.cmake: resolve symlinks before computing CGAL_CONFIG_DIR (fix #8521) (#9390)")
 #	Fix failure when looking up for CGAL on /usr-merged system where /lib is
 #	a symlink to /usr/lib
