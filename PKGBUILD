@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sdbus-cpp
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc='a high-level C++ D-Bus library designed to provide expressive, easy-to-use API'
 url="https://github.com/Kistler-Group/$pkgname"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(expat basu)
 makedepends=(cmake)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('da69a0104beb6e51415a59f1571a47beb1eacc65cc6027b250eb1cf13ff4f802')
+sha256sums=('3a289eded586c26d06c1387de72c7bf7c809527a70d51ba6401fe61059b19626')
 
 build() {
   cmake -B build -S "$_archive" \
