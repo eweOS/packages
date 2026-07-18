@@ -2,9 +2,9 @@
 
 pkgbase=lua-luv
 pkgname=(lua51-luv lua54-luv libluv)
-pkgver=1.51.0.2
+pkgver=1.52.1.0
 _pkgver=1.48.0-2
-pkgrel=2
+pkgrel=1
 pkgdesc='Bare livuv bindings for Lua'
 url='https://github.com/luvit/luv'
 arch=(x86_64 aarch64 riscv64 loongarch64)
