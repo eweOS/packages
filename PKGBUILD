@@ -2,8 +2,8 @@
 
 pkgbase=maturin
 pkgname=(maturin python-maturin)
-pkgver=1.13.1
-pkgrel=2
+pkgver=1.14.1
+pkgrel=1
 pkgdesc='Tool for building and publishing Rust crates as Python packages'
 url='https://www.maturin.rs/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel
 	     rust
 	     xz)
 source=("https://github.com/PyO3/maturin/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2bfb3ec1ef1c15163ac006b09f895d17bd7ce0229416be952cd49065842acfc0')
+sha256sums=('435f8d5b267e52588fe699cab97a8234e3d98977a9f9e6efe873e04f7f85f92c')
 
 prepare() {
 	cd "$pkgbase-$pkgver"
