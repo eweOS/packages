@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=nasm
-pkgver=3.01
-pkgrel=2
+pkgver=3.02
+pkgrel=1
 pkgdesc='80x86 assembler designed for portability and modularity'
 url='https://www.nasm.us'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ source=(
   https://www.nasm.us/pub/nasm/releasebuilds/${pkgver}/${pkgname}-${pkgver}.tar.xz
   0001-drop-cast-to-bool-hack.patch
 )
-sha512sums=('ca9550ad3239cfaa9546a908e8de86e11a7c7dd9d6006f42d272d0b025b601cdb205e60b8b3929f31123ef450dd0f0403e1300328cadf0ffdfd459f443944482'
+sha512sums=('dc80d8a9a582423e62703da3cc3f37ee57735939b975faa8a72d061a8b596f763d206c7cc3e48c32d2ad726f38e430dc3b85cffd0c3b32e71e20ad9cc24f4804'
             '4f21b7a1514ac36f7b04891897414a550c8f8466932cd5b6b5503d36d4e54b4dc3a6b683622fc6b7fe6e6c56f2b46570be6c82a699deab69476d25f9d2a31bb4')
 
 prepare()
