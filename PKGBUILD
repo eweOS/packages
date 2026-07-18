@@ -2,8 +2,8 @@
 
 pkgbase=gtkmm
 pkgname=gtkmm3
-pkgver=3.24.10
-pkgrel=2
+pkgver=3.24.11
+pkgrel=1
 pkgdesc="C++ bindings for glib"
 url="https://www.gtkmm.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ makedepends=(meson mm-common perl-xml-parser)
 checkdepends=(weston)
 options=(!emptydirs)
 source=("https://gitlab.gnome.org/GNOME/$pkgbase/-/archive/$pkgver/$pkgbase-$pkgver.tar.bz2")
-sha256sums=('9f7465e6cad5d83a45182c1588f3c3040adac2d57140b2f9d42fda85030d50af')
+sha256sums=('76710593d3f08320ec9caa4f1e4a4c5c22f31a0d56e17a0048ea21fadf59b16c')
 
 build() {
   ewe-meson $pkgbase-$pkgver build \
