@@ -3,8 +3,8 @@
 pkgbase=lua-bitop
 pkgname=(lua51-bitop)
 _pkgname=LuaBitOp
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 url='http://bitop.luajit.org/'
 pkgdesc='A C extension module adding bitwise operations on numbers.'
 license=(MIT)
@@ -12,7 +12,7 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 makedepends=(lua51 lua54)
 source=("http://bitop.luajit.org/download/LuaBitOp-$pkgver.tar.gz")
 _lvers=(5.1)
-sha256sums=('d514a3d2cefa76c8d11c1b9ec740d5fae316a9c9764e1e12ddea21e4982fab4b')
+sha256sums=('adc32785579fc62f7736881332f70f50fe168b2ae8d0ddb741ff018a76f48c80')
 
 build() {
 	for v in ${_lvers[*]}; do
