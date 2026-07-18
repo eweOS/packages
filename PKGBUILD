@@ -36,6 +36,8 @@ package_curl() {
 }
 
 package_ca-certs() {
+  depends=()
+
   cd "${srcdir}/curl-${pkgver}"
   ./scripts/mk-ca-bundle.pl
   install -d "${pkgdir}/etc/ssl/certs"
