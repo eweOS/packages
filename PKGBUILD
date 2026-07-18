@@ -40,7 +40,6 @@ build() {
 		-Duse_sys_fmt=ON			\
 		-Duse_sys_sqlite3=ON			\
 		-Dstatic_libclang=OFF			\
-		-Denable_consoe=OFF			\
 		-Denable_coverage=OFF			\
 		-Denable_tracing=OFF			\
 		-Denable_lex_debug=OFF			\
