@@ -1,0 +1,50 @@
+From 1ae15d42f7f8b2fddac736f63a8406feaaf46947 Mon Sep 17 00:00:00 2001
+From: DRC <information@libjpeg-turbo.org>
+Date: Wed, 1 Jul 2026 10:57:44 -0400
+Subject: [PATCH] Build: Fix Un*x build if PIC disabled
+
+If CMAKE_POSITION_INDEPENDENT_CODE=0 and the compiler doesn't enable
+-fPIE by default, then we must explicitly enable position-independent
+code when building the zlib-static and spng-static object libraries,
+because those objects are linked with the TurboJPEG shared library.
+
+This issue went undetected because our CI builds run on Ubuntu, which
+enables -fPIE by default in its GCC toolchain, and our official builds
+enable CMAKE_POSITION_INDEPENDENT_CODE.
+
+The workaround was simply to set CMAKE_POSITION_INDEPENDENT_CODE=1.
+
+Fixes #898
+---
+ src/spng/CMakeLists.txt | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/spng/CMakeLists.txt b/src/spng/CMakeLists.txt
+index 793ae4e49965..af45bb42545c 100644
+--- a/src/spng/CMakeLists.txt
++++ b/src/spng/CMakeLists.txt
+@@ -5,6 +5,10 @@ if(NOT WITH_SYSTEM_ZLIB)
+     zlib/deflate.c zlib/inffast.c zlib/inflate.c zlib/inftrees.c zlib/trees.c
+     zlib/zutil.c)
+ 
++  if(NOT WIN32 AND (CMAKE_POSITION_INDEPENDENT_CODE OR ENABLE_SHARED))
++    set_target_properties(zlib-static PROPERTIES POSITION_INDEPENDENT_CODE 1)
++  endif()
++
+   if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
+     target_compile_options(zlib-static PRIVATE -w)
+   endif()
+@@ -18,6 +22,10 @@ add_definitions(-DSPNG_STATIC)
+ 
+ add_library(spng-static OBJECT spng.c)
+ 
++if(NOT WIN32 AND (CMAKE_POSITION_INDEPENDENT_CODE OR ENABLE_SHARED))
++  set_target_properties(spng-static PROPERTIES POSITION_INDEPENDENT_CODE 1)
++endif()
++
+ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
+   target_compile_options(spng-static PRIVATE -w)
+ endif()
+-- 
+2.55.0
+
