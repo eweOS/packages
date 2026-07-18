@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libva-utils
-pkgver=2.23.0
-pkgrel=2
+pkgver=2.24.0
+pkgrel=1
 pkgdesc="Intel VA-API Media Applications and Scripts for libva"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/intel/libva-utils"
@@ -10,7 +10,7 @@ license=(custom)
 depends=(libva)
 makedepends=(mesa meson linux-headers)
 source=(${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('fa7ff29847b55010fbbb775b35382f97f29b7b97abe9a2f6fb3e22b36db5440a')
+sha256sums=('bf959a1ced3cde8176a7ff50ad358ee98e93301ac068581a8b2617c5b83afcb3')
 
 build() {
     ewe-meson ${pkgname}-${pkgver} build
