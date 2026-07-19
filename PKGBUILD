@@ -2,7 +2,7 @@
 
 pkgname=firefox
 pkgver=152.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -28,6 +28,7 @@ makedepends=(
   linux-headers
   llvm
   mesa
+  mimalloc
   nasm
   nodejs
   python
@@ -107,7 +108,7 @@ build() {
   # firefox 147.0 or later requires C++ 20 to build
   CXXFLAGS="$CXXFLAGS -std=gnu++20"
 
-  ./mach build
+  LD_PRELOAD="/usr/lib/libmimalloc.so" ./mach build
 }
 
 package() {
