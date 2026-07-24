@@ -1,0 +1,21 @@
+--- a/src/supertux/error_handler.cpp
++++ b/src/supertux/error_handler.cpp
+@@ -50,7 +50,9 @@
+ #endif
+ #elif defined(UNIX)
+ #include <sys/utsname.h>
++#if __has_include(<execinfo.h>)
+ #include <execinfo.h>
++#endif
+ #include <unistd.h>
+ #endif
+ 
+@@ -228,7 +230,7 @@
+   }
+ 
+   return callstack.str();
+-#elif defined(UNIX)
++#elif defined(UNIX) && __has_include(<execinfo.h>)
+   void* array[128];
+   size_t size;
+ 

@@ -1,0 +1,34 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -249,9 +249,21 @@
+   set(HAVE_OPENGL YES)
+   set(USE_OPENGLES2 YES)
+ elseif(NOT EMSCRIPTEN)
+-  set(OpenGL_GL_PREFERENCE "LEGACY")
++  set(OpenGL_GL_PREFERENCE "GLVND")
+   find_package(OpenGL QUIET)
+ 
++  # fallback to opengl::opengl
++  if(NOT OPENGL_FOUND AND OPENGL_opengl_LIBRARY)
++    set(OPENGL_FOUND TRUE)
++    if(NOT TARGET OpenGL::OpenGL)
++      add_library(OpenGL::OpenGL UNKNOWN IMPORTED)
++      set_target_properties(OpenGL::OpenGL PROPERTIES
++        IMPORTED_LOCATION "${OPENGL_opengl_LIBRARY}")
++      set_target_properties(OpenGL::OpenGL PROPERTIES
++        INTERFACE_INCLUDE_DIRECTORIES "${OPENGL_INCLUDE_DIR}")
++    endif()
++  endif()
++
+   if(OPENGL_FOUND)
+     if (USE_GL_LIBRARY STREQUAL "glew")
+       message(STATUS "Using glew")
+@@ -461,7 +476,7 @@
+   endif()
+ 
+   if(HAVE_OPENGL AND NOT ANDROID)
+-    target_link_libraries(supertux2 PUBLIC OpenGL::GL)
++    target_link_libraries(supertux2 PUBLIC OpenGL::OpenGL)
+     if(USE_GL_LIBRARY STREQUAL "glew")
+       target_link_libraries(supertux2 PUBLIC GLEW)
+     else()
