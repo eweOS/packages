@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=nmap
-pkgver=7.98
-pkgrel=2
+pkgver=7.99
+pkgrel=1
 pkgdesc='Utility for network discovery and security auditing'
 url='https://nmap.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -20,12 +20,15 @@ makedepends=(linux-headers)
 # 0001: downstream (from alpine linux): conflicting types for 'strlcat'
 # https://gitlab.alpinelinux.org/alpine/aports/-/blob/master/main/nmap/0001-Fix-build-conflicting-types-for-strlcat.patch
 # https://github.com/nmap/nmap/issues/3073
+# 0002: downstream: fix PF_PACKET configure check for clang
 source=(
   "https://nmap.org/dist/${pkgname}-${pkgver}.tar.bz2"
   0001-Fix-build-conflicting-types-for-strlcat.patch
+  0002-Fix-PF_PACKET-configure-check-for-clang.patch
 )
-sha256sums=('ce847313eaae9e5c9f21708e42d2ab7b56c7e0eb8803729a3092f58886d897e6'
-            '01adf3a766ead28c9449a694f7f1cc5487135c0bb2189a5b000164e103a0415e')
+sha256sums=('df512492ffd108e53a27a06f26d8635bbe89e0e569455dc8ffef058c035d51b2'
+            '01adf3a766ead28c9449a694f7f1cc5487135c0bb2189a5b000164e103a0415e'
+            'daf2744716c2f26fb3eb4fcb29ff1262ac915fad6c6a455bb72a432b9db59f10')
 
 prepare() {
   _patch_ "${pkgname}-${pkgver}"
