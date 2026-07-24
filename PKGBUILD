@@ -2,21 +2,22 @@
 
 pkgname=cargo-insta
 _pkgname=insta
-pkgver=1.43.2
-pkgrel=2
+pkgver=1.48.0
+pkgrel=1
 pkgdesc='Cargo plugin for snapshot testing in Rust'
 url='https://github.com/mitsuhiko/insta'
 depends=(musl llvm-libs cargo)
 checkdepends=(git)
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('5ce057e6a50839aaeb8938fdef540dcd5c542c7d5c4f6122d6536bf230b02628')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+        "busybox-diff-compat.patch")
+sha256sums=('acd7140f00155f3fe50b723296fb828dea9de68297f3e26f8a7e442bcc62fa79'
+            'a800589bd10778cd49d50d5d33f24a85fcf00f83f707e1a5a4e3369f8c09979d')
 
 prepare() {
   cd $_pkgname-$pkgver
-  # Pull in https://github.com/rust-random/getrandom/pull/326
-  cargo update -p getrandom --precise 0.2.15
+  _patch_
   cargo fetch --locked --target $RUSTHOST
 }
 
