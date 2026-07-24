@@ -1,10 +1,8 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
-# Contributor: George Rawlinson <grawlinson@archlinux.org>
-# Contributor: Caleb Maclennan <caleb@alerque.com>
-# Contributor: Clement Tsang (xoronth) <cjhtsang@uwaterloo.ca>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=bottom
-pkgver=0.14.4
+pkgver=0.14.6
 pkgrel=1
 pkgdesc="A graphical process/system monitor"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,8 +10,7 @@ url="https://github.com/ClementTsang/bottom"
 license=('MIT')
 makedepends=('rust')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('7dcbf50b8e6330b6c7c863f6e3875cb6d8bfca4a0661378c1837bd8dc91d13cd166976b60786ffb48411d9d631c861fe72c490cc98d762c4155bb30bc925b98d')
-
+sha512sums=('8565d3c9c7c6465291283b62f73c2fb2d9f28f3824a312dc769f75c483ed8035d7dea06187d867b1e32c45ca89605c9811c046a2b6842c19ea876797e6f18867')
 
 prepare()
 {
