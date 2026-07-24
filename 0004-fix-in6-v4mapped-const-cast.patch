@@ -1,0 +1,10 @@
+--- a/lib/netplay/tcp/netsocket.cpp
++++ b/lib/netplay/tcp/netsocket.cpp
+@@ -124,7 +124,7 @@
+ # pragma GCC diagnostic pop
+ #endif
+-			if (IN6_IS_ADDR_V4MAPPED(&mappedIP->sin6_addr))
++			if (IN6_IS_ADDR_V4MAPPED((intptr_t)&mappedIP->sin6_addr))
+ 			{
+ 				// looks like it is ::ffff:(...) so lets set up a IPv4 socket address structure
+ 				// slightly overkill for our needs, but it shows exactly what needs to be done.
