@@ -1,0 +1,14 @@
+--- a/cargo-insta/tests/functional/main.rs
++++ b/cargo-insta/tests/functional/main.rs
+@@ -1256,8 +1256,10 @@
+ 
+     // The external diff tool output should be visible in stdout
+     // `diff` outputs lines starting with < and > for differences
++    // GNU diff uses normal format (< />) while busybox diff defaults to unified format (-/+)
+     assert!(
+-        stdout.contains("< old content") || stdout.contains("> new content"),
++        stdout.contains("< old content") || stdout.contains("> new content")
++            || stdout.contains("-old content") || stdout.contains("+new content"),
+         "Expected external diff tool output, got:\nstdout: {stdout}\nstderr: {stderr}"
+     );
+ }
