@@ -1,8 +1,8 @@
 # Maintainer: Eric Long <i@hack3r.moe>
 
 pkgname=cargo-about
-pkgver=0.8.4
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="Cargo plugin to generate list of all licenses for a crate"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/EmbarkStudios/cargo-about"
@@ -10,7 +10,7 @@ license=('MIT OR Apache-2.0')
 depends=(musl llvm-libs cargo)
 makedepends=(rust)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('956cea9d2170936e7d53d1a8c951242332777be89bff4b8531066bff584fbcd3')
+sha256sums=('628dd50f8b89078bca6eb7e615f891e0707209c08c94eba1c4326d2a08db53cd')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -20,13 +20,13 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
   export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-flto=auto"
-  cargo build --release --frozen --features native-certs
+  cargo build --release --frozen --features cli
 }
 
 check() {
   cd $pkgname-$pkgver
   export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-flto=auto"
-  cargo test --frozen --features native-certs
+  cargo test --frozen --features cli
 }
 
 package() {
