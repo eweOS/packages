@@ -3,8 +3,8 @@
 pkgbase=bluez
 pkgname=('bluez' 'bluez-utils' 'bluez-libs' 'bluez-cups' 'bluez-mesh'
          'bluez-obex')
-pkgver=5.86
-pkgrel=4
+pkgver=5.87
+pkgrel=1
 pkgdesc='Userspace daemons, utils and libraries of Linux Bluetooth stack'
 url="http://www.bluez.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -19,15 +19,13 @@ source=(
   0002-src-org.bluez.service-start-dinit-service.patch
   0003-allow-mesh-on-non-systemd-system.patch
   0004-grant-permission-to-bluetooth-group.patch
-  0005-libical-4.patch
 )
-sha256sums=('99f144540c6070591e4c53bcb977eb42664c62b7b36cb35a29cf72ded339621d'
+sha256sums=('26bdcf2cebd7310c6f598850606b037ef0c515fe6608ebc54d22c50c4c32b35f'
             '286cf9aa23d923023957f372e40b255889dc3fa3bb8075206548f6db805fa90b'
             '93fa6d201bb4546bb680f6d6f903ba5e767829ab275361323c14b0389fb6c803'
             '1a7e4c8b13ffc41304a06fa3d669cb6d252f0870c23c54fe84f5d861d5c964e1'
             '417ea301f980e0e9ff38083aa73b3ac4e011f930a3f3338fdeb3e80a585e8c1f'
-            '8fb22853838ddf51774da01eb6a812ac4f03da99f792256c07d6fe2f715d5bdd'
-            '221b22662d87ad814dbeb1702303ceadf1a4dcaa697205e891b6b2396087c5ad')
+            '8fb22853838ddf51774da01eb6a812ac4f03da99f792256c07d6fe2f715d5bdd')
 
 prepare() {
   _patch_ "${pkgname}"-${pkgver}
@@ -88,9 +86,11 @@ build() {
   _pick_ bluez usr/share/man/man8/bluetoothd.8
 
   msg2 "Picking bluez-utils"
-  install -Dm755 "$srcdir/bluez-$pkgver/tools/.libs/"{advtest,avinfo,avtest,bcmfw,bdaddr,bluemoon,bluetooth-player,bneptest,btattach,btconfig,btgatt-client,btgatt-server,btinfo,btiotest,btmgmt,btpclient,btpclientctl,btproxy,btsnoop,check-selftest,cltest,create-image,eddystone,gatt-service,hcieventmask,hcisecfilter,hex2hcd,hwdb,ibeacon,isotest,l2ping,l2test,mpris-proxy,nokfw,oobtest,rctest,rtlfw,scotest,seq2bseq,test-runner} \
+  install -Dm755 "$srcdir/bluez-$pkgver/tools/.libs/"{advtest,avinfo,avtest,bcmfw,bdaddr,bluemoon,bluetooth-player,bneptest,btattach,btconfig,btgatt-client,btgatt-server,btinfo,btiotest,btmgmt,btproxy,btsnoop,check-selftest,cltest,create-image,eddystone,gatt-service,hcieventmask,hcisecfilter,hex2hcd,hwdb,ibeacon,isotest,l2ping,l2test,mpris-proxy,nokfw,oobtest,rctest,rtlfw,scotest,seq2bseq,test-runner} \
      -t "$srcdir"/pkgs/bluez-utils/usr/bin
-  rm usr/bin/{advtest,avinfo,avtest,bcmfw,bdaddr,bluemoon,bluetooth-player,bneptest,btattach,btconfig,btgatt-client,btgatt-server,btinfo,btiotest,btmgmt,btpclient,btpclientctl,btproxy,btsnoop,check-selftest,cltest,create-image,eddystone,gatt-service,hcieventmask,hcisecfilter,hex2hcd,hwdb,ibeacon,isotest,l2ping,l2test,mpris-proxy,nokfw,oobtest,rctest,rtlfw,scotest,seq2bseq,test-runner}
+  install -Dm755 "$srcdir/bluez-$pkgver/client/btpclient/.libs/"{btpclient,btpclientctl} \
+     -t "$srcdir"/pkgs/bluez-utils/usr/bin
+  rm usr/bin/{advtest,avinfo,avtest,bcmfw,bdaddr,bluemoon,bluetooth-player,bneptest,btattach,btconfig,btgatt-client,btgatt-server,btinfo,btiotest,btmgmt,btproxy,btsnoop,check-selftest,cltest,create-image,eddystone,gatt-service,hcieventmask,hcisecfilter,hex2hcd,hwdb,ibeacon,isotest,l2ping,l2test,mpris-proxy,nokfw,oobtest,rctest,rtlfw,scotest,seq2bseq,test-runner}
   _pick_ bluez-utils usr/bin/{bluetoothctl,btmon}
   _pick_ bluez-utils usr/share/man/man1/bluetoothctl*.1
   _pick_ bluez-utils usr/share/man/man1/{btattach,btmgmt,btmon,isotest,l2ping,rctest}.1
@@ -195,6 +195,6 @@ package_bluez-obex() {
 
   # make sure there are no files left to install
   rm fakeinstall/usr/lib/libbluetooth.a
-  rm fakeinstall/usr/share/man/man7/rfcomm.7
+  rm fakeinstall/usr/share/man/man7/rfcomm.7 fakeinstall/usr/share/man/man7/btsnoop.7
   find fakeinstall -depth -print0 | xargs -0 rmdir
 }
