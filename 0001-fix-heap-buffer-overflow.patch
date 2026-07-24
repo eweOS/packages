@@ -1,0 +1,121 @@
+From bbb85a157261e896a4964ff826674dd2035632c5 Mon Sep 17 00:00:00 2001
+From: Tobias Oetiker <tobi@oetiker.ch>
+Date: Tue, 26 May 2026 16:13:46 +0200
+Subject: [PATCH] Fix heap buffer overflow in checkUnusedValues() (alt. to
+ #1329)
+
+After upgrading to 1.10.0, @ppisar caught a 1-byte heap buffer overflow
+in rrd_graph_helper.c:checkUnusedValues() via glibc fortified strcat()
+SIGABRT in the RRD-Simple-1.44 test suite (PR #1329 has the full
+valgrind/gdb trace).
+
+Root cause: the function tracked `len` as the running buffer size but
+seeded it at 0 instead of 1, so the malloc/realloc never reserved
+room for the trailing NUL. Each iteration appended `key=value` with
+strncat() and then a separator with strcat(":")  the strcat NUL
+landed one byte past the allocation. After the loop, `res[len - 1] = 0`
+"stripped the final ':'" only because the under-sizing made `len - 1`
+coincidentally point at the colon rather than at the NUL  the bug and
+the strip were silently coupled.
+
+PR #1329 fixes the overflow with `len = 1`, but `res[len - 1] = 0`
+then no-ops on the already-NUL byte and the trailing `:` survives in
+the error message ("Unused Arguments \" ... CEST\\r:\"" as @ppisar
+reports). Same patch, exposed orphan line.
+
+Refactor the function instead of patching one number:
+- track `used = strlen(res)` explicitly
+- size the buffer to exactly `used + sep + kvlen + 1`
+- prepend `:` before all entries except the first, so the trailing
+  strip is gone
+- use memcpy at the known offset rather than strncat (O(n) per
+  iteration instead of O(n) walk-to-find-NUL)
+- preserve the realloc-OOM behaviour: return whatever was built
+
+The size calculation and the string content no longer have to agree by
+accident, so future readers don't have to reason about the coupling.
+
+Tested with a standalone driver under -fsanitize=address against the
+five cases the original loop handles (zero/one/many entries, mixed
+flagged/unflagged, and the timestamp-with-CR string from the bug
+report)  no overflow, no leak.
+
+The other failure @ppisar reported -- "Unused Arguments" appearing for
+a COMMENT containing a literal `\r` -- is a separate bug in
+COMMENT/scanargs handling, not addressed here.
+
+Reported and original fix attempt in PR #1329 by @ppisar
+
+Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
+---
+ CHANGES                |  9 ++++++++
+ src/rrd_graph_helper.c | 47 +++++++++++++++++++-----------------------
+ 2 files changed, 30 insertions(+), 26 deletions(-)
+
+diff --git a/src/rrd_graph_helper.c b/src/rrd_graph_helper.c
+index 987999d29..c78773005 100644
+--- a/src/rrd_graph_helper.c
++++ b/src/rrd_graph_helper.c
+@@ -120,39 +120,34 @@ char     *checkUnusedValues(
+     parsedargs_t *pa)
+ {
+     char     *res = NULL;
+-    size_t    len = 0;
++    size_t    used = 0;     /* current strlen(res) */
+ 
+     for (int i = 0; i < pa->kv_cnt; i++) {
+-        if (!pa->kv_args[i].flag) {
+-            const size_t kvlen = strlen(pa->kv_args[i].keyvalue);
++        if (pa->kv_args[i].flag)
++            continue;
+ 
+-            len += kvlen + 1;
++        const size_t kvlen = strlen(pa->kv_args[i].keyvalue);
++        const size_t sep   = res ? 1 : 0;             /* ':' before all but the first */
++        const size_t need  = used + sep + kvlen + 1;  /* + trailing NUL */
++        char        *t     = res ? (char *) realloc(res, need)
++                                 : (char *) malloc(need);
+ 
+-            /* alloc/realloc if necessary and set to 0 */
+-            if (res) {
+-                char     *t = (char *) realloc(res, len);
++        if (!t) {
++            return res;     /* keep what we have on OOM */
++        }
++        if (!res) {
++            *t = 0;         /* initialize on first allocation */
++        }
++        res = t;
+ 
+-                if (!t) {
+-                    return res;
+-                }
+-                res = t;
+-            } else {
+-                res = malloc(len);
+-                if (!res) {
+-                    return NULL;
+-                }
+-                *res = 0;
+-            }
+-            /* add key = value as originally given */
+-            strncat(res, pa->kv_args[i].keyvalue, kvlen);
+-            strcat(res, ":");
++        if (sep) {
++            res[used] = ':';
+         }
++        memcpy(res + used + sep, pa->kv_args[i].keyvalue, kvlen);
++        used += sep + kvlen;
++        res[used] = 0;
+     }
+-    /* if we got one, then strip the final : */
+-    if (res) {
+-        res[len - 1] = 0;
+-    }
+-    /* and return res */
++
+     return res;
+ }
+ 
+
+
