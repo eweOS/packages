@@ -1,0 +1,173 @@
+--- a/cmake/Findllvm.cmake
++++ b/cmake/Findllvm.cmake
+@@ -83,7 +83,7 @@
+       OUTPUT_STRIP_TRAILING_WHITESPACE)
+     string(REPLACE " " ";" LLVM_TARGETS_BUILT "${LLVM_TARGETS_BUILT_SPACES}")
+ 
+-    set(ZIG_LLVM_REQUIRED_TARGETS "AArch64;AMDGPU;ARM;AVR;BPF;Hexagon;Lanai;LoongArch;Mips;MSP430;NVPTX;PowerPC;RISCV;SPIRV;Sparc;SystemZ;VE;WebAssembly;X86;XCore")
++    set(ZIG_LLVM_REQUIRED_TARGETS "AArch64;AMDGPU;BPF;LoongArch;RISCV;SPIRV;WebAssembly;X86")
+ 
+     set(ZIG_LLVM_REQUIRED_TARGETS_ENABLED TRUE)
+     foreach(TARGET_NAME IN LISTS ZIG_LLVM_REQUIRED_TARGETS)
+--- a/src/codegen/llvm.zig
++++ b/src/codegen/llvm.zig
+@@ -4736,20 +4736,6 @@
+             bindings.LLVMInitializeAMDGPUAsmPrinter();
+             bindings.LLVMInitializeAMDGPUAsmParser();
+         },
+-        .thumb, .thumbeb, .arm, .armeb => {
+-            bindings.LLVMInitializeARMTarget();
+-            bindings.LLVMInitializeARMTargetInfo();
+-            bindings.LLVMInitializeARMTargetMC();
+-            bindings.LLVMInitializeARMAsmPrinter();
+-            bindings.LLVMInitializeARMAsmParser();
+-        },
+-        .avr => {
+-            bindings.LLVMInitializeAVRTarget();
+-            bindings.LLVMInitializeAVRTargetInfo();
+-            bindings.LLVMInitializeAVRTargetMC();
+-            bindings.LLVMInitializeAVRAsmPrinter();
+-            bindings.LLVMInitializeAVRAsmParser();
+-        },
+         .bpfel, .bpfeb => {
+             bindings.LLVMInitializeBPFTarget();
+             bindings.LLVMInitializeBPFTargetInfo();
+@@ -4757,48 +4743,6 @@
+             bindings.LLVMInitializeBPFAsmPrinter();
+             bindings.LLVMInitializeBPFAsmParser();
+         },
+-        .hexagon => {
+-            bindings.LLVMInitializeHexagonTarget();
+-            bindings.LLVMInitializeHexagonTargetInfo();
+-            bindings.LLVMInitializeHexagonTargetMC();
+-            bindings.LLVMInitializeHexagonAsmPrinter();
+-            bindings.LLVMInitializeHexagonAsmParser();
+-        },
+-        .lanai => {
+-            bindings.LLVMInitializeLanaiTarget();
+-            bindings.LLVMInitializeLanaiTargetInfo();
+-            bindings.LLVMInitializeLanaiTargetMC();
+-            bindings.LLVMInitializeLanaiAsmPrinter();
+-            bindings.LLVMInitializeLanaiAsmParser();
+-        },
+-        .mips, .mipsel, .mips64, .mips64el => {
+-            bindings.LLVMInitializeMipsTarget();
+-            bindings.LLVMInitializeMipsTargetInfo();
+-            bindings.LLVMInitializeMipsTargetMC();
+-            bindings.LLVMInitializeMipsAsmPrinter();
+-            bindings.LLVMInitializeMipsAsmParser();
+-        },
+-        .msp430 => {
+-            bindings.LLVMInitializeMSP430Target();
+-            bindings.LLVMInitializeMSP430TargetInfo();
+-            bindings.LLVMInitializeMSP430TargetMC();
+-            bindings.LLVMInitializeMSP430AsmPrinter();
+-            bindings.LLVMInitializeMSP430AsmParser();
+-        },
+-        .nvptx, .nvptx64 => {
+-            bindings.LLVMInitializeNVPTXTarget();
+-            bindings.LLVMInitializeNVPTXTargetInfo();
+-            bindings.LLVMInitializeNVPTXTargetMC();
+-            bindings.LLVMInitializeNVPTXAsmPrinter();
+-            // There is no LLVMInitializeNVPTXAsmParser function available.
+-        },
+-        .powerpc, .powerpcle, .powerpc64, .powerpc64le => {
+-            bindings.LLVMInitializePowerPCTarget();
+-            bindings.LLVMInitializePowerPCTargetInfo();
+-            bindings.LLVMInitializePowerPCTargetMC();
+-            bindings.LLVMInitializePowerPCAsmPrinter();
+-            bindings.LLVMInitializePowerPCAsmParser();
+-        },
+         .riscv32, .riscv32be, .riscv64, .riscv64be => {
+             bindings.LLVMInitializeRISCVTarget();
+             bindings.LLVMInitializeRISCVTargetInfo();
+@@ -4806,20 +4750,6 @@
+             bindings.LLVMInitializeRISCVAsmPrinter();
+             bindings.LLVMInitializeRISCVAsmParser();
+         },
+-        .sparc, .sparc64 => {
+-            bindings.LLVMInitializeSparcTarget();
+-            bindings.LLVMInitializeSparcTargetInfo();
+-            bindings.LLVMInitializeSparcTargetMC();
+-            bindings.LLVMInitializeSparcAsmPrinter();
+-            bindings.LLVMInitializeSparcAsmParser();
+-        },
+-        .s390x => {
+-            bindings.LLVMInitializeSystemZTarget();
+-            bindings.LLVMInitializeSystemZTargetInfo();
+-            bindings.LLVMInitializeSystemZTargetMC();
+-            bindings.LLVMInitializeSystemZAsmPrinter();
+-            bindings.LLVMInitializeSystemZAsmParser();
+-        },
+         .wasm32, .wasm64 => {
+             bindings.LLVMInitializeWebAssemblyTarget();
+             bindings.LLVMInitializeWebAssemblyTargetInfo();
+@@ -4843,13 +4773,6 @@
+                 bindings.LLVMInitializeXtensaAsmParser();
+             }
+         },
+-        .xcore => {
+-            bindings.LLVMInitializeXCoreTarget();
+-            bindings.LLVMInitializeXCoreTargetInfo();
+-            bindings.LLVMInitializeXCoreTargetMC();
+-            bindings.LLVMInitializeXCoreAsmPrinter();
+-            // There is no LLVMInitializeXCoreAsmParser function.
+-        },
+         .m68k => {
+             if (build_options.llvm_has_m68k) {
+                 bindings.LLVMInitializeM68kTarget();
+@@ -4868,13 +4791,6 @@
+                 bindings.LLVMInitializeCSKYAsmParser();
+             }
+         },
+-        .ve => {
+-            bindings.LLVMInitializeVETarget();
+-            bindings.LLVMInitializeVETargetInfo();
+-            bindings.LLVMInitializeVETargetMC();
+-            bindings.LLVMInitializeVEAsmPrinter();
+-            bindings.LLVMInitializeVEAsmParser();
+-        },
+         .arc => {
+             if (build_options.llvm_has_arc) {
+                 bindings.LLVMInitializeARCTarget();
+@@ -4903,17 +4819,40 @@
+         // LLVM does does not have a backend for these.
+         .alpha,
+         .arceb,
++        .arm,
++        .armeb,
++        .avr,
++        .hexagon,
+         .hppa,
+         .hppa64,
+         .kalimba,
+         .kvx,
++        .lanai,
+         .microblaze,
+         .microblazeel,
++        .mips,
++        .mipsel,
++        .mips64,
++        .mips64el,
++        .msp430,
++        .nvptx,
++        .nvptx64,
+         .or1k,
++        .powerpc,
++        .powerpcle,
++        .powerpc64,
++        .powerpc64le,
+         .propeller,
++        .s390x,
+         .sh,
+         .sheb,
++        .sparc,
++        .sparc64,
++        .thumb,
++        .thumbeb,
++        .ve,
+         .x86_16,
++        .xcore,
+         .xtensaeb,
+         => unreachable,
+     }
