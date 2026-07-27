@@ -1,0 +1,37 @@
+From ab4df39dcddf84429060d47f63570ca5704104d4 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Tue, 3 Jun 2025 06:59:05 -0700
+Subject: mkfs: link using libf2fs.la
+
+With slibtool the build will fail with 'cannot find -lf2fs'.
+
+To fix this it is better to use the canonical method of linking internal
+dependencies which is to use the generated .la files where the libtool
+implementation will know what to do with it.
+
+Gentoo-Issue: https://bugs.gentoo.org/929070
+Signed-off-by: orbea <orbea@riseup.net>
+Reviewed-by: Chao Yu <chao@kernel.org>
+Signed-off-by: Jaegeuk Kim <jaegeuk@kernel.org>
+---
+ mkfs/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/mkfs/Makefile.am b/mkfs/Makefile.am
+index fb7bce8..d2bb60e 100644
+--- a/mkfs/Makefile.am
++++ b/mkfs/Makefile.am
+@@ -11,8 +11,8 @@ mkfs_f2fs_LDADD = ${libuuid_LIBS} ${libblkid_LIBS} $(top_builddir)/lib/libf2fs.l
+ lib_LTLIBRARIES = libf2fs_format.la
+ libf2fs_format_la_SOURCES = f2fs_format_main.c f2fs_format.c f2fs_format_utils.c
+ libf2fs_format_la_CFLAGS = -DWITH_BLKDISCARD -D_FILE_OFFSET_BITS=64
+-libf2fs_format_la_LDFLAGS = ${libblkid_LIBS} ${libuuid_LIBS} -L$(top_builddir)/lib -lf2fs \
+-	-version-info $(FMT_CURRENT):$(FMT_REVISION):$(FMT_AGE)
++libf2fs_format_la_LIBADD = ${libblkid_LIBS} ${libuuid_LIBS} $(top_builddir)/lib/libf2fs.la
++libf2fs_format_la_LDFLAGS = -version-info $(FMT_CURRENT):$(FMT_REVISION):$(FMT_AGE)
+ 
+ install-exec-hook:
+ 	if test -n "$(root_libdir)" -a "$(libdir)" != "$(root_libdir)" -a \
+-- 
+cgit 1.3-korg
+
