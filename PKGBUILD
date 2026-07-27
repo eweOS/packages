@@ -2,7 +2,7 @@
 
 pkgname=mold
 pkgver=2.41.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A Modern Linker'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/rui314/mold'
@@ -41,4 +41,7 @@ package()
 {
   DESTDIR="$pkgdir" cmake --install build
   ln -s mold "${pkgdir}/usr/bin/ld"
+  install -d "${pkgdir}/usr/share/licenses"
+  mv "${pkgdir}/usr/share/doc/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+  rm -r "${pkgdir}/usr/share/doc"
 }
