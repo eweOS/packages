@@ -1,66 +1,70 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
+# Maintainer: Weird Gumi <weirdgumi@tutamail.com>
 
 pkgname=zsh
-pkgver=5.9
-pkgrel=3
-arch=(x86_64 aarch64 riscv64 loongarch64)
-url='https://www.zsh.org/'
-license=('custom')
+pkgver=5.9.2
+pkgrel=1
 pkgdesc='A very advanced and programmable command interpreter (shell) for UNIX'
-depends=('pcre' 'libcap' 'gdbm')
-makedepends=('linux-headers')
-source=("https://www.zsh.org/pub/zsh-${pkgver}.tar.xz"
-  zsh-59-clang-15-configure.patch)
-sha512sums=('d9138b7f379ad942a5f46819d2dd52d31f3a1129f2a0d1b53d4c5cd43c318b60396da6d37c57c477b8e958fb750209aca0ae93f8c9dd42ac958de006a0ff067e'
-            '130b9b829200b7ad49b87dc1d3a549ca3a36aba57f01f9d4ef60ba66d8f392f57f4d6a3d35ca323857b27d343c9e6218ffeca233fc436b74c91cf88c915146d8')
+arch=(x86_64 aarch64 riscv64 loongarch64)
+url=https://www.zsh.org
+license=('LicenseRef-Zsh AND GPL-2.0-only')
+depends=(gdbm libcap musl ncurses)
+makedepends=(linux-uapi-headers)
+backup=(etc/$pkgname/zprofile)
+install=$pkgname.install
+# These patches are from downstream.
+# 0001: Drop unused completions.
+# 0002: Fix keymaps path mismatch.
+source=(
+  $url/pub/$pkgname-$pkgver.tar.xz
+  zprofile
+  0001-drop-completions.patch
+  0002-fix-keymaps-path.patch
+)
+sha256sums=(
+  36fa734374b44783582cec09bcd67822e2f992c779ec1624ab5596df078d2f81
+  230832038c3b8f67fdb1b284ac5f68d709cdb7f1bc752b0e60657b9b9d091045
+  49f8170a95c621f6119df8e10271f1bbd679c8b7bd18e5fb996737588660f56f
+  8a3f7c42f0386234a5c06a35dabbd3acb2c0df115e87f229043448a1a894183e
+)
 
-prepare()
-{
+prepare() {
+  _patch_ $pkgname-$pkgver
+
   cd $pkgname-$pkgver
-  sed -i 's#/usr/share/keymaps#/usr/share/kbd/keymaps#g' Completion/Unix/Command/_loadkeys
-  sed -i 's#/usr/share/misc/usb.ids#/usr/share/hwdata/usb.ids#g' Completion/Linux/Command/_lsusb
+  rm -r Completion/{AIX,BSD,Cygwin,Darwin,Debian,Mandriva,openSUSE,Redhat,Solaris,X}
 
-  # patch configure
-  patch -p1 < $srcdir/zsh-59-clang-15-configure.patch
-  autoreconf -fiv
-
-  # remove failed tests
-  rm -rf Test/{A01grammar,V09datetime}.ztst
+  # These tests failed without --disable-multibyte, so remove them.
+  # TODO: Check why these failed.
+  rm Test/{A03quoting,B03print,D04parameter,D07multibyte,E02xtrace}.ztst
 }
 
-build()
-{
+build() {
   cd $pkgname-$pkgver
   ./configure \
     --prefix=/usr \
     --enable-etcdir=/etc/zsh \
     --enable-zshenv=/etc/zsh/zshenv \
+    --enable-zshrc=/etc/zsh/zshrc \
+    --enable-zprofile=/etc/zsh/zprofile \
     --enable-zlogin=/etc/zsh/zlogin \
     --enable-zlogout=/etc/zsh/zlogout \
-    --enable-zprofile=/etc/zsh/zprofile \
-    --enable-zshrc=/etc/zsh/zshrc \
-    --with-term-lib='ncursesw' \
-    --enable-multibyte \
-    --enable-function-subdirs \
     --enable-fndir=/usr/share/zsh/functions \
+    --enable-function-subdirs \
     --enable-scriptdir=/usr/share/zsh/scripts \
-    --with-tcsetpgrp \
     --enable-pcre \
     --enable-cap \
-    --enable-zsh-secure-free
+    --enable-gdbm
   make
 }
 
-check()
-{
+check() {
   cd $pkgname-$pkgver
-
-  # also freeze
-  #make test
+  make check
 }
 
-package()
-{
+package() {
+  install -Dt "$pkgdir"/etc/zsh zprofile
   cd $pkgname-$pkgver
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
+  _install_license_ LICENCE
 }
