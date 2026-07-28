@@ -7,8 +7,8 @@ pkgdesc='A Modern Linker'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/rui314/mold'
 license=('MIT')
-depends=('musl' 'mimalloc' 'openssl' 'zlib' 'cmake' 'tbb')
-makedepends=('python' 'linux-headers')
+depends=('musl' 'mimalloc' 'openssl' 'zlib' 'tbb')
+makedepends=('cmake' 'python' 'linux-headers')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('0a61abac85d818437b425df856822e9d6e9982baeae5a93bcb02fe6c0060c61a')
 
