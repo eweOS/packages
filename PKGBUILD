@@ -44,5 +44,7 @@ check()
 package()
 {
   DESTDIR="$pkgdir" cmake --install build
-  install -vDm 644 $pkgname-$pkgver/{AUTHORS,README.md} -t "$pkgdir/usr/share/doc/$pkgname"
+  cd $pkgname-$pkgver
+  install -vDm 644 AUTHORS README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  _install_license_ COPYING
 }
