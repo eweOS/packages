@@ -2,7 +2,7 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=libgit2
-pkgver=1.9.4
+pkgver=1.9.6
 pkgrel=1
 epoch=1
 pkgdesc="A linkable library for Git"
@@ -15,7 +15,7 @@ provides=(libgit2.so)
 source=(
   $pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz
 )
-sha512sums=('85036ade3aca33c5283605ae9de21a7948ec5952bc8cd468aa024ca873851a56ab0ebe62f95c0da109df9163875e9687a377d3df69728d434cc258b3f845ef0c')
+sha512sums=('33a4bede42b602d968fd3d2d7e2863e7f64cd23ca147cb2327843afa9a6aa6008c2a8de876ea15813ddcbd247ae8ab23e6528c624554d706ededc0ca20878446')
 
 build()
 {
@@ -38,7 +38,7 @@ check()
   # NOTE: disable tests requiring the internet and relying on non-existent resources
   ctest --test-dir build \
     --output-on-failure \
-    -E "invasive|offline|online|util"
+    -E "auth_clone|online|proxy|ssh|"
 }
 
 package()
