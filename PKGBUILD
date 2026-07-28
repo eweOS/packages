@@ -9,7 +9,7 @@ pkgdesc="A linkable library for Git"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://libgit2.org"
 license=('GPL-2.0-only WITH GCC-exception-2.0')
-depends=(musl http-parser openssl pcre zlib)
+depends=(llhttp musl openssl pcre2 zlib)
 makedepends=(cmake libssh2 python)
 provides=(libgit2.so)
 source=(
@@ -22,9 +22,9 @@ build()
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DCMAKE_BUILD_TYPE=None \
-    -DUSE_HTTP_PARSER=system \
+    -DUSE_HTTP_PARSER=llhttp \
     -DUSE_HTTPS=OpenSSL \
-    -DREGEX_BACKEND=pcre \
+    -DREGEX_BACKEND=pcre2 \
     -DUSE_SSH=ON \
     -DTHREADSAFE=ON \
     -Wno-dev \
