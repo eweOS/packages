@@ -7,7 +7,7 @@ pkgdesc='High productivity build system'
 url='https://mesonbuild.com/'
 arch=('any')
 license=('Apache-2.0')
-depends=('python' 'ninja' 'python-tqdm' 'python-typing_extensions')
+depends=('bash' 'python' 'ninja' 'python-tqdm' 'python-typing_extensions')
 makedepends=(
   python-build
   python-installer
