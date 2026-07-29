@@ -24,13 +24,13 @@ sha512sums=('2be37c49c99b7882910956f513c251bd588e5222e2a69c5ee81a7f272bf9cbbb224
 build()
 {
   cd ${pkgname}-${pkgver}
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package()
 {
   cd ${pkgname}-${pkgver}
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -d "${pkgdir}/usr/share/vim/vimfiles"
   cp -rt "${pkgdir}/usr/share/vim/vimfiles" data/syntax-highlighting/vim/*/
