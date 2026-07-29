@@ -3,7 +3,7 @@
 pkgname=lm_sensors
 pkgver=3.6.2
 _pkgver=${pkgver//./-}
-pkgrel=2
+pkgrel=3
 pkgdesc="User space tools for general SMBus access and hardware monitoring"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/hramrach/lm-sensors"
