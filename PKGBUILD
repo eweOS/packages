@@ -11,7 +11,7 @@ pkgbase=webkit2gtk
 pkgname=(webkit2gtk-4.1 webkit2gtk-6.0
 	 webkit2gtk-4.1-docs webkit2gtk-6.0-docs)
 pkgver=2.53.2
-pkgrel=1
+pkgrel=2
 pkgdesc='GTK port of the WebKit rendering engine'
 url='https://webkitgtk.org/releases/webkitgtk-2.53.2.tar.xz'
 arch=(x86_64 aarch64 riscv64 loongarch64)
