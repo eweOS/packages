@@ -2,7 +2,7 @@
 
 pkgname=sdl2-image
 pkgver=2.8.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple library to load images of various formats as SDL surfaces (Version 2)"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/libsdl-org/SDL_image"
