@@ -2,11 +2,11 @@
 
 pkgname=meson
 pkgver=1.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc='High productivity build system'
 url='https://mesonbuild.com/'
 arch=('any')
-license=('Apache')
+license=('Apache-2.0')
 depends=('python' 'ninja' 'python-tqdm' 'python-typing_extensions')
 makedepends=(
   python-build
@@ -37,6 +37,8 @@ package()
 
   install -Dt "${pkgdir}/usr/share/bash-completion/completions" -m644 data/shell-completions/bash/*
   install -Dt "${pkgdir}/usr/share/zsh/site-functions" -m644 data/shell-completions/zsh/*
+
+  _install_license_ COPYING
 
   # eweOS packaging helper
   install -D ../ewe-meson -t "${pkgdir}/usr/bin"
