@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=zxing-cpp
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc='A C++ library to decode QRCode'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ checkdepends=(gtest)
 source=(
   https://github.com/nu-book/zxing-cpp/archive/v$pkgver/$pkgname-$pkgver.tar.gz
 )
-sha256sums=('3fb23a3a82788fd176f0109ddbaa76c6a53e78fd19fc93554eeb6b9e16ae6f90')
+sha256sums=('7286b1e6ade66fe82b7c8208b4595deeb55d6486b410834fdc65702f46650542')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
