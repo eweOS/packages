@@ -6,8 +6,8 @@ pkgname=(
   vte3
   vte4
 )
-pkgver=0.84.0
-pkgrel=4
+pkgver=0.84.1
+pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget"
 url="https://wiki.gnome.org/Apps/Terminal/VTE"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -49,7 +49,7 @@ source=(
   fix-W_EXITCODE.patch
   no-gnutls-warning.patch
 )
-sha256sums=('0ce57606bb5819c627a303434f093d3ac27785310a2922c29f92eedc9a4d296f'
+sha256sums=('4882beaad1c30119e6b9c36b3ae3926e2fed23aad21a69d34a74bfcd5c4b8201'
             '7dbcba99d14b7c3c67a594beb62dfcd993cc895d5e1ac788187fc4be8a37f898'
             '0a53c59a27c7e5d9170a83da2f1db1df73b69355ab9e8557a4404b13fc7900b0')
 
