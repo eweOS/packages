@@ -9,7 +9,7 @@ pkgname=(
     ttf-noto-sans ttf-noto-serif ttf-noto-sans-mono
     ttf-noto-sans-variable ttf-noto-serif-variable ttf-noto-sans-mono-variable
 )
-pkgver=2026.07.01
+pkgver=2026.08.01
 pkgrel=1
 pkgdesc='Google Noto TTF fonts'
 arch=(any)
@@ -20,7 +20,7 @@ options=(!strip)
 source=(https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-$pkgver.tar.gz
         66-noto-sans.conf 66-noto-serif.conf 66-noto-mono.conf
         46-noto-sans.conf 46-noto-serif.conf 46-noto-mono.conf)
-sha256sums=('b614152147d67bfceaaf3409600353e582a477fa64bef4da6a8ca2e370aaf531'
+sha256sums=('ef269bd42da0cd1c602c69c9edd81c655662babf495f69cd66d01842a1b7bbb2'
             '52684bebf6447be22618d2a04ff37623ec92f9d8ccf6b6f972e5bcbcfee90d69'
             '4459944b63dc083107280f5d7375c69746bf80a09416a4a4909a100e58e5a33a'
             '4526289f59654e2a81dc734669a1ae4e416f9a56d0896ec3741c6bf065baf8a8'
