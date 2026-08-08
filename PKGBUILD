@@ -2,7 +2,7 @@
 
 pkgname=wmenu
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='dmenu substitution on Wayland'
 url='https://codeberg.org/adnano/wmenu'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(cairo pango wayland wayland-protocols libxkbcommon)
 makedepends=(meson samurai scdoc)
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('4e6aea3f8975fec720f6eb87aad620d5297a8a5a137615e4cf047e95d2b9d308')
+sha256sums=('b1b593a80310085a90bd349d458ffbcfacf875d74468ae4428bdf5692a671ef9')
 
 build () {
 	ewe-meson wmenu build \
