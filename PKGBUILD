@@ -21,6 +21,6 @@ build () {
 # no check
 
 package() {
-	meson install -C build --destdir $pkgdir
+	meson install -C build --destdir "$pkgdir"
 	_install_license_ $pkgname/LICENSE
 }
