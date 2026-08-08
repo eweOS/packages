@@ -22,4 +22,5 @@ build () {
 
 package() {
 	meson install -C build --destdir $pkgdir
+	_install_license_ $pkgname/LICENSE
 }
