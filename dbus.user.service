@@ -1,3 +1,4 @@
 type               = process
 command            = /usr/lib/dinit/exec/user/dbus-user-session --print-address=4
 ready-notification = pipefd:4
+before:              login.target
