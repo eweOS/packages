@@ -2,7 +2,7 @@
 
 pkgname=sdl3
 pkgver=3.4.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3)"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://www.libsdl.org"
@@ -10,7 +10,7 @@ license=('Zlib')
 depends=('mesa')
 makedepends=('alsa-lib' 'mesa' 'libpulse' 'wayland' 'libxkbcommon'
              'wayland-protocols' 'meson' 'ninja' 'pipewire'
-             'linux-headers' 'libdecor' 'vulkan-headers')
+             'linux-headers' 'libdecor' 'vulkan-headers' 'cmake')
 optdepends=(
   'alsa-lib: ALSA audio driver'
   'libpulse: PulseAudio audio driver'
