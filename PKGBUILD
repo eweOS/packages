@@ -2,7 +2,7 @@
 
 pkgname=meson
 pkgver=1.11.2
-pkgrel=2
+pkgrel=3
 pkgdesc='High productivity build system'
 url='https://mesonbuild.com/'
 arch=('any')
@@ -19,7 +19,7 @@ source=(
   ewe-meson
 )
 sha512sums=('2be37c49c99b7882910956f513c251bd588e5222e2a69c5ee81a7f272bf9cbbb22402c9bc152ebd20ce81a522b4f60a68e39d755e8cd8fc11de5500e37436278'
-            '09d5c1a8033caa24c67f6c2dffc275120e729a5381e963f0ad90f9f6392a24f5d30dfc4fef514f40147bcb23d01f87f813147fd73c3aa200830a0f4bcbed4fc5')
+            'e03eb255d1cc59a012042a56feae28f5113643eb2ba11acbe83c264de81d3a7d2b967af1aee66e129be127f6e3e9016f2b8953195c62d225283461cebdd6102e')
 
 build()
 {
