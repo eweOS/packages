@@ -2,7 +2,7 @@
 
 pkgname=libudev
 _pkgname=libudev-zero
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 so_ver=1.6.3
 pkgdesc="Daemonless replacement for libudev "
@@ -15,7 +15,7 @@ source=(
   "git+$url.git#tag=$pkgver"
   sound-initialized.patch
 )
-sha256sums=('d3548c35824b8d97914682d2812852319114e3e2a1f3b241ef3ebaee8ac18204'
+sha256sums=('36e1244d566451f96bfce7b04e9bc64bffe9172e2472ba41ba70324e82641166'
             '934173ce6bb325d155116e2d023aea9cf004ae021b04d63ddde1e97ad1d61986')
 
 prepare() {
