@@ -1,4 +1,4 @@
-# Maintainer: Yao Zi <ziyao@disroot.org>
+# Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgbase=qemu
 pkgname=(qemu-common
@@ -15,7 +15,7 @@ pkgname=(qemu-common
 	 qemu-tests
 	 qemu-guest-agent
 	) # TODO: split firmwares
-pkgver=11.0.3
+pkgver=11.1.0
 pkgrel=1
 pkgdesc='A generic and open source machine emulator and virtualizer.'
 url='https://www.qemu.org/'
@@ -31,7 +31,7 @@ makedepends=(alsa-lib bzip2 cairo curl dtc fuse3 gtk3 glib ncurses pipewire
 qemu_archs=(aarch64 alpha arm i386 loongarch64 m68k mips mips64 mips64el
 	    mipsel ppc ppc64 riscv32 riscv64 s390x sparc sparc64 x86_64)
 source=("https://download.qemu.org/qemu-$pkgver.tar.xz")
-sha256sums=('da5fcffc32762820568b828ed430a728864d34d50b6d2f30358597760cbb0523')
+sha256sums=('6ee1d1a61f68212476b27108c26da5f449dc09b626d42f8279ba0dc2e08fa858')
 
 system_targets=""
 for t in ${qemu_archs[*]}; do
@@ -95,7 +95,6 @@ build () {
 		--enable-gcrypt
 		--enable-gettext
 		--enable-gio
-		--disable-glusterfs
 		--disable-gnutls
 		--enable-gtk
 		--enable-guest-agent
