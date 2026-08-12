@@ -3,8 +3,8 @@
 pkgbase=lua-lyaml
 pkgname=(lua51-lyaml lua54-lyaml)
 _lvers=(5.1 5.4)
-pkgver=6.2.8
-pkgrel=2
+pkgver=6.2.9
+pkgrel=1
 pkgdesc='LibYAML binding for Lua'
 url='http://gvvaughan.github.io/lyaml'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(musl libyaml)
 makedepends=(lua51 lua54 luarocks51 luarocks54)
 source=("https://github.com/gvvaughan/lyaml/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c6169f516ff2a8da96d55aa3a087e718edf7bceb2f1cae2def4e65cd2b41ac2d')
+sha256sums=('515e81d21903c1e428b017f2fe9dffa4e29ae9881b0d49ddbe6ba625e3164fe3')
 
 build() {
 	cd lyaml-"$pkgver"
