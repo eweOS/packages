@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=mercurial
-pkgver=7.2.3
+pkgver=7.2.4
 pkgrel=1
 pkgdesc='A scalable distributed SCM tool'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -18,7 +18,7 @@ makedepends=(
 )
 backup=(etc/mercurial/hgrc)
 source=(https://www.mercurial-scm.org/release/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('bc45397354d24e40fc59708995c1bbaaa04b8ac2fbd9ac5fcb94716c6d94a55071f4b586e5fc3295fb7b59906d96bbc8072d3ec8df811d95a5cc946e8b554ec1')
+sha512sums=('3875fba0dc52a80ff3dfc299be14c9e5976f7e836829d43021d08d76fac6c3971b849ead54fc0fa3a28df7181fe5edfa41e50fb93acf10bbeb4b9ba8354c6434')
 
 build() {
   cd $pkgname-$pkgver
