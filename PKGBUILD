@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=perl
-pkgver=5.42.2
+pkgver=5.44.0
 _baseversion="${pkgver%.*}"
 pkgrel=1
 pkgdesc="A highly capable, feature-rich programming language"
@@ -11,7 +11,7 @@ license=('GPL' 'PerlArtistic')
 depends=('musl' 'libxcrypt')
 source=("https://www.cpan.org/src/5.0/perl-${pkgver}.tar.xz")
 options=('makeflags' '!purge' 'emptydirs' '!lto')
-sha256sums=('0a585eeb9e363c0f80482ddb3571625250c2c86aeb408853e8ea50805cfb14bb')
+sha256sums=('505cf43912e9480495c344c70260452e32aa2a73c546a026b3f100053b23ce91')
 
 build()
 {
