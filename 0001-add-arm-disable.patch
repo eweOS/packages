@@ -1,0 +1,23 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -130,6 +130,7 @@
+         C3_LLD_DIR
+         C3_ENABLE_CLANGD_LSP
+         LLVM_CRT_LIBRARY_DIR
++        C3_ARM_DISABLE
+         C3_AVR_DISABLE
+ )
+ 
+@@ -573,6 +574,12 @@
+         ${CMAKE_BINARY_DIR}/git_hash.h
+         ${CMAKE_BINARY_DIR}/docs_template.h
+ )
++
++# Building C3 with llvm toolchains that don't have ARM Support
++if(C3_ARM_DISABLE)
++    message(STATUS "ARM support is disabled")
++	target_compile_definitions(c3c PRIVATE ARM_DISABLE)
++endif()
+ 
+ # Building C3 with llvm toolchains that don't have AVR Support
+ if(C3_AVR_DISABLE)
