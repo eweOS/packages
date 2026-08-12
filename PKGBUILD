@@ -2,8 +2,8 @@
 
 pkgbase="XML-Parser"
 pkgname=perl-xml-parser
-pkgver=2.47
-pkgrel=7
+pkgver=2.59
+pkgrel=1
 pkgdesc="Expat-based XML parser module for perl"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL' 'PerlArtistic')
@@ -11,7 +11,7 @@ url="https://search.cpan.org/dist/$pkgbase/"
 depends=('perl' 'expat')
 options=('!emptydirs')
 source=("https://search.cpan.org/CPAN/authors/id/T/TO/TODDR/$pkgbase-${pkgver}.tar.gz")
-sha512sums=('3f9de53341bc85b87c88ad31e04b13f1f95516eec0d7e5fd1c1a3b3e66a91ca3d4de7c649978599219a4d4372f6218764ab5e1805b7155b5ca200006e1b0908f')
+sha512sums=('395ad365ae6209827737448711d5d5f61daf013380d196d26a5c7a88c0aa353baa09c775e6086622b491e515824b957022f4c119264559127fdb97f4cbe22381')
 
 build() {
   cd $pkgbase-$pkgver
