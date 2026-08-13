@@ -2,12 +2,12 @@
 
 pkgname=sway
 pkgver=1.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://swaywm.org/'
 license=(MIT)
-depends=('cairo' 'json-c' 'libinput' 'seatd' 'libxkbcommon' 'mesa' 'pango'
+depends=('cairo' 'json-c' 'libinput' 'seatd' 'libxkbcommon' 'pango'
 	 'pcre2' 'pixman' 'wayland' 'wlroots0.20' 'gdk-pixbuf')
 makedepends=(linux-headers meson wayland-protocols scdoc wlroots0.20-devel)
 backup=('etc/sway/config')
