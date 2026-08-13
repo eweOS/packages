@@ -62,4 +62,7 @@ check() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
+
+	cd yosys
+	_install_license_ COPYING
 }
