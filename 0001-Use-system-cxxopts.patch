@@ -1,5 +1,17 @@
+diff --git a/kernel/CMakeLists.txt b/kernel/CMakeLists.txt
+index 4cd76b4ffcfa..24d86997ba2b 100644
+--- a/kernel/CMakeLists.txt
++++ b/kernel/CMakeLists.txt
+@@ -91,7 +91,6 @@ yosys_core(kernel
+ 	INCLUDE_DIRS
+ 		${pybind11_INCLUDE_DIR}
+ 	LIBRARIES
+-		cxxopts
+ 		$<${YOSYS_ENABLE_PLUGINS}:${Dlfcn_LIBRARIES}>
+ 		$<${YOSYS_ENABLE_ZLIB}:PkgConfig::zlib>
+ 		$<${YOSYS_ENABLE_READLINE}:PkgConfig::readline>
 diff --git a/kernel/driver.cc b/kernel/driver.cc
-index xxx..yyy 100644
+index 2a4ad1295996..218459b03f2a 100644
 --- a/kernel/driver.cc
 +++ b/kernel/driver.cc
 @@ -21,7 +21,7 @@
@@ -9,5 +21,15 @@ index xxx..yyy 100644
 -#include "libs/cxxopts/include/cxxopts.hpp"
 +#include "cxxopts.hpp"
  #include <iostream>
+ #include <chrono>
  
- #ifdef YOSYS_ENABLE_READLINE
+diff --git a/libs/CMakeLists.txt b/libs/CMakeLists.txt
+index 076390e23831..865a9b299aca 100644
+--- a/libs/CMakeLists.txt
++++ b/libs/CMakeLists.txt
+@@ -1,5 +1,4 @@
+ add_subdirectory(bigint)
+-add_subdirectory(cxxopts)
+ add_subdirectory(dlfcn-win32)
+ add_subdirectory(ezsat)
+ add_subdirectory(fst)
