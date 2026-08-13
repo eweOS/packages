@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg
 pkgver=8.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://ffmpeg.org/
@@ -32,7 +32,6 @@ depends=(
   librsvg
   libwebp
   libvpx
-  mesa
   openjpeg2
   openssl
   rav1e
@@ -47,7 +46,6 @@ depends=(
 makedepends=(
   clang
   git
-  mesa
   linux-headers
   vulkan-headers
   nasm
