@@ -2,7 +2,7 @@
 
 pkgname=glibmm-gtk3
 _pkgname=glibmm
-pkgver=2.66.9
+pkgver=2.66.10
 pkgrel=1
 pkgdesc="C++ bindings for glib"
 url="https://www.gtkmm.org/"
@@ -12,7 +12,7 @@ depends=(pango glib cairomm libsigc++2)
 makedepends=(meson mm-common perl-xml-parser)
 options=(!emptydirs)
 source=("https://gitlab.gnome.org/GNOME/glibmm/-/archive/$pkgver/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('e12b045d145222d09b7fb6d896d0ebbc0c14f742a1a14cee739f250ab3c774b3')
+sha256sums=('6701e77f3241b2a712be0388fd2d6df2a0b75af671d2ff613b4808a9ade6e06d')
 
 build() {
   ewe-meson $_pkgname-$pkgver build \
