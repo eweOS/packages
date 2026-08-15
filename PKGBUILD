@@ -2,7 +2,7 @@
 
 pkgbase=doxygen
 pkgname=(doxygen doxywizard)
-pkgver=1.17.0
+pkgver=1.18.0
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc='Tool for generating documentation from annotated sources'
@@ -17,7 +17,7 @@ checkdepends=(perl python)
 #	between doxygen built from Git and released tarball.
 source=("https://github.com/doxygen/doxygen/archive/refs/tags/Release_$_pkgver.tar.gz"
 	0001-issue-12116-Test-suite-s-test-tagfile-fails.patch)
-sha256sums=('28199ea88989fc56e302c927ef979596fe9247dd231e767ba6edcdbaa49f78aa'
+sha256sums=('b32a3def78b0b75a2fd74ee6a63fb4a79cb6273fe31a570362e4e1871fa446da'
             '2516489dee825829aa25125aa759a4e72a3de6397818a174708068ddebd5abe3')
 
 prepare() {
