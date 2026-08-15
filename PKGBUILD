@@ -1,29 +1,18 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libcupsfilters
-pkgver=2.1.1
-pkgrel=9
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="OpenPrinting CUPS Filters - contains all the code of the filters of the former cups-filters package as library functions"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/OpenPrinting/libcupsfilters"
 license=('Apache')
-depends=('libcups' 'libexif' 'qpdf' 'ghostscript' 'poppler'
-         'libjpeg' 'libpng' 'libtiff' 'lcms2' 'fontconfig' 'dbus')
+depends=('libcups' 'libexif' 'qpdf' 'ghostscript' 'poppler' 'libjxl'
+         'libjpeg' 'libpng' 'libtiff' 'lcms2' 'fontconfig' 'dbus' 'pdfio')
 makedepends=('linux-headers')
 checkdepends=('ttf-dejavu')
-source=(
-  "https://github.com/OpenPrinting/libcupsfilters/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
-  c++11.patch
-)
-sha256sums=('6c303e36cfde05a6c88fb940c62b6a18e7cdbfb91f077733ebc98f104925ce36'
-            '535d1b97655de4339cf59a38260c5c2892728aede037e76f25710d4cfb96afdd')
-
-prepare() {
-  _patch_ "$pkgname-$pkgver"
-  cd "$pkgname-$pkgver"
-  # avoid duplicate mkdir
-  sed -i 's/-mkdir/-mkdir -p/' install-sh
-}
+source=("https://github.com/OpenPrinting/libcupsfilters/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
+sha256sums=('0a22b849d5068c4c86b20fbb4192d3faa3dabcc9ee844c8fd73710ed821d4860')
 
 build() {
   cd "$pkgname-$pkgver"
