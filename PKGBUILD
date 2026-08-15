@@ -2,7 +2,7 @@
 
 _pkgbase=elfutils
 pkgname=(libelf elfutils)
-pkgver=0.195
+pkgver=0.196
 pkgrel=1
 pkgdesc="libelf is a free ELF object file access library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ options=(staticlibs)
 # 0001: Should be upstreamed, define missing macros and functions for musl
 source=(https://sourceware.org/$_pkgbase/ftp/$pkgver/$_pkgbase-$pkgver.tar.bz2
 	0001-define-musl-missing-stuff.patch)
-sha256sums=('37629fdf7f1f3dc2818e138fca2b8094177d6c2d0f701d3bb650a561218dc026'
+sha256sums=('fd5cc6b77ad6773cac93cb3f415f9318ac3b3455eecf801f6b4a742c4f6c7209'
             'c92ade324270f3f34fe4978cd55dbfcdc867cf8421d23edc23c78414b5b1ebb3')
 prepare() {
   _patch_ $_pkgbase-$pkgver
