@@ -6,7 +6,7 @@ pkgrel=6
 pkgdesc="The GL Vendor-Neutral Dispatch library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gitlab.freedesktop.org/glvnd/libglvnd"
-license=('BSD')
+license=('MIT')
 makedepends=('python' 'meson')
 optdepends=('mesa: An open-source implementation of graphics and computation APIs')
 provides=('libgl' 'libegl' 'libgles')
@@ -35,4 +35,5 @@ build()
 package()
 {
   meson install -C build --destdir "$pkgdir"
+  sed -ne 325,348p $pkgname-v$pkgver/README.md | _install_license_ /dev/stdin
 }
