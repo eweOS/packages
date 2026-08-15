@@ -3,7 +3,7 @@
 
 pkgname=benchmark
 pkgver=1.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A microbenchmark support library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/google/benchmark"
@@ -23,6 +23,7 @@ build() {
   # a newer Clang.
   # Reference: https://github.com/google/benchmark/issues/1966
   cmake . \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG" \
     -DCMAKE_INSTALL_LIBDIR=lib \
@@ -40,6 +41,6 @@ check() {
 
 package() {
   cd $pkgname-$pkgver
-  cmake --install . --prefix "$pkgdir"/usr
+  DESTDIR="$pkgdir" cmake --install .
   _install_license_ LICENSE
 }
