@@ -2,7 +2,7 @@
 
 pkgname=android-tools
 pkgver=36.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Android platform tools'
 url='http://tools.android.com/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
