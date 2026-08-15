@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gpgme
-pkgver=2.0.1
-pkgrel=3
+pkgver=2.1.2
+pkgrel=1
 pkgdesc='A C wrapper library for GnuPG'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.gnupg.org/related_software/gpgme/'
@@ -12,7 +12,7 @@ makedepends=(
   'libgpg-error'
 )
 source=("https://www.gnupg.org/ftp/gcrypt/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('821ab0695c842eab51752a81980c92b0410c7eadd04103f791d5d2a526784966')
+sha256sums=('0687a95b299871c4141f507c0f740de6b429c9ac067d0fa4e062e3264df5fb77')
 
 build() {
   cd ${pkgname}-${pkgver}
