@@ -2,7 +2,7 @@
 
 pkgname=caddy
 pkgver=2.11.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast and extensible HTTP/1-2-3 webserver'
 url='https://caddyserver.com'
 arch=(x86_64 aarch64 riscv64 loongarch64)
