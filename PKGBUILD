@@ -22,7 +22,7 @@
 pkgname=vala
 _ver=0.56
 pkgver=$_ver.18
-pkgrel=6
+pkgrel=7
 pkgdesc='Compiler for Vala'
 url='https://vala.dev'
 arch=(x86_64 aarch64 riscv64 loongarch64)
