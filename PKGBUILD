@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=nodejs
-pkgver=26.2.0
-pkgrel=2
+pkgver=26.7.0
+pkgrel=1
 pkgdesc='JavaScript runtime'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://nodejs.org/'
@@ -17,7 +17,7 @@ optdepends=('npm: package manager')
 source=("https://nodejs.org/dist/v${pkgver}/node-v${pkgver}.tar.xz"
         "0001-no-libatomic.patch"
 	"0002-hwy-broken-rvv.patch")
-sha512sums=('dc7d41c864abea701f881624d5e7413e6ff6572cc1ad262bb7b67f6532a5add5b943f318193ada0644c8d8cd6f2503784adb1652912abc77938f40ff356360c6'
+sha512sums=('d7dd7bf0485369c29ad90740c404b647696efd79c6a59f6a3da0b72cdb2740a5855fd62a55985516b8649d9c3359ce4141840f6e6a93427eaa5c87a3cd93e9c9'
             '2c51251e303d64980deb8f00dfadf5928c31fb66ec2bbe94790868ffd6c7a4b2dba0584fe5bd53f70feb33b6a735a8e78dc7fa0d746645408e072eef3bed9d9f'
             'de07b0d9c3481036ee97a22941ff444fee86c78abbc26afef36f17508bb479ce3ab83ca160109fbf4f0b9b3266dcce30860873dc8ffbcac1a70e98d17638ca55')
 
@@ -33,6 +33,7 @@ build() {
     --prefix=/usr \
     --with-intl=system-icu \
     --without-npm \
+    --without-lief \
     --shared \
     --shared-openssl \
     --shared-zlib \
