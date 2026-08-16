@@ -2,8 +2,8 @@
 
 pkgname=python-arrow
 _pyname=${pkgname#*-}
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='A Python library that offers a sensible and human-friendly approach to creating, manipulating, formatting and converting dates, times and timestamps'
 url='https://arrow.readthedocs.io/en/latest/'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel
 checkdepends=(python-pytest python-pytest-cov python-pytest-mock python-pytz
 	      python-simplejson)
 source=("https://github.com/arrow-py/arrow/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('108c9d0339dbb06f6a255d1e8399a9bd88ec53ae6ede044b4ca7b3c563184a1b')
+sha256sums=('2288c5977236556f168e9b9d52ab5595d0b08d110566bf0276fff2e4f89bfbfd')
 
 build() {
 	cd "$_pyname-$pkgver"
