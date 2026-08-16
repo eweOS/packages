@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-cffi
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="Foreign Function Interface for Python calling C code"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url="https://cffi.readthedocs.org/"
@@ -12,7 +12,7 @@ optdepends=('python-setuptools: "limited api" version checking in cffi.setuptool
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 source=("https://github.com/python-cffi/cffi/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('a71b74e642e11eb50e9bb4ae0e7116bdb3c4a7c9622a3766d84506fa7994c02e09644b41b439b95ca99b0303e91891897cff38018d498eb087e0961f0ad4fb8b')
+sha512sums=('86af9771c4f8f0bfb129e63cb263dbaf2f32bb755e056fa04bc4cdd32eee4392634a866dd930263e6eeb011f81ee2bd90f9e6602adf016c80e124bdbfbb62c38')
 
 build() {
   cd cffi-$pkgver
