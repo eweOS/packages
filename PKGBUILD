@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pkgconf
-pkgver=2.5.1
-pkgrel=3
+pkgver=3.0.5
+pkgrel=1
 pkgdesc='Package compiler and linker metadata toolkit'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/pkgconf/pkgconf'
@@ -11,7 +11,7 @@ source=(
   "$url/archive/refs/tags/$pkgname-$pkgver.tar.gz"
 )
 makedepends=(meson automake autoconf libtool)
-sha256sums=('79721badcad1987dead9c3609eb4877ab9b58821c06bdacb824f2c8897c11f2a')
+sha256sums=('245d441b9d8f7b74390e060cb9db1a326c26f1b96b1a6c3216b54a5d5439367a')
 
 build()
 {
