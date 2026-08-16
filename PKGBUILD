@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=gtkwave
-pkgver=3.3.127
-pkgrel=2
+pkgver=3.3.128
+pkgrel=1
 pkgdesc='A fully featured GTK+ based wave viewer'
 url='https://gtkwave.github.io/gtkwave/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ license=(GPL-2.0-or-later)
 depends=(gtk3 libbz2 zlib-ng)
 makedepends=(gperf)
 source=("https://gtkwave.sourceforge.net/gtkwave-gtk3-$pkgver.tar.gz")
-sha256sums=('f19da2db43b27bbcc669725843451945a68c3a4ce232562e341d6f63b80b55e4')
+sha256sums=('817e197fc1808f8aac3543c2c2f9683cb01368c91192b8eae5af58070ef1d1f8')
 _dir="$pkgname-gtk3-$pkgver"
 
 prepare() {
