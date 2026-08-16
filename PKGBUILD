@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=bash-completion
-pkgver=2.17.0
-pkgrel=2
+pkgver=2.18.0
+pkgrel=1
 pkgdesc='Programmable completion for the bash shell'
 arch=(any)
 url='https://github.com/scop/bash-completion'
@@ -11,7 +11,7 @@ depends=(bash)
 options=(!emptydirs !makeflags)
 source=($url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz)
 validpgpkeys=(A558062B6D5DA1347CD468D52B0AE2C1B09B07CB)
-sha256sums=('dd9d825e496435fb3beba3ae7bea9f77e821e894667d07431d1d4c8c570b9e58')
+sha256sums=('88bcf85124f77f74f2f2f8bcd16ac4382d807a827ede742a64940c7116aea33f')
 
 prepare() {
   cd $pkgname-$pkgver
