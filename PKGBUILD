@@ -2,7 +2,7 @@
 
 pkgname=onetbb
 pkgver=2023.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='High level abstract threading library (oneAPI Threading Building Blocks)'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://uxlfoundation.github.io/oneTBB/'
@@ -26,11 +26,10 @@ prepare() {
 
 build() {
   cmake -B build -S oneTBB-$pkgver -GNinja \
-          -DTBB4PY_BUILD=ON \
 	  -DTBB_TEST=OFF \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DTBB_STRICT=OFF \
-          -DTBB4PY_BUILD=ON \
+          -DTBB4PY_BUILD=OFF \
           -DCMAKE_BUILD_TYPE=None
   cmake --build build
 }
@@ -43,7 +42,7 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  rm -r "$pkgdir"/usr/lib/python*
+
   cd oneTBB-$pkgver/python
   TBBROOT="$pkgdir"/usr python setup.py install --root="$pkgdir"
 }
