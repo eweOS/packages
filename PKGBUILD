@@ -1,7 +1,7 @@
 # Maintainer: RMOlive <rmolives@wumoe.org>
 
 pkgname=racket
-pkgver=9.2
+pkgver=9.3
 pkgrel=1
 pkgdesc='A full-spectrum language with DrRacket IDE'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
@@ -13,7 +13,7 @@ options=('!strip' '!emptydirs')
 source=(
   "https://download.racket-lang.org/installers/${pkgver}/${pkgname}-${pkgver}-src.tgz"
 )
-sha512sums=('7bffaab000298b9c70f9e5c7d320dbe809c17e13aeea40070d9dee2819933481cbbe059a02b66d8b6e06a5e0eb60fcf00ba0a674e966c282a3354755eb9ddb19')
+sha512sums=('595d517af9c27687d1c74dd5a9ec18efa9669dda6fb6908d6ae925a42e4e24ecefda1b7e894b26a00a80d6ec6b4489923356e63a933f3bad6fde4396fd388701')
 
 prepare() {
   cd "$pkgname-$pkgver"
