@@ -1,17 +1,17 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=android-tools
-pkgver=36.0.1
-pkgrel=3
+pkgver=37.0.0
+pkgrel=1
 pkgdesc='Android platform tools'
 url='http://tools.android.com/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0 MIT)
 depends=(brotli fmt libusb pcre2 protobuf zstd python abseil-cpp)
 optdepends=('python: mkbootimg, unpack_bootimg and repack_bootimg support')
-makedepends=(cmake go googletest perl linux-headers)
+makedepends=(cmake go googletest perl linux-headers bsd-compat-headers)
 source=("https://github.com/nmeum/android-tools/releases/download/$pkgver/android-tools-$pkgver.tar.xz")
-sha256sums=('38e8a84b739480141de0836bf6d581b3339ac7d53d0f7ce8c044a3368c8c2f8f')
+sha256sums=('2725d09f892a3a38e534429f47a321f58ecf6a3169caa42c915fb2cb7d46be0e')
 
 build () {
 	# use bundled libusb since android-tools depends on unreleased libusb
