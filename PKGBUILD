@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=greetd-tui
-pkgver=0.9.1
-pkgrel=4
+pkgver=0.11.0
+pkgrel=1
 pkgdesc='A console UI greeter for greetd'
 url='https://github.com/apognu/tuigreet'
 license=(GPL3)
@@ -10,12 +10,10 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=(greetd)
 makedepends=(rust)
 source=("tuigreet-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('14fd1fadeb84040eb31901da2b53a48aa55b0fdaccb36d96fa52ce2d2113667f')
+sha256sums=('5f18485979be009512b60b303c7136f8ef2901091ed00edd4f3d61d871c51368')
 
 prepare() {
   cd "tuigreet-$pkgver"
-  # loongarch64 requires newer libc
-  cargo update -p libc --precise 0.2.155
   cargo fetch --locked --target "$RUSTHOST"
 }
 
