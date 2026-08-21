@@ -2,12 +2,12 @@
 
 pkgname=hyprgraphics
 pkgver=0.5.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Hyprland graphics / resource utilities"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/hyprwm/hyprgraphics"
 license=('BSD-3-Clause')
-depends=('pixman' 'cairo' 'hyprutils' 'libjpeg' 'libjxl' 'libwebp' 'file' 'libspng' 'librsvg' 'pango')
+depends=('pixman' 'cairo' 'hyprutils' 'libjpeg' 'libjxl' 'libwebp' 'file' 'libspng' 'librsvg' 'pango' 'libdrm')
 makedepends=('git' 'cmake' 'libglvnd' 'linux-uapi-headers')
 source=(
   "git+https://github.com/hyprwm/hyprgraphics.git#tag=v$pkgver"
