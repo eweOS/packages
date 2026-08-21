@@ -2,7 +2,7 @@
 
 pkgname=hyprlang
 pkgver=0.6.8
-pkgrel=5
+pkgrel=6
 pkgdesc='implementation library for the hypr config language'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/hyprwm/$pkgname"
