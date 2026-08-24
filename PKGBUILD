@@ -3,7 +3,7 @@
 pkgname=python-docutils
 _pyname=${pkgname#*-}
 pkgver=0.22.4
-pkgrel=2
+pkgrel=3
 pkgdesc='An open-source text processing system for processing plaintext documentation into useful formats'
 url='https://docutils.sourceforge.io/'
 arch=(any)
@@ -28,6 +28,6 @@ build () {
 
 package() {
 	cd $_pyname-$pkgver
-	python -m installer --destdir $pkgdir dist/*.whl
+	python -m installer --destdir "$pkgdir" dist/*.whl
 	_install_license_ COPYING.rst
 }
