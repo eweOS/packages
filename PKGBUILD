@@ -2,7 +2,7 @@
 
 pkgname=mold
 pkgver=2.41.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A Modern Linker'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/rui314/mold'
