@@ -4,7 +4,7 @@
 pkgname=luajit
 _commit=3640b6c590f9c383ffa5d0955f35e646f684a1da
 pkgver="2.1.r20260317.${_commit:0:7}"
-pkgrel=2
+pkgrel=3
 pkgdesc='A Just-In-Time compiler for the Lua programming language.'
 url='http://luajit.org/'
 # for riscv64: https://github.com/openresty/luajit2/pull/236
