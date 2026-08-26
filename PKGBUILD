@@ -2,7 +2,7 @@
 
 pkgname=ripgrep
 pkgver=15.2.0
-pkgrel=1
+pkgrel=2
 _rust_pcre2_ver=0.2.10
 pkgdesc='Recursively searches directories for a regex pattern while respecting your gitignore'
 url=https://github.com/BurntSushi/ripgrep
