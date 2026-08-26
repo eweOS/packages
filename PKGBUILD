@@ -2,7 +2,7 @@
 
 pkgname=fastfetch
 pkgver=2.67.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Like Neofetch, but much faster because written in C"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/fastfetch-cli/fastfetch"
@@ -35,7 +35,7 @@ optdepends=(
   'imagemagick: Image output using sixel or kitty graphics protocol'
   'libnm: Wifi detection'
   'libpulse: Sound detection'
-  'mesa: Needed by the OpenGL module for gl context creation.'
+  'libglvnd: Needed by the OpenGL module for gl context creation.'
   'libxrandr: Multi monitor support'
   'ocl-icd: OpenCL module'
   'pciutils: GPU output'
