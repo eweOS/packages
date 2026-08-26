@@ -2,7 +2,7 @@
 
 pkgname=libva
 pkgver=2.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Video Acceleration (VA) API for Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://01.org/linuxmedia/vaapi
@@ -15,7 +15,6 @@ makedepends=(
   git
   libglvnd
   linux-headers
-  mesa
   meson
 )
 optdepends=(
