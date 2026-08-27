@@ -15,7 +15,7 @@ sha512sums=('7b6eb8e075b48f1d915b892044adc3260547d74ed61d1e2fa6c5f0f8c3527754abe
 
 build()
 {
-  export MESONFLAGS=(
+  local meson_options=(
     "x11=disabled"
     "glx=disabled"
     "gles1=false"
@@ -23,12 +23,12 @@ build()
 
   case $CARCH in
     riscv64 | loongarch64)
-      MESONFLAGS+=("asm=disabled")
+      meson_options+=("asm=disabled")
       ;;
   esac
 
   ewe-meson $pkgname-v$pkgver build \
-    "${MESONFLAGS[@]/#/-D}"
+    "${meson_options[@]/#/-D}"
   meson compile -C build
 }
 
