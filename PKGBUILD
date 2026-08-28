@@ -2,7 +2,7 @@
 
 pkgname=libglvnd
 pkgver=1.7.0
-pkgrel=6
+pkgrel=7
 pkgdesc="The GL Vendor-Neutral Dispatch library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gitlab.freedesktop.org/glvnd/libglvnd"
@@ -18,7 +18,6 @@ build()
   local meson_options=(
     "x11=disabled"
     "glx=disabled"
-    "gles1=false"
   )
 
   case $CARCH in
