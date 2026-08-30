@@ -2,7 +2,7 @@
 
 pkgname=jimtcl
 pkgver=0.84
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source, small-footprint TCL implementation'
 url='http://jim.tcl.tk/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -22,7 +22,8 @@ build() {
 	cd "$pkgname-$pkgver"
 
 	./configure --prefix=/usr \
-		--shared
+		--shared			\
+		--docdir=/usr/share/doc/jimtcl
 
 	# The Makefile inserts "-fPIC" into CC variable of Makefile when
 	# building a shared library. Make sure we don't override these two
