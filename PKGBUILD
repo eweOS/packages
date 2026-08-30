@@ -2,7 +2,7 @@
 
 pkgname=libxfce4ui
 pkgver=4.20.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Widgets library for the Xfce desktop environment'
 url='https://docs.xfce.org/xfce/libxfce4ui/start'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -23,6 +23,7 @@ prepare() {
 build() {
 	cd "$_dirname"
 	./autogen.sh --prefix=/usr \
+		--sysconfdir=/etc		\
 		--disable-x11			\
 		--enable-wayland		\
 		--disable-libsm			\
