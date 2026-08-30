@@ -67,28 +67,23 @@ sha512sums=('c7c810c6958fa18eb75eea9968d84d0edd29b579d351a7f22d8c2b2b13b6e04e5b0
 
 build()
 {
-  GALLIUM_DRI_COMMON="r300,r600,radeonsi,nouveau,virgl,svga,softpipe,llvmpipe,zink"
-  VULKAN_DRI_COMMON="amd,gfxstream,intel,intel_hasvk,swrast,virtio,nouveau"
+  local gallium_dri="r300,r600,radeonsi,nouveau,virgl,svga,softpipe,llvmpipe,zink"
+  local vulkan_dri="amd,gfxstream,intel,intel_hasvk,swrast,virtio,nouveau"
   case "${CARCH}" in
     x86_64)
-	    GALLIUM_DRI="${GALLIUM_DRI_COMMON},i915,iris,crocus,d3d12"
-	    VULKAN_DRI="${VULKAN_DRI_COMMON},microsoft-experimental"
+	    gallium_dri+=",i915,iris,crocus,d3d12"
+	    vulkan_dri+=",microsoft-experimental"
 	    ;;
     aarch64)
-	    GALLIUM_DRI="${GALLIUM_DRI_COMMON},panfrost,freedreno,lima,etnaviv"
-	    VULKAN_DRI="${VULKAN_DRI_COMMON},panfrost,freedreno"
+	    gallium_dri+=",panfrost,freedreno,lima,etnaviv"
+	    vulkan_dri+=",panfrost,freedreno"
 	    ;;
     riscv64)
-	    GALLIUM_DRI="${GALLIUM_DRI_COMMON},etnaviv"
-	    VULKAN_DRI="${VULKAN_DRI_COMMON}"
-	    ;;
-    loongarch64)
-	    GALLIUM_DRI="${GALLIUM_DRI_COMMON}"
-	    VULKAN_DRI="${VULKAN_DRI_COMMON}"
+	    gallium_dri+=",etnaviv"
 	    ;;
   esac
-  VULKAN_LAYER=device-select,intel-nullhw,overlay,screenshot,vram-report-limit
-  
+  local vulkan_layers="device-select,intel-nullhw,overlay,screenshot,vram-report-limit"
+
   # Let Meson read rust packages download in source().
   export MESON_PACKAGE_CACHE_DIR="${srcdir}"
 
@@ -102,9 +97,9 @@ build()
     -Dgles1=enabled \
     -Dgles2=enabled \
     -Dopengl=true \
-    -Dvulkan-drivers=${VULKAN_DRI} \
-    -Dvulkan-layers=${VULKAN_LAYER} \
-    -Dgallium-drivers=${GALLIUM_DRI} \
+    -Dvulkan-drivers=${vulkan_dri} \
+    -Dvulkan-layers=${vulkan_layers} \
+    -Dgallium-drivers=${gallium_dri} \
     -Dgallium-extra-hud=true \
     -Dgallium-rusticl=true \
     -Dvideo-codecs=all \
