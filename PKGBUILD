@@ -2,7 +2,7 @@
 
 pkgname=xfsprogs
 pkgver=7.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Utilities for managing XFS filesystem'
 url='https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -25,6 +25,9 @@ build() {
 
 	export CFLAGS="$CFLAGS -DOVERRIDE_SYSTEM_STATX -DSTATX__RESERVED=0x80000000U"
 	./configure --prefix=/usr \
+		--libexecdir=/usr/lib	\
+		--sysconfdir=/etc	\
+		--localstatedir=/var	\
 		--enable-shared=yes	\
 		--enable-editline=no	\
 		--enable-scrub=yes	\
