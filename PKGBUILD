@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wine
-pkgver=11.15
+pkgver=11.16
 pkgrel=1
 _pkgbasever=${pkgver/rc/-rc}
 # llvm-unwind.patch: Explicitly link LLVM libunwind for _Unwind_Find_FDE, this
@@ -20,7 +20,7 @@ source=(
   30-win32-aliases.conf
   binfmt.conf
 )
-sha512sums=('e6ce72331e7e8efb0dace2d39e547f3ce989d178dc7c37db1b4523cf9f200196a64fee69ca8a2bccfce0bf8e8f7800adb2c4ef4c44b0bd7d78cf937d84849232'
+sha512sums=('e084a102989cb00bd0994aa998f18e2ef87ec8e8bcedaf18ab613df66fb5a89b03ca1e608f525ca5d0941641c3b8a4c7000a93da439e61febf7e9084c77ac62d'
             'ccd4a1831755d8cdd50bbb77dcec29b480d866f0ff142953ff55353277621f0b39aead3e862c4796c033863341627638fa77ff39429b64f54daeb782e0776ca9'
             '9881abfd0e7e4589cd5724291f9ec06ccb9d88b842c69abb5ea7865b6c27c778a060e60a9776c3620a030555cf61b8cceded55db9f04d5e45d9c627306763bff'
             '8beb2fbb2602f04ce4ae67dd51253365514225a1154a41ddae67badfe892361679d5cf23d41fd734afe942143dc99b8b9616a3e6b0a8121603463d40c92a67ec'
