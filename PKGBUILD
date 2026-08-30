@@ -8,6 +8,7 @@ url='https://www.smartmontools.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-or-later)
 depends=(musl)
+backup=(etc/smartd.conf)
 makedepends=(gnupg linux-headers)
 source=("https://sourceforge.net/projects/smartmontools/files/smartmontools/$pkgver/smartmontools-$pkgver.tar.gz")
 sha256sums=('690b83ca331378da9ea0d9d61008c4b22dde391387b9bbad7f29387f2595f76e')
