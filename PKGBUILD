@@ -14,7 +14,7 @@ pkgname=(
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=26.2.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm' 'spirv-tools')
 makedepends=(
@@ -127,6 +127,7 @@ package_mesa()
   replaces=(libva-mesa-driver)
 
   DESTDIR="${pkgdir}" meson install -C build
+  _install_license_ $pkgbase-$pkgver/docs/license.rst
 
   cd "$pkgdir"
 
@@ -178,9 +179,6 @@ package_mesa()
   # vulkan-nouveau (NVK)
   _pick_ vulkan-nouveau usr/share/vulkan/icd.d/nouveau_icd*.json
   _pick_ vulkan-nouveau usr/lib/libvulkan_nouveau.so
-
-  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
-    -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 package_opencl-mesa() {
@@ -200,8 +198,7 @@ package_opencl-mesa() {
   conflicts=("opencl-clover-mesa")
   mv "$srcdir/pkgs/$pkgname/"{etc,usr} "${pkgdir}/"
 
-  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
-    -t "$pkgdir/usr/share/licenses/$pkgname"
+  _install_license_ $pkgbase-$pkgver/docs/license.rst
 }
 
 _vulkan_driver_deps=('expat' 'libdrm' 'llvm' 'vulkan-icd-loader' 'wayland'
@@ -215,8 +212,7 @@ package_vulkan-dzn()
   provides=(vulkan-driver)
   mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
 
-  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
-    -t "$pkgdir/usr/share/licenses/$pkgname"
+  _install_license_ $pkgbase-$pkgver/docs/license.rst
 }
 
 package_vulkan-gfxstream()
@@ -227,8 +223,7 @@ package_vulkan-gfxstream()
   provides=('vulkan-driver')
   mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
 
-  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
-    -t "$pkgdir/usr/share/licenses/$pkgname"
+  _install_license_ $pkgbase-$pkgver/docs/license.rst
 }
 
 package_vulkan-swrast()
@@ -239,8 +234,7 @@ package_vulkan-swrast()
   provides=('vulkan-driver')
   mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
 
-  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
-    -t "$pkgdir/usr/share/licenses/$pkgname"
+  _install_license_ $pkgbase-$pkgver/docs/license.rst
 }
 
 package_vulkan-virtio()
@@ -251,8 +245,7 @@ package_vulkan-virtio()
   provides=('vulkan-driver')
   mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
 
-  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
-    -t "$pkgdir/usr/share/licenses/$pkgname"
+  _install_license_ $pkgbase-$pkgver/docs/license.rst
 }
 
 package_vulkan-radeon()
@@ -263,8 +256,7 @@ package_vulkan-radeon()
   provides=('vulkan-driver')
   mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
 
-  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
-    -t "$pkgdir/usr/share/licenses/$pkgname"
+  _install_license_ $pkgbase-$pkgver/docs/license.rst
 }
 
 package_vulkan-intel()
@@ -275,8 +267,7 @@ package_vulkan-intel()
   provides=('vulkan-driver')
   mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
 
-  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
-    -t "$pkgdir/usr/share/licenses/$pkgname"
+  _install_license_ $pkgbase-$pkgver/docs/license.rst
 }
 
 package_vulkan-panfrost()
@@ -287,8 +278,7 @@ package_vulkan-panfrost()
   provides=('vulkan-driver')
   mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
 
-  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
-    -t "$pkgdir/usr/share/licenses/$pkgname"
+  _install_license_ $pkgbase-$pkgver/docs/license.rst
 }
 
 package_vulkan-freedreno()
@@ -299,8 +289,7 @@ package_vulkan-freedreno()
   provides=('vulkan-driver')
   mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
 
-  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
-    -t "$pkgdir/usr/share/licenses/$pkgname"
+  _install_license_ $pkgbase-$pkgver/docs/license.rst
 }
 
 
@@ -311,8 +300,7 @@ package_vulkan-mesa-layers()
 
   mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
 
-  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
-    -t "$pkgdir/usr/share/licenses/$pkgname"
+  _install_license_ $pkgbase-$pkgver/docs/license.rst
 }
 
 package_vulkan-nouveau()
@@ -323,7 +311,6 @@ package_vulkan-nouveau()
   provides=('vulkan-driver')
   mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
 
-  install -Dm644 $srcdir/$pkgbase-$pkgver/docs/license.rst \
-    -t "$pkgdir/usr/share/licenses/$pkgname"
+  _install_license_ $pkgbase-$pkgver/docs/license.rst
 }
 
