@@ -7,8 +7,8 @@ pkgdesc='JavaScript runtime'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://nodejs.org/'
 license=('MIT')
-depends=('musl' 'llvm-libs' 'brotli' 'openssl' 'zlib' 'icu' 'libuv' 'libnghttp2' 'c-ares' 'ada-url' 'zstd' 'libffi')
-makedepends=('git' 'python' 'ninja' 'linux-headers')
+depends=('musl' 'llvm-libs' 'brotli' 'openssl' 'zlib' 'icu' 'libuv' 'libnghttp2' 'c-ares' 'ada-url' 'zstd' 'libffi' 'sqlite' 'simdutf')
+makedepends=('git' 'python' 'ninja' 'linux-headers' 'googletest')
 optdepends=('npm: package manager')
 # 0001: Should be upstreamed, don't link libatomic for targets without
 #	non-word-sized atomic ops, as compiler-rt doesn't provide the library.
@@ -44,7 +44,10 @@ build() {
     --shared-brotli \
     --shared-ada \
     --shared-ffi \
-    --shared-zstd
+    --shared-sqlite \
+    --shared-gtest \
+    --shared-zstd \
+    --shared-simdutf
 
   make
 }
