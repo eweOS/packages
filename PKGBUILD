@@ -7,6 +7,7 @@ pkgdesc="The GL Vendor-Neutral Dispatch library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gitlab.freedesktop.org/glvnd/libglvnd"
 license=('MIT')
+depends=('musl')
 makedepends=('python' 'meson')
 optdepends=('mesa: An open-source implementation of graphics and computation APIs')
 provides=('libgl' 'libegl' 'libgles')
