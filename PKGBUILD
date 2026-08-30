@@ -92,7 +92,6 @@ build()
     -D platforms=wayland \
     -Dglvnd=enabled \
     -Dllvm=enabled \
-    -Dshared-glapi=enabled \
     -Dglx=disabled \
     -Dgles1=enabled \
     -Dgles2=enabled \
