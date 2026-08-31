@@ -128,7 +128,7 @@ package_mesa()
 
   DESTDIR="${pkgdir}" meson install -C build
 
-  cd $pkgdir
+  cd "$pkgdir"
 
   # opencl-mesa
   _pick_ opencl-mesa usr/lib/libRusticlOpenCL*
