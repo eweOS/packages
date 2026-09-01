@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=lact
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.10.1
+pkgrel=1
 pkgdesc='Linux GPU Configuration And Monitoring Tool '
 url='https://github.com/ilya-zlobintsev/LACT'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ makedepends=(rust linux-uapi-headers)
 source=("https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v$pkgver.tar.gz"
 	lactd.service
 	0001-Dinitize-help-text.patch)
-sha256sums=('4a422ef394351704b6506d97e1a8ff262b8cd9af4b81ef1e096bc60c22797bf8'
+sha256sums=('cbbbd0336fb65ce539ea29d99fe2e38f7c82de08c07d26dfab355735a88d853c'
             '84548b2cbea5316e6661fdfbea0e501362ffa26c378ec0d23223c3064c99853d'
             'a64ae6d0467f716444acdf67476e615466a2aa311b0c0b396c822cca0326882b')
 
