@@ -1,19 +1,19 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=json-c
-pkgver=0.18
-pkgrel=4
+pkgver=0.19
+pkgrel=1
 pkgdesc="A JSON implementation in C"
 url="https://github.com/json-c/json-c/wiki"
 license=(MIT)
 arch=(x86_64 aarch64 riscv64 loongarch64)
 makedepends=(cmake ninja)
 provides=(libjson-c.so)
-_datetag=20240915
+_datetag=20260627
 source=(
   "https://github.com/json-c/json-c/archive/refs/tags/json-c-$pkgver-$_datetag.tar.gz"
 )
-sha256sums=('3112c1f25d39eca661fe3fc663431e130cc6e2f900c081738317fba49d29e298')
+sha256sums=('f17a6d7d265cf840dfd8f0f46a606d98c6b5b26dc7cfe27275d1546a213086c8')
 
 build() {
   cd "$srcdir"
