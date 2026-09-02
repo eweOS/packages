@@ -1,38 +1,34 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-_name=setuptools_scm
+_name=setuptools-scm
 pkgname=python-setuptools-scm
-pkgver=9.2.2
-pkgrel=2
+pkgver=10.2.1
+pkgrel=1
 pkgdesc="Handles managing your python package versions in scm metadata"
 arch=('any')
-url="https://github.com/pypa/setuptools_scm"
+url="https://github.com/pypa/setuptools-scm"
 license=('MIT')
-depends=('python-packaging' 'python-setuptools' 'python-typing_extensions')
+depends=('python-packaging' 'python-setuptools' 'python-typing_extensions' 'python-vcs-versioning')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('mercurial' 'python-pytest' 'python-pytest-timeout')
-source=("git+$url.git#tag=v$pkgver")
-sha256sums=('8a22ec843318e6cf51c765e9291f45255d4b6ef1a3023176f41d81309f50c56e')
+source=("git+$url.git#tag=$_name-v$pkgver")
+sha256sums=('b7ef6ec8885b06ed15a2ddd4ca08298dd4f24b841d3decd960ec886e05812cd1')
 
 build() {
-  cd $_name
+  cd $_name/$_name
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
-  cd $_name
+  cd $_name/$_name
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -vk 'not test_not_owner' || :
+  test-env/bin/python -m pytest -v \
+    --deselect testing_scm/test_basic_api.py::test_get_version_blank_tag_regex
 }
 
 package() {
-  cd $_name
+  cd $_name/$_name
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  # Symlink license file
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -d "$pkgdir"/usr/share/licenses/$pkgname
-  ln -s "$site_packages"/$_name-$pkgver.dist-info/LICENSE \
-    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  _install_license_ LICENSE
 }
