@@ -1,0 +1,17 @@
+diff --git a/Namcap/rules/licensepkg.py b/Namcap/rules/licensepkg.py
+index b4640b6..740ef71 100644
+--- a/Namcap/rules/licensepkg.py
++++ b/Namcap/rules/licensepkg.py
+@@ -172,8 +172,10 @@ def package_license_files(tar: TarFile | None, pkgname: str) -> tuple[dict[str,
+         if (
+             member.isfile()
+             and not member.issym()
+-            and member.name.startswith(f"usr/share/licenses/{pkgname}/")
+-            and member.name != f"usr/share/licenses/{pkgname}"
++            and (
++                member.name.startswith(f"usr/share/licenses/{pkgname}/")
++                or member.name == f"usr/share/licenses/{pkgname}"
++            )
+         ):
+             files[member.name] = True
+         # the license is a symlink, we'll check later
