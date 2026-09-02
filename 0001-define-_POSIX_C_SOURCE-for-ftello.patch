@@ -1,13 +1,12 @@
-https://bugs.gentoo.org/869419
-
-POSIX_C_SOURCE is needed for ftello.
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2170c4fdd381..c9fb76ac71c8 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -266,6 +266,7 @@ add_library(aom_rtcd OBJECT ${AOM_RTCD_SOURCES})
- add_dependencies(aom_rtcd aom_version)
- 
- if(ENABLE_EXAMPLES)
+@@ -442,6 +442,7 @@ file(WRITE "${AOM_GEN_SRC_DIR}/usage_exit.c"
+ # Application and application support targets.
+ #
+ if(ENABLE_APPS OR ENABLE_EXAMPLES OR ENABLE_TESTS OR ENABLE_TOOLS)
 +  add_definitions(-D_POSIX_C_SOURCE=200112L)
-   add_library(aom_encoder_stats OBJECT ${AOM_ENCODER_STATS_SOURCES})
-   set(AOM_LIB_TARGETS ${AOM_LIB_TARGETS} aom_encoder_stats)
- endif()
+   add_library(aom_common_app_util OBJECT ${AOM_COMMON_APP_UTIL_SOURCES})
+   set_property(TARGET aom_common_app_util PROPERTY FOLDER examples)
+   add_library(aom_usage_exit OBJECT "${AOM_GEN_SRC_DIR}/usage_exit.c")
