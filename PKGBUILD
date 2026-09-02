@@ -2,7 +2,7 @@
 # Contributor: Tim Rühsen <tim.ruehsen@gmx.de>
 
 pkgname=libpsl
-pkgver=0.23.0
+pkgver=0.23.3
 pkgrel=1
 pkgdesc='Public Suffix List library'
 url='https://github.com/rockdaboot/libpsl'
@@ -12,7 +12,7 @@ depends=(musl libidn2 libunistring)
 makedepends=(libidn2 libunistring autoconf automake gtk-doc publicsuffix-list)
 provides=(libpsl.so)
 source=("https://github.com/rockdaboot/libpsl/releases/download/$pkgver/libpsl-$pkgver.tar.gz")
-sha256sums=('f39b9631b3d369a21259ea4654f8875c0ec6995ce9551c0eb5d423e4c011f911')
+sha256sums=('93941f85a1e7bd593fa94f299233cb5dfc91cd144fd9a78a6ceb75001c5b03be')
 
 build() {
   cd ${pkgname}-${pkgver}
