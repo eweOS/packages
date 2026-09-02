@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=flashrom
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc='A utility for detecting, reading, writing, verifying and erasing flash chips'
 url='https://review.coreboot.org/admin/repos/flashrom,general'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(musl libusb libftdi pciutils libjaylink)
 makedepends=(meson ninja linux-headers python-sphinx git)
 # checkdepends=(cmocka)
 source=("git+https://github.com/flashrom/flashrom.git#tag=v$pkgver")
-sha256sums=('920995ce4c5600006ed784d892b2841d3d6f9e57c3cc979e09ebe98c2e9a6bb9')
+sha256sums=('c370c329b6cec5e84320c40931fa6200cd72f4e16b6bb2a83e57dcbeb7bd0f54')
 
 build() {
 	# Fix Clang warnings about time_start/time_end in cli_classic.c is
