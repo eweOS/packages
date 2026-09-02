@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=firefox
-pkgver=152.0.6
-pkgrel=2
+pkgver=155.0
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -60,7 +60,7 @@ source=(
   0003-musl-linux-Don-t-import-conflicting-libc.patch
   0004-libwebrtc-desktop_capture-Add-missing-include-to-sys.patch
 )
-sha256sums=('ea220c4f8d19d4edaa20e6dadfd3c4aeb07dbed017ade2828fd814d660660f0e'
+sha256sums=('c57fd59835f8c5b9c7f68bead2782238c11d8626b57509cc809915b0b4d70dfb'
             '5efe32a0f0d8c7219cd9f58e5fc9aa9f388457dff4e4bfdd372b13456cce3f2b'
             '18a0f1df76834ac3d4ddb150aa857785df641b54f9fbf0cfb6ffcec64dad72d4'
             'a22ceb0bbf5830d3afbacd656e6893ff0ce455fae5f48c7daa5f836112291ba7'
