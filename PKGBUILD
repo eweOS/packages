@@ -2,7 +2,7 @@
 
 pkgname=namcap
 pkgver=3.5.2
-pkgrel=4
+pkgrel=5
 pkgdesc='A Pacman package analyzer'
 arch=(any)
 url="https://gitlab.archlinux.org/pacman/$pkgname"
@@ -16,10 +16,14 @@ depends=(licenses
 checkdepends=(python-pytest python-six)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 _archive="$pkgname-$pkgver"
-source=("$url/-/releases/$pkgver/downloads/$_archive.tar.bz2")
-sha256sums=('fbd3b1f0777fe457afd3dbb1f55de8adbaeb50257492626bcffd1a3eef67d618')
+source=("$url/-/releases/$pkgver/downloads/$_archive.tar.bz2"
+        "0001-accept-license-as-pkgname.patch")
+sha256sums=('fbd3b1f0777fe457afd3dbb1f55de8adbaeb50257492626bcffd1a3eef67d618'
+            '6c282966f8f0af92497024c569e978bab1591e8a2eefd540d6708ba1de393f1e')
 
 prepare() {
+  _patch_ "$_archive"
+
   cd "$_archive"
   find . -type f -exec sed -i "s/gcc /cc /g; s/'glibc'/'musl'/g; s/'i686' 'x86_64'/'i686' 'x86_64' 'aarch64' 'riscv64' 'loongarch64'/g" {} \;
   sed -i 's/glibc/musl/g' Namcap/tests/test_depends.py
