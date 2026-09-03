@@ -13,6 +13,9 @@ depends=(busybox)
 optdepends=(
   'ethtool: helps getting real mac addresses from nics'
 )
+backup=(
+  'etc/mdev.conf'
+)
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz"
 )
