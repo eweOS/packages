@@ -3,7 +3,7 @@
 
 pkgname=busybox
 pkgver=1.38.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities for rescue and embedded systems"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://www.busybox.net"
@@ -12,7 +12,6 @@ depends=("utmps")
 makedepends=("ncurses" "musl" "skalibs" "linux-headers")
 options=(!lto emptydirs)
 backup=(
-  "etc/mdev.conf"
   "etc/ntp.conf"
   "etc/sysctl.conf"
 )
@@ -26,14 +25,9 @@ source=(
   "udhcpc.service"
   "udhcpc.script"
   "mdev.service"
-  "mdev.conf"
   "getty.service"
   "remove_empty_dir.patch"
   "busybox-suidwrapper.c"
-  "mdev-helper-settle-nics"
-  "mdev-helper-sound-control"
-  "mdev-helper-storage-device"
-  "mdev-helper-dev-bus-usb"
   "acpid.service"
   "sha256-aarch64-hwaccel.patch"
 )
@@ -46,14 +40,9 @@ sha256sums=('34f9ea6ff8636f2c9241153b9114eefa9e65674a45318ae1ef95bb5f31c53bb2'
             '63044f1031a3d9405fbd23df091d4816264141241fd74730acd0b6b294b87618'
             '69e028725a63763e21684fb0ce941f6a34a4b72bb328a0cab43b4d39d6d767dc'
             '802aff2664c40867a616144cfa2c5cd0c28e53d6a07f8d78bdcdf78705244842'
-            '2f5990eb49a8d6ce21e6f9e690eb8a913b6ae08eb1f85abe31eac1addf45beaf'
             '6ebc1362e00c59005ccb70ccb663e7efcd7efb1606a7b1255d972f3585fbf901'
             '622d0a1743a127bab1fc15e5057034db52c7fa475298b8d085cfc7c046ae5537'
             'cd62d9d1ae294099b1a28e6ffb053267dd7a17ba8cfadb810bb7901292c4f89b'
-            '7eef115b930b2379ccd640507795d5bd751065f54accffeb82c626a27130b6b1'
-            'f157359b7992e9d08da728b2c48c10f338e149e44856f3cb9665164c35f6e232'
-            'f641a4d722dfaeb70e43ee87d8b1ce6ecadc0aec4ee21bdc28bbe4564dd743f4'
-            '32c89049dfcb5de3b2591b1039b25aa8ad83f0af9b6782ef460ed4dde7a8493d'
             'c1b9ddd15914bcac1dccc646aaf7b2dcbc51a574eeeff5af92839a5f206c989a'
             '46619fcf3b865adff41607f1c26396f0a012e56a58228d2d64e48aa1b14f5df1')
 
@@ -100,17 +89,12 @@ package() {
   install -d etc
   install -m 0644 "${srcdir}/sysctl.conf" etc/
   install -m 0644 "${srcdir}/ntp.conf" etc/
-  install -m 0644 "${srcdir}/mdev.conf" etc/
   install -d usr/share/udhcpc
   install -m 0755 "${srcdir}/udhcpc.script" \
     usr/share/udhcpc/default.script
 
   # acpid config dir
   install -d etc/acpi
-
-  for helper in dev-bus-usb settle-nics sound-control storage-device; do
-    install -Dm 0755 "$srcdir/mdev-helper-$helper" $pkgdir/usr/bin/mdev-helper-$helper
-  done
 
   for service in ntpd syslogd udhcpc mdev acpid getty; do
     _dinit_install_services_ $srcdir/${service}.service
