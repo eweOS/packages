@@ -1,0 +1,17 @@
+--- a/setup.py
++++ b/setup.py
+@@ -1,3 +1,4 @@
++import glob
+ import os
+ import re
+ import shutil
+@@ -152,7 +153,8 @@
+         else:
+             output_path = os.path.abspath(os.path.join(self.build_lib, 'opencc', 'clib'))
+         if isinstance(ext, OpenCCExtension):
+-            build_libopencc(output_path)
++            os.makedirs(output_path, exist_ok=True)
++            shutil.copy2(glob.glob(os.path.join(_this_dir, '..', 'build', 'opencc_clib.*.so'))[0], output_path)
+         else:
+             super(BuildExtCommand, self).build_extension(ext)
+ 
