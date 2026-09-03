@@ -3,7 +3,7 @@
 pkgname=mdev-helpers
 _commit='d33ea4e39d8385a0407109e347bdce45314385ef'
 pkgver="20260901.${_commit:0:8}"
-pkgrel=1
+pkgrel=2
 pkgdesc="mdev helper scripts from mdev-like-a-boss"
 arch=('any')
 url="https://github.com/eweOS/mdev-helpers"
@@ -29,4 +29,6 @@ package() {
   for helper in dev-bus-usb settle-nics sound-control storage-device; do
     install -Dm 0755 "mdev-helper-$helper" "$pkgdir/usr/bin/mdev-helper-$helper"
   done
+
+  _install_license_ LICENSE
 }
