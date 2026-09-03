@@ -1,17 +1,17 @@
 # Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=lame
-pkgver=3.100
-pkgrel=5
+pkgver=4.0
+pkgrel=1
 pkgdesc='a high quality MP3 encoder licensed under the LGPL.'
 url='https://lame.sourceforge.io/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-2.0-or-later)
-depends=(musl)
+depends=(musl mpg123)
 makedepends=(nasm autoconf)
 source=("https://sourceforge.net/projects/lame/files/lame/$pkgver/lame-$pkgver.tar.gz")
 provides=('libmp3lame.so')
-sha256sums=('ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e')
+sha256sums=('3df5124d5ad3a98312ffd7ba6a9b36230e4f8a3e66d3ce0f425e336c32d216eb')
 
 prepare() {
   cd lame-$pkgver
@@ -20,7 +20,8 @@ prepare() {
 
 build () {
   cd lame-$pkgver
-  ./configure --prefix=/usr --enable-nasm --enable-mp3rtp
+  export CFLAGS+=" -Wno-implicit-function-declaration"
+  ./configure --prefix=/usr --enable-nasm --enable-mp3rtp --enable-shared
   make
 }
 
