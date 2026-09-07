@@ -1,0 +1,60 @@
+From 450832db6b7afaed621c9708bc733afd2edf821b Mon Sep 17 00:00:00 2001
+From: Rui Ueyama <ruiu@cs.stanford.edu>
+Date: Sun, 6 Sep 2026 14:48:51 +0900
+Subject: [PATCH] Make linker-synthesized symbols local again unless exported
+
+35f4a334 changed is_local() to derive a symbol's binding in .symtab from
+its visibility. Linker-synthesized symbols never have their visibility
+merged from the internal object's ELF symbols, so they went from
+STB_LOCAL to STB_GLOBAL by accident. That adds _DYNAMIC, __bss_start,
+_end and the like to the set of global symbols, which confuses ABI
+checkers that read .symtab.
+
+Restore the old rule for the internal object's symbols: they are local
+unless we export them. The exported ones, such as __global_pointer$ on
+RISC-V or __start_*/__stop_* under -z start-stop-visibility=protected,
+stay global as before.
+
+Reported by Yao Zi in https://github.com/rui314/mold/pull/1650
+
+Fixes https://github.com/rui314/mold/issues/1651
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+---
+ src/mold.h             | 5 ++++-
+ test/symtab-binding.sh | 5 +++++
+ 2 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/test/symtab-binding.sh b/test/symtab-binding.sh
+index 49f6450de0..db0f9e3196 100755
+--- a/test/symtab-binding.sh
++++ b/test/symtab-binding.sh
+@@ -19,6 +19,11 @@ grep -E 'FUNC    GLOBAL DEFAULT .* global_fn$' $t/log1
+ grep -E 'FUNC    WEAK   DEFAULT .* weak_fn$' $t/log1
+ grep -E 'FUNC    LOCAL  HIDDEN .* hidden_fn$' $t/log1
+ 
++# Linker-synthesized symbols are local unless they are exported.
++grep -E 'NOTYPE  LOCAL  DEFAULT .* _DYNAMIC$' $t/log1
++grep -E 'NOTYPE  LOCAL  DEFAULT .* __ehdr_start$' $t/log1
++grep -E 'NOTYPE  LOCAL  DEFAULT .* _end$' $t/log1
++
+ # A symbol localized by a version script becomes local.
+ echo '{ global: global_fn; local: *; };' > $t/b.ver
+ $CC -B. -shared -o $t/c.so $t/a.o -Wl,--version-script=$t/b.ver
+--- a/src/mold.h
++++ b/src/mold.h
+@@ -3849,10 +3849,14 @@
+ // output symbol table. Note that a symbol that is merely not exported to
+ // the dynamic symbol table is still a global symbol; only ones hidden by
+ // symbol visibility or localized by a version script are demoted.
++// Linker-synthesized symbols are the exception; they are local unless we
++// export them.
+ template <typename E>
+ inline bool Symbol<E>::is_local(Context<E> &ctx) const {
+   if (ctx.arg.relocatable)
+     return esym().st_bind == STB_LOCAL;
++  if (file == ctx.internal_obj)
++    return !is_exported;
+   return visibility == STV_HIDDEN || visibility == STV_INTERNAL ||
+          ver_idx == VER_NDX_LOCAL;
+ }
