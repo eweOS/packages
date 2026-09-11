@@ -2,8 +2,8 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=publicsuffix-list
-_gitcommit=9b5c814414374aa19a93dc6dd7e47c01909524cc
-pkgver=20260715.${_gitcommit:0:8}
+_gitcommit=3955e3ec29b94c3cca7bd4509c5f14a7c0959e26
+pkgver=20260908.${_gitcommit:0:8}
 pkgrel=1
 pkgdesc='Cross-vendor public domain suffix database'
 url='https://github.com/publicsuffix/list'
@@ -11,7 +11,7 @@ arch=('any')
 license=(MPL-2.0)
 makedepends=('git')
 source=(${pkgname}::"git+https://github.com/publicsuffix/list#commit=${_gitcommit}")
-sha512sums=('1da42a7b18a0b04914bc1476f94146a537d9e76cce80fb6789126acf4d88198a33bf4ceff03b6142d1f45d509c9b8af2c730a0bb6702765de46a0779b0b0a846')
+sha512sums=('892e858272d001a9959b93388b855c6e7357c5f901922c18420f7de4a5eaeffa3b2cb86568f18812a63ee601e1716b6d03538a13dda49a5b66fa4f4673dc635c')
 
 package() {
   cd ${pkgname}
