@@ -3,7 +3,7 @@
 pkgbase=gdal
 pkgname=(gdal python-gdal)
 pkgver=3.13.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A translator library for raster and vector geospatial data formats"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gdal.org/"
@@ -12,7 +12,7 @@ makedepends=(cmake python-setuptools python-numpy
              proj blosc curl crypto++ libdeflate expat libfreexl
              libgeotiff geos giflib libheif libjpeg-turbo json-c xz
              libxml2 linux-headers lz4 unixodbc openexr openjpeg2
-             openssl pcre2 libpng podofo poppler qhull
+             openssl pcre2 libpng podofo qhull
              libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd libaec)
 # armadillo basisu brunsli lerc libkml qb3 rasterlite2 sfcgal tiledb
 # ogdi mariadb-libs netcdf
@@ -22,6 +22,8 @@ source=(
 sha256sums=('7398fb132753140740fac4f099f0dbe49d1ad074c4162290c308e067c46b7f92')
 
 build() {
+  # Poppler support is disabled since gdal requires its private API and
+  # frequently gets broken.
   cmake -B build -S "$pkgbase-$pkgver" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_CXX_STANDARD=20 \
@@ -58,7 +60,7 @@ build() {
     -DGDAL_USE_PARQUET=OFF \
     -DGDAL_USE_PCRE2=ON \
     -DGDAL_USE_PNG=ON \
-    -DGDAL_USE_POPPLER=ON \
+    -DGDAL_USE_POPPLER=OFF \
     -DGDAL_USE_POSTGRESQL=OFF \
     -DGDAL_USE_QHULL=ON \
     -DGDAL_USE_SPATIALITE=ON \
@@ -85,7 +87,6 @@ package_gdal () {
               'openexr: EXR support'
               'openjpeg2: JP2 support'
               'podofo: PDF support'
-              'poppler: PDF support'
               'postgresql-libs: PostgreSQL support'
               'libwebp: WebP support')
 
