@@ -3,8 +3,8 @@
 
 pkgname=(linux linux-devel linux-docs)
 _basename=linux
-pkgver=7.1.8
-pkgrel=1
+pkgver=7.2.6
+pkgrel=2
 pkgdesc='Linux kernel'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
@@ -13,12 +13,12 @@ license=(GPL-2.0-only)
 makedepends=(bison flex perl python libelf linux-headers rsync lld git pahole
 	     xxhash)
 options=(!strip)
-_kconfig_commit=9ae88fc01b174714b084d83573de0fa50eb539a4
+_kconfig_commit=dc64d79a979fd119169535177732d69bec27e937
 source=("https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-$pkgver.tar.xz"
         "git+https://github.com/eweOS/kernel-config.git#commit=$_kconfig_commit"
         busybox-find-compat.patch)
-sha256sums=('ff01dcb449279d5b4cfccdb01fee639cf5ff1803f1749a77844dd33915422c49'
-            'eaa53fcfd50d6057e31493a6a2a1f67b8ed97b3700cd4ba60e669d3f7fbb2332'
+sha256sums=('039aef84f2b0994aeda3f4fcfc3d02ec9d7a9bbb9020ea264c43f446c860f606'
+            '24d090730ad26ad51649d5f0dbaabd7247a07945111aeaa834089b421bf16522'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
 
 case $CARCH in
