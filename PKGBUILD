@@ -5,7 +5,7 @@ pkgname=(
   ca-certificates-mozilla
 )
 pkgbase=nss
-pkgver=3.126
+pkgver=3.129
 pkgrel=1
 pkgdesc="Network Security Services"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
@@ -25,20 +25,28 @@ makedepends=(
   gyp
   git
 )
+# 0001: Taken from Arch Linux, should be upstreamed, fix silent pkg-config
+#	generation failure in build.sh.
+#	https://bugzilla.mozilla.org/show_bug.cgi?id=2070738
+#	https://gitlab.archlinux.org/archlinux/packaging/packages/nss/-/blob/97d28f5792215927d9dbb1e1ad48703f834f1858/0001-Fix-generating-nss.pc-with-system-nspr.patch
 source=(
   "nss::git+https://github.com/nss-dev/nss#tag=NSS_${pkgver//./_}_RTM"
   bundle.sh
   certdata2pem.py
+  0001-Fix-generating-nss.pc-with-system-nspr.patch
 )
-sha256sums=('43bfcb7514eb7d99fcf62419daddad08ef334657c932f7d02c7028fd9ab4a5bf'
+sha256sums=('48f5c4909db7d7bcaaef91f8df54e2f37a176677ea0f8bf40296d1de3a014d08'
             'f64282fbc8e73de51f88f41e5175d211a63a1a3e1cbf12512a8b9e229ad9d259'
-            '142861cf04942c141e7a6d0d39a30b6d4b57f13f27d21bfa90c6abcd5d34de60')
+            '142861cf04942c141e7a6d0d39a30b6d4b57f13f27d21bfa90c6abcd5d34de60'
+            '2cb486d88cd951a660d503adaa14561de7ca2fff03d310fca9d4b145aca2f1ce')
 
 prepare() {
   chmod +x ./{bundle.sh,certdata2pem.py}
 
   mkdir -p certs
   ln -sf $srcdir/nss/lib/ckfw/builtins/{certdata.txt,nssckbi.h} certs/
+
+  _patch_ $pkgname
 }
 
 build() {
