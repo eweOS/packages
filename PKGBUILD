@@ -7,7 +7,7 @@ pkgname=(
   pipewire-docs
 )
 pkgver=1.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -27,6 +27,8 @@ makedepends=(
   'linux-headers'
   'meson'
   'fftw'
+  'fdk-aac'
+  'libopus'
 )
 checkdepends=(
   desktop-file-utils
@@ -62,7 +64,6 @@ build()
     -D pipewire-jack=disabled
     -D pipewire-v4l2=disabled
     -D pw-cat=disabled
-    -D bluez5=disabled
     -D audiotestsrc=disabled
     -D jack=disabled
     -D v4l2=disabled
@@ -88,6 +89,11 @@ build()
     -D snap=disabled
     -D udevrulesdir=/usr/lib/udev/rules.d
     -D onnxruntime=disabled
+    -D bluez5-codec-ldac=disabled
+    -D bluez5-codec-ldac-dec=disabled
+    -D bluez5-codec-lc3plus=disabled
+    -D bluez5-codec-lc3=disabled
+    -D bluez5-plc-spandsp=disabled
   )
 
   ewe-meson $pkgbase-$pkgver build \
@@ -120,6 +126,8 @@ package_pipewire()
     'libsndfile'
     'libudev'
     'libusb'
+    'fdk-aac'
+    'libopus'
   )
 
   meson install -C build --destdir "$pkgdir"
