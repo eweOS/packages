@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="Network Security Services"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 arch=(x86_64 aarch64 riscv64 loongarch64)
-license=(GPL MPL)
+license=(MPL-2.0)
 depends=(
   nspr
   p11-kit
@@ -112,6 +112,9 @@ package_nss() {
   # Replace built-in trust with p11-kit connection
   ln -s pkcs11/p11-kit-trust.so "$pkgdir$libdir/p11-kit-trust.so"
   ln -sf p11-kit-trust.so "$pkgdir$libdir/libnssckbi.so"
+
+  cd nss
+  _install_license_ COPYING
 }
 
 package_ca-certificates-mozilla() {
