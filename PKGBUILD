@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ncmpc
-pkgver=0.53
+pkgver=0.54
 pkgrel=1
 pkgdesc="Fully featured MPD client which runs in a terminal"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -22,7 +22,7 @@ optdepends=(
   'python-requests: for lyrics scripts'
 )
 source=("https://www.musicpd.org/download/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz")
-sha512sums=('8334b122584ca4908e927847d8d41f5a7c729e05fcc72650993461d3dead66ad255e9f674a128af5928a6d1cde4e14b4d1424e058ed7e95852f74d726eb9d71b')
+sha512sums=('54ce46988198b5c0a9c14b341bc9b5d0a1fdef97532c89ca0bfc9b95eb954dca954f0b8d973b5697feb4146d80c536c2d64b7e54ff53a48987c532ae31c833ac')
 
 build() {
   ewe-meson -D lyrics_screen=true -D lirc=disabled -D chat_screen=true -D documentation=disabled build "$pkgname-$pkgver"
