@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=mold
-pkgver=2.42.0
-pkgrel=2
+pkgver=2.42.1
+pkgrel=1
 pkgdesc='A Modern Linker'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/rui314/mold'
@@ -13,12 +13,8 @@ makedepends=('cmake' 'python' 'linux-headers')
 # 0002: backport: claim IR files for LTO in the command line order
 source=(
   "$url/archive/refs/tags/v$pkgver.tar.gz"
-  "0001-backport-fix-sym.patch"
-  "0002-ir-files-cmdline-order.patch::https://github.com/rui314/mold/commit/92eb17a07c60a88b3a1a8c9cef014ac84eaf0cf9.patch"
 )
-sha256sums=('6c0f3308c5b3159a369202d970922ad819bab1bfcb5a3b3c06a723d19f65373e'
-            'dae7b7d04bc25dfc0e1581afb24f006213ec86d3381a7c562106b02da495e3f0'
-            '92b7500cfaecb2a69cc9903059d8da8be01e90fab91f1e99db6a42707a8a2984')
+sha256sums=('0580221bfdad7148ceeafd0ad3c1c7b3ca9e66b45950405230cc3f81a205c816')
 
 prepare()
 {
