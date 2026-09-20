@@ -8,7 +8,7 @@ pkgname=(
   freeciv-tools
   libfreeciv freeciv-data
 )
-pkgver=3.2.5
+pkgver=3.2.6
 pkgrel=1
 pkgdesc="Multiuser clone of the famous Microprose game of Civilization"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -43,7 +43,7 @@ makedepends=(
 )
 backup=('etc/freeciv/database.lua')
 source=("https://downloads.sourceforge.net/sourceforge/$pkgbase/$pkgbase-$pkgver.tar.xz")
-sha512sums=('73cd6484b79a4da2de895778d1a01338c46e6f7460dda8bcfeb444a1c74be2806a7e4adca626bc45f6ea87b34a0a535c753889d1cb168a7c274fab541d3ba8d1')
+sha512sums=('a308a2c407a2043d414be0ba04afbfb4d760879c85e3aebf458b26beaf2431d6eb5d3bf6184accdae1dd235ff5fb192ae0cd8e32b83de8314431c4ce382d4eff')
 
 _pick_exec() {
   _pick_ $1 usr/bin/$2
