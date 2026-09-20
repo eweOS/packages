@@ -2,7 +2,7 @@
 
 pkgbase=snowball
 pkgname=(snowball libstemmer)
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="String processing language for creating stemming algorithms"
 url="https://snowballstem.org/"
@@ -12,7 +12,7 @@ makedepends=(git)
 # 0001: downstream, allow libstemmer to be built as a shared library
 source=("git+https://github.com/snowballstem/snowball#tag=v$pkgver"
 	0001-build-Build-and-link-to-libstemmer-as-a-shared-libra.patch)
-sha256sums=('f0dfa924f26de6f22f1488724398cd13d4072ec8355931bd2ea8496edc84365e'
+sha256sums=('046a26c2ebaf4ffbe3218248a0d6ea776af6c3bd92386e3e5b9801b49d42be55'
             '2d561fc33e4aff3872715a3b98875eb5af040b3f34676ba339e28421628a2a69')
 
 prepare() {
