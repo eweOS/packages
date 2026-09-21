@@ -2,8 +2,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=libvpx
-pkgver=1.16.0
-pkgrel=2
+pkgver=1.17.0
+pkgrel=1
 pkgdesc='Library for the vp8/vp9 codecs'
 url='https://www.webmproject.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -45,5 +45,5 @@ package() {
   install -Dm 644 LICENSE $pkgdir/usr/share/licenses/libvpx/LICENSE
 }
 
-sha256sums=('7a479a3c66b9f5d5542a4c6a1b7d3768a983b1e5c14c60a9396edc9b649e015c'
+sha256sums=('1020f184046187baa2985dbde38e0691f49c44088bca7a1842b0236c6081dc0a'
             'eeb29a0d795a5f05868017feec1d4155209ff5a87967f7d3992ef2044e5d7b0d')
