@@ -1,8 +1,8 @@
 # Maintainer: Ziyao <ziyao@disroot.org>
 
 pkgname=lua54
-pkgver=5.4.8
-pkgrel=4
+pkgver=5.4.9
+pkgrel=1
 _V=5.4
 _R=5.4.7
 pkgdesc='Powerful lightweight programming language designed for extending applications'
@@ -14,7 +14,7 @@ provides=(lua)
 source=(https://www.lua.org/ftp/lua-$pkgver.tar.gz
   Makefile.patch
   src-Makefile.patch)
-sha256sums=('4f18ddae154e793e46eeab727c59ef1c0c0c2b744e7b94219710d76f530629ae'
+sha256sums=('2335b6c582a52654f94612bf10d2f4672805d05329aa6568b1d8cd9e5c6fb8e6'
             '521841c5803146ef4cc9b728b86926455bb2dc325aa262ccde8471ac8387df17'
             'ac9205c6952a6ad3c4d08480c1859d61aa287318b4aad91e1784d528590841bf')
 
@@ -76,7 +76,7 @@ package()
 {
   cd lua-$pkgver
   make install INSTALL_TOP=$pkgdir/usr
-  install -Dm 644 doc/*.{css,html,png,gif} $pkgdir/usr/share/$pkgname/doc
+  install -Dm 644 doc/*.{css,html,png} $pkgdir/usr/share/$pkgname/doc
   tail -n 25 src/lua.h | head -n 22 > COPYRIGHT
   install -Dm 644 COPYRIGHT $pkgdir/usr/share/licenses/$pkgname/LICENSE
   install -Dm 644 $srcdir/lua$_V.pc -t $pkgdir/usr/lib/pkgconfig
