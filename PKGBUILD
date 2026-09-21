@@ -5,24 +5,20 @@ pkgbase=linux-lts
 pkgname=(linux-lts linux-lts-devel linux-lts-docs)
 _basename=linux
 pkgver=6.18.52
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux LTS kernel'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
 license=(GPL-2.0-only)
 makedepends=(bison flex perl python libelf linux-headers rsync lld git pahole)
 options=(!strip)
-_kconfig_commit=b923049b00b31e7e2823759f2bce1290bdae365a
-# 0001: Downstream, fixed in master, enlarge stack frame size limitation to
-#	fix amdgpu compilation on x86_64 with LLVM
+_kconfig_commit=dc64d79a979fd119169535177732d69bec27e937
 source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         "git+https://github.com/eweOS/kernel-config.git#commit=$_kconfig_commit"
-        busybox-find-compat.patch
-        0001-amdgpu-dml2-Increase-max-stack-size.patch)
+        busybox-find-compat.patch)
 sha256sums=('2b69564f7d4fea0c859b1959ba33709ee6e9139bd100e30a853b57159a8221b8'
-            '1c68c1f09434c62031e6aceb2512c55f076f07ecff8320c317ad0b2f8437497c'
-            'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd'
-            '70d813202220e0fd41b0908c5b22d4e4607e80c7366282ab90caa3d55955ced5')
+            '24d090730ad26ad51649d5f0dbaabd7247a07945111aeaa834089b421bf16522'
+            'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
 
 case $CARCH in
 x86_64)
