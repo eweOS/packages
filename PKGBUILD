@@ -19,10 +19,11 @@ build() {
   python -m build -wn
 }
 
-check() {
-  cd $pkgname-$pkgver
-  pytest
-}
+# CI missing uinput
+# check() {
+#   cd $pkgname-$pkgver
+#   pytest
+# }
 
 package() {
   cd $pkgname-$pkgver
