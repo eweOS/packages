@@ -1,0 +1,51 @@
+From 715cb405f3ea0dbfeedce89494a58a6a092b927c Mon Sep 17 00:00:00 2001
+From: Yao Zi <me@ziyao.cc>
+Date: Thu, 24 Sep 2026 17:34:35 +0000
+Subject: [PATCH] [meson] Do not resolve PACKAGE_PREFIX_DIR with
+ get_filename_component()
+
+When the parent directories contain symlinks, get_filename_component()
+couldn't resolve "../" components correctly even in REALPATH mode[1].
+
+Only resolve "${CMAKE_CURRENT_LIST_DIR}` with get_filename_component()
+to avoid wrong PACKAGE_PREFIX_DIR on usr-merged UNIX systems, where /lib
+is a symlink to /usr/lib, and harfbuzz's CMake config might be installed
+to /usr/lib/cmake/harfbuzz.
+
+Turning on CMP0152 and using file(REAL_PATH) later might be an
+alternative solution, but it requires CMake 3.28 or later[2].
+
+Link: https://gitlab.kitware.com/cmake/cmake/-/work_items/26472 # [1]
+Link: https://cmake.org/cmake/help/v4.0/policy/CMP0152.html # [2]
+Closes: https://github.com/harfbuzz/harfbuzz/issues/6278
+Signed-off-by: Yao Zi <me@ziyao.cc>
+---
+ src/meson.build | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/src/meson.build b/src/meson.build
+index 002d03b3919a..a629ae6c9901 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -1097,8 +1097,6 @@ else
+   cmake_package_prefix_dir = run_command(relative_to, get_option('prefix'), get_option('prefix') / cmake_config_dir, check: true).stdout().strip()
+ endif
+ 
+-cmake_package_prefix_dir = '${CMAKE_CURRENT_LIST_DIR}/@0@'.format(cmake_package_prefix_dir)
+-
+ # Make all the relevant paths relative to our prefix, so we can later append
+ # them onto ${PACKAGE_PREFIX_DIR} to get the correct paths.
+ 
+@@ -1133,7 +1131,8 @@ if fs.is_absolute(cmake_install_bindir)
+ endif
+ 
+ cmake_config.set('PACKAGE_INIT', '''
+-get_filename_component(PACKAGE_PREFIX_DIR "@0@" ABSOLUTE)
++get_filename_component(ABSOLUTE_CMAKE_LIST_DIR ${CMAKE_CURRENT_LIST_DIR} REALPATH)
++set(PACKAGE_PREFIX_DIR "${ABSOLUTE_CMAKE_LIST_DIR}/@0@")
+ 
+ macro(set_and_check _var _file)
+   set(${_var} "${_file}")
+-- 
+2.55.0
+
