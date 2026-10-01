@@ -2,7 +2,7 @@
 
 pkgname=waylyrics
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="the furry way to show desktop lyrics"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://waylyrics.github.io/waylyrics/waylyrics/"
@@ -68,5 +68,5 @@ package() {
     done
     install -Dm644 res/icons/hicolor/scalable/apps/$_id.svg \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_id.svg"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    _install_license_ LICENSE
 }
