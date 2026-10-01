@@ -3,7 +3,7 @@
 pkgbase=librime
 pkgname=($pkgbase $pkgbase-doc)
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Rime Input Method Engine'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://rime.im
