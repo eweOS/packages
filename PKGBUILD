@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=waylyrics
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.6
+pkgrel=1
 pkgdesc="the furry way to show desktop lyrics"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://waylyrics.github.io/waylyrics/waylyrics/"
@@ -18,7 +18,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/waylyrics/waylyrics/archive/refs/tags/v$pkgver.tar.gz"
 )
 options=(!lto)
-sha256sums=('3b9ebf078374d3ebae829644b4e03e34d24543b67d7353f8f17f4784f63368b8')
+sha256sums=('2a5169e5de4f195573b13259067301f751136a22517ad5ad1cf474b27b163ca3')
 optdepends=('xdg-desktop-portal: file dialog to import LRC')
 
 _features='mimalloc tray-icon i18n import-lyric i18n-local-lyric'
