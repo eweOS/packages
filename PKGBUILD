@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=kicad-library
-pkgver=10.0.5
+pkgver=10.0.6
 pkgrel=1
 pkgdesc='Symbol, footprint and template library for KiCAD'
 url='https://gitlab.com/kicad/libraries'
@@ -12,9 +12,9 @@ source=("https://gitlab.com/kicad/libraries/kicad-symbols/-/archive/$pkgver/kica
 	"https://gitlab.com/kicad/libraries/kicad-footprints/-/archive/$pkgver/kicad-footprints-$pkgver.tar.gz"
 	"https://gitlab.com/kicad/libraries/kicad-templates/-/archive/$pkgver/kicad-templates-$pkgver.tar.gz")
 options=(!strip) # This contains data only.
-sha256sums=('8d3b17c9f1d9266d546eb22552d29a427f02d9956b88858f6a0ca2bb197c9cf4'
-            'f6305041ea72ab9c55461873dfd67359d28fa9639e7a11952b81d468b2155a8d'
-            'bb42390db45f8a6b1539c6f83850ad2091506b6a63598049b4bc805900491145')
+sha256sums=('5587f5cb4a779d287e49c4ba069a6b42c27b55cbe4c5b6241e39d91878abe571'
+            '17827af73192ae17b479d4c502b6f569d03ed855b9d3c0b9b133b8cf1b8d3e22'
+            '18b4e3f2ed781383179c1b15a82c94e5176dc825e1c646f84e89ed50e835063b')
 
 build() {
 	for d in symbols footprints templates; do
