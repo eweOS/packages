@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=kicad
-pkgver=10.0.5
-pkgrel=2
+pkgver=10.0.6
+pkgrel=1
 pkgdesc='Electronics design automation suite'
 url='https://www.kicad.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -36,7 +36,7 @@ source=("https://gitlab.com/kicad/code/kicad/-/archive/$pkgver/kicad-$pkgver.tar
 	0004-Enable-json-common-for-std-char_traits-with-wxUniChar.patch
 	0005-Check-value-of-wxWidgets-feature-variables-when-buil.patch
 	0006-thirdparty-glad-Regenerate-gl-for-EGL.patch)
-sha256sums=('66b5d42369347eb6dde222406b550b2b694c451a9ca0d03638cf197a022ea1c1'
+sha256sums=('528788c342461536bee3331998a8aa609975723f07b816287146ab8d4d9af3cb'
             '125061fb75c8318f3779b1cd620d6b0b08b8724035c60ac8bb2b4582de7108b7'
             '50620a09a43705e61ac1322a2b421b222ab3f321be150731f12951e1fac8957e'
             '0b51717b6a983fc91ef74508ae23d135a22eb5cbf40a8cb61502f78dcb1ccf07'
