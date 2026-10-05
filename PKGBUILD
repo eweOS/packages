@@ -2,12 +2,12 @@
 
 pkgname=python-pathspec
 _name=${pkgname#python-}
-pkgver=0.12.1
-pkgrel=3
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='Utility library for gitignore style pattern matching of file paths'
 arch=('any')
 url=https://github.com/cpburnz/python-pathspec
-license=('MPL2')
+license=('MPL-2.0')
 depends=('python')
 makedepends=(
   'git'
@@ -17,7 +17,7 @@ makedepends=(
   'python-wheel'
 )
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('SKIP')
+sha256sums=('adc862a879860f25db0b97b1bef35f737ce0bfa2ae1c38555bbedb17188ecf35')
 
 build() {
   cd $pkgname
@@ -35,7 +35,7 @@ package() {
 
   # Symlink license file
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -d "$pkgdir"/usr/share/licenses/$pkgname
+  install -d "$pkgdir"/usr/share/licenses
   ln -s "$site_packages"/"$_name"-$pkgver.dist-info/LICENSE \
-    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    "$pkgdir"/usr/share/licenses/$pkgname
 }
