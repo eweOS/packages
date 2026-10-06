@@ -14,7 +14,7 @@ _lvers=(5.1 5.4 5.5)
 sha256sums=('4b155d67d2246c1ffa7ad7bc466c1ea899bbc40fef0257cc9c03cecbaed4352a')
 
 build() {
-	for v in ${_lvers[*]}; do
+	for v in "${_lvers[@]}"; do
 		cd $srcdir
 		cp -rf lpeg-$pkgver build-$v
 		cd build-$v
@@ -23,7 +23,7 @@ build() {
 }
 
 check() {
-	for v in ${_lvers[*]}; do
+	for v in "${_lvers[@]}"; do
 		msg2 "Testing with Lua $v"
 		cd $srcdir/build-$v
 		lua$v test.lua
