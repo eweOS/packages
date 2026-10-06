@@ -16,7 +16,7 @@ sha256sums=('d1aded44b4cfe5ec6b395e178902aba3eed1dbe7999a753c0662222de2890ec0')
 
 build () {
 	for v in ${_lvers[*]}; do
-		cd $srcdir
+		cd "$srcdir"
 		cp -r lua-cjson-$pkgver build-$v
 		cd build-$v
 		make LUA_VERSION=$v				\
@@ -49,9 +49,9 @@ _package() {
 			DESTDIR=$pkgdir
 	make install-extra LUA_VERSION=$v		\
 			PREFIX=/usr			\
-			DESTDIR=$pkgdir
-	rm -r $pkgdir/usr/share/lua/$v/cjson/tests
-	rm -r $pkgdir/usr/bin # TODO: package tools
+			DESTDIR="$pkgdir"
+	rm -r "$pkgdir"/usr/share/lua/$v/cjson/tests
+	rm -r "$pkgdir"/usr/bin # TODO: package tools
 	_install_license_ LICENSE
 }
 
