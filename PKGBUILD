@@ -15,13 +15,13 @@ source=("https://github.com/Lua-cURL/Lua-cURLv3/archive/refs/tags/v$pkgver.tar.g
 sha256sums=('aba40511a7cac4422c0238d1db42b2124ea5a727b0745f7f434f3dc119cbb2db')
 
 prepare() {
-	for v in ${_lvers[*]}; do
+	for v in "${_lvers[@]}"; do
 		cp -rf Lua-cURLv3-$pkgver build-$v
 	done
 }
 
 build () {
-	for v in ${_lvers[*]}; do
+	for v in "${_lvers[@]}"; do
 		cd $srcdir/build-$v
 		make LUA_IMPL=lua$v
 	done
