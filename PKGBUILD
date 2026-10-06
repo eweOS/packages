@@ -1,16 +1,16 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgbase=lua-curl
-pkgname=(lua51-curl lua54-curl)
-_lvers=(5.1 5.4)
+pkgname=(lua51-curl lua54-curl lua55-curl)
+_lvers=(5.1 5.4 5.5)
 pkgver=0.3.13
-pkgrel=3
+pkgrel=4
 pkgdesc=' Lua binding to libcurl.'
 url='https://github.com/Lua-cURL/Lua-cURLv3'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
-depends=(curl)
-makedepends=(lua51 lua54)
+depends=(musl curl)
+makedepends=(lua51 lua54 lua55)
 source=("https://github.com/Lua-cURL/Lua-cURLv3/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('aba40511a7cac4422c0238d1db42b2124ea5a727b0745f7f434f3dc119cbb2db')
 
@@ -47,4 +47,8 @@ package_lua51-curl() {
 
 package_lua54-curl() {
 	do_install 5.4
+}
+
+package_lua55-curl() {
+	do_install 5.5
 }
