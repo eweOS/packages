@@ -1,16 +1,16 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgbase=lua-lpeg
-pkgname=(lua51-lpeg lua54-lpeg)
+pkgname=(lua51-lpeg lua54-lpeg lua55-lpeg)
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Pattern-matching library for Lua'
 url='http://www.inf.puc-rio.br/~roberto/lpeg'
 arch=(x86_64 aarch64 riscv64 loongarch64)
-makedepends=(lua51 lua54)
+makedepends=(lua51 lua54 lua55)
 license=(MIT)
 source=("http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-$pkgver.tar.gz")
-_lvers=(5.1 5.4)
+_lvers=(5.1 5.4 5.5)
 sha256sums=('4b155d67d2246c1ffa7ad7bc466c1ea899bbc40fef0257cc9c03cecbaed4352a')
 
 build() {
@@ -24,6 +24,7 @@ build() {
 
 check() {
 	for v in ${_lvers[*]}; do
+		msg2 "Testing with Lua $v"
 		cd $srcdir/build-$v
 		lua$v test.lua
 	done
@@ -43,4 +44,9 @@ package_lua51-lpeg() {
 package_lua54-lpeg() {
 	depends=(lua54)
 	do_package 5.4
+}
+
+package_lua55-lpeg() {
+	depends=(lua55)
+	do_package 5.5
 }
