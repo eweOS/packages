@@ -15,7 +15,7 @@ sha256sums=('4b155d67d2246c1ffa7ad7bc466c1ea899bbc40fef0257cc9c03cecbaed4352a')
 
 build() {
 	for v in "${_lvers[@]}"; do
-		cd $srcdir
+		cd "$srcdir"
 		cp -rf lpeg-$pkgver build-$v
 		cd build-$v
 		make linux LUADIR=/usr/include/lua$v
@@ -25,14 +25,14 @@ build() {
 check() {
 	for v in "${_lvers[@]}"; do
 		msg2 "Testing with Lua $v"
-		cd $srcdir/build-$v
+		cd "$srcdir/build-$v"
 		lua$v test.lua
 	done
 }
 
 do_package() {
 	v=$1
-	install -Dm755 build-$v/lpeg.so $pkgdir/usr/lib/lua/$v/lpeg.so
+	install -Dm755 build-$v/lpeg.so "$pkgdir"/usr/lib/lua/$v/lpeg.so
 	_install_license_ build-$v/lpeg.html
 }
 
