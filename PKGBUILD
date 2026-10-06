@@ -15,7 +15,7 @@ _lvers=(5.1 5.4 5.5)
 sha256sums=('d1aded44b4cfe5ec6b395e178902aba3eed1dbe7999a753c0662222de2890ec0')
 
 build () {
-	for v in ${_lvers[*]}; do
+	for v in "${_lvers[@]}"; do
 		cd "$srcdir"
 		cp -r lua-cjson-$pkgver build-$v
 		cd build-$v
