@@ -22,7 +22,7 @@ prepare() {
 
 build () {
 	for v in "${_lvers[@]}"; do
-		cd $srcdir/build-$v
+		cd "$srcdir"/build-$v
 		make LUA_IMPL=lua$v
 	done
 }
@@ -36,8 +36,8 @@ do_install() {
 	v=$1
 	depends+=(lua${v/./})
 
-	cd $srcdir/build-$v
-	make install LUA_IMPL=lua$v DESTDIR=$pkgdir
+	cd "$srcdir"/build-$v
+	make install LUA_IMPL=lua$v DESTDIR="$pkgdir"
 	_install_license_ LICENSE
 }
 
