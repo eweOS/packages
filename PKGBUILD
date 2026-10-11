@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=telegram-desktop
-pkgver=7.1.3
-pkgrel=4
+pkgver=7.3.1
+pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url='https://desktop.telegram.org/'
 arch=(x86_64 aarch64 loongarch64)
@@ -21,7 +21,7 @@ _tdlib_commit=d1085f9cebc5a62379991ae1652673954f229c1f
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v$pkgver/tdesktop-$pkgver-full.tar.gz"
 	"git+https://github.com/tdlib/td.git#commit=$_tdlib_commit"
 	"0001-use-lld.patch")
-sha256sums=('92facc0dd84736210190ddd04bb5ba93cc36af878d08f55a65272b901401f2fe'
+sha256sums=('39b0c93c9d45e9ceb7c56be56402888337b92d4f9980117f510709bfa3bb383d'
             '95da0cdae15b90abe54117499187c66380e5bed6ef760f11e01ce94ee44b4508'
             '19cdd86b87ea3e756ea0f5872f2bad15efb3e458f335bd47a1c33b99017d8426')
 
