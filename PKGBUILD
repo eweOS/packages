@@ -1,7 +1,7 @@
 # Maintainer: Weird Gumi <weirdgumi@tutamail.com>
 
 pkgname=river
-pkgver=0.4.8
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A non-monolithic Wayland compositor'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(libevdev libinput libxkbcommon musl pixman wayland wlroots0.20)
 makedepends=(scdoc wayland-protocols wlroots0.20-devel zig)
 conflicts=($pkgname-classic)
 source=(https://codeberg.org/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=(6d4030526e307e40de357167b4d6daacb583aed353dd93e32e1314c2d34400fa)
+sha256sums=(3700370da2af1885962b8321d99ecee1150005e0b62f84527d2f394dd240007b)
 _zig_options=(
   -Dtarget=$CARCH-linux-musl
   -Dcpu=baseline
