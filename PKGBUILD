@@ -17,7 +17,7 @@ sha256sums=('515e81d21903c1e428b017f2fe9dffa4e29ae9881b0d49ddbe6ba625e3164fe3')
 build() {
 	cd lyaml-"$pkgver"
 
-	for v in ${_lvers[*]}; do
+	for v in "${_lvers[@]}"; do
 		"luarocks-$v" make lyaml-$pkgver-*.rockspec \
 			--tree="./build-$v"
 	done
