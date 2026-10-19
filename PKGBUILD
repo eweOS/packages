@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgbase=lua-luv
-pkgname=(lua51-luv lua54-luv libluv)
+pkgname=(lua51-luv lua54-luv lua55-luv libluv)
 pkgver=1.53.0.0
 _pkgver=1.53.0-0
 pkgrel=1
@@ -10,11 +10,11 @@ url='https://github.com/luvit/luv'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0)
 depends=(libuv)
-makedepends=(lua51 lua54 lua51-compat53 cmake)
+makedepends=(lua51 lua54 lua55 lua51-compat53 cmake)
 source=("https://github.com/luvit/luv/archive/refs/tags/$_pkgver.tar.gz")
 sha256sums=('bd393b5918f320c79a2c6405e3abebe01c024557c32b9fb9006bee20ce71e19e')
 
-_lvers=(5.1 5.4)
+_lvers=(5.1 5.4 5.5)
 
 build() {
 	for v in ${_lvers[*]}; do
@@ -75,6 +75,11 @@ package_lua51-luv() {
 package_lua54-luv() {
 	depends=(libuv lua54)
 	do_package 5.4
+}
+
+package_lua55-luv() {
+	depends=(libuv lua55)
+	do_package 5.5
 }
 
 package_libluv() {
