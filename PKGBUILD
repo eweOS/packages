@@ -1,23 +1,23 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgbase=lua-luv
-pkgname=(lua51-luv lua54-luv libluv)
-pkgver=1.52.1.0
-_pkgver=1.48.0-2
+pkgname=(lua51-luv lua54-luv lua55-luv libluv)
+pkgver=1.53.0.0
+_pkgver=1.53.0-0
 pkgrel=1
 pkgdesc='Bare livuv bindings for Lua'
 url='https://github.com/luvit/luv'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0)
 depends=(libuv)
-makedepends=(lua51 lua54 lua51-compat53 cmake)
+makedepends=(lua51 lua54 lua55 lua51-compat53 cmake)
 source=("https://github.com/luvit/luv/archive/refs/tags/$_pkgver.tar.gz")
-sha256sums=('e64cd8a0197449288b37df6ca058120e8d2308fc305f543162b5bf3e92273a05')
+sha256sums=('bd393b5918f320c79a2c6405e3abebe01c024557c32b9fb9006bee20ce71e19e')
 
-_lvers=(5.1 5.4)
+_lvers=(5.1 5.4 5.5)
 
 build() {
-	for v in ${_lvers[*]}; do
+	for v in "${_lvers[@]}"; do
 		echo $v
 		cmake -B build-$v \
 			-DCMAKE_INSTALL_PREFIX=/usr		\
@@ -45,6 +45,7 @@ build() {
 		-DLUA_LIBDIR=/usr/lib/lua5.1		\
 		-DLUA_COMPAT53_DIR=/usr/include/lua5.1	\
 		-DLUA_BUILD_TYPE=System			\
+		-DLIBDIR=/usr/lib			\
 		-DBUILD_MODULE=OFF			\
 		-DBUILD_STATIC_LIBS=OFF			\
 		-DBUILD_SHARED_LIBS=ON luv-$_pkgver
@@ -54,7 +55,7 @@ build() {
 
 check() {
 	cd luv-$_pkgver
-	for v in ${_lvers[*]}; do
+	for v in "${_lvers[@]}"; do
 		LUA_CPATH="$srcdir/build-$v/?.so;;"	\
 			lua$v tests/run.lua
 	done
@@ -62,7 +63,7 @@ check() {
 
 do_package() {
 	v=$1
-	DESTDIR=$pkgdir cmake --install build-$v
+	DESTDIR="$pkgdir" cmake --install build-$v
 	_install_license_ luv-$_pkgver/LICENSE.txt
 }
 
@@ -76,7 +77,12 @@ package_lua54-luv() {
 	do_package 5.4
 }
 
+package_lua55-luv() {
+	depends=(libuv lua55)
+	do_package 5.5
+}
+
 package_libluv() {
 	depends=(libuv)
-	DESTDIR=$pkgdir cmake --install build-libluv
+	DESTDIR="$pkgdir" cmake --install build-libluv
 }
