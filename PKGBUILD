@@ -17,7 +17,7 @@ sha256sums=('dd52ab48f620a6d6acff04ac163d055213dc8950d0cb4899e4857b65252993d7'
 
 build() {
 	cd libmpack-lua-$pkgver
-	for v in ${_lvers[*]}; do
+	for v in "${_lvers[@]}"; do
 		luarocks-$v make mpack-$pkgver-0.rockspec \
 			--tree=./build-$v
 	done
