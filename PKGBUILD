@@ -1,17 +1,17 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgbase=lua-mpack
-pkgname=(lua51-mpack lua54-mpack)
+pkgname=(lua51-mpack lua54-mpack lua55-mpack)
 pkgver=1.0.13
-pkgrel=2
+pkgrel=3
 pkgdesc='libmpack lua binding'
 url='https://github.com/libmpack/libmpack-lua'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=(libmpack)
-makedepends=(libmpack lua51 lua54 luarocks51 luarocks54)
+makedepends=(libmpack lua51 lua54 lua55 luarocks51 luarocks54 luarocks55)
 source=("https://github.com/libmpack/libmpack-lua/releases/download/$pkgver/libmpack-lua-$pkgver.tar.gz"
 	LICENSE)
-_lvers=(5.1 5.4)
+_lvers=(5.1 5.4 5.5)
 sha256sums=('dd52ab48f620a6d6acff04ac163d055213dc8950d0cb4899e4857b65252993d7'
             'be8d5c5a668e5fc43bc9d41f81e625fc239290c85a78c069484f81f9c704f481')
 
@@ -39,4 +39,9 @@ package_lua51-mpack() {
 package_lua54-mpack() {
 	depends+=(lua54)
 	do_package 5.4
+}
+
+package_lua55-mpack() {
+	depends+=(lua55)
+	do_package 5.5
 }
