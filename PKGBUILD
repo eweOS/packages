@@ -63,7 +63,7 @@ check() {
 
 do_package() {
 	v=$1
-	DESTDIR=$pkgdir cmake --install build-$v
+	DESTDIR="$pkgdir" cmake --install build-$v
 	_install_license_ luv-$_pkgver/LICENSE.txt
 }
 
@@ -84,5 +84,5 @@ package_lua55-luv() {
 
 package_libluv() {
 	depends=(libuv)
-	DESTDIR=$pkgdir cmake --install build-libluv
+	DESTDIR="$pkgdir" cmake --install build-libluv
 }
