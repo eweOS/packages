@@ -17,7 +17,7 @@ sha256sums=('bd393b5918f320c79a2c6405e3abebe01c024557c32b9fb9006bee20ce71e19e')
 _lvers=(5.1 5.4 5.5)
 
 build() {
-	for v in ${_lvers[*]}; do
+	for v in "${_lvers[@]}"; do
 		echo $v
 		cmake -B build-$v \
 			-DCMAKE_INSTALL_PREFIX=/usr		\
@@ -55,7 +55,7 @@ build() {
 
 check() {
 	cd luv-$_pkgver
-	for v in ${_lvers[*]}; do
+	for v in "${_lvers[@]}"; do
 		LUA_CPATH="$srcdir/build-$v/?.so;;"	\
 			lua$v tests/run.lua
 	done
