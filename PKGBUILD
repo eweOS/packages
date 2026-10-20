@@ -2,7 +2,7 @@
 
 pkgname=sing-box
 pkgver=1.13.14
-pkgrel=3
+pkgrel=4
 pkgdesc='The universal proxy platform'
 url='https://sing-box.sagernet.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
