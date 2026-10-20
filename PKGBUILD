@@ -5,7 +5,7 @@ pkgname=(
   ca-certificates-mozilla
 )
 pkgbase=nss
-pkgver=3.129
+pkgver=3.131.1
 pkgrel=1
 pkgdesc="Network Security Services"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
@@ -33,12 +33,10 @@ source=(
   "nss::git+https://github.com/nss-dev/nss#tag=NSS_${pkgver//./_}_RTM"
   bundle.sh
   certdata2pem.py
-  0001-Fix-generating-nss.pc-with-system-nspr.patch
 )
-sha256sums=('48f5c4909db7d7bcaaef91f8df54e2f37a176677ea0f8bf40296d1de3a014d08'
+sha256sums=('bad60f5b1b59d8578bbced8fcef561a643f8c2a027206c247a1d14805f0da87b'
             'f64282fbc8e73de51f88f41e5175d211a63a1a3e1cbf12512a8b9e229ad9d259'
-            '142861cf04942c141e7a6d0d39a30b6d4b57f13f27d21bfa90c6abcd5d34de60'
-            '2cb486d88cd951a660d503adaa14561de7ca2fff03d310fca9d4b145aca2f1ce')
+            '142861cf04942c141e7a6d0d39a30b6d4b57f13f27d21bfa90c6abcd5d34de60')
 
 prepare() {
   chmod +x ./{bundle.sh,certdata2pem.py}
