@@ -1,0 +1,114 @@
+From 2637791eb1e13615bd8dbb48e4ea5b52007314e6 Mon Sep 17 00:00:00 2001
+From: Viktor Szakats <commit@vsz.me>
+Date: Tue, 20 Oct 2026 11:51:29 +0200
+Subject: [PATCH] mk-ca-bundle.pl: add `-x` option to exclude specific CA roots
+
+Examples:
+```sh
+./mk-ca-bundle.pl -x <sha256>
+./mk-ca-bundle.pl -x <sha256-1>,<sha256-2>
+```
+
+Where `sha256*` are stripped from whitespace, colons (:) and matched
+case-insentively with CA root fingerprints in the source bundle.
+
+Note: delete any existing `certdata.txt` to force a rebuild when `-x`
+option is added/modified/removed and a re-generation is necessary as a
+result.
+
+Closes #23508
+---
+ docs/mk-ca-bundle.md    |  7 +++++++
+ scripts/mk-ca-bundle.pl | 28 +++++++++++++++++++++++++---
+ 2 files changed, 32 insertions(+), 3 deletions(-)
+
+diff --git a/docs/mk-ca-bundle.md b/docs/mk-ca-bundle.md
+index 8fb80268bc58..135cdbe69f09 100644
+--- a/docs/mk-ca-bundle.md
++++ b/docs/mk-ca-bundle.md
+@@ -71,6 +71,8 @@ specific information about each certificate that is stored in the original
+ file as comments and using this option makes those comments get passed on to
+ the output file. The meta data is not parsed in any way by mk-ca-bundle.
+ 
++(Added in 1.34) SHA-256 fingerprints are always included by default.
++
+ ## -n
+ 
+ Do not download *certdata.txt* - use the existing.
+@@ -115,6 +117,11 @@ unlink (remove) *certdata.txt* after processing
+ 
+ be verbose and print out processed certificate authorities
+ 
++## -x
++
++(Added in 1.35) Exclude list of SHA-256 fingerprints. Comma separated,
++case-insensitive, whitespace and ':' byte delimiters are ignored.
++
+ # EXIT STATUS
+ 
+ Returns 0 on success. Returns 1 if it fails to download data.
+diff --git a/scripts/mk-ca-bundle.pl b/scripts/mk-ca-bundle.pl
+index 5d2eaa125749..5da85d371f66 100755
+--- a/scripts/mk-ca-bundle.pl
++++ b/scripts/mk-ca-bundle.pl
+@@ -37,7 +37,7 @@
+ use MIME::Base64;
+ use strict;
+ use warnings;
+-use vars qw($opt_b $opt_d $opt_f $opt_h $opt_i $opt_k $opt_l $opt_m $opt_n $opt_p $opt_q $opt_s $opt_t $opt_u $opt_v $opt_w);
++use vars qw($opt_b $opt_d $opt_f $opt_h $opt_i $opt_k $opt_l $opt_m $opt_n $opt_p $opt_q $opt_s $opt_t $opt_u $opt_v $opt_w $opt_x);
+ use List::Util;
+ use Text::Wrap;
+ use Time::Local;
+@@ -110,7 +110,7 @@
+ 
+ $0 =~ s@.*(/|\\)@@;
+ $Getopt::Std::STANDARD_HELP_VERSION = 1;
+-getopts('bd:fhiklmnp:qs:tuvw:');
++getopts('bd:fhiklmnp:qs:tuvw:x:');
+ 
+ if(!defined($opt_d)) {
+     # to make plain "-d" use not cause warnings, and actually still work
+@@ -188,6 +188,7 @@ ()
+     print "\t-u\tunlink (remove) certdata.txt after processing\n";
+     print "\t-v\tbe verbose and print out processed CAs\n";
+     print "\t-w <l>\twrap base64 output lines after <l> chars (default: ${opt_w})\n";
++    print "\t-x\texclude list of SHA-256 fingerprints. Comma separated, case-insensitive, whitespace and ':' byte delimiters are ignored.\n";
+     exit;
+ }
+ 
+@@ -301,6 +302,13 @@ (%)
+ 
+ my $oldhash = oldhash($crt);
+ 
++my @opt_x_list;
++if($opt_x) {
++    $opt_x = uc $opt_x;
++    $opt_x =~ s/[\s:]//g;
++    @opt_x_list = split(/,/, $opt_x);
++}
++
+ report "SHA256 of old file: $oldhash";
+ 
+ if(!$opt_n) {
+@@ -604,6 +612,20 @@ (%)
+             $skipnum ++;
+             report "Skipping: $caname lacks acceptable trust level" if($opt_v);
+         } else {
++
++            # Skip if explicitly excluded
++            if($opt_x) {
++                my ($fingerprint_sha256) = grep { /^# Fingerprint .*SHA.*256/i } @precert;
++                $fingerprint_sha256 =~ s/://g;
++                $fingerprint_sha256 = uc $fingerprint_sha256;
++                ($fingerprint_sha256) = $fingerprint_sha256 =~ /([A-F0-9]{64})/;
++                if(grep { $_ eq $fingerprint_sha256 } @opt_x_list) {
++                    report "Skipping: '$main_block_name' fingerprint explicitly excluded: $fingerprint_sha256";
++                    $skipnum++;
++                    next;
++                }
++            }
++
+             my $encoded = MIME::Base64::encode_base64($cka_value, '');
+             $encoded =~ s/(.{1,${opt_w}})/$1\n/g;
+             my $pem = "-----BEGIN CERTIFICATE-----\n"
