@@ -4,7 +4,7 @@
 pkgbase=musl
 pkgname=(musl musl-static)
 pkgver=1.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc='An implementation of the C/POSIX standard library.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://musl.libc.org'
@@ -19,6 +19,9 @@ options=(!lto)
 # 0004: Backport 67219f0130ec ("fix pathological slowness & incorrect mappings in iconv gb18030 decoder")
 #	This is a security fix since the slow decoder might be exploited for DoS
 #	attack.
+# 0005: Backport, the commit isn't present in musl's Git tree yet, to fix
+#	security issues in regcomp(3).
+#	https://www.openwall.com/lists/oss-security/2026/10/21/18/1
 # TODO: get{conf,ent}.c and iconv.c should be split into another package
 source=(
   "http://www.etalabs.net/musl/releases/$pkgbase-$pkgver.tar.gz"
@@ -27,6 +30,7 @@ source=(
   "0002-fix-incorrect-access-to-tzname-by-strptime-Z-convers.patch"
   "0003-regex-reject-invalid-digit-back-reference-in-BRE.patch"
   "0004-fix-pathological-slowness-incorrect-mappings-in-icon.patch"
+  "0005-regex-avoid-int-overflow-in-regcomp.patch"
 )
 sha256sums=('d585fd3b613c66151fc3249e8ed44f77020cb5e6c1e635a616d3f9f82460512a'
             'd87d0cbb3690ae2c5d8cc218349fd8278b93855dd625deaf7ae50e320aad247c'
@@ -35,7 +39,8 @@ sha256sums=('d585fd3b613c66151fc3249e8ed44f77020cb5e6c1e635a616d3f9f82460512a'
             '07f609c0d70cde7b22a983f816185ee80c08015ec9e24c554b7960b9498638c7'
             'e0aec6b990e67eccdad65d421b67ba9a7840d4f6c7b20a7c9e46735d2a94c1e8'
             '37f6426eab187748f397fcb52443dba209d9744d6f9161222ad2645d8637967f'
-            '0ce3d109f3bb3f1bc1252717de126ee5f259a002c47fdccd42cb36c138e88e84')
+            '0ce3d109f3bb3f1bc1252717de126ee5f259a002c47fdccd42cb36c138e88e84'
+            '0cf0090ab433e8f9ed08ae03a0c93aff557c1d3e347260f62a61a10281f5333b')
 
 prepare()
 {
