@@ -1,6 +1,8 @@
+diff --git a/node.gyp b/node.gyp
+index 5334b8a746da..faedc566aa7a 100644
 --- a/node.gyp
 +++ b/node.gyp
-@@ -510,9 +510,6 @@
+@@ -578,9 +578,6 @@
            '-Wl,-bnoerrmsg',
          ],
        }],
@@ -10,9 +12,11 @@
      ],
    },
  
+diff --git a/tools/v8_gypfiles/v8.gyp b/tools/v8_gypfiles/v8.gyp
+index fd8394b3708e..d9312b53278d 100644
 --- a/tools/v8_gypfiles/v8.gyp
 +++ b/tools/v8_gypfiles/v8.gyp
-@@ -1306,14 +1306,6 @@
+@@ -1408,14 +1408,6 @@
          ['v8_postmortem_support', {
            'dependencies': ['postmortem-metadata#target'],
          }],
@@ -24,6 +28,6 @@
 -            'libraries': ['-latomic', ],
 -          },
 -        }],
-       ],
-     },  # v8_base_without_compiler
-     {
+         ['node_shared_abseil=="false"', {
+           'dependencies': ['abseil.gyp:abseil'],
+         }],
