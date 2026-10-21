@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=nodejs
-pkgver=26.7.0
-pkgrel=3
+pkgver=26.12.1
+pkgrel=1
 pkgdesc='JavaScript runtime'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://nodejs.org/'
@@ -12,20 +12,17 @@ makedepends=('git' 'python' 'ninja' 'linux-headers')
 optdepends=('npm: package manager')
 # 0001: Should be upstreamed, don't link libatomic for targets without
 #	non-word-sized atomic ops, as compiler-rt doesn't provide the library.
-# 0002: Downstream, highway's detection of RVV is broken, and doesn't support
-#	dispatch at runtime.
 source=("https://nodejs.org/dist/v${pkgver}/node-v${pkgver}.tar.xz"
-        "0001-no-libatomic.patch"
-	"0002-hwy-broken-rvv.patch")
-sha512sums=('d7dd7bf0485369c29ad90740c404b647696efd79c6a59f6a3da0b72cdb2740a5855fd62a55985516b8649d9c3359ce4141840f6e6a93427eaa5c87a3cd93e9c9'
-            '2c51251e303d64980deb8f00dfadf5928c31fb66ec2bbe94790868ffd6c7a4b2dba0584fe5bd53f70feb33b6a735a8e78dc7fa0d746645408e072eef3bed9d9f'
-            'de07b0d9c3481036ee97a22941ff444fee86c78abbc26afef36f17508bb479ce3ab83ca160109fbf4f0b9b3266dcce30860873dc8ffbcac1a70e98d17638ca55')
+        "0001-no-libatomic.patch")
+sha512sums=('f6f76e258af33f7f877c65a2141d281ea307aae017a90bb8a75a7d4df271ad9d17c7d0edfd5751a977edd6bdb03c704d727628c4c7215c878d421787a35240f2'
+            '7a27dc9dcb99be39f5925ef9a20f0afd2e1b475d72efd89c790516a01c5d35f38450fbb879f2d138d8abfa69a45ed73c44e2c0e603cb619a0476bc32764799c3')
 
 prepare() {
   _patch_ node-v$pkgver
 }
 
 build() {
+  # TODO: Devendor abseil-cpp, highway, and simdutf
   cd node-v$pkgver
   export CC=cc CXX=c++
   ./configure \
@@ -38,7 +35,6 @@ build() {
     --shared-openssl \
     --shared-zlib \
     --shared-libuv \
-    --experimental-http-parser \
     --shared-nghttp2 \
     --shared-cares \
     --shared-brotli \
@@ -46,8 +42,7 @@ build() {
     --shared-ffi \
     --shared-sqlite \
     --shared-gtest \
-    --shared-zstd \
-    --shared-simdutf
+    --shared-zstd
 
   make
 }
