@@ -3,8 +3,8 @@
 
 pkgname=(linux linux-devel linux-docs)
 _basename=linux
-pkgver=7.2.6
-pkgrel=2
+pkgver=7.2.12
+pkgrel=1
 pkgdesc='Linux kernel'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://www.kernel.org'
@@ -17,7 +17,7 @@ _kconfig_commit=dc64d79a979fd119169535177732d69bec27e937
 source=("https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-$pkgver.tar.xz"
         "git+https://github.com/eweOS/kernel-config.git#commit=$_kconfig_commit"
         busybox-find-compat.patch)
-sha256sums=('039aef84f2b0994aeda3f4fcfc3d02ec9d7a9bbb9020ea264c43f446c860f606'
+sha256sums=('bb18468a8dc8978aa00caa6446e753f7b6da3fee56b6b7f38b16f9430ba02d4f'
             '24d090730ad26ad51649d5f0dbaabd7247a07945111aeaa834089b421bf16522'
             'b8be8b83838595142586e54ee2f0f6b4942dca351663d5b9ded7e869aa9850cd')
 
