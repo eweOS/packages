@@ -15,6 +15,7 @@ sha256sums=('d92a0a4ce216dcebf18af20fed7ea7279fa535683f790fdaeed39827a234f567')
 
 build() {
 	cmake -S "$pkgname-$pkgver" -B build \
+		-DSIMDUTF_CXX_STANDARD=20		\
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo	\
 		-DCMAKE_INSTALL_PREFIX=/usr		\
 		-DBUILD_SHARED_LIBS=ON			\
