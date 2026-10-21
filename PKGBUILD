@@ -2,7 +2,7 @@
 
 pkgname=ifupdown-ng
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Flexible ifup/ifdown implementation'
 url='https://github.com/ifupdown-ng/ifupdown-ng'
 arch=(x86_64 aarch64 riscv64 loongarch64)
