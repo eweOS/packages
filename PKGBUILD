@@ -3,8 +3,8 @@
 pkgbase=brotli
 pkgname=('brotli' 'python-brotli' 'brotli-testdata')
 _gitcommit=e61745a6b7add50d380cfd7d3883dd6c62fc2c71
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='Generic-purpose lossless compression algorithm'
 url='https://github.com/google/brotli'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -21,7 +21,7 @@ makedepends=(
 #	See also https://github.com/google/brotli/pull/1368
 source=("https://github.com/google/brotli/archive/refs/tags/v${pkgver}.tar.gz"
 	"0001-disable-BROTLI_MODEL-macro-for-some-targets.patch")
-sha256sums=('816c96e8e8f193b40151dad7e8ff37b1221d019dbcb9c35cd3fadbfe6477dfec'
+sha256sums=('98d35d11a78dc453aebb7d10c3748f3f73ff78c8267c0dc697b8631f67bf7e8f'
             '404465f111c9cfbb45afefa1648630763d7fa203e98c0ac2fa26bc4bf6d6c4a9')
 
 prepare() {
