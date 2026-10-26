@@ -1,0 +1,5 @@
+type = process
+command = /usr/bin/dnsmasq -k --user=dnsmasq --group=dnsmasq
+restart = false
+depends-on: rc.target
+before: network.target
