@@ -2,7 +2,7 @@
 
 pkgname=lua54
 pkgver=5.4.9
-pkgrel=1
+pkgrel=2
 _V=5.4
 _R=5.4.7
 pkgdesc='Powerful lightweight programming language designed for extending applications'
@@ -75,17 +75,17 @@ build()
 package()
 {
   cd lua-$pkgver
-  make install INSTALL_TOP=$pkgdir/usr
-  install -Dm 644 doc/*.{css,html,png} $pkgdir/usr/share/$pkgname/doc
+  make install INSTALL_TOP="$pkgdir"/usr
+  install -Dm 644 doc/*.{css,html,png} "$pkgdir/usr/share/$pkgname/doc"
   tail -n 25 src/lua.h | head -n 22 > COPYRIGHT
-  install -Dm 644 COPYRIGHT $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  install -Dm 644 $srcdir/lua$_V.pc -t $pkgdir/usr/lib/pkgconfig
+  _install_license_ COPYRIGHT
+  install -Dm 644 $srcdir/lua$_V.pc -t "$pkgdir/usr/lib/pkgconfig"
 
-  mv $pkgdir/usr/bin/lua $pkgdir/usr/bin/lua$_V
-  mv $pkgdir/usr/bin/luac $pkgdir/usr/bin/luac$_V
-  mv $pkgdir/usr/share/man/man1/lua.1 $pkgdir/usr/share/man/man1/lua$_V.1
-  mv $pkgdir/usr/share/man/man1/luac.1 $pkgdir/usr/share/man/man1/luac$_V.1
-  ln -s liblua-$_V.so $pkgdir/usr/lib/lua$_V/liblua.so
-  ln -s lua$_V/liblua.so $pkgdir/usr/lib/liblua-$_V.so
-  ln -s /lua$_V.pc $pkgdir/usr/lib/pkgconfig/lua$_V-c++.pc
+  mv "$pkgdir"/usr/bin/{lua,lua$_V}
+  mv "$pkgdir"/usr/bin/{luac,luac$_V}
+  mv "$pkgdir"/usr/share/man/man1/{lua.1,lua$_V.1}
+  mv "$pkgdir"/usr/share/man/man1/{luac.1,luac$_V.1}
+  ln -s liblua-$_V.so "$pkgdir"/usr/lib/lua$_V/liblua.so
+  ln -s lua$_V/liblua.so "$pkgdir"/usr/lib/liblua-$_V.so
+  ln -s lua$_V.pc "$pkgdir"/usr/lib/pkgconfig/lua$_V-c++.pc
 }
