@@ -2,7 +2,7 @@
 
 pkgname=lua51
 pkgver=5.1.5
-pkgrel=8
+pkgrel=9
 pkgdesc='Powerful lightweight programming language designed for extending applications'
 url='https://www.lua.org'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -49,7 +49,7 @@ package() {
 	cd lua-$pkgver
 	make install INSTALL_TOP=$pkgdir/usr
 	install -Dm 644 doc/*.{css,html,png,gif} $pkgdir/usr/share/$pkgname/doc
-	install -Dm 644 COPYRIGHT $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	_install_license_ COPYRIGHT
 	install -Dm 644 ../lua$_V.pc $pkgdir/usr/lib/pkgconfig/lua$_V.pc
 	ln -s lua$_V.pc	$pkgdir/usr/lib/pkgconfig/lua$_V-c++.pc
 
