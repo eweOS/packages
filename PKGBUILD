@@ -2,7 +2,7 @@
 
 _name=vcs-versioning
 pkgname=python-$_name
-pkgver=2.3.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='The blessed package to manage your versions by vcs metadata'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python)
 makedepends=(python-build python-installer python-setuptools)
 checkdepends=(git python-pytest python-pytest-timeout)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_name-v$pkgver.tar.gz)
-sha256sums=(b0f79dbd6b634d5cb345ea8c9885b5ec395e0d6c481d76005325a6d8e1d52afd)
+sha256sums=('13c36b344b33c90fde9349ec279b7951bfd86c8aec51e161d6d58bdc5f9dc3a4')
 
 build() {
   cd setuptools-scm-$_name-v$pkgver/$_name
