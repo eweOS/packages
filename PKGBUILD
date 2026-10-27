@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=python-beaker
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc='WSGI middleware for sessions and caching'
 url='https://beaker.readthedocs.io/en/latest/'
@@ -10,7 +10,7 @@ license=(BSD-3-Clause)
 depends=(python)
 makedepends=(python-setuptools python-build python-installer python-wheel)
 source=("https://github.com/bbangert/beaker/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('36e8b4234636067db7d960ceffd7b8d76210ccb47d73335b37d5e8d44209f2a4')
+sha256sums=('0033f2dfa89ae5f700b77875c6989172e6f4bf1170a3227f066e63c5b6e6f83f')
 
 build () {
 	cd beaker-$pkgver
