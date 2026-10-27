@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=jbigkit
-pkgver=2.1
-pkgrel=2
+pkgver=2.2
+pkgrel=1
 pkgdesc='Data compression library/utilities for bi-level high-resolution images'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.cl.cam.ac.uk/~mgk25/jbigkit/'
@@ -17,7 +17,7 @@ source=(
   0013-new-jbig.c-limit-s-maxmem-maximum-decoded-image-size.patch
   0015-jbg_newlen-check-for-end-of-file-within-MARKER_NEWLE.patch
 )
-sha256sums=('73088cf6c9df66e2bbf80b6013ae164383c317a90fb07340ac96c52164cd9813'
+sha256sums=('e392f35dd41d038dd30d5227456941eec1908dc33f220be011ed5252a051f884'
             'cb404e8c1d67d0788368a58f2c3da83bcf5c7049139461b16c144d1018e83174'
             'e9616f9eccfa567738b0c470708d60b086b4e0c5c6017449c7f09d0ba9335e28'
             'dc44325606c1c22f075e87e81091fbf1543c6792dda311c071b0d50d7786ff17'
