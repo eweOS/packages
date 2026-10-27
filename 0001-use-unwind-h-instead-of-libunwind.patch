@@ -1,0 +1,107 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e6b7dfea..cbca7a22 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -924,19 +924,34 @@ if(NOT WIN32 AND MI_PROFILE)
+     endif()
+   else()
+     # No `execinfo.h` available (e.g. musl-based Linux distributions such as Alpine
+-    # do not implement `backtrace`); fall back to `libunwind` if it is installed.
+-    CHECK_INCLUDE_FILES("libunwind.h" MI_HAS_LIBUNWINDH)
+-    if(MI_HAS_LIBUNWINDH)
+-      find_link_library("unwind" MI_LIB_UNWIND)
+-      if(MI_LIB_UNWIND)
+-        list(APPEND mi_defines MI_HAS_LIBUNWINDH=1)
+-        list(APPEND mi_libraries "${MI_LIB_UNWIND}")
+-      endif()
++    # do not implement `backtrace`); fall back to `_Unwind_Backtrace` from `unwind.h`
++    # which is provided by the compiler's unwinder (libgcc_s or LLVM libunwind).
++    include(CheckCSourceCompiles)
++    set(mi_unwind_test_source "
++      #include <unwind.h>
++      #include <stdint.h>
++      static _Unwind_Reason_Code mi_unwind_test(struct _Unwind_Context* ctx, void* arg) {
++        *(uintptr_t*)arg = (uintptr_t)_Unwind_GetIP(ctx);
++        return _URC_END_OF_STACK;
++      }
++      int main(void) { uintptr_t ip = 0; _Unwind_Backtrace(&mi_unwind_test, &ip); return (ip == 0); }")
++    check_c_source_compiles("${mi_unwind_test_source}" MI_HAS_UNWINDH)
++    if(NOT MI_HAS_UNWINDH)
++      foreach(mi_unwind_lib IN ITEMS gcc_s unwind)
++        set(CMAKE_REQUIRED_LIBRARIES ${mi_unwind_lib})
++        check_c_source_compiles("${mi_unwind_test_source}" MI_HAS_UNWINDH_${mi_unwind_lib})
++        unset(CMAKE_REQUIRED_LIBRARIES)
++        if(MI_HAS_UNWINDH_${mi_unwind_lib})
++          set(MI_HAS_UNWINDH ON)
++          list(APPEND mi_libraries ${mi_unwind_lib})
++          break()
++        endif()
++      endforeach()
++    endif()
++    if(MI_HAS_UNWINDH)
++      list(APPEND mi_defines MI_HAS_UNWINDH=1)
+     else()
+-      message(WARNING "No backtrace support available: neither execinfo.h nor libunwind.h found.")
+-      if(EXISTS "/etc/alpine-release")
+-        message(STATUS "(On Alpine Linux, use `apk add libunwind-dev` to add the libunwind library)")
+-      endif()
++      message(WARNING "No backtrace support available: neither execinfo.h nor unwind.h (_Unwind_Backtrace) found.")
+     endif()
+   endif()
+   # FreeBSD (and DragonFly) need `kinfo_getvmmap` (in `libutil`) to collect the
+diff --git a/src/profile/pprof.c b/src/profile/pprof.c
+index 4b925f38..f8b1cc5b 100644
+--- a/src/profile/pprof.c
++++ b/src/profile/pprof.c
+@@ -672,7 +672,7 @@ static void mi_pprof_profiler_snapshot(mi_pprof_profiler_t* prof) {
+ // Basic backtraces
+ // ---------------------------------------------------------------------------
+ 
+-#if MI_HAS_EXECINFOH || MI_HAS_LIBUNWINDH
++#if MI_HAS_EXECINFOH || MI_HAS_UNWINDH
+ static size_t mi_backtrace_hash(void** frames, size_t depth) {
+   size_t hash = MI_FNV_OFFSET_BASIS;
+   for (size_t i = 0; i < depth; i++) {
+@@ -710,20 +710,30 @@ static mi_decl_noinline size_t mi_prim_backtrace(void** buffer, size_t max_depth
+   *hash = mi_backtrace_hash(buffer, depth);  // no platform-provided hash, compute our own
+   return depth;
+ }
+-#elif MI_HAS_LIBUNWINDH
+-#define UNW_LOCAL_ONLY
+-#include <libunwind.h>  // unw_backtrace
++#elif MI_HAS_UNWINDH
++#include <unwind.h>     // _Unwind_Backtrace (from the compiler's unwinder: libgcc_s or LLVM libunwind)
++typedef struct mi_unwind_state_s {
++  void** buffer;
++  size_t max_depth;
++  size_t skip;
++  size_t depth;
++} mi_unwind_state_t;
++
++static _Unwind_Reason_Code mi_unwind_frame(struct _Unwind_Context* ctx, void* arg) {
++  mi_unwind_state_t* const st = (mi_unwind_state_t*)arg;
++  const uintptr_t ip = (uintptr_t)_Unwind_GetIP(ctx);
++  if (ip == 0) return _URC_END_OF_STACK;
++  if (st->skip > 0) { st->skip--; return _URC_NO_REASON; }
++  st->buffer[st->depth++] = (void*)ip;
++  return (st->depth >= st->max_depth ? _URC_END_OF_STACK : _URC_NO_REASON);
++}
++
+ static mi_decl_noinline size_t mi_prim_backtrace(void** buffer, size_t max_depth, size_t* hash) {
+   // used as a fallback on platforms without `execinfo.h` (e.g. musl-based Linux like Alpine)
+-  const size_t skip = 1 + MI_BACKTRACE_SKIP_FRAMES;  // +1 for `mi_prim_backtrace`'s own frame
+-  if (max_depth <= skip) { *hash = 0; return 0; }
+-  if (max_depth > INT_MAX) { max_depth = INT_MAX; }
+-  const size_t raw_depth = (size_t)unw_backtrace(buffer, (int)(max_depth - skip));
+-  if (raw_depth <= skip) { *hash = 0; return 0; }
+-  const size_t depth = raw_depth - skip;
+-  memmove(buffer, buffer + skip, depth * sizeof(void*));
+-  *hash = mi_backtrace_hash(buffer, depth);  // no platform-provided hash, compute our own
+-  return depth;
++  mi_unwind_state_t st = { buffer, max_depth, 1 + MI_BACKTRACE_SKIP_FRAMES /* +1 for `mi_prim_backtrace`'s own frame */, 0 };
++  if (max_depth > 0) { _Unwind_Backtrace(&mi_unwind_frame, &st); }
++  *hash = mi_backtrace_hash(buffer, st.depth);  // no platform-provided hash, compute our own
++  return st.depth;
+ }
+ #else
+ static size_t mi_prim_backtrace(void** buffer, size_t max_depth, size_t* hash) {
