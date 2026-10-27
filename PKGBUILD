@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=python-pytest-asyncio
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc='Async io support for pytest'
 url='https://github.com/pytest-dev/pytest-asyncio'
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(python-wheel python-build python-installer python-setuptools
 	     python-setuptools-scm git)
 checkdepends=(python-hypothesis)
 source=("git+https://github.com/pytest-dev/pytest-asyncio.git#tag=v$pkgver")
-sha256sums=('24ff4a43d3a06e2eff1e73694ce558cf27aba42c0e3e0aae1b74fab25cb24954')
+sha256sums=('a3442883c83b7a958d6025cc0e44297af10a5767bb30270f88c6e2b5de896051')
 
 prepare() {
 	_patch_ pytest-asyncio
