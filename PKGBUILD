@@ -2,7 +2,7 @@
 
 pkgbase=font-unifont
 pkgname=(ttf-unifont otf-unifont)
-pkgver=17.0.05
+pkgver=18.0.01
 pkgrel=1
 pkgdesc="TrueType version of the GNU Unifont"
 url="https://unifoundry.com/unifont.html"
@@ -13,7 +13,7 @@ license=("GPL-2.0-or-later OR OFL-1.1")
 #	since font/Makefile has the deletion logic as well.
 source=("https://ftpmirror.gnu.org/gnu/unifont/unifont-$pkgver/unifont-$pkgver.tar.gz"
 	0001-ttfsrc-Do-not-delete-bdf-file-after-sbit.patch)
-sha256sums=('f287cffb26e22723aa36e6684869b0f3ff3bfb822c4b01008bd847911ec1b631'
+sha256sums=('eab60847aac34c8768765cecc7821faf50de2636187b452b9b5fa50a12b00bc3'
             'f0e2ab54792e85484295a57e52b083c6f1bd4ce7d282e41b3eb63459debe2a29')
 
 prepare() {
