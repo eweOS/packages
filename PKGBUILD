@@ -5,8 +5,8 @@ pkgname=(
   cairo
   cairo-docs
 )
-pkgver=1.18.4
-pkgrel=2
+pkgver=1.18.6
+pkgrel=1
 pkgdesc="2D graphics library with support for multiple output devices"
 url="https://cairographics.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +16,7 @@ source=(
 )
 depends=(libpng fontconfig lzo pixman glib)
 makedepends=(meson gtk-doc)
-sha256sums=('2f3e6e665dbbb420809102b71ad7d0f7ce870a0b1bf8b34c073f06aefb511fc6')
+sha256sums=('a95ae4f522ef24312af7339563f65e0a03b1ad3d58a46df73d2ef690fe15ae7f')
 
 build()
 {
