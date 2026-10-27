@@ -1,12 +1,12 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sqlite
-pkgver=3.53.4
+pkgver=3.54.1
 _minorpatchver=${pkgver#3.}
 _minorver=${_minorpatchver%%.*}
 _patchver=${_minorpatchver##*.}
 _srcver="$(printf "3%02d%02d00" "$_minorver" "$_patchver")"
-pkgrel=2
+pkgrel=1
 pkgdesc="A C library that implements an SQL database engine"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('blessing')
@@ -15,7 +15,7 @@ depends=('musl' 'readline' 'zlib')
 provides=('sqlite3' 'libsqlite3.so')
 options=('!emptydirs')
 source=("https://sqlite.org/2026/sqlite-autoconf-$_srcver.tar.gz")
-sha256sums=('0e9483900e92cd5de8fd48d16bf9200145a61f7fd5be542a5ac81d8a9516eb9c')
+sha256sums=('926ef8d3eab93fbf6e06011901273eec076b25594a4e1cdadd50c987f4f6d64e')
 
 build()
 {
