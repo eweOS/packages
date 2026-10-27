@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-setuptools
-pkgver=82.0.1
-pkgrel=2
+pkgver=84.2.1
+pkgrel=1
 pkgdesc="Easily download, build, install, upgrade, and uninstall Python packages"
 arch=('any')
 license=('PSF')
@@ -23,7 +23,7 @@ provides=('python-distribute')
 replaces=('python-distribute')
 source=("git+https://github.com/pypa/setuptools.git#tag=v$pkgver"
         build-no-isolation.patch)
-sha512sums=('bb0be14ec45c2fff5b788c05141402cfee784ab8bcc794dc941d0e54f52958a75c664cee10535e03c77469ae78018864eb1418ff1c456663609db83d90b82661'
+sha512sums=('9ade0c5b29917dc3703a9bd2cd52f41231735b39101b7e7219fab52ecdb1d35944a7a73f39856b96c386a6966af7bd3b0a465942c39d6602ee237ba6d009bfa6'
             '701b4364736344951d945df624f58973dfbca56eeda708aeed928df10f5598509e3acf87074ab30d84bb652fc8e307157184bfe43bb81ee83159966430c58e51')
 
 export SETUPTOOLS_INSTALL_WINDOWS_SPECIFIC_FILES=0
