@@ -1,0 +1,15 @@
+--- a/test/test-sizeof.c
++++ b/test/test-sizeof.c
+@@ -839,6 +839,12 @@
+ #endif
+ 
+ TEST_IMPL(sizeof) {
++#if defined(__linux__) && !defined(__GLIBC__)
++  /* musl defines NI_MAXHOST as 255 (glibc: 1025) and sem_t as 32 bytes
++   * (glibc: 16), so the hardcoded size table does not match. */
++  RETURN_SKIP("musl uses different NI_MAXHOST and sem_t sizes");
++#endif
++
+   CHECK_SIZE(uv_loop_t,              SIZEOF_UV_LOOP_T);
+ 
+   /* Handles */
