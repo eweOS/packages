@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=nmap
-pkgver=7.99
+pkgver=7.993
 pkgrel=1
 pkgdesc='Utility for network discovery and security auditing'
 url='https://nmap.org/'
@@ -26,7 +26,7 @@ source=(
   0001-Fix-build-conflicting-types-for-strlcat.patch
   0002-Fix-PF_PACKET-configure-check-for-clang.patch
 )
-sha256sums=('df512492ffd108e53a27a06f26d8635bbe89e0e569455dc8ffef058c035d51b2'
+sha256sums=('270e55f04915bfcecb5db8feb959d4c5ba86a48c094520a4f1c07571e1c79c59'
             '01adf3a766ead28c9449a694f7f1cc5487135c0bb2189a5b000164e103a0415e'
             'daf2744716c2f26fb3eb4fcb29ff1262ac915fad6c6a455bb72a432b9db59f10')
 
