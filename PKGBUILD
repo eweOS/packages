@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=yyjson
-pkgver=0.12.0
-pkgrel=2
+pkgver=0.13.0
+pkgrel=1
 pkgdesc="A high performance JSON library written in ANSI C"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://ibireme.github.io/yyjson"
@@ -11,7 +11,7 @@ depends=('musl')
 makedepends=('cmake')
 provides=('libyyjson.so')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ibireme/yyjson/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('b16246f617b2a136c78d73e5e2647c6f1de1313e46678062985bdcf1f40bb75d')
+sha256sums=('34e0f62a2bc11ab20d601e8ca1cc2b2079503aa45119a19133d89d19b94a0fae')
 
 build() {
 	cmake -B build -S "$pkgname-$pkgver" \
