@@ -29,7 +29,7 @@ build () {
 
 check() {
 	mkdir -p $srcdir/bin
-	ln -s /usr/bin/gnu-diff $srcdir/bin/diff
+	ln -sf /usr/bin/gnu-diff $srcdir/bin/diff
 
 	cd groff-$pkgver
 	# neqn must find eqn in the build tree, not an installed copy.
