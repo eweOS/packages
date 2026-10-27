@@ -2,7 +2,7 @@
 
 pkgname=nginx
 pkgver=1.30.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://nginx.org'
@@ -55,6 +55,7 @@ build()
     --prefix=/etc/nginx \
     --sbin-path=/usr/bin/nginx \
     --conf-path=/etc/nginx/nginx.conf \
+    --modules-path=/usr/lib/nginx/modules \
     --error-log-path=stderr \
     --pid-path=/run/nginx.pid \
     --lock-path=/run/lock/nginx.lock \
