@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=python-auditwheel
-pkgver=6.8.1
+pkgver=6.8.2
 pkgrel=1
 pkgdesc='Auditing and relabeling cross-distribution Linux wheels.'
 url='https://github.com/pypa/auditwheel'
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-wheel python-setuptools
 	     python-setuptools-scm git)
 # checkdepends=(python-pytest python-pretend)
 source=("git+$url.git#tag=$pkgver")
-sha256sums=('ebd6d664aaeda38fece9710b8f4e955b805f61881ca3230b87795484dc4eeb1e')
+sha256sums=('59b65910f5ad012d86f5a3b8d811975135459a69ad62c6bf9204b81e16bd5b8d')
 
 build () {
 	cd auditwheel
