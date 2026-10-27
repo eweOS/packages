@@ -1,14 +1,14 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=patch
-pkgver=2.8
-pkgrel=2
+pkgver=2.8.1
+pkgrel=1
 pkgdesc="A utility to apply patch files to original sources"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL3)
 depends=(musl attr)
 source=("http://ftp.gnu.org/gnu/patch/patch-${pkgver}.tar.xz")
-sha256sums=('f87cee69eec2b4fcbf60a396b030ad6aa3415f192aa5f7ee84cad5e11f7f5ae3')
+sha256sums=('3240c7959c5347c8ed347e3c4201c0337bf4240d5cf09d68889e58eeaba30e17')
 
 # update the scripts manually instead of calling autoconf
 # this may ease bootstrap working
