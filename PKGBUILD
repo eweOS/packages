@@ -2,15 +2,26 @@
 
 pkgbase=libuv
 pkgname=(libuv libuv-docs)
-pkgver=1.52.1
-pkgrel=2
+pkgver=1.53.0
+pkgrel=1
 pkgdesc="Multi-platform support library with a focus on asynchronous I/O"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/libuv/libuv"
 license=('MIT')
 makedepends=(python-sphinx linux-headers)
-source=(https://dist.libuv.org/dist/v$pkgver/libuv-v$pkgver.tar.gz)
-sha256sums=('66d511b9e6e334c0e62279eb234fbfb2b3110b1479c09b95b44c7afca8cff9e7')
+# 0001: Downstream, test-sizeof hardcodes glibc NI_MAXHOST and sem_t sizes
+# and cannot pass on musl; skip only that test.
+# TODO: Upstream a musl-aware size table instead of skipping.
+source=(
+    "https://dist.libuv.org/dist/v$pkgver/libuv-v$pkgver.tar.gz"
+    "0001-test-sizeof-skip-on-musl.patch"
+)
+sha256sums=('cb0d6dd2128d5a95bd242c6cc982a24fe608fa93da57b6b4ec763b0018c53e64'
+            '0cef86025f93de800e1242b8bb656925916b368d083f66c77afc3f033fbaff4f')
+
+prepare() {
+    _patch_ "$pkgbase-v$pkgver"
+}
 
 build() {
     cd "$pkgbase-v$pkgver"
@@ -20,13 +31,14 @@ build() {
     make
 
     cd docs
-    make man
+    # sphinx-copybutton is only used for HTML output; only man pages are packaged.
+    make man SPHINXOPTS="-D extensions=manpage"
 }
 
 check() {
     cd "$pkgbase-v$pkgver"
-    # packaging env: use root
-    make check || true
+    # The build container runs as root; libuv requires this variable to allow it.
+    UV_RUN_AS_ROOT=1 make check
 }
 
 package_libuv() {
