@@ -6,16 +6,16 @@
 # Contributor: tardo <tardo@nagi-fanboi.net>
 
 pkgname=astyle
-pkgver=3.6.8
-_sover=3.2.0
-pkgrel=2
+pkgver=3.6.20
+_sover=3.6.20
+pkgrel=1
 pkgdesc='A free, fast and small automatic formatter for C, C++, C#, and Java source code.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://astyle.sourceforge.net/'
-license=('LGPL')
+license=('MIT')
 depends=('llvm-libs')
 source=("https://downloads.sourceforge.net/sourceforge/astyle/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('5af8ae7a05c5e616dd1f84d758b4909c2d2ecfc179f883fd104d223f34cc6dff')
+sha256sums=('b058f3e176334dba65477fd126105d3df4eab9e954eab1c76b568cd5370cfbe9')
 
 prepare()
 {
@@ -46,4 +46,6 @@ package()
   for f in ../../doc/*.html; do
     install -m0644 "$f" "$pkgdir/usr/share/doc/$pkgname/"
   done
+
+  _install_license_ "$srcdir/$pkgname-$pkgver/LICENSE.md"
 }
