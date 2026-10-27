@@ -14,7 +14,7 @@ pkgname=(
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=26.2.5
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm' 'spirv-tools')
 makedepends=(
@@ -63,7 +63,8 @@ sha512sums=('08c7d7ea426ddfb0f7bc51b06e18c363a4d31cf1a8b203828bb455eda0189e41d22
             '87097d98d47f327d000041ab13acddc366f1500d9c3e5c82169c3358112c7a7c03701c9b3c2c81d9f9da65b7ebac1c479b179dfaf7c059cd0b929b4673e51084')
 
 [ "$CARCH" = x86_64 ] && pkgname+=(vulkan-dzn)
-[ "$CARCH" = aarch64 ] && pkgname+=(vulkan-panfrost vulkan-freedreno)
+[ "$CARCH" = aarch64 ] && pkgname+=(vulkan-panfrost vulkan-freedreno vulkan-powervr)
+[ "$CARCH" = riscv64 ] && pkgname+=(vulkan-powervr)
 
 build()
 {
@@ -76,10 +77,11 @@ build()
 	    ;;
     aarch64)
 	    gallium_dri+=",panfrost,freedreno,lima,etnaviv"
-	    vulkan_dri+=",panfrost,freedreno"
+	    vulkan_dri+=",panfrost,freedreno,imagination"
 	    ;;
     riscv64)
 	    gallium_dri+=",etnaviv"
+	    vulkan_dri+=",imagination"
 	    ;;
   esac
   local vulkan_layers="device-select,intel-nullhw,overlay,screenshot,vram-report-limit"
@@ -175,6 +177,10 @@ package_mesa()
   # vulkan-freedreno
   _pick_ vulkan-freedreno usr/share/vulkan/icd.d/freedreno_icd*.json
   _pick_ vulkan-freedreno usr/lib/libvulkan_freedreno.so
+
+  # vulkan-powervr (Imagination)
+  _pick_ vulkan-powervr usr/share/vulkan/icd.d/powervr_mesa_icd*.json
+  _pick_ vulkan-powervr usr/lib/libvulkan_powervr_mesa.so
 
   # vulkan-nouveau (NVK)
   _pick_ vulkan-nouveau usr/share/vulkan/icd.d/nouveau_icd*.json
@@ -284,6 +290,17 @@ package_vulkan-panfrost()
 package_vulkan-freedreno()
 {
   pkgdesc="Open-source Vulkan driver for Adreno GPUs"
+  depends=(${_vulkan_driver_deps[*]})
+  optdepends=('vulkan-mesa-layers: additional vulkan layers')
+  provides=('vulkan-driver')
+  mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
+
+  _install_license_ $pkgbase-$pkgver/docs/license.rst
+}
+
+package_vulkan-powervr()
+{
+  pkgdesc="Open-source Vulkan driver for PowerVR GPUs"
   depends=(${_vulkan_driver_deps[*]})
   optdepends=('vulkan-mesa-layers: additional vulkan layers')
   provides=('vulkan-driver')
