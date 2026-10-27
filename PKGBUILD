@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=fim
-pkgver=0.7.1
-pkgrel=3
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='A universal image viewer inspired by GNU/Linux concepts.'
 url='https://www.nongnu.org/fbi-improved/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ makedepends=(linux-headers sdl2 gtk3)
 optdepends=("sdl2: GUI Support with SDL2"
 	    "gtk3: GUI support with GTK3")
 source=("http://download.savannah.nongnu.org/releases/fbi-improved/fim-$pkgver.tar.gz")
-sha256sums=('3425648cd53e02849da44c20b061c038838dd489a59bcd67e6b0a706ec06779a')
+sha256sums=('2c6b33c834ca41f7a6d6b2020eb4ff5c1facbab40b7c511c8ff93c74492bdd9d')
 
 build () {
 	cd fim-$pkgver
