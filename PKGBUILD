@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libayatana-appindicator
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Ayatana Application Indicators shared library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +16,7 @@ makedepends=(cmake
              gobject-introspection
              vala)
 source=(https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('23be92ad8eb9625ce93b23b14f82f3cf88a4970c31d48581945ddfbac0441d06')
+sha256sums=('56c0b938ffaa3e17b10c38d3e54c16d316f41f0da61949eda028adbf19ee767f')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
