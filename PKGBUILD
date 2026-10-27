@@ -1,7 +1,7 @@
 # Maintainer: Julian <juliandroske@outlook.com>
 
 pkgname=ethtool
-pkgver=7.1
+pkgver=7.2
 pkgrel=1
 pkgdesc="Utility for controlling network drivers and hardware"
 url="https://cdn.kernel.org/pub/software/network/ethtool"
@@ -17,7 +17,7 @@ makedepends=(
 source=(
   "https://cdn.kernel.org/pub/software/network/$pkgname/$pkgname-$pkgver.tar.gz"
 )
-sha256sums=('21cc520ae5d881f01b0dcd6d26de4d52a64b24840bc2150daf778a235442e61d')
+sha256sums=('b2f2f1e94c3b6e35715d969185a0208d411586d88f49ccbad740063e51720f94')
 
 prepare() {
   _patch_ "$pkgname-$pkgver"
