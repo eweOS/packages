@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-setuptools-rust
-pkgver=1.12.0
-pkgrel=2
+pkgver=1.13.0
+pkgrel=1
 pkgdesc="Compile and distribute Python extensions written in rust as easily as if they were written in C."
 arch=('any')
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('rust' 'python-setuptools' 'python-semantic-version')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
 checkdepends=('python-pytest' 'python-pytest-benchmark' 'python-beautifulsoup4' 'python-lxml' 'python-cffi')
 source=("git+https://github.com/PyO3/setuptools-rust.git#tag=v$pkgver")
-sha512sums=('1797287a85d60f01bcc1e9280cb99f3679b838f41b199d84b0112b5031cfda2b60e507cd8b9eee027cb8a79880c723fa9421d148152473a1656653fe2d4719ce')
+sha512sums=('9bf373bd903546910bbdac5b05c6ebfc8c5ea07402d38b94d37afbcb28e9223bfc5dd4d78f251960e736205217c6c2d4b6f91d542b16dd0cdb80b51ebcd341cf')
 
 build() {
   cd setuptools-rust
