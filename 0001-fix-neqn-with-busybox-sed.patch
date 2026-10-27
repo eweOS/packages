@@ -1,0 +1,24 @@
+Backport the neqn build fix from upstream commit
+ e0ce5229720af12d210271a582e5a3de99aa8cbd ([eqn]: Fix Savannah #68601).
+https://savannah.gnu.org/bugs/?68601
+
+BusyBox sed processes -e expressions before -f scripts, so shdeps.sed's
+N command can read a line containing @g@ after substitution has run.
+Use separate sed invocations to preserve the required order.
+
+Apply to the release tarball's Makefile.in to avoid regenerating it.
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -20417,9 +20417,9 @@
+ 
+ neqn: $(top_srcdir)/src/preproc/eqn/neqn.sh $(SH_DEPS_SED_SCRIPT)
+ 	$(AM_V_GEN)sed -f $(SH_DEPS_SED_SCRIPT) \
+-	       -e 's/[@]g[@]/$(g)/g' \
++	       $(top_srcdir)/src/preproc/eqn/neqn.sh \
++	 | sed -e 's/[@]g[@]/$(g)/g' \
+ 	       -e $(SH_SCRIPT_SED_CMD) \
+-	       $(top_srcdir)/src/preproc/eqn/neqn.sh \
+ 	       >$@.tmp \
+ 	&& chmod +x $@.tmp \
+ 	&& mv $@.tmp $@
