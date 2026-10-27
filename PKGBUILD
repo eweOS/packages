@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=avrdude
-pkgver=8.2
-pkgrel=2
+pkgver=8.3
+pkgrel=1
 pkgdesc='A utility to program AVR microcontrollers.'
 url='https://github.com/avrdudes/avrdude'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(libelf libusb libhidapi libftdi readline libserialport)
 makedepends=(flex bison cmake linux-headers)
 provides=(libavrdude.so)
 source=("https://github.com/avrdudes/avrdude/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('72fbe49d3e3ea2f48a750e7f2c16287b163a580e020f745af39d45ba68d9d6ae')
+sha256sums=('6c6fe3606f2ef331e502fb9c1d418ba09eb9705e811efbe18259025a9787ee3d')
 
 build () {
 	cmake -B build -S avrdude-$pkgver \
