@@ -1,11 +1,11 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=python-mako
-pkgver=1.3.10
+pkgver=1.4.3
 # fxxk obs
 # _pkgver=rel_${pkgver//./_}
 _pkgver=rel_1_3_8
-pkgrel=2
+pkgrel=1
 pkgdesc='A template library written in Python.'
 url='https://pypi.org/project/Mako/'
 arch=(any)
