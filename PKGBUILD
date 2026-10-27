@@ -1,15 +1,15 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=tcpdump
-pkgver=4.99.6
-pkgrel=2
+pkgver=4.99.7
+pkgrel=1
 pkgdesc='A powerful command-line packet analyzer'
 url='https://www.tcpdump.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD-3-Clause)
 depends=(musl libpcap)
 source=("https://www.tcpdump.org/release/tcpdump-$pkgver.tar.xz")
-sha256sums=('40a8cefd45f0d2a06827e6658efb830d484868c449ad80f7efb33516af44f3da')
+sha256sums=('39675dfa06fb0e99be8da5d4a1784acbaab58ae0870231d956ff7870cb99eec1')
 
 build() {
 	cd "$pkgname-$pkgver"
