@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-httplib2
-pkgver=0.31.0
-pkgrel=2
+pkgver=0.32.0
+pkgrel=1
 pkgdesc='Comprehensive HTTP client library, supporting many features'
 arch=('any')
 url='https://github.com/httplib2/httplib2'
@@ -36,7 +36,7 @@ source=(
   "$pkgname::git+$url#tag=v$pkgver"
   0001-certs-use-system-certificates.patch
 )
-sha512sums=('3e97ca970b231388c7b29edd1aec7edde4b36266cec1f14c08ab84d6049a075d5cdabccddfc101075c75892db0a042936b298e02f3f8f28079d8a2a28a838f15'
+sha512sums=('b9e1a6b66e274b0eb6bca851d3d83f86ae50b9a8f4c290707bee33cee22c5e5e8a455466357ccc3548f8dbdf14cf8b3a395eb318fd47ac8da1b216234045a6e2'
             'b8cc1d5c9677bd2385ddd98f03fde37eadcff50405c745a444829652595c2593e4f05ee069e8ba1180a9143999890f34cd3f93b66e0d24b2c643b7d33e6ff1b4')
 
 prepare() {
