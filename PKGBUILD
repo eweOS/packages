@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-pytest-timeout
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc='py.test plugin to abort hanging tests'
 arch=('any')
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('python-pytest')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pexpect' 'python-pytest-cov')
 source=("https://github.com/pytest-dev/pytest-timeout/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('b5c80a569f146e79a8dabfb093423635dee7c7c4c2a29f9a0b0f7b513c6c288c21c2cb744643453ba66032fdd150db36b3d26dc171c40aeb5fa0626082ce7f17')
+sha512sums=('1cd669e5bb883ab2b96fc6526952cd4c1d186ece1ec6c5269724078a38858a0f571019f1f0ecadfa4880bb9e8284f1883bf2f325b124961ef64ce2a0988d37ee')
 
 build() {
   cd pytest-timeout-$pkgver
