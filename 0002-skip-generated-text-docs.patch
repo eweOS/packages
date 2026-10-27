@@ -1,0 +1,11 @@
+--- a/pbmtools/Makefile
++++ b/pbmtools/Makefile
+@@ -12,7 +12,7 @@
+ 
+ .PHONY: txt pdf test test82 test85 clean
+ 
+-all: pbmtojbg jbgtopbm pbmtojbg85 jbgtopbm85 txt
++all: pbmtojbg jbgtopbm pbmtojbg85 jbgtopbm85 # txt
+ 
+ txt: pbmtojbg.txt jbgtopbm.txt pbm.txt pgm.txt
+ 
