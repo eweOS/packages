@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=groff
-pkgver=1.24.0
-pkgrel=2
+pkgver=1.24.2
+pkgrel=1
 pkgdesc='GNU Troff typesettings system.'
 url='https://www.gnu.org/software/groff/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,8 +10,16 @@ license=(GPL-3.0-or-later)
 depends=(musl)
 checkdepends=(diffutils)
 options=(emptydirs)
-source=("https://ftp.gnu.org/gnu/groff/groff-$pkgver.tar.gz")
-sha256sums=('e79bbcd8ff3ed0200e7ac55d3962a15e118c1229990213025f2fc8b264727570')
+# 0001: Backport the neqn build fix for BusyBox sed.
+# Backport: e0ce5229720a ("[eqn]: Fix Savannah #68601.")
+source=("https://ftp.gnu.org/gnu/groff/groff-$pkgver.tar.gz"
+	0001-fix-neqn-with-busybox-sed.patch)
+sha256sums=('f9c1efd5bebbe37fc6e1063db7473ce8df1e3e0be4ff0f43ce04fce57e9c5dd9'
+            'd57f2b261927f5843defb429920f05b0dd81e82ca8d254ecce63a8afb1e04eb5')
+
+prepare() {
+	_patch_ "groff-$pkgver"
+}
 
 build () {
 	cd groff-$pkgver
@@ -24,7 +32,8 @@ check() {
 	ln -s /usr/bin/gnu-diff $srcdir/bin/diff
 
 	cd groff-$pkgver
-	PATH="$srcdir/bin:$PATH" make check
+	# neqn must find eqn in the build tree, not an installed copy.
+	PATH="$srcdir/bin:$PATH" GROFF_BIN_PATH="$PWD" make check
 }
 
 package() {
