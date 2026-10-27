@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=rsync
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc='A fast and versatile file copying tool for remote and local files'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ source=(https://github.com/WayneD/rsync/archive/refs/tags/v${pkgver}.tar.gz
 	rsyncd.conf
 	rsyncd.service
 	workaround-awk-bug.patch)
-sha256sums=('d2f6affada77df897072062f7b9eefe9239e7738a5544803462f7fe63c6655a7'
+sha256sums=('2799008013c605cc9e83e70c1d18de6cf99e5fb4556b63f36123337d92942890'
             'f1b14a01cfa3bbe6eecfd3491c9d1d43a51a2561dc9808485ca5d21941d660e5'
             'b44550b85b1a1365080367c0dc02151ce00afa41debc4372a94c1c6c53156331'
             '831492ff00d3e086a82cad36572cc4ebb72fef27e9269c4fb6f62677e6f8fd6f')
