@@ -1,15 +1,15 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=xxhash
-pkgver=0.8.3
-pkgrel=2
+pkgver=0.8.4
+pkgrel=1
 pkgdesc='An extremely fast hash algorithm'
 url='https://github.com/Cyan4973/xxHash'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD)
 depends=(musl)
 source=("https://github.com/Cyan4973/xxHash/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aae608dfe8213dfd05d909a57718ef82f30722c392344583d3f39050c7f29a80')
+sha256sums=('5738270935e7c3d38a79b3adf7c9692566ce7895a25f67de43ad52ab504acd32')
 
 build () {
   cd xxHash-$pkgver
