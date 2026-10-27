@@ -2,14 +2,14 @@
 
 pkgbase=font-awesome
 pkgname=(otf-awesome)
-pkgver=7.3.0
+pkgver=7.3.1
 pkgrel=1
 pkgdesc="The iconic SVG, font, and CSS toolkit"
 url="https://fontawesome.com/"
 license=('OFL-1.1-RFN')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FortAwesome/Font-Awesome/archive/$pkgver.tar.gz")
-sha256sums=('f5976c905ae8fa68cc21427d6dde98f520212a7d3e85cb4059221b983915cb21')
+sha256sums=('d5a20554faa1ad30148b05f090a556e23495c446435c8dfc1624d3c0e3c2640b')
 
 package_otf-awesome() {
   provides=(font-awesome)
