@@ -2,8 +2,8 @@
 
 pkgbase=lua-cjson
 pkgname=(lua51-cjson lua54-cjson lua55-cjson)
-pkgver=2.1.0.19
-pkgrel=2
+pkgver=2.1.0.20
+pkgrel=1
 pkgdesc='A fast JSON encoding/parsing module for Lua'
 url='https://github.com/openresty/lua-cjson'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ makedepends=(lua51 lua54 lua55)
 checkdepends=(perl)
 source=("https://github.com/openresty/lua-cjson/archive/refs/tags/$pkgver.tar.gz")
 _lvers=(5.1 5.4 5.5)
-sha256sums=('d1aded44b4cfe5ec6b395e178902aba3eed1dbe7999a753c0662222de2890ec0')
+sha256sums=('a99fb872aa731274ac70453cd4e6b2e0e8fb978893063d512ca67c7c332510e1')
 
 build () {
 	for v in "${_lvers[@]}"; do
