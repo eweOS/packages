@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=cgal
-pkgver=6.2
+pkgver=6.2.1
 pkgrel=1
 pkgdesc='C++ library for Geometric algorithms'
 url='https://www.cgal.org/'
@@ -11,24 +11,8 @@ depends=(bash)
 makedepends=(cmake)
 # This is a header-only library with no binary.
 options=(!strip)
-# 0001: Backport, cabec72deea0 ("CGALConfig.cmake: resolve symlinks before computing CGAL_CONFIG_DIR (fix #8521) (#9390)")
-#	Fix failure when looking up for CGAL on /usr-merged system where /lib is
-#	a symlink to /usr/lib
-# 0002: Backport, eb2257df4da4 ("fix <CGAL/gdb_autoload.h>: end the section with a null byte")
-#	correctly end the .debug_gdb_scripts section provided by CGAL with a
-#	NULL byte as required by ELF specification, to fix linker warnings like
-#
-#		(.debug_gdb_scripts): string is not null terminated
-source=("https://github.com/CGAL/cgal/releases/download/v$pkgver/CGAL-$pkgver.tar.xz"
-	0001-CGALConfig-cmake-resolve-symlinks-before-computing.patch
-	0002-fix-CGAL-gdb_autoload-h-end-the-section.patch)
-sha256sums=('fbc32816745e871a5cbdeb6245317e9dbf10ae1a957b0ab1edb00b4fde00ba8d'
-            '4540a84c5cf1b1eae55154c574b857b3d16b42051dd77779902b41a61653d9d3'
-            '6253e1b0ed6aa922bdd39b5d6787fb27ef1bbc0c23322fd986ce23722dcb88c9')
-
-prepare() {
-	_patch_ "CGAL-$pkgver"
-}
+source=("https://github.com/CGAL/cgal/releases/download/v$pkgver/CGAL-$pkgver.tar.xz")
+sha256sums=('b6be77c60765a8456335de991eeaf6ffec55256984e4a9ecc6a97c37bbfe85bf')
 
 build() {
 	cmake -S "CGAL-$pkgver" -B build \
