@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=cgal
-pkgver=6.2
+pkgver=6.2.1
 pkgrel=1
 pkgdesc='C++ library for Geometric algorithms'
 url='https://www.cgal.org/'
@@ -22,7 +22,7 @@ options=(!strip)
 source=("https://github.com/CGAL/cgal/releases/download/v$pkgver/CGAL-$pkgver.tar.xz"
 	0001-CGALConfig-cmake-resolve-symlinks-before-computing.patch
 	0002-fix-CGAL-gdb_autoload-h-end-the-section.patch)
-sha256sums=('fbc32816745e871a5cbdeb6245317e9dbf10ae1a957b0ab1edb00b4fde00ba8d'
+sha256sums=('b6be77c60765a8456335de991eeaf6ffec55256984e4a9ecc6a97c37bbfe85bf'
             '4540a84c5cf1b1eae55154c574b857b3d16b42051dd77779902b41a61653d9d3'
             '6253e1b0ed6aa922bdd39b5d6787fb27ef1bbc0c23322fd986ce23722dcb88c9')
 
