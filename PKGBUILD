@@ -2,7 +2,7 @@
 
 pkgname=imath
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics'
 url='https://www.openexr.com/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -17,8 +17,13 @@ source=(https://github.com/AcademySoftwareFoundation/Imath/archive/v$pkgver/$pkg
 sha256sums=('e10c12b3f21f45bf08e09d4215d9c7691368d747beebd840de0b6fefed2df9f8')
 
 build() {
-  cmake -B build -S Imath-$pkgver \
+  local python_site_packages
+  python_site_packages=$(python -c 'import os, sysconfig; print(os.path.relpath(sysconfig.get_path("purelib"), "/usr"))')
+
+  # Avoid usr/usr when CMake finds Python as /bin/python3.13.
+  cmake -B build -S "Imath-$pkgver" \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DPYTHON_INSTALL_DIR="$python_site_packages" \
     -DPYTHON=ON
   cmake --build build
 }
