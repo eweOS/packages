@@ -3,7 +3,7 @@
 
 pkgname=bottom
 pkgver=0.14.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical process/system monitor"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/ClementTsang/bottom"
@@ -27,7 +27,10 @@ build()
 check()
 {
   cd "$pkgname-$pkgver"
-  CARGO_HUSKY_DONT_INSTALL_HOOKS=true cargo test --frozen --all-features
+  # The test asserts that at least one physical filesystem is mounted, but build
+  # containers expose only virtual mounts (overlayfs root), so no disks exist.
+  CARGO_HUSKY_DONT_INSTALL_HOOKS=true cargo test --frozen --all-features -- \
+    --skip collection::tests::test_data_collection
 }
 
 package()
