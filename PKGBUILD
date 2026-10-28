@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=waylyrics
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="the furry way to show desktop lyrics"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,17 +14,22 @@ depends=(
 makedepends=(
     "rust"
 )
+# 0001: Downstream, eweOS gtk4 is built without the X11 backend, so gtk4-x11.pc is unavailable
+# TODO: It should be upstreamed! Make the X11 skip-taskbar support optional.
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/waylyrics/waylyrics/archive/refs/tags/v$pkgver.tar.gz"
+    "0001-make-x11-skip-taskbar-optional.patch"
 )
 options=(!lto)
-sha256sums=('2a5169e5de4f195573b13259067301f751136a22517ad5ad1cf474b27b163ca3')
+sha256sums=('c3dee33d2d2ff73b4b01de7f1add74b978ad559e85f24f2cb8dc216016539ac5'
+            '51852273941545d1ffa112f177cb6cd18eac2aa1f9c4de04fd8e5433d90aba92')
 optdepends=('xdg-desktop-portal: file dialog to import LRC')
 
 _features='mimalloc tray-icon i18n import-lyric i18n-local-lyric'
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
+    _patch_ "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -39,7 +44,9 @@ check() {
     cd "$srcdir/$pkgname-$pkgver"
     export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/$pkgname/themes"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --release --frozen --no-default-features --features="${_features}"
+    # LRCLib's public API intermittently returns 503 ServerOverloaded.
+    # Use the upstream offline-test feature to skip network-dependent tests.
+    cargo test --release --frozen --no-default-features --features="${_features} offline-test"
 }
 package() {
     depends+=("hicolor-icon-theme")
