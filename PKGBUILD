@@ -1,9 +1,9 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgbase=pulseaudio
+_pkgname=pulseaudio
 pkgname=libpulse
 pkgver=17.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A featureful, general-purpose sound server"
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -43,7 +43,7 @@ build() {
     -D doxygen=false
     -D udevrulesdir=/usr/lib/udev/rules.d
   )
-  ewe-meson $pkgbase build "${meson_options[@]}"
+  ewe-meson $_pkgname build "${meson_options[@]}"
   meson compile -C build
 }
 
