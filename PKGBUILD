@@ -1,17 +1,16 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gn
-pkgver=0.2174.b3a0bff4
-_commit=b3a0bff47dd81073bfe67a402971bad92e4f2423
-pkgrel=3
+pkgver=0.2610.84f10d13
+_commit=84f10d13f9041068a7da8f9dfc9b991e1049823a
+pkgrel=1
 pkgdesc="Meta-build system that generates build files for Ninja"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gn.googlesource.com/gn/"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('ninja' 'python' 'git')
-source=("git+https://gn.googlesource.com/gn#commit=$_commit" lfs64.patch)
-sha256sums=('63edc92709366f6df536fe73b4c3c10390c2507258ab863215fd1f205f560abc'
-            'f9247da898ae6236d0a52d3cf6a88b40bfb80e34751b941bed6418158b57b0d7')
+source=("git+https://gn.googlesource.com/gn#commit=$_commit")
+sha256sums=('218254424be7a25e1d7de7310de9652ff019d2b45903c57ae7a0b813abbc09e2')
 
 pkgver() {
   cd $pkgname
@@ -24,8 +23,10 @@ prepare() {
 
 build() {
   cd $pkgname
-  ./build/gen.py --no-static-libstdc++
-  ninja -C out
+  # Use the system clang instead of the hermetic toolchain fetched by build/gen.py.
+  CXX=clang++ ./build/gen.py --no-static-libstdc++
+  # Avoid developer-only formatting and documentation targets.
+  ninja -C out gn gn_unittests
 }
 
 check() {
