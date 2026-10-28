@@ -2,8 +2,8 @@
 
 _pkgname=build
 pkgname=python-build
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc='A simple, correct Python build frontend'
 arch=('any')
 url='https://github.com/pypa/build'
@@ -22,7 +22,7 @@ optdepends=(
   'python-virtualenv: to use virtualenv for build isolation'
 )
 source=("$pkgname::git+$url#tag=$pkgver")
-sha256sums=('87c53f5bc1825eb9130a7f2bb5c03863eda84466162341efac1e112fcbc2b729')
+sha256sums=('9c61c72391797697c3ce5608811b7d067b10c8b1ff777e287f4b3abc1fd74e41')
 
 build() {
   cd $pkgname
