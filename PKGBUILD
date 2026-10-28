@@ -2,17 +2,17 @@
 
 _name=setuptools-scm
 pkgname=python-setuptools-scm
-pkgver=10.2.1
+pkgver=10.3.4
 pkgrel=1
 pkgdesc="Handles managing your python package versions in scm metadata"
 arch=('any')
 url="https://github.com/pypa/setuptools-scm"
 license=('MIT')
-depends=('python-packaging' 'python-setuptools' 'python-typing_extensions' 'python-vcs-versioning')
+depends=('python-packaging' 'python-setuptools' 'python-typing_extensions' 'python-vcs-versioning>=2.5.0')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('mercurial' 'python-pytest' 'python-pytest-timeout')
 source=("git+$url.git#tag=$_name-v$pkgver")
-sha256sums=('b7ef6ec8885b06ed15a2ddd4ca08298dd4f24b841d3decd960ec886e05812cd1')
+sha256sums=('56bbd637c8ef687af7377e42bb3710575ab145701c88c074952a588d52ed9289')
 
 build() {
   cd $_name/$_name
@@ -20,11 +20,12 @@ build() {
 }
 
 check() {
-  cd $_name/$_name
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -v \
-    --deselect testing_scm/test_basic_api.py::test_get_version_blank_tag_regex
+  cd $_name
+  python -m venv --system-site-packages "$_name/test-env"
+  "$_name/test-env/bin/python" -m installer "$_name"/dist/*.whl
+  # Run from the repository root so get_version() finds the git checkout and
+  # Distribution creation does not infer a version from the package pyproject.
+  "$_name/test-env/bin/python" -m pytest -v "$_name/testing_scm"
 }
 
 package() {
