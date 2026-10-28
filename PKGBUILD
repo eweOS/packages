@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fcitx5-lua
-pkgver=5.0.17
+pkgver=5.0.18
 pkgrel=1
 pkgdesc="Lua support for Fcitx 5"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -18,7 +18,7 @@ makedepends=('git' 'extra-cmake-modules' 'ninja')
 #	the hack completely.
 source=("git+https://github.com/fcitx/fcitx5-lua.git#tag=$pkgver"
         0001-fix-luapath.patch)
-sha512sums=('17a8382f40a37ceb3f8e04740c81827fbd67fbf7c848925e3b8e52a79e22d66d5df298fb8cf6bd9fbaeefafb133edcc6eec6abf3651d9612cd811ca681eed8db'
+sha512sums=('f07f91963889aa81f2c08e91f64f73ce20dd7e9cbe790913be9575a85470ced2e5a5c43a742eb2410f51418c4f86cf1c7489e4f123b9c1351c1df4be6d5d4ff3'
             '4a3d8d8333ad8e5694f08680438dd62bf3b6ff35db7ca92df1dd1bafd89255342051e13676a7176f5593a8eea5259c854b4ce1f8b0aae5be191824f90844ad55')
 
 prepare() {
