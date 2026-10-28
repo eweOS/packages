@@ -1,0 +1,40 @@
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -130,6 +130,7 @@
+ vendored = ["dbus/vendored"]
+ offline-test = []
+ layer-shell = ["dep:gtk4-layer-shell"]
++x11 = ["dep:gdk4-x11"]
+ 
+ # reserved for backward compatiblity
+ opencc = []
+@@ -149,7 +150,7 @@
+ 
+ # `skip-taskbar` sets `_NET_WM_STATE_SKIP_TASKBAR`, an X11/EWMH hint
+ [target.'cfg(all(unix, not(target_os = "macos")))'.dependencies]
+-gdk4-x11 = "0.11.0"
++gdk4-x11 = { version = "0.11.0", optional = true }
+ 
+ [target.'cfg(target_os = "windows")'.dependencies]
+ tray-item = { version = "0.10.0", optional = true }
+--- a/src/app/utils.rs
++++ b/src/app/utils.rs
+@@ -131,7 +131,17 @@
+ #[cfg(target_os = "macos")]
+ pub(super) fn set_skip_taskbar(_window: &window::Window, _skip: bool) {}
+ 
+-#[cfg(all(unix, not(target_os = "macos")))]
++/// Wayland and other Unix backends without the X11 feature cannot set the hint.
++#[cfg(all(unix, not(target_os = "macos"), not(feature = "x11")))]
++pub(super) fn set_skip_taskbar(_window: &window::Window, skip: bool) {
++    if skip {
++        tracing::warn!(
++            "skip-taskbar is not supported on Wayland, `layer-shell` can be used as a workaround"
++        );
++    }
++}
++
++#[cfg(all(unix, not(target_os = "macos"), feature = "x11"))]
+ pub(super) fn set_skip_taskbar(window: &window::Window, skip: bool) {
+     if !skip {
+         return;
