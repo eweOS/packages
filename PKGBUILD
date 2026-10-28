@@ -1,9 +1,9 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgbase=fuse
+pkgbase=fuse3
 pkgname=(fuse-common fuse3)
 pkgver=3.18.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Interface for userspace programs to export a filesystem to the Linux kernel'
 url='https://github.com/libfuse/libfuse'
 arch=(x86_64 aarch64 riscv64 loongarch64)
