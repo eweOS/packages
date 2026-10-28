@@ -2,7 +2,7 @@
 
 pkgname=python-jaraco.collections
 _name="${pkgname#python-}"
-pkgver=5.1.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="Models and classes to supplement the stdlib 'collections' module."
 arch=('any')
@@ -14,7 +14,7 @@ checkdepends=('python-pytest')
 conflicts=('python-jaraco')
 replaces=('python-jaraco')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('6dfb5bf22e55a5148e8c846bf2d3f5a6c628bbe2034b8425153c3978aeff738a9fe00e426e7e2c421827e8a87e5270716d211d9ee42eed786d81e14791cec842')
+sha512sums=('bc8f9f574ed8b2c9f0033608766cbd644d68a8f4b0501e1c4a61430b56da087264ea86dd36ace7cc6dbae68d217163a5c078f71ee9d06b0ac2a858fe7e6cd4b0')
 
 build() {
   cd "$_name"-$pkgver
