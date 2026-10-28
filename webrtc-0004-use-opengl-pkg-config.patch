@@ -1,0 +1,13 @@
+diff --git a/modules/portal/BUILD.gn b/modules/portal/BUILD.gn
+index de8a81b..c1fce85 100644
+--- a/modules/portal/BUILD.gn
++++ b/modules/portal/BUILD.gn
+@@ -29,7 +29,7 @@ if ((is_linux || is_chromeos) && rtc_use_pipewire) {
+     packages = [ "gbm" ]
+   }
+   pkg_config("gl") {
+-    packages = [ "gl" ]
++    packages = [ "opengl" ]
+     ignore_libs = true
+   }
+   pkg_config("egl") {
