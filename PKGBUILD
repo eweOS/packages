@@ -1,9 +1,10 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
+pkgbase=x264
 pkgname=(libx264 x264)
 _fullhash=31e19f92f00c7003fa115047ce50978bc98c3a0d
 pkgver=20231001.${_fullhash:0:7}
-pkgrel=4
+pkgrel=5
 url="https://www.videolan.org/developers/x264.html"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL2)
