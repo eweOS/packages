@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=wf-config
-pkgver=0.10.0
-pkgrel=3
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="A library for managing configuration files, written for wayfire"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=https://github.com/WayfireWM/wf-config
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(libevdev libxml2)
 makedepends=(linux-headers meson ninja pkgconf wayland-protocols glm doctest cmake git)
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('e83a4847048c7c06a7f361f1a334f34ab2e07cf4cff6c150f66d8bcedca9c5eb')
+sha256sums=('2ed4f1ca7d5ca78c05dc35c88842537cdb4fd3d50362038a4a9b553be6bec80a')
 
 build()
 {
