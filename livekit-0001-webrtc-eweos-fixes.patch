@@ -1,24 +1,110 @@
-Apply webrtc patches and some workaround
-diff --git a/webrtc-sys/libwebrtc/build_linux.sh b/webrtc-sys/libwebrtc/build_linux.sh
-index a27bbef..26d5df0 100755
 --- a/webrtc-sys/libwebrtc/build_linux.sh
 +++ b/webrtc-sys/libwebrtc/build_linux.sh
-@@ -91,6 +91,8 @@ git apply "$COMMAND_DIR/patches/ssl_verify_callback_with_native_handle.patch" -v
- git apply "$COMMAND_DIR/patches/add_deps.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
- git apply "$COMMAND_DIR/patches/gn_use_system_python3.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
- git apply "$COMMAND_DIR/patches/generate_licenses_use_system_gn.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
-+git apply "$COMMAND_DIR/patches/webrtc-0001-do-not-link-against-libatomic.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
-+git apply "$COMMAND_DIR/patches/webrtc-0002-fix-glibcisms.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
+@@ -16,6 +16,7 @@
  
- if [ "$arch" = "riscv64" ]; then
-   git apply "$COMMAND_DIR/patches/riscv-ffmpeg.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
-@@ -149,7 +151,8 @@ if [ "$toolchain" = "host" ]; then
-     custom_toolchain=\"//build/toolchain/linux/unbundle:default\" \
-     host_toolchain=\"//build/toolchain/linux/unbundle:default\" \
-     clang_use_chrome_plugins=false \
--    use_sysroot=false";
-+    use_sysroot=false \
-+    clang_base_path=\"/usr\"";
+ arch=""
+ profile="release"
++toolchain="sysroot"
+ 
+ while [ "$#" -gt 0 ]; do
+   case "$1" in
+@@ -35,6 +36,14 @@
+       fi
+       shift 2
+       ;;
++    --toolchain)
++      toolchain="$2"
++      if [ "$toolchain" != "sysroot" ] && [ "$toolchain" != "host" ]; then
++        echo "Error: Invalid value for --toolchain. Must be 'sysroot' or 'host'."
++        exit 1
++      fi
++      shift 2
++      ;;
+     *)
+       echo "Error: Unknown argument '$1'"
+       exit 1
+@@ -50,17 +59,23 @@
+ echo "Building LiveKit WebRTC - Linux"
+ echo "Arch: $arch"
+ echo "Profile: $profile"
++echo "Toolchain: $toolchain"
+ 
+ if [ ! -e "$(pwd)/depot_tools" ]
+ then
+   git clone --depth 1 https://chromium.googlesource.com/chromium/tools/depot_tools.git
  fi
  
++old_path="$PATH"
+ export COMMAND_DIR=$(cd $(dirname $0); pwd)
+ export PATH="$(pwd)/depot_tools:$PATH"
+ export OUTPUT_DIR="$(pwd)/src/out-$arch-$profile"
+ export ARTIFACTS_DIR="$(pwd)/linux-$arch-$profile"
+ 
++if [ "$toolchain" = "host" ]; then
++  export VPYTHON_BYPASS="manually managed python not supported by chrome operations"
++fi
++
+ if [ ! -e "$(pwd)/src" ]
+ then
+   gclient sync -D --no-history
+@@ -70,6 +85,12 @@
+ git apply "$COMMAND_DIR/patches/add_licenses.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
+ git apply "$COMMAND_DIR/patches/ssl_verify_callback_with_native_handle.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
+ git apply "$COMMAND_DIR/patches/add_deps.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
++git apply "$COMMAND_DIR/patches/webrtc-0001-do-not-link-against-libatomic.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
++git apply "$COMMAND_DIR/patches/webrtc-0002-fix-glibcisms.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
++git apply "$COMMAND_DIR/patches/webrtc-0003-use-system-build-tools.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
++git apply "$COMMAND_DIR/patches/webrtc-0004-use-opengl-pkg-config.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
++git apply "$COMMAND_DIR/patches/webrtc-0005-use-eweos-clang-runtime-layout.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
++git apply "$COMMAND_DIR/patches/webrtc-0006-include-spa-pod-iter.patch" -v --ignore-space-change --ignore-whitespace --whitespace=nowarn
+ 
+ # Disable CREL (compact relocations). Chromium's build enables experimental
+ # CREL via -Wa,--crel which causes segfaults on aarch64-linux (and is known
+@@ -86,7 +107,9 @@
+ 
+ mkdir -p "$ARTIFACTS_DIR/lib"
+ 
+-python3 "./src/build/linux/sysroot_scripts/install-sysroot.py" --arch="$arch"
++if [ "$toolchain" = "sysroot" ]; then
++  python3 "./src/build/linux/sysroot_scripts/install-sysroot.py" --arch="$arch"
++fi
+ 
+ debug="false"
+ if [ "$profile" = "debug" ]; then
+@@ -116,8 +139,22 @@
+   symbol_level=0 \
+   enable_iterator_debugging=false \
+   use_rtti=true \
+-  rtc_use_x11=true"
++  rtc_use_x11=false"
+ 
++if [ "$toolchain" = "host" ]; then
++  export PATH="$old_path"
++  [ -n "$CC" ] || export CC=clang
++  [ -n "$CXX" ] || export CXX=clang++
++  [ -n "$AR" ] || export AR=ar
++  [ -n "$NM" ] || export NM=nm
++  args="${args} \
++    custom_toolchain=\"//build/toolchain/linux/unbundle:default\" \
++    host_toolchain=\"//build/toolchain/linux/unbundle:default\" \
++    clang_use_chrome_plugins=false \
++    clang_base_path=\"/usr\" \
++    use_sysroot=false"
++fi
++
  # generate ninja files
+ gn gen "$OUTPUT_DIR" --root="src" --args="${args}"
+ 
+@@ -127,7 +164,11 @@
+ # make libwebrtc.a
+ # don't include nasm
+ ar -rc "$ARTIFACTS_DIR/lib/libwebrtc.a" `find "$OUTPUT_DIR/obj" -name '*.o' -not -path "*/third_party/nasm/*"`
+-src/third_party/llvm-build/Release+Asserts/bin/llvm-objcopy --redefine-syms="$COMMAND_DIR/boringssl_prefix_symbols.txt" "$ARTIFACTS_DIR/lib/libwebrtc.a"
++if [ "$toolchain" = "host" ]; then
++  llvm-objcopy --redefine-syms="$COMMAND_DIR/boringssl_prefix_symbols.txt" "$ARTIFACTS_DIR/lib/libwebrtc.a"
++else
++  src/third_party/llvm-build/Release+Asserts/bin/llvm-objcopy --redefine-syms="$COMMAND_DIR/boringssl_prefix_symbols.txt" "$ARTIFACTS_DIR/lib/libwebrtc.a"
++fi
+ 
+ python3 "./src/tools_webrtc/libs/generate_licenses.py" \
+   --target :default "$OUTPUT_DIR" "$OUTPUT_DIR"

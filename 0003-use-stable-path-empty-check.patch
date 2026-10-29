@@ -1,0 +1,11 @@
+--- a/crates/agent/src/tools/terminal_tool.rs
++++ b/crates/agent/src/tools/terminal_tool.rs
+@@ -1403,7 +1403,7 @@
+             (*root_name).to_string()
+         };
+         let subpath = path_style.strip_prefix(cd_path, Path::new(&prefix)).ok()?;
+-        if subpath.is_empty() {
++        if subpath.as_os_str().is_empty() {
+             Some(abs_path.clone())
+         } else {
+             path_style.join_path(abs_path, subpath).ok()
