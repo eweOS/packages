@@ -2,14 +2,14 @@
 
 pkgbase=lvm2
 pkgname=('lvm2' 'device-mapper')
-pkgver=2.03.43
+pkgver=2.03.44
 pkgrel=1
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://sourceware.org/lvm2/'
 license=('GPL2' 'LGPL2.1')
 makedepends=('git' 'libaio' 'linux-headers')
 source=("git+https://sourceware.org/git/lvm2.git#tag=v${pkgver//./_}" fix-stdio-usage.patch)
-sha256sums=('2167736de4920c7cabbcde864e3d2ea0c0bd3a9cda82bdc9e368a1346ace9928'
+sha256sums=('4dd89400d5089ca6ee7b3f421736629f08da4edc5d7ac2d34fb1fe029f134758'
             '6a8dfcac852f1a37ee8393ec5db5140cfb1b4db8a9ca0bedbe19e910c103976a')
 
 prepare() {
