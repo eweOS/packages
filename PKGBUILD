@@ -15,7 +15,7 @@ pkgname=(qemu-common
 	 qemu-tests
 	 qemu-guest-agent
 	) # TODO: split firmwares
-pkgver=11.1.2
+pkgver=11.1.3
 pkgrel=1
 pkgdesc='A generic and open source machine emulator and virtualizer.'
 url='https://www.qemu.org/'
@@ -31,7 +31,7 @@ makedepends=(alsa-lib bzip2 cairo curl dtc fuse3 gtk3 glib ncurses pipewire
 qemu_archs=(aarch64 alpha arm i386 loongarch64 m68k mips mips64 mips64el
 	    mipsel ppc ppc64 riscv32 riscv64 s390x sparc sparc64 x86_64)
 source=("https://download.qemu.org/qemu-$pkgver.tar.xz")
-sha256sums=('731b5681e4bb18be313231579b8efd0296c5b015fa36dc533874b639ba838016')
+sha256sums=('5a8289c7940dc77d3873c81a6c29ba3afe1446fc9d36e77fa1658cdbecb84b22')
 
 system_targets=""
 for t in ${qemu_archs[*]}; do
