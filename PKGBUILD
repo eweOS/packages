@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=blosc
-pkgver=1.21.6
-pkgrel=3
+pkgver=1.21.7
+pkgrel=1
 pkgdesc='A blocking, shuffling and loss-less compression library'
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 url='https://www.blosc.org'
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Blosc/c-blosc/archive/v${pkgver}.tar.gz")
-sha512sums=('f32ac9ca7dd473f32201cdf4b7bb61a89e8bc3e3d16e027d2c6dc1aa838cb47c42dfed6942c9108532b3920ed22a8c662e7451890177c9bbe6ec5b8ab65362b3')
+sha512sums=('ff8eedac003c8a972dad59e0cf787c3c329ff031b02e94d63ae99a0228ea4a50a6e6b80492916b66f6bd42aea5ed9cf4bec87b47df83a01cf98f4c68ff3b28c5')
 
 prepare() {
   cd "c-blosc-$pkgver"
