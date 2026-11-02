@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=vnstat
-pkgver=2.13
-pkgrel=3
+pkgver=2.14
+pkgrel=1
 pkgdesc="A console-based network traffic monitor"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://humdi.net/vnstat/"
@@ -12,7 +12,7 @@ makedepends=('gd' 'autoconf')
 optdepends=('gd: image output')
 backup=(etc/vnstat.conf)
 source=(https://humdi.net/vnstat/$pkgname-$pkgver.tar.gz vnstat.service)
-sha256sums=('c9fe19312d1ec3ddfbc4672aa951cf9e61ca98dc14cad3d3565f7d9803a6b187'
+sha256sums=('8ba2119b3c6f780775135f9c9fa7236867da67e2f93649f1313319b9cf48f87c'
             'e7b83891bd9066d951247422764e18cf999aa9bd731064da2a0cce395a04aece')
 
 prepare() {
