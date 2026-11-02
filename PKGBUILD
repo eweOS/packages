@@ -2,35 +2,45 @@
 
 pkgbase=tclap
 pkgname=(tclap tclap-doc)
-pkgver=1.2.5
-pkgrel=3
-pkgdesc='Templatized C++ Command Line Parser Library'
+pkgver=1.4.0
+pkgrel=1
+pkgdesc='A header-only templatized C++ command line parser library'
 url='https://tclap.sourceforge.net/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 depends=(musl)
+makedepends=(cmake ninja)
+checkdepends=(python)
 source=("https://sourceforge.net/projects/tclap/files/tclap-$pkgver.tar.gz")
-sha256sums=('bb649f76dae35e8d0dcba4b52acfd4e062d787e6a81b43f7a4b01275153165a6')
+sha256sums=('413014a7e68740d9aa972a058532e3e9959b4af7509d6ae7b11a8c1828378567')
 
-build () {
+build() {
 	cd tclap-$pkgver
-	./configure --prefix=/usr
-	make
-	make install DESTDIR=$srcdir/install
-	mv $srcdir/install/usr/share/doc $srcdir
+	# The release tarball ships pre-generated docs; docs are installed from
+	# the source tree in package_tclap-doc().
+	cmake -B build -G Ninja \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_DOC=OFF
+	cmake --build build
 }
 
 check() {
-	cd tclap-$pkgver
-	make check
+	ctest --test-dir "tclap-$pkgver/build" --output-on-failure
 }
 
 package_tclap() {
-	mv $srcdir/install/usr $pkgdir
-	_install_license_ $srcdir/tclap-$pkgver/COPYING
+	DESTDIR="$pkgdir" cmake --install "tclap-$pkgver/build"
+	_install_license_ "$srcdir/tclap-$pkgver/COPYING"
 }
 
 package_tclap-doc() {
-	mkdir -p $pkgdir/usr/share
-	mv $srcdir/doc $pkgdir/usr/share
+	install -d "$pkgdir/usr/share/doc/tclap"
+	install -m644 \
+		"$srcdir/tclap-$pkgver/docs/index.html" \
+		"$srcdir/tclap-$pkgver/docs/manual.html" \
+		"$srcdir/tclap-$pkgver/docs/style.css" \
+		"$pkgdir/usr/share/doc/tclap/"
+	cp -a "$srcdir/tclap-$pkgver/docs/html" "$pkgdir/usr/share/doc/tclap/"
 }
