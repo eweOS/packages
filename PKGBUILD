@@ -2,15 +2,15 @@
 
 pkgbase=tclap
 pkgname=(tclap tclap-doc)
-pkgver=1.2.5
-pkgrel=3
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='Templatized C++ Command Line Parser Library'
 url='https://tclap.sourceforge.net/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MIT)
 depends=(musl)
 source=("https://sourceforge.net/projects/tclap/files/tclap-$pkgver.tar.gz")
-sha256sums=('bb649f76dae35e8d0dcba4b52acfd4e062d787e6a81b43f7a4b01275153165a6')
+sha256sums=('413014a7e68740d9aa972a058532e3e9959b4af7509d6ae7b11a8c1828378567')
 
 build () {
 	cd tclap-$pkgver
