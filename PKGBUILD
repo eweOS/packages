@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sdl2-compat
-pkgver=2.32.70
+pkgver=2.32.74
 pkgrel=1
 pkgdesc="An SDL2 compatibility layer that uses SDL3 behind the scenes"
 url="https://github.com/libsdl-org/sdl2-compat"
@@ -13,7 +13,7 @@ provides=("sdl2=${pkgver}")
 replaces=('sdl2')
 license=('Zlib')
 source=("https://github.com/libsdl-org/sdl2-compat/releases/download/release-${pkgver}/sdl2-compat-${pkgver}.tar.gz")
-sha256sums=('998fa62557eb46ffe7e5c3e2c123bc332f7df9d9f593b3ceed88ed1158428a44')
+sha256sums=('ec68abde77e2e459c8abc4f9587b8976b5d2a657b2bfda2fb3a079b0f8924588')
 
 build() {
   # sdl2-compat contains static libraries, thus we should enable
