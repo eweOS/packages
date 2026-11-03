@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-structlog
-pkgver=25.5.0
-pkgrel=2
+pkgver=26.1.0
+pkgrel=1
 pkgdesc="Structured Logging for Python"
 url="https://www.structlog.org"
 # https://github.com/hynek/structlog/blob/24.2.0/pyproject.toml#L14
@@ -20,7 +20,7 @@ optdepends=(
   'python-rich: for structlog.dev'
 )
 source=("git+https://github.com/hynek/structlog.git#tag=$pkgver")
-sha512sums=('68754d386172270f0c6de76f02dab971e710fcb1cfac0368732871efa3da714d519048c616b56a5148487e8c585451ebed176d208cba7082f31c8d658f8b3710')
+sha512sums=('554a819efca26f17a9218b9843ac09063bdbb5fac2074d7c1d9dea589d8c6e45ec0f89eeab5fbc9063790e727fee090c7d50af4bfaa1243cbc81728571eef1e4')
 
 build() {
   cd structlog
