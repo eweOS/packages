@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=vid.stab
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc='Video stabilization library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url=http://public.hronopik.de/vid.stab
@@ -18,7 +18,7 @@ makedepends=(
 )
 provides=(libvidstab.so)
 source=(git+https://github.com/georgmartius/vid.stab.git#tag=v$pkgver)
-sha256sums=('be0c62854938b275d49192135e71a84d84cb346440947837ba15e2e82d4bfee3')
+sha256sums=('5574d82826b84157243dbfb7cd9dec654ad3b8edd00bf1a7eee0bd611613c488')
 
 build() {
   cmake -S vid.stab -B build -G Ninja \
