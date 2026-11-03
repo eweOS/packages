@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-pystemmer
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Snowball stemming algorithms, for information retrieval"
 arch=('x86_64' 'aarch64' 'riscv64' 'loongarch64')
 license=('BSD-3-Clause' 'MIT')
@@ -12,7 +12,7 @@ makedepends=('cython' 'python-build' 'python-packaging' 'python-wheel'
 	     'python-installer' 'python-setuptools')
 checkdepends=('python-pytest')
 source=("https://github.com/snowballstem/pystemmer/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('8bcb839df2c3964d410bddaa56599e5498152a81ff121b56490e5b4e42a4e52c74c9fc822a30283325e73f19219ac117ae3ac1a8e738b5a9c72ff0342b4991cf')
+sha512sums=('34a0dc56a36685890d714d1771b73175c70267e7b50ea3fbd804031874c86416cb5b8dd72110ba8354fd000c1abaad83a58feda938c291130f2b214de6f71958')
 
 export PYSTEMMER_SYSTEM_LIBSTEMMER=1
 
