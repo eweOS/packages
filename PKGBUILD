@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xdg-desktop-portal
-pkgver=1.22.0
+pkgver=1.22.1
 # These libraries aren't designed to be packaged separately. Don't waste time
 # on them.
 _libglnx_commit=ff64d52116ae74f0d25e24f089db28921ea171ff
@@ -36,7 +36,7 @@ optdepends=('xdg-desktop-portal-impl: Portal backends')
 source=("git+https://github.com/flatpak/xdg-desktop-portal#tag=$pkgver"
 	"git+https://gitlab.gnome.org/GNOME/libglnx.git#commit=$_libglnx_commit"
 	"git+https://gitlab.gnome.org/GNOME/gvdb.git#commit=$_gvdb_commit")
-sha256sums=('9d811c5a6d0810618c994f93ea215708d071547a57fe61194828a5aa47c61490'
+sha256sums=('fb895f584a28986c8f04af0acacd3d8459f8e81085728862f52e5e9227848d2c'
             'c375bfb4449614cc81abe511f3abfb730618b293d384c6f855322a3be386ad62'
             '1c4819a29dbde4244375d014aeb679f323f24c92b566824d8bbee8f0f1a07beb')
 
