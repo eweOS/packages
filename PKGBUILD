@@ -1,9 +1,9 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=aspell
-pkgver=0.60.8.2
+pkgver=0.60.8.3
 _pkgmajorver=0.60
-pkgrel=2
+pkgrel=1
 pkgdesc="A spell checker designed to eventually replace Ispell"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="http://aspell.net/"
@@ -12,7 +12,7 @@ depends=('llvm-libs' 'ncurses')
 makedepends=('texinfo')
 optdepends=('perl: to import old dictionaries')
 source=("https://github.com/GNUAspell/aspell/archive/rel-$pkgver.tar.gz")
-sha512sums=('ff379222ef33b4ffcca68fbcc0350004e9490add7ecbe13e73b16db961167db19c427731e0d7f8d465f1c78d2ea8aa07738de8c531a7a25e518d3cf4a604a96c')
+sha512sums=('78b6b065441bf75979e7acc0675748d7f7feb3c115dcb938f59d24872adf4a4970fb3ce39acf7882be7bce2749c237b6d9cd0d7089512613650ecc199d4f0941')
 
 build()
 {
