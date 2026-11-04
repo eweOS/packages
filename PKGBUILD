@@ -2,7 +2,7 @@
 
 pkgname=python-coverage
 _pyname=coveragepy
-pkgver=7.17.0
+pkgver=7.17.1
 pkgrel=1
 pkgdesc='The code coverage tool for Python'
 url='https://coverage.readthedocs.io/'
@@ -14,7 +14,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest python-pytest-xdist python-flaky python-hypothesis
 #		python-unittest-mixins python-virtualenv)
 source=("https://github.com/nedbat/coveragepy/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('38c150be4747239cf4e05282977324363868393dae389fd02aa429d44c626b3e')
+sha256sums=('14fe83c5f1f7562a6e52a092d1fb3d055cec8ce8a32b12912602d3e3b64690f2')
 
 build() {
 	cd "$_pyname-$pkgver"
