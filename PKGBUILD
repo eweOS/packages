@@ -2,7 +2,7 @@
 
 pkgname=('libgpiod' 'python-gpiod')
 pkgbase='libgpiod'
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='C library and tools for interacting with the linux GPIO character device'
 url='https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git'
@@ -11,7 +11,7 @@ license=('LGPL-2.1-or-later')
 depends=('musl')
 makedepends=('meson' 'ninja' 'help2man' 'python' 'linux-headers')
 source=("https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/snapshot/libgpiod-$pkgver.tar.gz")
-sha256sums=('2e33d17f74cefadf85825f601829a68156f669348071be8470dcd700029a14af')
+sha256sums=('ca9bf015b809bd2b368557fa6401527f4be139fa4b23028b4214bf364139cafd')
 
 build() {
 	cd "$pkgname-$pkgver"
