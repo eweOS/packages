@@ -5,7 +5,7 @@ pkgname=(
   libsoup3
   libsoup3-docs
 )
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="HTTP client/server library for GNOME"
 url="https://wiki.gnome.org/Projects/libsoup"
@@ -30,7 +30,7 @@ makedepends=(
   vala
 )
 source=("git+https://gitlab.gnome.org/GNOME/libsoup.git#tag=$pkgver")
-sha256sums=('c75d89b998daed298508e98e4c4f4bcd23cff035332f5faa8823e98bce4ef216')
+sha256sums=('8c03a9df6e496f24a418eab957b53f251a7bae265ed28bf25fbb6bd81ea53fa9')
 
 build() {
   local meson_options=(
