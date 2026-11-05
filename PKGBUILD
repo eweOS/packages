@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=openssh
-pkgver=10.6p1
+pkgver=10.6p2
 pkgrel=1
 pkgdesc="SSH protocol implementation for remote login, command execution and file transfer"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -39,7 +39,7 @@ source=(
   ssh-keygen.service
   sshd.service
 )
-sha256sums=('a9dc9565dffe8640f64d863cd29a32bc4a3dbdec0566a7fc44c5d6ee767d5f39'
+sha256sums=('9ae44872090cf2f06b3cf9ff147e7f16f309671340763ed2f99248398ae29d5b'
             'ac4d74367df7a46dfaa0f522eb15d62ecdbf00b156b10a3a5ef870a0ae74c57b'
             'e8b51db858131b9147d8935ba7a100c16f1cc1ac3638db1fe17934dec094796d'
             '6a5d33c6e9a0f0b8f011a106bd8715e21e4058a244be836bc59faaaa552a3568'
