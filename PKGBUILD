@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fastfetch
-pkgver=2.70.0
+pkgver=2.71.0
 pkgrel=1
 pkgdesc="Like Neofetch, but much faster because written in C"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -46,7 +46,7 @@ optdepends=(
 )
 depends=(yyjson)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('8aa01bd3faff2be1d94f231d76489ce6d9f781f51f6e93eafe82359d6d8669af')
+sha256sums=('e71d93de41e8e4b2554c36d2ae51758112a21ecf3a8c98605a2c689251e62987')
 
 build() {
   cmake -B build -S "${pkgname}-${pkgver}" \
