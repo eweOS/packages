@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=waybar
-pkgver=0.15.0
-pkgrel=4
+pkgver=0.16.0
+pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/Alexays/Waybar/"
@@ -37,7 +37,7 @@ makedepends=(
 #	fmt::localtime is deprecated
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz"
 	"0001-modules-simpleclock-use-C-library-localtime.patch")
-sha256sums=('21c2bbef88c40473c355003582f9331d2f9b8a01efdcce0935edfc5f6b023a3e'
+sha256sums=('ce74962053002c35e80f569298baebd6887088c80454d0ce9a2c9ca5e21e97c7'
             'a8dd057e920d0db41544dbdebb90ce3eb2138c046b7dbbbf1adf07655ae34248')
 
 prepare() {
