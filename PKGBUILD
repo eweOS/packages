@@ -3,7 +3,7 @@
 pkgbase=bluez
 pkgname=('bluez' 'bluez-utils' 'bluez-libs' 'bluez-cups' 'bluez-mesh'
          'bluez-obex')
-pkgver=5.87
+pkgver=5.88
 pkgrel=1
 pkgdesc='Userspace daemons, utils and libraries of Linux Bluetooth stack'
 url="http://www.bluez.org/"
@@ -20,7 +20,7 @@ source=(
   0003-allow-mesh-on-non-systemd-system.patch
   0004-grant-permission-to-bluetooth-group.patch
 )
-sha256sums=('26bdcf2cebd7310c6f598850606b037ef0c515fe6608ebc54d22c50c4c32b35f'
+sha256sums=('6952c39eb5f8b0ee712cc50ab3bcff03be17c410dd97ca640f4849d9a1653ba3'
             '286cf9aa23d923023957f372e40b255889dc3fa3bb8075206548f6db805fa90b'
             '93fa6d201bb4546bb680f6d6f903ba5e767829ab275361323c14b0389fb6c803'
             '1a7e4c8b13ffc41304a06fa3d669cb6d252f0870c23c54fe84f5d861d5c964e1'
@@ -94,15 +94,14 @@ build() {
   _pick_ bluez-utils usr/bin/{bluetoothctl,btmon}
   _pick_ bluez-utils usr/share/man/man1/bluetoothctl*.1
   _pick_ bluez-utils usr/share/man/man1/{btattach,btmgmt,btmon,isotest,l2ping,rctest}.1
-  _pick_ bluez-utils usr/share/man/man5/org.bluez.{A,B,C,D,G,I,L,M,N,P,T}*.5
+  _pick_ bluez-utils usr/share/man/man5/org.bluez.{A,B,C,D,G,I,L,M,N,P,R,T}*.5
+  _pick_ bluez-utils usr/share/man/man7/{btsnoop,hci,l2cap,mgmt,sco,iso}.7
   _pick_ bluez-utils usr/share/zsh/site-functions/_bluetoothctl
 
   msg2 "Picking bluez-libs"
   _pick_ bluez-libs usr/include/bluetooth/*
   _pick_ bluez-libs usr/lib/libbluetooth.so*
   _pick_ bluez-libs usr/lib/pkgconfig/*
-  _pick_ bluez-libs usr/share/man/man7/{mgmt,sco,l2cap,hci,iso}.7
-
 
   msg2 "Picking bluez-cups"
   _pick_ bluez-cups usr/lib/cups/backend/bluetooth
@@ -125,6 +124,12 @@ build() {
   _pick_ bluez-obex usr/share/dbus-1/services/org.bluez.obex.service
   _pick_ bluez-obex usr/share/man/man5/org.bluez.obex*.5
   _pick_ bluez-obex usr/share/dbus-1/system.d/obex.conf
+
+  msg2 "Picking bluez-deprecated-tools"
+  _pick_ bluez-deprecated-tools usr/bin/{ciptool,hciattach,hciconfig,hcitool,meshctl,rfcomm,sdptool}
+  _pick_ bluez-deprecated-tools usr/share/man/man1/{ciptool,hciattach,hciconfig,hcitool,rfcomm,sdptool}.1
+  _pick_ bluez-deprecated-tools usr/share/man/man7/rfcomm.7
+
 }
 
 # Case "test-vcp" is flaky. Some tests may depend on certain kernel features
@@ -195,6 +200,5 @@ package_bluez-obex() {
 
   # make sure there are no files left to install
   rm fakeinstall/usr/lib/libbluetooth.a
-  rm fakeinstall/usr/share/man/man7/rfcomm.7 fakeinstall/usr/share/man/man7/btsnoop.7
   find fakeinstall -depth -print0 | xargs -0 rmdir
 }
