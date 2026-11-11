@@ -2,9 +2,8 @@
 
 pkgname=imagemagick
 pkgver=7.1.2.24
-pkgrel=1
-_relname=ImageMagick-${pkgver%%.*}
-_tarname=ImageMagick-${pkgver%.*}-${pkgver##*.}
+_pkgver=${pkgver%.*}-${pkgver##*.}
+pkgrel=2
 pkgdesc='An image viewing/manipulation program'
 url='https://www.imagemagick.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -61,11 +60,11 @@ makedepends=(chrpath
 checkdepends=(gsfonts
               ttf-dejavu)
 replaces=(imagemagick-doc)
-source=(https://imagemagick.org/archive/releases/$_tarname.tar.xz)
-sha256sums=('e44e70aa49e97ceb8b4f68e97829d0bde69b79387d69660b8886b1f6e06ddb19')
+source=($pkgname::git+https://github.com/ImageMagick/ImageMagick#tag=$_pkgver)
+sha256sums=('65913bb706f904ce6a85df2a44b160497c8e7ca6077fe8251c64adfb63d4d95c')
 
 build() {
-  cd $_tarname
+  cd $pkgname
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -103,14 +102,14 @@ build() {
 }
 
 check() (
-  cd $_tarname
+  cd $pkgname
   ulimit -n 4096
   MAKEFLAGS="CC=cc CXX=c++ -j$JOBS"
   make check
 )
 
 package() {
-  cd $_tarname
+  cd $pkgname
   # do not use slibtools since it removes libtool .la files
   MAKEFLAGS="CC=cc CXX=c++ -j$JOBS"
   make DESTDIR="$pkgdir" install
