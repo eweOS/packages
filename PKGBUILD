@@ -2,7 +2,7 @@
 
 pkgname=openai-codex
 pkgver=0.155.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight coding agent that runs in your terminal'
 url='https://openai.com/codex/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -39,8 +39,9 @@ prepare() {
 build() {
 	cd codex-rust-v$pkgver/codex-rs
 	env "${_featureenv[@]}" \
-	cargo build --frozen --release --all-features \
-		--bin codex				\
+	LD_PRELOAD="/usr/lib/libmimalloc.so" \
+		cargo build --frozen --release --all-features	\
+		--bin codex					\
 		--bin codex-responses-api-proxy
 }
 
