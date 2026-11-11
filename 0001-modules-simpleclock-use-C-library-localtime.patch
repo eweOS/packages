@@ -1,5 +1,3 @@
-diff --git a/src/modules/simpleclock.cpp b/src/modules/simpleclock.cpp
-index b6a96eccf022..58ecbfcd0dac 100644
 --- a/src/modules/simpleclock.cpp
 +++ b/src/modules/simpleclock.cpp
 @@ -1,3 +1,5 @@
@@ -8,7 +6,7 @@ index b6a96eccf022..58ecbfcd0dac 100644
  #include "modules/simpleclock.hpp"
  
  #include <time.h>
-@@ -16,8 +18,9 @@ waybar::modules::Clock::Clock(const std::string& id, const Json::Value& config)
+@@ -16,8 +18,9 @@
  
  auto waybar::modules::Clock::update() -> void {
    tzset();  // Update timezone information
@@ -17,6 +15,6 @@ index b6a96eccf022..58ecbfcd0dac 100644
 +  time_t now = time(NULL);
 +  struct tm localtime;
 +  localtime_r(&now, &localtime);
-   auto text = fmt::format(fmt::runtime(format_), localtime);
-   label_.set_markup(text);
- 
+   updateLabelAndTooltip(format_, format_, localtime);
+   // Call parent update
+   ALabel::update();

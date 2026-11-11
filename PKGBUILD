@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=waybar
-pkgver=0.15.0
-pkgrel=4
+pkgver=0.16.0
+pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/Alexays/Waybar/"
@@ -15,6 +15,7 @@ depends=(
   'libevdev'
   'libinput'
   'libmpdclient'
+  'libmm-glib'
   'libnl'
   'libxkbcommon'
   'jsoncpp'
@@ -32,13 +33,16 @@ makedepends=(
   'wayland-protocols'
   'python-packaging'
 )
+checkdepends=(
+  'catch2'
+)
 # 0001: Should be upstreamed, use C library localtime_r() instead of
 # 	fmt::localtime, to build with fmt latter than 12.0.0 where
 #	fmt::localtime is deprecated
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz"
 	"0001-modules-simpleclock-use-C-library-localtime.patch")
-sha256sums=('21c2bbef88c40473c355003582f9331d2f9b8a01efdcce0935edfc5f6b023a3e'
-            'a8dd057e920d0db41544dbdebb90ce3eb2138c046b7dbbbf1adf07655ae34248')
+sha256sums=('ce74962053002c35e80f569298baebd6887088c80454d0ce9a2c9ca5e21e97c7'
+            '7b164a7db901876261cd83be8dd3ce66ffcf05de93757dd3e5a98e53db19de54')
 
 prepare() {
   _patch_ "Waybar-$pkgver"
@@ -46,7 +50,7 @@ prepare() {
 
 build() {
   local features=(
-    -D tests=disabled
+    -D tests=enabled
     -D jack=disabled
     -D cava=disabled
     -D dbusmenu-gtk=disabled
@@ -61,6 +65,12 @@ build() {
   ewe-meson "Waybar-$pkgver" build --wrap-mode=nodownload \
     "${features[@]}"
   meson compile -C build
+}
+
+check() {
+  # The utils suite takes close to meson's default 30 s timeout when the
+  # suites run in parallel; allow more headroom instead of skipping it.
+  meson test -C build --print-errorlogs --timeout-multiplier 4
 }
 
 package() {
