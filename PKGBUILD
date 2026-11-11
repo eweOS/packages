@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=git
-pkgver=2.56.0
+pkgver=2.56.1
 pkgrel=1
 pkgdesc='the fast distributed version control system'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ optdepends=('perl-mailtools: git send-email support'
 	    'perl-authen-sasl: TLS support for git send-email'
 	    'perl-io-socket-ssl: TLS support for git send-email')
 source=("https://www.kernel.org/pub/software/scm/git/git-${pkgver}.tar.xz")
-sha256sums=('26c56c296b38c0695b26fa95f475f1d01704d2d38e73465ca30b0b2f5dc789d3')
+sha256sums=('f0b0bf89264b9bd2e1c640363e7529643989da76281600473c50745cd34a607f')
 
 _make_paths=(
   prefix='/usr'
