@@ -2,7 +2,7 @@
 
 pkgname=python-jsonpointer
 _pyname=python-json-pointer
-pkgver=3.7
+pkgver=3.12
 pkgrel=1
 pkgdesc='Python library to resolve RFC 6901 JSON Pointers'
 url='https://github.com/stefankoegl/python-json-pointer'
@@ -11,7 +11,7 @@ license=(BSD-3-Clause)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=("https://github.com/stefankoegl/python-json-pointer/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('82fbd3ff81a19a9c962514ba0fd5731c6e0066173dcd48a902680cc9703d9683')
+sha256sums=('ea430415ee69a40961c2f67129b1cbf7a2078fed42940d96484cc5c3b351f5b4')
 
 build() {
 	cd "$_pyname-$pkgver"
