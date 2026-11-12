@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qterminal
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A lightweight Qt-based terminal emulator"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
@@ -15,7 +15,7 @@ source=(
   "git+https://github.com/lxqt/qterminal.git#tag=$pkgver"
   no-x11.patch
 )
-sha256sums=('dfef29f296a1db92cdadf6f0e2cf4d3133fe520324abdeabecbe4cff3b34710b'
+sha256sums=('94871925b951ea7a12498052c1bb0751302841c366d506b77fca91c4f9be1113'
             '1a20526f15dd60e2e3594deacf07fbf3fb2b431e98ef1a2584776fa782492f74')
 
 prepare() {
