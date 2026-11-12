@@ -2,7 +2,7 @@
 
 pkgname=qgis
 pkgver=4.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Geographic Information System (GIS) that supports vector, raster & database formats"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://qgis.org/"
@@ -16,10 +16,18 @@ depends=(proj geos gdal expat qwt libzip sqlite3 protobuf
 makedepends=(cmake ninja fcgi qt6-tools sip pyqt-builder)
 optdepends=('fcgi: Map server'
             'gpsbabel: GPS Tools plugin')
+# 0001: Backport, avoid clang optimizer hang on qgsfontmanager.cpp
+# https://github.com/qgis/QGIS/commit/08b26e53fd30fdac2d84dedecfcabb0ffe66feb7
 source=(
   https://qgis.org/downloads/$pkgname-$pkgver.tar.bz2
+  0001-fix-clang-optimizer-hang-on-qgsfontmanager.patch
 )
-sha256sums=('e1f017c3bc1881a5f534d89188e4d16d4d1bb1413278ea27aef4604ff35b090a')
+sha256sums=('e1f017c3bc1881a5f534d89188e4d16d4d1bb1413278ea27aef4604ff35b090a'
+            'f6b2f5ce4f859db9a28b08fb4cfed3acdb90c8f22d766e1ef9064fbcc11a8480')
+
+prepare() {
+  _patch_ "$pkgname-$pkgver"
+}
 
 build() {
   # Use vendored spatialindex to work around upstream breakage
