@@ -1,39 +1,78 @@
 # Maintainer: Eric Long <i@hack3r.moe>
 
 pkgname=zed
-pkgver=0.191.6
-pkgrel=3
-_livekit_commit=3119b6ac0ef5e705b3e92630c8e558648f0892ed
-_scap_commit=08f0a01417505cc0990b9931a37e5120db92e0d0
+pkgver=1.28.1
+pkgrel=1
+_livekit_commit=fbda05eb278b4a7c5be8fc9b2a92e9b62e732236
+_scap_commit=b5c86ec58dd4b6b7732bf6ac8be03d6b1f190a82
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64 aarch64 riscv64)
 url='https://zed.dev'
 license=(GPL-3.0-or-later AGPL-3.0-or-later Apache-2.0)
-depends=(alsa-lib curl dbus fontconfig llvm-libs libxkbcommon musl nodejs openssl
-         pipewire sqlite vulkan-driver vulkan-icd-loader wayland zlib zstd)
+depends=(alsa-lib curl dbus fontconfig git glib llvm-libs libxkbcommon musl nodejs
+         openssl pipewire sqlite vulkan-driver vulkan-icd-loader wayland zlib zstd)
+depends_riscv64=(libdrm mesa)
 makedepends=(rust clang lld cargo cargo-about cmake git gn ninja protobuf libpulse
              python-httplib2 linux-headers bsd-compat-headers vulkan-headers)
 optdepends=('npm: improved JSON language support (needed to run json-language-server)'
             'clangd: improved C/C++ language support'
             'rust-analyzer: improved Rust language support'
-            'org.freedesktop.secrets: to keep you logged into your Zed account')
+            'org.freedesktop.secrets: to keep you logged into your Zed account'
+            'vulkan-tools: include GPU details in crash reports')
 options=(!lto) # too much memory usage for such a big Rust project
+# livekit-0001: Downstream, build libwebrtc with the host LLVM toolchain and without
+# X11.
+# webrtc-0001: Downstream, avoid linking GNU libatomic when using LLVM.
+# webrtc-0002: Downstream, taken from Alpine, fix glibc-specific assumptions in
+# WebRTC.
+# https://github.com/alpinelinux/aports/blob/11163576edc8df724000096fdb82eeb30df58fb0/community/firefox-esr/fix-webrtc-glibcisms.patch
+# webrtc-0003: Downstream, use the system GN and Python instead of depot_tools
+# wrappers.
+# webrtc-0004: Downstream, use opengl.pc because eweOS libglvnd is built without
+# GLX.
+# webrtc-0005: Downstream, use the eweOS clang runtime library layout.
+# webrtc-0006: Downstream, include the SPA pod iterator declarations required by
+# the current PipeWire headers.
+# riscv-ffmpeg: Downstream, provide the RISC-V FFmpeg configuration and source lists,
+# based on https://github.com/hack3ric/livekit-rust-sdks/commit/441c34cfa9ec1f65429381aa946bea438f8c571e
+# webrtc-0007: Downstream, support riscv64 in the webrtc-sys build script.
+# 0004: Downstream, disable crash reporting on riscv64 because minidump-writer has
+# no riscv64 support.
+# 0001: Downstream, build Zed without X11 dependencies on Wayland-only eweOS.
+# 0002: Downstream, use the packaged cargo-about and accept its advisory warnings.
+# 0003: Downstream, avoid the unstable Path::is_empty API with the eweOS Rust version.
 source=("https://github.com/zed-industries/zed/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
-        "git+https://github.com/hack3ric/livekit-rust-sdks.git#commit=$_livekit_commit"
+        "git+https://github.com/zed-industries/livekit-rust-sdks.git#commit=$_livekit_commit"
         "git+https://github.com/zed-industries/scap#commit=$_scap_commit"
-        livekit-0001-webrtc-eweos-fixes.patch            # downstream
-        webrtc-0001-do-not-link-against-libatomic.patch  # could be rewritten and upstreamed
-        webrtc-0002-fix-glibcisms.patch                  # downstream, taken from Alpine
-        scap-0001-feature-gate-x11.patch                 # upstreamed, https://github.com/zed-industries/scap/pull/1
-        0001-disable-x11-everywhere.patch)               # could be rewritten and upstreamed
-sha256sums=('0251a96be6709b7cc0c6ba9dbfa257ebb7de4488bfbdf0d89b72240bdb67dace'
-            'df044bce7dc5af8adbc3ca29225a62f8cee7a71535d704988abc8b372ea600e7'
-            'ae8f7f5512e9a90bf67f013b54c39240395a0ca71e8f9865522f4960bd63b1ea'
-            '171fb143fd639da257b2921cba717bb4bf976d94f249b137e50451daceeaaf39'
+        livekit-0001-webrtc-eweos-fixes.patch
+        webrtc-0001-do-not-link-against-libatomic.patch
+        webrtc-0002-fix-glibcisms.patch
+        webrtc-0003-use-system-build-tools.patch
+        webrtc-0004-use-opengl-pkg-config.patch
+        webrtc-0005-use-eweos-clang-runtime-layout.patch
+        webrtc-0006-include-spa-pod-iter.patch
+        riscv-ffmpeg.patch
+        webrtc-0007-support-riscv64-build.patch
+        0001-disable-x11-everywhere.patch
+        0002-use-packaged-cargo-about.patch
+        0003-use-stable-path-empty-check.patch
+        0004-disable-riscv-crash-reporting.patch)
+sha256sums=('2baab0ae5fdbbdd64cf69afbc4fd3f4427dc86b9a8a4dfd2335a949097741226'
+            '596934b6c223d8310bcd93758722f82f226ba7ba74bf28fae274436e2e560b09'
+            'd7915a190bc60999da008899f085210743b84cc5c4f4abdc05821400061d13c7'
+            '0b7ee8ccee9c0e8d2c14bc81759bd2046c3bb439f96746c77dbaacceb192f9ff'
             'f01d01249e0304f3dc7b8415ad58a9a834a742a7295023f6a730212ddfefc4d3'
             'f808b7cb3f2dfc88d9837b8d88078748e0e3d95564824a2df6eeff5ae1776583'
-            'f78daaaec06fb2018fe9027e0a5f5f9d1d1c46c87a4eed44f6da926f33f71b6b'
-            '95aa719f2c3dfad82a59c895bb0ed8b2b373140150cb47490565b239cf328869')
+            '075b2115140f3f84d86f8abffc95a1c786be15379e84950a6528a46a726561c3'
+            '068e5f8c4ad79917b5499e5a8a2042b4b88d75ded97b8b41c4117cee0c120167'
+            'a3ccaf5a4e12906758cc2bd9b8cd4f9f901facf40f56a8a2cdcf371b48be76a4'
+            'e61ea4b4a6f2669c9f81fa5b5dfb3632cee9ffd41f3b92f9a8b14eb1d02c5a1c'
+            '2cabc7c7343a2c028e5c59620e82dcaa07baa0b7035fb2f9e64cfcc9a1524a20'
+            '80a3a21cb945ac042ac755216047638c88b6957931d8a932f1a05e0ba5e31cf0'
+            'c959c12fc62e4b6fe1c6ac9463ce55ed96c2481079b8c5137a6fe4afa53113d1'
+            'fd90534e310e884ffdeb9c8454513ed646a12bf63479e56cc27385c2470103d1'
+            '71dd331b45cc4bb81dc84c4c21707b8ed66ced1ffc8af755e368d3463026677b'
+            'ade846c37f1b0958c8ff341620e628a5647f72a86e6776c50a7b75a139fb96d6')
 
 _binname=zeditor
 _appid=dev.zed.Zed
@@ -42,18 +81,34 @@ prepare() {
   pushd livekit-rust-sdks
   cp -t webrtc-sys/libwebrtc/patches \
     ../webrtc-0001-do-not-link-against-libatomic.patch \
-    ../webrtc-0002-fix-glibcisms.patch
+    ../webrtc-0002-fix-glibcisms.patch \
+    ../webrtc-0003-use-system-build-tools.patch \
+    ../webrtc-0004-use-opengl-pkg-config.patch \
+    ../webrtc-0005-use-eweos-clang-runtime-layout.patch \
+    ../webrtc-0006-include-spa-pod-iter.patch \
+    ../riscv-ffmpeg.patch
   patch -Np1 -i ../livekit-0001-webrtc-eweos-fixes.patch
+  patch -Np1 -i ../webrtc-0007-support-riscv64-build.patch
   popd
-
-  patch -d scap -Np1 -i ../scap-0001-feature-gate-x11.patch
 
   cd $pkgname-$pkgver
 
   patch -Np1 -i ../0001-disable-x11-everywhere.patch
-  echo -e "\n[patch.'https://github.com/zed-industries/scap']\nscap = { path = '$srcdir/scap' }" >>Cargo.toml
-  cargo update -p scap
+  patch -Np1 -i ../0002-use-packaged-cargo-about.patch
+  patch -Np1 -i ../0003-use-stable-path-empty-check.patch
+  patch -Np1 -i ../0004-disable-riscv-crash-reporting.patch
+  echo -e "\n[patch.'https://github.com/zed-industries/scap']\nzed-scap = { path = '$srcdir/scap' }" >>Cargo.toml
+  cargo update -p zed-scap
   cargo fetch --locked --target $RUSTHOST
+
+  # The cargo build links webrtc-sys from the git checkout fetched above, not
+  # from the tree patched in $srcdir, so apply the build script changes there too.
+  for checkout in "$HOME"/.cargo/git/checkouts/livekit-rust-sdks-*/*; do
+    if [ -f "$checkout/webrtc-sys/build.rs" ] &&
+      ! grep -q 'target_arch == "riscv64"' "$checkout/webrtc-sys/build.rs"; then
+      patch -d "$checkout" -Np1 -i "$srcdir/webrtc-0007-support-riscv64-build.patch"
+    fi
+  done
 
   sed crates/zed/resources/zed.desktop.in \
     -e "s/\\\$DO_STARTUP_NOTIFY/true/g" \
@@ -76,12 +131,14 @@ _srcenv() {
   export RELEASE_VERSION=$pkgver
   export PROTOC=/usr/bin/protoc
   export PROTOC_INCLUDE=/usr/include
+  export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+  export ZSTD_SYS_USE_PKG_CONFIG=1
 }
 
 build() {
   _srcenv
 
-  local _google_arch
+  local _google_arch _ewe_triple
   case $CARCH in
   x86_64)
     _google_arch=x64
@@ -94,13 +151,20 @@ build() {
     ;;
   esac
 
+  _ewe_triple=${CHOST:-${CARCH}-ewe-linux-musl}
+
   pushd "$srcdir/livekit-rust-sdks/webrtc-sys/libwebrtc"
-  sed -i '2i set -e' build_linux.sh
   (
     # Some build profiles in webrtc adds +dotprod in aarch64, which would be
     # overridden by our C*FLAGS and lead to compiler error
     export CFLAGS=$(echo $CFLAGS | sed 's/-march=[^ ]*//')
     export CXXFLAGS=$(echo $CXXFLAGS | sed 's/-march=[^ ]*//')
+    # WebRTC's GN files add --target=${cpu}-linux-gnu on Linux, which makes
+    # host tools use the glibc loader even though eweOS is musl-based. Append
+    # the eweOS triple after GN's flags so clang uses the musl target.
+    export CFLAGS="$CFLAGS --target=$_ewe_triple"
+    export CXXFLAGS="$CXXFLAGS --target=$_ewe_triple"
+    export LDFLAGS="$LDFLAGS --target=$_ewe_triple"
     # This script will clone depot_tools and libwebrtc tree, which is not ideal
     # in build(). Should separate the fetch steps in prepare().
     ./build_linux.sh --arch $_google_arch --toolchain host

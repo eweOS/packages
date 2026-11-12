@@ -1,0 +1,22 @@
+--- a/crates/agent/src/tools/terminal_tool.rs
++++ b/crates/agent/src/tools/terminal_tool.rs
+@@ -1403,7 +1403,7 @@ fn resolve_cd_in_worktrees(
+             Path::new(*root_name)
+         };
+         let subpath = path_style.strip_prefix(&cd_path, prefix).ok()?;
+-        let resolved_path = if subpath.is_empty() {
++        let resolved_path = if subpath.as_os_str().is_empty() {
+             abs_path.clone()
+         } else {
+             path_style.normalize_lexically(path_style.join(&abs_path, subpath))
+--- a/crates/path/src/path_component.rs
++++ b/crates/path/src/path_component.rs
+@@ -520,7 +520,7 @@ impl PathBufExt for PathBuf {
+             self.clear();
+ 
+         // verbatim paths need . and .. removed
+-        } else if comps.prefix_verbatim() && !path.is_empty() {
++        } else if comps.prefix_verbatim() && !path.as_os_str().is_empty() {
+             let mut buf: Vec<_> = comps.collect();
+             for c in path_comps {
+                 match c {
