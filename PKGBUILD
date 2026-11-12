@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=lxqt-menu-data
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='LXQt menu files'
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=(cmake lxqt-build-tools qt6-tools)
 source=(
   "https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
 )
-sha512sums=('a3227024584b23b4149cba1d33072486464c203d4d2f489348f15ec67bdabbd23fbdddc81735348a6d85ed5c3c9c5dee847d15789038bf9688a662eab9a18f1b')
+sha512sums=('23c4f5ea49d35a51f3ceab1799a7a19865ffb367c8b93380fafb480c9e241e8c3fa3ec330071bdbc0569218044f3cfbc06b4813c67fb57b9df072e4e90aa77f6')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
