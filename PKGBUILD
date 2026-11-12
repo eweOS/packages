@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libfm-qt
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="Core library of PCManFM-Qt (Qt binding for libfm)"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 url="https://github.com/lxqt/$pkgname"
@@ -20,7 +20,7 @@ source=(
   fix-build.patch
   no-x11.patch
 )
-sha512sums=('1084c0cb9cbcb7ca38e3c45b9c0a24cc6393e85546670d603abe6d1b17cfea0d0c395c0f916c65a84b15ad749f46b2353dc816d47c5c0827a8afbb508cf3ef2b'
+sha512sums=('88cf3f978d542af387e77c3eef110c202339b0cf6927b2e8a95b2d744dde768d4294c1c18009de5eac9a346d17a2946d5db4c87baace91825ece23a1a55af971'
             '3fa3cfdf8a4c3fb091584460a287b3f53a0245322f8056cdda1364498606c5cef3b5b8feffbf01cd29c54ce386636f3931622477c4bd26d5819b817e0086f21a'
             'e44810e88f2d33b6faa8aac25effee664aa51d89e66af1c081a793e04e4feb362a7a7c68d91cada1e376fa4a359529ebdcc642463683c187b749c86d9ca5f2cc')
 
