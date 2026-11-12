@@ -1,0 +1,29 @@
+--- a/webrtc-sys/build.rs
++++ b/webrtc-sys/build.rs
+@@ -403,6 +403,13 @@
+ 
+ fn add_lazy_load_so(builder: &mut cc::Build, name: &str, libraries: Vec<String>) {
+     let target_arch = webrtc_sys_build::target_arch();
++    if target_arch == "riscv64" {
++        if name == "desktop_capturer" {
++            println!("cargo:rustc-link-lib=dylib=gbm");
++            println!("cargo:rustc-link-lib=dylib=drm");
++        }
++        return;
++    }
+     for lib_name in libraries {
+         let mut arch_dir = "x86_64-linux-gnu";
+         if target_arch.contains("arm64") {
+@@ -429,6 +436,12 @@
+ fn add_gio_headers(builder: &mut cc::Build) {
+     let webrtc_dir = webrtc_sys_build::webrtc_dir();
+     let target_arch = webrtc_sys_build::target_arch();
++    if target_arch == "riscv64" {
++        let sysroot = env::var("PKG_CONFIG_SYSROOT_DIR").unwrap_or_default();
++        builder.include(format!("{sysroot}/usr/include/glib-2.0"));
++        builder.include(format!("{sysroot}/usr/lib/glib-2.0/include"));
++        return;
++    }
+     let target_arch_sysroot = match target_arch.as_str() {
+         "arm64" => "arm64",
+         "x64" => "amd64",
