@@ -1,0 +1,15 @@
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -2297,6 +2297,12 @@
+     set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/qgsexpression_texts.cpp PROPERTIES COMPILE_FLAGS "-O1")
+     set_source_files_properties(proj/qgscoordinatereferencesystem.cpp PROPERTIES COMPILE_FLAGS "-mllvm -inline-threshold=128")
+   endif()
++  if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
++    set_source_files_properties(textrenderer/qgsfontmanager.cpp PROPERTIES
++      COMPILE_FLAGS "-O0"
++      SKIP_PRECOMPILE_HEADERS ON
++    )
++  endif()
+ endif()
+ 
+ # Generate cpp+header file from .proto file using "protoc" tool (to support MVT encoding of vector tiles)
