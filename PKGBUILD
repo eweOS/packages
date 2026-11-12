@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qtermwidget
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A terminal widget for Qt, used by QTerminal"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
@@ -17,7 +17,7 @@ optdepends=(
 source=(
   "git+https://github.com/lxqt/qtermwidget.git#tag=$pkgver"
 )
-sha256sums=('f38385ca2fd0ed0fd85410619c80933567a3a1ae7eaaafbd244af1436df4c24d')
+sha256sums=('094495dec9724fd1c83bbfa0c315dd30d920ca1dc5f0c3b0c715863d9e34bfba')
 
 prepare() {
   cd qtermwidget
