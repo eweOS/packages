@@ -1,0 +1,63 @@
+--- a/third_party/protobuf/proto_library.gni
++++ b/third_party/protobuf/proto_library.gni
+@@ -177,9 +177,9 @@
+ # case crbug.com/338008085 is resolved.
+ _this_dir = get_path_info(".", "abspath")
+ 
+-_protoc_label = "$_this_dir:protoc($host_toolchain)"
+-_protoc_path = get_label_info(_protoc_label, "root_out_dir") + "/protoc" +
+-               _host_executable_suffix
++# eweOS: use the system protoc instead of building the bundled one, so that
++# host tools always run on the build machine.
++_protoc_path = "/usr/bin/protoc"
+ _protoc_gen_js_label =
+     "//third_party/protobuf-javascript:protoc-gen-js($host_toolchain)"
+ _protoc_gen_js_path = get_label_info(_protoc_gen_js_label, "root_out_dir") +
+@@ -399,11 +399,8 @@
+     }
+ 
+     args += [
+-      # Wrapper should never pick a system protoc.
+-      # Path should be rebased because |root_build_dir| for current toolchain
+-      # may be different from |root_out_dir| of protoc built on host toolchain.
+       "--protoc",
+-      "./" + rebase_path(_protoc_path, root_build_dir),
++      _protoc_path,
+       "--proto-in-dir",
+       rebase_path(proto_in_dir, root_build_dir),
+     ]
+@@ -490,14 +487,14 @@
+     }
+ 
+     inputs = [
+-      # System protoc is not used so it's necessary to build a chromium one.
++      # eweOS: the system protoc is used, see _protoc_path above.
+       _protoc_path,
+ 
+       # Add this here as there are some protos which import descriptor.proto
+       # directly or indirectly.
+       "//third_party/protobuf/src/google/protobuf/descriptor.proto",
+     ]
+-    deps = [ _protoc_label ]
++    deps = []
+     if (host_toolchain_is_msan) {
+       configs = [
+         "//third_party/instrumented_libs:msan_runtime_libs($host_toolchain)",
+@@ -732,7 +729,7 @@
+ 
+     inputs = invoker.inputs
+ 
+-    deps = [ _protoc_label ]
++    deps = []
+     if (defined(invoker.deps)) {
+       deps += invoker.deps
+     }
+@@ -745,7 +742,7 @@
+ 
+     args = [
+       "--protoc",
+-      "./" + rebase_path(_protoc_path, root_build_dir),
++      _protoc_path,
+       "--infile",
+       "{{source}}",
+       "--outfile",
