@@ -2,14 +2,15 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=filesystem
-pkgver=2026.03.30
-pkgrel=2
+pkgver=2026.11.13
+pkgrel=1
 pkgdesc='The base directory structure and a few core files for the system.'
 arch=(any)
 url='https://os.ewe.moe'
 license=(MIT)
 groups=(base)
 options=(emptydirs)
+install=filesystem.install
 source=(
   passwd
   group
@@ -29,6 +30,7 @@ source=(
   eweos-logo.svg
   eweos-logo-text.svg
   eweos-logo-text-dark.svg
+  filesystem.install
 )
 sha256sums=('e787b373a74594b33b77892a903647d7a6cf519d427a0b0790e11be4482696e0'
             '7a696fcfba89a55a6d73fa1a03c7f071fad2141340027b17a25db249e26b9be8'
@@ -47,7 +49,8 @@ sha256sums=('e787b373a74594b33b77892a903647d7a6cf519d427a0b0790e11be4482696e0'
             '4f2d6880ed7031671247b374688875308b1992bf9845071b8638580074c0028c'
             'bc3268842f549f0dba9a374166ee5be140e6b827820d96e6c81c65655c051a13'
             'a6af9cd0271acbb6a7219bbd73940723a0c0b48792ee068f76c4c8f9855c8dbc'
-            '7ee95564b4dede8283c2a0be4182e21e268cc9dbaac56bcad647d693b3df6858')
+            '7ee95564b4dede8283c2a0be4182e21e268cc9dbaac56bcad647d693b3df6858'
+            '0a0619face402c9cd20f733d5f1662eaf2f4bf5215adf549713b29b080270fc1')
 
 backup=(
   etc/passwd
@@ -92,9 +95,10 @@ package()
   ln -s "../proc/mounts" "etc/mtab"
 
   # files in /etc
-  for user in {passwd,shadow,group,profile,shells,services,protocols,os-release,hosts,motd,fstab,issue,resolv.conf}; do
+  for user in {passwd,group,profile,shells,services,protocols,os-release,hosts,motd,fstab,issue,resolv.conf}; do
     install -m0644 -t etc $srcdir/$user
   done
+  install -m0600 -t etc $srcdir/shadow
 
   # files in /etc/profile.d
   install -d etc/profile.d

@@ -1,0 +1,5 @@
+post_upgrade() {
+	chmod 0600 /etc/shadow
+	chmod 0755 /srv
+	chmod 1777 /tmp /var/tmp
+}
