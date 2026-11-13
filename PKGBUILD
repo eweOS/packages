@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=xdg-desktop-portal-lxqt
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc='A backend implementation for xdg-desktop-portal using Qt/KDE Frameworks/libfm-qt'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 groups=(lxqt)
@@ -19,7 +19,7 @@ source=(
   xdg-desktop-portal-lxqt-modal-dialog.patch
   xdg-desktop-portal-lxqt-wayland-parent.patch
 )
-sha256sums=('4468a068130e5f66a3f61d02833429b71c49b714332f3cf49c540b8d689661c7'
+sha256sums=('ce8c222e0849ad581d86f22609f37ac0cd391443313807bf9a2e0b3b894e971f'
             'e27455c673c546688bc1f902eefcfaf7502553635504f38be94966e11782a94b'
             '787317905987b22d6e9001a0bddc66008c8b352de6104b329b62529520623b7e')
 
