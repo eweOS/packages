@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=lxqt-config
-pkgver=2.4.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="LXQt system configuration."
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
@@ -17,7 +17,7 @@ source=(
 	"https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
 	no-x11.patch
 )
-sha256sums=('8943a0d61993e068fa71aac85eb1eb93ac32064928ee1c8c1ff9666b45e1610e'
+sha256sums=('e46d6ec711a928ba1dc202bc5eac58c025decf84fe85ff01a4b2128e17e88917'
             '169bfa76c12f4ddbb2f086303eaf52516c892e3801722de9187b68817ba076b7')
 
 prepare() {
