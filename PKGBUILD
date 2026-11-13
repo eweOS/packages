@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pcmanfm-qt
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="The LXQt file manager, Qt port of PCManFM"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
@@ -21,7 +21,7 @@ source=(
 	"https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
 	no-x11.patch
 )
-sha256sums=('f17f336072993855d92af40052f8f9ddb736df28b538b71a2925a56a038af1db'
+sha256sums=('b70d65e83f14aac2b58ebc8dd7653061c6a58083869e0b1a2d43dd7f65464c9d'
             'e5b8cbf0bbeef586bf78216ee0d86a3a0bdd16476770277015b3eeb27200608f')
 
 prepare() {
