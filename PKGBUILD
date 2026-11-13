@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=lxqt-qtplugin
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="LXQt platform integration for Qt"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
 groups=("lxqt")
@@ -14,7 +14,7 @@ makedepends=("git" "lxqt-build-tools" "qt6-base-devel")
 source=(
 	"git+https://github.com/lxqt/$pkgname#tag=$pkgver"
 )
-sha256sums=('006e886bdcf84d4b4afe6d2e89291c56eeb5adee494e32f12035b0691ac861df')
+sha256sums=('814be52105fae967a8f58d6ae434ed30ad73b473669bea63209e7d64fbae9386')
 
 build() {
 	cmake -B build -S "$srcdir/$pkgname" \
