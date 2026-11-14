@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=nodejs
-pkgver=26.12.1
+pkgver=26.13.1
 pkgrel=1
 pkgdesc='JavaScript runtime'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ optdepends=('npm: package manager')
 #	non-word-sized atomic ops, as compiler-rt doesn't provide the library.
 source=("https://nodejs.org/dist/v${pkgver}/node-v${pkgver}.tar.xz"
         "0001-no-libatomic.patch")
-sha512sums=('f6f76e258af33f7f877c65a2141d281ea307aae017a90bb8a75a7d4df271ad9d17c7d0edfd5751a977edd6bdb03c704d727628c4c7215c878d421787a35240f2'
+sha512sums=('149fd201f1b99c67484daacdb2f6b0dbfc742c9f71f120b5b7160b389b04d6e0b1c17b228c5e27dd0194bc42076fb16909756d021ab0eb0054dacba1a589131a'
             '7a27dc9dcb99be39f5925ef9a20f0afd2e1b475d72efd89c790516a01c5d35f38450fbb879f2d138d8abfa69a45ed73c44e2c0e603cb619a0476bc32764799c3')
 
 prepare() {
