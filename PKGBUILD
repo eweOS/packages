@@ -2,8 +2,8 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=benchmark
-pkgver=1.9.5
-pkgrel=3
+pkgver=1.10.0
+pkgrel=1
 pkgdesc="A microbenchmark support library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/google/benchmark"
@@ -12,7 +12,7 @@ depends=('musl' 'llvm-libs')
 makedepends=('cmake' 'python')
 provides=('libbenchmark.so' 'libbenchmark_main.so')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('9631341c82bac4a288bef951f8b26b41f69021794184ece969f8473977eaa340')
+sha256sums=('acc5c7c0fbed855c4aaa2d7c3c36fb82b0c15c28f4e151e3f679c2fc0aa404af')
 
 build() {
   cd $pkgname-$pkgver
