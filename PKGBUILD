@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=lxqt-panel
-pkgver=2.4.1
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="The LXQt desktop panel"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
@@ -24,7 +24,7 @@ makedepends=(
   "alsa-lib" "linux-headers" "qt6-base-devel"
 )
 source=("https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz" no-x11.patch)
-sha256sums=('7828d7e8fabf66ef1491e50b609b8eb041d74c433554f7d073ac07af26843d02'
+sha256sums=('7a96abec41355d2e42d4e4d8a03cfb064647729e9e292781c126f12e2a699e7d'
             'a72934fb229305a46023065445f8170b063aebf7a96701544c215a79392c465b')
 
 prepare() {
