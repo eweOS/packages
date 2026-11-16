@@ -2,7 +2,7 @@
 # Maintainer: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=vim
-pkgver=9.2.1351
+pkgver=9.2.1355
 pkgrel=1
 pkgdesc='An IMproved version of the vi editor'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -17,7 +17,7 @@ optdepends=(
 makedepends=(python lua)
 options=(emptydirs)
 source=("https://github.com/vim/vim/archive/v${pkgver}.tar.gz")
-sha256sums=('f5e1c90b7d64ae3349015c514bbad89df3c92dc5115513b5b71269e7c36437da')
+sha256sums=('4290f6ca08613564329d8e384ab2406d75ba5dca3971b824238967c4e0090665')
 
 build()
 {
