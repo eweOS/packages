@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=lxqt-runner
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="The LXQt application launcher"
 arch=("x86_64" "aarch64" "riscv64" "loongarch64")
@@ -14,7 +14,7 @@ source=(
 	"https://github.com/lxqt/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
     no-x11.patch
 )
-sha256sums=('d0441f18922162db5ef6a5a9617aa20b0b437d2ddc76d0542fb32c7fd68f9029'
+sha256sums=('f9c6b9eb9e1f91f6669436e5cf5e1fd5bcfe279eca75c2f9779b9115aad8108c'
             '2f4ba7c2a0ae180499d1909c7a65937c0b8151b819de1ca486baff8b35e73b2e')
 
 prepare() {
