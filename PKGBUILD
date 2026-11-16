@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=groff
-pkgver=1.24.2
+pkgver=1.25.0
 pkgrel=1
 pkgdesc='GNU Troff typesettings system.'
 url='https://www.gnu.org/software/groff/'
@@ -10,16 +10,8 @@ license=(GPL-3.0-or-later)
 depends=(musl)
 checkdepends=(diffutils)
 options=(emptydirs)
-# 0001: Backport the neqn build fix for BusyBox sed.
-# Backport: e0ce5229720a ("[eqn]: Fix Savannah #68601.")
-source=("https://ftp.gnu.org/gnu/groff/groff-$pkgver.tar.gz"
-	0001-fix-neqn-with-busybox-sed.patch)
-sha256sums=('f9c1efd5bebbe37fc6e1063db7473ce8df1e3e0be4ff0f43ce04fce57e9c5dd9'
-            'd57f2b261927f5843defb429920f05b0dd81e82ca8d254ecce63a8afb1e04eb5')
-
-prepare() {
-	_patch_ "groff-$pkgver"
-}
+source=("https://ftp.gnu.org/gnu/groff/groff-$pkgver.tar.gz")
+sha256sums=('24d103a07eb79e418963bce206c8771b649871f83bda2fd4c2e65529c1c56921')
 
 build () {
 	cd groff-$pkgver
