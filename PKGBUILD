@@ -8,8 +8,8 @@ pkgname=(
   harfbuzz-utils
   harfbuzz-docs
 )
-pkgver=14.5.0
-pkgrel=2
+pkgver=15.1.0
+pkgrel=1
 pkgdesc="OpenType text shaping engine"
 url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -29,16 +29,10 @@ checkdepends=(
   python-fonttools
   python-setuptools
 )
-source=("https://github.com/harfbuzz/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
-	0001-meson-Do-not-resolve-PACKAGE_PREFIX_DIR-with-get_fil.patch)
+source=("https://github.com/harfbuzz/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
 provides=(libharfbuzz-subset.so libharfbuzz-cairo.so libharfbuzz.so
 	  libharfbuzz-icu.so libharfbuzz-gobject.so)
-sha256sums=('b7132e148358a45185c9feafd049dbaf243649d3c44414b3534d9c95d18592b9'
-            '31ed48ad5ed8208aa9c5061ffeccd72931e099c66439cf5938c2d7a41a3f4b89')
-
-prepare() {
-  _patch_ $pkgname-$pkgver
-}
+sha256sums=('0fc7c565443a5f4be7da65ac5ee5bd737d9b158dc908708b7689a0a5796b0c8d')
 
 build() {
   # Harfbuzz wants no exceptions
