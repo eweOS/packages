@@ -2,8 +2,8 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=robotfindskitten
-pkgver=2.8284271.702
-pkgrel=4
+pkgver=3.0000000.726
+pkgrel=1
 pkgdesc='Yet another Zen simulation'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='http://robotfindskitten.org/' # no https available
