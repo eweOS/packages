@@ -2,15 +2,15 @@
 
 pkgname=perl-role-tiny
 _perlname=Role-Tiny
-pkgver=2.002004
-pkgrel=2
+pkgver=2.002005
+pkgrel=1
 pkgdesc='Minimalist role composition tool'
 url='https://github.com/moose/Role-Tiny'
 arch=(any)
 license=(GPL-1.0-or-later PerlArtistic)
 depends=(perl)
 source=("https://cpan.metacpan.org/authors/id/H/HA/HAARG/Role-Tiny-$pkgver.tar.gz")
-sha256sums=('d7bdee9e138a4f83aa52d0a981625644bda87ff16642dfa845dcb44d9a242b45')
+sha256sums=('4618ec524618c104dc28a8cc86af129a00cad282aea7f4c75060ba05d4c8f4d7')
 
 build() {
 	cd "$_perlname-$pkgver"
