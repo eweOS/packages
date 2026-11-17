@@ -2,8 +2,8 @@
 
 pkgbase=gdal
 pkgname=(gdal python-gdal)
-pkgver=3.13.1
-pkgrel=4
+pkgver=3.13.3
+pkgrel=1
 pkgdesc="A translator library for raster and vector geospatial data formats"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gdal.org/"
@@ -19,7 +19,7 @@ makedepends=(cmake python-setuptools python-numpy
 source=(
   https://download.osgeo.org/${pkgbase}/${pkgver}/${pkgbase}-${pkgver}.tar.xz
 )
-sha256sums=('7398fb132753140740fac4f099f0dbe49d1ad074c4162290c308e067c46b7f92')
+sha256sums=('a3348c2102dd91962290007d7c293b467bb1b0cd89f086f24bb97b9b653a9804')
 
 build() {
   # Poppler support is disabled since gdal requires its private API and
