@@ -2,7 +2,7 @@
 
 _name=pip
 pkgname=python-$_name
-pkgver=26.2.2
+pkgver=26.3
 pkgrel=1
 pkgdesc="The PyPA recommended tool for installing Python packages"
 url="https://pip.pypa.io/"
@@ -39,7 +39,7 @@ makedepends=(
 #  subversion
 #)
 source=(https://github.com/pypa/$_name/archive/$pkgver/$_name-$pkgver.tar.gz)
-sha512sums=('b24050ef68595b4b1566614bb37908102b3ebaea5fefb33cbb30fde273c210750895a053ff58294f32450a6d09e4c92e555895362ced742a63cfea5720f2ea08')
+sha512sums=('d0b1d34f0e94e90914d1a407015dcab373537f54177579a1e311335f9ff00bd0efca3825075ada0b983e3bc70812bc70050f803e8d5c682f03ea0b3bf51b01ac')
 
 prepare() {
   # pip is moving towards a separate sphinx config without towncrier https://github.com/pypa/pip/issues/12881
