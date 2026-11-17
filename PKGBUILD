@@ -1,7 +1,7 @@
 # Maintainer: Weird Gumi <weirdgumi@tutamail.com>
 
 pkgname=c3c
-pkgver=0.8.3
+pkgver=0.8.6
 pkgrel=1
 pkgdesc='Compiler for the C3 language'
 arch=(x86_64 aarch64 riscv64)
@@ -15,10 +15,8 @@ source=(
   $pkgname-$pkgver.tar.gz::https://github.com/c3lang/$pkgname/archive/refs/tags/v$pkgver.tar.gz
   0001-add-arm-disable.patch
 )
-sha256sums=(
-  95e6b7fdf74eb150bbfc8b2128e8d9818a116e7bdd2a8c5f092d58168b17b13b
-  cbbc14146f155f75d370b2f97626ea1a5d0f28df2c9ba0f5e9fd976d1ae62cda
-)
+sha256sums=('ce2bd6e7658b480278e3a3af7c999b7a55d8a042c26446e9ea317f9357a8416b'
+            'cbbc14146f155f75d370b2f97626ea1a5d0f28df2c9ba0f5e9fd976d1ae62cda')
 
 prepare() {
   _patch_ $pkgname-$pkgver
