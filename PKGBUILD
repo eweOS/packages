@@ -2,7 +2,7 @@
 
 pkgbase=lua-luv
 pkgname=(lua51-luv lua54-luv lua55-luv libluv)
-pkgver=1.53.0.0
+pkgver=1.53.0.1
 _pkgver=1.53.0-0
 pkgrel=1
 pkgdesc='Bare livuv bindings for Lua'
