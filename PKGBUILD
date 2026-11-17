@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=gnuplot
-pkgver=6.0.5
+pkgver=6.0.6
 pkgrel=1
 pkgdesc='Command-line driven graphing utility'
 url='command-line'
@@ -11,7 +11,7 @@ depends=(musl llvm-libs cairo gtk3 glib harfbuzz lua51 ncurses pango readline
 	 libwebp wxwidgets-gtk3 zlib-ng qt6-base qt6-5compat qt6-svg)
 checkdepends=(weston qt6-tools)
 source=("https://sourceforge.net/projects/gnuplot/files/gnuplot/$pkgver/gnuplot-$pkgver.tar.gz")
-sha256sums=('73237f37f03306d68bfae133a9a50d5e9341384e198d5ab37eeca9ab534deed8')
+sha256sums=('9d39d8499c9533550144092375aac45ba8bf0c18c9cee50897fe411b6d93004e')
 
 build() {
 	cd "$pkgname-$pkgver"
