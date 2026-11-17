@@ -2,8 +2,8 @@
 
 pkgbase=libcap-ng
 pkgname=(libcap-ng python-libcap-ng)
-pkgver=0.9.3
-pkgrel=2
+pkgver=0.9.6
+pkgrel=1
 pkgdesc='Library for programming Linux capabilities'
 url='https://github.com/stevegrubb/libcap-ng'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ depends=(musl)
 makedepends=(python swig linux-headers)
 provides=(libcap-ng.so libdrop_ambient.so)
 source=("https://github.com/stevegrubb/libcap-ng/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fe11ebbb55904763b3532f19069f13ec319042634620180a03bd4653d301563e')
+sha256sums=('399040138e0ca62fa2bcabd63da9af4431a246ef7a654561a0ca3cb00010a539')
 
 prepare() {
 	cd "$pkgname-$pkgver"
