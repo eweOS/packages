@@ -2,7 +2,7 @@
 
 _name=beniget
 pkgname=python-$_name
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='A collection of Compile-time analyse on Python Abstract Syntax Tree (AST)'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python python-gast)
 makedepends=(python-build python-installer python-setuptools)
 checkdepends=(python-pytest)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=(494b61850c7df16c49685a745bbea9e3ed75928fa29cd2a89a00b026e5690948)
+sha256sums=('6110b0fc9adbd7b647a03736a80d64b7edbecaff458ba01e87acecbce3f87c90')
 
 build() {
   cd $_name-$pkgver
