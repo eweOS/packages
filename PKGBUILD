@@ -2,7 +2,7 @@
 
 pkgbase=qt6-networkauth
 pkgname=(qt6-networkauth qt6-networkauth-devel)
-pkgver=6.11.1
+pkgver=6.12.0
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
@@ -13,7 +13,7 @@ makedepends=(cmake git ninja qt6-base-devel)
 groups=(qt6)
 _pkgfn=${pkgbase/6-/}
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver)
-sha256sums=('862b4e5004e6dc80d1d4652ed127f3204bca3a909fa820d782eb950d6773c982')
+sha256sums=('637c7f9e0b99bbefd72b1ca877a3ef486d26294455b656388da93478d9bc7235')
 
 build() {
   export CMARGS=(
