@@ -2,7 +2,7 @@
 
 pkgbase=qt6-location
 pkgname=(qt6-location qt6-location-devel)
-_qtver=6.11.1
+_qtver=6.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -26,7 +26,7 @@ _pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
 )
-sha256sums=('3791ce77299e6f600a593d0fbfa5bd32fbcfc2d16104782b84acc489e382e41b')
+sha256sums=('218696d57c9eb95e8756e9fda62a8eabf94badc507db5f6e8ab9a640c4b0f50d')
 
 build() {
   export CMARGS=(
