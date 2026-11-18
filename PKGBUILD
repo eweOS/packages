@@ -2,7 +2,7 @@
 
 pkgbase=qt6-shadertools
 pkgname=(qt6-shadertools qt6-shadertools-devel)
-_qtver=6.11.1
+_qtver=6.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ depends=(qt6-base)
 makedepends=(cmake git ninja qt6-base-devel)
 groups=(qt6)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('2075052f9b23bcf9de045bbd180037084942f82cce870aab14a1454902c982fc')
+sha256sums=('c7d84f436e1aaef39fdcadebf2bd71bdf24dc69497e13f2e0198873cbbfea2ab')
 
 build() {
   export CMARGS=(
