@@ -2,7 +2,7 @@
 
 pkgname=libuninameslist
 pkgver=20260918
-pkgrel=1
+pkgrel=2
 pkgdesc='Large, sparse array mapping each unicode code point to the annotation data for it'
 url='https://github.com/fontforge/libuninameslist'
 license=('BSD-3-Clause')
@@ -12,7 +12,7 @@ sha256sums=('deb2ec02640c232a4bc333c2cd301ee6b286914eeeb0ccc31ccafe326aed0029')
 
 prepare() {
   cd ${pkgname}-${pkgver}
-  autoreconf -i
+  autoreconf -fi
   automake --foreign -Wall
 }
 
