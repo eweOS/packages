@@ -2,19 +2,25 @@
 
 pkgname=slibtool
 pkgver=0.7.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Skinny libtool implementation, written in C"
 url='http://git.midipix.org/cgit.cgi/slibtool'
 license=('MIT')
 provides=(libtool)
 arch=(x86_64 aarch64 riscv64 loongarch64)
+# 0001: Downstream, keep the executable wrapper descriptor out of compiler
+# children so a still-running linker cannot make a following
+# `libtool --mode=execute` fail with ETXTBSY.
+# TODO: It should be upstreamed!
 source=(
   "http://midipix.org/dl/slibtool/slibtool-$pkgver.tar.xz"
+  "0001-link-mode-open-executable-wrapper-with-O_CLOEXEC.patch"
   compile install-sh libtool.m4 ltdl.m4 lt~obsolete.m4 ltsugar.m4 missing
   depcomp libtoolize ltargz.m4 ltmain.sh ltoptions.m4 ltversion.m4
   config.guess config.sub
 )
 sha256sums=('2e7a4ae528c49c82743ae91260d3fa24bee3d91d9a87066e3491a24ba745a948'
+            '54c204771035ce6cac7629248969e07aaa02f60f760bbd2fbfafe3e10747d6d5'
             'a8e92a6becc767713e58a5e381b121dca25bb40224c4f956e7330e985bddcff5'
             'd7c113e5484fce8b48f9a34a7a91e385ec279247d415b0b7d749bd56ad8ee8a2'
             '94ebc155f41e96e5cb8762a2661e0d39426274e1b2b930bfb6d99c680a041c58'
@@ -30,6 +36,10 @@ sha256sums=('2e7a4ae528c49c82743ae91260d3fa24bee3d91d9a87066e3491a24ba745a948'
             'a27b754709de61575197bf5a980696c98ae49da3f92f0de8ee7f42dd543b7465'
             'c081ced2d645e3b107fbf864529cc0e5954399a09b87a4f1d300470854b6dea4'
             'f08fe8f207c0fa6d722312774c28365024682333f5547c8192d0547957b000af')
+
+prepare() {
+  _patch_ "$pkgname-$pkgver"
+}
 
 build() {
   cd "$srcdir"/slibtool-$pkgver
