@@ -2,7 +2,7 @@
 
 pkgbase=qt6-quick3d
 pkgname=(qt6-quick3d qt6-quick3d-devel)
-_qtver=6.11.1
+_qtver=6.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -31,7 +31,7 @@ _pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
 )
-sha256sums=('c76b85de3f8aa2a4bee64987acfef560675c1b378b92076c7c6264613e5b456f')
+sha256sums=('6ced6edbd25fb5a632fe770ae820b376bf50233e8d62002c79a69a505a2e429e')
 
 build() {
   export CMARGS=(
