@@ -2,7 +2,7 @@
 
 pkgbase=qt6-remoteobjects
 pkgname=(qt6-remoteobjects qt6-remoteobjects-devel)
-_qtver=6.11.1
+_qtver=6.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -21,7 +21,7 @@ _pkgfn=${pkgname/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
 )
-sha256sums=('40629895c69531a687a9c0258316cee3f04c2d18b2bf2ad36dc83e76a58f111a')
+sha256sums=('54faf680f7cc84d7f54ae9bd5f98255e5d2d7ab2d6f4d0464a3fbe50f8a55509')
 
 build() {
   export CMARGS=(
