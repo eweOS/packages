@@ -5,7 +5,7 @@ pkgname=(
   qt6-languageserver
   qt6-languageserver-devel
 )
-_qtver=6.11.1
+_qtver=6.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -17,7 +17,7 @@ depends=(qt6-base)
 makedepends=(cmake git ninja qt6-base-devel)
 groups=(qt6)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('50008537f2ca54abb3b8dc3f26759864e9cad2b2ad39e92e42fa718de2dd8aef')
+sha256sums=('552119e37360c06c5fb0b54e91bbfdf8da5a80d2cb1441ef93e966eb3b7a426d')
 
 build() {
   export CMARGS=(
