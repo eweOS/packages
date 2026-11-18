@@ -3,7 +3,7 @@
 _comp=5compat
 pkgbase=qt6-$_comp
 pkgname=(qt6-$_comp qt6-$_comp-devel)
-_qtver=6.11.1
+_qtver=6.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +16,7 @@ makedepends=(cmake git ninja qt6-declarative qt6-shadertools-devel qt6-base-deve
 optdepends=('qt6-declarative: for QtGraphicalEffects')
 groups=(qt6)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('cfcb9fdaa051aad54b0e61b24ac5693b4887a86e07609f665fea67328a6f161b')
+sha256sums=('78cf1c283795312a7fa31c73eb7f7f556b48374adc484f10ad5a3c0bcb59264e')
 
 build() {
   export CMARGS=(
