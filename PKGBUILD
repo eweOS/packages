@@ -2,9 +2,9 @@
 
 pkgbase=qt6-tools
 pkgname=(qt6-tools qt6-tools-devel)
-_qtver=6.11.1
+_qtver=6.12.0
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL-3.0-only
@@ -17,7 +17,7 @@ depends=(qt6-base zstd qt6-declarative)
 makedepends=(cmake git ninja python qt6-base-devel qt6-declarative-devel llvm-devel)
 groups=(qt6)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('8e61835a679c93fa9c6065b142353c2071ba68e297898937c32a03777fcaf50d')
+sha256sums=('8dab8f3611496486a470ad5f115ceea584f36bc22a2b8b6f6ebdbafbb8160693')
 
 build() {
   export CMARGS=(
