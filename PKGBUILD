@@ -32,7 +32,11 @@ build()
 check()
 {
   cd $pkgname-$pkgver
-  make -k check
+  # mold's LLVM gold plugin cannot parse the .lto_discard directive emitted
+  # for the versioned symbols in test/oldapi, so build tests without LTO.
+  make -C test -k check \
+    CFLAGS="$CFLAGS -fno-lto" \
+    LDFLAGS="$LDFLAGS -fno-lto"
 }
 
 package()
