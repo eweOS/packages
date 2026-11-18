@@ -2,7 +2,7 @@
 
 pkgbase=qt6-speech
 pkgname=(qt6-speech qt6-speech-devel)
-_qtver=6.11.1
+_qtver=6.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -26,7 +26,7 @@ _pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
 )
-sha256sums=('c035c318012025875a653245701a23d3807e8e46b8bf7987877842219c273f14')
+sha256sums=('9a60ce5bee54a9343740feab2582bffb996812f43d6c5585aade26dbd04933db')
 
 build() {
   export CMARGS=(
