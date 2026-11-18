@@ -9,7 +9,7 @@ pkgname=(
   libportal-qt6
 )
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GIO-style async APIs for most Flatpak portals"
 url="https://github.com/flatpak/libportal"
 arch=(x86_64 aarch64 riscv64 loongarch64)
