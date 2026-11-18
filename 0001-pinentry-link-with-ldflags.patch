@@ -1,0 +1,21 @@
+--- a/tests/gpg/Makefile.am
++++ b/tests/gpg/Makefile.am
+@@ -127,6 +127,6 @@
+ 	$(CC) $(CFLAGS) -c $(srcdir)/pinentry.c
+ 
+ pinentry$(EXEEXT): pinentry.o
+-	$(CC) -o $@ pinentry.o
++	$(CC) $(LDFLAGS) -o $@ pinentry.o
+ 
+ # end-of-file
+--- a/tests/gpg/Makefile.in
++++ b/tests/gpg/Makefile.in
+@@ -1282,7 +1282,7 @@
+ 	$(CC) $(CFLAGS) -c $(srcdir)/pinentry.c
+ 
+ pinentry$(EXEEXT): pinentry.o
+-	$(CC) -o $@ pinentry.o
++	$(CC) $(LDFLAGS) -o $@ pinentry.o
+ 
+ # end-of-file
+ 
