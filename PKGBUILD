@@ -2,7 +2,7 @@
 
 pkgbase=qt6-webchannel
 pkgname=(qt6-webchannel qt6-webchannel-devel)
-_qtver=6.11.1
+_qtver=6.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -23,7 +23,7 @@ _pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 source=(
   https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
 )
-sha256sums=('69fbb50b71d6e6596c2d6863ee9a9c984a4d01378ee2b7b4163bb467a0158d82')
+sha256sums=('9afdfb64855b33c1cc16a4fdce69a556876f0d5b9df79d88de7306ffa2dca327')
 
 build() {
   export CMARGS=(
