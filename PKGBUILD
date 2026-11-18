@@ -5,9 +5,9 @@ pkgname=(qt6-multimedia
          qt6-multimedia-ffmpeg
          qt6-multimedia-gstreamer
          qt6-multimedia-devel)
-_qtver=6.11.1
+_qtver=6.12.0
 pkgver=${_qtver/-/}
-pkgrel=3
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.qt.io'
 license=(GPL-3.0-only
@@ -31,7 +31,7 @@ makedepends=(cmake
 groups=(qt6)
 _pkgfn=${pkgbase/6-/}-everywhere-src-$_qtver
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('390f8e52ddee3aca5c4de7eead900c84c4fa61ff6d1f0ebea9c7543365c09b0a')
+sha256sums=('3143f53b64257ba2a0685c940f5dce476c75871ff86b516de45cfd54ea93a62d')
 
 build() {
   export CMARGS=(
@@ -108,7 +108,8 @@ package_qt6-multimedia-gstreamer() {
               'gst-plugins-ugly: additional plugins'
               'gst-libav: additional plugins')
   
-  DESTDIR="$pkgdir" cmake --install build/src/plugins/multimedia/gstreamer    
+  DESTDIR="$pkgdir" cmake --install build/src/plugins/multimedia/gstreamer
+  rm -r "$pkgdir"/usr/include/qt6/QtGstreamerMediaPluginImpl/6.*
 }
 
 package_qt6-multimedia-ffmpeg() {
@@ -122,4 +123,5 @@ package_qt6-multimedia-ffmpeg() {
   groups=()
 
   DESTDIR="$pkgdir" cmake --install build/src/plugins/multimedia/ffmpeg
+  rm -r "$pkgdir"/usr/include/qt6/QtFFmpegMediaPluginImpl/6.*
 }
