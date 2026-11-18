@@ -1,0 +1,14 @@
+diff --git a/Unix/t/03_archive.t b/Unix/t/03_archive.t
+index 3a9f8f1..4c6a0a7 100755
+--- a/Unix/t/03_archive.t
++++ b/Unix/t/03_archive.t
+@@ -330,7 +330,8 @@ SKIP: {
+     local $ENV{PATH} = "$fake:$real_PATH";
+ 
+     my $dir = new_dir();
+-    system('sh', '-c', 'cd "$1" && echo hello.c | cpio -o --quiet > "$2" 2>/dev/null',
++    # BusyBox cpio requires an explicit archive format for -o.
++    system('sh', '-c', 'cd "$1" && echo hello.c | cpio -o -H newc > "$2" 2>/dev/null',
+            'sh', "$src/pkg", "$dir/$HOSTILE.src.rpm");
+     is(c_code_lines($dir, "$HOSTILE.src.rpm"), 3,
+        'e2e .src.rpm, hostile name: counted');
