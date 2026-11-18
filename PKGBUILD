@@ -5,7 +5,7 @@ pkgname=(
   qt6-declarative
   qt6-declarative-devel
 )
-_qtver=6.11.1
+_qtver=6.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -27,7 +27,7 @@ makedepends=(
 optdepends=('qt6-svg: for QtQuickVectorImage and svgtoqml')
 groups=(qt6)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('52e670f670b0304f534b24f98c47ceb8a41bb710464414ebc9527ec71cc86aa4')
+sha256sums=('311f3a2603e1973bb59baef9dfa740a376de713157d4782ee043681e889c9260')
 
 build() {
   export CMARGS=(
