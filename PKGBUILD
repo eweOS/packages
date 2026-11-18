@@ -1,13 +1,9 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
-# Contributor: Lukas Fleischer <lfleischer@archlinux.org>
-# Contributor: Mateusz Herych <heniekk@gmail.com>
-# Contributor: Thomas Mader <thezema@gmail.com>
-# Contributor: Vinay S Shastry <vinayshastry@gmail.com>
-# Contributor: tardo <tardo@nagi-fanboi.net>
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+# Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=astyle
-pkgver=3.6.20
-_sover=3.6.20
+pkgver=3.6.25
+_sover=3.6.25
 pkgrel=1
 pkgdesc='A free, fast and small automatic formatter for C, C++, C#, and Java source code.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +11,7 @@ url='http://astyle.sourceforge.net/'
 license=('MIT')
 depends=('llvm-libs')
 source=("https://downloads.sourceforge.net/sourceforge/astyle/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('b058f3e176334dba65477fd126105d3df4eab9e954eab1c76b568cd5370cfbe9')
+sha256sums=('eb3d5d799cd204183896800b2186aa87131eb144c0e8df7a5e00c5efe4def037')
 
 prepare()
 {
