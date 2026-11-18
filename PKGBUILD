@@ -2,7 +2,7 @@
 
 pkgname=telegram-desktop
 pkgver=7.1.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Official Telegram Desktop client'
 url='https://desktop.telegram.org/'
 arch=(x86_64 aarch64 loongarch64)
@@ -31,7 +31,7 @@ prepare() {
 
 build () {
 	export MAKEFLAGS="-j$jobs CC=cc CXX=c++"
-	export LDFLAGS="$LDFLAGS -Wl,-z,stack-size=$((1024 * 1024))"
+	export LDFLAGS="$LDFLAGS -Wl,-z,stack-size=$((1024 * 1024)) -fuse-ld=lld"
 
 	# Telegram requires the TDE2E part of tdlib. As it's not used by any
 	# other packages, let's build it in place.
