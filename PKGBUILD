@@ -2,7 +2,7 @@
 
 pkgbase=qt6-wayland
 pkgname=(qt6-wayland qt6-wayland-devel)
-_qtver=6.11.1
+_qtver=6.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ depends=(qt6-base qt6-declarative qt6-svg wayland)
 makedepends=(cmake git ninja wayland-protocols qt6-base-devel qt6-declarative-devel linux-headers)
 groups=(qt6)
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz")
-sha256sums=('95788aa502f75441d4edf65932b235f76523084e13dbbb7b9ee2d207b32bd9b3')
+sha256sums=('ae14d9bcf1bb3c300a3ab2e6a53f50284e5c6c966a4ac4cc5aedcb1bc74e4d02')
 
 build() {
   export CMARGS=(
