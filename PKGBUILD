@@ -2,7 +2,7 @@
 
 pkgbase=qt6-svg
 pkgname=(qt6-svg qt6-svg-devel)
-_qtver=6.11.1
+_qtver=6.12.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ depends=(qt6-base)
 makedepends=(cmake git ninja qt6-base-devel)
 groups=(qt6)
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz)
-sha256sums=('7f3cf02f4824bf03c2c5859ea6db173bf1482a1daf24e6cdf7bc78cfa26a8a94')
+sha256sums=('e4ab39534ec97987b1b9b60ef7f4d3253d5912a69f8c713a01753174a4029331')
 
 build() {
   export CMARGS=(
