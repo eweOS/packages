@@ -10,10 +10,10 @@ pkgbase=webkit2gtk
 # package size).
 pkgname=(webkit2gtk-4.1 webkit2gtk-6.0
 	 webkit2gtk-4.1-docs webkit2gtk-6.0-docs)
-pkgver=2.53.2
-pkgrel=2
+pkgver=2.54.3
+pkgrel=1
 pkgdesc='GTK port of the WebKit rendering engine'
-url='https://webkitgtk.org/releases/webkitgtk-2.53.2.tar.xz'
+url='https://webkitgtk.org/releases/webkitgtk-2.54.3.tar.xz'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(BSD-2-Clause  LGPL-2.0-or-later)
 depends=(musl llvm-libs xdg-dbus-proxy gstreamer glib icu zlib-ng
@@ -22,23 +22,14 @@ depends=(musl llvm-libs xdg-dbus-proxy gstreamer glib icu zlib-ng
 	 gst-plugins-base harfbuzz harfbuzz-icu hyphen libjpeg libjxl
 	 pango libpng libseccomp libsecret libsoup3 libtasn1 wayland libwebp
 	 woff2 libxml2 libxslt lcms2 bubblewrap)
-makedepends=(cmake ruby unifdef ninja gstreamer-devel gobject-introspection
-	     gtk3 gtk4 gi-docgen gperf wayland-protocols)
+makedepends=(cmake ruby unifdef ninja gstreamer-devel gst-plugins-bad
+	     gobject-introspection gtk3 gtk4 gi-docgen gperf wayland-protocols)
 # 0001: Downstream, Use system allocator instead of bmalloc on all
 #	architectures.
-# 0002: Should be upstreamed, add missing include of system_error header to fix
-#	build with libc++.
-# 0003: backport
-#       fix error: no member named 'pageSize' in namespace 'WTF'
-#       https://github.com/WebKit/WebKit/pull/64367
 source=("https://webkitgtk.org/releases/webkitgtk-$pkgver.tar.xz"
-	0001-Turn-on-system-malloc.patch
-	0002-contextextensions-add-missing-system_error-include.patch
-        0003-fix-no-member-pagesize.patch)
-sha256sums=('79f03692f65149685c32c64c66c6f4696c91e652a2abfab0614532da323b8bb9'
-            '24bcf3e2eaa9b5bd00b56b24eb856551d2e39d4d552b81c455972e95a216b215'
-            '1dafcb39ebba7cb663e79bc7447ceb723b98bb04d7e08ea76c06fef1b38f9bd3'
-            '54b07b6f6efbf0f59fcb4dc62fd37aed6c0899b758610bc0d16f8b76e00750cd')
+	0001-Turn-on-system-malloc.patch)
+sha256sums=('2779c1b46f88762e8400650271ba14452dc4e30b37059981552d8b562b7d0862'
+            '24bcf3e2eaa9b5bd00b56b24eb856551d2e39d4d552b81c455972e95a216b215')
 
 prepare() {
 	_patch_ "webkitgtk-$pkgver"
