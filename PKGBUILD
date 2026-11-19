@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fmt
-pkgver=12.2.0
+pkgver=12.2.1
 pkgrel=1
 pkgdesc='Open-source formatting library for C++'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -15,7 +15,7 @@ provides=(libfmt.so)
 source=(
   https://github.com/fmtlib/fmt/archive/refs/tags/$pkgver.tar.gz
 )
-sha256sums=('8b852bb5aa6e7d8564f9e81394055395dd1d1936d38dfd3a17792a02bebd7af0')
+sha256sums=('449374d74f31b67796dece454d59b93e6f1538efcce0e9ac78000c98142c139e')
 
 build() {
   cmake -S fmt-$pkgver -B build -G Ninja \
