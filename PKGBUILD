@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pkgconf
-pkgver=3.0.10
+pkgver=3.0.11
 pkgrel=1
 pkgdesc='Package compiler and linker metadata toolkit'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ source=(
   "$url/archive/refs/tags/$pkgname-$pkgver.tar.gz"
 )
 makedepends=(meson automake autoconf libtool)
-sha256sums=('11818a25f2730132f3b258ac8be4e82f83b9db03a1a99a6c29cd01b94fc9d310')
+sha256sums=('d2c8a0965d5b80dcc454cc999ad5edb8bfbc4d8e65cde7a6f19a5cb7ecaf3377')
 
 build()
 {
