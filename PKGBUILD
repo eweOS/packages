@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=libaom
-pkgver=3.15.0
+pkgver=3.15.3
 pkgrel=1
 pkgdesc='Alliance for Open Media (AOM) AV1 codec SDK.'
 url='https://aomedia.googlesource.com/aom/'
@@ -22,7 +22,7 @@ source=(
 	0001-define-_POSIX_C_SOURCE-for-ftello.patch
 	0002-Don-t-install-static-libraries.patch
 )
-sha256sums=('ea08c38ecc078bc85bb1b691020e52b06250f1a81fe7ca5b624629225081af96'
+sha256sums=('12c01dc731ed7b5a999e28120b45bf58a002ba3435a4ba2cfbc1e084a27c9c04'
             'f9e6c6fb9dd0d3dec906c6677b220ace1804a7661ff315ffc78b7d1629a3c84f'
             '8fbf16f3bd4307e9624c2f639a66eac5aa6b2ea07bb7badc50f56bd148e74dec')
 
