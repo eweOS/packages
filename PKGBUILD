@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=sonnet
-pkgver=6.26.0
+pkgver=6.32.0
 pkgrel=1
 pkgdesc='Spelling framework for Qt'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -21,7 +21,7 @@ optdepends=('aspell: spell checking via aspell'
             'qt6-declarative: QML bindings')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('3ac4e165c0b3c79eda416b754bb837292f354188a1220f2065f57f686489af25')
+sha256sums=('cae2686b18f41bde6494f353e1dccc5f045e9748b63175a9ff539b3bc93466f1')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
