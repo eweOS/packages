@@ -1,7 +1,7 @@
 # Maintainer: Weird Gumi <weirdgumi@tutamail.com>
 
 pkgname=yq
-pkgver=4.53.3
+pkgver=4.54.3
 pkgrel=1
 pkgdesc='A portable command-line YAML, JSON, XML, CSV, TOML, HCL and properties processor'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(musl)
 makedepends=(go)
 source=($pkgname-$pkgver.tar.gz::https://github.com/mikefarah/$pkgname/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=(fadf86d0ae3988bb40fa8aad424d0c71658493f6377285e711c7e7e313b3b238)
+sha256sums=('93143d49b2a3bd6cb723477f585366b29f70c636af4653191d61b49b0c47de7f')
 
 prepare() {
   cd $pkgname-$pkgver
