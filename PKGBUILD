@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kuserfeedback
-pkgver=6.26.0
+pkgver=6.32.0
 pkgrel=1
 pkgdesc='Framework for collecting user feedback for applications via telemetry and surveys'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -18,7 +18,7 @@ optdepends=('qt6-charts: Feedback console'
             'qt6-declarative: QML bindings'
             'qt6-svg: Feedback console')
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('6cc18dca65a24af2ac262cb9c8761991701c8081a7133487b4ec936003f3f864')
+sha256sums=('156cadff9de487538440a7f6cfce4a4f0240dc22ccbe4d48f37fb1bd84c75ee5')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
