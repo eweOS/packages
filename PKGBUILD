@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=knewstuff
-pkgver=6.26.0
+pkgver=6.32.0
 pkgrel=1
 pkgdesc='Support for downloading application assets from the network'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -24,7 +24,7 @@ optdepends=('kirigami: QML components'
             'qt6-declarative: QML components')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('94ef39077ba53a72f4e555b6f94a2762cba79730619cb80a31c5435642ebe1aa')
+sha256sums=('91ee15856bb831d1f4022fb45c8b29b15be6e9330bbc8447fadeee9d6f16ab27')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
