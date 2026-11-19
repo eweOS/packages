@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=networkmanager-qt
-pkgver=6.26.0
+pkgver=6.32.0
 pkgrel=1
 pkgdesc='Qt wrapper for NetworkManager API'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +16,7 @@ makedepends=(extra-cmake-modules
 optdepends=('qt6-declarative: QML bindings')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('a5cfed06af6156161f7fee56efe1521a6e9e26119327069f1799986f90b432e5')
+sha256sums=('028134ebcb8aba0394377775a15741c8dc3fc33af9651508a6d819ac1e7f31a0')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
