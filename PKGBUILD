@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kauth
-pkgver=6.26.0
+pkgver=6.32.0
 pkgrel=1
 pkgdesc='Abstraction to system policy and authentication features'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ depends=(kcoreaddons
 makedepends=(extra-cmake-modules qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('e6b6562114c2cb71db6ca48fdf0ebed2df70e164c48295b35433a80b03385847')
+sha256sums=('5bcdb298a2ee84bca93a989247fd6d6e34a1e1029caae17705a85b8ac4dbe837')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
