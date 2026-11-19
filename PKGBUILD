@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=hidapi
-pkgver=0.15.0
-pkgrel=2
+pkgver=0.16.0
+pkgrel=1
 pkgdesc='Simple library for communicating with USB and Bluetooth HID devices'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/libusb/hidapi'
@@ -12,7 +12,7 @@ optdepends=('libusb: for hidapi-libusb')
 makedepends=('cmake' 'libusb' 'linux-headers')
 provides=('libhidapi-hidraw.so' 'libhidapi-libusb.so')
 source=("https://github.com/libusb/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('a4ddd13a80a84956872fa52aa861b40e4959f301d8d91afe0feaf9dbd87394561e1fdd20cbf8cf47200845f80a8db8a934bc2e3025fe6f16435e37c17621e7b6')
+sha512sums=('071d00eab861a18a05664e5a2e81beb332df06fb40feeba72b64e3f70c1e0772e2556f8ae5677e2340a5417fc6109ef450bcb67e74f5529d3984d4a7c10b433e')
 
 build() {
   cmake -B build -S ${pkgname}-${pkgname}-${pkgver} -DCMAKE_INSTALL_PREFIX=/usr
