@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kidletime
-pkgver=6.26.0
+pkgver=6.32.0
 pkgrel=1
 pkgdesc='Monitoring user activity'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -17,7 +17,7 @@ optdepends=('qt6-wayland: Wayland plugin'
             'wayland: Wayland plugin')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('f0efd67ee0e5b5eb9200e924e9478c1ecb179b4a38e0cf125b377e7fa373ef07')
+sha256sums=('a7b53ff5a5f80bf8b8869b377de11594c9e5bccf84064c96efd6bab16974c1be')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
