@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=attica
-pkgver=6.26.0
+pkgver=6.32.0
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 pkgdesc='Qt library that implements the Open Collaboration Services API'
@@ -12,7 +12,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('eb2d3d2d8b12c2ab4d192c4ae6f07b0188a40aa002b3056db6369b47b2f9df96')
+sha256sums=('4f2b525649c6a23924bdf2647e9cd6c591285d33d8d4f01db45b37622e3b839b')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
