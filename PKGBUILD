@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=directx-headers
-pkgver=1.619.5
+pkgver=1.721.2
 pkgrel=1
 pkgdesc="DirectX headers for using D3D12"
 url="https://github.com/microsoft/DirectX-Headers"
@@ -10,7 +10,7 @@ license=(MIT)
 makedepends=(git meson)
 options=(!lto)
 source=("directx-headers::git+$url#tag=v$pkgver")
-sha256sums=('cd18f439d5ab8f2ce527fc9f0e906d8e20d4d6d165e325752fb1616591f806be')
+sha256sums=('4fdfdd0ae6ec4c01ae1afadfeb59ad16bd28ad1c9464865e5425b7045fdcd5ef')
 
 build() {
   local meson_options=(
