@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=tzdata
-pkgver=2026e
+pkgver=2026f
 pkgrel=1
 pkgdesc="Sources for time zone and daylight saving time data"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,8 +11,8 @@ optdepends=('bash: for tzselect')
 options=('!emptydirs')
 source=(https://www.iana.org/time-zones/repository/releases/tzcode${pkgver}.tar.gz
         https://www.iana.org/time-zones/repository/releases/${pkgname}${pkgver}.tar.gz)
-sha512sums=('623af2d5c611ce5d9f6d07ceeb09721db03ed90e8e74e027f96fc402eb948fc8a7e9aecac2611e41fb501bdc2592a78020375ad677d887beaacb2fd5da9b9815'
-            '5be2f875f73b75e5783c474bf7a6c768e433cc90283f8fc6a75e3d05bd92aec97936e8a55ccca5e880b5dacc18ba65932bab0e783e1ed5d2af4a3a4df95512be')
+sha512sums=('eefcea60c37857214e1eba768d1bbd096de2a8f5afc9a776555552922cc174b32892d7442097b699b77efcba4d85649ed7d13e752ffdbcaad1050749c6c7b5aa'
+            '26189803c8b3e903dcc467404e2feefb7d190cb1870249a23577ce31e9dcbf187e4704e0b45c8d1366d1c501bb5b53a2e80f8e2828b2163be15e532f6acab52d')
 
 _timezones=('africa' 'antarctica' 'asia' 'australasia'
            'europe' 'northamerica' 'southamerica'
