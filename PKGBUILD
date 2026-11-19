@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=prison
-pkgver=6.26.0
+pkgver=6.32.0
 pkgrel=1
 pkgdesc='A library to produce QRCode barcodes and DataMatrix barcodes'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -20,7 +20,7 @@ makedepends=(extra-cmake-modules
 optdepends=('qt6-declarative: QML bindings')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('0414ddc310bca5eecfc1a6f9d4463b8a6d81894db4128ac43b4f8c1e14b73b5b')
+sha256sums=('13d904f7514ffe32e49fe09a2b5e10125f825d42c26ee52294c15ce1bfab3970')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
