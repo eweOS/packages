@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=qqc2-desktop-style
-pkgver=6.26.0
+pkgver=6.32.0
 pkgrel=1
 pkgdesc='A style for Qt Quick Controls 2 to make it follow your desktop theme'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -18,7 +18,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('1805fa31355ff86c02158fd2b8d396fd88835d01db97d8700314c48ee3360986')
+sha256sums=('57269c662c25d0ccea96e128a54bc57c3abe0b6b97ef586ea1195c147afc3a38')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
