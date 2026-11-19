@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kded
-pkgver=6.26.0
+pkgver=6.32.0
 pkgrel=1
 pkgdesc='Extensible deamon for providing system level services'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -17,7 +17,7 @@ makedepends=(extra-cmake-modules
              kdoctools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('4265d1162cbd7febf16d103bf1bd9fab858fa3f54f52797ed0938436bee347af')
+sha256sums=('eade144d1e197b883529f7e262035134d7ff46b859d0beff34ab778cb5ef683b')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
