@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kglobalaccel
-pkgver=6.26.0
+pkgver=6.32.0
 pkgrel=1
 pkgdesc='Add support for global workspace shortcuts'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(qt6-base)
 makedepends=(extra-cmake-modules qt6-tools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('3f19d22d143577e5ddcc883170fe19a56f8f65766e41c4f9c011c4dfbde17a61')
+sha256sums=('d5ad10eb041ef8f46074bb1df4cf3475888421d849bc667a7afc6c5bf8cc1640')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
