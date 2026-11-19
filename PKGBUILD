@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kservice
-pkgver=6.26.0
+pkgver=6.32.0
 pkgrel=1
 pkgdesc='Advanced plugin and service introspection'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +16,7 @@ makedepends=(extra-cmake-modules
              kdoctools)
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('f8528524ccafb6a495962dd3260c442377920169f1c444f11657ea42558a53b6')
+sha256sums=('495545ac7120305e3c13d5d1c7760c5607527db5816c6ceedf8c9a623b051e2e')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
