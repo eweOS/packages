@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libpaper
-pkgver=2.2.8
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Library for handling paper characteristics"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -24,7 +24,7 @@ license=(
 )
 source=(https://github.com/rrthomas/libpaper/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz
         localepaper.c)
-sha256sums=('1e330571690191874eca415ec76889dd11bab9887a2302d6a3665cd081c4d77b'
+sha256sums=('882b1c7636052fc9a318caa20292b35616b588824b70e7053018262b29b1409a'
             '7e49c6ce67fbaea77929ab5849026412d0f91f692a902805c0134a071cccde22')
 provides=('paper')
 
