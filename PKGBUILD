@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libraw
-pkgver=0.22.2
+pkgver=0.22.3
 pkgrel=1
 pkgdesc='A library for reading RAW files obtained from digital photo cameras (CRW/CR2, NEF, RAF, DNG, and others)'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ depends=(lcms2
          zlib)
 makedepends=(autoconf)
 source=(https://www.libraw.org/data/LibRaw-$pkgver.tar.gz)
-sha256sums=('de86b035655accff8d4010f1a221fdf50d353cb7b1422ba26f14a0db92612cfa')
+sha256sums=('789f3c33466210a1a0907f747a97c715d21bbf4af712f257fcbbd90111b227e4')
 
 prepare() {
   cd LibRaw-$pkgver
