@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kitemmodels
-pkgver=6.26.0
+pkgver=6.32.0
 pkgrel=1
 pkgdesc='Models for Qt Model/View system'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ makedepends=(extra-cmake-modules
 optdepends=('qt6-declarative: QML bindings')
 groups=(kf6)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('a996201062ff7d21f9db972debc2d9615762ddb0fd9da069a42b7fd7bba1e61d')
+sha256sums=('3a280dbdfc0733ffc9607897109b70b57af89c81dfca534ab92efb948eab3179')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
