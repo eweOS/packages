@@ -1,7 +1,7 @@
 # Maintainer: Weird Gumi <weirdgumi@tutamail.com>
 
 pkgname=intel-ucode
-pkgver=20260812
+pkgver=20261110
 pkgrel=1
 pkgdesc='Microcode update files for Intel CPUs'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url=https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files
 license=(LicenseRef-scancode-intel-bcl)
 makedepends=(iucode-tool)
 source=($url/archive/refs/tags/microcode-$pkgver.tar.gz)
-sha256sums=(7614616d7b2988c278060486f47de716ef44c19317928cb45ac9e288fafd5bd1)
+sha256sums=('989a5cd345808babee491da69ed80ae5741697bc87743a71d0ba611f3fd6afa5')
 
 build() {
   cd Intel-Linux-Processor-Microcode-Data-Files-microcode-$pkgver
