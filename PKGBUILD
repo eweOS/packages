@@ -1,7 +1,7 @@
 # Maintainer: Weird Gumi <weirdgumi@tutamail.com>
 
 pkgname=llhttp
-pkgver=9.4.2
+pkgver=9.4.4
 pkgrel=1
 pkgdesc='Port of http_parser to llparse'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(musl)
 makedepends=(cmake npm)
 source=($pkgname-$pkgver.tar.gz::https://github.com/nodejs/$pkgname/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=(600792625144dacf6202a01d93c9d5af4ebe45f5d4f8b49a3902a43f869639c0)
+sha256sums=('530bbf6e9fa880e66decde9272bb3bd1045a09ba5a3f185561b21fa05f51f170')
 
 prepare() {
   cd $pkgname-$pkgver
