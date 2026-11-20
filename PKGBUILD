@@ -1,14 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libsigsegv
-pkgver=2.15
-pkgrel=2
+pkgver=2.16
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 pkgdesc="Page fault detection library"
 url="https://www.gnu.org/software/libsigsegv/"
-license=('GPL2')
+makedepends=(linux-headers)
+license=('GPL-2.0-only')
 source=("https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('036855660225cb3817a190fc00e6764ce7836051bacb48d35e26444b8c1729d9')
+sha256sums=('f8b2fac06c091fc29d6474733d118dc163ed7cd6be4783240d31ad7af11efa30')
 
 build() {
   cd ${pkgname}-${pkgver}

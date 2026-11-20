@@ -1,0 +1,31 @@
+open the executable wrapper with O_CLOEXEC
+
+Link mode creates the executable wrapper script through a descriptor that is
+currently inherited by the compiler and by every process the compiler spawns.
+slibtool waits only for the direct compiler child before closing its own copy
+and renaming the wrapper into place.  A compiler descendant that is still
+alive at that point (for example a linker process that has been reparented)
+keeps the wrapper inode open for writing, so a following
+`libtool --mode=execute` fails with ETXTBSY ("Text file busy").
+
+This is reproducible with gobject-introspection: g-ir-scanner links its
+temporary scanner binary with `libtool --mode=link` and immediately runs
+`libtool --mode=execute ldd` on the result.  Under parallel builds the second
+step fails intermittently.
+
+The descriptor only needs to be written by the link process itself, so mark it
+close-on-exec instead of leaking it to compiler children.
+
+---
+diff --git a/src/logic/linkcmd/slbt_linkcmd_executable.c b/src/logic/linkcmd/slbt_linkcmd_executable.c
+--- a/src/logic/linkcmd/slbt_linkcmd_executable.c
++++ b/src/logic/linkcmd/slbt_linkcmd_executable.c
+@@ -129,7 +129,7 @@
+ 				dctx->cctx->output) < 0)
+ 		return SLBT_BUFFER_ERROR(dctx);
+
+-	if ((fdwrap = openat(fdcwd,wrapper,O_RDWR|O_CREAT|O_TRUNC,0644)) < 0)
++	if ((fdwrap = openat(fdcwd,wrapper,O_RDWR|O_CREAT|O_TRUNC|O_CLOEXEC,0644)) < 0)
+ 		return SLBT_SYSTEM_ERROR(dctx,wrapper);
+
+ 	slbt_exec_set_fdwrapper(ectx,fdwrap);
