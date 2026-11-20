@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=patchelf
-pkgver=0.19.2
+pkgver=0.19.3
 pkgrel=1
 pkgdesc='A small utility to modify the dynamic linker and RPATH of ELF executables.'
 url='https://github.com/NixOS/patchelf'
@@ -10,7 +10,7 @@ license=(GPL-3.0-or-later)
 depends=(musl)
 makedepends=(lld)
 source=("https://github.com/NixOS/patchelf/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('05e674fcc89ef3ffbd851266d063f45f13bd16facec9839a54d0095b930c6f07')
+sha256sums=('c424c782c525ee0961006bec370cbdb19714fd4690c6552cc48ca21860ce4df3')
 
 build () {
 	cd patchelf-$pkgver
