@@ -2,15 +2,15 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=bottom
-pkgver=0.14.9
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="A graphical process/system monitor"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/ClementTsang/bottom"
 license=('MIT')
 makedepends=('rust')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('2c95a362ae64db3c166fade941ae85ddd08a5f10c85612a923e70353765c6b26419ad244974d92b10ddd002f8cb8c81ddbd968fed0c2da22ef3c5ebafba91cf1')
+sha512sums=('23bdc185143936f01249d1e77639b75ea1915c3c2c27e304f37ebedc432f5de5d8e42c1fea018b41c4083a9216df335d0f2e6d2749998ba1ad8e82f0e23f0967')
 
 prepare()
 {
