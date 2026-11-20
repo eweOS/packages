@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=lmdb
-pkgver=0.9.33
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Symas Lightning Memory-Mapped Database"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://symas.com/lmdb"
@@ -12,7 +12,7 @@ makedepends=('git')
 options=('!emptydirs')
 source=("git+https://git.openldap.org/openldap/openldap.git#tag=LMDB_$pkgver"
         lmdb.pc)
-sha512sums=('dad9b7fa441d02202131e911aa3b6aad09c98c6e972ae69adf2867ccce2065397d868751bf93a4e00b13a3165ffd33bff33f36a062c1a6467a5543367efb381d'
+sha512sums=('37dbff163b0827464efa4c289083736c6c8affea03d4fb94e95e9beca077b39c43ac09d54d241bf159aca16f248b0022fca9b6e24c199d54b40679af4e2cc82f'
             '0349d4b08a1f93fe338d8f8e3e5a83e24211a46f999fe529bc1ac49c8c4975559d95a548c203d9427e3f82d62e934ba3cd1be6f734f9b9405b2a26477be4ed33')
 
 prepare() {
