@@ -6,8 +6,8 @@
 # fork.
 
 pkgname=(med med-doc)
-pkgver=5.0.0
-pkgrel=2
+pkgver=6.0.1
+pkgrel=1
 pkgdesc='Library for exchanging multi-physics simulation data'
 url='https://github.com/chennes/med'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -19,7 +19,7 @@ provides=(libmed.so libmedC.so libmedfwrap.so libmedimport.so)
 #	used
 source=("https://github.com/chennes/med/archive/refs/tags/v$pkgver.tar.gz"
 	0001-Fix-HDF5-version-check.patch)
-sha256sums=('8701f142087b87e8b74958fd0432498eadf28011b20ad05cf56bf911be081888'
+sha256sums=('62f163812e4df09c23e93d42342856a6da438cbf98d9dfe0360ce7b14a92b035'
             'e6f2a160290cd433bac772c492e1f15febe824842da01d4ba547d3422852152c')
 
 prepare() {
