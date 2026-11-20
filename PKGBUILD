@@ -1,9 +1,9 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=breeze
-pkgver=6.5.5
+pkgver=6.8.3
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 pkgdesc='Artwork, styles and assets for the Breeze visual style for the Plasma Desktop'
 url='https://kde.org/plasma-desktop/'
@@ -17,6 +17,7 @@ depends=(breeze-icons
          kdecoration
          kguiaddons
          ki18n
+         hicolor-icon-theme
          kiconthemes
          kirigami
          kwidgetsaddons
@@ -28,7 +29,7 @@ makedepends=(extra-cmake-modules)
 optdepends=('breeze-gtk: Breeze widget style for GTK applications')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz)
-sha256sums=('09b3f7bd2386c4b91c418462f02b203510f2ae88489398ef05e0b6ddea3aa590')
+sha256sums=('1d47a61f9f397f212d7a23d7ed7a7289b026757a050610304bb945dc067937e2')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
