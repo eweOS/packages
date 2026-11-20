@@ -1,9 +1,9 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kpipewire
-pkgver=6.5.5
+pkgver=6.8.3
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=5
+pkgrel=1
 pkgdesc='Components relating to pipewire use in Plasma'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://kde.org/plasma-desktop/'
@@ -21,7 +21,7 @@ depends=(ffmpeg
 makedepends=(extra-cmake-modules qt6-base-devel)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz)
-sha256sums=('4aacdb440cb09df418228aafce12d2565a894b3a8b98f34f05aa5a6f1ebce354')
+sha256sums=('6b3175c928322e2084f8c40e51c05c24e3823b05195ff6de7db27c130a19c12f')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
