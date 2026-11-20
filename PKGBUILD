@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=namcap
-pkgver=3.5.2
-pkgrel=4
+pkgver=3.6.0
+pkgrel=1
 pkgdesc='A Pacman package analyzer'
 arch=(any)
 url="https://gitlab.archlinux.org/pacman/$pkgname"
@@ -13,26 +13,12 @@ depends=(licenses
          python
          python-license-expression
          python-pyelftools)
-checkdepends=(python-pytest python-six)
+checkdepends=(python-pytest)
 makedepends=(python-build python-installer python-wheel python-setuptools)
-_archive="$pkgname-$pkgver"
-source=("$url/-/releases/$pkgver/downloads/$_archive.tar.bz2")
-sha256sums=('fbd3b1f0777fe457afd3dbb1f55de8adbaeb50257492626bcffd1a3eef67d618')
-
-prepare() {
-  cd "$_archive"
-  find . -type f -exec sed -i "s/gcc /cc /g; s/'glibc'/'musl'/g; s/'i686' 'x86_64'/'i686' 'x86_64' 'aarch64' 'riscv64' 'loongarch64'/g" {} \;
-  sed -i 's/glibc/musl/g' Namcap/tests/test_depends.py
-  sed -i 's/glibc/musl/g' Namcap/tests/test_pacman.py
-  # violate eweos makepkg sbin merge rule
-  sed -i 's/sbin/sbin-test/g' Namcap/tests/package/test_hardlinks.py
-  # no storage group
-  sed -i 's/storage/114514/g' Namcap/tests/package/test_fileownership.py
-  # remove unused rules
-  sed -i '/systemdlocation,/d' Namcap/rules/__init__.py
-  # other arch
-  sed -i 's/= "i686"/!= "x86_64"/' Namcap/tests/pkgbuild/test_missingvars.py
-}
+_commit=68113dcd4cf21b97735b5b6350d9018487981ead
+_archive="$pkgname-$_commit"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/eweOS/$pkgname/archive/$_commit.tar.gz")
+sha256sums=('c259a1292a184236fc5699b20cfadf866542cb41067f1b16e9ba374cbaf50c9c')
 
 build() {
   cd "$_archive"
@@ -40,25 +26,8 @@ build() {
 }
 
 check() {
-  local _disabled_checks=(
-    test_systemdlocation_pkgname
-    test_noshstk
-    test_execstack
-    test_rpath_files
-    test_sodepends
-    test_unusedsodepends_files
-    test_shebangdepends
-  )
-  
-  _arg_disabled_checks=""
-  for i in ${_disabled_checks[@]}; do
-    _arg_disabled_checks+="not $i and "
-  done
-  
-  _arg_disabled_checks=${_arg_disabled_checks% and }
-
   cd "$_archive"
-  env PARSE_PKGBUILD_PATH="$PWD" PATH="$PWD/scripts:$PATH" pytest -k "$_arg_disabled_checks"
+  env PARSE_PKGBUILD_PATH="$PWD" PATH="$PWD/scripts:$PATH" pytest
 }
 
 package() {
