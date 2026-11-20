@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=expat
-pkgver=2.9.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="An XML parser library"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=(MIT)
 makedepends=(cmake)
 provides=(libexpat.so)
 source=("https://github.com/libexpat/libexpat/releases/download/R_${pkgver//./_}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('8874a1904fdbeeb657a64fbcf6e9159d70d238672046592b5e89c18cc7d09c093d411f447d41d54c45d98c7ae8b46616747708e9e94ae07d57363dbf0c5df657')
+sha512sums=('34c97db9c885371c0d2e7b7f2d99ff8bf700f50927d1029335e6c6f2b71d990f30aab80b178def683a5d5901d0c2ef49ea9156414f918f0f8c5c904f2cb0bdc1')
 
 build()
 {
