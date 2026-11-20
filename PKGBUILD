@@ -2,8 +2,8 @@
 basename=lua-posix
 # TODO: Package it for Lua 5.1, missing bit32
 pkgname=(lua54-posix lua55-posix)
-pkgver=37.0
-pkgrel=2
+pkgver=39
+pkgrel=1
 pkgdesc='Lua bindings for POSIX APIs'
 url='https://luaposix.github.io/luaposix/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(musl)
 makedepends=(luarocks54 luarocks55)
 source=("https://github.com/luaposix/luaposix/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3a0cf9fc9459ae0975afd1e24ea552decfcda2231651a0d3bd6e1f075e089e01')
+sha256sums=('4b7adce5bae6f02523bc6efb6e0c778a2f42cd555f48391f8c8c070f6f408709')
 
 do_package() {
 	v=$1
