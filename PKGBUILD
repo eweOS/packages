@@ -2,7 +2,7 @@
 
 pkgname=cargo-insta
 _pkgname=insta
-pkgver=1.48.0
+pkgver=1.49.0
 pkgrel=1
 pkgdesc='Cargo plugin for snapshot testing in Rust'
 url='https://github.com/mitsuhiko/insta'
@@ -12,7 +12,7 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(Apache-2.0)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         "busybox-diff-compat.patch")
-sha256sums=('acd7140f00155f3fe50b723296fb828dea9de68297f3e26f8a7e442bcc62fa79'
+sha256sums=('4115f605a25f73bcf5bfda09b4992c03b6c37087f618b4afddcc43e23753b363'
             'a800589bd10778cd49d50d5d33f24a85fcf00f83f707e1a5a4e3369f8c09979d')
 
 prepare() {
