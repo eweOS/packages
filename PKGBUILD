@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gtk-doc
-pkgver=1.36.1
+pkgver=1.37.0
 pkgrel=1
 pkgdesc="Documentation tool for public library API"
 url="https://www.gtk.org/gtk-doc/"
@@ -31,7 +31,7 @@ optdepends=('dblatex: PDF support')
 source=(
   "git+https://gitlab.gnome.org/GNOME/gtk-doc.git#tag=$pkgver"
 )
-sha256sums=('9177b77982020c48256bf972941f5a8fba2613d3dde01280b706dd10f5aa8d0d')
+sha256sums=('9d2664a07e755249d956533182fc9285a3ffa75e195f8eea89fbd20f30ff5be5')
 
 build() {
   ewe-meson gtk-doc build
