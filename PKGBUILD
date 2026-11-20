@@ -1,9 +1,9 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libkscreen
-pkgver=6.5.5
+pkgver=6.8.3
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=4
+pkgrel=1
 pkgdesc='KDE screen management software'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://kde.org/plasma-desktop/'
@@ -16,13 +16,8 @@ makedepends=(extra-cmake-modules
 	     qt6-base-devel
              qt6-tools)
 groups=(plasma)
-source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz no-x11.patch)
-sha256sums=('595bf06cd8b0c906800a34efd7d93e45add99f2f7e9248c0e8203a838ec861f9'
-            'd2b1779b192b1e736b447c79b22cf80beaa52c159b33f4a148cc1d97b517c6e2')
-
-prepare() {
-  _patch_ $pkgname-$pkgver
-}
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz)
+sha256sums=('8f0e2157bb55aa36ac632c85bd4411bcbf2424c477cca3126b8b42ad33fa4fb8')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
@@ -34,6 +29,4 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  # TODO: usr/lib/systemd/user/plasma-kscreen.service
-  rm -r $pkgdir/usr/lib/systemd
 }
