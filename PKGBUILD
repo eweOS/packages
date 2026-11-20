@@ -3,7 +3,7 @@
 _name=Catch2
 pkgbase=catch2
 pkgname=(catch2{,-doc})
-pkgver=2.13.10
+pkgver=3.16.1
 pkgrel=1
 pkgdesc='A modern, C++-native, test framework for unit-tests, TDD and BDD'
 arch=(any)
@@ -12,7 +12,7 @@ license=(BSL-1.0)
 depends=(llvm-libs musl)
 makedepends=(cmake python)
 source=($basename-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=(d54a712b7b1d7708bc7a819a8e6e47b2fde9536f487b89ccbca295072a7d9943)
+sha256sums=('d16bd1b8b2364918bd472cb216394acb93bde6784890df0d91bccfb3f28d777d')
 
 build() {
   cmake -S $_name-$pkgver -B build -D CMAKE_INSTALL_PREFIX=/usr
