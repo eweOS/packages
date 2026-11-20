@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=tftp-hpa
-pkgver=5.3
-pkgrel=2
+pkgver=7.2
+pkgrel=1
 pkgdesc='TFTP server ported to Linux'
 url='https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -19,7 +19,7 @@ source=("https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git/snapshot/tftp-
 	"tftpd.tmpfiles"
 	"tftpd.conf"
 	0001-configure.ac-check-socklen_t-in-socket.h.patch)
-sha256sums=('6064caa87435040181e4493b82a19fef5aa918f0e25d28ad2c3344c38e0d5a26'
+sha256sums=('95665b6c60066c848272285e3fdf17c9bf1e31a36fe51aceeb2211fa8478b535'
             '3ca9451f963f3f570ac0e63a8f9bb3e927d4df063779b39a31a4c06f7b163d23'
             '7d252c4680f8929807a18aac57db4ab45c8fb6ce5f8a733b5dc1ad3600fec26b'
             'c84efa2fc0b3f86cf7b00e2d1740432a37b6c8c6e7800e28bcfea2a05a471492'
