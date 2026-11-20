@@ -1,28 +1,32 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kirigami-addons
-pkgver=1.9.0
-pkgrel=2
+pkgver=1.16.1
+pkgrel=1
 pkgdesc='Add-ons for the Kirigami framework'
 url='https://invent.kde.org/libraries/kirigami-addons'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-or-later
          LGPL-2.1-or-later)
-depends=(kconfig
+depends=(kcolorscheme
+         kconfig
          kcoreaddons
+         kcrash
          kglobalaccel
          kguiaddons
          ki18n
+         kiconthemes
          kirigami
          kitemmodels
          ksvg
          qt6-base
          qt6-declarative
+         qqc2-desktop-style
          qt6-multimedia
          sonnet)
 makedepends=(extra-cmake-modules qt6-tools)
 source=(https://download.kde.org/stable/$pkgname/$pkgname-$pkgver.tar.xz)
-sha256sums=('21314a91f26b1c962def3fd7ff2e762d3358b075f63f4d7e0144fb2c63b7ebc7')
+sha256sums=('124b01267acf603c3afd9fb9599a33fee7a28d65756890163e9593a3932084dd')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
