@@ -1,8 +1,8 @@
 # Maintainer: Ziyao <ziyao@disroot.org>
 
 pkgname=lua55
-pkgver=5.5.0
-pkgrel=2
+pkgver=5.5.1
+pkgrel=1
 _V=5.5
 _R=5.5.0
 pkgdesc='Powerful lightweight programming language designed for extending applications'
@@ -13,7 +13,7 @@ optdepends=('readline: For better REPL experience')
 source=(https://www.lua.org/ftp/lua-$pkgver.tar.gz
 	Makefile.patch
 	src-Makefile.patch)
-sha256sums=('57ccc32bbbd005cab75bcc52444052535af691789dba2b9016d5c50640d68b3d'
+sha256sums=('1c4b4068d67061f2a2231ad2b5422e77acea1487ea9890f6320af614f4373dce'
             'be2ede530da43115d2f622aec5211a4fd4b576f5cc527ac9e309080bf35ce055'
             '81cb2d015272df804fc65a09b342dbc918d339eaecefb3bbb2027e73b9e6a7f7')
 
