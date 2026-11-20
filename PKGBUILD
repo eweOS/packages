@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=mobile-broadband-provider-info
-pkgver=20251101
-pkgrel=2
+pkgver=20261111
+pkgrel=1
 pkgdesc="APN configuration presets for mobile broadband connections"
 url="https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(
   meson
 )
 source=("git+$url.git#tag=$pkgver")
-sha256sums=('c7aba7be040985ee664acc6473e3a827f56d9d1394c0f7e2962b392d82b9242e')
+sha256sums=('8480fa709c9c8b98f542f1f1bd8bebbe56ddd07c9e2477cf2bcc88136d7299c6')
 
 build() {
   ewe-meson $pkgname build
