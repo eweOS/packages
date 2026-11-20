@@ -1,9 +1,9 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=knighttime
-pkgver=6.5.5
+pkgver=6.8.3
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=1
 pkgdesc='Helpers for scheduling the dark-light cycle'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://kde.org/plasma-desktop/'
@@ -21,7 +21,7 @@ makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz)
-sha256sums=('a12430bb7059f866bb2b2f4351965beb54b54d1502d482ac9f3b43a95fa736a3')
+sha256sums=('b364a57af1a629d5e09c36a3c859075f8eafa2463201959548fbc362987d7c5f')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
