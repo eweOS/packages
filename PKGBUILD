@@ -1,16 +1,16 @@
 # Maintainer: Eric Long <i@hack3r.moe>
 
 pkgname=rust-analyzer
-pkgver=2026.01.12
+pkgver=2026.11.16
 _pkgver=${pkgver//./-}
-pkgrel=2
+pkgrel=1
 pkgdesc='Rust compiler front-end for IDEs'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://rust-analyzer.github.io'
 license=('MIT OR Apache-2.0')
 depends=(musl llvm-libs rust-src)
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/rust-lang/rust-analyzer/archive/refs/tags/$_pkgver.tar.gz")
-sha256sums=('ac8a08e0d0c10ada066de76800f067554446b404a3da0afa2e176126d0f2e91e')
+sha256sums=('b80b65ab44e10abddb07ba46721c3a8e5d9baae4e757807982a1abfc2790a402')
 
 prepare() {
   cd $pkgname-$_pkgver
