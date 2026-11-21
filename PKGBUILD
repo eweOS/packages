@@ -1,21 +1,21 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=python-scripttest
-pkgver=2.0
-pkgrel=2
+pkgver=3.0
+pkgrel=1
 pkgdesc="Utilities to help with testing command line scripts"
 url="https://github.com/pypa/scripttest"
 license=('MIT')
 arch=('any')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-flit-core' 'python-installer')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pypa/scripttest/archive/$pkgver.tar.gz")
-sha512sums=('c3a2ccb1856c11a377287829683e63f3c8b4653ee778596a606195712bb8c01dcfb6e98408ac1012bfb3d0b45853f3076301f6a42e1f03bebf1df8a06e9d15f9')
+sha512sums=('99cad1e29d74595290dad3fe621d316502c53f520fa9540be0a1897ed425fd28a762fad2576ee2796a3a77211e22da362af4e68df412f8f68aa288ec793f072f')
 
 build() {
   cd "$srcdir"/scripttest-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -25,7 +25,7 @@ check() {
 
 package() {
   cd scripttest-$pkgver
-  python3 setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   _install_license_ docs/license.rst
 }
 
