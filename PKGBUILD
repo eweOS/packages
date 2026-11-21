@@ -10,13 +10,14 @@ pkgname=(
   vulkan-swrast
   vulkan-virtio
   vulkan-mesa-layers
+  vulkan-mesa-implicit-layers
   vulkan-nouveau
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
-pkgver=26.2.6
+pkgver=26.3.1
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
-depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm' 'spirv-tools')
+depends=('libglvnd' 'libelf' 'zstd' 'libdrm' 'llvm' 'spirv-tools' 'lm_sensors')
 makedepends=(
   'libva'
   'glslang'
@@ -30,7 +31,7 @@ makedepends=(
   'libdisplay-info'
   'libclc' 'rust' 'rust-bindgen' 'spirv-llvm-translator' 'spirv-tools'
   'python-mako' 'python-pycparser' 'python-yaml'
-  'cbindgen'
+  'cbindgen' 'venus-protocol'
 )
 url="https://www.mesa3d.org/"
 license=('custom')
@@ -54,7 +55,7 @@ source=(
   rustc-hash-$_rustc_hash_pkgver.tar.gz::https://static.crates.io/crates/rustc-hash/rustc-hash-$_rustc_hash_pkgver.crate
 )
 
-sha512sums=('0959679a8e9560a36d63bfc67357c73fde6fd98b00c29859ab30b31454b9ef8c8def38c7e180b168fd39080681042559dfc4a4252dfb289930a9776e0243c2dc'
+sha512sums=('9d56fe98a0b3199f671363c1e3c195eaf5a7465cff6b4fddf6663ca2272537f950b666c466468f5e94318d660f6ef503c4e523feda42c0d1ef89b31392a26272'
             'bcfff545d6dfefd81e09f8f30a86bdd85759b3a7d4093ef3365ed02718e10dbd604c52b94c9d7fa955d339fdc5b6c079940c6f345b5a48c52b5c8607794ca6f2'
             'f5314fb6af17cf36c228e1970c569c29ec248954a450a5f90ba9e2896d04f74904c9cec5a1f74325f2489295a94491eee4ce8fb461e22cd4b34e53f1f881efd2'
             '1cdb7e22a35ae231d880c9420784c9acf97bda2db258b3d34aae5061dc1858449defe19a49e12c6a4173906aa72a4115059ac2db0fc760205fd2ab8b5b414434'
@@ -63,21 +64,26 @@ sha512sums=('0959679a8e9560a36d63bfc67357c73fde6fd98b00c29859ab30b31454b9ef8c8de
             '87097d98d47f327d000041ab13acddc366f1500d9c3e5c82169c3358112c7a7c03701c9b3c2c81d9f9da65b7ebac1c479b179dfaf7c059cd0b929b4673e51084')
 
 [ "$CARCH" = x86_64 ] && pkgname+=(vulkan-dzn)
-[ "$CARCH" = aarch64 ] && pkgname+=(vulkan-panfrost vulkan-freedreno vulkan-powervr)
+[ "$CARCH" = aarch64 ] && pkgname+=(vulkan-asahi vulkan-broadcom vulkan-panfrost vulkan-freedreno vulkan-powervr)
 [ "$CARCH" = riscv64 ] && pkgname+=(vulkan-powervr)
 
 build()
 {
   local gallium_dri="r300,r600,radeonsi,nouveau,virgl,svga,softpipe,llvmpipe,zink"
   local vulkan_dri="amd,gfxstream,intel,intel_hasvk,swrast,virtio,nouveau"
+  local rusticl_dri="radeonsi"
+  local -a arch_meson_opts=()
   case "${CARCH}" in
     x86_64)
 	    gallium_dri+=",i915,iris,crocus,d3d12"
 	    vulkan_dri+=",microsoft-experimental"
+	    arch_meson_opts+=(-Dintel-rt=enabled -Dintel-virtio-experimental=true)
 	    ;;
     aarch64)
-	    gallium_dri+=",panfrost,freedreno,lima,etnaviv"
-	    vulkan_dri+=",panfrost,freedreno,imagination"
+	    gallium_dri+=",panfrost,freedreno,lima,etnaviv,asahi,v3d,vc4,tegra"
+	    vulkan_dri+=",panfrost,freedreno,imagination,asahi,broadcom"
+	    rusticl_dri="asahi,freedreno,panfrost,radeonsi"
+	    arch_meson_opts+=(-Dpanfrost-virtio=true -Dfreedreno-kmds=msm,virtio)
 	    ;;
     riscv64)
 	    gallium_dri+=",etnaviv"
@@ -100,19 +106,23 @@ build()
     -Dopengl=true \
     -Dvulkan-drivers=${vulkan_dri} \
     -Dvulkan-layers=${vulkan_layers} \
+    -Dvulkan-loader-rpath= \
+    -Dvulkan-manifest-per-architecture=false \
     -Dgallium-drivers=${gallium_dri} \
     -Dgallium-extra-hud=true \
     -Dgallium-rusticl=true \
+    -Dgallium-rusticl-enable-drivers=${rusticl_dri} \
     -Dvideo-codecs=all \
     -Dmicrosoft-clc=disabled \
     -Dxlib-lease=disabled \
     -Dandroid-libbacktrace=disabled \
     -Dvalgrind=disabled \
     -Dlibunwind=disabled \
-    -Dlmsensors=disabled \
+    -Dlmsensors=enabled \
+    -Damdgpu-virtio=true \
     -Ddefault_library=shared \
     -Dllvm-orcjit=true \
-    -Dintel-rt=disabled \
+    "${arch_meson_opts[@]}" \
     -Dgallium-mediafoundation=disabled
 
   meson configure build
@@ -138,13 +148,13 @@ package_mesa()
   _pick_ opencl-mesa etc/OpenCL/vendors/rusticl.icd
 
   # vulkan-dzn
-  _pick_ vulkan-dzn usr/share/vulkan/icd.d/dzn_icd.*.json
+  _pick_ vulkan-dzn usr/share/vulkan/icd.d/dzn_icd*.json
   _pick_ vulkan-dzn usr/lib/libvulkan_dzn.so
   _pick_ vulkan-dzn usr/lib/libspirv_to_dxil.*
   _pick_ vulkan-dzn usr/bin/spirv2dxil
 
   # vulkan-gfxstream
-  _pick_ vulkan-gfxstream usr/share/vulkan/icd.d/gfxstream_vk_icd.*.json
+  _pick_ vulkan-gfxstream usr/share/vulkan/icd.d/gfxstream_vk_icd*.json
   _pick_ vulkan-gfxstream usr/lib/libvulkan_gfxstream.so
 
   # vulkan-swrast
@@ -155,14 +165,26 @@ package_mesa()
   _pick_ vulkan-virtio usr/share/vulkan/icd.d/virtio_icd*.json
   _pick_ vulkan-virtio usr/lib/libvulkan_virtio.so
 
+  # vulkan-asahi
+  _pick_ vulkan-asahi usr/share/vulkan/icd.d/asahi_icd*.json
+  _pick_ vulkan-asahi usr/lib/libvulkan_asahi.so
+
+  # vulkan-broadcom
+  _pick_ vulkan-broadcom usr/share/vulkan/icd.d/broadcom_icd*.json
+  _pick_ vulkan-broadcom usr/lib/libvulkan_broadcom.so
+
+  # vulkan-mesa-implicit-layers
+  _pick_ vulkan-mesa-implicit-layers usr/share/vulkan/implicit_layer.d
+  _pick_ vulkan-mesa-implicit-layers usr/lib/libVkLayer_MESA_device_select.so
+
   # vulkan-mesa-layers
   _pick_ vulkan-mesa-layers usr/share/vulkan/explicit_layer.d
-  _pick_ vulkan-mesa-layers usr/share/vulkan/implicit_layer.d
   _pick_ vulkan-mesa-layers usr/lib/libVkLayer_*.so
-  _pick_ vulkan-mesa-layers usr/bin/mesa-overlay-control.py
+  _pick_ vulkan-mesa-layers usr/bin/mesa-*-control.py
 
   # vulkan-radeon
   _pick_ vulkan-radeon usr/share/drirc.d/00-radv-defaults.conf
+  _pick_ vulkan-radeon usr/share/drirc.d/01-radv-performance.conf
   _pick_ vulkan-radeon usr/share/vulkan/icd.d/radeon_icd*.json
   _pick_ vulkan-radeon usr/lib/libvulkan_radeon.so
 
@@ -197,6 +219,8 @@ package_opencl-mesa() {
     zlib
     zstd
     libclc # For /usr/share/clc/
+    spirv-llvm-translator
+    spirv-tools
   )
   optdepends=("opencl-headers: headers necessary for OpenCL development")
   provides=('opencl-driver')
@@ -208,7 +232,30 @@ package_opencl-mesa() {
 }
 
 _vulkan_driver_deps=('expat' 'libdrm' 'llvm' 'vulkan-icd-loader' 'wayland'
-		     'zlib' 'zstd' 'spirv-tools' 'libdisplay-info')
+		     'zlib' 'zstd' 'spirv-tools' 'libdisplay-info'
+		     'vulkan-mesa-implicit-layers')
+
+package_vulkan-asahi()
+{
+  pkgdesc="Open-source Vulkan driver for Apple GPUs"
+  depends=(${_vulkan_driver_deps[*]})
+  optdepends=('vulkan-mesa-layers: additional vulkan layers')
+  provides=('vulkan-driver')
+  mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
+
+  _install_license_ $pkgbase-$pkgver/docs/license.rst
+}
+
+package_vulkan-broadcom()
+{
+  pkgdesc="Open-source Vulkan driver for VideoCore GPUs"
+  depends=(${_vulkan_driver_deps[*]})
+  optdepends=('vulkan-mesa-layers: additional vulkan layers')
+  provides=('vulkan-driver')
+  mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
+
+  _install_license_ $pkgbase-$pkgver/docs/license.rst
+}
 
 package_vulkan-dzn()
 {
@@ -310,9 +357,19 @@ package_vulkan-powervr()
 }
 
 
+package_vulkan-mesa-implicit-layers()
+{
+  pkgdesc="Mesa's implicit Vulkan layers"
+  depends=('libdrm' 'wayland')
+
+  mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
+
+  _install_license_ $pkgbase-$pkgver/docs/license.rst
+}
+
 package_vulkan-mesa-layers()
 {
-  pkgdesc="Mesa's Vulkan layers"
+  pkgdesc="Mesa's explicit Vulkan layers"
   depends=('libdrm' 'libpng' 'wayland' 'python')
 
   mv "$srcdir/pkgs/$pkgname/usr" "${pkgdir}/usr"
