@@ -9,7 +9,7 @@ pkgname=(
   harfbuzz-docs
 )
 pkgver=15.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenType text shaping engine"
 url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -49,7 +49,13 @@ build() {
 
 check() {
   mkdir -p tmp
-  TMPDIR="$PWD/tmp" meson test -C build --print-errorlogs
+  local timeout_multiplier=1
+  if [[ $CARCH == riscv64 ]]; then
+    # test-ot-layout needs more than the default 30-second timeout on riscv64.
+    timeout_multiplier=10
+  fi
+  TMPDIR="$PWD/tmp" meson test -C build --print-errorlogs \
+    --timeout-multiplier "$timeout_multiplier"
   rm -r tmp
 }
 
