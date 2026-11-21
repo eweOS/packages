@@ -1,7 +1,7 @@
 # Maintainer: Weird Gumi <weirdgumi@tutamail.com>
 
 pkgname=river-classic
-pkgver=0.3.17
+pkgver=0.3.18
 pkgrel=1
 pkgdesc='A dynamic tiling wayland compositor with flexible runtime configuration'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(libevdev libinput libxkbcommon musl pixman wayland wlroots0.20)
 makedepends=(scdoc wayland-protocols wlroots0.20-devel zig)
 conflicts=(river)
 source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=(ecd5e632a417b1d79e23180bf0073c8d8f849180ebb9138e5fa71ec8bfe15fdd)
+sha256sums=('1ec2b903774391070c9a08990390b70d1fc617e6e093a74c2d69d0b03a49a929')
 _zig_options=(
   -Dtarget=$CARCH-linux-musl
   -Dcpu=baseline
