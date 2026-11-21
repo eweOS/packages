@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=verilator
-pkgver=5.048
+pkgver=5.054
 pkgrel=1
 pkgdesc='Verilog/SystemVerilog simulator.'
 url='https://www.veripool.org/verilator/'
@@ -11,7 +11,7 @@ depends=(zlib-ng perl)
 makedepends=(cmake samurai python help2man)
 checkdepends=(python-distro)
 source=("https://github.com/verilator/verilator/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('02d934b3f972c6d9b792350634d81eadfc9e61f347e3f3bdcaad40960b9fcb53')
+sha256sums=('18658731b46922ef660bcb650be0aa503d751e5c17eb9d4644fdfabb11835198')
 
 build () {
 	cd verilator-"$pkgver"
