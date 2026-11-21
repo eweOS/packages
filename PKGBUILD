@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=netease-cloud-music-gtk
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 pkgdesc="Rust + GTK-based NetEase Cloud Music Player for Linux"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -18,7 +18,7 @@ makedepends=('cargo' 'meson' 'gstreamer-devel')
 source=(
   "https://github.com/gmg137/$pkgname/archive/$pkgver.tar.gz"
 )
-sha256sums=('b6e9dea10cd5fbd125267f0cfb886c38b55f05e699b92551e1ca9f3ac56bad9c')
+sha256sums=('8ecb27148ad1e9e73695f08450c0e12598bb9180f42058af307a18b5a2c70e64')
 
 prepare() {
   cd "$pkgname-$pkgver"
