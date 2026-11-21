@@ -2,11 +2,11 @@
 
 _pkgname=bird
 pkgname=bird2
-pkgver=2.17.1
-pkgrel=3
+pkgver=2.20.0
+pkgrel=1
 pkgdesc='RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon'
 arch=(x86_64 aarch64 riscv64 loongarch64)
-url='https://bird.network.cz/'
+url='https://bird.nic.cz/'
 license=('GPL-2.0-or-later')
 depends=('musl' 'readline' 'ncurses' 'libssh2')
 makedepends=('linux-headers')
@@ -15,11 +15,11 @@ backup=(etc/bird.conf)
 conflicts=(bird)
 provides=(bird)
 source=(
-  "https://bird.network.cz/download/$_pkgname-$pkgver.tar.gz"
+  "https://bird.nic.cz/download/$_pkgname-$pkgver.tar.gz"
   bird.service
   bird.tmpfiles
 )
-sha256sums=('bfd718dfa596819b3801688783212514b467163329aec9bbcd0fa3dee03e10e9'
+sha256sums=('71c7ed4a04b7b8335b2e659246a32078d6c3f12249c88254e165c4033b353190'
             '7ddea1f507efd2d4a7ad1fea044a3122f0f798887ee9fbd1c8b5ff32fdeafb84'
             '93ccf34aa61e513f27b5287437b68a4f176dfdca9b05a05de6a15aa0dcdd6205')
 
