@@ -1,0 +1,33 @@
+--- a/cups/dest.c
++++ b/cups/dest.c
+@@ -3574,8 +3574,10 @@
+     */
+ 
+     num_dests = _cupsGetDests(http, IPP_OP_CUPS_GET_PRINTERS, NULL, &dests, type, mask);
++#ifdef HAVE_DNSSD
+     data.num_local   = 0;
+     data.local_dests = NULL;
++#endif /* HAVE_DNSSD */
+ 
+     if (data.def_name[0])
+     {
+@@ -3603,7 +3605,9 @@
+       * Pass the list of local printers to the callback function...
+       */
+ 
++#ifdef HAVE_DNSSD
+       data.num_local = cupsCopyDest(dest, data.num_local, &data.local_dests);
++#endif /* HAVE_DNSSD */
+ 
+       if ((user_dest = cupsGetDest(dest->name, NULL, data.num_dests, data.dests)) != NULL)
+       {
+@@ -3978,7 +3982,9 @@
+   enum_finished:
+ 
+   cupsFreeDests(data.num_dests, data.dests);
++#ifdef HAVE_DNSSD
+   cupsFreeDests(data.num_local, data.local_dests);
++#endif /* HAVE_DNSSD */
+ 
+ #ifdef HAVE_DNSSD
+   cupsArrayDelete(data.devices);
