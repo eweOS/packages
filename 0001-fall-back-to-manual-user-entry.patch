@@ -1,0 +1,41 @@
+--- a/src/sysutil.rs
++++ b/src/sysutil.rs
+@@ -54,6 +54,25 @@
+ 
+ impl SysUtil {
+     pub async fn new(config: &Config) -> Result<Self, Box<dyn Error>> {
++        let (users, shells) = match Self::init_accounts_service().await {
++            Ok(result) => result,
++            Err(err) => {
++                warn!(
++                    "Couldn't fetch users from AccountsService, falling back to manual user entry: {err}"
++                );
++                (HashMap::new(), HashMap::new())
++            }
++        };
++
++        Ok(Self {
++            users,
++            shells,
++            sessions: Self::init_sessions(config).await?,
++        })
++    }
++
++    /// Get the list of users and their shells from AccountsService.
++    async fn init_accounts_service() -> Result<(UserMap, ShellMap), Box<dyn Error>> {
+         let dbus_system_conn = Connection::system().await?;
+         let accounts_proxy = AccountsServiceProxy::new(&dbus_system_conn).await?;
+ 
+@@ -90,11 +109,7 @@
+             shells.insert(user_name, shell);
+         }
+ 
+-        Ok(Self {
+-            users: usernames,
+-            shells,
+-            sessions: Self::init_sessions(config).await?,
+-        })
++        Ok((usernames, shells))
+     }
+ 
+     /// Get available X11 and Wayland sessions.
