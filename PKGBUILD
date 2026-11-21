@@ -2,12 +2,14 @@
 
 pkgbase="cups"
 pkgname=('libcups' 'cups')
-pkgver=2.4.19
-pkgrel=2
+pkgver=2.4.20
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND Zlib AND BSD-2-Clause')
 url="https://openprinting.github.io/cups/"
 makedepends=('acl' 'pam' 'libusb' 'libpaper' 'linux-headers')
+# 0001: Downstream, fix build without DNS-SD support; local_dests exists only in _cups_dnssd_data_t
+# TODO: It should be upstreamed!
 source=(https://github.com/OpenPrinting/cups/releases/download/v${pkgver}/cups-${pkgver}-source.tar.gz
         cups.logrotate
         cups.pam
@@ -16,15 +18,17 @@ source=(https://github.com/OpenPrinting/cups/releases/download/v${pkgver}/cups-$
         # bugfixes
         cups-freebind.patch
         guid.patch
+        0001-fix-build-without-dnssd.patch
         cupsd.service
 )
-sha256sums=('820984b12a67f98705785aae2dd1347fe0ac097828001d4583ff64574aed6389'
+sha256sums=('ab4d9cd7f3e58060091d2b24972223d6401675f11c49b65abf4f6ef31dea22ff'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '06173dfaea37bdd9b39b3e09aba98c34ae7112a2f521db45a688907d8848caa2'
             'f0b15192952c151b1843742c87850ff3a7d0f3ba5dd236ed16623ef908472ad7'
             '3385047b9ac8a7b13aeb8f0ca55d15f793ce7283516db0155fe28a67923c592d'
             '0bf6a75ba1b051771f155d9a5d36b307a6d40c6857d645b250fe93f3fb713474'
+            '9f2d42f94198e80c86f75824c53285d0fc6b1a622983a97dfbf2b270de509fbf'
             '4191ecf3810c1549b7557a4492f542bc170077cee4217486d462655126ef908c')
 
 prepare() {
@@ -41,6 +45,9 @@ prepare() {
 
   # FS#56818 - https://github.com/apple/cups/issues/5236
   patch -Np1 -i "${srcdir}"/guid.patch
+
+  # fix build failure in local printer tracking when DNS-SD support is disabled
+  patch -Np1 -i "${srcdir}"/0001-fix-build-without-dnssd.patch
 
   sed -i '1i #include<grp.h>' scheduler/util.c
 
