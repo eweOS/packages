@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=nextpnr
-pkgver=0.10
+pkgver=0.11.1
 pkgrel=1
 _testcommit=aea0b4bac59e07e0c5088a0966af73abdd8ab217
 pkgdesc='Portable FPGA place and route tool'
@@ -12,7 +12,7 @@ depends=(musl llvm-libs prjtrellis python boost-libs tcl)
 makedepends=(cmake boost eigen linux-headers git)
 source=("git+https://github.com/YosysHQ/nextpnr.git#tag=nextpnr-$pkgver"
 	"git+https://github.com/YosysHQ/nextpnr-tests#commit=$_testcommit")
-sha256sums=('b1c069ddc0a1c2a0858bf245cd444179494afa45cad8f3826a0b120589344bc1'
+sha256sums=('e96e09d0ba22349883b490a377c907d428a92118adffdc85ca68d0a796c3bbc3'
             '11cbfbb1add2d88ed386123e203f768a6e935b9195e336a9eb11c7605e1c4783')
 
 prepare() {
