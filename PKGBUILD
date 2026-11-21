@@ -34,26 +34,32 @@ depends=(llvm-libs
 makedepends=(extra-cmake-modules
              plasma-wayland-protocols
              qt6-base-devel)
+checkdepends=(dbus)
 groups=(plasma)
-# 0001: Downstream, fix build with WITH_X11=OFF
+# 0001: Downstream, support WITH_X11=OFF
 source=(
   https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz
   0001-guard-x11-integration.patch
 )
 sha256sums=('e32e074d79159f584c3098de550a2de46142049234602dffd50596c574816e5b'
-            'e8911ddef0315b890e9c19938976f3c8c787bfb81207d2f731459bd91fabcfce')
+            '742b7877d7d1ee8caf6e913c81b3d2f5c40857a9d7cb37a214a7e69fb9930722')
 
 prepare() {
   _patch_ "$pkgname-$pkgver"
 }
 
 build() {
-  # Autotests require KWindowInfo, which eweOS kwindowsystem does not provide.
   cmake -B build -S $pkgname-$pkgver \
-    -DBUILD_TESTING=OFF \
+    -DBUILD_TESTING=ON \
     -DBUILD_QT5=OFF \
     -DWITH_X11=OFF
   cmake --build build
+}
+
+check() {
+  QT_QPA_PLATFORM=offscreen QT_QPA_PLATFORMTHEME=kde \
+    QT_PLUGIN_PATH="$srcdir/build/bin" \
+    dbus-run-session -- ctest --test-dir build --output-on-failure
 }
 
 package() {
