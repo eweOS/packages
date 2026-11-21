@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=yosys
-pkgver=0.68
+pkgver=0.71
 _symfpu_commit=5d5e50867437
 pkgrel=1
 pkgdesc='An open framework for RTL synthesis tools'
@@ -15,7 +15,7 @@ checkdepends=(iverilog)
 source=("git+https://github.com/YosysHQ/yosys.git#tag=v$pkgver"
 	"git+https://github.com/YosysHQ/symfpu.git#commit=$_symfpu_commit"
 	"0001-Use-system-cxxopts.patch")
-sha256sums=('a5ac2cf10265bcb13dc177537a1a943312cac1a7d3d24ae881207d7a8e1c47fe'
+sha256sums=('ad7336def6c64981d4e939f0f5a2f421b0733c0392759d939c1d5e8c71dbc9a8'
             '028744806529ba94a76509979f1bd1781e36881c1abe3550f9358d743cf1b700'
             '6491ba9eb99eedc601af3236308ae239488fd25f1416e85a6ab51d88098a7937')
 
