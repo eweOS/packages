@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=libseccomp
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc='Enhanced seccomp library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,7 +12,7 @@ makedepends=('gperf')
 # 0001: Downstream, workaround missing "--pid" option of tail
 source=("https://github.com/seccomp/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
 	"0001-tests-Workaround-busybox-tail.patch")
-sha256sums=('501f66c667225d53791b97e1d7cf85ab764c297d04881f60f38f451c4b0ee1be'
+sha256sums=('6b845d352c6d7887d8d134c43d86850d40f5dcee11ad1675c18197ae4d869d42'
             '2dc7b4e067650185cc7654d7ffc147daec0d8134d2b0142500d6b43a75dfea71')
 
 prepare() {
