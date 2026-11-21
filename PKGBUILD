@@ -2,8 +2,8 @@
 
 _name=pyyaml
 pkgname=python-yaml
-pkgver=6.0.3
-pkgrel=2
+pkgver=6.0.4
+pkgrel=1
 pkgdesc='Python bindings for YAML, using fast libYAML library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/yaml/pyyaml'
@@ -22,7 +22,7 @@ makedepends=(
 checkdepends=(python-pytest)
 provides=(python-pyyaml)
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
-sha512sums=('a0da43e32d127409ad61b11dc1d733b2e9c743977b3d72c05c81fc2ab183b40bc284452b0874dbeae1a736e1cd4a34f0df641ceefd5e9df38b3e53155fc5f633')
+sha512sums=('201f0b4dc59293facd9563ae0d9ceed1d8c379c8b82eb5b2e6109376e5804d18dc0e4b98324b37b28c83959816f2e394f4bd17b73bea4f98f8ac26f056881b89')
  
 build() {
   cd $_name-$pkgver
