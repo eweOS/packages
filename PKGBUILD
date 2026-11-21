@@ -2,8 +2,8 @@
 
 pkgname=python-jsonschema
 _pyname=${pkgname#*-}
-pkgver=4.23.0
-pkgrel=2
+pkgver=4.26.0
+pkgrel=1
 pkgdesc='An implementation of the JSON Schema specification for Python'
 url='https://python-jsonschema.readthedocs.io/en/stable/'
 arch=(any)
@@ -24,7 +24,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel
 #		python-pip python-rfc3339-validator python-rfc3987
 #		python-twisted python-uri-template python-webcolors)
 source=("https://github.com/python-jsonschema/jsonschema/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aee82fe8f695fe1e227a51b774c3ae8c2bb256950651a9a92866c523b15042ce')
+sha256sums=('2f937f75e2d22fb9b74e22dca25ea3d88c328393567af99e3c898fdca5a0e253')
 
 build() {
 	cd "$_pyname-$pkgver"
