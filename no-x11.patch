@@ -1,8 +1,6 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 715719c8..ccbb5011 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -51,9 +51,6 @@ add_definitions(
+@@ -52,9 +52,6 @@
  include(LXQtTranslate)
  
  add_subdirectory(src)
@@ -12,28 +10,28 @@ index 715719c8..ccbb5011 100644
  if (WITH_INPUT)
      add_subdirectory(lxqt-config-input)
  endif()
-diff --git a/lxqt-config-appearance/CMakeLists.txt b/lxqt-config-appearance/CMakeLists.txt
-index de75065e..d508e7cb 100644
 --- a/lxqt-config-appearance/CMakeLists.txt
 +++ b/lxqt-config-appearance/CMakeLists.txt
-@@ -2,7 +2,6 @@ project(lxqt-config-appearance)
- 
- include_directories(
-     ${Qt6Gui_PRIVATE_INCLUDE_DIRS}
--    "${CMAKE_CURRENT_SOURCE_DIR}/../liblxqt-config-cursor"
+@@ -59,11 +59,6 @@
+     ${DESKTOP_FILES}
  )
  
- set(H_FILES
-@@ -76,7 +75,6 @@ target_link_libraries(${PROJECT_NAME}
-     Qt6::Widgets
-     Qt6::Xml
-     ${LIBRARIES}
--    lxqt-config-cursor
+-target_include_directories(lxqt-config-appearance
+-    PRIVATE
+-        "${CMAKE_CURRENT_SOURCE_DIR}/../liblxqt-config-cursor"
+-)
+-
+ target_link_libraries(lxqt-config-appearance
+     PRIVATE
+         Qt6::GuiPrivate
+@@ -71,7 +66,6 @@
+         Qt6::Widgets
+         Qt6::Xml
+         lxqt
+-        lxqt-config-cursor
  )
  
- set_target_properties("${PROJECT_NAME}"
-diff --git a/lxqt-config-appearance/main.cpp b/lxqt-config-appearance/main.cpp
-index 28a7a706..3b502025 100644
+ set_target_properties("lxqt-config-appearance"
 --- a/lxqt-config-appearance/main.cpp
 +++ b/lxqt-config-appearance/main.cpp
 @@ -40,8 +40,6 @@
@@ -45,7 +43,7 @@ index 28a7a706..3b502025 100644
  int main (int argc, char **argv)
  {
      LXQt::SingleApplication app(argc, argv);
-@@ -104,14 +102,6 @@ int main (int argc, char **argv)
+@@ -104,14 +102,6 @@
          dialog->enableButton(QDialogButtonBox::Apply, true);
      });
  
@@ -60,7 +58,7 @@ index 28a7a706..3b502025 100644
      /*** GTK Theme ***/
      GTKConfig* GTKPage = new GTKConfig(&mConfigAppearanceSettings, configOtherToolKits, dialog);
      dialog->addPage(GTKPage, QObject::tr("GTK Style"), QStringList() << QStringLiteral("gtk-preferences") << QStringLiteral("preferences-desktop"));
-@@ -128,7 +118,6 @@ int main (int argc, char **argv)
+@@ -128,7 +118,6 @@
              iconPage->applyIconTheme();
              themePage->applyLxqtTheme();
              fontsPage->updateQtFont();
@@ -68,3 +66,87 @@ index 28a7a706..3b502025 100644
              GTKPage->applyGTKStyle();
              stylePage->applyStyle(); // Cursor and font have to be set before style
              // disable Apply button after changes are applied
+--- a/lxqt-config-monitor/CMakeLists.txt
++++ b/lxqt-config-monitor/CMakeLists.txt
+@@ -1,5 +1,4 @@
+ find_package(KF6Screen ${KF6SCREEN_MINIMUM_VERSION} REQUIRED)
+-find_package(XCB REQUIRED COMPONENTS XCB RANDR)
+ find_package(Qt6Svg ${QT_MINIMUM_VERSION} REQUIRED)
+ find_package(Qt6SvgWidgets ${QT_MINIMUM_VERSION} REQUIRED)
+ 
+@@ -13,7 +12,6 @@
+     managesavedsettings.h
+     fastmenu.h
+     kscreenutils.h
+-    xcbbackend.h
+ )
+ 
+ set(SOURCES
+@@ -28,7 +26,6 @@
+     managesavedsettings.cpp
+     fastmenu.cpp
+     kscreenutils.cpp
+-    xcbbackend.cpp
+ )
+ 
+ set(UIS
+@@ -83,8 +80,6 @@
+     Qt6::Svg
+     Qt6::SvgWidgets
+     KF6::Screen
+-    XCB::XCB
+-    XCB::RANDR
+     lxqt
+ )
+ 
+--- a/lxqt-config-monitor/kscreenutils.cpp
++++ b/lxqt-config-monitor/kscreenutils.cpp
+@@ -1,6 +1,5 @@
+ #include "kscreenutils.h"
+ #include "timeoutdialog.h"
+-#include "xcbbackend.h"
+ 
+ #include <KScreen/Output>
+ #include <KScreen/Mode>
+@@ -10,25 +9,10 @@
+ #include <KScreen/SetConfigOperation>
+ #include <KScreen/EDID>
+ 
+-#include <QApplication>
+-#include <QTimer>
+-
+ #include <algorithm>
+ 
+-static bool isX11()
+-{
+-    return QGuiApplication::platformName() == QLatin1String("xcb");
+-}
+-
+-
+ void KScreenUtils::getConfig(std::function<void(KScreen::ConfigPtr)> callback)
+ {
+-    if (isX11()) {
+-        // Queued, as callers expect the result to arrive after they return.
+-        QTimer::singleShot(0, qApp, [callback] { callback(XcbBackend::readConfig()); });
+-        return;
+-    }
+-
+     // Not leaked: libkscreen deletes the operation itself after emitting finished().
+     auto *operation = new KScreen::GetConfigOperation();
+     QObject::connect(operation, &KScreen::GetConfigOperation::finished, [operation, callback] {
+@@ -39,13 +23,13 @@
+ 
+ bool KScreenUtils::setConfig(const KScreen::ConfigPtr &config)
+ {
+-    return isX11() ? XcbBackend::applyConfig(config) : KScreen::SetConfigOperation(config).exec();
++    return KScreen::SetConfigOperation(config).exec();
+ }
+ 
+ 
+ bool KScreenUtils::canApply(const KScreen::ConfigPtr &config)
+ {
+-    return isX11() ? XcbBackend::canApply(config) : KScreen::Config::canBeApplied(config);
++    return KScreen::Config::canBeApplied(config);
+ }
+ 
+ 
