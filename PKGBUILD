@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=mozjs
-pkgver=140.5.0
-pkgrel=3
+pkgver=153.7.0
+pkgrel=1
 pkgdesc="JavaScript interpreter and libraries - Version 128"
 url="https://spidermonkey.dev/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -32,7 +32,7 @@ source=(
   0001-fix-venv-activation.patch
   0001-Bug-1973994-mozjs-140.pc-does-not-contain-DXP_UNIX-o.patch
 )
-sha256sums=('832b7ef3e5f7a2430e0ba0b9000dab6fdd8f65bccff8bcf7eeb9ed16e6d310e2'
+sha256sums=('7f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0'
             'a76d1f0802ec486c9212f45541cab02aa1027e05d10ccc3becb68eadd762cc3e'
             '8f2d112e8e0e975174396f86ad675fd33da541130f5f1115e27a89322d361c63'
             'b5178a7b8a603b645cbae61467f3fa1fef6e9f34c90e4a22faf4ea2152a50fba')
