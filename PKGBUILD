@@ -11,12 +11,6 @@ makedepends=(perl zlib linux-headers)
 source=("https://github.com/openssl/openssl/releases/download/openssl-$pkgver/openssl-$pkgver.tar.gz")
 sha256sums=('a2157c2830efdec3788939b00c9b0638306d3f0bbb76dc4832ee503bb397df98')
 
-prepare()
-{
-  # fix riscv hwprobe
-  sed -i '1i #include <asm/unistd.h>' $pkgname-$pkgver/crypto/riscvcap.c
-}
-
 build()
 {
   case $CARCH in
