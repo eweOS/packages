@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gnome-keyring
-pkgver=50.0
+pkgver=51.1
 pkgrel=1
 pkgdesc="Stores passwords and encryption keys"
 url="https://gitlab.gnome.org/GNOME/gnome-keyring"
@@ -33,7 +33,7 @@ groups=(gnome)
 source=(
   "git+$url.git#tag=$pkgver"
 )
-sha256sums=('cee113eca1255f353187ea2052e303efc655f1663db0581f5d060fd26fc8331b')
+sha256sums=('6f9fad6f2f45a890f4a83fe808b6bab4afec1e287f1b222195ceb36d2319b61e')
         
 build() {
   local meson_options=(
