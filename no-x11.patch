@@ -1,0 +1,16 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 63502a7cf..eb1c07335 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -62,10 +62,6 @@ if (Qt6Gui_VERSION VERSION_GREATER_EQUAL "6.10.0")
+     find_package(Qt6GuiPrivate ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
+ endif()
+ 
+-if (UNIX AND NOT APPLE AND NOT HAIKU)
+-    set(HAVE_X11 TRUE)
+-endif()
+-
+ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
+     KCMUtils
+     NewStuff
+
