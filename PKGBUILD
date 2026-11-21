@@ -1,17 +1,18 @@
 # Maintainer: Eric Long <i@hack3r.moe>
 
 pkgname=atuin
-pkgver=18.13.6
-pkgrel=2
+pkgver=18.25.1
+pkgrel=1
 pkgdesc="Magical shell history"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://atuin.sh"
 license=(MIT)
-depends=(musl llvm-libs sqlite)
+depends=(musl llvm-libs sqlite openssl)
+checkdepends=(git tzdata)
 makedepends=(rust)
 optdepends=('blesh: bash integration')
 source=("https://github.com/atuinsh/atuin/archive/v$pkgver/atuin-$pkgver.tar.gz")
-sha256sums=('1d16c1d0f2a9ca104995feaf58a3a20476e729a52336e059247a2f232aeb0f5c')
+sha256sums=('44e3376136fc5786868121955adabc824ea7f2e5e0e51345a95100b3bd6d4c91')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -20,7 +21,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  LIBSQLITE3_SYS_USE_PKG_CONFIG=1 cargo build --release --frozen --all-features
+  LIBSQLITE3_SYS_USE_PKG_CONFIG=1 cargo build --release --frozen
   mkdir completions/
   for sh in bash fish zsh; do
     target/release/$pkgname gen-completions -s $sh -o completions/
@@ -29,9 +30,9 @@ build() {
 
 check() {
   cd $pkgname-$pkgver
-  # skipping atuin sync tests in binary crates, as atuin sync is an online
-  # feature whose test requires complicated server deployment
-  LIBSQLITE3_SYS_USE_PKG_CONFIG=1 cargo test --frozen --all-features --lib
+  # Sync tests need a deployed server.
+  # Limit parallelism: the capture-lock test uses 200 ms timeouts.
+  LIBSQLITE3_SYS_USE_PKG_CONFIG=1 cargo test --frozen --lib -- --test-threads=4
 }
 
 package() {
