@@ -1,0 +1,423 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -382,6 +382,9 @@
+ pkg_check_modules(PipeWire IMPORTED_TARGET libpipewire-0.3>=1.4.0)
+ add_feature_info(PipeWire PipeWire_FOUND "Required for Wayland screencasting")
+ 
++pkg_check_modules(libseat IMPORTED_TARGET libseat)
++add_feature_info(libseat libseat_FOUND "Required for seatd session backend")
++
+ if (KWIN_BUILD_NOTIFICATIONS)
+     find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS Notifications)
+ endif()
+@@ -408,6 +411,7 @@
+ 
+ cmake_dependent_option(KWIN_BUILD_ACTIVITIES "Enable building of KWin with kactivities support" ON "PlasmaActivities_FOUND" OFF)
+ cmake_dependent_option(KWIN_BUILD_EIS "Enable building KWin with libeis support" ON "Libeis-1.0_FOUND" OFF)
++cmake_dependent_option(KWIN_BUILD_SEATD "Enable building of KWin with libseat support" ON "libseat_FOUND" OFF)
+ cmake_dependent_option(KWIN_BUILD_QACCESSIBILITYCLIENT "Enable building KWin with libqaccessibilitysupport" ON "QAccessibilityClient6_FOUND" OFF)
+ cmake_dependent_option(KWIN_BUILD_GAMECONTROLLER "Enable building of KWin Game Controller functionality" ON "libevdev_FOUND" OFF)
+ 
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -295,6 +295,13 @@
+     target_link_libraries(kwin PRIVATE K::KGlobalAccelD)
+ endif()
+ 
++if (KWIN_BUILD_SEATD)
++    target_sources(kwin PRIVATE
++        core/session_seatd.cpp
++    )
++    target_link_libraries(kwin PRIVATE PkgConfig::libseat)
++endif()
++
+ if (TARGET PkgConfig::libsystemd)
+     target_link_libraries(kwin PRIVATE PkgConfig::libsystemd)
+ endif()
+@@ -481,6 +488,10 @@
+ 
+ if (KWIN_BUILD_X11)
+     install(FILES atoms.h DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin COMPONENT Devel)
++endif()
++
++if (KWIN_BUILD_SEATD)
++    install(FILES core/session_seatd.h DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin/core COMPONENT Devel)
+ endif()
+ 
+ install(FILES
+--- a/src/config-kwin.h.cmake
++++ b/src/config-kwin.h.cmake
+@@ -14,6 +14,7 @@
+ #cmakedefine01 KWIN_BUILD_ACTIVITIES
+ #cmakedefine01 KWIN_BUILD_GLOBALSHORTCUTS
+ #cmakedefine01 KWIN_BUILD_X11
++#cmakedefine01 KWIN_BUILD_SEATD
+ #cmakedefine01 KWIN_BUILD_QACCESSIBILITYCLIENT
+ constexpr QLatin1StringView KWIN_CONFIG("kwinrc");
+ constexpr QLatin1StringView KWIN_VERSION_STRING("${PROJECT_VERSION}");
+--- a/src/core/session.cpp
++++ b/src/core/session.cpp
+@@ -8,6 +8,9 @@
+ #include "session_consolekit.h"
+ #include "session_logind.h"
+ #include "session_noop.h"
++#if KWIN_BUILD_SEATD
++#include "session_seatd.h"
++#endif
+ 
+ namespace KWin
+ {
+@@ -19,6 +22,9 @@
+ } s_availableSessions[] = {
+     {Session::Type::Logind, &LogindSession::create},
+     {Session::Type::ConsoleKit, &ConsoleKitSession::create},
++#if KWIN_BUILD_SEATD
++    {Session::Type::Seatd, &SeatdSession::create},
++#endif
+     {Session::Type::Noop, &NoopSession::create},
+ };
+ 
+--- a/src/core/session.h
++++ b/src/core/session.h
+@@ -38,6 +38,9 @@
+         Noop,
+         ConsoleKit,
+         Logind,
++#if KWIN_BUILD_SEATD
++        Seatd,
++#endif
+     };
+ 
+     /**
+--- /dev/null
++++ b/src/core/session_seatd.cpp
+@@ -0,0 +1,261 @@
++/*
++    SPDX-FileCopyrightText: 2025 Yukari Chiba <i@0x7f.cc>
++
++    SPDX-License-Identifier: GPL-2.0-or-later
++*/
++
++#include "session_seatd.h"
++
++#include "utils/common.h"
++
++#include <QMutexLocker>
++#include <QSocketNotifier>
++#include <QString>
++
++#include <cerrno>
++#include <fcntl.h>
++#include <sys/stat.h>
++#include <unistd.h>
++
++extern "C" {
++#include <libseat.h>
++}
++
++namespace KWin
++{
++
++void SeatdSession::onEnableSeat(struct libseat *seat, void *userdata)
++{
++    Q_UNUSED(seat)
++    if (auto session = static_cast<SeatdSession *>(userdata)) {
++        session->handleEnableSeat();
++    }
++}
++
++void SeatdSession::onDisableSeat(struct libseat *seat, void *userdata)
++{
++    Q_UNUSED(seat)
++    if (auto session = static_cast<SeatdSession *>(userdata)) {
++        session->handleDisableSeat();
++    }
++}
++
++std::unique_ptr<SeatdSession> SeatdSession::create()
++{
++    auto session = std::unique_ptr<SeatdSession>(new SeatdSession(nullptr));
++
++    static const struct libseat_seat_listener listener = {
++        .enable_seat = &SeatdSession::onEnableSeat,
++        .disable_seat = &SeatdSession::onDisableSeat,
++    };
++
++    struct libseat *seat = libseat_open_seat(&listener, session.get());
++    if (!seat) {
++        qCWarning(KWIN_CORE) << "Failed to open libseat seat:" << strerror(errno);
++        return nullptr;
++    }
++
++    session->m_seat = seat;
++
++    if (!session->initialize()) {
++        return nullptr;
++    }
++
++    return session;
++}
++
++SeatdSession::SeatdSession(struct libseat *seat)
++    : m_seat(seat)
++{
++}
++
++bool SeatdSession::initialize()
++{
++    const int fd = libseat_get_fd(m_seat);
++    if (fd < 0) {
++        qCWarning(KWIN_CORE) << "Failed to get libseat fd:" << strerror(errno);
++        return false;
++    }
++
++    m_notifier = new QSocketNotifier(fd, QSocketNotifier::Read, this);
++    connect(m_notifier, &QSocketNotifier::activated, this, &SeatdSession::handleSeatdEvents);
++
++    {
++        QMutexLocker locker(&m_mutex);
++        while (libseat_dispatch(m_seat, 0) > 0) {
++        }
++    }
++    processPendingEvents();
++
++    return true;
++}
++
++SeatdSession::~SeatdSession()
++{
++    QMutexLocker locker(&m_mutex);
++    if (m_seat) {
++        libseat_close_seat(m_seat);
++    }
++}
++
++bool SeatdSession::isActive() const
++{
++    QMutexLocker locker(&m_mutex);
++    return m_isActive;
++}
++
++Session::Capabilities SeatdSession::capabilities() const
++{
++    return Capability::SwitchTerminal;
++}
++
++QString SeatdSession::seat() const
++{
++    QMutexLocker locker(&m_mutex);
++    const char *name = libseat_seat_name(m_seat);
++    return name ? QString::fromUtf8(name) : QStringLiteral("seat0");
++}
++
++uint SeatdSession::terminal() const
++{
++    return 0;
++}
++
++std::expected<int, Session::Error> SeatdSession::openRestricted(const QString &fileName)
++{
++    QMutexLocker locker(&m_mutex);
++    if (!m_isActive) {
++        errno = EAGAIN;
++        qCWarning(KWIN_CORE) << "Cannot open restricted device when session is not active.";
++        return -1;
++    }
++
++    const QByteArray path = fileName.toUtf8();
++    int fd = -1;
++    const int deviceId = libseat_open_device(m_seat, path.constData(), &fd);
++    if (deviceId < 0) {
++        qCWarning(KWIN_CORE) << "libseat_open_device for" << fileName << "failed:" << strerror(errno);
++        // Some seatd deployments cannot re-open devices after a session switch.
++        return open(path.constData(), O_RDWR | O_CLOEXEC);
++    }
++
++    const int flags = fcntl(fd, F_GETFD);
++    if (flags != -1) {
++        fcntl(fd, F_SETFD, flags | FD_CLOEXEC);
++    } else {
++        qCWarning(KWIN_CORE) << "fcntl(F_GETFD) failed for new device fd:" << strerror(errno);
++    }
++
++    m_fileDescriptors.insert(fd, deviceId);
++    return fd;
++}
++
++void SeatdSession::closeRestricted(int fileDescriptor)
++{
++    QMutexLocker locker(&m_mutex);
++    auto it = m_fileDescriptors.find(fileDescriptor);
++    if (it != m_fileDescriptors.end()) {
++        libseat_close_device(m_seat, it.value());
++        m_fileDescriptors.erase(it);
++        ::close(fileDescriptor);
++    } else {
++        qCWarning(KWIN_CORE) << "Closing unknown restricted fd" << fileDescriptor;
++        ::close(fileDescriptor);
++    }
++}
++
++void SeatdSession::switchTo(uint terminal)
++{
++    QMutexLocker locker(&m_mutex);
++    if (libseat_switch_session(m_seat, terminal) != 0) {
++        qCWarning(KWIN_CORE) << "libseat_switch_session failed:" << strerror(errno);
++    }
++}
++
++std::shared_ptr<FileDescriptor> SeatdSession::delaySleep(const QString &reason)
++{
++    Q_UNUSED(reason)
++    return nullptr;
++}
++
++void SeatdSession::handleSeatdEvents()
++{
++    {
++        QMutexLocker locker(&m_mutex);
++        const int ret = libseat_dispatch(m_seat, 0);
++        if (ret == -1 && errno != EAGAIN) {
++            qCWarning(KWIN_CORE) << "libseat_dispatch failed:" << strerror(errno);
++            m_notifier->setEnabled(false);
++        }
++    }
++    processPendingEvents();
++}
++
++void SeatdSession::handleEnableSeat()
++{
++    QMutexLocker locker(&m_mutex);
++    if (m_isActive) {
++        return;
++    }
++
++    qCDebug(KWIN_CORE) << "Seatd session enabled.";
++    m_isActive = true;
++
++    PendingEvent event{true, {}};
++    for (auto it = m_fileDescriptors.constBegin(); it != m_fileDescriptors.constEnd(); ++it) {
++        struct stat st;
++        if (fstat(it.key(), &st) == 0) {
++            event.devices.append(st.st_rdev);
++        }
++    }
++    m_pendingEvents.append(event);
++}
++
++void SeatdSession::handleDisableSeat()
++{
++    QMutexLocker locker(&m_mutex);
++    if (m_isActive) {
++        qCDebug(KWIN_CORE) << "Seatd session disabled.";
++        m_isActive = false;
++
++        PendingEvent event{false, {}};
++        for (auto it = m_fileDescriptors.constBegin(); it != m_fileDescriptors.constEnd(); ++it) {
++            struct stat st;
++            if (fstat(it.key(), &st) == 0) {
++                event.devices.append(st.st_rdev);
++            }
++        }
++        m_pendingEvents.append(event);
++    }
++
++    if (libseat_disable_seat(m_seat) != 0) {
++        qCWarning(KWIN_CORE) << "libseat_disable_seat failed:" << strerror(errno);
++    }
++}
++
++void SeatdSession::processPendingEvents()
++{
++    QList<PendingEvent> events;
++    {
++        QMutexLocker locker(&m_mutex);
++        events.swap(m_pendingEvents);
++    }
++
++    for (const PendingEvent &event : events) {
++        if (event.enabled) {
++            for (dev_t device : event.devices) {
++                Q_EMIT deviceResumed(device);
++            }
++            Q_EMIT activeChanged(true);
++        } else {
++            for (dev_t device : event.devices) {
++                Q_EMIT devicePaused(device);
++            }
++            Q_EMIT activeChanged(false);
++        }
++    }
++}
++
++} // namespace KWin
++
++#include "moc_session_seatd.cpp"
+--- /dev/null
++++ b/src/core/session_seatd.h
+@@ -0,0 +1,65 @@
++/*
++    SPDX-FileCopyrightText: 2025 Yukari Chiba <i@0x7f.cc>
++
++    SPDX-License-Identifier: GPL-2.0-or-later
++*/
++
++#pragma once
++
++#include "session.h"
++
++#include <QList>
++#include <QMap>
++#include <QRecursiveMutex>
++
++struct libseat;
++class QSocketNotifier;
++
++namespace KWin
++{
++
++class SeatdSession : public Session
++{
++    Q_OBJECT
++
++public:
++    static std::unique_ptr<SeatdSession> create();
++    ~SeatdSession() override;
++
++    bool isActive() const override;
++    Capabilities capabilities() const override;
++    QString seat() const override;
++    uint terminal() const override;
++    std::expected<int, Session::Error> openRestricted(const QString &fileName) override;
++    void closeRestricted(int fileDescriptor) override;
++    void switchTo(uint terminal) override;
++    std::shared_ptr<FileDescriptor> delaySleep(const QString &reason) override;
++
++private Q_SLOTS:
++    void handleSeatdEvents();
++
++private:
++    struct PendingEvent {
++        bool enabled;
++        QList<dev_t> devices;
++    };
++
++    explicit SeatdSession(struct libseat *seat);
++    bool initialize();
++
++    void handleEnableSeat();
++    void handleDisableSeat();
++    void processPendingEvents();
++
++    static void onEnableSeat(struct libseat *seat, void *userdata);
++    static void onDisableSeat(struct libseat *seat, void *userdata);
++
++    struct libseat *m_seat = nullptr;
++    QSocketNotifier *m_notifier = nullptr;
++    mutable QRecursiveMutex m_mutex;
++    bool m_isActive = false;
++    QMap<int, int> m_fileDescriptors;
++    QList<PendingEvent> m_pendingEvents;
++};
++
++} // namespace KWin
