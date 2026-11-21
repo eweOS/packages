@@ -5,7 +5,7 @@ pkgname=(
   glycin
   glycin-gtk4
 )
-pkgver=2.0.7
+pkgver=2.2.6
 pkgrel=1
 pkgdesc="Sandboxed and extendable image decoding"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -44,7 +44,7 @@ source=(
   "git+https://gitlab.gnome.org/sophie-h/test-images.git"
   0001-fix-setup-integration-test-regex-for-keyfile-spaces.patch
 )
-sha256sums=('d3388fe6f1a1b78866c828400effd1e8d50989e8eba1814edffd2edfb5bf7e30'
+sha256sums=('742befec8fa092f00bdd8632b49732a2b3891a7e48ac19e3e6ddd8f977975936'
             'SKIP'
             '1284a1ace2b44e89576a3dfabdf0bbd6fee50047d0c41f3d64d9e8b016787505')
 
