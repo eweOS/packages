@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=weston
-pkgver=16.0.0
+pkgver=16.0.2
 pkgrel=1
 pkgdesc='Reference implementation of a Wayland compositor'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -24,7 +24,7 @@ optdepends=('xorg-xwayland: support x11 backend'
             'lua: support lua shell')
 source=("https://gitlab.freedesktop.org/wayland/${pkgname}/-/releases/$pkgver/downloads/${pkgname}-$pkgver.tar.xz"
 	"0001-Change-lua-dependency-name.patch")
-sha256sums=('dfb32e2bccabda957b94a8d0ec6075acd18c71c87ebc543ee3e618d294ca0f7f'
+sha256sums=('49dd87d18cb229384264d2f69cb5a51f14f61a111e9227bfedb91b3ca8c39643'
             '7c25fbd730481bd4c8dec18f42fc04883c1d335bd40bbe7e7305603c31721bdc')
 
 _features=(
