@@ -41,3 +41,26 @@
  };
  
  #endif // KDEPLATFORMTHEME_H
+--- a/qt6/autotests/kdeplatformtheme_unittest.cpp
++++ b/qt6/autotests/kdeplatformtheme_unittest.cpp
+@@ -28,7 +28,9 @@
+ #include <QTimer>
+ 
+ #include <KIconTheme>
++#if WITH_X11
+ #include <KWindowInfo>
++#endif
+ #include <kiconloader.h>
+ 
+ static void prepareEnvironment()
+@@ -295,8 +297,10 @@
+                 return w->inherits("QShapedPixmapWindow");
+             });
+             if (it != windows.constEnd()) {
++#if WITH_X11
+                 KWindowInfo info((*it)->winId(), NET::WMWindowType);
+                 succeeded = info.windowType(NET::DNDIconMask) == NET::DNDIcon;
++#endif
+             }
+             QTest::keyClick(windows.first(), Qt::Key_Escape);
+         });
