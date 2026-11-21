@@ -1,0 +1,47 @@
+--- a/tests/cli/nvme_top_test.py
++++ b/tests/cli/nvme_top_test.py
+@@ -21,6 +21,7 @@
+ import struct
+ import subprocess
+ import sys
++import tarfile
+ import tempfile
+ import termios
+ import threading
+@@ -92,10 +93,10 @@
+ 
+ 
+ def extract(tarball: str, dest: str) -> None:
+-    # tar, as this script may run under valgrind, which makes the tarfile
+-    # module take half a minute
+-    subprocess.run(["tar", "-xJf", os.path.join(DATA, tarball), "-C", dest],
+-                   check=True)
++    # bsdtar rejects the self-referential hardlinks in these fixtures, so
++    # use Python's tarfile instead.
++    with tarfile.open(os.path.join(DATA, tarball), "r:xz") as archive:
++        archive.extractall(dest, filter="fully_trusted")
+ 
+ 
+ class TestTop(unittest.TestCase):
+--- a/tests/cli/nvme_print_test.py
++++ b/tests/cli/nvme_print_test.py
+@@ -24,7 +24,7 @@
+ import os
+ import random
+ import struct
+-import subprocess
++import tarfile
+ import unittest
+ from pathlib import Path
+ 
+@@ -253,8 +253,8 @@
+         for tree in _SYSFS_TREES:
+             self.sysfs_dir = os.path.join(self.tmp, tree.split('.')[0])
+             os.mkdir(self.sysfs_dir)
+-            subprocess.run(['tar', 'xJf', _SYSFS_DATA / tree,
+-                            '-C', self.sysfs_dir], check=True)
++            with tarfile.open(_SYSFS_DATA / tree, 'r:xz') as archive:
++                archive.extractall(self.sysfs_dir, filter='fully_trusted')
+             for cmd in _LIST:
+                 for fmt in _LIST_FORMATS:
+                     with self.subTest(tree=tree, cmd=' '.join(cmd + fmt)):
