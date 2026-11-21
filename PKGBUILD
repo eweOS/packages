@@ -2,11 +2,11 @@
 
 pkgname=openssl
 pkgver=3.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A toolkit for the TLS and SSL protocols'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.openssl.org'
-license=(BSD)
+license=(Apache-2.0)
 makedepends=(perl zlib linux-headers)
 source=("https://github.com/openssl/openssl/releases/download/openssl-$pkgver/openssl-$pkgver.tar.gz")
 sha256sums=('a2157c2830efdec3788939b00c9b0638306d3f0bbb76dc4832ee503bb397df98')
