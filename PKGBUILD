@@ -1,16 +1,15 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=nspr
-pkgver=4.39
+pkgver=4.41
 pkgrel=1
 pkgdesc="Netscape Portable Runtime"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSPR"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MPL-2.0)
-makedepends=(mercurial autoconf)
-_revision=9bee7f5d1af535aae05d7511fade18462e2fcab2
-source=("hg+https://hg.mozilla.org/projects/nspr#revision=$_revision")
-sha256sums=('2a8157ca62b6530792249ca28c614622be80a4594aa02ae8817083b0df861126')
+makedepends=(git autoconf)
+source=("git+https://github.com/mozilla/nspr#tag=NSPR_${pkgver//./_}_RTM")
+sha256sums=('81360861fcd1a80a933da6e0a63ff8fe947bd26008a2e34a14245836c4c61e88')
 
 prepare() {
   cd nspr
@@ -36,6 +35,12 @@ build() {
     SH_NOW="${SOURCE_DATE_EPOCH}000000"
     SH_DATE="$(date --utc --date="@$SOURCE_DATE_EPOCH" '+%Y-%m-%d %T')"
   }
+  make -C pr/tests
+}
+
+check() {
+  cd nspr
+  make -C pr/tests runtests
 }
 
 package() {
