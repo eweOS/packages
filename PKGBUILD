@@ -4,8 +4,8 @@
 
 _name=pmix
 pkgname=openpmix
-pkgver=6.0.0
-pkgrel=2
+pkgver=6.1.0
+pkgrel=1
 oac_commit=dfff67569fb72dbf8d73a1dcf74d091dad93f71b
 pkgdesc="Extended version of the PMI standard"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -19,7 +19,7 @@ backup=(etc/$pkgname/pmix-mca-params.conf)
 options=(!lto)
 source=("https://github.com/$pkgname/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 	"https://github.com/open-mpi/oac/archive/$oac_commit.tar.gz")
-sha512sums=('23d3a9e9cbd7a659fa2c349aa32f2e40dfaa3f52a6c73969c17ce701a81e12bba2662e38f696f7b98747425e4a851c6bdc7c0f5a7afffa3993ce21a08fb87fad'
+sha512sums=('7821f5e099e27c286da0091332dc0fa23ab453fec258d6aabf339391968601a28f9bee36505b4130ba1053c3486e81ff3b79b590aa0b102cad977a39edc56a8a'
             'ea8fcf8bd9ea8b7a2bbe6271942aa921362aebf998a0d5f07e41ec21f2d7d6ed8397899d332355822a305ba2fe3109a97c1c3869ba2c355d9a4331ba1ebcd824')
 
 prepare()
