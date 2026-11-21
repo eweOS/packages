@@ -2,8 +2,8 @@
 # Contributor: Julian Droske <juliandroske@outlook.com>
 
 pkgname=libplasma
-pkgver=6.5.5
-pkgrel=4
+pkgver=6.8.3
+pkgrel=1
 pkgdesc='Plasma library and runtime components'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://kde.org/plasma-desktop/'
@@ -32,13 +32,17 @@ depends=(plasma-activities
 makedepends=(extra-cmake-modules
              plasma-wayland-protocols
 	     qt6-base-devel
-             qt6-tools)
+             qt6-tools
+             wayland-protocols)
 conflicts=(plasma-framework)
 replaces=(plasma-framework)
 groups=(plasma)
-source=(https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz no-x11.patch)
-sha256sums=('7d88f9bd0f90b90f4d2290cd8fa0f37e7af3810a0ed58c7d226a02838ab8a71a'
-            'f64601c4cd8587c55418b9b2758ab41cf1e2af1867f4465dfb937d315b3688a1')
+# 0001: Backport, remove stale KWindowInfo include dropped from KF6 kwindowsystem
+# https://invent.kde.org/plasma/libplasma/-/commit/39ba1c0ff589cc13165be5488f2da53fd510f91d
+source=(https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz
+        0001-remove-unused-KWindowInfo-include.patch)
+sha256sums=('76f081f2d96c7dccf1f29fa0a301572d0115b0c5bec1b32ede0fea4a45c254c4'
+            '49c59fba859296ff33fc866de2f40cc653eaa5cef6209b05a5fd7dc95113836b')
 
 prepare() {
   _patch_ $pkgname-$pkgver
@@ -46,9 +50,7 @@ prepare() {
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
-    -DBUILD_TESTING=OFF \
-    -DBUILD_QCH=OFF \
-    -DWITHOUT_X11=ON
+    -DBUILD_TESTING=OFF
   cmake --build build
 }
 
