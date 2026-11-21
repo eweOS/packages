@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=baloo-widgets
-pkgver=25.08.0
-pkgrel=2
+pkgver=26.08.3
+pkgrel=1
 pkgdesc='Widgets for Baloo'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://www.kde.org/'
@@ -21,7 +21,7 @@ depends=(llvm-libs
 makedepends=(extra-cmake-modules
              kdoctools)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz)
-sha256sums=('c77e3a761db3cfc13c96a1436bf6d733965142bad30e89001c979119bb8ebb24')
+sha256sums=('7274daae2ccfac64f79752443ee797d80e550f33beabebd5ed93bcc989a56f53')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
