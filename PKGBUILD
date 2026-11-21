@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gjs
-pkgver=1.88.1
+pkgver=1.90.1
 pkgrel=1
 pkgdesc="Javascript Bindings for GNOME"
 url="https://wiki.gnome.org/Projects/Gjs"
@@ -31,7 +31,7 @@ checkdepends=(
 provides=(libgjs.so)
 source=("git+https://gitlab.gnome.org/GNOME/gjs.git#tag=$pkgver"
         "git+https://gitlab.gnome.org/GNOME/gobject-introspection-tests.git")
-sha256sums=('afd8118c108fe8b46690edd80a9b180f2cac88a9beb03eb73f91b89d0d37b8f2'
+sha256sums=('d18eca65fa5cb5f0439a7f09395dce40090c1328d630e7c1acfe8b94ad26af6d'
             'SKIP')
 
 prepare() {
