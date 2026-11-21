@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=appstream-glib
-pkgver=0.8.3
-pkgrel=4
+pkgver=0.8.4
+pkgrel=1
 pkgdesc="Objects and methods for reading and writing AppStream metadata"
 url="https://people.freedesktop.org/~hughsient/appstream-glib/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -33,7 +33,7 @@ provides=(
   libappstream-glib.so
 )
 source=("git+https://github.com/hughsie/appstream-glib#tag=appstream_glib_${pkgver//./_}")
-sha256sums=('SKIP')
+sha256sums=('1bbb1b2ea5ccdacb6c74cc0399d37461b1a08b83e6b1def1dfe2f2de4763bad1')
 
 build() {
   local meson_options=(
