@@ -1,0 +1,979 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 416ca65..d6f376c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -131,7 +131,6 @@ set_package_properties(QALCULATE PROPERTIES
+ pkg_check_modules(DBus dbus-1 REQUIRED IMPORTED_TARGET)
+ 
+ find_package(KWinDBusInterface CONFIG REQUIRED)
+-find_package(ScreenSaverDBusInterface CONFIG REQUIRED)
+ 
+ # Used in kcm_autostart
+ pkg_check_modules(SYSTEMD "systemd")
+@@ -452,8 +451,6 @@ if(CMAKE_SYSTEM_NAME MATCHES FreeBSD)
+ add_subdirectory(solidautoeject)
+ endif()
+ 
+-ecm_optional_add_subdirectory(xembed-sni-proxy)
+-
+ if (WITH_X11)
+     #TODO port away from X11
+     ecm_optional_add_subdirectory(gmenu-dbusmenu-proxy)
+diff --git a/applets/kicker/dashboardwindow.cpp b/applets/kicker/dashboardwindow.cpp
+index ee8fe9a..42d8ebf 100644
+--- a/applets/kicker/dashboardwindow.cpp
++++ b/applets/kicker/dashboardwindow.cpp
+@@ -12,7 +12,6 @@
+ 
+ #include <KWindowEffects>
+ #include <KWindowSystem>
+-#include <KX11Extras>
+ 
+ #include <PlasmaQuick/PlasmaShellWaylandIntegration>
+ 
+@@ -117,9 +116,6 @@ void DashboardWindow::toggle()
+         close();
+     } else {
+         showFullScreen();
+-        if (KWindowSystem::isPlatformX11()) {
+-            KX11Extras::forceActiveWindow(winId());
+-        }
+     }
+ }
+ 
+@@ -129,9 +125,6 @@ bool DashboardWindow::event(QEvent *event)
+         const QPlatformSurfaceEvent *pSEvent = static_cast<QPlatformSurfaceEvent *>(event);
+ 
+         if (pSEvent->surfaceEventType() == QPlatformSurfaceEvent::SurfaceCreated) {
+-            if (KWindowSystem::isPlatformX11()) {
+-                KX11Extras::setState(winId(), NET::SkipTaskbar | NET::SkipPager | NET::SkipSwitcher);
+-            }
+         }
+     } else if (event->type() == QEvent::Show) {
+         updateTheme();
+@@ -143,8 +136,6 @@ bool DashboardWindow::event(QEvent *event)
+         if (m_mainItem) {
+             m_mainItem->setVisible(false);
+         }
+-    } else if (event->type() == QEvent::FocusOut && KWindowSystem::isPlatformX11() && isVisible()) {
+-        KX11Extras::forceActiveWindow(winId());
+     }
+ 
+     return QQuickWindow::event(event);
+diff --git a/applets/kicker/windowsystem.cpp b/applets/kicker/windowsystem.cpp
+index a805f4e..76bff40 100644
+--- a/applets/kicker/windowsystem.cpp
++++ b/applets/kicker/windowsystem.cpp
+@@ -9,7 +9,6 @@
+ #include <QQuickItem>
+ 
+ #include <KWindowSystem>
+-#include <KX11Extras>
+ 
+ WindowSystem::WindowSystem(QObject *parent)
+     : QObject(parent)
+@@ -31,9 +30,6 @@ bool WindowSystem::eventFilter(QObject *watched, QEvent *event)
+ void WindowSystem::forceActive(QQuickItem *item)
+ {
+     if (item) {
+-        if (auto window = item->window(); KWindowSystem::isPlatformX11() && window) {
+-            KX11Extras::forceActiveWindow(window->winId());
+-        }
+     }
+ }
+ 
+diff --git a/applets/notifications/notificationapplet.cpp b/applets/notifications/notificationapplet.cpp
+index 1dffc64..a345f3b 100644
+--- a/applets/notifications/notificationapplet.cpp
++++ b/applets/notifications/notificationapplet.cpp
+@@ -12,8 +12,6 @@
+ #include <QQuickWindow>
+ #include <QScreen>
+ 
+-#include <KX11Extras>
+-
+ #include <Plasma/Containment>
+ #include <PlasmaQuick/AppletQuickItem>
+ #include <PlasmaQuick/Dialog>
+@@ -95,9 +93,6 @@ bool NotificationApplet::isPrimaryScreen(const QRect &rect) const
+ 
+ void NotificationApplet::forceActivateWindow(QWindow *window)
+ {
+-    if (window && window->winId()) {
+-        KX11Extras::forceActiveWindow(window->winId());
+-    }
+ }
+ 
+ K_PLUGIN_CLASS_WITH_JSON(NotificationApplet, "metadata.json")
+diff --git a/applets/notifications/notificationwindow.cpp b/applets/notifications/notificationwindow.cpp
+index 6126577..d3961bb 100644
+--- a/applets/notifications/notificationwindow.cpp
++++ b/applets/notifications/notificationwindow.cpp
+@@ -6,7 +6,6 @@
+ #include "notificationwindow.h"
+ 
+ #include <KWindowSystem>
+-#include <KX11Extras>
+ #include <PlasmaQuick/PlasmaShellWaylandIntegration>
+ 
+ NotificationWindow::NotificationWindow()
+@@ -14,11 +13,6 @@ NotificationWindow::NotificationWindow()
+ {
+     PlasmaShellWaylandIntegration::get(this)->setRole(QtWayland::org_kde_plasma_surface::role_notification);
+     PlasmaShellWaylandIntegration::get(this)->setTakesFocus(false);
+-
+-    if (KWindowSystem::isPlatformX11()) {
+-        KX11Extras::setOnAllDesktops(winId(), true);
+-        KX11Extras::setType(winId(), NET::Notification);
+-    }
+ }
+ 
+ NotificationWindow::~NotificationWindow() = default;
+@@ -56,10 +50,6 @@ void NotificationWindow::setIsCritical(bool critical)
+     auto role = critical ? QtWayland::org_kde_plasma_surface::role_criticalnotification : QtWayland::org_kde_plasma_surface::role_notification;
+     PlasmaShellWaylandIntegration::get(this)->setRole(role);
+ 
+-    if (KWindowSystem::isPlatformX11()) {
+-        KX11Extras::setType(winId(), critical ? NET::CriticalNotification : NET::Notification);
+-    }
+-
+     Q_EMIT isCriticalChanged();
+ }
+ 
+diff --git a/appmenu/appmenu.h b/appmenu/appmenu.h
+index 76447b2..965763f 100644
+--- a/appmenu/appmenu.h
++++ b/appmenu/appmenu.h
+@@ -9,7 +9,7 @@
+ #pragma once
+ 
+ #include <config-X11.h>
+-#ifdef HAVE_X11
++#if HAVE_X11
+ #include <xcb/xcb.h>
+ #endif
+ 
+@@ -79,7 +79,7 @@ private:
+     QDBusServiceWatcher *m_menuViewWatcher;
+     QPointer<VerticalMenu> m_menu;
+ 
+-#ifdef HAVE_X11
++#if HAVE_X11
+     xcb_connection_t *m_xcbConn = nullptr;
+ #endif
+ };
+diff --git a/appmenu/menuimporter.cpp b/appmenu/menuimporter.cpp
+index 87d8d8c..ed378dd 100644
+--- a/appmenu/menuimporter.cpp
++++ b/appmenu/menuimporter.cpp
+@@ -13,7 +13,6 @@
+ #include <QDBusMessage>
+ #include <QDBusServiceWatcher>
+ 
+-#include <KWindowInfo>
+ #include <KWindowSystem>
+ 
+ static constexpr QLatin1StringView DBUS_SERVICE("com.canonical.AppMenu.Registrar");
+@@ -50,18 +49,6 @@ void MenuImporter::RegisterWindow(WId id, const QDBusObjectPath &path)
+     if (path.path().isEmpty()) // prevent bad dbusmenu usage
+         return;
+ 
+-    if (KWindowSystem::isPlatformX11()) {
+-        KWindowInfo info(id, NET::WMWindowType, NET::WM2WindowClass);
+-        NET::WindowTypes mask = NET::AllTypesMask;
+-        auto type = info.windowType(mask);
+-
+-        // Menu can try to register, right click in gimp for example
+-        if (type != NET::Unknown && (type & (NET::Menu | NET::DropdownMenu | NET::PopupMenu))) {
+-            return;
+-        }
+-        m_windowClasses.insert(id, QString::fromLocal8Bit(info.windowClassClass()));
+-    }
+-
+     QString service = message().service();
+ 
+     m_menuServices.insert(id, service);
+diff --git a/components/sessionsprivate/CMakeLists.txt b/components/sessionsprivate/CMakeLists.txt
+index dec965b..8130794 100644
+--- a/components/sessionsprivate/CMakeLists.txt
++++ b/components/sessionsprivate/CMakeLists.txt
+@@ -3,8 +3,6 @@ set(sessionsprivateplugin_SRCS
+     types.h
+ )
+ 
+-qt_add_dbus_interface(sessionsprivateplugin_SRCS ${SCREENSAVER_DBUS_INTERFACE} screensaver_interface)
+-
+ kconfig_add_kcfg_files(sessionsprivateplugin_SRCS kscreensaversettings.kcfgc)
+ 
+ ecm_add_qml_module(sessionsprivateplugin
+diff --git a/components/sessionsprivate/sessionsmodel.cpp b/components/sessionsprivate/sessionsmodel.cpp
+index 4707c39..c974a11 100644
+--- a/components/sessionsprivate/sessionsmodel.cpp
++++ b/components/sessionsprivate/sessionsmodel.cpp
+@@ -1,9 +1,3 @@
+-/*
+-    SPDX-FileCopyrightText: 2015 Kai Uwe Broulik <kde@privat.broulik.de>
+-
+-    SPDX-License-Identifier: MIT
+-*/
+-
+ #include "sessionsmodel.h"
+ 
+ #include <utility>
+@@ -14,304 +8,4 @@
+ 
+ #include "kscreensaversettings.h"
+ 
+-#include "screensaver_interface.h"
+-
+-SessionsModel::SessionsModel(QObject *parent)
+-    : QAbstractListModel(parent)
+-    , m_screensaverInterface(
+-          new org::freedesktop::ScreenSaver(QStringLiteral("org.freedesktop.ScreenSaver"), QStringLiteral("/ScreenSaver"), QDBusConnection::sessionBus(), this))
+-{
+-    reload();
+-
+-    // wait for the screen locker to be ready before actually switching
+-    connect(m_screensaverInterface, &org::freedesktop::ScreenSaver::ActiveChanged, this, [this](bool active) {
+-        if (active) {
+-            if (m_pendingVt) {
+-                m_displayManager.switchVT(m_pendingVt);
+-                Q_EMIT switchedUser(m_pendingVt);
+-            } else if (m_pendingReserve) {
+-                m_displayManager.startReserve();
+-                Q_EMIT startedNewSession();
+-            }
+-
+-            m_pendingVt = 0;
+-            m_pendingReserve = false;
+-        }
+-    });
+-}
+-
+-bool SessionsModel::canSwitchUser() const
+-{
+-    return const_cast<SessionsModel *>(this)->m_displayManager.isSwitchable() && KAuthorized::authorizeAction(QStringLiteral("switch_user"));
+-}
+-
+-bool SessionsModel::canStartNewSession() const
+-{
+-    return const_cast<SessionsModel *>(this)->m_displayManager.numReserve() > 0 && KAuthorized::authorizeAction(QStringLiteral("start_new_session"));
+-}
+-
+-bool SessionsModel::shouldLock() const
+-{
+-    return m_shouldLock;
+-}
+-
+-bool SessionsModel::includeUnusedSessions() const
+-{
+-    return m_includeUnusedSessions;
+-}
+-
+-void SessionsModel::setIncludeUnusedSessions(bool includeUnusedSessions)
+-{
+-    if (m_includeUnusedSessions != includeUnusedSessions) {
+-        m_includeUnusedSessions = includeUnusedSessions;
+-
+-        reload();
+-
+-        Q_EMIT includeUnusedSessionsChanged();
+-    }
+-}
+-
+-bool SessionsModel::includeOwnSession() const
+-{
+-    return m_includeOwnSession;
+-}
+-
+-void SessionsModel::setIncludeOwnSession(bool includeOwnSession)
+-{
+-    if (m_includeOwnSession != includeOwnSession) {
+-        m_includeOwnSession = includeOwnSession;
+-
+-        reload();
+-
+-        Q_EMIT includeOwnSessionChanged();
+-    }
+-}
+-
+-void SessionsModel::switchUser(int vt, bool shouldLock)
+-{
+-    if (vt < 0) {
+-        startNewSession(shouldLock);
+-        return;
+-    }
+-
+-    if (!canSwitchUser()) {
+-        return;
+-    }
+-
+-    if (!shouldLock) {
+-        m_displayManager.switchVT(vt);
+-        Q_EMIT switchedUser(vt);
+-        return;
+-    }
+-
+-    checkScreenLocked([this, vt](bool locked) {
+-        if (locked) {
+-            // already locked, switch right away
+-            m_displayManager.switchVT(vt);
+-            Q_EMIT switchedUser(vt);
+-        } else {
+-            m_pendingReserve = false;
+-            m_pendingVt = vt;
+-
+-            Q_EMIT aboutToLockScreen();
+-            m_screensaverInterface->Lock();
+-        }
+-    });
+-}
+-
+-void SessionsModel::startNewSession(bool shouldLock)
+-{
+-    if (!canStartNewSession()) {
+-        return;
+-    }
+-
+-    if (!shouldLock) {
+-        m_displayManager.startReserve();
+-        Q_EMIT startedNewSession();
+-        return;
+-    }
+-
+-    checkScreenLocked([this](bool locked) {
+-        if (locked) {
+-            // already locked, switch right away
+-            m_displayManager.startReserve();
+-            Q_EMIT startedNewSession();
+-        } else {
+-            m_pendingReserve = true;
+-            m_pendingVt = 0;
+-
+-            Q_EMIT aboutToLockScreen();
+-            m_screensaverInterface->Lock();
+-        }
+-    });
+-}
+-
+-void SessionsModel::reload()
+-{
+-    static QHash<QString, KUser> kusers;
+-
+-    const bool oldShouldLock = m_shouldLock;
+-    m_shouldLock = KAuthorized::authorizeAction(QStringLiteral("lock_screen")) && KScreenSaverSettings::autolock();
+-    if (m_shouldLock != oldShouldLock) {
+-        Q_EMIT shouldLockChanged();
+-    }
+-
+-    SessList sessions;
+-    m_displayManager.localSessions(sessions);
+-
+-    const int oldCount = m_data.count();
+-
+-    beginResetModel();
+-
+-    m_data.clear();
+-    m_data.reserve(sessions.count());
+-
+-    for (const SessEnt &session : std::as_const(sessions)) {
+-        if (!session.vt) {
+-            continue;
+-        }
+-
+-        if (!m_includeOwnSession && session.self) {
+-            continue;
+-        }
+-
+-        if (!m_includeUnusedSessions && session.session.isEmpty()) {
+-            continue;
+-        }
+-
+-        SessionEntry entry;
+-        entry.name = session.user;
+-        entry.displayNumber = session.display;
+-        entry.vtNumber = session.vt;
+-        entry.session = session.session;
+-        entry.isTty = session.tty;
+-
+-        auto it = kusers.constFind(session.user);
+-        if (it != kusers.constEnd()) {
+-            entry.realName = it->property(KUser::FullName).toString();
+-            entry.icon = it->faceIconPath();
+-        } else {
+-            KUser user(session.user);
+-            entry.realName = user.property(KUser::FullName).toString();
+-            entry.icon = user.faceIconPath();
+-            kusers.insert(session.user, user);
+-        }
+-
+-        m_data.append(entry);
+-    }
+-
+-    endResetModel();
+-
+-    if (oldCount != m_data.count()) {
+-        Q_EMIT countChanged();
+-    }
+-}
+-
+-void SessionsModel::checkScreenLocked(std::function<void(bool)> &&cb)
+-{
+-    auto reply = m_screensaverInterface->GetActive();
+-    auto *watcher = new QDBusPendingCallWatcher(reply, this);
+-    QObject::connect(watcher, &QDBusPendingCallWatcher::finished, this, [cb = std::move(cb)](QDBusPendingCallWatcher *watcher) {
+-        QDBusPendingReply<bool> reply = *watcher;
+-        if (!reply.isError()) {
+-            cb(reply.value());
+-        }
+-        watcher->deleteLater();
+-    });
+-}
+-
+-void SessionsModel::setShowNewSessionEntry(bool showNewSessionEntry)
+-{
+-    if (!canStartNewSession()) {
+-        return;
+-    }
+-
+-    if (showNewSessionEntry == m_showNewSessionEntry) {
+-        return;
+-    }
+-
+-    int row = m_data.size();
+-    if (showNewSessionEntry) {
+-        beginInsertRows(QModelIndex(), row, row);
+-        m_showNewSessionEntry = showNewSessionEntry;
+-        endInsertRows();
+-    } else {
+-        beginRemoveRows(QModelIndex(), row, row);
+-        m_showNewSessionEntry = showNewSessionEntry;
+-        endRemoveRows();
+-    }
+-    Q_EMIT countChanged();
+-}
+-
+-QVariant SessionsModel::data(const QModelIndex &index, int role) const
+-{
+-    if (index.row() < 0 || index.row() > rowCount(QModelIndex())) {
+-        return {};
+-    }
+-
+-    if (index.row() == m_data.count()) {
+-        switch (role) {
+-        case RealNameRole:
+-            return i18n("New Session");
+-        case IconNameRole:
+-            return QStringLiteral("system-switch-user");
+-        case NameRole:
+-            return i18n("New Session");
+-        case DisplayNumberRole:
+-            return 0; // NA
+-        case VtNumberRole:
+-            return -1; // an invalid VtNumber - which we'll use to indicate it's to start a new session
+-        case SessionRole:
+-            return 0; // NA
+-        case IsTtyRole:
+-            return false; // NA
+-        default:
+-            return {};
+-        }
+-    }
+-
+-    const SessionEntry &item = m_data.at(index.row());
+-
+-    switch (role) {
+-    case RealNameRole:
+-        return item.realName;
+-    case IconRole:
+-        return item.icon;
+-    case NameRole:
+-        return item.name;
+-    case DisplayNumberRole:
+-        return item.displayNumber;
+-    case VtNumberRole:
+-        return item.vtNumber;
+-    case SessionRole:
+-        return item.session;
+-    case IsTtyRole:
+-        return item.isTty;
+-    default:
+-        return {};
+-    }
+-}
+-
+-int SessionsModel::rowCount(const QModelIndex &parent) const
+-{
+-    Q_UNUSED(parent);
+-    return m_data.count() + (m_showNewSessionEntry ? 1 : 0);
+-}
+-
+-QHash<int, QByteArray> SessionsModel::roleNames() const
+-{
+-    QHash<int, QByteArray> roleNames;
+-
+-    roleNames[NameRole] = QByteArrayLiteral("name");
+-    roleNames[RealNameRole] = QByteArrayLiteral("realName");
+-    roleNames[IconRole] = QByteArrayLiteral("icon");
+-    roleNames[IconNameRole] = QByteArrayLiteral("iconName");
+-    roleNames[DisplayNumberRole] = QByteArrayLiteral("displayNumber");
+-    roleNames[VtNumberRole] = QByteArrayLiteral("vtNumber");
+-    roleNames[SessionRole] = QByteArrayLiteral("session");
+-    roleNames[IsTtyRole] = QByteArrayLiteral("isTty");
+-
+-    return roleNames;
+-}
+-
+ #include "moc_sessionsmodel.cpp"
+diff --git a/components/sessionsprivate/sessionsmodel.h b/components/sessionsprivate/sessionsmodel.h
+index adb6005..d050b2f 100644
+--- a/components/sessionsprivate/sessionsmodel.h
++++ b/components/sessionsprivate/sessionsmodel.h
+@@ -1,9 +1,3 @@
+-/*
+-    SPDX-FileCopyrightText: 2015 Kai Uwe Broulik <kde@privat.broulik.de>
+-
+-    SPDX-License-Identifier: MIT
+-*/
+-
+ #pragma once
+ 
+ #include <QAbstractListModel>
+@@ -13,13 +7,6 @@
+ 
+ #include <functional>
+ 
+-class OrgFreedesktopScreenSaverInterface;
+-
+-namespace org::freedesktop
+-{
+-using ScreenSaver = ::OrgFreedesktopScreenSaverInterface;
+-}
+-
+ struct SessionEntry {
+     QString realName;
+     QString icon;
+@@ -31,82 +18,3 @@ struct SessionEntry {
+ };
+ 
+ class KDisplayManager;
+-
+-// This model should be compatible with SDDM::SessionModel
+-class SessionsModel : public QAbstractListModel
+-{
+-    Q_OBJECT
+-    QML_ELEMENT
+-
+-    Q_PROPERTY(bool canSwitchUser READ canSwitchUser CONSTANT)
+-    Q_PROPERTY(bool canStartNewSession READ canStartNewSession CONSTANT)
+-    Q_PROPERTY(bool shouldLock READ shouldLock NOTIFY shouldLockChanged)
+-    Q_PROPERTY(bool showNewSessionEntry MEMBER m_showNewSessionEntry WRITE setShowNewSessionEntry NOTIFY showNewSessionEntryChanged)
+-    Q_PROPERTY(bool includeUnusedSessions READ includeUnusedSessions WRITE setIncludeUnusedSessions NOTIFY includeUnusedSessionsChanged)
+-    Q_PROPERTY(bool includeOwnSession READ includeOwnSession WRITE setIncludeOwnSession NOTIFY includeOwnSessionChanged)
+-
+-    Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
+-
+-public:
+-    explicit SessionsModel(QObject *parent = nullptr);
+-    ~SessionsModel() override = default;
+-
+-    enum UserRoles {
+-        NameRole = Qt::UserRole + 1,
+-        RealNameRole,
+-        IconRole, // path to a file
+-        IconNameRole, // name of an icon
+-        DisplayNumberRole,
+-        VtNumberRole,
+-        SessionRole,
+-        IsTtyRole,
+-    };
+-    Q_ENUM(UserRoles)
+-
+-    bool canSwitchUser() const;
+-    bool canStartNewSession() const;
+-    bool shouldLock() const;
+-    bool includeUnusedSessions() const;
+-    bool includeOwnSession() const;
+-
+-    void setShowNewSessionEntry(bool showNewSessionEntry);
+-    void setIncludeUnusedSessions(bool includeUnusedSessions);
+-    void setIncludeOwnSession(bool includeOwnSession);
+-
+-    Q_INVOKABLE void reload();
+-    Q_INVOKABLE void switchUser(int vt, bool shouldLock = false);
+-    Q_INVOKABLE void startNewSession(bool shouldLock = false);
+-
+-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+-    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+-    QHash<int, QByteArray> roleNames() const override;
+-
+-Q_SIGNALS:
+-    void shouldLockChanged();
+-    void showNewSessionEntryChanged();
+-    void countChanged();
+-    void includeUnusedSessionsChanged();
+-    void includeOwnSessionChanged();
+-
+-    void switchedUser(int vt);
+-    void startedNewSession();
+-    void aboutToLockScreen();
+-
+-private:
+-    void checkScreenLocked(std::function<void(bool)> &&cb);
+-
+-    KDisplayManager m_displayManager;
+-
+-    QList<SessionEntry> m_data;
+-
+-    bool m_shouldLock = true;
+-
+-    int m_pendingVt = 0;
+-    bool m_pendingReserve = false;
+-
+-    bool m_showNewSessionEntry = false;
+-    bool m_includeUnusedSessions = true;
+-    bool m_includeOwnSession = false;
+-
+-    org::freedesktop::ScreenSaver *m_screensaverInterface = nullptr;
+-};
+diff --git a/containmentactions/contextmenu/CMakeLists.txt b/containmentactions/contextmenu/CMakeLists.txt
+index 751032f..fe46038 100644
+--- a/containmentactions/contextmenu/CMakeLists.txt
++++ b/containmentactions/contextmenu/CMakeLists.txt
+@@ -10,8 +10,6 @@ set(contextmenu_SRCS
+ set(krunner_xml ${plasma-workspace_SOURCE_DIR}/krunner/dbus/org.kde.krunner.App.xml)
+ qt_add_dbus_interface(contextmenu_SRCS ${krunner_xml} krunner_interface)
+ 
+-qt_add_dbus_interface(contextmenu_SRCS ${SCREENSAVER_DBUS_INTERFACE} screensaver_interface)
+-
+ kcoreaddons_add_plugin(plasma_containmentactions_contextmenu SOURCES ${contextmenu_SRCS} INSTALL_NAMESPACE "plasma/containmentactions")
+ 
+ set_target_properties(plasma_containmentactions_contextmenu PROPERTIES
+diff --git a/kcms/colors/CMakeLists.txt b/kcms/colors/CMakeLists.txt
+index 1348891..2e6bcbf 100644
+--- a/kcms/colors/CMakeLists.txt
++++ b/kcms/colors/CMakeLists.txt
+@@ -70,7 +70,6 @@ target_link_libraries(plasma-apply-colorscheme
+     KF6::DBusAddons
+     KF6::ColorScheme
+     PW::KWorkspace
+-    X11::X11
+ )
+ 
+ kcoreaddons_add_plugin(plasma_accentcolor_service INSTALL_NAMESPACE "kf6/kded")
+@@ -95,7 +94,6 @@ target_link_libraries(plasma_accentcolor_service
+     KF6::DBusAddons
+     KF6::ColorScheme
+     PW::KWorkspace
+-    X11::X11
+ )
+ 
+ install(FILES colorssettings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
+diff --git a/klipper/klipperpopup.cpp b/klipper/klipperpopup.cpp
+index 4fdc118..86b58df 100644
+--- a/klipper/klipperpopup.cpp
++++ b/klipper/klipperpopup.cpp
+@@ -16,7 +16,6 @@
+ 
+ #include <KLocalizedString>
+ #include <KWindowSystem>
+-#include <KX11Extras>
+ 
+ #include <Plasma/Plasma>
+ #include <PlasmaQuick/PlasmaQuick>
+@@ -93,43 +92,19 @@ void KlipperPopup::resizePopup()
+     // If the popup is off-screen, move it to the closest edge of the screen
+     const QSize popupSize = QSize(mainItem()->implicitWidth(), mainItem()->implicitHeight()).grownBy(padding()).boundedTo(screen()->availableSize());
+ 
+-    if (KWindowSystem::isPlatformX11()) {
+-        const QRect screenGeometry = screen()->geometry();
+-        QRect popupGeometry(position(), popupSize);
+-        if (!screenGeometry.contains(popupGeometry)) {
+-            popupGeometry.moveTo(std::clamp(x(), screenGeometry.left(), screenGeometry.right() - popupSize.width()),
+-                                 std::clamp(y(), screenGeometry.top(), screenGeometry.bottom() - popupSize.height()));
+-        }
+-        setGeometry(popupGeometry);
+-    } else {
+-        resize(popupSize);
+-    }
++    resize(popupSize);
+ }
+ 
+ void KlipperPopup::showEvent(QShowEvent *event)
+ {
+-    if (KWindowSystem::isPlatformX11()) {
+-        KX11Extras::setOnAllDesktops(winId(), true);
+-    }
+     PlasmaWindow::showEvent(event); // NET::SkipTaskbar | NET::SkipPager | NET::SkipSwitcher
+     requestActivate();
+-    if (KWindowSystem::isPlatformX11()) {
+-        KX11Extras::forceActiveWindow(winId());
+-    }
+ }
+ 
+ void KlipperPopup::positionOnScreen()
+ {
+     const QList<QScreen *> screens = QGuiApplication::screens();
+-    if (KWindowSystem::isPlatformX11()) {
+-        auto screenIt = std::ranges::find_if(screens, [](QScreen *screen) {
+-            return screen->geometry().contains(QCursor::pos(screen));
+-        });
+-        QScreen *const shownOnScreen = screenIt != screens.cend() ? *screenIt : QGuiApplication::primaryScreen();
+-        setPosition(QCursor::pos(shownOnScreen));
+-        setScreen(shownOnScreen);
+-        KX11Extras::setOnDesktop(winId(), KX11Extras::currentDesktop());
+-    } else if (KWindowSystem::isPlatformWayland()) {
++    if (KWindowSystem::isPlatformWayland()) {
+         auto integration = PlasmaShellWaylandIntegration::get(this);
+         integration->openUnderCursor();
+         integration->setRole(QtWayland::org_kde_plasma_surface::role_appletpopup);
+diff --git a/klipper/urlgrabber.cpp b/klipper/urlgrabber.cpp
+index 6c51332..f043ee8 100644
+--- a/klipper/urlgrabber.cpp
++++ b/klipper/urlgrabber.cpp
+@@ -5,8 +5,6 @@
+ */
+ #include "urlgrabber.h"
+ 
+-#include <netwm.h>
+-
+ #include "klipper_debug.h"
+ #include <QFile>
+ #include <QIcon>
+diff --git a/libkworkspace/CMakeLists.txt b/libkworkspace/CMakeLists.txt
+index 6f85f0a..3c25307 100644
+--- a/libkworkspace/CMakeLists.txt
++++ b/libkworkspace/CMakeLists.txt
+@@ -17,7 +17,6 @@ set(kworkspace_LIB_SRCS kdisplaymanager.cpp
+ 
+ add_definitions(-DTRANSLATION_DOMAIN=\"libkworkspace\")
+ 
+-qt_add_dbus_interface(kworkspace_LIB_SRCS ${SCREENSAVER_DBUS_INTERFACE} screenlocker_interface )
+ qt_add_dbus_interface(kworkspace_LIB_SRCS ${plasma-workspace_SOURCE_DIR}/logout-greeter/org.kde.LogoutPrompt.xml logoutprompt_interface)
+ qt_add_dbus_interface(kworkspace_LIB_SRCS ${plasma-workspace_SOURCE_DIR}/startkde/plasma-session/org.kde.Startup.xml startup_interface)
+ qt_add_dbus_interface(kworkspace_LIB_SRCS ${plasma-workspace_SOURCE_DIR}/startkde/plasma-shutdown/org.kde.Shutdown.xml shutdown_interface)
+diff --git a/libkworkspace/sessionmanagement.cpp b/libkworkspace/sessionmanagement.cpp
+index 248147f..5added9 100644
+--- a/libkworkspace/sessionmanagement.cpp
++++ b/libkworkspace/sessionmanagement.cpp
+@@ -18,7 +18,6 @@
+ #include <iostream>
+ 
+ #include "logoutprompt_interface.h"
+-#include "screenlocker_interface.h"
+ #include "shutdown_interface.h"
+ 
+ #include "libkworkspace_debug.h"
+@@ -148,18 +147,11 @@ void SessionManagement::requestLogoutPrompt()
+         return;
+     }
+ 
+-    OrgFreedesktopScreenSaverInterface ifaceScreenSaver(QStringLiteral("org.freedesktop.ScreenSaver"),
+-                                                        QStringLiteral("/ScreenSaver"),
+-                                                        QDBusConnection::sessionBus());
+-
+-    // Do not show Logoup prompt when in the lockscreen / screensaver
+-    if (!ifaceScreenSaver.GetActive()) {
+         // Don't bother to check for whether the user normally wants confirmation or
+         // not; if this function was invoked, it means they do want to see the logout
+         // prompt right now
+         LogoutPromptIface iface;
+         lockQuitUntilFinished(iface.promptAll());
+-    }
+ }
+ 
+ void SessionManagement::requestShutdown(ConfirmationMode confirmationMode)
+@@ -266,8 +258,6 @@ void SessionManagement::lock()
+     if (!canLock()) {
+         return;
+     }
+-    OrgFreedesktopScreenSaverInterface iface(QStringLiteral("org.freedesktop.ScreenSaver"), QStringLiteral("/ScreenSaver"), QDBusConnection::sessionBus());
+-    iface.Lock();
+ }
+ 
+ void SessionManagement::switchUser()
+@@ -280,28 +270,6 @@ void SessionManagement::switchUser()
+         qCWarning(LIBKWORKSPACE_DEBUG) << "Cannot switch user: XDG_SEAT_PATH not set";
+         return;
+     }
+-
+-    // lock first
+-    OrgFreedesktopScreenSaverInterface screenSaverIface(QStringLiteral("org.freedesktop.ScreenSaver"),
+-                                                        QStringLiteral("/ScreenSaver"),
+-                                                        QDBusConnection::sessionBus());
+-    QDBusPendingReply<> pendingLock = screenSaverIface.Lock();
+-
+-    // then tell the display manager to switch
+-    auto watcher = new QDBusPendingCallWatcher(pendingLock, this);
+-    connect(watcher, &QDBusPendingCallWatcher::finished, watcher, &QObject::deleteLater);
+-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [](QDBusPendingCallWatcher *watcher) {
+-        if (watcher->isError()) {
+-            qCWarning(LIBKWORKSPACE_DEBUG) << "Failed to lock screen before switching user:" << watcher->error().message();
+-            return;
+-        }
+-        QDBusMessage switchToGreeterMessage = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.DisplayManager"),
+-                                                                             qEnvironmentVariable("XDG_SEAT_PATH"),
+-                                                                             QStringLiteral("org.freedesktop.DisplayManager.Seat"),
+-                                                                             u"SwitchToGreeter"_s);
+-
+-        QDBusConnection::systemBus().asyncCall(switchToGreeterMessage);
+-    });
+ }
+ 
+ void SessionManagement::saveSession()
+diff --git a/libnotificationmanager/server.cpp b/libnotificationmanager/server.cpp
+index 6549095..c70e5f9 100644
+--- a/libnotificationmanager/server.cpp
++++ b/libnotificationmanager/server.cpp
+@@ -13,7 +13,6 @@
+ 
+ #include "debug.h"
+ 
+-#include <KStartupInfo>
+ #include <KWaylandExtras>
+ #include <KWindowSystem>
+ #include <QDebug>
+@@ -85,16 +84,6 @@ void Server::invokeAction(uint notificationId,
+                 Q_EMIT d->CloseNotification(notificationId);
+             }
+         });
+-    } else {
+-        KStartupInfoId startupId;
+-        startupId.initId();
+-
+-        Q_EMIT d->ActivationToken(notificationId, QString::fromUtf8(startupId.id()));
+-
+-        Q_EMIT d->ActionInvoked(notificationId, actionName);
+-        if (behavior & Notifications::Close) {
+-            Q_EMIT d->CloseNotification(notificationId);
+-        }
+     }
+ }
+ 
+diff --git a/libtaskmanager/virtualdesktopinfo.cpp b/libtaskmanager/virtualdesktopinfo.cpp
+index 8f6381b..36de8c2 100644
+--- a/libtaskmanager/virtualdesktopinfo.cpp
++++ b/libtaskmanager/virtualdesktopinfo.cpp
+@@ -8,7 +8,6 @@
+ #include "libtaskmanager_debug.h"
+ 
+ #include <KWindowSystem>
+-#include <KX11Extras>
+ 
+ #include <qwayland-org-kde-plasma-virtual-desktop.h>
+ 
+@@ -21,14 +20,6 @@
+ #include <QWaylandClientExtension>
+ #include <algorithm>
+ 
+-namespace X11Info
+-{
+-[[nodiscard]] inline auto connection()
+-{
+-    return qGuiApp->nativeInterface<QNativeInterface::QX11Application>()->connection();
+-}
+-}
+-
+ namespace TaskManager
+ {
+ class Q_DECL_HIDDEN VirtualDesktopInfo::Private : public QObject
+diff --git a/logout-greeter/CMakeLists.txt b/logout-greeter/CMakeLists.txt
+index 91fc8b2..3f5282b 100644
+--- a/logout-greeter/CMakeLists.txt
++++ b/logout-greeter/CMakeLists.txt
+@@ -21,7 +21,6 @@ target_link_libraries(ksmserver-logout-greeter
+     KF6::Package
+     KF6::WindowSystem
+     KF6::ConfigCore
+-    X11::X11
+     LayerShellQt::Interface
+ )
+ 
+diff --git a/runners/sessions/CMakeLists.txt b/runners/sessions/CMakeLists.txt
+index 23ee4e2..0410cf4 100644
+--- a/runners/sessions/CMakeLists.txt
++++ b/runners/sessions/CMakeLists.txt
+@@ -6,7 +6,5 @@ set(krunner_sessions_SRCS
+     sessionrunner.cpp sessionrunner.h
+ )
+ 
+-qt_add_dbus_interface(krunner_sessions_SRCS ${SCREENSAVER_DBUS_INTERFACE} screensaver_interface)
+-
+ kcoreaddons_add_plugin(krunner_sessions SOURCES ${krunner_sessions_SRCS} INSTALL_NAMESPACE "kf6/krunner")
+ target_link_libraries(krunner_sessions Qt::DBus KF6::Runner KF6::I18n PW::KWorkspace)
+diff --git a/shell/desktopview.cpp b/shell/desktopview.cpp
+index 271fe12..9cc6f7f 100644
+--- a/shell/desktopview.cpp
++++ b/shell/desktopview.cpp
+@@ -22,7 +22,6 @@
+ #include <PlasmaQuick/AppletQuickItem>
+ 
+ #include <KAuthorized>
+-#include <KStartupInfo>
+ #include <KWaylandExtras>
+ #include <klocalizedstring.h>
+ #include <kwindowsystem.h>
+diff --git a/soliduiserver/soliduiserver.cpp b/soliduiserver/soliduiserver.cpp
+index f991db3..aa513a8 100644
+--- a/soliduiserver/soliduiserver.cpp
++++ b/soliduiserver/soliduiserver.cpp
+@@ -18,13 +18,11 @@
+ 
+ #include <KLocalizedString>
+ #include <KPluginFactory>
+-#include <KUserTimestamp>
+ 
+ #include <kpassworddialog.h>
+ #include <kwallet.h>
+ #include <kwindowsystem.h>
+ #if HAVE_X11
+-#include <KX11Extras>
+ #endif
+ 
+ // solid specific includes
+@@ -158,7 +156,6 @@ void SolidUiServer::reparentDialog(QWidget *dialog, WId wId, const QString &appI
+ 
+     // allow dialog activation even if it interrupts, better than trying hacks
+     // with keeping the dialog on top or on all desktops
+-    KUserTimestamp::updateUserTimestamp();
+ }
+ 
+ #include "soliduiserver.moc"
+diff --git a/startkde/plasma-session/startup.cpp b/startkde/plasma-session/startup.cpp
+index 73eacc9..c2b032b 100644
+--- a/startkde/plasma-session/startup.cpp
++++ b/startkde/plasma-session/startup.cpp
+@@ -142,7 +142,7 @@ Startup::Startup(QObject *parent)
+     {
+         // This must block until started as it sets the WAYLAND_DISPLAY/DISPLAY env variables needed for the rest of the boot
+         // fortunately it's very fast as it's just starting a wrapper
+-        StartServiceJob kwinWaylandJob(QStringLiteral("kwin_wayland_wrapper"), {QStringLiteral("--xwayland")}, QStringLiteral("org.kde.KWinWrapper"));
++        StartServiceJob kwinWaylandJob(QStringLiteral("kwin_wayland_wrapper"), {}, QStringLiteral("org.kde.KWinWrapper"));
+         kwinWaylandJob.exec();
+ 
+         const KConfig cfg(QStringLiteral("ksplashrc"));
+diff --git a/libnotificationmanager/portal_p.cpp b/libnotificationmanager/portal_p.cpp
+index 6003556c..9e5a3f6c 100644
+--- a/libnotificationmanager/portal_p.cpp
++++ b/libnotificationmanager/portal_p.cpp
+@@ -17,7 +17,6 @@
+ 
+ #include <QDBusConnection>
+ 
+-#include <KStartupInfo>
+ #include <KWaylandExtras>
+ #include <KWindowSystem>
+ 
+@@ -135,12 +134,6 @@ void Portal::invokeAction(uint notificationId, const QString &actionId, const QV
+                 {u"activation-token"_s, token},
+             });
+         });
+-    } else {
+-        KStartupInfoId startupId;
+-        startupId.initId();
+-        activateWithPlatformData({
+-            {u"desktop-startup-id"_s, QString::fromUtf8(startupId.id())},
+-        });
+     }
+ }
+ 
