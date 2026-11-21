@@ -1,0 +1,144 @@
+diff --git a/Makefile.am b/Makefile.am
+index 8a3bca7c..abc3f18b 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -61,10 +61,8 @@ SUBDIRS = \
+   xrdp \
+   fontutils \
+   keygen \
+-  waitforx \
+   docs \
+   instfiles \
+-  genkeymap \
+   xrdpapi \
+   pkgconfig \
+   $(XRDPVRDIR) \
+diff --git a/configure.ac b/configure.ac
+index b5ec14fa..af8c7ed4 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -514,24 +514,6 @@ else
+ fi
+ fi
+ 
+-AC_PATH_XTRA
+-if test "x$no_x" == "xyes"; then
+-  AC_MSG_ERROR([please install libx11-dev or libX11-devel])
+-fi
+-
+-save_CFLAGS="$CFLAGS"
+-CFLAGS="$CFLAGS $X_CFLAGS"
+-
+-# checking for Xfixes
+-AC_CHECK_HEADER([X11/extensions/Xfixes.h], [],
+-  [AC_MSG_ERROR([please install libxfixes-dev or libXfixes-devel])],
+-  [#include <X11/Xlib.h>])
+-
+-# checking for Xrandr
+-AC_CHECK_HEADER([X11/extensions/Xrandr.h], [],
+-  [AC_MSG_ERROR([please install libxrandr-dev or libXrandr-devel])],
+-  [#include <X11/Xlib.h>])
+-
+ if test "x$enable_utmp" = "xyes"
+ then
+     AC_CHECK_HEADERS(utmp.h utmpx.h)
+diff --git a/sesman/Makefile.am b/sesman/Makefile.am
+index 9ddef8e8..86d61b38 100644
+--- a/sesman/Makefile.am
++++ b/sesman/Makefile.am
+@@ -63,7 +63,6 @@ dist_sesmansysconf_SCRIPTS = \
+ SUBDIRS = \
+   libsesman \
+   sesexec \
+-  tools \
+-  chansrv
++  tools
+ 
+ CLEANFILES = $(nodist_sesmansysconf_DATA)
+diff --git a/sesman/tools/Makefile.am b/sesman/tools/Makefile.am
+index 611b86ee..002a13f0 100644
+--- a/sesman/tools/Makefile.am
++++ b/sesman/tools/Makefile.am
+@@ -13,8 +13,7 @@ bin_PROGRAMS = \
+   xrdp-dis
+ 
+ noinst_PROGRAMS = \
+-  xrdp-authtest \
+-  xrdp-xcon
++  xrdp-authtest
+ 
+ xrdp_sesrun_SOURCES = \
+   sesrun.c
+diff --git a/common/os_calls.c b/common/os_calls.c
+--- a/common/os_calls.c
++++ b/common/os_calls.c
+@@ -100,10 +100,6 @@
+ #include "log.h"
+ #include "xrdp_constants.h"
+ 
+-#if defined(__linux__)
+-#include <linux/unistd.h>
+-#endif
+-
+ /* sys/ucred.h needs to be included to use struct xucred
+  * in FreeBSD and OS X. No need for other BSDs except GNU/kFreeBSD */
+ #if defined(__FreeBSD__) || defined(__APPLE__) || defined(__FreeBSD_kernel__)
+diff --git a/docs/man/Makefile.am b/docs/man/Makefile.am
+--- a/docs/man/Makefile.am
++++ b/docs/man/Makefile.am
+@@ -4,8 +4,6 @@
+   sesman.ini.5 \
+   xrdp.ini.5 \
+   xrdp.8 \
+-  xrdp-chansrv.8 \
+-  xrdp-genkeymap.8 \
+   xrdp-keygen.8 \
+   xrdp-sesadmin.8 \
+   xrdp-sesman.8 \
+diff --git a/sesman/tools/Makefile.am b/sesman/tools/Makefile.am
+--- a/sesman/tools/Makefile.am
++++ b/sesman/tools/Makefile.am
+@@ -5,7 +5,6 @@
+   -I$(top_srcdir)/common \
+   -I$(top_srcdir)/libipm
+ 
+-AM_CFLAGS = $(X_CFLAGS)
+ 
+ bin_PROGRAMS = \
+   xrdp-sesrun \
+@@ -27,9 +26,6 @@
+ xrdp_dis_LDADD = \
+   $(top_builddir)/common/libcommon.la
+ 
+-xrdp_xcon_SOURCES = \
+-  xcon.c
+-
+ xrdp_authtest_SOURCES = \
+   authtest.c
+ 
+@@ -43,12 +39,6 @@
+   $(top_builddir)/common/libcommon.la \
+   $(top_builddir)/libipm/libipm.la
+ 
+-xrdp_xcon_LDFLAGS = \
+-  $(X_LIBS)
+-
+-xrdp_xcon_LDADD = \
+-  $(X_PRE_LIBS) -lX11 $(X_EXTRA_LIBS)
+-
+ xrdp_authtest_LDADD = \
+   $(top_builddir)/sesman/libsesman/libsesman.la \
+   $(top_builddir)/common/libcommon.la \
+diff --git a/instfiles/Makefile.am b/instfiles/Makefile.am
+--- a/instfiles/Makefile.am
++++ b/instfiles/Makefile.am
+@@ -72,8 +72,7 @@ if HAVE_SYSTEMD
+   xrdp.service
+ else
+ SUBDIRS += \
+-  default \
+-  init.d
++  default
+ endif # HAVE_SYSTEMD
+ endif # LINUX
+ 

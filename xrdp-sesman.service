@@ -1,0 +1,5 @@
+type = process
+command = /usr/bin/xrdp-sesman --nodaemon
+smooth-recovery = true
+logfile = /var/log/xrdp-sesman.log
+depends-on = network.target
