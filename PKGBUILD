@@ -3,8 +3,8 @@
 _pkgbase=libjpeg-turbo
 pkgbase=libjpeg
 pkgname=libjpeg
-pkgver=3.2.0
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 pkgdesc="JPEG image codec with accelerated baseline compression and decompression"
 url="https://libjpeg-turbo.org/"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -23,7 +23,7 @@ makedepends=(cmake ninja nasm linux-uapi-headers)
 #	Fixes shared library linking with LTO enabled
 source=(https://github.com/libjpeg-turbo/${_pkgbase}/releases/download/$pkgver/${_pkgbase}-$pkgver.tar.gz
 	0001-Build-Fix-Un-x-build-if-PIC-disabled.patch)
-sha256sums=('6f30092cef9fb839779646608f4ee14ae3cbac989c47fa05e841b0841f09878e'
+sha256sums=('c27ad72a68da151177929aa969ae773a2da5ac2af9ce946079314fdac8cece7f'
             '6c42310c19f466ba9b46b0c0e57cc78581903a0ffedd148f16aee5873a36f8c2')
 
 prepare() {
