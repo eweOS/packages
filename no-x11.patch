@@ -1,0 +1,46 @@
+--- a/src/effect/effecthandler.cpp
++++ b/src/effect/effecthandler.cpp
+@@ -43,7 +43,9 @@
+ #include "sm.h"
+ #include "virtualdesktops.h"
+ #include "wayland_server.h"
++#if KWIN_BUILD_X11
+ #include "window_property_notify_x11_filter.h"
++#endif
+ #include "workspace.h"
+ #if KWIN_BUILD_X11
+ #include "x11window.h"
+--- a/src/effect/effecthandler.h
++++ b/src/effect/effecthandler.h
+@@ -78,7 +78,9 @@
+ struct TabletToolTipEvent;
+ class Window;
+ class WindowItem;
++#if KWIN_BUILD_X11
+ class WindowPropertyNotifyX11Filter;
++#endif
+ class WorkspaceScene;
+ class VirtualDesktop;
+ class EglContext;
+@@ -1108,7 +1110,9 @@
+     WorkspaceScene *m_scene;
+     QList<Effect *> m_grabbedMouseEffects;
+     EffectLoader *m_effectLoader;
++#if KWIN_BUILD_X11
+     std::unique_ptr<WindowPropertyNotifyX11Filter> m_x11WindowPropertyNotify;
++#endif
+     KConfigWatcher::Ptr m_configWatcher;
+ };
+ 
+--- a/src/workspace.cpp
++++ b/src/workspace.cpp
+@@ -34,7 +34,9 @@
+ #include "rules.h"
+ #include "screenedge.h"
+ #include "scripting/scripting.h"
++#if KWIN_BUILD_X11
+ #include "syncalarmx11filter.h"
++#endif
+ #include "window.h"
+ #if KWIN_BUILD_TABBOX
+ #include "tabbox/tabbox.h"
