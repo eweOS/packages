@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=ghostscript
-pkgver=10.07.1
+pkgver=10.08.0
 pkgrel=1
 pkgdesc="An interpreter for the PostScript language"
 url="https://www.ghostscript.com/"
@@ -16,7 +16,7 @@ replaces=('ghostpcl' 'ghostxps')
 conflicts=('ghostpcl' 'ghostxps')
 source=(https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${pkgver//./}/ghostscript-${pkgver}.tar.xz
 	2010_add_build_timestamp_setting.patch)
-sha512sums=('7b38ca10fa7ab648924f7db3e2e4933c3d18e04c8db1346fca4d4f7b85dfbd7888d5fc46f413613b46429fb47b675a593994c25e50e9de4dcdbee3bdd8a5e449'
+sha512sums=('8006e2a32d03759a905b9548bdd83d4563173041006750e17e428b9eea24ad519aa4452ceecd7c073d3c420a68bf1b07ccc9e0533b1a05935f6b39ea8d9ce875'
             'cd7794ee4f28b11177021b950196385200b610127ed6cb94a45e3202b690b721a0dfcc0276ff39448d4dab64c1b31a76e6c323696a8315aad9edc22077f18a3d')
 
 ### update jbig2dec first! ###
