@@ -1,0 +1,43 @@
+--- a/qt6/src/platformtheme/kdeplatformtheme.cpp
++++ b/qt6/src/platformtheme/kdeplatformtheme.cpp
+@@ -18,7 +18,9 @@
+ #include "khintssettings.h"
+ #include "kiodelegate.h"
+ #include "kwaylandintegration.h"
++#if WITH_X11
+ #include "x11integration.h"
++#endif
+ 
+ #include <QApplication>
+ #include <QDBusConnection>
+--- a/qt6/src/platformtheme/kdeplatformtheme.h
++++ b/qt6/src/platformtheme/kdeplatformtheme.h
+@@ -7,6 +7,8 @@
+ #ifndef KDEPLATFORMTHEME_H
+ #define KDEPLATFORMTHEME_H
+ 
++#include <config-platformtheme.h>
++
+ #include <QHash>
+ #include <QKeySequence>
+ 
+@@ -19,7 +21,9 @@
+ class KHintsSettings;
+ class KFontSettingsData;
+ class KWaylandIntegration;
++#if WITH_X11
+ class X11Integration;
++#endif
+ class QIconEngine;
+ class QWindow;
+ 
+@@ -63,7 +67,9 @@
+     KHintsSettings *m_hints = nullptr;
+     KFontSettingsData *m_fontsData = nullptr;
+     QScopedPointer<KWaylandIntegration> m_kwaylandIntegration;
++#if WITH_X11
+     QScopedPointer<X11Integration> m_x11Integration;
++#endif
+ };
+ 
+ #endif // KDEPLATFORMTHEME_H
