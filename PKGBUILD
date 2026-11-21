@@ -1,7 +1,7 @@
 # Maintainer: Weird Gumi <weirdgumi@tutamail.com>
 
 pkgname=zig
-pkgver=0.16.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc='Toolchain for the Zig language'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,10 +13,8 @@ source=(
   $url/download/$pkgver/$pkgname-$pkgver.tar.xz
   drop-targets.patch
 )
-sha256sums=(
-  43186959edc87d5c7a1be7b7d2a25efffd22ce5807c7af99067f86f99641bfdf
-  93a4e68b7ee85c5d71454ec044d9c9f1e6c4c5f360a077c77f56c63920eb58b5
-)
+sha256sums=('1e89bf06610b769a8c77676c6c8d54b093a0db60f4891f2f91014829012f0e24'
+            '93a4e68b7ee85c5d71454ec044d9c9f1e6c4c5f360a077c77f56c63920eb58b5')
 
 prepare() {
   _patch_ $pkgname-$pkgver
