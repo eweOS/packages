@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=gpgme
-pkgver=2.2.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='A C wrapper library for GnuPG'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -17,7 +17,7 @@ source=(
   "https://www.gnupg.org/ftp/gcrypt/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
   "0001-pinentry-link-with-ldflags.patch"
 )
-sha256sums=('7160e80e84dafd00d956c84891c533bb7ab16a6a54fbe1574b2f3acf0496977b'
+sha256sums=('2bf94e0e677e5a8fc31f79dd323f91c5416b36fb851058bc1e8bce39f2642434'
             '924a9d348a8856e9c24394ec11bf7c0ab8911bdecce17aff6eae1aa69eef73ea')
 
 prepare() {
