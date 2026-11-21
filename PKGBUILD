@@ -1,22 +1,22 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=bird
-pkgver=3.1.2
-pkgrel=3
+pkgver=3.4.0
+pkgrel=1
 pkgdesc='RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon'
 arch=(x86_64 aarch64 riscv64 loongarch64)
-url='https://bird.network.cz/'
-license=('GPL2')
+url='https://bird.nic.cz/'
+license=('GPL-2.0-or-later')
 depends=('musl' 'readline' 'ncurses' 'libssh2')
 makedepends=('bison' 'flex' 'linux-headers' 'autoconf')
 options=(!emptydirs)
 backup=(etc/bird.conf)
 source=(
-  "https://bird.network.cz/download/$pkgname-$pkgver.tar.gz"
+  "https://bird.nic.cz/download/$pkgname-$pkgver.tar.gz"
   bird.service
   bird.tmpfiles
 )
-sha256sums=('9be6196c5755fca1adf92e90e46aaf6f8ec003bec9b73c084fb45915e07e173f'
+sha256sums=('ee8900c98de7b4da0f2b5480eb66adc3aca6961baeba4ac949481ccac3ed365f'
             '7ddea1f507efd2d4a7ad1fea044a3122f0f798887ee9fbd1c8b5ff32fdeafb84'
             '93ccf34aa61e513f27b5287437b68a4f176dfdca9b05a05de6a15aa0dcdd6205')
 
