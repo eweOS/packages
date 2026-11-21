@@ -1,0 +1,18 @@
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -14,6 +14,6 @@
+ if ENABLE_NLS
+ %.xml: %.xml.in
+-	$(AM_V_GEN)GETTEXTDATADIRS=$(srcdir) GETTEXTDATADIR=$(srcdir) $(MSGFMT) --xml -L QALCULATE --template $< -d $(top_builddir)/po-defs-fixed/fixed -o $@
++	cp $< $@
+ else
+ %.xml: %.xml.in
+ 	cp $< $@
+--- a/data/Makefile.in
++++ b/data/Makefile.in
+@@ -577,4 +577,4 @@
+ @ENABLE_NLS_TRUE@%.xml: %.xml.in
+-@ENABLE_NLS_TRUE@	$(AM_V_GEN)GETTEXTDATADIRS=$(srcdir) GETTEXTDATADIR=$(srcdir) $(MSGFMT) --xml -L QALCULATE --template $< -d $(top_builddir)/po-defs-fixed/fixed -o $@
++@ENABLE_NLS_TRUE@	cp $< $@
+ @ENABLE_NLS_FALSE@%.xml: %.xml.in
+ @ENABLE_NLS_FALSE@	cp $< $@
