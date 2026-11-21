@@ -1,0 +1,20 @@
+--- a/templates/types_command.h
++++ b/templates/types_command.h
+@@ -40,7 +40,7 @@
+     size_t offset = vn_sizeof_VkCommandTypeEXT(&cmd_type);
+ %   if ty.ret:
+ 
+-    ${ty.ret.to_c()};
++    ${ty.ret.to_c()} = { 0 };
+     ${GEN.sizeof_command_reply(ty, ty.ret, '', 'offset')}
+ % endif
+ %   for var in ty.variables:
+@@ -64,7 +64,7 @@
+     size_t cmd_size = vn_sizeof_VkCommandTypeEXT(&cmd_type);
+ 
+ % if ty.ret:
+-    ${ty.ret.to_c()};
++    ${ty.ret.to_c()} = { 0 };
+     ${GEN.sizeof_command_reply(ty, ty.ret, '', 'cmd_size')}
+ % endif
+ % for var in ty.variables:
