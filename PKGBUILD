@@ -1,0 +1,27 @@
+# Maintainer: Yukari Chiba <i@0x7f.cc>
+
+pkgname=corrosion
+pkgver=0.6.1
+pkgrel=1
+pkgdesc='Tool for integrating Rust into an existing CMake project'
+arch=(any)
+url='https://github.com/corrosion-rs/corrosion'
+license=(MIT)
+depends=(cmake
+         rust)
+makedepends=(git)
+source=(git+https://github.com/corrosion-rs/corrosion#tag=v$pkgver)
+sha256sums=('75c1711049c3aa058ef7f8519ecc2a8a437cd31dd8ce4fb0b65c0ba13b7b36f6')
+
+build() {
+  cmake -B build -S $pkgname \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DCORROSION_BUILD_TESTS=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 $pkgname/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+}
