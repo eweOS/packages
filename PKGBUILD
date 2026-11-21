@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=mpd
-pkgver=0.24.19
+pkgver=0.24.20
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -52,7 +52,7 @@ source=(
   $pkgname.service
   back_inserter.patch
 )
-sha512sums=('bcb41e2c16f6b1206d869304c2e2067487dabca6a4090731e89ef725925dc6e90476c30a10d59abc5befa0e0ef6ba6151520d41db6715a434fc314700988ea17'
+sha512sums=('b5882c18a3f4b24771a56ab107a986fe2b8548a8cf54d3b50c027c005ed13fbd4dd71686448843225b29899be1a116ef7151b58dac931de43da04cd87ff42be5'
             '00be5ce1b167492946e049c66de472a482ff1e1c8939f6029626ff842f6370f1b7a046958a8ae58d56eb9eb192a05448fcb2ec072fe8614a836ee9e9df4dd027'
             '88ba2b6624e7dddd13a51e6fb9c7a65226d0c5b0645183901d6434c23fa0aca605989be0c600f2197c99c1b4c64396477aa15ab3c427087e86bb652977428aae'
             'f0ea57836f575dec93b12afb6c730c706b8745d25811152960dcd1f079760c2adda0b8af8e16e8329cc073c3b4e00edbbeea959ec6e1f5003ea77b0b6478262a'
