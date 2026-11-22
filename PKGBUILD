@@ -2,12 +2,12 @@
 
 pkgname=libsrt
 pkgver=1.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Secure Reliable Transport (SRT)'
 url='https://www.srtalliance.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(MPL-2.0)
-depends=(openssl)
+depends=(musl llvm-libs openssl)
 makedepends=(cmake ninja linux-headers)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Haivision/srt/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('017cd1e437ef2073a4dd10ddf7b55e86bc3d6ebac0393d13bd22f6a57055d32b')
