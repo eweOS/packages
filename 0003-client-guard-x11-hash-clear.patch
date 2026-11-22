@@ -1,0 +1,12 @@
+--- a/src/bin/e_client.c
++++ b/src/bin/e_client.c
+@@ -413,7 +413,9 @@
+ static void
+ _e_client_free(E_Client *ec)
+ {
++#ifndef HAVE_WAYLAND_ONLY
+    e_comp_x_hash_clear(ec);
++#endif
+    if (focused == ec)
+      {
+         focused = NULL;
