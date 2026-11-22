@@ -1,0 +1,7 @@
+--- a/qt6/autotests/kdeplatformtheme_unittest.cpp
++++ b/qt6/autotests/kdeplatformtheme_unittest.cpp
+@@ -34,3 +34,4 @@
+ static void prepareEnvironment()
+ {
++    qputenv("XDG_DATA_DIRS", "/usr/share");
+     QStandardPaths::setTestModeEnabled(true);
