@@ -1,0 +1,11 @@
+--- a/src/modules/networkmanager/e_mod_main.c
++++ b/src/modules/networkmanager/e_mod_main.c
+@@ -874,7 +874,7 @@
+    e_menu_activate_mouse(m, e_zone_current_get(),
+                          x, y, 1, 1,
+                          E_MENU_POP_DIRECTION_DOWN,
+-                         ecore_x_current_time_get());
++                         0);
+ }
+ 
+ /* Genlist "realized" smart callback: when a VPN row's view exists, ask the
