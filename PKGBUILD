@@ -1,16 +1,18 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=fractal
-pkgver=12.1
-pkgrel=2
+pkgver=14.3
+pkgrel=1
 pkgdesc="Matrix group messaging app"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gitlab.gnome.org/World/fractal"
-license=(GPL-3.0-only)
+license=(GPL-3.0-or-later)
 depends=(
   dconf
   gdk-pixbuf2
   glib2
+  glycin
+  glycin-gtk4
   graphene
   gst-plugins-bad
   gst-plugins-base
@@ -27,12 +29,14 @@ depends=(
   sqlite
 )
 makedepends=(
+  blueprint-compiler
   cmake
   meson
   rust
   xdg-desktop-portal
   gstreamer-devel
   grass
+  libwebp
   mimalloc
 )
 options=(!lto)
@@ -40,7 +44,7 @@ optdepends=('org.freedesktop.secrets: password storage')
 source=(
   $url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz
 )
-sha512sums=('93739acdeabbf4ec6c3d9abd2fb4ee2ec7f01faf69aa58c73c89ed7fd801cdd308b623a7e9bde1106df77c95cbb8c9b6461bfd5fdc7ef4bc4e2fdad48490ac49')
+sha512sums=('646b9a43f41554ddfdc0bc17be3bcda3cae15f8238e53ff0aaea46483b90f14424433b10c79cf81d6911fca1251f7ea013a1da5ee55cd63881530d02256135a7')
 
 prepare() {
   # NOTE: usptream uses a custom CARGO_HOME from within meson
