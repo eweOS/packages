@@ -3,7 +3,7 @@ pkgbase=linux-tools
 pkgname=(bpftool tmon perf)
 groups=($pkgbase)
 pkgver=6.19.11
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux kernel tools'
 license=(GPL-2.0-only)
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -105,7 +105,8 @@ build() {
 
 package_bpftool() {
   pkgdesc='Inspection and simple manipulation of eBPF programs and maps'
-  depends=(musl readline zlib libelf libcap zstd llvm-libs) # sframe not in LLVM yet
+  # sframe not in LLVM yet
+  depends=(musl readline zlib libelf libcap zstd llvm-libs openssl)
 
   cd linux-$pkgver/tools/bpf
   # skip runsqlower until enabled in build
