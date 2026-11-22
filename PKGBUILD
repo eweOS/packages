@@ -2,12 +2,12 @@
 
 pkgname=flashrom
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A utility for detecting, reading, writing, verifying and erasing flash chips'
 url='https://review.coreboot.org/admin/repos/flashrom,general'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(GPL-2.0-or-later)
-depends=(musl libusb libftdi pciutils libjaylink)
+depends=(musl libusb libftdi pciutils libjaylink openssl)
 makedepends=(meson ninja linux-headers python-sphinx git)
 # checkdepends=(cmocka)
 source=("git+https://github.com/flashrom/flashrom.git#tag=v$pkgver")
