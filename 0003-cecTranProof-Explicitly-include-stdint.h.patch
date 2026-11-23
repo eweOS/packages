@@ -1,0 +1,6 @@
+--- a/src/proof/cec/cecTranProof.h
++++ b/src/proof/cec/cecTranProof.h
+@@ -1 +1,3 @@
++#include <stdint.h>
++
+ // Shared combinational and sequential candidate proof.
