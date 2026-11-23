@@ -8,7 +8,7 @@ pkgname=(
   nm-cloud-setup
   networkmanager-docs
 )
-pkgver=1.56.1
+pkgver=1.58.1
 pkgrel=1
 pkgdesc="Network connection manager and user applications"
 url="https://networkmanager.dev/"
@@ -51,7 +51,7 @@ source=(
   networkmanager.service
   0001-force-platform-init.patch
 )
-sha256sums=('e40f24c2dc9f8408c8183e495f3b5d783204d116c8f23100d00c714ac4ed9252'
+sha256sums=('8d112eefc0e0e15d44e93453a8a16760ec07a4037e1f93097abdf55abd5dca2d'
             'bcf4bb9f097bc8f3b5819e4ef76cc2cec269546102c0894aaa2736afe5b6a3b9'
             '412487dc91184526523915a5399dd78feadd146462c790ec0fa47151c4b963a4')
 
