@@ -3,7 +3,7 @@
 
 pkgbase=util-linux
 pkgname=(util-linux util-linux-libs)
-pkgver=2.42
+pkgver=2.42.4
 pkgrel=1
 pkgdesc='Miscellaneous system utilities for Linux'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -37,7 +37,7 @@ source=(
   0002-meson-create-executable-link-with-sf.patch
   0003-nsenter-Fix-AT_HANDLE_FID-on-musl.patch
 )
-sha256sums=('ae5db06b513ac5d42b91e131f26aa8b59da6b623eeb948567cc7a7cb2c13ccb2'
+sha256sums=('e1d38037dab761a2d39114d88a6744ffd5a4576efa29fe41e1dfbd8453891fe7'
             '6ffedbc0f7878612d2b23589f1ff2ab15633e1df7963a5d9fc750ec5500c7e7a'
             'ee917d55042f78b8bb03f5467e5233e3e2ddc2fe01e302bc53b218003fe22275'
             '57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af'
