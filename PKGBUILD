@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=ngspice
-pkgver=44.2
-pkgrel=3
+pkgver=47
+pkgrel=1
 pkgdesc='Spice simulator for electric and electronic circuits'
 url='https://ngspice.sourceforge.io/index.html'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -13,7 +13,7 @@ provides=(libngspice.so)
 #	templates
 source=("https://sourceforge.net/projects/ngspice/files/ng-spice-rework/old-releases/$pkgver/ngspice-$pkgver.tar.gz"
 	0001-Skip-instantiation-for-is_compound.patch)
-sha256sums=('e7dadfb7bd5474fd22409c1e5a67acdec19f77e597df68e17c5549bc1390d7fd'
+sha256sums=('894e649651f1838a14095e5a5439e7d3aa63e87ede14d283173fda4fcdef675f'
             'b505d8f13c1fe40364c7ea47406308d4704c320d589368cc443baf5205501c4c')
 
 prepare() {
