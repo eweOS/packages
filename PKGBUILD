@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pyalpm
-pkgver=0.11.1
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="Python 3 bindings for libalpm"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://gitlab.archlinux.org/archlinux/pyalpm"
@@ -11,7 +11,7 @@ depends=('python' 'libalpm')
 makedepends=('git' 'python-setuptools' 'python-pkgconfig' 'python-build' 'python-installer' 'python-wheel' 'meson-python')
 checkdepends=('python-pytest' 'python-pytest-pacman')
 source=("git+https://gitlab.archlinux.org/archlinux/pyalpm.git#tag=$pkgver")
-sha256sums=('a098f1646e313c8dcd93db69ab8f727cb045717514c9aed1bf4e7be96532189a')
+sha256sums=('7d4b8f0329c93970de83df6586e8d55b4b7ecd1c0dc369267e93e9272349ab36')
 
 build() {
   cd "${pkgname}"
