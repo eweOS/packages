@@ -2,10 +2,10 @@
 
 pkgname=socat
 pkgver=1.8.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Multipurpose relay'
 url='http://www.dest-unreach.org/socat/'
-license=('GPL2')
+license=('GPL-2.0-only')
 arch=(x86_64 aarch64 riscv64 loongarch64)
 depends=('musl' 'readline' 'openssl')
 source=("$url/download/${pkgname}-${pkgver}.tar.gz")
