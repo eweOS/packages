@@ -2,7 +2,7 @@
 
 pkgname=qgis
 pkgver=4.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Geographic Information System (GIS) that supports vector, raster & database formats"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://qgis.org/"
@@ -18,12 +18,20 @@ optdepends=('fcgi: Map server'
             'gpsbabel: GPS Tools plugin')
 # 0001: Backport, avoid clang optimizer hang on qgsfontmanager.cpp
 # https://github.com/qgis/QGIS/commit/08b26e53fd30fdac2d84dedecfcabb0ffe66feb7
+# 0002: Backport, add PROJ 9.9 tmerczoned projection support
+# https://github.com/qgis/QGIS/commit/0af03df2d258646efdcd76b09b5dba9513eeae14
+# 0003: Backport, build tests with Qt >= 6.12
+# https://github.com/qgis/QGIS/commit/47ab0643e3c158476dd01dee13e7dff8eab59274
 source=(
   https://qgis.org/downloads/$pkgname-$pkgver.tar.bz2
   0001-fix-clang-optimizer-hang-on-qgsfontmanager.patch
+  0002-add-proj-9.9-tmerczoned-projection.patch
+  0003-drop-qtest-disable-keypad-navigation.patch
 )
 sha256sums=('e1f017c3bc1881a5f534d89188e4d16d4d1bb1413278ea27aef4604ff35b090a'
-            'f6b2f5ce4f859db9a28b08fb4cfed3acdb90c8f22d766e1ef9064fbcc11a8480')
+            'f6b2f5ce4f859db9a28b08fb4cfed3acdb90c8f22d766e1ef9064fbcc11a8480'
+            '7bbe47611aad7b3e9c50b514545bd1dd16bdc39e6302ab7293f0e08ec15b9c2d'
+            '53e24fdc54a749e2ae63408b38f65ad881aa3aab740c6476207d9c960caf9421')
 
 prepare() {
   _patch_ "$pkgname-$pkgver"
