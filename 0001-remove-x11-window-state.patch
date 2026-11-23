@@ -1,0 +1,68 @@
+diff --git a/kded/pindialog.cpp b/kded/pindialog.cpp
+index b3f0ebf..afca419 100644
+--- a/kded/pindialog.cpp
++++ b/kded/pindialog.cpp
+@@ -14,7 +14,6 @@
+ 
+ #include <KLocalizedString>
+ #include <KWindowSystem>
+-#include <KX11Extras>
+ 
+ #include <ModemManagerQt/Manager>
+ 
+@@ -132,10 +131,6 @@ PinDialog::PinDialog(ModemManager::Modem *modem, const Type type, QWidget *paren
+     ui->pin->setCursorPosition(0);
+     ui->pin2->setCursorPosition(0);
+ 
+-    if (KWindowSystem::isPlatformX11()) {
+-        KX11Extras::setState(winId(), NET::KeepAbove);
+-    }
+-
+     move((desktop.width() - width()) / 2, (desktop.height() - height()) / 2);
+     connect(ui->chkShowPass, &QCheckBox::toggled, this, &PinDialog::chkShowPassToggled);
+     connect(ModemManager::notifier(), &ModemManager::Notifier::modemRemoved, this, &PinDialog::modemRemoved);
+diff --git a/kded/secretagent.cpp b/kded/secretagent.cpp
+index b1074fa..7b3c5b5 100644
+--- a/kded/secretagent.cpp
++++ b/kded/secretagent.cpp
+@@ -34,7 +34,6 @@
+ #include <KLocalizedString>
+ #include <KPluginFactory>
+ #include <KWindowSystem>
+-#include <KX11Extras>
+ #include <qt6keychain/keychain.h>
+ 
+ namespace
+@@ -457,9 +456,6 @@ bool SecretAgent::processGetSecrets(QSharedPointer<SecretsRequest> request)
+             request->dialog = m_dialog;
+             request->saveSecretsWithoutReply = !connectionSettings->permissions().isEmpty();
+             m_dialog->show();
+-            if (KWindowSystem::isPlatformX11()) {
+-                KX11Extras::setState(m_dialog->winId(), NET::KeepAbove);
+-            }
+             return false;
+         }
+     } else if (isVpn && userRequested) { // just return what we have
+diff --git a/libs/handler.cpp b/libs/handler.cpp
+index 05f16ce..8b51d01 100644
+--- a/libs/handler.cpp
++++ b/libs/handler.cpp
+@@ -40,7 +40,6 @@
+ #include <KOSRelease>
+ #include <KPluginMetaData>
+ #include <KWindowSystem>
+-#include <KX11Extras>
+ 
+ #include <QCoroDBus>
+ #include <nm-client.h>
+@@ -343,10 +342,6 @@ QCoro::Task<> Handler::addAndActivateConnectionInternal(const QString &device, c
+         editor->setAttribute(Qt::WA_DeleteOnClose);
+         editor->show();
+ 
+-        if (KWindowSystem::isPlatformX11()) {
+-            KX11Extras::setState(editor->winId(), NET::KeepAbove);
+-        }
+-
+         connect(editor.data(), &ConnectionEditorDialog::accepted, [editor, device, specificObject, this]() { //
+             addAndActivateConnectionDBus(editor->setting(), device, specificObject);
+         });
