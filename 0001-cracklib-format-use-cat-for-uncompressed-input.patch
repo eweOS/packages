@@ -1,0 +1,13 @@
+--- a/util/cracklib-format
++++ b/util/cracklib-format
+@@ -27,8 +27,8 @@
+ 	ARGS=""
+ 	;;
+ *)
+-	CMD="gzip"
+-	ARGS="-cdf"
++	CMD="cat"
++	ARGS=""
+ 	;;
+ esac
+ 
