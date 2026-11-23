@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <ziyao@disroot.org>
 
 pkgname=hunspell
-pkgver=1.7.3
-pkgrel=2
+pkgver=1.7.6
+pkgrel=1
 pkgdesc='The most popular spellchecking library.'
 url='https://hunspell.github.io/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -10,7 +10,7 @@ license=(LGPL GPL MPL)
 depends=(musl readline)
 provides=(libhunspell-1.7.so)
 source=("https://github.com/hunspell/hunspell/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('933be3dac6fd55f6e752331a170efb7e33800e40fae1156d8434cc8c85379a1b')
+sha256sums=('4fa9c52a5337fb0a3e03f3212b6372d0159eac3d1a3e6e938e8897ff3d9c3d0c')
 
 build () {
 	cd hunspell-$pkgver
