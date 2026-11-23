@@ -1,0 +1,122 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4109926..23ac48f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -35,6 +35,7 @@ include(KDEClangFormat)
+ include(KDEGitCommitHooks)
+ include(ECMQmlModule)
+ include(ECMConfiguredInstall)
++include(CheckFunctionExists)
+ 
+ option(BUILD_DOC "Whether to build the documentation" ON)
+ option(BUILD_KCM_TABLET "Build the Tablet KCM" ON)
+@@ -181,7 +182,6 @@ find_package(LibKWorkspace ${PROJECT_DEP_VERSION} CONFIG REQUIRED)
+ find_package(LibNotificationManager ${PROJECT_DEP_VERSION} CONFIG REQUIRED)
+ find_package(LibTaskManager ${PROJECT_DEP_VERSION} CONFIG REQUIRED)
+ find_package(KWinDBusInterface CONFIG REQUIRED)
+-find_package(ScreenSaverDBusInterface CONFIG REQUIRED)
+ find_package(KRunnerAppDBusInterface CONFIG REQUIRED)
+ find_package(KF6ItemModels CONFIG REQUIRED)
+ find_package(KSysGuard CONFIG REQUIRED)
+@@ -194,14 +194,6 @@ set_package_properties(KF6Baloo PROPERTIES
+     TYPE RECOMMENDED
+ )
+ 
+-find_package(X11)
+-set_package_properties(X11 PROPERTIES
+-    DESCRIPTION "X11 libraries"
+-    URL "https://www.x.org"
+-    PURPOSE "Required for building the X11 based workspace"
+-    TYPE REQUIRED
+-)
+-
+ find_package(UDev)
+ set_package_properties(UDev PROPERTIES
+     DESCRIPTION "API for enumerating and introspecting local devices (part of systemd)"
+@@ -210,8 +202,6 @@ set_package_properties(UDev PROPERTIES
+     TYPE OPTIONAL
+ )
+ 
+-find_package(XCB REQUIRED COMPONENTS XCB)
+-
+ pkg_check_modules(XKBREGISTRY xkbregistry REQUIRED IMPORTED_TARGET)
+ 
+ ecm_find_qmlmodule(org.kde.pipewire 0.1)
+diff --git a/applets/CMakeLists.txt b/applets/CMakeLists.txt
+index f9b7a89..3f2840c 100644
+--- a/applets/CMakeLists.txt
++++ b/applets/CMakeLists.txt
+@@ -9,7 +9,6 @@ add_subdirectory(window-list)
+ plasma_install_package(icontasks org.kde.plasma.icontasks)
+ 
+ if(PlasmaActivities_FOUND)
+-   add_subdirectory(pager)
+    add_subdirectory(showActivityManager)
+ endif()
+ 
+diff --git a/applets/taskmanager/backend.h b/applets/taskmanager/backend.h
+index f95faee..3e8b9f3 100644
+--- a/applets/taskmanager/backend.h
++++ b/applets/taskmanager/backend.h
+@@ -13,7 +13,6 @@
+ #include <QQuickItem>
+ #include <QRect>
+ 
+-#include <netwm.h>
+ #include <qqmlregistration.h>
+ #include <qwindowdefs.h>
+ 
+diff --git a/imports/activitymanager/switcherbackend.cpp b/imports/activitymanager/switcherbackend.cpp
+index 3744bc1..7bca2a2 100644
+--- a/imports/activitymanager/switcherbackend.cpp
++++ b/imports/activitymanager/switcherbackend.cpp
+@@ -28,7 +28,6 @@
+ #include <KGlobalAccel>
+ #include <KIO/PreviewJob>
+ #include <KLocalizedString>
+-#include <KWindowInfo>
+ #include <KWindowSystem>
+ #include <waylandtasksmodel.h>
+ #include <windowtasksmodel.h>
+diff --git a/kcms/CMakeLists.txt b/kcms/CMakeLists.txt
+index 9db9c83..466b5d5 100644
+--- a/kcms/CMakeLists.txt
++++ b/kcms/CMakeLists.txt
+@@ -2,7 +2,6 @@ remove_definitions(-DQT_NO_CAST_FROM_ASCII -DQT_STRICT_ITERATORS -DQT_NO_CAST_FR
+ 
+ add_subdirectory(libkwindevices)
+ add_subdirectory( keyboard )
+-add_subdirectory( access )
+ add_subdirectory( dateandtime )
+ add_subdirectory( ksplash )
+ 
+diff --git a/kcms/keyboard/CMakeLists.txt b/kcms/keyboard/CMakeLists.txt
+index dc4b4a9..9bfd606 100644
+--- a/kcms/keyboard/CMakeLists.txt
++++ b/kcms/keyboard/CMakeLists.txt
+@@ -1,7 +1,5 @@
+ add_definitions(-DTRANSLATION_DOMAIN=\"kcm_keyboard\")
+ 
+-add_subdirectory(tastenbrett)
+-
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ 
+ ### kcm keyboard ###
+@@ -88,6 +86,5 @@ if(BUILD_TESTING)
+     add_subdirectory( tests )
+ endif()
+ 
+-add_dependencies(kcm_keyboard tastenbrett)
+ 
+ install(FILES keyboardsettings.kcfg keyboardmiscsettings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
+diff --git a/kcms/mouse/inputbackend.cpp b/kcms/mouse/inputbackend.cpp
+index 417b758..3fd9ebe 100644
+--- a/kcms/mouse/inputbackend.cpp
++++ b/kcms/mouse/inputbackend.cpp
+@@ -200,6 +200,4 @@ QString InputBackend::errorString() const
+     return m_errorString;
+ }
+ 
+-#include <fixx11h.h>
+-
+ #include "moc_inputbackend.cpp"

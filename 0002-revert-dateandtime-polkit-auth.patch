@@ -1,0 +1,63 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4109926..b7cc87c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -88,7 +88,6 @@ find_package(Plasma ${PROJECT_DEP_VERSION} REQUIRED)
+ find_package(PlasmaQuick ${PROJECT_DEP_VERSION} REQUIRED)
+ find_package(PlasmaActivities ${PROJECT_DEP_VERSION} REQUIRED)
+ find_package(PlasmaActivitiesStats ${PROJECT_DEP_VERSION} REQUIRED)
+-find_package(PolkitQt6-1 REQUIRED)
+ 
+ if(BUILD_TESTING)
+     find_package(Qt6Test ${QT_MIN_VERSION} CONFIG REQUIRED)
+diff --git a/kcms/dateandtime/CMakeLists.txt b/kcms/dateandtime/CMakeLists.txt
+index 62af065..96d3771 100644
+--- a/kcms/dateandtime/CMakeLists.txt
++++ b/kcms/dateandtime/CMakeLists.txt
+@@ -25,7 +25,5 @@ target_link_libraries(kcm_clock
+     KF6::KIOCore
+     KF6::KIOWidgets
+     KF6::Svg
+-    KF6::AuthCore
+-    PolkitQt6-1::Core
+ )
+ install(TARGETS kcm_clock  DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/kcms/systemsettings_qwidgets )
+diff --git a/kcms/dateandtime/main.cpp b/kcms/dateandtime/main.cpp
+index 3e33eee..e5f4b2b 100644
+--- a/kcms/dateandtime/main.cpp
++++ b/kcms/dateandtime/main.cpp
+@@ -13,12 +13,8 @@
+ #include <QVBoxLayout>
+ 
+ #include <KAboutData>
+-#include <KAuth/Action>
+-#include <KAuth/ExecuteJob>
+ #include <KMessageBox>
+ #include <KPluginFactory>
+-#include <PolkitQt1/Authority>
+-#include <PolkitQt1/Subject>
+ #include <QDBusConnection>
+ 
+ #include "dtime.h"
+@@ -51,21 +47,6 @@ bool KclockModule::timedatedSave()
+                                                    QStringLiteral("/org/freedesktop/timedate1"),
+                                                    QDBusConnection::systemBus());
+ 
+-    // Auth manually for "set-time", this implies authroization for all the other actions => the user only sees one popup
+-    // HACK  First We use KAuth here just so it sidechannels parent window and activation token for us, everything else is noop because no helper
+-    KAuth::Action action(authActionName());
+-    action.setParentWindow(widget()->window()->windowHandle());
+-    auto job = action.execute();
+-    job->exec();
+-    // Second do the actual authorization manually
+-    auto authority = PolkitQt1::Authority::instance();
+-    auto authorized = authority->checkAuthorizationSync(authActionName(),
+-                                                        PolkitQt1::SystemBusNameSubject(QDBusConnection::systemBus().baseService()),
+-                                                        PolkitQt1::Authority::AllowUserInteraction);
+-    if (authorized != PolkitQt1::Authority::Yes) {
+-        return false;
+-    }
+-
+     // final arg in each method is "user-interaction" i.e whether it's OK for polkit to ask for auth
+ 
+     // we cannot send requests up front then block for all replies as we need NTP to be disabled before we can make a call to SetTime
