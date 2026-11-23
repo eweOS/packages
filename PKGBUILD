@@ -8,7 +8,7 @@ pkgname=(
   nm-cloud-setup
   networkmanager-docs
 )
-pkgver=1.56.1
+pkgver=1.58.1
 pkgrel=1
 pkgdesc="Network connection manager and user applications"
 url="https://networkmanager.dev/"
@@ -16,12 +16,14 @@ arch=(x86_64 aarch64 riscv64 loongarch64)
 license=(LGPL-2.1-or-later)
 makedepends=(
   bash
+  bpftool
   curl
   git
   glib2
   gobject-introspection
   gtk-doc
   jansson
+  libbpf
   libndp
   libnewt
   libnvme
@@ -46,14 +48,22 @@ checkdepends=(
 #	Refer to these PRs for more details,
 #	https://github.com/eweOS/packages/pull/2983
 #	https://github.com/eweOS/packages/pull/2995
+# 0002: Downstream, allow the CLAT BPF build without gcc
+# TODO: It should be upstreamed!
+# 0003: Backport, avoid _s1 shadowing with GLib 2.89.3
+# https://github.com/NetworkManager/NetworkManager/commit/4a2278970a8930d5fbedc21e5690bfd86f61567b
 source=(
   "NetworkManager-$pkgver::https://github.com/NetworkManager/NetworkManager/archive/refs/tags/$pkgver.tar.gz"
   networkmanager.service
   0001-force-platform-init.patch
+  0002-bpf-allow-clang-without-gcc.patch
+  0003-libnm-glib-aux-avoid-GLib-test-shadowing.patch
 )
-sha256sums=('e40f24c2dc9f8408c8183e495f3b5d783204d116c8f23100d00c714ac4ed9252'
+sha256sums=('8d112eefc0e0e15d44e93453a8a16760ec07a4037e1f93097abdf55abd5dca2d'
             'bcf4bb9f097bc8f3b5819e4ef76cc2cec269546102c0894aaa2736afe5b6a3b9'
-            '412487dc91184526523915a5399dd78feadd146462c790ec0fa47151c4b963a4')
+            '412487dc91184526523915a5399dd78feadd146462c790ec0fa47151c4b963a4'
+            '0e40b6876c6a5fba2cfdcc9c7f86770e3cb024e2f00bc60e3696f4acd170de0e'
+            '6df90f9a0d95abddb9872faefbfdc2e2167aa7fdd9896cc0aca0f997d4dd280e')
 
 prepare() {
   _patch_ NetworkManager-$pkgver
@@ -61,7 +71,7 @@ prepare() {
 
 build() {
   local _false_comps=(iwd systemd_journal ifupdown modem_manager ppp polkit)
-  local _no_comps=(libaudit session_tracking dhcpcd dhclient systemdsystemunitdir)
+  local _no_comps=(libaudit session_tracking dhcpcd systemdsystemgeneratordir systemdsystemunitdir)
   
   local meson_options=(
     # build checks this option; injecting just via *FLAGS is broken
@@ -70,7 +80,6 @@ build() {
     # platform
     -D dist_version="$pkgver-$pkgrel"
     -D session_tracking_consolekit=false
-    -D modify_system=true
     -D selinux=false
 
     # configuration plugins
@@ -101,13 +110,19 @@ build() {
 }
 
 check() {
-  # build with lto on and debug on causes failure for test
-  # check-local-exports-libnm
-  # gettext-tiny isn't compatible with check-potfile-list
+  local test_list
+
+  # LTO with debug breaks check-local-exports-libnm.
+  # gettext-tiny isn't compatible with check-potfile-list.
   test_list=$(meson test -C build --list) 2> /dev/null
   test_list=${test_list//NetworkManager:check-local-exports-libnm}
   test_list=${test_list//NetworkManager:check-potfile-list}
+  test_list=${test_list//NetworkManager:test-systemd}
   NMTST_FORCE_REAL_ROOT=1 meson test -C build --print-errorlogs $test_list
+
+  # Requires the GLib netlink network monitor module, which eweOS glib does not ship.
+  NMTST_FORCE_REAL_ROOT=1 meson test -C build --print-errorlogs NetworkManager:test-systemd \
+    --test-args='-s /systemd/sd-event/check-skip/monitor'
 }
 
 package_networkmanager() {
@@ -115,6 +130,7 @@ package_networkmanager() {
     curl
     glib2
     jansson
+    libbpf
     libndp
     libnewt
     libnm
@@ -127,7 +143,6 @@ package_networkmanager() {
   )
   optdepends=(
     'bluez: Bluetooth support'
-    'dhclient: alternative DHCP client'
     'dhcpcd: alternative DHCP client'
     'dnsmasq: connection sharing'
     'firewalld: firewall support'
@@ -171,6 +186,7 @@ END
   _pick_ libnm usr/include/libnm
   _pick_ libnm usr/lib/girepository-1.0/NM-*
   _pick_ libnm usr/lib/libnm.*
+  _pick_ libnm usr/lib/nm-libnm-helper
   _pick_ libnm usr/lib/pkgconfig/libnm.pc
   _pick_ libnm usr/share/gir-1.0/NM-*
   _pick_ libnm usr/share/vala/vapi/libnm.*

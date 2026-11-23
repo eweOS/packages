@@ -1,0 +1,15 @@
+--- a/src/core/bpf/meson.build
++++ b/src/core/bpf/meson.build
+@@ -172,6 +172,11 @@
+ else
+   # clang does not support -print-multiarch (D133170) and its -dump-machine
+   # does not match multiarch. Query gcc instead.
+-  target_triplet_cmd = run_command('gcc', '-print-multiarch', check: false)
++  gcc = find_program('gcc', required: false)
++  if gcc.found()
++    target_triplet_cmd = run_command(gcc, '-print-multiarch', check: false)
++  else
++    target_triplet_cmd = run_command('sh', '-c', 'exit 1', check: false)
++  endif
+ endif
+ if target_triplet_cmd.returncode() == 0
