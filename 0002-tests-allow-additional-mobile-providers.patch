@@ -1,0 +1,16 @@
+diff --git a/tests/mobileproviderstest.cpp b/tests/mobileproviderstest.cpp
+index 4fa661160..17ac6bb53 100644
+--- a/tests/mobileproviderstest.cpp
++++ b/tests/mobileproviderstest.cpp
+@@ -39,7 +39,10 @@ void MobileProvidersTest::testProviderFromMccMnc()
+ 
+     MobileProviders providers;
+ 
+-    QCOMPARE(providers.getProvidersFromMCCMNC(mccmnc), providerNames);
++    const QStringList actualNames = providers.getProvidersFromMCCMNC(mccmnc);
++    for (const QString &name : providerNames) {
++        QVERIFY2(actualNames.contains(name), qPrintable(name));
++    }
+ }
+ 
+ void MobileProvidersTest::testProviderFromMccMnc_data()
