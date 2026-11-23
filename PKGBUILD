@@ -1,7 +1,7 @@
 # Maintainer: Eric Long <i@hack3r.moe>
 
 pkgname=tinymist
-pkgver=0.14.25
+pkgver=0.15.12
 pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 pkgdesc='An integrated language service for Typst'
@@ -10,7 +10,7 @@ license=(Apache-2.0)
 depends=(musl llvm-libs openssl)
 makedepends=(git rust)
 source=("git+https://github.com/Myriad-Dreamin/tinymist.git#tag=v$pkgver")
-sha256sums=('594106d8d8bb02a60730bcd0cbea9919251e7ad8bab783ac06d9752ccf70d3e0')
+sha256sums=('a58a68640413dac7f88557b4c36f18db851254284bca51324258ef497a496ec6')
 
 prepare() {
   _patch_ $pkgname
@@ -39,7 +39,10 @@ check() {
   mkdir -p editors/vscode/out/
   cp target/release/$pkgname editors/vscode/out/$pkgname
 
-  cargo test --frozen
+  # Viewer tests create a GPU device, which is unavailable in the headless build container.
+  cargo test --frozen -- \
+    --skip doc::tests::page_canvas_ \
+    --skip preview_frame_paints_generated_page
 }
 
 package() {
