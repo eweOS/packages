@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=babl
-pkgver=0.1.124
-pkgrel=2
+pkgver=0.1.128
+pkgrel=1
 pkgdesc='Dynamic, any to any, pixel format conversion library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://gegl.org/babl/'
@@ -16,7 +16,7 @@ makedepends=(
     'gi-docgen'
 )
 source=("git+https://gitlab.gnome.org/GNOME/babl.git#tag=BABL_${pkgver//./_}")
-sha256sums=('c40233426616713f6e0003e6162796a510f20fadaefec6130814433da8cdb1c5')
+sha256sums=('9078294b47e179db6767aed37cbdd1837cbe35a2568ee12d0016b2cc9f88816d')
 
 build() {
   ewe-meson "${pkgname}" build
