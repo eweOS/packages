@@ -2,7 +2,7 @@
 
 pkgname=openexr
 pkgver=3.4.13
-pkgrel=2
+pkgrel=3
 pkgdesc='A high dynamic-range image file format library'
 url='https://www.openexr.com/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
