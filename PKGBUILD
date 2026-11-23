@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=meson-python
-pkgver=0.20.0
+pkgver=0.22.1
 pkgrel=1
 pkgdesc='Meson PEP 517 Python build backend'
 arch=(any)
@@ -23,7 +23,7 @@ checkdepends=(cython
               python-pytest-mock
               python-wheel)
 source=(git+https://github.com/mesonbuild/meson-python#tag=$pkgver)
-sha256sums=('9adc63855f837eb8956834aa77e7b12047c77749c964f89456dbf13012cd088a')
+sha256sums=('13dee0e98f80f5c9f4506df161ec708a33f914e722ee906de78b4dfb93af2141')
 
 prepare() {
   cd $pkgname
