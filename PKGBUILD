@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=libpfm
-pkgver=4.13.0
-pkgrel=2
+pkgver=4.14.1
+pkgrel=1
 pkgdesc='Linux perf_events setup helper'
 url='https://perfmon2.sourceforge.net/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(musl)
 makedepends=(linux-uapi-headers)
 provides=(libpfm.so)
 source=("https://sourceforge.net/projects/perfmon2/files/libpfm4/libpfm-$pkgver.tar.gz")
-sha256sums=('d18b97764c755528c1051d376e33545d0eb60c6ebf85680436813fa5b04cc3d1')
+sha256sums=('af518eab2114b0e11dfeacf8dd618b0a1ea04f28cd0b38acad2ec99abff2fd04')
 
 _makeargs=(
 	PREFIX=/usr
