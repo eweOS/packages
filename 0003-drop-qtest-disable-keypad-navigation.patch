@@ -1,0 +1,9 @@
+diff --git a/src/test/qgstest.h b/src/test/qgstest.h
+--- a/src/test/qgstest.h
++++ b/src/test/qgstest.h
+@@ -62,5 +62,4 @@
+     app.setAttribute( Qt::AA_Use96Dpi, true ); \
+-    QTEST_DISABLE_KEYPAD_NAVIGATION            \
+     TestObject tc;                             \
+     QTEST_SET_MAIN_SOURCE_PATH                 \
+     return QTest::qExec( &tc, argc, argv );    \
