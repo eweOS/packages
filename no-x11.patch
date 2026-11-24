@@ -1,6 +1,6 @@
---- okular-25.12.3.orig/CMakeLists.txt
-+++ okular-25.12.3/CMakeLists.txt
-@@ -206,7 +206,7 @@
+--- okular-26.08.3.orig/CMakeLists.txt
++++ okular-26.08.3/CMakeLists.txt
+@@ -200,7 +200,7 @@
      else()
          find_package(Qt6Gui REQUIRED COMPONENTS Private)
      endif()
@@ -9,8 +9,8 @@
  else()
      set(HAVE_X11 FALSE)
  endif()
---- okular-25.12.3.orig/shell/shell.cpp
-+++ okular-25.12.3/shell/shell.cpp
+--- okular-26.08.3.orig/shell/shell.cpp
++++ okular-26.08.3/shell/shell.cpp
 @@ -28,10 +28,6 @@
  #include <KRecentFilesAction>
  #include <KSharedConfig>
@@ -22,7 +22,7 @@
  #include <KToggleFullScreenAction>
  #include <KToolBar>
  #include <KUrlMimeData>
-@@ -448,13 +444,6 @@
+@@ -445,15 +441,6 @@
          return false;
      }
  
@@ -31,12 +31,14 @@
 -    if (winfo.desktop() != desktop) {
 -        return false;
 -    }
+-#else
+-    Q_UNUSED(desktop);
 -#endif
 -
      return true;
  }
  
-@@ -720,16 +709,6 @@
+@@ -737,16 +724,6 @@
  
  void Shell::tryRaise(const QString &startupId)
  {
