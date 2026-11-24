@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=konsole
-pkgver=25.08.0
-pkgrel=3
+pkgver=26.08.3
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://apps.kde.org/konsole/'
 pkgdesc='KDE terminal emulator'
@@ -41,7 +41,7 @@ makedepends=(extra-cmake-modules
              kdoctools)
 optdepends=('keditbookmarks: to manage bookmarks')
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz)
-sha256sums=('c880bd2c829437a142abaf4f97ebc384c9f2c19f31cc23918c49100727927450')
+sha256sums=('3189d1d048300fbe0628eab001b8ea11bfd6fe4fb6c0bbabc7c5aa0461dad430')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
