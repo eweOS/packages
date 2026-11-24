@@ -3,8 +3,8 @@
 pkgbase=pyqt6
 pkgname=python-pyqt6
 pkgdesc='A set of Python bindings for the Qt6 toolkit'
-pkgver=6.9.1
-pkgrel=2
+pkgver=6.12.1
+pkgrel=1
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://riverbankcomputing.com/software/pyqt/intro'
 license=(GPL)
@@ -31,7 +31,7 @@ makedepends=(sip pyqt-builder python-dbus
              qt6-positioning qt6-sensors qt6-serialport qt6-speech qt6-webchannel qt6-websockets qt6-connectivity)
 provides=(qt6-python-bindings)
 source=(https://pypi.python.org/packages/source/P/PyQt6/pyqt6-$pkgver.tar.gz)
-sha256sums=('50642be03fb40f1c2111a09a1f5a0f79813e039c15e78267e6faaf8a96c1c3a6')
+sha256sums=('17bb18b3ae953ab54b23026291ecea2579b028597b56c281a752c8ed66dd1a58')
 
 build() {
   if check_option lto y; then
