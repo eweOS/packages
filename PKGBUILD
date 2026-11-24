@@ -3,7 +3,7 @@
 pkgbase=python
 pkgname=(python python-tests)
 pkgver=3.13.18
-pkgrel=1
+pkgrel=2
 _pybasever=${pkgver%.*}
 pkgdesc='The Python programming language'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -19,13 +19,30 @@ makedepends=(
   zlib
   linux-headers
 )
+# 0001: Backport cpython#146404 to avoid using the fixed-version SSL/TLS methods
+#       removed in OpenSSL 4.
+# 0002: Backport cpython#159388 to keep reporting TLS 1.0–1.2 as available
+#       even though their fixed-version methods were removed.
+# 0003: Backport cpython#149102 to preserve SSLEOFError on repeated I/O.
+# 0004: Backport cpython#148601 to use the OpenSSL 4 error reason names.
+# 0005: Backport the POP3 test fix from cpython#149356 for renamed TLS alerts.
 source=(
   "https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
   musl-find_library.patch
+  0001-Add-support-for-OpenSSL-4.0.0-alpha1.patch
+  0002-Fix-TLS-availability-with-OpenSSL-4.patch
+  0003-Preserve-SSL-EOF-errors-with-OpenSSL-4.patch
+  0004-Add-OpenSSL-4-error-codes.patch
+  0005-Accept-OpenSSL-4-alerts-in-POP3-tests.patch
   EXTERNALLY-MANAGED
 )
 sha256sums=('abb0102e6d4ae027509bcb82327d9dd85515b44a3ba8ad538cfc5e9847029f68'
             '055a00bef64a9c22d746be5e9072d09b303e21cf0865daed1d7a67210207fb4f'
+            '0d7c3b2738e956625f0258e692e28ca4b078349984390de003144fab16db0369'
+            'aae7016a0163de7ee254abdc5bee78f011c39aec8a7d7e4867598ff3e49a0e82'
+            '1e57da24b1c56bf54c91c9075e4ebb9f316fef89424a995b5644feebfc5fe695'
+            'f8de7f1bc516a6e9d255f115a1ca45929c69b9b07ec6d01e350779ff476eb976'
+            '9e61f65daf8fb42d967b72683634e4113c4cee7cb34d8f230d1f653be9ed771e'
             'eb165082097dfc3bde16b25d861093ae4dcadaf1cf102e45e5e2e630fbb58de8')
 
 prepare()

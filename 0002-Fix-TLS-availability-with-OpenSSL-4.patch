@@ -1,0 +1,128 @@
+From e7acd6a82f2feec196b84fdfc1d1533e37024221 Mon Sep 17 00:00:00 2001
+From: Pengyu Lee <lipengyu@kylinos.cn>
+Date: Sun, 1 Nov 2026 07:27:07 +0800
+Subject: [PATCH] =?UTF-8?q?gh-159387:=20Fix=20TLS=201.0=E2=80=931.2=20avai?=
+ =?UTF-8?q?lability=20detection=20with=20OpenSSL=204.0=20(GH-159388)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fix TLS 1.0–1.2 availability detection with OpenSSL 4.0
+
+OpenSSL 4.0 removed the version-specific methods but still supports
+TLS 1.0–1.2 through TLS_method(). Stop reporting these versions as
+unavailable, and expose legacy PROTOCOL_TLSv1* constants only when their corresponding methods exist.
+
+Also guard the other fixed-version protocol tests on 3.13.
+Upstream: https://github.com/python/cpython/pull/159388
+---
+ Lib/test/test_ssl.py                                       | 14 ++++++++++----
+ .../Library/2026-10-14-10-26-10.gh-issue-159387.xMbQbB.rst |  2 ++
+ Modules/_ssl.c                                             | 11 +++++------
+ 3 files changed, 17 insertions(+), 10 deletions(-)
+
+diff --git a/Lib/test/test_ssl.py b/Lib/test/test_ssl.py
+index 613b839510bee9d756d57314ceb7b67b61fe1c2d..e9ffa8612d83927907aa426c5faa170419c9351f 100644
+--- a/Lib/test/test_ssl.py
++++ b/Lib/test/test_ssl.py
+@@ -3788,19 +3788,19 @@ class ThreadedTests(unittest.TestCase):
+         if has_tls_version('SSLv3'):
+             try_protocol_combo(ssl.PROTOCOL_TLS, ssl.PROTOCOL_SSLv3, False)
+         try_protocol_combo(ssl.PROTOCOL_TLS, ssl.PROTOCOL_TLS, True)
+-        if has_tls_version('TLSv1'):
++        if has_tls_protocol('PROTOCOL_TLSv1'):
+             try_protocol_combo(ssl.PROTOCOL_TLS, ssl.PROTOCOL_TLSv1, 'TLSv1')
+ 
+         if has_tls_version('SSLv3'):
+             try_protocol_combo(ssl.PROTOCOL_TLS, ssl.PROTOCOL_SSLv3, False, ssl.CERT_OPTIONAL)
+         try_protocol_combo(ssl.PROTOCOL_TLS, ssl.PROTOCOL_TLS, True, ssl.CERT_OPTIONAL)
+-        if has_tls_version('TLSv1'):
++        if has_tls_protocol('PROTOCOL_TLSv1'):
+             try_protocol_combo(ssl.PROTOCOL_TLS, ssl.PROTOCOL_TLSv1, 'TLSv1', ssl.CERT_OPTIONAL)
+ 
+         if has_tls_version('SSLv3'):
+             try_protocol_combo(ssl.PROTOCOL_TLS, ssl.PROTOCOL_SSLv3, False, ssl.CERT_REQUIRED)
+         try_protocol_combo(ssl.PROTOCOL_TLS, ssl.PROTOCOL_TLS, True, ssl.CERT_REQUIRED)
+-        if has_tls_version('TLSv1'):
++        if has_tls_protocol('PROTOCOL_TLSv1'):
+             try_protocol_combo(ssl.PROTOCOL_TLS, ssl.PROTOCOL_TLSv1, 'TLSv1', ssl.CERT_REQUIRED)
+ 
+         # Server with specific SSL options
+@@ -3810,7 +3810,7 @@ class ThreadedTests(unittest.TestCase):
+         # Will choose TLSv1
+         try_protocol_combo(ssl.PROTOCOL_TLS, ssl.PROTOCOL_TLS, True,
+                            server_options=ssl.OP_NO_SSLv2 | ssl.OP_NO_SSLv3)
+-        if has_tls_version('TLSv1'):
++        if has_tls_protocol('PROTOCOL_TLSv1'):
+             try_protocol_combo(ssl.PROTOCOL_TLS, ssl.PROTOCOL_TLSv1, False,
+                                server_options=ssl.OP_NO_TLSv1)
+ 
+@@ -3827,6 +3827,8 @@ class ThreadedTests(unittest.TestCase):
+         try_protocol_combo(ssl.PROTOCOL_SSLv3, ssl.PROTOCOL_TLSv1, False)
+ 
+     @requires_tls_version('TLSv1')
++    @unittest.skipUnless(hasattr(ssl, 'PROTOCOL_TLSv1'),
++                         'needs ssl.PROTOCOL_TLSv1')
+     def test_protocol_tlsv1(self):
+         """Connecting to a TLSv1 server with various client options"""
+         if support.verbose:
+@@ -3840,6 +3842,8 @@ class ThreadedTests(unittest.TestCase):
+                            client_options=ssl.OP_NO_TLSv1)
+ 
+     @requires_tls_version('TLSv1_1')
++    @unittest.skipUnless(hasattr(ssl, 'PROTOCOL_TLSv1_1'),
++                         'needs ssl.PROTOCOL_TLSv1_1')
+     def test_protocol_tlsv1_1(self):
+         """Connecting to a TLSv1.1 server with various client options.
+            Testing against older TLS versions."""
+@@ -3856,6 +3860,8 @@ class ThreadedTests(unittest.TestCase):
+         try_protocol_combo(ssl.PROTOCOL_TLSv1_2, ssl.PROTOCOL_TLSv1_1, False)
+ 
+     @requires_tls_version('TLSv1_2')
++    @unittest.skipUnless(hasattr(ssl, 'PROTOCOL_TLSv1_2'),
++                         'needs ssl.PROTOCOL_TLSv1_2')
+     def test_protocol_tlsv1_2(self):
+         """Connecting to a TLSv1.2 server with various client options.
+            Testing against older TLS versions."""
+diff --git a/Misc/NEWS.d/next/Library/2026-10-14-10-26-10.gh-issue-159387.xMbQbB.rst b/Misc/NEWS.d/next/Library/2026-10-14-10-26-10.gh-issue-159387.xMbQbB.rst
+new file mode 100644
+index 0000000000000000000000000000000000000000..fddef6e097ba5cf2c2c168c8478b99604bcfce23
+--- /dev/null
++++ b/Misc/NEWS.d/next/Library/2026-10-14-10-26-10.gh-issue-159387.xMbQbB.rst
+@@ -0,0 +1,2 @@
++Fix :mod:`ssl` reporting TLS 1.0, 1.1, and 1.2 as unavailable when built
++with OpenSSL 4.0, despite support for these protocol versions.
+diff --git a/Modules/_ssl.c b/Modules/_ssl.c
+index 284e907590193f95ddfb9064a984008616250a61..3d55bf643ee44396a7a3d4929d373c774f432481 100644
+--- a/Modules/_ssl.c
++++ b/Modules/_ssl.c
+@@ -134,10 +134,9 @@ static void _PySSLFixErrno(void) {
+ #endif
+ 
+ #if (OPENSSL_VERSION_NUMBER >= 0x40000000L)
++/* OpenSSL 4.0 removed SSLv3 and the version-specific methods,
++ * but TLS 1.0, 1.1 and 1.2 are still available via TLS_method(). */
+ #  define OPENSSL_NO_SSL3
+-#  define OPENSSL_NO_TLS1
+-#  define OPENSSL_NO_TLS1_1
+-#  define OPENSSL_NO_TLS1_2
+ #  define OPENSSL_NO_SSL3_METHOD
+ #  define OPENSSL_NO_TLS1_METHOD
+ #  define OPENSSL_NO_TLS1_1_METHOD
+@@ -6532,13 +6531,13 @@ sslmodule_init_constants(PyObject *m)
+     ADD_INT_CONST("PROTOCOL_TLS", PY_SSL_VERSION_TLS);
+     ADD_INT_CONST("PROTOCOL_TLS_CLIENT", PY_SSL_VERSION_TLS_CLIENT);
+     ADD_INT_CONST("PROTOCOL_TLS_SERVER", PY_SSL_VERSION_TLS_SERVER);
+-#ifndef OPENSSL_NO_TLS1
++#if !defined(OPENSSL_NO_TLS1) && !defined(OPENSSL_NO_TLS1_METHOD)
+     ADD_INT_CONST("PROTOCOL_TLSv1", PY_SSL_VERSION_TLS1);
+ #endif
+-#ifndef OPENSSL_NO_TLS1_1
++#if !defined(OPENSSL_NO_TLS1_1) && !defined(OPENSSL_NO_TLS1_1_METHOD)
+     ADD_INT_CONST("PROTOCOL_TLSv1_1", PY_SSL_VERSION_TLS1_1);
+ #endif
+-#ifndef OPENSSL_NO_TLS1_2
++#if !defined(OPENSSL_NO_TLS1_2) && !defined(OPENSSL_NO_TLS1_2_METHOD)
+     ADD_INT_CONST("PROTOCOL_TLSv1_2", PY_SSL_VERSION_TLS1_2);
+ #endif
+ 
