@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=audex
-pkgver=25.08.0
-pkgrel=2
+pkgver=26.08.3
+pkgrel=1
 pkgdesc='Tool for ripping compact discs'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://apps.kde.org/audex/'
@@ -33,7 +33,7 @@ optdepends=('faac: MP4/M4A/AAC encoder'
 groups=(kde-applications
         kde-multimedia)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz)
-sha256sums=('27ac6085013206dc46364c058d75d351ea09eef8e0bfde56245f287457d85c32')
+sha256sums=('5badcb62621b2609b5b5786edc7db08731ce342b4feaa9fcfcb4244cb9b34cf3')
 
 build() {
   cmake -B build -S $pkgname-$pkgver
