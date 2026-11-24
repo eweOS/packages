@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=pyqt-builder
-pkgver=1.18.2
-pkgrel=2
+pkgver=1.21.0
+pkgrel=1
 pkgdesc='The PEP 517 compliant PyQt build system'
 arch=(any)
 url='https://pypi.org/project/PyQt-builder/'
@@ -16,7 +16,7 @@ makedepends=(git
              python-setuptools-scm
              python-wheel)
 source=(git+https://github.com/Python-PyQt/PyQt-builder#tag=$pkgver)
-sha256sums=('6060a9070b22078112ba0eb452e096bf9e149a740e15e6bd3a040c72b03db90a')
+sha256sums=('dc7313df539136631ce7bf96394e9a75e1c1016f0ccb8d7c922d3baf8c079b07')
 
 build() {
   cd PyQt-builder
