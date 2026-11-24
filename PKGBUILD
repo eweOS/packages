@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=typst
-pkgver=0.14.2
-pkgrel=2
+pkgver=0.15.1
+pkgrel=1
 pkgdesc='A markup-based typesetting system for the sciences'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://$pkgname.app"
@@ -14,10 +14,14 @@ makedepends=(cargo
 optdepends=('otf-libertinus: additional weights and variants for default font'
             'ttf-linux-libertine: legacy default font prior to v0.12.0')
 _archive="$pkgname-$pkgver"
-source=("$_url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('70a56445020ca05efc571c7b07a1a9f52eb93842d420518693c077ae74e54142')
+# 0001: Downstream, skip tests with non-reproducible SVG/PDF hashes under musl
+source=("$_url/archive/v$pkgver/$_archive.tar.gz"
+        "0001-skip-nonreproducible-hash-tests.patch")
+sha256sums=('c07909e01a2a6941e52c9b616e48c209c755eed416d62bcf5583c37a4aca01a3'
+            '7443ae971d499ba24e2b88ba737fb7b9ea2acb89a17247576bd405775d876432')
 
 prepare() {
+	_patch_ "$_archive"
 	cd "$_archive"
 	cargo fetch --locked --target "$RUSTHOST"
 }
@@ -26,7 +30,8 @@ build() {
 	local hash=$(gunzip < "$_archive.tar.gz" | git get-tar-commit-id)
 	cd "$_archive"
 	CFLAGS+=' -ffat-lto-objects'
-	export TYPST_VERSION="$pkgver (${hash::8})"
+	export TYPST_VERSION="$pkgver"
+	export TYPST_COMMIT_SHA="${hash::8}"
 	export GEN_ARTIFACTS=artifacts/
 	export OPENSSL_NO_VENDOR=true
 	cargo build -p typst-cli --frozen --release
