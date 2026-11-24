@@ -2,7 +2,7 @@
 
 pkgname=rapidjson
 pkgver=1.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='A fast JSON parser/generator for C++ with both SAX/DOM style API'
 url='https://github.com/Tencent/rapidjson'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -42,6 +42,6 @@ build () {
 package() {
 	cd rapidjson-$pkgver
 	DESTDIR=$pkgdir cmake --install build
-	_install_license_ license.txt
+	_install_license_ license.txt LICENSE
 }
 
