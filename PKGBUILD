@@ -2,7 +2,7 @@
 
 pkgname=rapidjson
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A fast JSON parser/generator for C++ with both SAX/DOM style API'
 url='https://github.com/Tencent/rapidjson'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -12,12 +12,16 @@ makedepends=(cmake)
 # 0001: Downstream, drop -march=native and error-related flags
 # 0002: Backport, fix build with newer Clang
 #	https://github.com/Tencent/rapidjson/commit/3b2441b87f99ab65f37b141a7b548ebadb607b96
+# 0003: Backport, fix PrettyWriter with non-default writeFlags
+#	https://github.com/Tencent/rapidjson/commit/d88be8ef1649eca4602348d1aab5c16c36f83d4f
 source=("https://github.com/Tencent/rapidjson/archive/refs/tags/v$pkgver.tar.gz"
 	0001-remove-march-and-error-related-flags.patch
-	0002-Removed-non-compiling-assignment-operator.patch)
+	0002-Removed-non-compiling-assignment-operator.patch
+	0003-prettywriter-fix-writeflags.patch)
 sha256sums=('bf7ced29704a1e696fbccf2a2b4ea068e7774fa37f6d7dd4039d0787f8bed98e'
             '9f127215c1a696667f1c893908a9589e99994c6a6b443655acc085145c299119'
-            'a8b1fe3ac541792ef9173eb5d7ee0ce61b73c7212dfb79016df6e5d2b6bd5a93')
+            'a8b1fe3ac541792ef9173eb5d7ee0ce61b73c7212dfb79016df6e5d2b6bd5a93'
+            '6984c6eb7b729d2706ceb01b8378036e715bb8a07feaa3350d2b71da8f024222')
 
 # TODO: Enable tests
 prepare() {

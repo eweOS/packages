@@ -1,0 +1,5 @@
+--- a/include/rapidjson/prettywriter.h
++++ b/include/rapidjson/prettywriter.h
+@@ -45 +45 @@
+-    typedef Writer<OutputStream, SourceEncoding, TargetEncoding, StackAllocator> Base;
++    typedef Writer<OutputStream, SourceEncoding, TargetEncoding, StackAllocator, writeFlags> Base;
