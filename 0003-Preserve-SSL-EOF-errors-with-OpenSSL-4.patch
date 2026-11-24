@@ -1,0 +1,134 @@
+From 7b7fa3f9bf3d7cdf3eb669d02b386e05b39c402a Mon Sep 17 00:00:00 2001
+From: Victor Stinner <vstinner@python.org>
+Date: Mon, 4 May 2026 13:52:57 +0200
+Subject: [PATCH] gh-148292: Update _ssl._SSLSocket for OpenSSL 4 (#149102)
+
+The _SSLSocket object now remembers if it gets an EOF error. In this
+case, read(), sendfile(), write() and do_handshake method calls fail
+with SSLEOFError without calling the underlying OpenSSL function.
+
+Co-authored-by: Gregory P. Smith <greg@krypto.org>
+
+Python 3.13 has no SSL sendfile method. Extend its transport EOF test.
+Upstream: https://github.com/python/cpython/pull/149102
+---
+ Lib/test/test_ssl.py                               |  5 ++++
+ .../2026-04-28-17-47-55.gh-issue-148292.oIq3ml.rst |  7 +++++
+ Modules/_ssl.c                                     | 33 ++++++++++++++++++++++
+ 3 files changed, 45 insertions(+)
+
+diff --git a/Lib/test/test_ssl.py b/Lib/test/test_ssl.py
+index e9ffa8612d83927907aa426c5faa170419c9351f..4a72ff8f1f69e2b67af67d593647f52ae6f24093 100644
+--- a/Lib/test/test_ssl.py
++++ b/Lib/test/test_ssl.py
+@@ -2658,6 +2658,11 @@ class SimpleBackgroundTests(unittest.TestCase):
+             incoming.write_eof()
+             self.assertRaises(ssl.SSLEOFError, sslobj.read)
+ 
++            # gh-148292: The underlying socket must keep reporting EOF.
++            self.assertRaises(ssl.SSLEOFError, sslobj.read)
++            self.assertRaises(ssl.SSLEOFError, sslobj.write, b'data')
++            self.assertRaises(ssl.SSLEOFError, sslobj.do_handshake)
++
+ 
+ @support.requires_resource('network')
+ class NetworkedTests(unittest.TestCase):
+diff --git a/Misc/NEWS.d/next/Library/2026-04-28-17-47-55.gh-issue-148292.oIq3ml.rst b/Misc/NEWS.d/next/Library/2026-04-28-17-47-55.gh-issue-148292.oIq3ml.rst
+new file mode 100644
+index 0000000000000000000000000000000000000000..29d015dcd74a92e8163ff0c891c53a95258e345b
+--- /dev/null
++++ b/Misc/NEWS.d/next/Library/2026-04-28-17-47-55.gh-issue-148292.oIq3ml.rst
+@@ -0,0 +1,7 @@
++:mod:`ssl`: Update :class:`ssl.SSLSocket` and :class:`ssl.SSLObject` for
++OpenSSL 4. The classes now remember if they get a :exc:`ssl.SSLEOFError`. In this
++case, following :meth:`~ssl.SSLSocket.read`,
++:meth:`~ssl.SSLSocket.write`, and :meth:`~ssl.SSLSocket.do_handshake` calls
++raise :exc:`ssl.SSLEOFError` without calling the underlying OpenSSL function.
++Thanks to that, :class:`ssl.SSLSocket` behaves the same on all OpenSSL versions
++on EOF.  Patch by Victor Stinner.
+diff --git a/Modules/_ssl.c b/Modules/_ssl.c
+index 3d55bf643ee44396a7a3d4929d373c774f432481..e01a5ea52ee98e99a64a8247e50e3f3f8ba40903 100644
+--- a/Modules/_ssl.c
++++ b/Modules/_ssl.c
+@@ -345,6 +345,9 @@ typedef struct {
+      * and shutdown methods check for chained exceptions.
+      */
+     PyObject *exc;
++    // gh-148292: On OpenSSL 4, calls after an unexpected EOF may fail with
++    // a generic protocol error. Remember the EOF to preserve SSLEOFError.
++    int got_eof_error;
+ } PySSLSocket;
+ 
+ typedef struct {
+@@ -484,6 +487,10 @@ fill_and_set_sslerror(_sslmodulestate *state,
+     PyObject *verify_obj = NULL, *verify_code_obj = NULL;
+     PyObject *init_value, *msg, *key;
+ 
++    if (ssl_errno == PY_SSL_ERROR_EOF && sslsock != NULL) {
++        sslsock->got_eof_error = 1;
++    }
++
+     if (errcode != 0) {
+         int lib, reason;
+ 
+@@ -599,6 +606,16 @@ fail:
+     Py_XDECREF(verify_obj);
+ }
+ 
++static void
++set_eof_error(PySSLSocket *sslsock)
++{
++    _sslmodulestate *state = get_state_sock(sslsock);
++    fill_and_set_sslerror(state, sslsock, state->PySSLEOFErrorObject,
++                          PY_SSL_ERROR_EOF,
++                          "EOF occurred in violation of protocol",
++                          __LINE__, 0);
++}
++
+ static int
+ PySSL_ChainExceptions(PySSLSocket *sslsock) {
+     if (sslsock->exc == NULL)
+@@ -852,6 +869,7 @@ newPySSLSocket(PySSLContext *sslctx, PySocketSockObject *sock,
+     self->Socket = NULL;
+     self->ctx = (PySSLContext*)Py_NewRef(sslctx);
+     self->shutdown_seen_zero = 0;
++    self->got_eof_error = 0;
+     self->owner = NULL;
+     self->server_hostname = NULL;
+     self->err = err;
+@@ -995,6 +1013,11 @@ _ssl__SSLSocket_do_handshake_impl(PySSLSocket *self)
+         BIO_set_nbio(SSL_get_wbio(self->ssl), nonblocking);
+     }
+ 
++    if (self->got_eof_error) {
++        set_eof_error(self);
++        goto error;
++    }
++
+     timeout = GET_SOCKET_TIMEOUT(sock);
+     has_timeout = (timeout > 0);
+     if (has_timeout) {
+@@ -2455,6 +2478,11 @@ _ssl__SSLSocket_write_impl(PySSLSocket *self, Py_buffer *b)
+         BIO_set_nbio(SSL_get_wbio(self->ssl), nonblocking);
+     }
+ 
++    if (self->got_eof_error) {
++        set_eof_error(self);
++        goto error;
++    }
++
+     timeout = GET_SOCKET_TIMEOUT(sock);
+     has_timeout = (timeout > 0);
+     if (has_timeout) {
+@@ -2595,6 +2623,11 @@ _ssl__SSLSocket_read_impl(PySSLSocket *self, Py_ssize_t len,
+         Py_INCREF(sock);
+     }
+ 
++    if (self->got_eof_error) {
++        set_eof_error(self);
++        goto error;
++    }
++
+     if (!group_right_1) {
+         dest = PyBytes_FromStringAndSize(NULL, len);
+         if (dest == NULL)
