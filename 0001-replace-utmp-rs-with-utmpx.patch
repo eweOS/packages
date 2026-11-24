@@ -1,0 +1,164 @@
+diff --git a/Cargo.lock b/Cargo.lock
+index 031a4b9..64a4a8a 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -98,12 +98,6 @@ version = "3.20.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "5d20789868f4b01b2f2caec9f5c4e0213b41e3e5702a50157d699ae31ced2fcb"
+ 
+-[[package]]
+-name = "byteorder"
+-version = "1.5.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "1fd0f2584146f6f2ef48085050886acf353beff7305ebd1ae69500e27c67f64b"
+-
+ [[package]]
+ name = "bytes"
+ version = "1.11.1"
+@@ -1929,7 +1923,7 @@ dependencies = [
+  "tuigreet-theme",
+  "tuigreet-types",
+  "unicode-width 0.2.0",
+- "utmp-rs",
++ "utmpx",
+  "uzers",
+  "zeroize",
+ ]
+@@ -2053,27 +2047,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "ebc1c04c71510c7f702b52b7c350734c9ff1295c464a03335b00bb84fc54f853"
+ 
+ [[package]]
+-name = "utmp-raw"
+-version = "0.4.0"
++name = "utmpx"
++version = "0.2.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "3beeac103419c41dad57dc6cbff2bb5fde2d6bcf095251741da8a2faec0601f0"
++checksum = "24cad6c2dc8471d43e380e6c3bbb8057639e81529419adb17330c28669c6835b"
+ dependencies = [
+- "cfg-if",
+  "libc",
+- "zerocopy",
+-]
+-
+-[[package]]
+-name = "utmp-rs"
+-version = "0.4.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "65bb375fa0da0fc928a3cbc3e2061d60e15cfca645e43a1d817fb0ee4199507e"
+-dependencies = [
+- "libc",
+- "thiserror 1.0.69",
+- "time",
+- "utmp-raw",
+- "zerocopy",
+ ]
+ 
+ [[package]]
+@@ -2557,27 +2536,6 @@ dependencies = [
+  "wasmparser",
+ ]
+ 
+-[[package]]
+-name = "zerocopy"
+-version = "0.7.35"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "1b9b4fd18abc82b8136838da5d50bae7bdea537c574d8dc1a34ed098d6c166f0"
+-dependencies = [
+- "byteorder",
+- "zerocopy-derive",
+-]
+-
+-[[package]]
+-name = "zerocopy-derive"
+-version = "0.7.35"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "fa4f8080344d4671fb4e831a13ad1e68092748387dfc4f55e356242fae12ce3e"
+-dependencies = [
+- "proc-macro2",
+- "quote",
+- "syn",
+-]
+-
+ [[package]]
+ name = "zerofrom"
+ version = "0.1.7"
+diff --git a/Cargo.toml b/Cargo.toml
+index edbe93c..80c3de1 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -51,7 +51,7 @@ tui = { package = "ratatui", version = "0.29.0", default-features = false, featu
+   "unstable",
+ ] }
+ unic-langid = "0.9.6"
+-utmp-rs = "0.4.0"
++utmpx = "0.2.0"
+ uzers = "0.12.2"
+ zeroize = "1.8.2"
+ 
+diff --git a/crates/tuigreet/Cargo.toml b/crates/tuigreet/Cargo.toml
+index 0f6e99e..11e1ec1 100644
+--- a/crates/tuigreet/Cargo.toml
++++ b/crates/tuigreet/Cargo.toml
+@@ -40,7 +40,7 @@ tracing            = { workspace = true }
+ tracing-appender   = { workspace = true }
+ tracing-subscriber = { workspace = true }
+ tui                = { workspace = true }
+-utmp-rs            = { workspace = true }
++utmpx              = { workspace = true }
+ uzers              = { workspace = true }
+ zeroize            = { workspace = true }
+ 
+diff --git a/crates/tuigreet/src/info.rs b/crates/tuigreet/src/info.rs
+index 7add07b..da74a95 100644
+--- a/crates/tuigreet/src/info.rs
++++ b/crates/tuigreet/src/info.rs
+@@ -10,7 +10,7 @@ use std::{
+ 
+ use chrono::Local;
+ use ini::Ini;
+-use utmp_rs::{UtmpEntry, UtmpParser};
++use utmpx::sys::UtType;
+ use uzers::os::unix::UserExt;
+ 
+ use crate::{
+@@ -77,19 +77,29 @@ pub fn get_issue() -> Option<String> {
+     )
+   };
+ 
+-  let user_count =
+-    match UtmpParser::from_path("/var/run/utmp").map_or(0, |utmp| {
+-      utmp.into_iter().fold(0, |acc, entry| {
+-        match entry {
+-          Ok(UtmpEntry::UserProcess { .. }) => acc + 1,
+-          Ok(UtmpEntry::LoginProcess { .. }) => acc + 1,
+-          _ => acc,
++  let user_count = {
++    let mut count = 0;
++
++    if utmpx::set_filename(c"/var/run/utmp").is_ok() {
++      utmpx::reset_cursor();
++
++      while let Ok(entry) = utmpx::read_next_entry() {
++        if matches!(
++          entry.ut_type,
++          UtType::USER_PROCESS | UtType::LOGIN_PROCESS
++        ) {
++          count += 1;
+         }
+-      })
+-    }) {
++      }
++
++      utmpx::close_database();
++    }
++
++    match count {
+       n if n < 2 => format!("{n} user"),
+       n => format!("{n} users"),
+-    };
++    }
++  };
+ 
+   let uts = nix::sys::utsname::uname();
+   let vtnr: usize = env::var("XDG_VTNR")
