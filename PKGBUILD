@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=kdenlive
-pkgver=25.08.0
-pkgrel=4
+pkgver=26.08.3
+pkgrel=1
 pkgdesc='A non-linear video editor for Linux using the MLT video framework'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://apps.kde.org/kdenlive/'
@@ -60,7 +60,7 @@ optdepends=('bigsh0t: VR360 effects'
 groups=(kde-applications
         kde-multimedia)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz)
-sha256sums=('f86206b9f86fe5693121723d0bb1750f96c295e9b6c7eb1fea2b408f56cc30d6')
+sha256sums=('4bfa3dc856ecabd1f1b3283741591350e33fd0141f878bcf6331450ee4adcaee')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
