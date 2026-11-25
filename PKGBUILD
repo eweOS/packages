@@ -2,8 +2,8 @@
 # Contributor: Aleksana QwQ <me@aleksana.moe>
 
 pkgname=unibilium
-pkgver=2.1.2
-pkgrel=3
+pkgver=2.1.4
+pkgrel=1
 pkgdesc='A terminfo parsing library'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://github.com/neovim/unibilium'
@@ -12,7 +12,7 @@ makedepends=('autoconf')
 provides=('libunibilium.so')
 license=('LGPL3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/neovim/unibilium/archive/v$pkgver.tar.gz")
-sha512sums=('8bc50b3662fcb1b52055fed028926d8c296169b6b1cfefef9bb37a435321ee6e005c4166c1e68c2959e5f6d4ffe8f44d8ea87d6dcc967176d473ae918ff3018f')
+sha512sums=('e1d351b7f4c13825c415f3b8078abd538863614a8aa443e3c5e5b85110372084ff4385c4b17eb7a546807188265285ca4b6493b6db9670d490f7743b89f11c4f')
 
 prepare()
 {
