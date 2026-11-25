@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=rrdtool
-pkgver=1.10.3
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Tool for logging and graphing various system status"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,16 +14,12 @@ optdepends=('perl: to use perl binding'
             'python: to use python binding'
 	    'lua51: to use lua(5.1) binding')
 options=('!emptydirs')
-# 0001: Backport: https://github.com/oetiker/rrdtool-1.x/pull/1332
 source=(
   https://github.com/oetiker/rrdtool-1.x/releases/download/v$pkgver/rrdtool-$pkgver.tar.gz
-  0001-fix-heap-buffer-overflow.patch
 )
-sha256sums=('843b7caa2a80a815d44ac5c65daa42920cb64586fe804e36d0bc0783554e0635'
-            'a9a80ecf0aa3c9f27f47fff53846d94882596667ed0727961ea32af099dc4196')
+sha256sums=('24c345b5c077c1b2b2fcbc1a364f1da051650fb6743ad5213096adc04c862ed4')
 
 prepare() {
-  _patch_ ${pkgname}-${pkgver}
   cd ${pkgname}-${pkgver}
 
   sed -i \
