@@ -1,8 +1,8 @@
 # Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=manifold
-pkgver=3.4.0
-pkgrel=2
+pkgver=3.5.5
+pkgrel=1
 pkgdesc='Geometry library for creating and operating on manifold triangle meshes'
 url='https://github.com/elalish/manifold'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -11,7 +11,7 @@ depends=(musl llvm-libs onetbb clipper2 assimp)
 makedepends=(cmake googletest)
 provides=(libmanifold.so libmanifoldc.so)
 source=("https://github.com/elalish/manifold/releases/download/v$pkgver/manifold-$pkgver.tar.gz")
-sha256sums=('03fb429c2080363cadc6e9a34ecd6ba7948c74d99baffb3df381546effaa6907')
+sha256sums=('5b5bb677e819a73a7b4ac96bbf95d35120b2fc324bb22446a6b717a30bca82c0')
 
 build() {
 	# TODO: enable python binding (require nanobind)
