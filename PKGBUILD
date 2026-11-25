@@ -1,7 +1,7 @@
 # Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=nng
-pkgver=1.12.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Lightweight brokerless messaging library'
 url='https://nng.nanomsg.org/'
@@ -11,7 +11,7 @@ depends=(musl libnsl)
 makedepends=(cmake)
 provides=(libnng.so)
 source=("https://github.com/nanomsg/nng/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('50b7264bd8f0901f7ebdf3ec7c48f4e23dd689bbe7b2917d9d8fad58ffd09e5c')
+sha256sums=('e2fdcdf126b530e331b4727812b710629cdb5d90d230ce8f080e2eb520299d8d')
 
 build() {
 	# TODO:
