@@ -1,0 +1,59 @@
+From 8a41e868fde631d8cfc017a1b1f03288b5714faa Mon Sep 17 00:00:00 2001
+From: Nikita Popov <npopov@redhat.com>
+Date: Fri, 10 Jul 2026 12:00:48 +0200
+Subject: [PATCH 2/3] Freeze condition
+
+---
+ llvm/lib/CodeGen/SelectionDAG/DAGCombiner.cpp |  16 +-
+ llvm/test/CodeGen/AArch64/icmp.ll             |  26 +-
+ llvm/test/CodeGen/ARM/fp16-promote.ll         |   2 +-
+ llvm/test/CodeGen/Mips/cconv/vector.ll        |  10 +-
+ llvm/test/CodeGen/Mips/cmov.ll                |   2 +-
+ llvm/test/CodeGen/NVPTX/i1-select.ll          |  14 +-
+ .../CodeGen/X86/fp-strict-scalar-cmp-fp16.ll  | 108 +-
+ llvm/test/CodeGen/X86/fp-strict-scalar-cmp.ll | 936 +++++++++++++-----
+ .../test/CodeGen/X86/fp128-libcalls-strict.ll |   2 +
+ .../CodeGen/X86/fp80-strict-scalar-cmp.ll     | 144 ++-
+ llvm/test/CodeGen/X86/isel-select-cmov.ll     |  16 +-
+ llvm/test/CodeGen/X86/select-constant-xor.ll  |  12 +-
+ llvm/test/CodeGen/X86/select-mmx.ll           |   4 +-
+ .../test/CodeGen/X86/select-of-load-poison.ll |   7 +-
+ 14 files changed, 939 insertions(+), 360 deletions(-)
+
+diff --git a/llvm/lib/CodeGen/SelectionDAG/DAGCombiner.cpp b/llvm/lib/CodeGen/SelectionDAG/DAGCombiner.cpp
+index c81c43c94b0f05..ee30495055f47c 100644
+--- a/llvm/lib/CodeGen/SelectionDAG/DAGCombiner.cpp
++++ b/llvm/lib/CodeGen/SelectionDAG/DAGCombiner.cpp
+@@ -30506,10 +30506,12 @@ bool DAGCombiner::SimplifySelectOps(SDNode *TheSelect, SDValue LHS,
+            SDNode::hasPredecessorHelper(RLD, Visited, Worklist)))
+         return false;
+ 
+-      Addr = DAG.getSelect(SDLoc(TheSelect),
+-                           LLD->getBasePtr().getValueType(),
+-                           TheSelect->getOperand(0), LLD->getBasePtr(),
+-                           RLD->getBasePtr());
++      // If the condition is poison, originally this would result in a poison
++      // result. After the transform, this would result in a load of poison,
++      // which is UB. Freeze the condition to prevent this.
++      Addr = DAG.getSelect(SDLoc(TheSelect), LLD->getBasePtr().getValueType(),
++                           DAG.getFreeze(TheSelect->getOperand(0)),
++                           LLD->getBasePtr(), RLD->getBasePtr());
+     } else {  // Otherwise SELECT_CC
+       // We cannot do this optimization if any pair of {RLD, LLD} is a
+       // predecessor to {RLD, LLD, CondLHS, CondRHS}. As we've already compared
+@@ -30528,10 +30530,10 @@ bool DAGCombiner::SimplifySelectOps(SDNode *TheSelect, SDValue LHS,
+            SDNode::hasPredecessorHelper(RLD, Visited, Worklist)))
+         return false;
+ 
++      SDValue FrozenOp0 = DAG.getFreeze(TheSelect->getOperand(0));
++      SDValue FrozenOp1 = DAG.getFreeze(TheSelect->getOperand(1));
+       Addr = DAG.getNode(ISD::SELECT_CC, SDLoc(TheSelect),
+-                         LLD->getBasePtr().getValueType(),
+-                         TheSelect->getOperand(0),
+-                         TheSelect->getOperand(1),
++                         LLD->getBasePtr().getValueType(), FrozenOp0, FrozenOp1,
+                          LLD->getBasePtr(), RLD->getBasePtr(),
+                          TheSelect->getOperand(4));
+     }
+
+
