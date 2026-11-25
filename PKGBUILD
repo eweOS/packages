@@ -3,8 +3,8 @@
 
 pkgname=lz4
 epoch=1
-pkgver=1.10.0
-pkgrel=3
+pkgver=1.11.1
+pkgrel=1
 pkgdesc='Extremely fast compression algorithm'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url='https://lz4.github.io/lz4/'
@@ -12,7 +12,7 @@ license=('GPL2')
 makedepends=('git')
 depends=('musl')
 source=("git+https://github.com/lz4/lz4.git#tag=v$pkgver")
-sha256sums=('SKIP')
+sha256sums=('aa0cfb1377f46ae4697892f16ac6b5ebda4f3ad66cc6db13b45682b20a4a65cf')
 
 build()
 {
