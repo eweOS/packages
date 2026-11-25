@@ -1,0 +1,17 @@
+--- a/lib/mozpkix/mozpkix.gyp
++++ b/lib/mozpkix/mozpkix.gyp
+@@ -112,14 +112,6 @@
+           # folds libraries.
+           'all_dependent_settings': {
+             'conditions': [
+-              [ 'OS=="linux"', {
+-                # The C++ link driver takes libgcc helpers such as __divdi3
+-                # from libgcc_s.so. Link the static libgcc ahead of it, as the
+-                # C driver does.
+-                'libraries': [
+-                  '-lgcc',
+-                ],
+-              }],
+               [ 'OS!="win" and OS!="mac" and OS!="ios"', {
+                 # Drop the C++ runtime that the C++ link driver adds, which
+                 # libssl doesn't use.

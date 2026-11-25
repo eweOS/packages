@@ -5,7 +5,7 @@ pkgname=(
   ca-certificates-mozilla
 )
 pkgbase=nss
-pkgver=3.132
+pkgver=3.134
 pkgrel=1
 pkgdesc="Network Security Services"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
@@ -25,18 +25,17 @@ makedepends=(
   gyp
   git
 )
-# 0001: Taken from Arch Linux, should be upstreamed, fix silent pkg-config
-#	generation failure in build.sh.
-#	https://bugzilla.mozilla.org/show_bug.cgi?id=2070738
-#	https://gitlab.archlinux.org/archlinux/packaging/packages/nss/-/blob/97d28f5792215927d9dbb1e1ad48703f834f1858/0001-Fix-generating-nss.pc-with-system-nspr.patch
+# 0001: Downstream, avoid hardcoded -lgcc; eweOS uses compiler-rt.
 source=(
   "nss::git+https://github.com/nss-dev/nss#tag=NSS_${pkgver//./_}_RTM"
   bundle.sh
   certdata2pem.py
+  0001-remove-hardcoded-libgcc.patch
 )
-sha256sums=('0de80e8b672e5c01f82c936da6214d574138f44ab78d57ea927c51852eaa3f3d'
+sha256sums=('94f32b1d76e821c78e76ea23781ad02bb39fe930408ab644552117c0edaa3508'
             'f64282fbc8e73de51f88f41e5175d211a63a1a3e1cbf12512a8b9e229ad9d259'
-            '142861cf04942c141e7a6d0d39a30b6d4b57f13f27d21bfa90c6abcd5d34de60')
+            '142861cf04942c141e7a6d0d39a30b6d4b57f13f27d21bfa90c6abcd5d34de60'
+            '28fb4f2b88be3e65b263ba62fd7db975c9fb4c2aafe859fb8b99880571a2cb81')
 
 prepare() {
   chmod +x ./{bundle.sh,certdata2pem.py}
@@ -100,12 +99,12 @@ package_nss() {
     install -D /dev/stdin "$pkgdir/usr/bin/nss-config"
 
   install -Dt "$pkgdir/usr/bin" \
-    dist/Release/bin/{*util,shlibsign,signtool,signver,ssltap}
+    dist/Release/bin/{*util,shlibsign,signver,ssltap}
 
   install -Dt "$pkgdir$includedir" -m644 dist/public/nss/*.h
 
   install -Dt "$pkgdir/usr/share/man/man1" -m644 \
-    nss/doc/nroff/{*util,signtool,signver,ssltap}.1
+    nss/doc/nroff/{*util,signver,ssltap}.1
     
   # Replace built-in trust with p11-kit connection
   ln -s pkcs11/p11-kit-trust.so "$pkgdir$libdir/p11-kit-trust.so"
