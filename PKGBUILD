@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=hyprland-protocols
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='Wayland protocol extensions for Hyprland'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/hyprwm/$pkgname"
@@ -10,7 +10,7 @@ license=(BSD-3-Clause)
 makedepends=(meson)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('ee419006d7cd20927b9b7c8b5fc430571c151b0385d600508de1a7957294498c')
+sha256sums=('e41ab206d89259fdf2059fdc523c39133e23ed9efa8b0ef0de9aeed61be96e72')
 
 build() {
 	ewe-meson "$_archive" build
