@@ -1,34 +1,28 @@
-From 8fc98f215917d61ebdd7a52ebec2d3d423f6cc9c Mon Sep 17 00:00:00 2001
-From: Yao Zi <ziyao@disroot.org>
-Date: Fri, 11 Oct 2024 08:16:22 +0000
+From 4b8965e66be00a2fd2c16b9ed5098c2550aa0e65 Mon Sep 17 00:00:00 2001
+From: Yao Zi <me@ziyao.cc>
+Date: Wed, 25 Nov 2026 16:07:01 +0000
 Subject: [PATCH] [llvm][cmake] Try LLVM libunwind when frame registration is
  unavailable
 
-Currently __register_frame and __unw_add_dynamic_fde are probed by
-default and OrcJIT prefers the later. But on a system with only LLVM
-libunwind available, we may need to link libunwind explicitly.
+Different from libgcc, compiler-rt doesn't provide unwind-related
+symbols by itself, and expects libunwind to do the job. In this case
+checks against __register_frame, __deregister_frame, and
+__unw_add_dynamic_fde would always fail without linking other libraries.
 
-This patch tries to link LLVM libunwind if frame registeration is not
-available by default, preventing LLVM-built systems falling back to
-__register_frame code path. Such fallback leads to errors like
+When all of these three symbols are missing, try finding
+__unw_add_dynamic_fde in libunwind, consider LLVM libunwind should be
+explicitly linked if succeeds.
 
-  $ clang-repl
-  clang-repl> 1 + 1;
-  libunwind: __unw_add_dynamic_fde: bad fde: FDE is really a CIE
-
-because __register_frame's behavior differs between libgcc and LLVM
-libunwind.
-
-Signed-off-by: Yao Zi <ziyao@disroot.org>
+Signed-off-by: Yao Zi <me@ziyao.cc>
 ---
- llvm/cmake/config-ix.cmake | 7 +++++++
- 1 file changed, 7 insertions(+)
+ llvm/cmake/config-ix.cmake | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
 diff --git a/llvm/cmake/config-ix.cmake b/llvm/cmake/config-ix.cmake
-index 86f2bac7d23e84..38d08f968ca9ea 100644
+index a8e4e5a63244..fde32aefdc47 100644
 --- a/llvm/cmake/config-ix.cmake
 +++ b/llvm/cmake/config-ix.cmake
-@@ -272,6 +272,13 @@ endif()
+@@ -357,6 +357,15 @@ endif()
  check_symbol_exists(__register_frame "${CMAKE_CURRENT_LIST_DIR}/unwind.h" HAVE_REGISTER_FRAME)
  check_symbol_exists(__deregister_frame "${CMAKE_CURRENT_LIST_DIR}/unwind.h" HAVE_DEREGISTER_FRAME)
  check_symbol_exists(__unw_add_dynamic_fde "${CMAKE_CURRENT_LIST_DIR}/unwind.h" HAVE_UNW_ADD_DYNAMIC_FDE)
@@ -37,8 +31,13 @@ index 86f2bac7d23e84..38d08f968ca9ea 100644
 +  if (HAVE_LLVM_LIBUNWIND)
 +    list(APPEND CMAKE_REQUIRED_LIBRARIES "unwind")
 +    set(HAVE_UNW_ADD_DYNAMIC_FDE 1)
++    set(HAVE_REGISTER_FRAME 1)
++    set(HAVE_DEREGISTER_FRAME 1)
 +  endif ()
 +endif ()
  
  check_symbol_exists(_Unwind_Backtrace "unwind.h" HAVE__UNWIND_BACKTRACE)
  check_symbol_exists(getpagesize unistd.h HAVE_GETPAGESIZE)
+-- 
+2.56.1
+
