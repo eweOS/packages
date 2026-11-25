@@ -45,18 +45,24 @@ makedepends=(llvm-devel cmake ninja utmps zlib zstd libffi libedit linux-headers
 #	differences between the two implementations may mess up the zstd-related
 #	flags provided by llvm-config --system-libs --link-static.
 #	The patch mimics the behavior of the LLVM implementation.
+# 0005: Backport, upstream pull request https://github.com/llvm/llvm-project/pull/208683
+#	This is known to cause Rust 1.97 to generate incorrect code on x86_64.
+#	Testsuite changes are stripped away due to conflicts, we don't run them
+#	anyway.
 source=("https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}.tar.gz"
         "https://ftp.gnu.org/gnu/binutils/binutils-${_binutilsver}.tar.xz"
         0001-fix-llvm-clang-config-install-prefix.patch
         0002-llvm-cmake-Try-LLVM-libunwind-when-frame-registratio.patch
         0003-clang-force-libc-linked-with-no-as-needed-when-using.patch
-        0004-llvm-Support-strip-zstd-library-sover-suffix.patch)
+        0004-llvm-Support-strip-zstd-library-sover-suffix.patch
+        0005-SDAG-Freeze-condition-in-select-of-load-fold.patch)
 sha256sums=('7ba3f2a8d8fda88be18a31d011e8195d3b7f87f9fa92b20c94cba2d7f65b0e3f'
             'd75a94f4d73e7a4086f7513e67e439e8fcdcbb726ffe63f4661744e6256b2cf2'
             'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94'
             '549795c19e20360906eb2979151c810e4ce9c4bafe51db4b6a81f864e30ae9fe'
             '57808d224fd9218a936e6669bf4129eaf4aa04fbd45ab9f7fd5a20efc304e307'
-            '2c276c10568b69e1221eb83a848e6b7b828511583960b053eb83845161460d20')
+            '2c276c10568b69e1221eb83a848e6b7b828511583960b053eb83845161460d20'
+            'c2df1882db1f1562b07ff7262992b642dceef511ad8a63bc4cc5b1e314f6dc21')
 
 _basedir=llvm-project-llvmorg-$pkgver
 
