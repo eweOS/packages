@@ -4,7 +4,7 @@
 
 pkgbase=kmod
 pkgname=(kmod libkmod)
-pkgver=34.3
+pkgver=34.4
 pkgrel=1
 pkgdesc="Linux kernel module management"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -29,7 +29,7 @@ source=("https://www.kernel.org/pub/linux/utils/kernel/${pkgname}/${pkgname}-${p
         depmod.script
         0000-disable-test-depmod.patch
         0001-avoid-unsupported-ln-relative.patch)
-sha256sums=('985554de49c21a58abd68c6cda2251384e1e5bb08b3b14c7f02b51f4c90c2958'
+sha256sums=('4c7942dda4793d08f975270322db582c9701438afd4d76ed9e6e7cf4094cb967'
             '1a92bfeae870f61ce814577e69d2a147a9c0caf6aed1131243e4179241fcc4a8'
             'c11c2a0f66ea405493e8617689ca10818dc81dd1dddc19bdb220c8b2917119c1'
             '60149f97cd139ef0f4962552d40e03b945aab8a69ffb3f9c6c7d502e11c4fe41'
