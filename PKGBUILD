@@ -2,7 +2,7 @@
 
 pkgbase=libffi
 pkgname=(libffi libffi-static)
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc='A portable Foregin Function Interface library.'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ checkdepends=(dejagnu)
 provides=(libffi.so)
 source=("https://github.com/libffi/libffi/releases/download/v$pkgver/libffi-$pkgver.tar.gz")
 
-sha256sums=('7da3e2d9a171eb0a038f592ecad3ff2bb2550f3496d87b3b29ad0cf4430c0db4')
+sha256sums=('81e879c094cc5ec3186c48510c6385ac6b3e866192e8bc71a35245703757ee40')
 
 prepare() {
   _patch_ "$pkgname-$pkgver"
