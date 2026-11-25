@@ -12,7 +12,7 @@ pkgname=(
 )
 _realpkgname=llvm-project
 pkgver=21.1.8
-pkgrel=1
+pkgrel=2
 _binutilsver=2.46.0
 _majorver="${pkgver%%.*}"
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -22,10 +22,11 @@ makedepends=(llvm-devel cmake ninja utmps zlib zstd libffi libedit linux-headers
              spirv-llvm-translator python)
 # 0001: Should be upstreamed, ensure clang-config and llvm-config's
 #	installation path fits in CMAKE_INSTALL_PREFIX.
-# 0002: Under review, link to LLVM libunwind to avoid usage of __register_frame,
-#	which leads to error messages like
+# 0002: Should be upstreamed, link to LLVM libunwind to avoid usage of
+#	__register_frame, which leads to error messages like
 #	libunwind: __unw_add_dynamic_fde: bad fde: FDE is really a CIE
 #	caused by different behavior between libgcc and LLVM libunwind.
+#	A prior version of this patch could be found at
 #	https://github.com/llvm/llvm-project/pull/112087
 # 0003: Workaround, always link libc with -Wl,no-as-needed, to prevent
 #	reference to weak symbol __cxa_finalize in compile-rt from being
@@ -47,13 +48,13 @@ makedepends=(llvm-devel cmake ninja utmps zlib zstd libffi libedit linux-headers
 source=("https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}.tar.gz"
         "https://ftp.gnu.org/gnu/binutils/binutils-${_binutilsver}.tar.xz"
         0001-fix-llvm-clang-config-install-prefix.patch
-        0002-try-llvm-libunwind.patch
+        0002-llvm-cmake-Try-LLVM-libunwind-when-frame-registratio.patch
         0003-clang-force-libc-linked-with-no-as-needed-when-using.patch
         0004-llvm-Support-strip-zstd-library-sover-suffix.patch)
 sha256sums=('7ba3f2a8d8fda88be18a31d011e8195d3b7f87f9fa92b20c94cba2d7f65b0e3f'
             'd75a94f4d73e7a4086f7513e67e439e8fcdcbb726ffe63f4661744e6256b2cf2'
             'e2655207dd8a90e8fdc9c7cc7c701738bc8ba932692a0752ace8cd06b45ccf94'
-            '13a1c761d41324c7a790df55650a3a98a9ade0348d6e88f1e269b6b77ce5df55'
+            '549795c19e20360906eb2979151c810e4ce9c4bafe51db4b6a81f864e30ae9fe'
             '57808d224fd9218a936e6669bf4129eaf4aa04fbd45ab9f7fd5a20efc304e307'
             '2c276c10568b69e1221eb83a848e6b7b828511583960b053eb83845161460d20')
 
