@@ -1,7 +1,7 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=nginx
-pkgver=1.30.7
+pkgver=1.30.8
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +16,7 @@ source=(
 )
 options=(!lto)
 backup=(etc/nginx/nginx.conf)
-sha256sums=('2565b5c837050e958f70fb0f73c48e2bca4542ad349fd356f46fb0c72610bc6e'
+sha256sums=('f867314ada32e717b949930859656c48a72dc6657aec598db58af2f98a40e1c1'
             '6a271b0eed015627c8106e0897b758fc064dfc5a1d47a85617096a837743c375'
             'f1634ba56d49c9e4ddd3f98cbcff594178b39efa068ad43894c4347a04272518')
 
