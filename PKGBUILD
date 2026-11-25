@@ -1,9 +1,9 @@
 # Maintainer: Yao Zi <me@ziyao.cc>
 
 pkgname=ruby
-pkgver=3.4.8
+pkgver=3.4.13
 _majorminorver="${pkgver%.*}"
-pkgrel=2
+pkgrel=1
 pkgdesc='An object-oriented language for quick and easy programming'
 url='https://www.ruby-lang.org/'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -14,7 +14,7 @@ options=(!lto)
 # 0001, should be upstreamed: fix logic to get main thread's stack size on musl.
 source=("https://cache.ruby-lang.org/pub/ruby/$_majorminorver/ruby-$pkgver.tar.gz"
 	0001-fix-get_main_stack-behavior-on-musl.patch)
-sha256sums=('53c4ddad41fbb6189f1f5ee0db57a51d54bd1f87f8755b3d68604156a35b045b'
+sha256sums=('d0d3bf3dd8c224a3c3b7ecd816a0f1b2cbcf4f87b5afcbdbe91d3fef177f351a'
             '1ef0659b7cf31bebf863f3ca661250117a85dfad64f90b782e97d0843fd89b0a')
 
 prepare() {
