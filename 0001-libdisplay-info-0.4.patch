@@ -1,0 +1,41 @@
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -188,3 +188,6 @@
+     ["resources/niri.service", "/usr/lib/systemd/user/", "644"],
+     ["resources/niri-shutdown.target", "/usr/lib/systemd/user/", "644"],
+ ]
++
++[patch.crates-io]
++libdisplay-info = { git = "https://github.com/PolyMeilex/libdisplay-info-rs.git", rev = "a2890463af474e4ec3f0037d54d53caba2b9f38b" }
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -1970,8 +1970,7 @@
+ [[package]]
+ name = "libdisplay-info"
+ version = "0.3.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "59fd96dbb2381ff31f314f07accbdf8550febdcc5cd8761ecaf7c1763361c359"
++source = "git+https://github.com/PolyMeilex/libdisplay-info-rs.git?rev=a2890463af474e4ec3f0037d54d53caba2b9f38b#a2890463af474e4ec3f0037d54d53caba2b9f38b"
+ dependencies = [
+  "bitflags 2.11.1",
+  "libc",
+@@ -1983,8 +1982,7 @@
+ [[package]]
+ name = "libdisplay-info-derive"
+ version = "0.1.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "8dc2c710cf5819e91220a446d9e64acc6814386cc22c509c3f0df83c0b874a98"
++source = "git+https://github.com/PolyMeilex/libdisplay-info-rs.git?rev=a2890463af474e4ec3f0037d54d53caba2b9f38b#a2890463af474e4ec3f0037d54d53caba2b9f38b"
+ dependencies = [
+  "proc-macro2",
+  "quote",
+@@ -1994,8 +1992,7 @@
+ [[package]]
+ name = "libdisplay-info-sys"
+ version = "0.3.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "26590d55b8819f9c6b0d95d9d12dc9edbfd1f2413e88814a33b631ac049bb51f"
++source = "git+https://github.com/PolyMeilex/libdisplay-info-rs.git?rev=a2890463af474e4ec3f0037d54d53caba2b9f38b#a2890463af474e4ec3f0037d54d53caba2b9f38b"
+ dependencies = [
+  "semver",
+  "system-deps",
