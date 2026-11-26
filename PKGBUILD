@@ -2,7 +2,7 @@
 
 pkgname=niri
 pkgver=26.04
-pkgrel=2
+pkgrel=3
 pkgdesc="A scrollable-tiling Wayland compositor"
 arch=(x86_64 aarch64 riscv64 loongarch64)
 url="https://github.com/YaLTeR/niri"
@@ -37,10 +37,18 @@ optdepends=(
 )
 # NOTE: linking issues with LTO enabled
 options=(!lto)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('ae30446fbf529155907726cf2cba7402bcfc5be2032370d66f9f980efb257f29353b47d495f1218b81ac32c643f15bbb74834dc35882849a4479021b4b9fa97f')
+# 0001: Downstream, support libdisplay-info 0.4 via libdisplay-info-rs PR 21
+# https://github.com/Smithay/libdisplay-info-rs/pull/21
+# TODO: Drop when libdisplay-info-rs 0.4 is released.
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "0001-libdisplay-info-0.4.patch"
+)
+sha512sums=('ae30446fbf529155907726cf2cba7402bcfc5be2032370d66f9f980efb257f29353b47d495f1218b81ac32c643f15bbb74834dc35882849a4479021b4b9fa97f'
+            '629a8ea749abc2dfcdc1d5bce5272d262e220e9de5ec9df5a06e6842b14a6c416785de58aa9ab5e7205ffaf1418d9a183599b05be4f7cd4ca7507bc05863698b')
 
 prepare() {
+  _patch_ "$pkgname-$pkgver"
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$RUSTHOST"
