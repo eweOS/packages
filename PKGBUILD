@@ -2,8 +2,8 @@
 
 pkgbase=wxwidgets
 pkgname=(wxwidgets-gtk3)	# TODO: package the QT variant
-pkgver=3.2.10
-pkgrel=3
+pkgver=3.2.12
+pkgrel=1
 pkgdesc='Cross-Platform C++ GUI Library'
 url='Cross-Platform'
 arch=(x86_64 aarch64 riscv64 loongarch64)
@@ -16,7 +16,7 @@ makedepends=(gstreamer-devel gst-plugins-bad cmake samurai)
 #	https://git.alpinelinux.org/aports/diff/community/wxwidgets/musl-locale-l.patch?id=cc5b7b05c04630cc1cb3f396604630c98d3b3141
 source=("https://github.com/wxWidgets/wxWidgets/releases/download/v$pkgver/wxWidgets-$pkgver.tar.bz2"
 	0001-Adapt-musl-locale-l.patch)
-sha256sums=('d66e929569947a4a5920699539089a9bda83a93e5f4917fb313a61f0c344b896'
+sha256sums=('a62719bb5e1dcc41c1a6fc1eecd499c7ee8521f70402c7b1bb3342a1e16344e0'
             '69f2dc1a98fbddf338e301f5d45fdd0a84d3692ec48a83b8f29c39b9ecee9d82')
 _srcdir="wxWidgets-$pkgver"
 
