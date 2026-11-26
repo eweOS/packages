@@ -2,34 +2,24 @@
 
 pkgname=ripgrep
 pkgver=15.2.0
-pkgrel=2
-_rust_pcre2_ver=0.2.10
+pkgrel=3
 pkgdesc='Recursively searches directories for a regex pattern while respecting your gitignore'
 url=https://github.com/BurntSushi/ripgrep
 license=('MIT OR Unlicense')
 arch=(x86_64 aarch64 riscv64 loongarch64)
 makedepends=(git cargo rust)
 depends=(musl mimalloc llvm-libs pcre2)
-# pcre2-sys-musl-dynamic: Should be upstreamed, don't link to PCRE2 statically
-#	for musl targets.
 # no-jemalloc: Downstream, disable tikv-jemallocator dependency on musl which
 #	takes jemalloc as backend.
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-        "git+https://github.com/BurntSushi/rust-pcre2.git#tag=$_rust_pcre2_ver"
-        pcre2-sys-musl-dynamic.patch
         no-jemalloc.patch)
 sha256sums=('7605249d3eb0d5f170e3414498e3344e26b1e7a147aec518b57090b80036a562'
-            '385f16a0ff4a4d625a1ed7f8b72feefc60f4cabecd418ac1923ac17ee4de6d67'
-            'e6f3050e4dcd81a17332a6826c157c4e33dc1fdf02b6fe71aaa891b79783bbf7'
             'bfa2ec9ef8b41f9ee901b7a4e6b2963c4cda205f4c203528aeec3595942ae8eb')
 
 prepare() {
-  patch -d rust-pcre2 -Np1 -i ../pcre2-sys-musl-dynamic.patch
-
+  _patch_ $pkgname-$pkgver
   cd $pkgname-$pkgver
-  patch -Np1 -i ../no-jemalloc.patch
-  echo -e '\n[patch.crates-io]\npcre2-sys = { path = "../rust-pcre2/pcre2-sys" }' >> Cargo.toml
-  cargo update -p pcre2-sys
+  cargo update -p tikv-jemallocator
   cargo fetch --locked --target $RUSTHOST
 }
 
@@ -37,6 +27,7 @@ build() {
   cd $pkgname-$pkgver
   export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-flto=auto"
   export LDFLAGS="$LDFLAGS -lmimalloc"
+  export PCRE2_SYS_STATIC=0
   cargo build --frozen --release --all-features
 }
 
@@ -44,6 +35,7 @@ check() {
   cd $pkgname-$pkgver
   export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-flto=auto"
   export LDFLAGS="$LDFLAGS -lmimalloc"
+  export PCRE2_SYS_STATIC=0
   cargo test --frozen --all-features
 }
 
