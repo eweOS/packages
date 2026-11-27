@@ -1,21 +1,21 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=mpv
-pkgver=0.41.0
-pkgrel=7
+pkgver=0.42.0
+pkgrel=1
 pkgdesc='a free, open source, and cross-platform media player'
 arch=(x86_64 aarch64 riscv64 loongarch64)
 license=('GPL-2.0-or-later')
 url='https://mpv.io/'
 depends=(
-  'alsa-lib' 'wayland' 'zlib' 'ffmpeg' 'libass' 'lcms2' 'libarchive'
+  'alsa-lib' 'wayland' 'zlib' 'ffmpeg' 'curl' 'hicolor-icon-theme' 'libass' 'lcms2' 'libarchive'
   'sdl2' 'zimg' 'zlib' 'alsa-lib' 'pipewire' 'libpulse' 'libplacebo'
   'libdrm' 'libjpeg' 'libxkbcommon' 'libdisplay-info' 'libsixel'
   'mesa' 'libglvnd' 'libva' 'vulkan-icd-loader')
 makedepends=('git' 'meson' 'wayland-protocols' 'linux-headers' 'vulkan-headers')
 checkdepends=('weston')
-source=("https://github.com/mpv-player/mpv/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ee21092a5ee427353392360929dc64645c54479aefdb5babc5cfbb5fad626209')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mpv-player/mpv/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('bcfebbfa2b65a6d88dc97ea18117831072373e38b5785a2afb874ed4df5070dd')
 
 build() {
   local _audioout_features=(
@@ -57,6 +57,7 @@ build() {
     -D xv=disabled
   )
   local _hwaccel_features=(
+    -D amf=disabled
     -D android-media-ndk=disabled
     -D cuda-hwaccel=disabled
     -D cuda-interop=disabled
@@ -81,6 +82,7 @@ build() {
   local _misc_features=(
     -D cdda=disabled
     -D cplugins=disabled
+    -D dvda=disabled
     -D dvbin=disabled
     -D dvdnav=disabled
     -D javascript=disabled
@@ -88,6 +90,7 @@ build() {
     -D pthread-debug=disabled
     -D rubberband=disabled
     -D sdl2-gamepad=disabled
+    -D subrandr=disabled
     -D uchardet=disabled
     -D uwp=disabled
     -D vapoursynth=disabled
@@ -121,7 +124,7 @@ check() {
   _w=$!
   trap "kill $_w; wait" EXIT
 
-  # meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs
 }
 
 package() {
