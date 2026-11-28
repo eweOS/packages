@@ -1,8 +1,8 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=greetd-tui
-pkgver=0.11.1
-pkgrel=2
+pkgver=0.11.2
+pkgrel=1
 pkgdesc='A console UI greeter for greetd'
 url='https://github.com/apognu/tuigreet'
 license=(GPL3)
@@ -15,7 +15,7 @@ source=(
   "tuigreet-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
   "0001-replace-utmp-rs-with-utmpx.patch"
 )
-sha256sums=('7d643ba224c40c6a63f9462a826630543071aea08e732ccd2e880bcd80d939e8'
+sha256sums=('e8b422ae7b32c3e82b2610664fea549b3148a7e661f4ae3b89b9a36eea1be8a9'
             '3f811c141ea8f9da20ebc53a4b851760a6b6329a297ee2524abd34a9c9238057')
 
 prepare() {
